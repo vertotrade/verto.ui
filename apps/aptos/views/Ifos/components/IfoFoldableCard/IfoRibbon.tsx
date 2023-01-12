@@ -1,5 +1,5 @@
-import { Box, Flex, Heading, Progress, ProgressBar } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Flex, Heading, Progress, ProgressBar } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import styled from 'styled-components'
 import { getStatus } from 'views/Ifos/hooks/helpers'
 import { PublicIfoData } from '../../types'

@@ -11,9 +11,9 @@ import {
   Text,
   WalletFilledIcon,
   Skeleton,
-} from '@pancakeswap/uikit'
-import { Currency, Price } from '@pancakeswap/sdk'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@verto/uikit'
+import { Currency, Price } from '@verto/sdk'
+import { useTranslation } from '@verto/localization'
 import { multiplyPriceByAmount } from 'utils/prices'
 import styled from 'styled-components'
 

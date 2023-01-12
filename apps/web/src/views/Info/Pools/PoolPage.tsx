@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import {
   Box,
   Breadcrumbs,
@@ -16,7 +16,7 @@ import {
   Text,
   useMatchBreakpoints,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import Page from 'components/Layout/Page'
@@ -75,7 +75,7 @@ const LockedTokensContainer = styled(Flex)`
 `
 
 const getFarmConfig = async (chainId: number) => {
-  const config = await import(`@pancakeswap/farms/constants/${chainId}`)
+  const config = await import(`@verto/farms/constants/${chainId}`)
   return config
 }
 

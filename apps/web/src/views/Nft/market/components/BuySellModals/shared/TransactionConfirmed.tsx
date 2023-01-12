@@ -1,5 +1,5 @@
-import { Flex, Text, Button, ArrowUpIcon, LinkExternal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text, Button, ArrowUpIcon, LinkExternal } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { getBlockExploreLink } from 'utils'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { Divider } from './styles'

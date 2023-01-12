@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { useTranslation } from '@verto/localization'
+import { FarmWithStakedValue } from '@verto/farms'
 import {
   Box,
   Farm as FarmUI,
@@ -12,11 +12,11 @@ import {
   useMatchBreakpoints,
   MobileColumnSchema,
   DesktopColumnSchema,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { createElement, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { useDelayedUnmount } from '@pancakeswap/hooks'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
+import { useDelayedUnmount } from '@verto/hooks'
 
 import ActionPanel from './Actions/ActionPanel'
 import Apr, { AprProps } from './Apr'

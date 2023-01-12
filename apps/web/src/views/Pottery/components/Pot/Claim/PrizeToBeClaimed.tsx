@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Box, Text, Balance } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Flex, Box, Text, Balance } from '@verto/uikit'
 import { DeserializedPotteryUserData } from 'state/types'
 import { usePriceCakeBusd } from 'state/farms/hooks'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import ClaimButton from './ClaimButton'
 

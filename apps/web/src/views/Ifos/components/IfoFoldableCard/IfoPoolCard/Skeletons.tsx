@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Skeleton } from '@verto/uikit'
 
 export const SkeletonCardActions = () => {
   return <Skeleton height="48px" />

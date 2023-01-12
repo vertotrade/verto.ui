@@ -19,13 +19,13 @@ const nextConfig = {
   },
   experimental: {
     transpilePackages: [
-      '@pancakeswap/ui',
-      '@pancakeswap/uikit',
-      '@pancakeswap/localization',
-      '@pancakeswap/hooks',
-      '@pancakeswap/utils',
-      '@pancakeswap/tokens',
-      '@pancakeswap/farms',
+      '@verto/ui',
+      '@verto/uikit',
+      '@verto/localization',
+      '@verto/hooks',
+      '@verto/utils',
+      '@verto/tokens',
+      '@verto/farms',
     ],
   },
   async redirects() {

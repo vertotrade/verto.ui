@@ -1,6 +1,6 @@
-import { Currency } from '@pancakeswap/aptos-swap-sdk'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Image, Link, Modal, ModalBody, OpenNewIcon, Text } from '@pancakeswap/uikit'
+import { Currency } from '@verto/aptos-swap-sdk'
+import { useTranslation } from '@verto/localization'
+import { Button, Image, Link, Modal, ModalBody, OpenNewIcon, Text } from '@verto/uikit'
 
 interface Props {
   currency: Currency

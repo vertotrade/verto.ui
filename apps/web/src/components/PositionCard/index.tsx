@@ -1,5 +1,5 @@
 import { useState, useMemo, useContext } from 'react'
-import { Currency, CurrencyAmount, JSBI, Pair, Percent } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, JSBI, Pair, Percent } from '@verto/sdk'
 import {
   Button,
   Text,
@@ -14,9 +14,9 @@ import {
   useTooltip,
   NextLinkFromReactRouter,
   Link,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import useTotalSupply from 'hooks/useTotalSupply'
 import useBUSDPrice from 'hooks/useBUSDPrice'
 import { multiplyPriceByAmount } from 'utils/prices'

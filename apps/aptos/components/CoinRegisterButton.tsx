@@ -1,7 +1,7 @@
-import { Currency } from '@pancakeswap/aptos-swap-sdk'
-import { useSendTransaction } from '@pancakeswap/awgmi'
-import { useTranslation } from '@pancakeswap/localization'
-import { IconButton, Loading, useToast, useTooltip, WalletRegisterIcon } from '@pancakeswap/uikit'
+import { Currency } from '@verto/aptos-swap-sdk'
+import { useSendTransaction } from '@verto/awgmi'
+import { useTranslation } from '@verto/localization'
+import { IconButton, Loading, useToast, useTooltip, WalletRegisterIcon } from '@verto/uikit'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { ToastDescriptionWithTx } from './Toast'
 

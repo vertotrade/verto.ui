@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId, NATIVE } from '@pancakeswap/sdk'
+import { useTranslation } from '@verto/localization'
+import { ChainId, NATIVE } from '@verto/sdk'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -12,7 +12,7 @@ import {
   UserMenuDivider,
   UserMenuItem,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { useAccount, useNetwork } from 'wagmi'
 import { useActiveChainId, useLocalNetworkChain } from 'hooks/useActiveChainId'
 import { useNetworkConnectorUpdater } from 'hooks/useActiveWeb3React'

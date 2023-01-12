@@ -1,10 +1,10 @@
 import BigNumber from 'bignumber.js'
 import addSeconds from 'date-fns/addSeconds'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { deserializeFarmUserData } from '@pancakeswap/farms'
-import type { SerializedFarm, DeserializedFarm } from '@pancakeswap/farms'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
+import isUndefinedOrNull from '@verto/utils/isUndefinedOrNull'
+import { deserializeToken } from '@verto/token-lists'
+import { deserializeFarmUserData } from '@verto/farms'
+import type { SerializedFarm, DeserializedFarm } from '@verto/farms'
 
 export const FARM_AUCTION_HOSTING_IN_SECONDS = 691200
 

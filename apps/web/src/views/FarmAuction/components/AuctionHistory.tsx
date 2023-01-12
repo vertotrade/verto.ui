@@ -12,8 +12,8 @@ import {
   BunnyPlaceholderIcon,
   Spinner,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import AuctionLeaderboardTable from './AuctionLeaderboard/AuctionLeaderboardTable'
 import { useFarmAuction } from '../hooks/useFarmAuction'
 

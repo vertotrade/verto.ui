@@ -1,4 +1,4 @@
-import { vars } from "@pancakeswap/ui/css/vars.css";
+import { vars } from "@verto/ui/css/vars.css";
 import { AlertTheme } from "../components/Alert/types";
 import { CardTheme } from "../components/Card/types";
 import { PancakeToggleTheme } from "../components/PancakeToggle/types";
@@ -9,7 +9,7 @@ import { NavThemeType } from "../widgets/Menu/theme";
 import { ModalTheme } from "../widgets/Modal/types";
 import { Breakpoints, MediaQueries, ZIndices } from "./types";
 
-export interface PancakeTheme {
+export interface VertoTheme {
   siteWidth: number;
   isDark: boolean;
   alert: AlertTheme;

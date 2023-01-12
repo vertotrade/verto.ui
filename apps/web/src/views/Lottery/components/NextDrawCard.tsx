@@ -14,13 +14,13 @@ import {
   CardFooter,
   ExpandableLabel,
   Balance,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { LotteryStatus } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
 import ViewTicketsModal from './ViewTicketsModal'
 import BuyTicketsButton from './BuyTicketsButton'
 import { dateTimeOptions } from '../helpers'

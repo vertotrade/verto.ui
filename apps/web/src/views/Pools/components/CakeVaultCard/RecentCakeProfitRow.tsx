@@ -1,10 +1,10 @@
-import { Flex, Pool, Text } from '@pancakeswap/uikit'
+import { Flex, Pool, Text } from '@verto/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey, DeserializedLockedVaultUser } from 'state/types'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@verto/sdk'
 import { getCakeVaultEarnings } from 'views/Pools/helpers'
 import RecentCakeProfitBalance from './RecentCakeProfitBalance'
 

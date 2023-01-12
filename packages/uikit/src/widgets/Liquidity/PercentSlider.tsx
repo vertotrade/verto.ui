@@ -1,9 +1,9 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { AtomBox } from "@pancakeswap/ui";
-import { Button, Slider } from "@pancakeswap/uikit";
+import { useTranslation } from "@verto/localization";
+import { AtomBox } from "@verto/ui";
+import { Button, Slider } from "@verto/uikit";
 
 import { useCallback } from "react";
-import { useDebouncedChangeHandler } from "@pancakeswap/hooks";
+import { useDebouncedChangeHandler } from "@verto/hooks";
 
 interface PercentSliderProps {
   onValueChanged: (value: string) => void;

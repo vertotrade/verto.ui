@@ -1,8 +1,8 @@
-import { Flex, Skeleton, Text, Balance } from "@pancakeswap/uikit";
+import { Flex, Skeleton, Text, Balance } from "@verto/uikit";
 import styled from "styled-components";
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@verto/localization";
 import BigNumber from "bignumber.js";
-import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
+import { getBalanceNumber } from "@verto/utils/formatBalance";
 import { BaseCell, CellContent } from "./BaseCell";
 
 interface TotalStakedCellProps {

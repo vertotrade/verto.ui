@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { Box, Card, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Card, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import styled from 'styled-components'
 import { PoolIds } from 'config/constants/types'
 

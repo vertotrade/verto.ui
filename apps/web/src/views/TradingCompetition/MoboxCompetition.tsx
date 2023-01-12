@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { useProfile } from 'state/profile/hooks'
-import { Box, useMatchBreakpoints, PageSection } from '@pancakeswap/uikit'
+import { Box, useMatchBreakpoints, PageSection } from '@verto/uikit'
 import { useTradingCompetitionContractMobox } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import { PageMeta } from 'components/Layout/Page'
@@ -17,7 +17,7 @@ import {
   REGISTRATION,
 } from 'config/constants/trading-competition/phases'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@verto/sdk'
 import { MIDBLUEBG, MIDBLUEBG_DARK, TRADINGCOMPETITIONBANNER } from './pageSectionStyles'
 import { RulesIcon } from './svgs'
 import Countdown from './components/Countdown'
@@ -250,7 +250,7 @@ const MoboxCompetition = () => {
                 team3LeaderboardInformation={team3LeaderboardInformation}
                 globalLeaderboardInformation={globalLeaderboardInformation}
                 participantSubgraphAddress={TC_MOBOX_SUBGRAPH}
-                subgraphName="pancakeswap/trading-competition-v3"
+                subgraphName="vertotrade/trading-competition-v3"
               />
             </Box>
           </PageSection>

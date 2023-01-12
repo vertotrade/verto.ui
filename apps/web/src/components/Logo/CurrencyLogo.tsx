@@ -1,9 +1,9 @@
-import { ChainId, Currency } from '@pancakeswap/sdk'
-import { BinanceIcon, TokenLogo } from '@pancakeswap/uikit'
+import { ChainId, Currency } from '@verto/sdk'
+import { BinanceIcon, TokenLogo } from '@verto/uikit'
 import { useMemo } from 'react'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
+import { WrappedTokenInfo } from '@verto/token-lists'
 import styled from 'styled-components'
-import { useHttpLocations } from '@pancakeswap/hooks'
+import { useHttpLocations } from '@verto/hooks'
 import { BAD_SRCS } from './constants'
 import getTokenLogoURL from '../../utils/getTokenLogoURL'
 

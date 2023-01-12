@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
-import { CurrencyAmount, Token, Trade, TradeType, Currency, Percent, ChainId } from '@pancakeswap/sdk'
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+import { CurrencyAmount, Token, Trade, TradeType, Currency, Percent, ChainId } from '@verto/sdk'
+import replaceBrowserHistory from '@verto/utils/replaceBrowserHistory'
 import {
   Button,
   Box,
@@ -11,9 +11,9 @@ import {
   Link,
   useMatchBreakpoints,
   Swap as SwapUI,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import AccessRisk from 'views/Swap/components/AccessRisk'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { AutoColumn } from 'components/Layout/Column'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { AppBody } from 'components/App'
@@ -29,7 +29,7 @@ import { GELATO_NATIVE } from 'config/constants'
 import { LIMIT_ORDERS_DOCS_URL } from 'config/constants/exchange'
 import { useExchangeChartManager } from 'state/user/hooks'
 import PriceChartContainer from 'views/Swap/components/Chart/PriceChartContainer'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { useWeb3React } from '@verto/wagmi'
 import ClaimWarning from './components/ClaimWarning'
 
 import { Wrapper, StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'

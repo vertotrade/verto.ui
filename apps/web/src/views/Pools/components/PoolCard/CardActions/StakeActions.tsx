@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { Token } from '@verto/sdk'
+import { Pool } from '@verto/uikit'
 import StakeModal from '../../Modals/StakeModal'
 
 export default Pool.withStakeActions<Token>(StakeModal)

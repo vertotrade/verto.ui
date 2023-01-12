@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Text, useModal } from '@pancakeswap/uikit'
-import { Currency, CurrencyAmount, Trade, TradeType } from '@pancakeswap/sdk'
+import { useTranslation } from '@verto/localization'
+import { Button, Text, useModal } from '@verto/uikit'
+import { Currency, CurrencyAmount, Trade, TradeType } from '@verto/sdk'
 
 import { GreyCard } from 'components/Card'
 import { CommitButton } from 'components/CommitButton'

@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 
 export default function LockedAprTooltipContent({ boostedYieldAmount }) {
   const { t } = useTranslation()

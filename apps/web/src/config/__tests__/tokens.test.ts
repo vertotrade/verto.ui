@@ -1,8 +1,8 @@
 import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
 import erc20ABI from 'config/abi/erc20.json'
-import { bscTokens } from '@pancakeswap/tokens'
-import { Token } from '@pancakeswap/sdk'
+import { bscTokens } from '@verto/tokens'
+import { Token } from '@verto/sdk'
 import multicall from 'utils/multicall'
 
 // remove BNB because it's not a Bep20 token

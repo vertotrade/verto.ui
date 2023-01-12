@@ -14,15 +14,15 @@ import {
   MessageText,
   ErrorIcon,
   BalanceWithLoading,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { useAccount } from 'wagmi'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@verto/sdk'
 import { Ifo, PoolIds } from 'config/constants/types'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@verto/tokens'
 import { cakeBnbLpToken } from 'config/constants/ifo'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceNumber, formatNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@verto/localization'
+import { getBalanceNumber, formatNumber } from '@verto/utils/formatBalance'
 import { useIfoCredit } from 'state/pools/hooks'
 import { TokenImage, TokenPairImage } from 'components/TokenImage'
 import { EnableStatus } from '../types'
@@ -194,8 +194,8 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
           <Box>
             <MessageText display="inline">
               {publicIfoData.status === 'finished'
-                ? t('Activate PancakeSwap Profile to take part in next IFO‘s!')
-                : t('You need an active PancakeSwap Profile to take part in an IFO!')}
+                ? t('Activate VertoTrade Profile to take part in next IFO‘s!')
+                : t('You need an active VertoTrade Profile to take part in an IFO!')}
             </MessageText>{' '}
             <MessageTextLink href="/ifo#ifo-how-to" color="#D67E0A" display="inline">
               {t('How does it work?')} »

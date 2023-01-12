@@ -1,7 +1,7 @@
-import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
-import { Text, useMatchBreakpoints, Pool } from "@pancakeswap/uikit";
+import { BIG_ZERO } from "@verto/utils/bigNumber";
+import { Text, useMatchBreakpoints, Pool } from "@verto/uikit";
 import BigNumber from "bignumber.js";
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@verto/localization";
 import { createElement, FunctionComponent } from "react";
 
 interface AprCellProps<T> {

@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 import { createPortal } from 'react-dom'
-import { useIsMounted } from '@pancakeswap/hooks'
+import { useIsMounted } from '@verto/hooks'
 
 interface PortalProps {
   container?: () => HTMLElement

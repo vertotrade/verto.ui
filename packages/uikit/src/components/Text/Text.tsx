@@ -8,11 +8,22 @@ interface ThemedProps extends TextProps {
 }
 
 const getColor = ({ color, theme }: ThemedProps) => {
-  return getThemeValue(theme, `colors.${color}`, color);
+  const value = getThemeValue(theme, `colors.${color}`, color);
+
+  if (value.includes('gradient')) {
+    return `
+      background: ${value};
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.75;
+    `;
+  }
+
+  return `color: ${value};`;
 };
 
 const Text = styled.div<TextProps>`
-  color: ${getColor};
+  ${getColor}
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   line-height: 1.5;
   ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}

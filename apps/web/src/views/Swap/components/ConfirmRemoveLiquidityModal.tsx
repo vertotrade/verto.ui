@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
-import { Currency, CurrencyAmount, Pair, Percent, Token } from '@pancakeswap/sdk'
-import { AddIcon, Button, InjectedModalProps, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency, CurrencyAmount, Pair, Percent, Token } from '@verto/sdk'
+import { AddIcon, Button, InjectedModalProps, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,
   TransactionErrorContent,

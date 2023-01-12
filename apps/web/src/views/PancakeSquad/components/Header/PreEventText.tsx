@@ -1,5 +1,5 @@
-import { ContextApi } from '@pancakeswap/localization'
-import { Text } from '@pancakeswap/uikit'
+import { ContextApi } from '@verto/localization'
+import { Text } from '@verto/uikit'
 import { SaleStatusEnum, UserStatusEnum } from '../../types'
 
 type PreEventProps = {

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Button, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Text, Button, useMatchBreakpoints } from '@verto/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ProgressStepsType } from './ProgressSteps'
 

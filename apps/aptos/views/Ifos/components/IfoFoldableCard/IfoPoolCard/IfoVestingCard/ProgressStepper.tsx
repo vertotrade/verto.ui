@@ -1,8 +1,8 @@
 import { useEffect, Fragment, useState } from 'react'
 import styled from 'styled-components'
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@verto/uikit'
 import { PoolIds } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { PublicIfoData } from 'views/Ifos/types'
 import Step from './Step'
 

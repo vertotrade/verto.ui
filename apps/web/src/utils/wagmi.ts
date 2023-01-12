@@ -1,5 +1,5 @@
-import { BinanceWalletConnector } from '@pancakeswap/wagmi/connectors/binanceWallet'
-import { BloctoConnector } from '@pancakeswap/wagmi/connectors/blocto'
+import { BinanceWalletConnector } from '@verto/wagmi/connectors/binanceWallet'
+import { BloctoConnector } from '@verto/wagmi/connectors/blocto'
 import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
@@ -68,8 +68,8 @@ export const injectedConnector = new InjectedConnector({
 export const coinbaseConnector = new CoinbaseWalletConnector({
   chains,
   options: {
-    appName: 'PancakeSwap',
-    appLogoUrl: 'https://pancakeswap.com/logo.png',
+    appName: 'VertoTrade',
+    appLogoUrl: 'https://vertotrade.com/logo.png',
   },
 })
 

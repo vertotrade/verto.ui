@@ -1,12 +1,12 @@
-import { Pair, PAIR_LP_TYPE_TAG, PAIR_RESERVE_TYPE_TAG } from '@pancakeswap/aptos-swap-sdk'
-import { useAccount, useAccountResources } from '@pancakeswap/awgmi'
+import { Pair, PAIR_LP_TYPE_TAG, PAIR_RESERVE_TYPE_TAG } from '@verto/aptos-swap-sdk'
+import { useAccount, useAccountResources } from '@verto/awgmi'
 import {
   CoinStoreResource,
   COIN_STORE_TYPE_PREFIX,
   createAccountResourceFilter,
   FetchAccountResourcesResult,
   unwrapTypeArgFromString,
-} from '@pancakeswap/awgmi/core'
+} from '@verto/awgmi/core'
 import { PairState, usePairsFromAddresses } from 'hooks/usePairs'
 import { useMemo } from 'react'
 

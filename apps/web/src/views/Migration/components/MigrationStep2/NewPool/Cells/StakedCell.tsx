@@ -1,12 +1,12 @@
-import { Box, Flex, Text, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Box, Flex, Text, useMatchBreakpoints, Balance, Pool } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import React from 'react'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import styled from 'styled-components'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Token } from '@pancakeswap/sdk'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
+import { Token } from '@verto/sdk'
 
 interface StakedCellProps {
   pool: Pool.DeserializedPool<Token>

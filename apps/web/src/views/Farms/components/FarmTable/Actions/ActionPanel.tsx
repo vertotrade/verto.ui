@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import {
   Farm as FarmUI,
   FarmTableLiquidityProps,
@@ -6,14 +6,14 @@ import {
   LinkExternal,
   Text,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useContext, useMemo } from 'react'
 import { multiChainPaths } from 'state/info/constant'
 import styled, { css, keyframes } from 'styled-components'
 import { getBlockExploreLink } from 'utils'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@verto/farms'
 
 import BoostedAction from '../../YieldBooster/components/BoostedAction'
 import { YieldBoosterStateContext } from '../../YieldBooster/components/ProxyFarmContainer'

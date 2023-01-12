@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Image, Swap } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Image, Swap } from '@verto/uikit'
 
 export const ExchangeLayout = ({ children }: React.PropsWithChildren) => {
   const { t } = useTranslation()

@@ -1,7 +1,7 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { parseUnits } from '@ethersproject/units'
-import { useTranslation } from '@pancakeswap/localization'
-import { bscTokens } from '@pancakeswap/tokens'
+import { useTranslation } from '@verto/localization'
+import { bscTokens } from '@verto/tokens'
 import {
   BalanceInput,
   Box,
@@ -16,7 +16,7 @@ import {
   TooltipText,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
 import ApproveConfirmButtons from 'components/ApproveConfirmButtons'
@@ -28,7 +28,7 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useERC20 } from 'hooks/useContract'
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { formatNumber, getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { formatNumber, getBalanceAmount } from '@verto/utils/formatBalance'
 import { requiresApproval } from 'utils/requiresApproval'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
 

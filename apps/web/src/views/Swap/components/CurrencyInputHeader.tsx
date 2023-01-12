@@ -9,7 +9,7 @@ import {
   NotificationDot,
   Swap,
   useModal,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import RefreshIcon from 'components/Svg/RefreshIcon'

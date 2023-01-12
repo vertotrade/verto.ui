@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { useIsMounted } from "@pancakeswap/hooks";
+import { useTranslation } from "@verto/localization";
+import { useIsMounted } from "@verto/hooks";
 import { PropsWithChildren, ReactNode } from "react";
 import { AutoColumn, RowBetween, Text, TextProps } from "../../components";
 

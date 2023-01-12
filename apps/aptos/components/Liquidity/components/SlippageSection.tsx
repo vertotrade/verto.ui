@@ -1,5 +1,5 @@
-import { RowBetween, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { RowBetween, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { useUserSlippage } from 'state/user'
 
 export default function SlippageSection() {

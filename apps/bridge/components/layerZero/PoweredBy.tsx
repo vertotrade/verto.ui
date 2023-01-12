@@ -1,5 +1,5 @@
-import { Flex, Text } from '@pancakeswap/uikit'
-import { useTheme } from '@pancakeswap/hooks'
+import { Flex, Text } from '@verto/uikit'
+import { useTheme } from '@verto/hooks'
 import Image from 'next/image'
 
 const PoweredBy = () => {

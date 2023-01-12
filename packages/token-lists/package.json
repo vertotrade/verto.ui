@@ -1,5 +1,5 @@
 {
-  "name": "@pancakeswap/token-lists",
+  "name": "@verto/token-lists",
   "version": "0.0.4",
   "sideEffects": false,
   "main": "./dist/index.js",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "ajv": "^6.12.3",
-    "@pancakeswap/swap-sdk-core": "*"
+    "@verto/swap-sdk-core": "*"
   },
   "peerDependencies": {
     "@reduxjs/toolkit": "^1.9.1",

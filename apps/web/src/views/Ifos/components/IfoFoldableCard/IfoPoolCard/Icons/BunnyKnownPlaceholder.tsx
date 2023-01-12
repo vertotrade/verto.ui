@@ -1,5 +1,5 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
-import { useTheme } from '@pancakeswap/hooks'
+import { Svg, SvgProps } from '@verto/uikit'
+import { useTheme } from '@verto/hooks'
 
 const BunnyKnownPlaceholder: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   const { theme } = useTheme()

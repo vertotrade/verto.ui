@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints, Balance, Pool } from '@verto/uikit'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { getCakeVaultEarnings } from 'views/Pools/helpers'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@verto/sdk'
 import AutoEarningsBreakdown from '../../AutoEarningsBreakdown'
 
 interface AutoEarningsCellProps {

@@ -1,4 +1,4 @@
-import { appearAnimation, useIsomorphicEffect, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { appearAnimation, useIsomorphicEffect, useMatchBreakpoints } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { useState } from 'react'
 import styled from 'styled-components'

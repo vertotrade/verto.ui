@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { Box } from '@pancakeswap/uikit'
+import { Box } from '@verto/uikit'
 
 const floatingAnim = (x: string, y: string) => keyframes`
   from {

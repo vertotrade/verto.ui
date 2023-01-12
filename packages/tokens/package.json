@@ -1,12 +1,12 @@
 {
-  "name": "@pancakeswap/tokens",
+  "name": "@verto/tokens",
   "license": "MIT",
   "version": "0.0.1",
-  "description": "Tokens for pancakeswap",
+  "description": "Tokens for vertotrade",
   "main": "src/index.ts",
   "private": true,
   "sideEffects": false,
   "dependencies": {
-    "@pancakeswap/sdk": "*"
+    "@verto/sdk": "*"
   }
 }

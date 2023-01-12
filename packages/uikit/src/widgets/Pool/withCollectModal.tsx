@@ -1,8 +1,8 @@
-import { Flex, Text, Button, Heading, Skeleton, Balance, useModal } from "@pancakeswap/uikit";
+import { Flex, Text, Button, Heading, Skeleton, Balance, useModal } from "@verto/uikit";
 import BigNumber from "bignumber.js";
 import { ReactElement } from "react";
-import { useTranslation } from "@pancakeswap/localization";
-import { getFullDisplayBalance, getBalanceNumber, formatNumber } from "@pancakeswap/utils/formatBalance";
+import { useTranslation } from "@verto/localization";
+import { getFullDisplayBalance, getBalanceNumber, formatNumber } from "@verto/utils/formatBalance";
 import { CollectModalProps } from "./CollectModal";
 import { HarvestAction as TableHarvestAction } from "./PoolsTable/HarvestAction";
 import { HarvestActionsProps } from "./types";

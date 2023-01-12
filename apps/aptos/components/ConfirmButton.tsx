@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button as UIKitButton, AutoRenewIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Button as UIKitButton, AutoRenewIcon } from '@verto/uikit'
 import styled from 'styled-components'
 
 interface ConfirmButtonProps {

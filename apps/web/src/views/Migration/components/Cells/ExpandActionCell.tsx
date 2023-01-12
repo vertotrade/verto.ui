@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, ChevronDownIcon, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, ChevronDownIcon, Pool } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 
 interface ExpandActionCellProps {
   expanded: boolean

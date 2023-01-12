@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { Text, Heading, Card, CardHeader, CardBody, Flex } from '@pancakeswap/uikit'
+import { Text, Heading, Card, CardHeader, CardBody, Flex } from '@verto/uikit'
 import { Auction, Bidder } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@verto/localization'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
 import useCongratulateAuctionWinner from '../hooks/useCongratulateAuctionWinner'
 import WhitelistedBiddersButton from './WhitelistedBiddersButton'
 

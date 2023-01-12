@@ -1,4 +1,4 @@
-import { multicallAddresses } from '@pancakeswap/multicall'
+import { multicallAddresses } from '@verto/multicall'
 
 export default {
   masterChef: {

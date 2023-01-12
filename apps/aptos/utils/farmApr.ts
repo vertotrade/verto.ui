@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
 import { SECONDS_IN_YEAR } from 'config'
-import { ChainId } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId } from '@verto/aptos-swap-sdk'
 import mainnetLpAprs from 'config/constants/lpAprs/1.json'
-import { BIG_TEN } from '@pancakeswap/utils/bigNumber'
+import { BIG_TEN } from '@verto/utils/bigNumber'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
 
 const getLpApr = (chainId: number) => {

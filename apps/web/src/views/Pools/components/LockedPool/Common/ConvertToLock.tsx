@@ -1,6 +1,6 @@
-import { Token } from '@pancakeswap/sdk'
-import { Flex, Message, MessageText, useMatchBreakpoints, SkeletonV2 } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Token } from '@verto/sdk'
+import { Flex, Message, MessageText, useMatchBreakpoints, SkeletonV2 } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { memo } from 'react'
 import { useVaultApy } from 'hooks/useVaultApy'
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Trans from 'components/Trans'
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Button, Flex, Box, Balance } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Text, Button, Flex, Box, Balance } from '@verto/uikit'
 import { WinRateCalculatorState } from 'views/Pottery/hooks/useWinRateCalculator'
 
 const StyledBox = styled(Box)`

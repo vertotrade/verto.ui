@@ -1,6 +1,6 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { AutoRenewIcon, Button, Flex, Heading, Modal, Text } from "@pancakeswap/uikit";
-import { formatNumber } from "@pancakeswap/utils/formatBalance";
+import { useTranslation } from "@verto/localization";
+import { AutoRenewIcon, Button, Flex, Heading, Modal, Text } from "@verto/uikit";
+import { formatNumber } from "@verto/utils/formatBalance";
 import { useTheme } from "styled-components";
 import getThemeValue from "../../util/getThemeValue";
 

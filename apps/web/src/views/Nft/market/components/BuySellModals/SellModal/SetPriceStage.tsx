@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
-import { Flex, Grid, Box, Text, Button, BinanceIcon, ErrorIcon, useTooltip, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Grid, Box, Text, Button, BinanceIcon, ErrorIcon, useTooltip, Skeleton } from '@verto/uikit'
 import { multiplyPriceByAmount } from 'utils/prices'
 import { escapeRegExp } from 'utils'
 import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { NftToken } from 'state/nftMarket/types'
 import { useGetCollection } from 'state/nftMarket/hooks'
 import { Divider } from '../shared/styles'
@@ -176,7 +176,7 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
             {t('The NFT will be removed from your wallet and put on sale at this price.')}
           </Text>
           <Text small color="textSubtle">
-            {t('Sales are in WBNB. You can swap WBNB to BNB 1:1 for free with PancakeSwap.')}
+            {t('Sales are in WBNB. You can swap WBNB to BNB 1:1 for free with VertoTrade.')}
           </Text>
         </Box>
       </Grid>

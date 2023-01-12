@@ -1,4 +1,4 @@
-import { atoms } from "@pancakeswap/ui/css/atoms";
+import { atoms } from "@verto/ui/css/atoms";
 import { recipe, RecipeVariants } from "@vanilla-extract/recipes";
 
 export const severityVariants = recipe({

@@ -1,4 +1,4 @@
-import { ChainId, Coin } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId, Coin } from '@verto/aptos-swap-sdk'
 import { APT, CAKE } from '../../coins'
 
 export const mainnetTokens = {

@@ -1,4 +1,4 @@
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@verto/uikit'
 import IfoVesting from './IfoVesting'
 
 const IfoPoolVaultCard = () => {

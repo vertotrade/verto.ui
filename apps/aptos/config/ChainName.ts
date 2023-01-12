@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@verto/sdk'
 
 export const ChainIdName = {
   [ChainId.ETHEREUM]: 'eth',

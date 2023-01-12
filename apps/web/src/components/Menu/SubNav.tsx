@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { ButtonMenu, ButtonMenuItem } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { ButtonMenu, ButtonMenuItem } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 

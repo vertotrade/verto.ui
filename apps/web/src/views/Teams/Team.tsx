@@ -1,6 +1,6 @@
-import { ChevronLeftIcon, Flex, Text } from '@pancakeswap/uikit'
+import { ChevronLeftIcon, Flex, Text } from '@verto/uikit'
 import Page from 'components/Layout/Page'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import TeamCard from './components/TeamCard'

@@ -1,7 +1,7 @@
 // import { renderHook } from '@testing-library/react-hooks'
-// import { bscTokens } from '@pancakeswap/tokens'
+// import { bscTokens } from '@verto/tokens'
 // import { createReduxWrapper } from 'testUtils'
-// import { Pair, TokenAmount, CurrencyAmount, Trade } from '@pancakeswap/sdk'
+// import { Pair, TokenAmount, CurrencyAmount, Trade } from '@verto/sdk'
 // import * as UsePairs from './usePairs'
 // import * as Trades from './Trades'
 

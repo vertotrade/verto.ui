@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Box, Text } from '@verto/uikit'
 import { PoolIds } from 'config/constants/types'
 import { useRouter } from 'next/router'
 import styled, { keyframes, css } from 'styled-components'

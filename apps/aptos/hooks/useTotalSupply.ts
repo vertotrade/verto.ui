@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/aptos-swap-sdk'
-import { useCoin } from '@pancakeswap/awgmi'
-import { FetchCoinResult } from '@pancakeswap/awgmi/core'
+import { Currency, CurrencyAmount } from '@verto/aptos-swap-sdk'
+import { useCoin } from '@verto/awgmi'
+import { FetchCoinResult } from '@verto/awgmi/core'
 import { useMemo } from 'react'
 
 const select = (d: FetchCoinResult) => d.supply

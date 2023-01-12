@@ -1,5 +1,5 @@
 import { useCallback, useMemo, memo } from 'react'
-import { Currency, Trade, TradeType } from '@pancakeswap/sdk'
+import { Currency, Trade, TradeType } from '@verto/sdk'
 import { ConfirmationModalContent } from 'components/TransactionConfirmationModal'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { Field } from 'state/swap/actions'

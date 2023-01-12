@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, JSBI } from '@pancakeswap/aptos-swap-sdk'
+import { Currency, CurrencyAmount, JSBI } from '@verto/aptos-swap-sdk'
 import { BIG_INT_ZERO, MIN_APT } from 'config/constants/exchange'
 
 /**

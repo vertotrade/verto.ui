@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { Flex, LinkExternal, Text, Box, HelpIcon, useTooltip, RocketIcon, Link } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, LinkExternal, Text, Box, HelpIcon, useTooltip, RocketIcon, Link } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import styled from 'styled-components'
 import { getBlockExploreLink } from 'utils'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@verto/utils/formatBalance'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import { ModalInner, VotingBoxBorder, VotingBoxCardInner } from './styles'
 

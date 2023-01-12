@@ -1,6 +1,6 @@
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@verto/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import RulesCard from './RulesCard'
 import FAQs from './FAQs'
 

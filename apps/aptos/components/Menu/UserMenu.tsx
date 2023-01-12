@@ -1,6 +1,6 @@
-import { useAccount, useAccountBalance, APTOS_COIN } from '@pancakeswap/awgmi'
-import { useIsMounted } from '@pancakeswap/hooks'
-import { Trans, useTranslation } from '@pancakeswap/localization'
+import { useAccount, useAccountBalance, APTOS_COIN } from '@verto/awgmi'
+import { useIsMounted } from '@verto/hooks'
+import { Trans, useTranslation } from '@verto/localization'
 import {
   Box,
   Flex,
@@ -13,7 +13,7 @@ import {
   UserMenuItem,
   UserMenuVariant,
   WarningIcon,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { LOW_APT } from 'config'
 import { useActiveNetwork } from 'hooks/useNetwork'
 import { useEffect, useState } from 'react'

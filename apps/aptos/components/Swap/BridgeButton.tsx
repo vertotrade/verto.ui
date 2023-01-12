@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { IconButton, useTooltip, BridgeIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { IconButton, useTooltip, BridgeIcon } from '@verto/uikit'
 
 interface BridgeInfo {
   platform: string

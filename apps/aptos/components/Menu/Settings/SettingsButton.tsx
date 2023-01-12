@@ -1,4 +1,4 @@
-import { BoxProps, CogIcon, Flex, IconButton, useModal } from '@pancakeswap/uikit'
+import { BoxProps, CogIcon, Flex, IconButton, useModal } from '@verto/uikit'
 import { SettingsModal } from './SettingsModal'
 
 export function SettingsButton({ mr, color }: Pick<BoxProps, 'mr' | 'color'>) {

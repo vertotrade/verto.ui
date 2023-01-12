@@ -21,7 +21,7 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Blog",
-        href: "https://medium.com/pancakeswap",
+        href: "https://medium.com/vertotrade",
       },
       {
         label: "Community",
@@ -36,7 +36,7 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Online Store",
-        href: "https://pancakeswap.creator-spring.com/",
+        href: "https://vertotrade.creator-spring.com/",
         isHighlighted: true,
       },
     ],
@@ -63,7 +63,7 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Github",
-        href: "https://github.com/pancakeswap",
+        href: "https://github.com/vertotrade",
       },
       {
         label: "Documentation",
@@ -71,11 +71,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Bug Bounty",
-        href: "https://app.gitbook.com/@pancakeswap-1/s/pancakeswap/code/bug-bounty",
+        href: "https://app.gitbook.com/@vertotrade-1/s/pancakeswap/code/bug-bounty",
       },
       {
         label: "Audits",
-        href: "https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
+        href: "https://docs.pancakeswap.finance/help/faq#is-vertotrade-safe-has-vertotrade-been-audited",
       },
       {
         label: "Careers",
@@ -89,7 +89,7 @@ export const socials = [
   {
     label: "Twitter",
     icon: TwitterIcon,
-    href: "https://twitter.com/pancakeswap",
+    href: "https://twitter.com/vertotrade",
   },
   {
     label: "Telegram",
@@ -97,35 +97,35 @@ export const socials = [
     items: [
       {
         label: "English",
-        href: "https://t.me/pancakeswap",
+        href: "https://t.me/vertotrade",
       },
       {
         label: "Bahasa Indonesia",
-        href: "https://t.me/PancakeSwapIndonesia",
+        href: "https://t.me/VertoTradeIndonesia",
       },
       {
         label: "中文",
-        href: "https://t.me/PancakeSwap_CN",
+        href: "https://t.me/VertoTrade_CN",
       },
       {
         label: "Tiếng Việt",
-        href: "https://t.me/PancakeSwapVN",
+        href: "https://t.me/VertoTradeVN",
       },
       {
         label: "Italiano",
-        href: "https://t.me/pancakeswap_ita",
+        href: "https://t.me/vertotrade_ita",
       },
       {
         label: "русский",
-        href: "https://t.me/pancakeswap_ru",
+        href: "https://t.me/vertotrade_ru",
       },
       {
         label: "Türkiye",
-        href: "https://t.me/pancakeswapturkiye",
+        href: "https://t.me/vertotradeturkiye",
       },
       {
         label: "Português",
-        href: "https://t.me/PancakeSwapPortuguese",
+        href: "https://t.me/VertoTradePortuguese",
       },
       {
         label: "Español",
@@ -133,15 +133,15 @@ export const socials = [
       },
       {
         label: "日本語",
-        href: "https://t.me/pancakeswapjp",
+        href: "https://t.me/vertotradejp",
       },
       {
         label: "Français",
-        href: "https://t.me/pancakeswapfr",
+        href: "https://t.me/vertotradefr",
       },
       {
         label: "Deutsch",
-        href: "https://t.me/PancakeSwap_DE",
+        href: "https://t.me/VertoTrade_DE",
       },
       {
         label: "Filipino",
@@ -149,27 +149,27 @@ export const socials = [
       },
       {
         label: "ქართული ენა",
-        href: "https://t.me/PancakeSwapGeorgia",
+        href: "https://t.me/VertoTradeGeorgia",
       },
       {
         label: "हिन्दी",
-        href: "https://t.me/PancakeSwapINDIA",
+        href: "https://t.me/VertoTradeINDIA",
       },
       {
         label: "Announcements",
-        href: "https://t.me/PancakeSwapAnn",
+        href: "https://t.me/VertoTradeAnn",
       },
     ],
   },
   {
     label: "Reddit",
     icon: RedditIcon,
-    href: "https://reddit.com/r/pancakeswap",
+    href: "https://reddit.com/r/vertotrade",
   },
   {
     label: "Instagram",
     icon: InstagramIcon,
-    href: "https://instagram.com/pancakeswap_official",
+    href: "https://instagram.com/vertotrade_official",
   },
   {
     label: "Github",
@@ -179,17 +179,17 @@ export const socials = [
   {
     label: "Discord",
     icon: DiscordIcon,
-    href: "https://discord.gg/pancakeswap",
+    href: "https://discord.gg/vertotrade",
   },
   {
     label: "Medium",
     icon: MediumIcon,
-    href: "https://medium.com/pancakeswap",
+    href: "https://medium.com/vertotrade",
   },
   {
     label: "Youtube",
     icon: YoutubeIcon,
-    href: "https://www.youtube.com/@pancakeswap_official",
+    href: "https://www.youtube.com/@vertotrade_official",
   },
 ];
 

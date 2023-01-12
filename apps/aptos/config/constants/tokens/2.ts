@@ -1,4 +1,4 @@
-import { ChainId, Coin } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId, Coin } from '@verto/aptos-swap-sdk'
 import { APT } from '../../coins'
 
 export const testnetTokens = {
@@ -16,7 +16,7 @@ export const testnetTokens = {
     '0xe0e5ad285cbcdb873b2ee15bb6bcac73d9d763bcb58395e894255eeecf3992cf::pancake::Cake',
     8,
     'CAKE',
-    'PancakeSwap Token',
+    'VertoTrade Token',
     '',
   ),
   eth: new Coin(

@@ -1,5 +1,5 @@
-import { Percent } from '@pancakeswap/sdk'
-import { TranslateFunction } from '@pancakeswap/localization'
+import { Percent } from '@verto/sdk'
+import { TranslateFunction } from '@verto/localization'
 
 export enum PercentageDirection {
   ABOVE = 'above',

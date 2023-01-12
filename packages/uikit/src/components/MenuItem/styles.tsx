@@ -2,63 +2,48 @@ import styled from "styled-components";
 import { StyledMenuItemProps } from "./types";
 
 export const StyledMenuItemContainer = styled.div<StyledMenuItemProps>`
+  align-items: center;
+  display: flex;
+  height: 100%;
   position: relative;
-
-  ${({ $isActive, $variant, theme }) =>
-    $isActive &&
-    $variant === "subMenu" &&
-    `
-      &:after{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        height: 4px;
-        width: 100%;
-        background-color: ${theme.colors.primary};
-        border-radius: 2px 2px 0 0;
-      }
-    `};
 `;
 
 const StyledMenuItem = styled.a<StyledMenuItemProps>`
-  position: relative;
-  display: flex;
   align-items: center;
+  border-radius: 10px;
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  font-size: 1rem;
+  width: fit-content;
+  font-weight: 500;
+  padding: 8px 12px;
+  height: 100%;
+  align-items: center;
+  background: linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.75;
+  margin-bottom: -1px;
 
-  color: ${({ theme, $isActive }) => ($isActive ? theme.colors.secondary : theme.colors.textSubtle)};
-  font-size: 16px;
-  font-weight: ${({ $isActive }) => ($isActive ? "600" : "400")};
-  opacity: ${({ $isDisabled }) => ($isDisabled ? 0.5 : 1)};
-  pointer-events: ${({ $isDisabled }) => ($isDisabled ? "none" : "inherit")};
+  ${({ theme, $isActive }) => $isActive ? `
+    border-radius: 0px;
+    font-weight: 800;
+    border-bottom: 5px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    top: 0px;
+    border-image-source: linear-gradient(to right, #30e8bf, #ff8235);
+    color: ${theme.colors.text};
+  ` : ''}
 
-  ${({ $statusColor, theme }) =>
-    $statusColor &&
-    `
-    &:after {
-      content: "";
-      border-radius: 100%;
-      background: ${theme.colors[$statusColor]};
-      height: 8px;
-      width: 8px;
-      margin-left: 12px;
-    }
-  `}
-
-  ${({ $variant }) =>
-    $variant === "default"
-      ? `
-    padding: 0 16px;
-    height: 48px;
-  `
-      : `
-    padding: 4px 4px 0px 4px;
-    height: 42px;
-  `}
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.tertiary};
-    ${({ $variant }) => $variant === "default" && "border-radius: 16px;"};
+  :hover,
+  :focus {
+    color: ${({ theme }) => theme.colors.text};
+    opacity: 1;
   }
-`;
+`
 
 export default StyledMenuItem;

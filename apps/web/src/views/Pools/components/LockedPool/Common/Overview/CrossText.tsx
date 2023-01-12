@@ -1,4 +1,4 @@
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@verto/uikit'
 import styled from 'styled-components'
 
 const CrossText = styled(Text)`

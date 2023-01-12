@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { Fraction, JSBI } from '@pancakeswap/aptos-swap-sdk'
+import { Fraction, JSBI } from '@verto/aptos-swap-sdk'
 
 import formatAmountDisplay from '../formatAmountDisplay'
 

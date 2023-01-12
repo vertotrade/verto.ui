@@ -1,7 +1,7 @@
-import { Currency } from '@pancakeswap/aptos-swap-sdk'
-import { useAccount } from '@pancakeswap/awgmi'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency } from '@verto/aptos-swap-sdk'
+import { useAccount } from '@verto/awgmi'
+import { getBalanceNumber, getFullDisplayBalance } from '@verto/utils/formatBalance'
+import { useTranslation } from '@verto/localization'
 
 import {
   Text,
@@ -14,7 +14,7 @@ import {
   BunnyPlaceholderIcon,
   Message,
   MessageText,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { TokenImage, TokenPairImage } from 'components/TokenImage'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'

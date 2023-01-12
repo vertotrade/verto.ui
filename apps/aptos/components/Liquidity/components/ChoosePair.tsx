@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ChoosePairView } from '@pancakeswap/uikit/src/widgets/Liquidity'
+import { useTranslation } from '@verto/localization'
+import { ChoosePairView } from '@verto/uikit/src/widgets/Liquidity'
 import { CommitButton } from 'components/CommitButton'
 import { useContext } from 'react'
 import { CurrencySelectorContext } from '../hooks/useCurrencySelectRoute'

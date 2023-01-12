@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, useModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Button, useModal } from '@verto/uikit'
 import { useCallback } from 'react'
 import useRemoveLiquidityHandler from '../hooks/useRemoveLiquidityHandler'
 import { useBurnActionHandlers } from '../state/remove'

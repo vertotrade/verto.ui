@@ -9,11 +9,11 @@ import {
   useTooltip,
   LinkExternal,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import _isEmpty from 'lodash/isEmpty'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 
 const Container = styled.div`
   margin-right: 4px;

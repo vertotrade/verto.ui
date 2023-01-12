@@ -11,10 +11,10 @@ import {
   Text,
   NextLinkFromReactRouter,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { VaultPosition } from 'utils/cakePool'
 import { FetchStatus } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import styled from 'styled-components'
 import useCakeBenefits from './hooks/useCakeBenefits'
 
@@ -109,7 +109,7 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
     tooltipVisible: bCakeTooltipVisible,
   } = useTooltip(
     <>
-      <Text>{t(`bCAKE allows you to boost your yield in PancakeSwap Farms by up to 2x.`)}</Text>
+      <Text>{t(`bCAKE allows you to boost your yield in VertoTrade Farms by up to 2x.`)}</Text>
       <NextLinkFromReactRouter to="/farms" onClick={onDismiss}>
         <Text bold color="primary">
           {t('Learn More')}
@@ -129,7 +129,7 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
   } = useTooltip(
     <>
       <Text>
-        {t(`vCAKE boosts your voting power to %totalScore% in the PancakeSwap voting governance.`, {
+        {t(`vCAKE boosts your voting power to %totalScore% in the VertoTrade voting governance.`, {
           totalScore: cakeBenefits?.vCake?.totalScore,
         })}
       </Text>

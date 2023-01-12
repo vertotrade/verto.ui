@@ -1,6 +1,6 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { AtomBox } from "@pancakeswap/ui/components/AtomBox";
-import { AddIcon, Box, CardBody, CardFooter, Text } from "@pancakeswap/uikit";
+import { useTranslation } from "@verto/localization";
+import { AtomBox } from "@verto/ui/components/AtomBox";
+import { AddIcon, Box, CardBody, CardFooter, Text } from "@verto/uikit";
 
 export function ChoosePairView({
   selectCurrencyA,

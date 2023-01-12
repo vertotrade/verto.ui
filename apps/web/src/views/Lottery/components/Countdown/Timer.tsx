@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Flex, Heading } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Heading } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 
 export interface TimerProps {
   seconds?: number

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text, BunnyPlaceholderIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Flex, Text, BunnyPlaceholderIcon } from '@verto/uikit'
 import { MessageTextLink } from '../IfoCardStyles'
 
 const NotTokens: React.FC<React.PropsWithChildren> = () => {

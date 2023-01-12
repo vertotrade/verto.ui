@@ -1,6 +1,6 @@
-import { SerializedWrappedToken } from '@pancakeswap/token-lists'
+import { SerializedWrappedToken } from '@verto/token-lists'
 import BigNumber from 'bignumber.js'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { Token } from '@verto/swap-sdk-core'
 
 export type FarmsDynamicDataResult = {
   tokenAmountTotal: string

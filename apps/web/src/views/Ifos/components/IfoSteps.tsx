@@ -21,14 +21,14 @@ import {
   Text,
   TooltipText,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { useAccount } from 'wagmi'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { useProfile } from 'state/profile/hooks'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
 import { useIfoCredit, useIfoCeiling } from 'state/pools/hooks'
 import { getICakeWeekDisplay } from 'views/Pools/helpers'
@@ -216,7 +216,7 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
               {t('Activate your Profile')}
             </Heading>
             <Text color="textSubtle" small mb="16px">
-              {t('You’ll need an active PancakeSwap Profile to take part in an IFO!')}
+              {t('You’ll need an active VertoTrade Profile to take part in an IFO!')}
             </Text>
             {renderAccountStatus()}
           </CardBody>

@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
-import { bscTokens } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { bscTokens } from '@verto/tokens'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { getBep20Contract, getPotteryVaultContract, getPotteryDrawContract } from 'utils/contractHelpers'
 import { request, gql } from 'graphql-request'
 import { GRAPH_API_POTTERY } from 'config/constants/endpoints'

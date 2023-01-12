@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { escapeRegExp } from 'utils'
-import { Text, Button, Input, Flex, Box, QuestionHelper } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Button, Input, Flex, Box, QuestionHelper } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { useUserSlippageTolerance, useUserTransactionTTL } from 'state/user/hooks'
 
 enum SlippageError {

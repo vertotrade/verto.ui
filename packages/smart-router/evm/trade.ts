@@ -9,7 +9,7 @@ import {
   ONE,
   Price,
   computePriceImpact,
-} from '@pancakeswap/sdk'
+} from '@verto/sdk'
 
 import { TradeWithStableSwap } from './types'
 import { getMidPrice } from './utils/route'

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, NextLinkFromReactRouter, Button } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { AutoRenewIcon, NextLinkFromReactRouter, Button } from '@verto/uikit'
 import { ReactNode, useCallback, useContext } from 'react'
 
 import BigNumber from 'bignumber.js'

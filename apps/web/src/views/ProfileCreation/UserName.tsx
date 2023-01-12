@@ -1,5 +1,5 @@
 import { formatUnits } from '@ethersproject/units'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import {
   AutoRenewIcon,
   Button,
@@ -15,9 +15,9 @@ import {
   useModal,
   useToast,
   WarningIcon,
-} from '@pancakeswap/uikit'
-import { useDebounce } from '@pancakeswap/hooks'
-import { useSignMessage } from '@pancakeswap/wagmi'
+} from '@verto/uikit'
+import { useDebounce } from '@verto/hooks'
+import { useSignMessage } from '@verto/wagmi'
 import { API_PROFILE } from 'config/constants/endpoints'
 import { FetchStatus } from 'config/constants/types'
 import { formatDistance, parseISO } from 'date-fns'

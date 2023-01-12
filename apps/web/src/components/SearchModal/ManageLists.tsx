@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, CheckmarkIcon, CogIcon, Input, LinkExternal, Text, Toggle, useTooltip } from '@pancakeswap/uikit'
-import { TokenList, Version } from '@pancakeswap/token-lists'
+import { useTranslation } from '@verto/localization'
+import { Button, CheckmarkIcon, CogIcon, Input, LinkExternal, Text, Toggle, useTooltip } from '@verto/uikit'
+import { TokenList, Version } from '@verto/token-lists'
 import Card from 'components/Card'
 import { BSC_URLS, ETH_URLS, UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
 import { useAtomValue } from 'jotai'
@@ -13,9 +13,9 @@ import {
   disableList,
   enableList,
   removeList,
-} from '@pancakeswap/token-lists/react'
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
-import { ChainId } from '@pancakeswap/sdk'
+} from '@verto/token-lists/react'
+import uriToHttp from '@verto/utils/uriToHttp'
+import { ChainId } from '@verto/sdk'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { selectorByUrlsAtom, useActiveListUrls, useAllLists, useIsListActive } from '../../state/lists/hooks'
@@ -217,8 +217,8 @@ function ManageLists({
         }
 
         if (l1 && l2) {
-          // Always make PancakeSwap list in top.
-          const keyword = 'pancakeswap'
+          // Always make VertoTrade list in top.
+          const keyword = 'vertotrade'
           if (!l1.name.toLowerCase().includes(keyword) && l2.name.toLowerCase().includes(keyword)) {
             return 1
           }

@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId, Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import { Call, createMulticall } from '@pancakeswap/multicall'
+import { ChainId, Currency, CurrencyAmount } from '@verto/sdk'
+import { Call, createMulticall } from '@verto/multicall'
 
 import { Provider, StableSwapPair } from '../types'
 import { wrappedCurrencyAmount } from '../utils/currency'

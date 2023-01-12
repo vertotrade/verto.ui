@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { TooltipText, useTooltip, Balance, Pool } from '@pancakeswap/uikit'
+import { Token } from '@verto/sdk'
+import { TooltipText, useTooltip, Balance, Pool } from '@verto/uikit'
 import AutoEarningsBreakdown from '../AutoEarningsBreakdown'
 
 interface RecentCakeProfitBalanceProps {

@@ -1,6 +1,6 @@
-import { Farm as FarmUI, FarmTableFarmTokenInfoProps } from '@pancakeswap/uikit'
+import { Farm as FarmUI, FarmTableFarmTokenInfoProps } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { TokenPairImage } from 'components/TokenImage'
 import { useFarmUserInfoCache } from 'state/farms/hook'
 

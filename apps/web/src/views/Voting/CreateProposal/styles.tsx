@@ -1,4 +1,4 @@
-import { Box, Text } from '@pancakeswap/uikit'
+import { Box, Text } from '@verto/uikit'
 import styled from 'styled-components'
 
 const BaseLabel = styled.label`

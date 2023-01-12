@@ -1,7 +1,7 @@
-import { Price, Currency } from '@pancakeswap/sdk'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Price, Currency } from '@verto/sdk'
+import { Flex, Text } from '@verto/uikit'
 import { multiplyPriceByAmount } from 'utils/prices'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 import { formatBnb } from '../helpers'
 

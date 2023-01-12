@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useRouter } from 'next/router'
-import { Currency, Percent, WNATIVE } from '@pancakeswap/sdk'
+import { Currency, Percent, WNATIVE } from '@verto/sdk'
 import {
   useToast,
   Button,
@@ -15,11 +15,11 @@ import {
   Flex,
   useModal,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { BigNumber } from '@ethersproject/bignumber'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { CommitButton } from 'components/CommitButton'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { transactionErrorToUserReadableMessage } from 'utils/transactionErrorToUserReadableMessage'
 import { StableConfigContext } from 'views/Swap/StableSwap/hooks/useStableConfig'
 

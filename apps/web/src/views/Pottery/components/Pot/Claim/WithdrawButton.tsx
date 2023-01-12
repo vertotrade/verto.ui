@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, AutoRenewIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Button, AutoRenewIcon } from '@verto/uikit'
 import { useWithdrawPottery } from 'views/Pottery/hooks/useWithdrawPottery'
 import { PotteryDepositStatus } from 'state/types'
 import BigNumber from 'bignumber.js'

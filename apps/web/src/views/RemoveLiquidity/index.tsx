@@ -4,7 +4,7 @@ import { splitSignature } from '@ethersproject/bytes'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useRouter } from 'next/router'
-import { Currency, Percent, WNATIVE, ChainId } from '@pancakeswap/sdk'
+import { Currency, Percent, WNATIVE, ChainId } from '@verto/sdk'
 import {
   Button,
   Text,
@@ -20,8 +20,8 @@ import {
   useTooltip,
   useToast,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { useWeb3LibraryContext } from '@pancakeswap/wagmi'
+} from '@verto/uikit'
+import { useWeb3LibraryContext } from '@verto/wagmi'
 import { BigNumber } from '@ethersproject/bignumber'
 import { callWithEstimateGas } from 'utils/calls'
 import { getLPSymbol } from 'utils/getLpSymbol'
@@ -29,7 +29,7 @@ import useNativeCurrency from 'hooks/useNativeCurrency'
 import { getZapAddress } from 'utils/addressHelpers'
 import { ZapCheckbox } from 'components/CurrencyInputPanel/ZapCheckbox'
 import { CommitButton } from 'components/CommitButton'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { ROUTER_ADDRESS } from 'config/constants/exchange'
 import { transactionErrorToUserReadableMessage } from 'utils/transactionErrorToUserReadableMessage'
 import { useLPApr } from 'state/swap/useLPApr'

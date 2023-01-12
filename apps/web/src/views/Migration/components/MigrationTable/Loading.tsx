@@ -1,4 +1,4 @@
-import { Flex, Loading } from '@pancakeswap/uikit'
+import { Flex, Loading } from '@verto/uikit'
 
 const TableLoading = () => {
   return (

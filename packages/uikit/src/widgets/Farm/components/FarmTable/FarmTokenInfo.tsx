@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useTranslation } from "@pancakeswap/localization";
-import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
+import { useTranslation } from "@verto/localization";
+import { getBalanceNumber } from "@verto/utils/formatBalance";
 import { Text } from "../../../../components/Text";
 import { Skeleton } from "../../../../components/Skeleton";
 import { Flex } from "../../../../components/Box";

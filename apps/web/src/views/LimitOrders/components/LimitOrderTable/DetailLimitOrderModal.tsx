@@ -10,9 +10,9 @@ import {
   Spinner,
   useMatchBreakpoints,
   BscScanIcon,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { AutoColumn } from 'components/Layout/Column'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import { memo, useCallback, useState } from 'react'
 import styled from 'styled-components'

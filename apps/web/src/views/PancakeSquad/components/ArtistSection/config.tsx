@@ -1,5 +1,5 @@
-import { InstagramIcon, TwitterIcon } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
+import { InstagramIcon, TwitterIcon } from '@verto/uikit'
+import { ContextApi } from '@verto/localization'
 
 type ArtistConfigType = {
   t: ContextApi['t']

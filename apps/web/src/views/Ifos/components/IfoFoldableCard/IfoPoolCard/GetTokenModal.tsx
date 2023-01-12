@@ -1,6 +1,6 @@
-import { Modal, ModalBody, Text, Image, Button, Link, OpenNewIcon, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { Token } from '@pancakeswap/sdk'
-import { useTranslation } from '@pancakeswap/localization'
+import { Modal, ModalBody, Text, Image, Button, Link, OpenNewIcon, useMatchBreakpoints } from '@verto/uikit'
+import { Token } from '@verto/sdk'
+import { useTranslation } from '@verto/localization'
 
 interface Props {
   currency: Token

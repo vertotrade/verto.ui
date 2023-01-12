@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Card, CardHeader, Box, Heading, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, CardHeader, Box, Heading, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import EasterPrizesGrid from './PrizesGrid/EasterPrizesGrid'
 
 const StyledCard = styled(Card)`

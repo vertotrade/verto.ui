@@ -1,9 +1,9 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-await-in-loop */
-import { TokenList } from '@pancakeswap/token-lists'
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
+import { TokenList } from '@verto/token-lists'
+import uriToHttp from '@verto/utils/uriToHttp'
 import Ajv from 'ajv'
-import schema from '../schema/pancakeswap.json'
+import schema from '../schema/vertotrade.json'
 
 export const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
 

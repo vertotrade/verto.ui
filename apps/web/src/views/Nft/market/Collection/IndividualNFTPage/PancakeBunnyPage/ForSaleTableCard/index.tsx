@@ -13,8 +13,8 @@ import {
   Spinner,
   useMatchBreakpoints,
   PaginationButton,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import { ApiResponseCollectionTokens } from 'state/nftMarket/types'
 import ForSaleTableRows from './ForSaleTableRows'

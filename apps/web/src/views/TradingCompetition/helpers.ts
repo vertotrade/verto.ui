@@ -1,8 +1,8 @@
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { easterPrizes, PrizesConfig } from 'config/constants/trading-competition/prizes'
 import BigNumber from 'bignumber.js'
 import useBUSDPrice, { useCakeBusdPrice } from 'hooks/useBUSDPrice'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@verto/tokens'
 import { multiplyPriceByAmount } from 'utils/prices'
 
 export const localiseTradingVolume = (value: number, decimals = 0) => {

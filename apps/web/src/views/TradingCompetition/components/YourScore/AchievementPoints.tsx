@@ -1,5 +1,5 @@
-import { Text, Flex, Image } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Flex, Image } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 
 interface AchievementPointsProps {
   achievement: {
