@@ -8,6 +8,7 @@ const BLOCK_REGIONS = { 'UA-43': 'UA-43' }
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next()
+  const url = req.nextUrl.clone()
   const { geo } = req
   const { country, region } = geo
 
@@ -16,6 +17,11 @@ export async function middleware(req: NextRequest) {
   if (shouldBlock) {
     return NextResponse.redirect(new URL('/451', req.url))
   }
+
+  if (url.pathname === '/') {
+    url.pathname = '/swap'
+    return NextResponse.redirect(url)   
+  } 
 
   return res
 }

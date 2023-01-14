@@ -8,11 +8,11 @@ import {
   Trade,
   TradeType,
   Token,
-} from '@pancakeswap/aptos-swap-sdk'
-import { useAccount } from '@pancakeswap/awgmi'
-import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@pancakeswap/awgmi/core'
-import { useTranslation } from '@pancakeswap/localization'
-import { AtomBox } from '@pancakeswap/ui'
+} from '@verto/aptos-swap-sdk'
+import { useAccount } from '@verto/awgmi'
+import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@verto/awgmi/core'
+import { useTranslation } from '@verto/localization'
+import { AtomBox } from '@verto/ui'
 import {
   AutoColumn,
   Card,
@@ -24,9 +24,9 @@ import {
   Modal,
   Text,
   Link,
-} from '@pancakeswap/uikit'
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+} from '@verto/uikit'
+import replaceBrowserHistory from '@verto/utils/replaceBrowserHistory'
+import tryParseAmount from '@verto/utils/tryParseAmount'
 import { CurrencyInputPanel } from 'components/CurrencyInputPanel'
 import { ExchangeLayout } from 'components/Layout/ExchangeLayout'
 import { PageMeta } from 'components/Layout/Page'

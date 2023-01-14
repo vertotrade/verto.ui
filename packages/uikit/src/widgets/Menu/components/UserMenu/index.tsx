@@ -1,33 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { usePopper } from "react-popper";
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
+import { FlexProps } from "styled-system";
 import { Box, Flex } from "../../../../components/Box";
 import { ChevronDownIcon } from "../../../../components/Svg";
 import { UserMenuProps, variants } from "./types";
 import MenuIcon from "./MenuIcon";
 import { UserMenuItem } from "./styles";
 
-export const StyledUserMenu = styled(Flex)`
+interface ThemedUserMenuProps extends FlexProps {
+  $isOpen?: boolean;
+  theme: DefaultTheme;
+}
+
+export const StyledUserMenu = styled(Flex)<ThemedUserMenuProps>`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+  background: ${({ theme }) => theme.colors.gradientDarkBlue};
+  border: 1px solid ${({ $isOpen, theme }) => $isOpen ? theme.colors.primary : 'transparent'};
   border-radius: 16px;
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   display: inline-flex;
+  font-weight: 500;
   height: 32px;
   padding-left: 32px;
   padding-right: 8px;
   position: relative;
 
   &:hover {
-    opacity: 0.65;
+    border: 1px solid ${({ theme }) => theme.colors.primary};
   }
 `;
 
 export const LabelText = styled.div`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.primary};
   display: none;
-  font-weight: 600;
+  font-weight: 500;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     display: block;
@@ -115,13 +124,14 @@ const UserMenu: React.FC<UserMenuProps> = ({
   return (
     <Flex alignItems="center" height="100%" ref={setTargetRef} {...props}>
       <StyledUserMenu
+        $isOpen={isOpen}
         onTouchStart={() => {
           setIsOpen((s) => !s);
         }}
       >
         <MenuIcon className={avatarClassName} avatarSrc={avatarSrc} variant={variant} />
         <LabelText title={typeof text === "string" ? text || account : account}>{text || accountEllipsis}</LabelText>
-        {!disabled && <ChevronDownIcon color="text" width="24px" />}
+        {!disabled && <ChevronDownIcon color="primary" width="24px" />}
       </StyledUserMenu>
       {!disabled && (
         <Menu style={styles.popper} ref={setTooltipRef} {...attributes.popper} isOpen={isOpen}>

@@ -1,10 +1,10 @@
-import { Flex, LinkExternal, Pool, Text, TimerIcon } from '@pancakeswap/uikit'
+import { Flex, LinkExternal, Pool, Text, TimerIcon } from '@verto/uikit'
 import { memo } from 'react'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Token } from '@pancakeswap/sdk'
-import { useTranslation } from '@pancakeswap/localization'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
+import { Token } from '@verto/sdk'
+import { useTranslation } from '@verto/localization'
+import { getFullDisplayBalance } from '@verto/utils/formatBalance'
+import getTimePeriods from '@verto/utils/getTimePeriods'
 
 import { AprInfo, TotalStaked } from './Stat'
 

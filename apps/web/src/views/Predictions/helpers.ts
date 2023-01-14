@@ -1,7 +1,7 @@
 import { BigNumber, FixedNumber } from '@ethersproject/bignumber'
 import { BetPosition } from 'state/types'
-import { formatBigNumberToFixed } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { formatBigNumberToFixed } from '@verto/utils/formatBalance'
+import getTimePeriods from '@verto/utils/getTimePeriods'
 import { NegativeOne, One, Zero } from '@ethersproject/constants'
 import memoize from 'lodash/memoize'
 

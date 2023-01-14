@@ -30,6 +30,7 @@ export interface NavProps {
   currentLang: string;
   buyCakeLabel: string;
   buyCakeLink: string;
+  defaultHomeLink?: string;
   langs: Language[];
   setLang: (lang: Language) => void;
 }

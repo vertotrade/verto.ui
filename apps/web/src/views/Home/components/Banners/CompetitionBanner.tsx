@@ -1,5 +1,5 @@
-import { Flex, ArrowForwardIcon, Button, Text, useMatchBreakpoints, NextLinkFromReactRouter } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, ArrowForwardIcon, Button, Text, useMatchBreakpoints, NextLinkFromReactRouter } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import Image from 'next/legacy/image'
 import { memo } from 'react'
 import styled from 'styled-components'

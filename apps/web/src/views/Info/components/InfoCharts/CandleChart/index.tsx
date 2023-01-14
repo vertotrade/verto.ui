@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect, useCallback, Dispatch, SetStateAction } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { createChart, IChartApi } from 'lightweight-charts'
 import { format } from 'date-fns'
-import { useTheme } from '@pancakeswap/hooks'
+import { useTheme } from '@verto/hooks'
 import { CandleChartLoader } from 'views/Info/components/ChartLoaders'
-import { baseColors, lightColors, darkColors } from '@pancakeswap/ui/tokens/colors'
+import { baseColors, lightColors, darkColors } from '@verto/ui/tokens/colors'
 
 const CANDLE_CHART_HEIGHT = 250
 

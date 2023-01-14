@@ -1,5 +1,5 @@
-import { CardBody, Flex, CardRibbon, Skeleton, Pool } from "@pancakeswap/uikit";
-import { useTranslation } from "@pancakeswap/localization";
+import { CardBody, Flex, CardRibbon, Skeleton, Pool } from "@verto/uikit";
+import { useTranslation } from "@verto/localization";
 import { ReactElement } from "react";
 import { StyledCard } from "./StyledCard";
 import { DeserializedPool } from "./types";

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, ButtonProps, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Button, ButtonProps, useToast } from '@verto/uikit'
 import { memo, useCallback } from 'react'
 
 import { useAccount } from 'wagmi'

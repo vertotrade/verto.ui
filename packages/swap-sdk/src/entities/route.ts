@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { Token, Currency, Price } from '@pancakeswap/swap-sdk-core'
+import { Token, Currency, Price } from '@verto/swap-sdk-core'
 
 import { Pair } from './pair'
 

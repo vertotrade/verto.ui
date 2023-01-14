@@ -1,14 +1,14 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, Heading, useToast, Balance } from '@pancakeswap/uikit'
-import { useAccount } from '@pancakeswap/awgmi'
+import { useTranslation } from '@verto/localization'
+import { Button, Flex, Heading, useToast, Balance } from '@verto/uikit'
+import { useAccount } from '@verto/awgmi'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import { TransactionResponse } from '@pancakeswap/awgmi/core'
+import { TransactionResponse } from '@verto/awgmi/core'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
 import { usePriceCakeUsdc } from 'hooks/useStablePrice'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
+import { getBalanceAmount } from '@verto/utils/formatBalance'
 
 interface FarmCardActionsProps {
   earnings?: BigNumber

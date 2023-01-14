@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react'
-import { Currency, Token } from '@pancakeswap/aptos-swap-sdk'
+import { Currency, Token } from '@verto/aptos-swap-sdk'
 import {
   Button,
   Text,
@@ -9,15 +9,15 @@ import {
   RowFixed,
   AutoColumn,
   Flex,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { CurrencyLogo } from 'components/Logo/CurrencyLogo'
 import { ListLogo } from 'components/Logo'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCombinedInactiveList } from 'state/lists/hooks'
 import styled from 'styled-components'
 import { useIsUserAddedToken, useIsTokenActive } from 'hooks/Tokens'
-import { useTranslation } from '@pancakeswap/localization'
-import { APTOS_COIN } from '@pancakeswap/awgmi'
+import { useTranslation } from '@verto/localization'
+import { APTOS_COIN } from '@verto/awgmi'
 
 const TokenSection = styled.div<{ dim?: boolean }>`
   padding: 4px 20px;

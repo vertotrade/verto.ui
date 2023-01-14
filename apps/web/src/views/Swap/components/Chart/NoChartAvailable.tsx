@@ -1,5 +1,5 @@
-import { Flex, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 
 interface NoChartAvailableProps {
   token0Address: string

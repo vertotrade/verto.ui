@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NextSeo } from "next-seo";
-import { Button, Heading, Text, LogoIcon } from "@pancakeswap/uikit";
-import { useTranslation } from "@pancakeswap/localization";
+import { Button, Heading, Text, LogoIcon } from "@verto/uikit";
+import { useTranslation } from "@verto/localization";
 import Link from "next/link";
 
 const StyledNotFound = styled.div`

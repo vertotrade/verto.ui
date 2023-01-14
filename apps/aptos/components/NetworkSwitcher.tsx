@@ -1,7 +1,7 @@
-import { useNetwork } from '@pancakeswap/awgmi'
-import { useIsMounted } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text, UserMenu, UserMenuDivider, UserMenuItem } from '@pancakeswap/uikit'
+import { useNetwork } from '@verto/awgmi'
+import { useIsMounted } from '@verto/hooks'
+import { useTranslation } from '@verto/localization'
+import { Box, Text, UserMenu, UserMenuDivider, UserMenuItem } from '@verto/uikit'
 import { ChainIdName } from 'config/ChainName'
 
 import { APEX_DOMAIN } from 'config'

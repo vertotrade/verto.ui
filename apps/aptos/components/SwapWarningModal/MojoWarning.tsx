@@ -1,5 +1,5 @@
-import { LinkExternal, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { LinkExternal, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 
 const MojitoWarning = () => {
   const { t } = useTranslation()

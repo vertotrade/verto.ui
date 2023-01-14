@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@verto/localization";
 import { Text, Dots } from "../../components";
 
 export function LoadingDot() {

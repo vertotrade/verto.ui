@@ -1,6 +1,6 @@
-import { usePreloadImages } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { AtomBox } from '@pancakeswap/ui/components/AtomBox'
+import { usePreloadImages } from '@verto/hooks'
+import { useTranslation } from '@verto/localization'
+import { AtomBox } from '@verto/ui/components/AtomBox'
 import {
   Button,
   Heading,
@@ -15,7 +15,7 @@ import {
   TabMenu,
   Text,
   WarningIcon,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { atom, useAtom } from 'jotai'
 import { FC, lazy, PropsWithChildren, Suspense, useMemo, useState } from 'react'
 import { isMobile } from 'react-device-detect'

@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { useIsomorphicEffect } from '@pancakeswap/uikit'
+import { useIsomorphicEffect } from '@verto/uikit'
 
 const useIntersectionObserver = () => {
   const [observerRefElement, setObserverRefElement] = useState<HTMLElement | null>(null)

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { AtomBox } from "@pancakeswap/ui";
-import { useTranslation } from "@pancakeswap/localization";
+import { AtomBox } from "@verto/ui";
+import { useTranslation } from "@verto/localization";
 import { Text, Button } from "../../components";
 
 export function FindOtherLP() {

@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import {
   Box,
   Button,
@@ -11,8 +11,8 @@ import {
   Text,
   ThemeSwitcher,
   Toggle,
-} from '@pancakeswap/uikit'
-import { escapeRegExp } from '@pancakeswap/utils/escapeRegExp'
+} from '@verto/uikit'
+import { escapeRegExp } from '@verto/utils/escapeRegExp'
 import { useTheme } from 'next-themes'
 import { useCallback, useState } from 'react'
 import { useAudioPlay, useUserSlippage } from 'state/user'
@@ -225,7 +225,7 @@ export const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>
             <Flex alignItems="center">
               <Text>{t('Flippy sounds')}</Text>
               <QuestionHelper
-                text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
+                text={t('Fun sounds')}
                 placement="top-start"
                 ml="4px"
               />

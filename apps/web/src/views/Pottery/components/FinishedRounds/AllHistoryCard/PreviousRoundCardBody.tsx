@@ -1,10 +1,10 @@
 /* eslint-disable react/no-array-index-key */
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Text, CardBody, CardRibbon, LinkExternal, Skeleton, Balance } from '@pancakeswap/uikit'
+import { Box, Flex, Text, CardBody, CardRibbon, LinkExternal, Skeleton, Balance } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
+import { useTranslation } from '@verto/localization'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { PotteryRoundInfo } from 'state/types'
 import Divider from 'components/Divider'

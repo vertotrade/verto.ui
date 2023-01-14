@@ -9,8 +9,8 @@ import {
   TradeOptions,
   TradeOptionsDeadline,
   TradeType,
-} from '@pancakeswap/sdk'
-import { isStableSwapPair, Trade, TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+} from '@verto/sdk'
+import { isStableSwapPair, Trade, TradeWithStableSwap } from '@verto/smart-router/evm'
 import { INITIAL_ALLOWED_SLIPPAGE } from 'config/constants'
 import { BIPS_BASE } from 'config/constants/exchange'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

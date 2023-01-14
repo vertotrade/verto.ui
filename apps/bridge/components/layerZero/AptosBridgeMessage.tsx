@@ -1,4 +1,4 @@
-import { Box, Message, MessageText, WarningIcon, Flex, Link } from '@pancakeswap/uikit'
+import { Box, Message, MessageText, WarningIcon, Flex, Link } from '@verto/uikit'
 import styled from 'styled-components'
 
 const InlineLink = styled(Link)`

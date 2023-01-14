@@ -1,5 +1,5 @@
-import { WalletConfigV2 } from '@pancakeswap/ui-wallets'
-import { WalletFilledIcon } from '@pancakeswap/uikit'
+import { WalletConfigV2 } from '@verto/ui-wallets'
+import { WalletFilledIcon } from '@verto/uikit'
 import type { ExtendEthereum } from 'global'
 import { isFirefox } from 'react-device-detect'
 import { metaMaskConnector, walletConnectNoQrCodeConnector } from '../utils/wagmi'

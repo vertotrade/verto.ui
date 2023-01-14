@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { Token, Currency } from '@pancakeswap/aptos-swap-sdk'
-import { Button, Text, ErrorIcon, Flex, Message, Checkbox, Link, Tag, Grid, AutoColumn } from '@pancakeswap/uikit'
+import { Token, Currency } from '@verto/aptos-swap-sdk'
+import { Button, Text, ErrorIcon, Flex, Message, Checkbox, Link, Tag, Grid, AutoColumn } from '@verto/uikit'
 import { getBlockExploreLink } from 'utils'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import truncateHash from '@verto/utils/truncateHash'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCombinedInactiveList } from 'state/lists/hooks'
 import { ListLogo } from 'components/Logo'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { useAddUserToken } from 'state/user'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
+import { WrappedTokenInfo } from '@verto/token-lists'
 
 interface ImportProps {
   tokens: Token[]

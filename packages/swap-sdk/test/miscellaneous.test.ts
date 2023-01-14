@@ -1,4 +1,4 @@
-import { Token, CurrencyAmount, sortedInsert, InsufficientInputAmountError } from '@pancakeswap/swap-sdk-core'
+import { Token, CurrencyAmount, sortedInsert, InsufficientInputAmountError } from '@verto/swap-sdk-core'
 import { Pair } from '../src/entities'
 import { ChainId } from '../src/constants'
 

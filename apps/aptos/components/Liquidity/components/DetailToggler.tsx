@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { RowBetween, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { RowBetween, Text } from '@verto/uikit'
 
 // import { useState } from 'react'
 

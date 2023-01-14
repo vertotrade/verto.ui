@@ -1,9 +1,9 @@
 import styled, { keyframes, css } from 'styled-components'
-import { Box, Flex, Text, useMatchBreakpoints, Pool, Farm, HelpIcon, useTooltip } from '@pancakeswap/uikit'
+import { Box, Flex, Text, useMatchBreakpoints, Pool, Farm, HelpIcon, useTooltip } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { useTranslation } from '@pancakeswap/localization'
+import { Coin } from '@verto/aptos-swap-sdk'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
+import { useTranslation } from '@verto/localization'
 import isVaultPool from 'components/Pools/utils/isVaultPool'
 
 import PoolStatsInfo from '../PoolCard/PoolStatsInfo'

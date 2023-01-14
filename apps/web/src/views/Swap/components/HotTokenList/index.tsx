@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ButtonMenu, ButtonMenuItem, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { ButtonMenu, ButtonMenuItem, useMatchBreakpoints } from '@verto/uikit'
 import { memo, useState, useMemo } from 'react'
 import { useAtomValue } from 'jotai'
 import { selectorByUrlsAtom } from 'state/lists/hooks'

@@ -1,12 +1,12 @@
-import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
+import { Flex, Heading, Skeleton, Text, Balance } from '@verto/uikit'
 import cakeAbi from 'config/abi/cake.json'
-import { bscTokens } from '@pancakeswap/tokens'
-import { useTranslation } from '@pancakeswap/localization'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
+import { bscTokens } from '@verto/tokens'
+import { useTranslation } from '@verto/localization'
+import { useIntersectionObserver } from '@verto/hooks'
 import { useEffect, useState } from 'react'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
-import { formatBigNumber, formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber, formatLocalisedCompactNumber } from '@verto/utils/formatBalance'
 import { multicallv3 } from 'utils/multicall'
 import { getCakeVaultAddress } from 'utils/addressHelpers'
 import useSWR from 'swr'
@@ -68,8 +68,8 @@ const emissionsPerBlock = 9.9
  * User (Planet Finance) built a contract on top of our original manual CAKE pool,
  * but the contract was written in such a way that when we performed the migration from Masterchef v1 to v2, the tokens were stuck.
  * These stuck tokens are forever gone (see their medium post) and can be considered out of circulation."
- * https://planetfinanceio.medium.com/pancakeswap-works-with-planet-to-help-cake-holders-f0d253b435af
- * https://twitter.com/PancakeSwap/status/1523913527626702849
+ * https://planetfinanceio.medium.com/vertotrade-works-with-planet-to-help-cake-holders-f0d253b435af
+ * https://twitter.com/VertoTrade/status/1523913527626702849
  * https://bscscan.com/tx/0xd5ffea4d9925d2f79249a4ce05efd4459ed179152ea5072a2df73cd4b9e88ba7
  */
 const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, HelpIcon, Text, Pool, useTooltip } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, HelpIcon, Text, Pool, useTooltip } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import BigNumber from 'bignumber.js'
 
 const StyledCell = styled(Pool.BaseCell)`

@@ -1,9 +1,9 @@
-import { Flex, Text, TooltipText, useTooltip, Balance, Pool, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Text, TooltipText, useTooltip, Balance, Pool, Skeleton } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { FC, ReactNode } from 'react'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
+import { Coin } from '@verto/aptos-swap-sdk'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 
 const StatWrapper: FC<React.PropsWithChildren<{ label: ReactNode }>> = ({ children, label }) => {

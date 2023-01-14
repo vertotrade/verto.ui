@@ -1,6 +1,6 @@
-# eslint-config-pancake
+# eslint-config-verto
 
-Pancake Eslint config with:
+Verto Eslint config with:
 
 - Airbnb config
 - Typescript
@@ -9,7 +9,7 @@ Pancake Eslint config with:
 ## Usage
 
 ```
-npx install-peerdeps --dev @pancakeswap/eslint-config-pancake
+npx install-peerdeps --dev @verto/eslint-config-verto
 ```
 
-Add `"extends": "@pancakeswap/eslint-config-pancake"` to your eslint config file.
+Add `"extends": "@verto/eslint-config-verto"` to your eslint config file.

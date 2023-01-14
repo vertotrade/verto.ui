@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { Flex, Box } from '@pancakeswap/uikit'
+import { Flex, Box } from '@verto/uikit'
 import { GreyCard } from 'components/Card'
 import { usePotteryData } from 'state/pottery/hook'
 import { calculateCakeAmount } from 'views/Pottery/helpers'
 import BigNumber from 'bignumber.js'
-import { BIG_ONE } from '@pancakeswap/utils/bigNumber'
+import { BIG_ONE } from '@verto/utils/bigNumber'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
 import { useAccount } from 'wagmi'
 import YourDeposit from '../YourDeposit'
@@ -40,7 +40,7 @@ const Claim: React.FC<React.PropsWithChildren> = () => {
       {account ? (
         <Container>
           <GreyCard>
-            <SubgraphHealthIndicator inline subgraphName="pancakeswap/pottery" />
+            <SubgraphHealthIndicator inline subgraphName="vertotrade/pottery" />
             <Flex justifyContent="space-between" mb="20px">
               <YourDeposit depositBalance={allDeposit} />
             </Flex>

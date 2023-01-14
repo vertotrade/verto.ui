@@ -1,5 +1,5 @@
-import { Flex, FlexProps, PrizeIcon, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, FlexProps, PrizeIcon, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 
 interface PointsLabelProps extends FlexProps {
   points: number

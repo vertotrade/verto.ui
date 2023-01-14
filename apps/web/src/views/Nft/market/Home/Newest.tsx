@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Heading, Flex, Button, Grid, ChevronRightIcon, NextLinkFromReactRouter } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Heading, Flex, Button, Grid, ChevronRightIcon, NextLinkFromReactRouter } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { NftToken } from 'state/nftMarket/types'
 import { getLatestListedNfts, getNftsFromDifferentCollectionsApi } from 'state/nftMarket/helpers'
 import { nftsBaseUrl, pancakeBunniesAddress } from 'views/Nft/market/constants'

@@ -1013,7 +1013,7 @@ exports[`renders correctly 1`] = `
             class="c4"
           >
             <a
-              aria-label="Pancake home page"
+              aria-label="Verto home page"
               class="c5"
               href="/"
             >
@@ -2811,7 +2811,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://medium.com/pancakeswap"
+              href="https://medium.com/vertotrade"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2865,7 +2865,7 @@ exports[`renders correctly 1`] = `
               color="var(--colors-warning)"
               data-theme="dark"
               font-size="16px"
-              href="https://pancakeswap.creator-spring.com/"
+              href="https://vertotrade.creator-spring.com/"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2943,7 +2943,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://github.com/pancakeswap"
+              href="https://github.com/vertotrade"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2973,7 +2973,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://app.gitbook.com/@pancakeswap-1/s/pancakeswap/code/bug-bounty"
+              href="https://app.gitbook.com/@vertotrade-1/s/pancakeswap/code/bug-bounty"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2988,7 +2988,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited"
+              href="https://docs.pancakeswap.finance/help/faq#is-vertotrade-safe-has-vertotrade-been-audited"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3058,7 +3058,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://twitter.com/pancakeswap"
+          href="https://twitter.com/vertotrade"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3098,7 +3098,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswap"
+              href="https://t.me/vertotrade"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3109,7 +3109,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapIndonesia"
+              href="https://t.me/VertoTradeIndonesia"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3120,7 +3120,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwap_CN"
+              href="https://t.me/VertoTrade_CN"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3131,7 +3131,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapVN"
+              href="https://t.me/VertoTradeVN"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3142,7 +3142,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswap_ita"
+              href="https://t.me/vertotrade_ita"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3153,7 +3153,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswap_ru"
+              href="https://t.me/vertotrade_ru"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3164,7 +3164,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswapturkiye"
+              href="https://t.me/vertotradeturkiye"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3175,7 +3175,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapPortuguese"
+              href="https://t.me/VertoTradePortuguese"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3197,7 +3197,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswapjp"
+              href="https://t.me/vertotradejp"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3208,7 +3208,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswapfr"
+              href="https://t.me/vertotradefr"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3219,7 +3219,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwap_DE"
+              href="https://t.me/VertoTrade_DE"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3241,7 +3241,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapGeorgia"
+              href="https://t.me/VertoTradeGeorgia"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3252,7 +3252,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapINDIA"
+              href="https://t.me/VertoTradeINDIA"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3263,7 +3263,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapAnn"
+              href="https://t.me/VertoTradeAnn"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3276,7 +3276,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://reddit.com/r/pancakeswap"
+          href="https://reddit.com/r/vertotrade"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3304,7 +3304,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://instagram.com/pancakeswap_official"
+          href="https://instagram.com/vertotrade_official"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3353,7 +3353,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://discord.gg/pancakeswap"
+          href="https://discord.gg/vertotrade"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3375,7 +3375,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://medium.com/pancakeswap"
+          href="https://medium.com/vertotrade"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3397,7 +3397,7 @@ exports[`renders correctly 1`] = `
           class="c27 c13"
           color="primary"
           font-size="16px"
-          href="https://www.youtube.com/@pancakeswap_official"
+          href="https://www.youtube.com/@vertotrade_official"
           rel="noreferrer noopener"
           target="_blank"
         >

@@ -1,6 +1,6 @@
-import { Currency, Percent, Price } from '@pancakeswap/aptos-swap-sdk'
-import { AutoColumn, AutoRow, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency, Percent, Price } from '@verto/aptos-swap-sdk'
+import { AutoColumn, AutoRow, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { ONE_BIPS } from 'config/constants/exchange'
 import formatAmountDisplay from 'utils/formatAmountDisplay'
 

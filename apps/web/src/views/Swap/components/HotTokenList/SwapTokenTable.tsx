@@ -1,5 +1,5 @@
 import { getAddress } from '@ethersproject/address'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import {
   ArrowBackIcon,
   ArrowForwardIcon,
@@ -12,7 +12,7 @@ import {
   Text,
   useMatchBreakpoints,
   TokenLogo,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import orderBy from 'lodash/orderBy'

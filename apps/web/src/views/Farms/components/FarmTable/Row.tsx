@@ -1,6 +1,6 @@
 import { useEffect, useState, createElement, useRef } from 'react'
 import styled from 'styled-components'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@verto/farms'
 import {
   Box,
   Flex,
@@ -13,10 +13,10 @@ import {
   FarmTableFarmTokenInfoProps,
   MobileColumnSchema,
   DesktopColumnSchema,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { useFarmUser } from 'state/farms/hooks'
-import { useDelayedUnmount } from '@pancakeswap/hooks'
+import { useDelayedUnmount } from '@verto/hooks'
 
 import Apr, { AprProps } from './Apr'
 import Farm from './Farm'

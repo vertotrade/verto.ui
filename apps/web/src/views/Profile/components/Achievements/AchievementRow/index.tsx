@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button, Flex, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { AutoRenewIcon, Button, Flex, useToast } from '@verto/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'

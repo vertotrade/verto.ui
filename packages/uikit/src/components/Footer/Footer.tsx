@@ -1,5 +1,5 @@
-import { vars } from "@pancakeswap/ui/css/vars.css";
-import { useIsMounted } from "@pancakeswap/hooks";
+import { vars } from "@verto/ui/css/vars.css";
+import { useIsMounted } from "@verto/hooks";
 import React from "react";
 import { Box, Flex } from "../Box";
 import { Link } from "../Link";
@@ -95,7 +95,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
               currentLang={currentLang}
               langs={langs}
               setLang={setLang}
-              color="textSubtle"
+              color="gradientGreenRed"
               dropdownPosition="top-right"
             />
           </Flex>

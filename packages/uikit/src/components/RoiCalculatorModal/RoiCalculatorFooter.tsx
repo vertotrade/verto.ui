@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { getApy } from "@pancakeswap/utils/compoundApyHelpers";
+import { useTranslation } from "@verto/localization";
+import { getApy } from "@verto/utils/compoundApyHelpers";
 import { useMemo, useState } from "react";
 import styled from "styled-components";
 

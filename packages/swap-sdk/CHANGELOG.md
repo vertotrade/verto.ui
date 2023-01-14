@@ -1,4 +1,4 @@
-# @pancakeswap/sdk
+# @verto/sdk
 
 ## 3.1.4
 

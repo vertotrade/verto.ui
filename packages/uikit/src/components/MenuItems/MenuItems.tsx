@@ -13,7 +13,7 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
   ...props
 }) => {
   return (
-    <Flex {...props}>
+    <Flex height="100%" {...props}>
       {items.map(({ label, items: menuItems = [], href, icon, disabled }) => {
         const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
         const isActive = activeItem === href;
@@ -23,7 +23,6 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
           <DropdownMenu
             key={`${label}#${href}`}
             items={menuItems}
-            py={1}
             activeItem={activeSubItem}
             isDisabled={disabled}
           >

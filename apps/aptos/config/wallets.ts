@@ -1,4 +1,4 @@
-import { WalletConfigV2 } from '@pancakeswap/ui-wallets'
+import { WalletConfigV2 } from '@verto/ui-wallets'
 
 export enum ConnectorNames {
   Petra = 'petra',

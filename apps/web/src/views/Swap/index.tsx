@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { BottomDrawer, Flex, Modal, ModalV2, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Currency } from '@verto/sdk'
+import { BottomDrawer, Flex, Modal, ModalV2, useMatchBreakpoints } from '@verto/uikit'
 import { AppBody } from 'components/App'
 import { useContext } from 'react'
 
@@ -48,7 +48,7 @@ export default function Swap() {
             outputCurrency={currencies[Field.OUTPUT]}
             isChartExpanded={isChartExpanded}
             setIsChartExpanded={setIsChartExpanded}
-            isChartDisplayed={isChartDisplayed}
+            isChartDisplayed={isChartDisplayed || !isMobile}
             currentSwapPrice={singleTokenPrice}
           />
         )}

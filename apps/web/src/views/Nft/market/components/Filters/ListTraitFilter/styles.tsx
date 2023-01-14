@@ -1,6 +1,6 @@
-import { Radio, Text } from '@pancakeswap/uikit'
+import { Radio, Text } from '@verto/uikit'
 import noop from 'lodash/noop'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@verto/utils/formatBalance'
 import { ItemImage, StyledItemRow } from '../ListFilter/styles'
 import { Item } from './types'
 

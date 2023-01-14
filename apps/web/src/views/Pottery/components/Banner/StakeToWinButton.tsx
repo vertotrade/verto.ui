@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
-import { Flex, Button, Link } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Button, Link } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { TicketCard } from '../../svgs'
 
 const mainTicketAnimation = keyframes`

@@ -27,7 +27,7 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
   dropdownPosition = "bottom",
   buttonScale = "md",
   hideLanguage = false,
-}) => (
+}) => console.log(color) || (
   <Dropdown
     position={dropdownPosition}
     target={

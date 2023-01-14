@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Liquidity as LiquidityUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Liquidity as LiquidityUI } from '@verto/uikit'
 import HasAccount from 'components/HasAccount'
 import { ExchangeLayout } from 'components/Layout/ExchangeLayout'
 import { PageMeta } from 'components/Layout/Page'

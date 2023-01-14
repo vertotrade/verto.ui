@@ -11,13 +11,13 @@ import {
   Skeleton,
   InputProps,
   NumericalInput,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import BigNumber from 'bignumber.js'
 import { usePotteryData, useLatestVaultAddress } from 'state/pottery/hook'
-import { CAKE } from '@pancakeswap/tokens'
+import { CAKE } from '@verto/tokens'
 import useTokenBalance from 'hooks/useTokenBalance'
-import { getFullDisplayBalance, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getFullDisplayBalance, getBalanceNumber } from '@verto/utils/formatBalance'
 import { PotteryDepositStatus } from 'state/types'
 import { useUserEnoughCakeValidator } from 'views/Pools/components/LockedPool/hooks/useUserEnoughCakeValidator'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'

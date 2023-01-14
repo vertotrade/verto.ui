@@ -1,12 +1,12 @@
-import { Pool, useToast } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Pool, useToast } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { useCallback } from 'react'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
-import { TransactionResponse } from '@pancakeswap/awgmi/dist/core'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { Coin } from '@verto/aptos-swap-sdk'
+import { TransactionResponse } from '@verto/awgmi/dist/core'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
 
 const StakeModalContainer = ({
   pool,

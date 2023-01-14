@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Percent } from '@verto/sdk'
 import {
   Text,
   ArrowDownIcon,
@@ -12,10 +12,10 @@ import {
   Message,
   MessageText,
   Swap as SwapUI,
-} from '@pancakeswap/uikit'
-import InfoTooltip from '@pancakeswap/uikit/src/components/Timeline/InfoTooltip'
+} from '@verto/uikit'
+import InfoTooltip from '@verto/uikit/src/components/Timeline/InfoTooltip'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 
@@ -30,7 +30,7 @@ import { Field } from 'state/swap/actions'
 import { useSwapState } from 'state/swap/hooks'
 import { useExpertModeManager, useUserSlippageTolerance } from 'state/user/hooks'
 
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+import replaceBrowserHistory from '@verto/utils/replaceBrowserHistory'
 import { currencyId } from 'utils/currencyId'
 
 import { useAccount } from 'wagmi'

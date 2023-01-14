@@ -1,4 +1,4 @@
-# @pancakeswap/token-lists
+# @verto/token-lists
 
 ## 0.0.4
 

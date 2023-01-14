@@ -9,9 +9,9 @@ import {
   Box,
   FlexGap,
   FlexGapProps,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import Trans from 'components/Trans'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { FC, ReactNode, useMemo } from 'react'
 import { DeserializedLockedVaultUser } from 'state/types'
 import { VaultPosition, getVaultPosition } from 'utils/cakePool'

@@ -1,6 +1,6 @@
-// import { serializeTokens } from '@pancakeswap/tokens/src/helpers'
-import { ChainId, Pair } from '@pancakeswap/aptos-swap-sdk'
-import type { SerializedFarmConfig } from '@pancakeswap/farms'
+// import { serializeTokens } from '@verto/tokens/src/helpers'
+import { ChainId, Pair } from '@verto/aptos-swap-sdk'
+import type { SerializedFarmConfig } from '@verto/farms'
 import { APT, L0_USDC } from 'config/coins'
 // import { testnetTokens } from 'config/constants/tokens'
 

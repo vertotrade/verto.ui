@@ -1,7 +1,7 @@
-import { Currency, CurrencyAmount, JSBI, Price } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, JSBI, Price } from '@verto/sdk'
 import { useContext, useMemo } from 'react'
-import { StableSwap } from '@pancakeswap/smart-router/evm'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { StableSwap } from '@verto/smart-router/evm'
+import tryParseAmount from '@verto/utils/tryParseAmount'
 
 import { StableConfigContext } from 'views/Swap/StableSwap/hooks/useStableConfig'
 import { useStableSwapInfo } from 'hooks/useStableSwapInfo'

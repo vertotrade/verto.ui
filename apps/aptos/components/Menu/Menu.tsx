@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { ContextApi, languageList, useTranslation } from '@pancakeswap/localization'
+import { ContextApi, languageList, useTranslation } from '@verto/localization'
 import {
   DropdownMenuItems,
   EarnFillIcon,
@@ -12,7 +12,7 @@ import {
   SwapIcon,
   DropdownMenuItemType,
   footerLinks,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { NetworkSwitcher } from 'components/NetworkSwitcher'
 import PhishingWarningBanner from 'components/PhishingWarningBanner'
 import { useCakePrice } from 'hooks/useStablePrice'

@@ -1,5 +1,5 @@
 import { ReactElement, useCallback } from 'react'
-import { ChainId, Currency, Token } from '@pancakeswap/sdk'
+import { ChainId, Currency, Token } from '@verto/sdk'
 import styled from 'styled-components'
 import {
   Button,
@@ -14,10 +14,10 @@ import {
   InjectedModalProps,
   ModalProps,
   BscScanIcon,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { wrappedCurrency } from 'utils/wrappedCurrency'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
+import { WrappedTokenInfo } from '@verto/token-lists'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { AutoColumn, ColumnCenter } from '../Layout/Column'
 import { getBlockExploreLink, getBlockExploreName } from '../../utils'

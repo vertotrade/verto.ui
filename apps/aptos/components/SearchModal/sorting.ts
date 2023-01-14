@@ -1,4 +1,4 @@
-import { Token, CurrencyAmount } from '@pancakeswap/aptos-swap-sdk'
+import { Token, CurrencyAmount } from '@verto/aptos-swap-sdk'
 import { useMemo } from 'react'
 import { useAllTokenBalances } from 'hooks/Tokens'
 

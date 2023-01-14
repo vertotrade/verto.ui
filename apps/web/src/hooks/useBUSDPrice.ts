@@ -9,9 +9,9 @@ import {
   WNATIVE,
   WBNB,
   ERC20Token,
-} from '@pancakeswap/sdk'
+} from '@verto/sdk'
 import { FAST_INTERVAL } from 'config/constants'
-import { BUSD, CAKE, USDC } from '@pancakeswap/tokens'
+import { BUSD, CAKE, USDC } from '@verto/tokens'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import getLpAddress from 'utils/getLpAddress'

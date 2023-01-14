@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Button, Heading, Text, Flex, Link, Breadcrumbs, PageHeader, PageSection } from '@pancakeswap/uikit'
+import { Button, Heading, Text, Flex, Link, Breadcrumbs, PageHeader, PageSection } from '@verto/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { PageMeta } from 'components/Layout/Page'
 import useTheme from 'hooks/useTheme'
 import NextLink from 'next/link'
@@ -96,7 +96,7 @@ const FarmAuction = () => {
               {t('Community Farm Auction')}
             </Heading>
             <Text color="textSubtle" mb="24px">
-              {t('Each week, qualifying projects can bid CAKE for the right to host a 10-day Farm on PancakeSwap.')}
+              {t('Each week, qualifying projects can bid CAKE for the right to host a 10-day Farm on VertoTrade.')}
             </Text>
             <Text color="textSubtle">{t('This page is for projects to bid for farms.')}</Text>
             <Text color="textSubtle" mb="24px">

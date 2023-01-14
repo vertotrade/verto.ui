@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
-import { Pool } from '@pancakeswap/uikit'
+import { Pool } from '@verto/uikit'
 
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
+import { Coin } from '@verto/aptos-swap-sdk'
 
-import { useQueryClient } from '@pancakeswap/awgmi'
+import { useQueryClient } from '@verto/awgmi'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import poolRelatedQueries from 'components/Pools/utils/poolRelatedQueries'
 import splitTypeTag from 'utils/splitTypeTag'

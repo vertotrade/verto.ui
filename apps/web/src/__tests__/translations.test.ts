@@ -4,7 +4,7 @@ import teams from 'config/constants/teams'
 import { NftLocation } from 'state/nftMarket/types'
 
 // FIXME: should move this test file inside localization pkg
-import { translations } from '@pancakeswap/localization'
+import { translations } from '@verto/localization'
 
 const allTranslationKeys = Object.keys(translations)
 

@@ -12,7 +12,7 @@
         "type": "address"
       },
       {
-        "internalType": "contract IPancakeSwapPotteryDraw",
+        "internalType": "contract IVertoTradePotteryDraw",
         "name": "_potteryDraw",
         "type": "address"
       },

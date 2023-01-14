@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useModal } from '@pancakeswap/uikit'
+import { useModal } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { getBunnySpecialXmasContract } from 'utils/contractHelpers'
 import { bscRpcProvider } from 'utils/providers'

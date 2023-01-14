@@ -1,6 +1,6 @@
-import { Trans } from '@pancakeswap/localization'
-import { AtomBox } from '@pancakeswap/ui/components/AtomBox'
-import { Button, Heading, Image, LinkExternal, Text } from '@pancakeswap/uikit'
+import { Trans } from '@verto/localization'
+import { AtomBox } from '@verto/ui/components/AtomBox'
+import { Button, Heading, Image, LinkExternal, Text } from '@verto/uikit'
 import { useState } from 'react'
 
 const IntroSteps = [

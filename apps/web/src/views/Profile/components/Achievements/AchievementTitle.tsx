@@ -1,5 +1,5 @@
-import { Text, TextProps } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, TextProps } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { TranslatableText as AchievementTitleType } from 'config/constants/types'
 
 interface AchievementTitleProps extends TextProps {

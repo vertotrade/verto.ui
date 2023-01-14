@@ -1,12 +1,12 @@
-import { TradeType, CurrencyAmount, Currency, Percent } from '@pancakeswap/sdk'
-import { Button, Text, ErrorIcon, ArrowDownIcon } from '@pancakeswap/uikit'
+import { TradeType, CurrencyAmount, Currency, Percent } from '@verto/sdk'
+import { Button, Text, ErrorIcon, ArrowDownIcon } from '@verto/uikit'
 import { Field } from 'state/swap/actions'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { warningSeverity } from 'utils/exchange'
 import { AutoColumn } from 'components/Layout/Column'
 import { CurrencyLogo } from 'components/Logo'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import truncateHash from '@verto/utils/truncateHash'
 import { TruncatedText, SwapShowAcceptChanges } from '../../components/styleds'
 
 export default function SwapModalHeader({

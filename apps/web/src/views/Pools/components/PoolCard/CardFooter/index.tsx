@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, CardFooter, ExpandableLabel, HelpIcon, Pool } from '@pancakeswap/uikit'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@verto/localization'
+import { Flex, CardFooter, ExpandableLabel, HelpIcon, Pool } from '@verto/uikit'
+import { Token } from '@verto/sdk'
 import PoolStatsInfo from '../../PoolStatsInfo'
 import PoolTypeTag from '../../PoolTypeTag'
 

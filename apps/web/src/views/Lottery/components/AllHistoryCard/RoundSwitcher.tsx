@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { IconButton, ArrowForwardIcon, ArrowBackIcon, ArrowLastIcon, Flex, Heading, Input } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { IconButton, ArrowForwardIcon, ArrowBackIcon, ArrowLastIcon, Flex, Heading, Input } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 
 const StyledInput = styled(Input)`
   width: 60px;

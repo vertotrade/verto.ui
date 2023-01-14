@@ -1,6 +1,6 @@
-import { Text, Heading, IconButton, ArrowBackIcon, QuestionHelper } from "@pancakeswap/uikit";
+import { Text, Heading, IconButton, ArrowBackIcon, QuestionHelper } from "@verto/uikit";
 import Link from "next/link";
-import { AtomBox } from "@pancakeswap/ui";
+import { AtomBox } from "@verto/ui";
 import styled from "styled-components";
 
 interface LiquidityCardHeaderProps {

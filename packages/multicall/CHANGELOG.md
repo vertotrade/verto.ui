@@ -1,4 +1,4 @@
-# @pancakeswap/multicall
+# @verto/multicall
 
 ## 0.0.2
 

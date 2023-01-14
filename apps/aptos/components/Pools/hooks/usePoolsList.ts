@@ -1,4 +1,4 @@
-import { useAccountResources, useTableItem } from '@pancakeswap/awgmi'
+import { useAccountResources, useTableItem } from '@verto/awgmi'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import _toString from 'lodash/toString'
 
@@ -9,10 +9,10 @@ import { FARMS_USER_INFO, FARMS_USER_INFO_RESOURCE } from 'state/farms/constants
 import { getFarmConfig } from 'config/constants/farms'
 import { PairState, usePairs } from 'hooks/usePairs'
 import { APT, L0_USDC } from 'config/coins'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { Coin, Pair, PAIR_LP_TYPE_TAG } from '@pancakeswap/aptos-swap-sdk'
+import { deserializeToken } from '@verto/token-lists'
+import { Coin, Pair, PAIR_LP_TYPE_TAG } from '@verto/aptos-swap-sdk'
 import { CAKE_PID } from 'config/constants'
-import { useInterval, useLastUpdated } from '@pancakeswap/hooks'
+import { useInterval, useLastUpdated } from '@verto/hooks'
 
 import { PoolResource } from '../types'
 import transformCakePool from '../transformers/transformCakePool'

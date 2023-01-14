@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import {
   ArrowForwardIcon,
   AutoRenewIcon,
@@ -11,7 +11,7 @@ import {
   useToast,
   Balance,
   NextLinkFromReactRouter,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'

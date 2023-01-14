@@ -9,11 +9,11 @@ import {
   Skeleton,
   useTooltip,
   Balance,
-} from "@pancakeswap/uikit";
+} from "@verto/uikit";
 import BigNumber from "bignumber.js";
 import { ReactElement } from "react";
-import { useTranslation } from "@pancakeswap/localization";
-import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
+import { useTranslation } from "@verto/localization";
+import { getBalanceNumber } from "@verto/utils/formatBalance";
 import { DeserializedPool } from "./types";
 import NotEnoughTokensModal from "../Modal/NotEnoughTokensModal";
 

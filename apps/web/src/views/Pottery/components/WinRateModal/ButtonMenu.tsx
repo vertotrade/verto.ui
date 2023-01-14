@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, HelpIcon, useTooltip } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@verto/localization'
+import { Button, Flex, HelpIcon, useTooltip } from '@verto/uikit'
+import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { useAccount } from 'wagmi'
 
 interface ButtonMenuProps {

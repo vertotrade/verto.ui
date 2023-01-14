@@ -1,7 +1,7 @@
 // TODO: aptos merge
-import { Link, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { Link, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
+import truncateHash from '@verto/utils/truncateHash'
 import { getBlockExploreLink } from '../../utils'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 

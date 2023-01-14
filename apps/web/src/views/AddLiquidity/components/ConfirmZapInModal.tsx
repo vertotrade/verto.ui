@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
-import { Currency, CurrencyAmount, Fraction, JSBI, Pair, Percent, Token } from '@pancakeswap/sdk'
-import { InjectedModalProps, Text, ArrowDownIcon, Button, useTooltip } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency, CurrencyAmount, Fraction, JSBI, Pair, Percent, Token } from '@verto/sdk'
+import { InjectedModalProps, Text, ArrowDownIcon, Button, useTooltip } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,
   TransactionErrorContent,

@@ -1,8 +1,8 @@
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Text, useMatchBreakpoints, Pool } from '@pancakeswap/uikit'
+import { BIG_ZERO } from '@verto/utils/bigNumber'
+import { Text, useMatchBreakpoints, Pool } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@verto/localization'
+import { Token } from '@verto/sdk'
 
 import Apr from '../../Apr'
 

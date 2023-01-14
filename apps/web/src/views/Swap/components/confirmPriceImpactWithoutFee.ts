@@ -1,5 +1,5 @@
-import { Percent } from '@pancakeswap/sdk'
-import { ContextApi } from '@pancakeswap/localization'
+import { Percent } from '@verto/sdk'
+import { ContextApi } from '@verto/localization'
 import { ALLOWED_PRICE_IMPACT_HIGH, PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN } from 'config/constants/exchange'
 
 /**

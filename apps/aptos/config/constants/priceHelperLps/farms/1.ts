@@ -1,5 +1,5 @@
-import { ChainId, Pair } from '@pancakeswap/aptos-swap-sdk'
-import type { SerializedFarmConfig } from '@pancakeswap/farms'
+import { ChainId, Pair } from '@verto/aptos-swap-sdk'
+import type { SerializedFarmConfig } from '@verto/farms'
 import { APT, CAKE } from 'config/coins'
 import { mainnetTokens } from 'config/constants/tokens'
 

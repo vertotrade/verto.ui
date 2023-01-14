@@ -1,4 +1,4 @@
-# @pancakeswap/aptos-swap-sdk
+# @verto/aptos-swap-sdk
 
 ## 0.0.2
 

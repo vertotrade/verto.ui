@@ -1,5 +1,5 @@
-import { Card, CardBody, Text, WaitIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, CardBody, Text, WaitIcon } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { NodeRound, BetPosition } from 'state/types'
 import useTheme from 'hooks/useTheme'
 import { useGetIntervalSeconds } from 'state/predictions/hooks'

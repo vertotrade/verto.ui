@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@verto/sdk'
 
 import { StableSwapPool } from '../../types/pool'
 import { pools as ethereumPools } from './1'

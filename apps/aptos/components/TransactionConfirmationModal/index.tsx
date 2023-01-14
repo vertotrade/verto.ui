@@ -1,6 +1,6 @@
 // TODO: aptos merge
-import { ChainId, Currency } from '@pancakeswap/aptos-swap-sdk'
-import { useTranslation } from '@pancakeswap/localization'
+import { ChainId, Currency } from '@verto/aptos-swap-sdk'
+import { useTranslation } from '@verto/localization'
 import {
   ArrowUpIcon,
   AutoColumn,
@@ -15,7 +15,7 @@ import {
   ModalProps,
   Spinner,
   Text,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { ReactElement, useCallback } from 'react'
 import styled from 'styled-components'

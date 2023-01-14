@@ -1,5 +1,5 @@
-import { useAccount, useProvider } from '@pancakeswap/awgmi'
-import { useIsMounted } from '@pancakeswap/hooks'
+import { useAccount, useProvider } from '@verto/awgmi'
+import { useIsMounted } from '@verto/hooks'
 import { useActiveChainId, useActiveNetwork } from './useNetwork'
 
 export default function useActiveWeb3React() {

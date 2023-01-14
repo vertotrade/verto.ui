@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { isStableSwapPair, Pair } from '@pancakeswap/smart-router/evm'
-import { Box, Flex, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Currency } from '@verto/sdk'
+import { isStableSwapPair, Pair } from '@verto/smart-router/evm'
+import { Box, Flex, Text, useTooltip } from '@verto/uikit'
 import { CurrencyLogo } from 'components/Logo'
 import styled from 'styled-components'
 

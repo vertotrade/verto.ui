@@ -1,4 +1,4 @@
-import { ContextApi } from "@pancakeswap/localization";
+import { ContextApi } from "@verto/localization";
 import { FooterLinkType } from "../../../components/Footer/types";
 
 export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
@@ -16,7 +16,7 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       },
       {
         label: t("Blog"),
-        href: "https://medium.com/pancakeswap",
+        href: "https://medium.com/vertotrade",
       },
       {
         label: t("Community"),
@@ -50,7 +50,7 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: "Github",
-        href: "https://github.com/pancakeswap",
+        href: "https://github.com/vertotrade",
       },
       {
         label: t("Documentation"),
@@ -62,7 +62,7 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       },
       {
         label: t("Audits"),
-        href: "https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
+        href: "https://docs.pancakeswap.finance/help/faq#is-vertotrade-safe-has-vertotrade-been-audited",
       },
       {
         label: t("Careers"),

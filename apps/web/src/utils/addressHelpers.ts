@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { ChainId } from '@verto/sdk'
+import { Pool } from '@verto/uikit'
 import addresses from 'config/constants/contracts'
 import { VaultKey } from 'state/types'
 

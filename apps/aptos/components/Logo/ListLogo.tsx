@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { useHttpLocations } from '@pancakeswap/hooks'
-import { TokenLogo } from '@pancakeswap/uikit'
+import { useHttpLocations } from '@verto/hooks'
+import { TokenLogo } from '@verto/uikit'
 import { BAD_SRCS } from './constants'
 
 const StyledListLogo = styled(TokenLogo)<{ size: string }>`

@@ -1,4 +1,4 @@
-# @pancakeswap/awgmi
+# @verto/awgmi
 
 ## 0.0.10
 

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { useMemo } from 'react'
-import { Flex, Text, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Text, Skeleton } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
 import { format } from 'date-fns'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@verto/localization'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { getFullDisplayBalance } from '@verto/utils/formatBalance'
 
 const StyledIfoVestingFooter = styled(Flex)`
   padding: 16px;

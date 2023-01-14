@@ -6,15 +6,15 @@ import {
   RoiCalculatorModalProps,
   CalculatorMode,
   Pool,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { useEffect, useState, useMemo } from 'react'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { getRoi } from '@pancakeswap/utils/compoundApyHelpers'
+import { getRoi } from '@verto/utils/compoundApyHelpers'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@verto/sdk'
 
 import LockDurationField from '../LockedPool/Common/LockDurationField'
 import { weeksToSeconds } from '../utils/formatSecondsToWeeks'

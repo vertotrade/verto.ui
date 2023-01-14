@@ -1,8 +1,8 @@
 import React from "react";
-import { Flex, Text } from "@pancakeswap/uikit";
+import { Flex, Text } from "@verto/uikit";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@verto/localization";
 import { NextLinkFromReactRouter } from "../../../components/NextLink";
 import { NotificationDot } from "../../../components/NotificationDot";
 import { ButtonMenu, ButtonMenuItem } from "../../../components/ButtonMenu";

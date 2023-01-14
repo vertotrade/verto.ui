@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/sdk'
-import { TokenAddressMap as TTokenAddressMap, WrappedTokenInfo, TokenList, TokenInfo } from '@pancakeswap/token-lists'
-import { ListsState } from '@pancakeswap/token-lists/react'
+import { ChainId } from '@verto/sdk'
+import { TokenAddressMap as TTokenAddressMap, WrappedTokenInfo, TokenList, TokenInfo } from '@verto/token-lists'
+import { ListsState } from '@verto/token-lists/react'
 import {
   DEFAULT_LIST_OF_LISTS,
   OFFICIAL_LISTS,
@@ -14,7 +14,7 @@ import mapValues from 'lodash/mapValues'
 import groupBy from 'lodash/groupBy'
 import keyBy from 'lodash/keyBy'
 import _pickBy from 'lodash/pickBy'
-import { EMPTY_LIST } from '@pancakeswap/tokens'
+import { EMPTY_LIST } from '@verto/tokens'
 import uniqBy from 'lodash/uniqBy'
 import { useMemo } from 'react'
 import { useActiveChainId } from 'hooks/useActiveChainId'

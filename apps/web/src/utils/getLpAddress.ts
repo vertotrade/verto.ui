@@ -1,4 +1,4 @@
-import { ERC20Token, Pair, ChainId } from '@pancakeswap/sdk'
+import { ERC20Token, Pair, ChainId } from '@verto/sdk'
 import { isAddress } from 'utils'
 import memoize from 'lodash/memoize'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text, HelpIcon, useTooltip, Pool } from '@pancakeswap/uikit'
+import { useTranslation } from '@verto/localization'
+import { Flex, Text, HelpIcon, useTooltip, Pool } from '@verto/uikit'
 
 const StyledCell = styled(Pool.BaseCell)`
   display: none;

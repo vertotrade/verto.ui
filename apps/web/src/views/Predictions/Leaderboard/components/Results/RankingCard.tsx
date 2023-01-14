@@ -12,13 +12,13 @@ import {
   SubMenu,
   SubMenuItem,
   useModal,
-} from '@pancakeswap/uikit'
+} from '@verto/uikit'
 import { PredictionUser } from 'state/types'
 import { useProfileForAddress } from 'state/profile/hooks'
 import styled from 'styled-components'
 import { getBlockExploreLink } from 'utils'
-import truncateHash from '@pancakeswap/utils/truncateHash'
-import { useTranslation } from '@pancakeswap/localization'
+import truncateHash from '@verto/utils/truncateHash'
+import { useTranslation } from '@verto/localization'
 import { useStatModalProps } from 'state/predictions/hooks'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 import WalletStatsModal from '../WalletStatsModal'

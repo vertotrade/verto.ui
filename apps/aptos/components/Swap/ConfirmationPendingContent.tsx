@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Text, Spinner, AutoColumn, ColumnCenter } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { Trade, Currency, TradeType } from '@pancakeswap/aptos-swap-sdk'
+import { Text, Spinner, AutoColumn, ColumnCenter } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
+import { Trade, Currency, TradeType } from '@verto/aptos-swap-sdk'
 import formatAmountDisplay from 'utils/formatAmountDisplay'
 
 const Wrapper = styled.div`

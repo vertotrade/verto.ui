@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@verto/sdk'
 import { ACCESS_RISK_API } from 'config/constants/endpoints'
 
 export enum TOKEN_RISK {

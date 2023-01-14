@@ -1,6 +1,6 @@
-import { Box, ButtonMenu, ButtonMenuItem, Flex, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useState, memo } from 'react'
+import { Box, ButtonMenu, ButtonMenuItem, Flex, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
+import { useState, memo, useRef, useEffect, useCallback } from 'react'
 import { useFetchPairPrices } from 'state/swap/hooks'
 import dynamic from 'next/dynamic'
 import { PairDataTimeWindowEnum } from 'state/swap/types'
@@ -29,6 +29,7 @@ const BasicChart = ({
     timeWindow,
     currentSwapPrice,
   })
+  const mountedRef = useRef(false);
   const [hoverValue, setHoverValue] = useState<number | undefined>()
   const [hoverDate, setHoverDate] = useState<string | undefined>()
   const valueToDisplay = hoverValue || pairPrices[pairPrices.length - 1]?.value
@@ -55,6 +56,26 @@ const BasicChart = ({
     pairPrices.every(
       (price) => !price.value || price.value === 0 || price.value === Infinity || Number.isNaN(price.value),
     )
+
+  useEffect(() => {
+    mountedRef.current = true
+
+    return () => {
+      mountedRef.current = false
+    }
+  }, [])
+
+  const onSetHoverValue = useCallback((arg) => {
+    if (mountedRef.current) {
+      setHoverValue(arg)
+    }
+  }, [])
+
+  const onSetHoverDate = useCallback((arg) => {
+    if (mountedRef.current) {
+      setHoverDate(arg)
+    }
+  }, [])
 
   if (isBadData) {
     return (
@@ -101,8 +122,8 @@ const BasicChart = ({
       <Box height={isMobile ? '100%' : chartHeight} p={isMobile ? '0px' : '16px'} width="100%">
         <SwapLineChart
           data={pairPrices}
-          setHoverValue={setHoverValue}
-          setHoverDate={setHoverDate}
+          setHoverValue={onSetHoverValue}
+          setHoverDate={onSetHoverDate}
           isChangePositive={isChangePositive}
           timeWindow={timeWindow}
         />

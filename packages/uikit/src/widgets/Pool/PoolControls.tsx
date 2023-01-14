@@ -2,9 +2,9 @@ import { useCallback, useEffect, useMemo, useRef, useState, ReactElement } from 
 import styled from "styled-components";
 import BigNumber from "bignumber.js";
 import partition from "lodash/partition";
-import { useTranslation } from "@pancakeswap/localization";
-import { useIntersectionObserver } from "@pancakeswap/hooks";
-import latinise from "@pancakeswap/utils/latinise";
+import { useTranslation } from "@verto/localization";
+import { useIntersectionObserver } from "@verto/hooks";
+import latinise from "@verto/utils/latinise";
 import { useRouter } from "next/router";
 
 import PoolTabButtons from "./PoolTabButtons";

@@ -13,7 +13,7 @@ import {
   CurrencyAmount,
   sqrt,
   MINIMUM_LIQUIDITY,
-} from '@pancakeswap/swap-sdk-core'
+} from '@verto/swap-sdk-core'
 import { TypeTagParser, TxnBuilderTypes, HexString } from 'aptos'
 
 import { Currency } from './currency'
