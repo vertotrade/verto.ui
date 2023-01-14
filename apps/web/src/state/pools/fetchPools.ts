@@ -11,9 +11,9 @@ import chunk from 'lodash/chunk'
 import sousChefV2 from '../../config/abi/sousChefV2.json'
 import sousChefV3 from '../../config/abi/sousChefV3.json'
 
-const livePoolsWithEnd = poolsConfig.filter((p) => p.sousId !== 0 && !p.isFinished)
+const livePoolsWithEnd = poolsConfig.filter(p => p.sousId !== 0 && !p.isFinished)
 
-const startEndBlockCalls = livePoolsWithEnd.flatMap((poolConfig) => {
+const startEndBlockCalls = livePoolsWithEnd.flatMap(poolConfig => {
   return [
     {
       address: getAddress(poolConfig.contractAddress),
@@ -52,7 +52,7 @@ export const fetchPoolsBlockLimits = async () => {
   })
 }
 
-const poolsBalanceOf = poolsConfig.map((poolConfig) => {
+const poolsBalanceOf = poolsConfig.map(poolConfig => {
   return {
     address: poolConfig.stakingToken.address,
     name: 'balanceOf',
@@ -73,14 +73,14 @@ export const fetchPoolsStakingLimits = async (
   poolsWithStakingLimit: number[],
 ): Promise<{ [key: string]: { stakingLimit: BigNumber; numberBlocksForUserLimit: number } }> => {
   const validPools = poolsConfig
-    .filter((p) => p.stakingToken.symbol !== 'BNB' && !p.isFinished)
-    .filter((p) => !poolsWithStakingLimit.includes(p.sousId))
+    .filter(p => p.stakingToken.symbol !== 'BNB' && !p.isFinished)
+    .filter(p => !poolsWithStakingLimit.includes(p.sousId))
 
   // Get the staking limit for each valid pool
   const poolStakingCalls = validPools
-    .map((validPool) => {
+    .map(validPool => {
       const contractAddress = getAddress(validPool.contractAddress)
-      return ['hasUserLimit', 'poolLimitPerUser', 'numberBlocksForUserLimit'].map((method) => ({
+      return ['hasUserLimit', 'poolLimitPerUser', 'numberBlocksForUserLimit'].map(method => ({
         address: contractAddress,
         name: method,
       }))
@@ -104,7 +104,7 @@ export const fetchPoolsStakingLimits = async (
   )
 }
 
-const livePoolsWithV3 = poolsConfig.filter((pool) => pool?.version === 3 && !pool?.isFinished)
+const livePoolsWithV3 = poolsConfig.filter(pool => pool?.version === 3 && !pool?.isFinished)
 
 export const fetchPoolsProfileRequirement = async (): Promise<{
   [key: string]: {
@@ -113,9 +113,9 @@ export const fetchPoolsProfileRequirement = async (): Promise<{
   }
 }> => {
   const poolProfileRequireCalls = livePoolsWithV3
-    .map((validPool) => {
+    .map(validPool => {
       const contractAddress = getAddress(validPool.contractAddress)
-      return ['pancakeProfileIsRequested', 'pancakeProfileThresholdPoints'].map((method) => ({
+      return ['pancakeProfileIsRequested', 'pancakeProfileThresholdPoints'].map(method => ({
         address: contractAddress,
         name: method,
       }))

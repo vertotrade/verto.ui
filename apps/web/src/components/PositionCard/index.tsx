@@ -95,8 +95,8 @@ const usePoolTokenPercentage = ({ userPoolBalance, totalPoolTokens }) => {
 
 const withLPValuesFactory =
   ({ useLPValuesHook, hookArgFn }) =>
-  (Component) =>
-  (props) => {
+  Component =>
+  props => {
     const { address: account } = useAccount()
 
     const currency0 = props.showUnwrapped ? props.pair.token0 : unwrappedToken(props.pair.token0)
@@ -264,8 +264,7 @@ function MinimalPositionCardView({
                   style={{ display: 'inline' }}
                   ml="4px"
                   external
-                  href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
-                >
+                  href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees">
                   {t('here.')}
                 </Link>
               </>
@@ -398,8 +397,7 @@ function FullPositionCard({
                 to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}${isStableLP ? '?stable=1' : ''}`}
                 variant="primary"
                 width="100%"
-                mb="8px"
-              >
+                mb="8px">
                 {t('Remove')}
               </Button>
               <Button
@@ -407,8 +405,7 @@ function FullPositionCard({
                 to={`/add/${currencyId(currency0)}/${currencyId(currency1)}?step=1`}
                 variant="text"
                 startIcon={<AddIcon color="primary" />}
-                width="100%"
-              >
+                width="100%">
                 {t('Add liquidity instead')}
               </Button>
             </Flex>
@@ -423,7 +420,7 @@ export const MinimalPositionCard = withLPValues(MinimalPositionCardView)
 
 export const StableFullPositionCardContainer = withStableLPValues(FullPositionCard)
 
-export const StableFullPositionCard = (props) => {
+export const StableFullPositionCard = props => {
   const stableConfig = useStableConfig({
     tokenA: props.pair?.token0,
     tokenB: props.pair?.token1,

@@ -64,8 +64,8 @@ export const cardConfig = (
         }
 
         const msgs = Object.keys(meta)
-          .filter((criteria) => meta[criteria])
-          .map((criteria) => MSG_MAP[criteria])
+          .filter(criteria => meta[criteria])
+          .map(criteria => MSG_MAP[criteria])
           .filter(Boolean)
 
         return {
@@ -78,7 +78,7 @@ export const cardConfig = (
                   ? t('Meet any one of the requirements to join:')
                   : t('Meet the following requirement to join:')}
               </Text>
-              {msgs.map((msg) => (
+              {msgs.map(msg => (
                 <Text ml="16px" key={msg} as="li">
                   {msg}
                 </Text>
@@ -178,7 +178,7 @@ const SmallCard: React.FC<React.PropsWithChildren<IfoCardProps>> = ({
             <>
               <IfoVestingCard ifo={ifo} poolId={poolId} publicIfoData={publicIfoData} walletIfoData={walletIfoData} />
               <StyledCardFooter>
-                <ExpandableLabel expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)}>
+                <ExpandableLabel expanded={isExpanded} onClick={() => setIsExpanded(prev => !prev)}>
                   {isExpanded ? t('Hide') : t('Details')}
                 </ExpandableLabel>
                 {isExpanded && (

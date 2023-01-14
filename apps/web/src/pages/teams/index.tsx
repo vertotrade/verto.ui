@@ -9,8 +9,7 @@ const TeamsPage = ({ fallback }: InferGetStaticPropsType<typeof getStaticProps>)
     <SWRConfig
       value={{
         fallback,
-      }}
-    >
+      }}>
       <Teams />
     </SWRConfig>
   )

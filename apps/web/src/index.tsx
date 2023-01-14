@@ -10,7 +10,7 @@ export function Updaters() {
   return (
     <>
       <ListsUpdater />
-      {chains.map((chain) => (
+      {chains.map(chain => (
         <TransactionUpdater key={`trxUpdater#${chain.id}`} chainId={chain.id} />
       ))}
       <MulticallUpdater />

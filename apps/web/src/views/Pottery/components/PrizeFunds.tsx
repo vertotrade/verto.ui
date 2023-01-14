@@ -146,8 +146,7 @@ const PrizeFunds: React.FC<React.PropsWithChildren> = () => {
         <Flex
           ml={['0px', '0px', '0px', '0px', '40px']}
           mt={['40px', '40px', '40px', '40px', '0px']}
-          justifyContent="center"
-        >
+          justifyContent="center">
           <PoolAllocations />
         </Flex>
       </Flex>

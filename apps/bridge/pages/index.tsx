@@ -54,8 +54,7 @@ function Bridge() {
         bg="backgroundAlt"
         borderRadius={[0, null, 24]}
         alignItems="center"
-        height="100%"
-      >
+        height="100%">
         <StargateWidget theme={theme} />
         {show && (
           <Box display={['block', null, 'none']}>

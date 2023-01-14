@@ -13,7 +13,7 @@ const FarmsHistoryPage = () => {
 
   return (
     <>
-      {chosenFarmsMemoized.map((farm) => (
+      {chosenFarmsMemoized.map(farm => (
         <FarmCard
           key={farm.pid}
           farm={farm}

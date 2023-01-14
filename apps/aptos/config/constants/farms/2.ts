@@ -54,7 +54,7 @@ const farms: SerializedFarmConfig[] = [
     token: testnetTokens.moon,
     quoteToken: testnetTokens.moon,
   },
-].map((p) => ({
+].map(p => ({
   ...p,
   token: p.token.equals(p.quoteToken) ? p.token.serialize : Pair.sortToken(p.token, p.quoteToken)[1].serialize,
   quoteToken: p.token.equals(p.quoteToken)

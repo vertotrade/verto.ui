@@ -32,13 +32,12 @@ export function CoinRegisterButton({ currency }: { currency: Currency }) {
                 },
               }),
             ).then(
-              (rec) =>
+              rec =>
                 rec?.status && toastSuccess(t('Registered!'), <ToastDescriptionWithTx txHash={rec.transactionHash} />),
             )
           }}
           style={{ width: 'auto' }}
-          scale="sm"
-        >
+          scale="sm">
           {!isLoading && !loading ? <WalletRegisterIcon color="textSubtle" /> : <Loading width="16px" height="16px" />}
         </IconButton>
       </div>

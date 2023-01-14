@@ -97,7 +97,7 @@ class SafeConnector extends Connector<SafeAppProvider, SafeOpts | undefined> {
       return false
     }
 
-    const safe = await Promise.race([this.getSafeInfo(), new Promise<void>((resolve) => setTimeout(resolve, 300))])
+    const safe = await Promise.race([this.getSafeInfo(), new Promise<void>(resolve => setTimeout(resolve, 300))])
     return !!safe
   }
 
@@ -134,7 +134,7 @@ class SafeConnector extends Connector<SafeAppProvider, SafeOpts | undefined> {
   }
 
   protected isChainUnsupported(chainId: number) {
-    return !this.chains.some((x) => x.id === chainId)
+    return !this.chains.some(x => x.id === chainId)
   }
 
   protected onChainChanged(chainId: string | number) {

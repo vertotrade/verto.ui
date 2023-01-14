@@ -90,7 +90,7 @@ export const DetailLimitOrderModal: React.FC<React.PropsWithChildren<DetailLimit
           txHash: hash,
         })
       })
-      .catch((error) => {
+      .catch(error => {
         setCancellationState({
           attemptingTxn: false,
           cancellationErrorMessage: error.message,
@@ -177,8 +177,7 @@ export const DetailLimitOrderModal: React.FC<React.PropsWithChildren<DetailLimit
       title={t('Open Order Details')}
       headerBackground={theme.colors.gradientCardHeader}
       style={{ width: isMobile ? '100%' : '436px' }}
-      onDismiss={onDismiss}
-    >
+      onDismiss={onDismiss}>
       {attemptingTxn ? (
         <LoadingContent />
       ) : txHash ? (

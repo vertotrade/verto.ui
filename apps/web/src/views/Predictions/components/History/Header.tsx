@@ -1,15 +1,5 @@
 import { useAccount } from 'wagmi'
-import {
-  ArrowForwardIcon,
-  Box,
-  Button,
-  Radio,
-  Flex,
-  Heading,
-  Text,
-  ButtonMenu,
-  ButtonMenuItem,
-} from '@verto/uikit'
+import { ArrowForwardIcon, Box, Button, Radio, Flex, Heading, Text, ButtonMenu, ButtonMenuItem } from '@verto/uikit'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { HistoryFilter } from 'state/types'
 import { setHistoryFilter, setHistoryPaneState } from 'state/predictions'

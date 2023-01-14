@@ -30,7 +30,7 @@ export type ConfigMenuItemsType = Omit<MenuItemsType, 'items'> & { hideSubNav?: 
   items?: ConfigMenuDropDownItemsType[]
 }
 
-const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
+const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = t => [
   {
     label: t('Trade'),
     icon: SwapIcon,
@@ -88,11 +88,11 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
 ]
 
 export const getActiveMenuItem = ({ pathname, menuConfig }: { pathname: string; menuConfig: ConfigMenuItemsType[] }) =>
-  menuConfig.find((menuItem) => pathname.startsWith(menuItem.href) || getActiveSubMenuItem({ menuItem, pathname }))
+  menuConfig.find(menuItem => pathname.startsWith(menuItem.href) || getActiveSubMenuItem({ menuItem, pathname }))
 
 export const getActiveSubMenuItem = ({ pathname, menuItem }: { pathname: string; menuItem?: ConfigMenuItemsType }) => {
   const activeSubMenuItems =
-    menuItem?.items?.filter((subMenuItem) => subMenuItem.href && pathname.startsWith(subMenuItem.href)) ?? []
+    menuItem?.items?.filter(subMenuItem => subMenuItem.href && pathname.startsWith(subMenuItem.href)) ?? []
 
   // Pathname doesn't include any submenu item href - return undefined
   if (!activeSubMenuItems || activeSubMenuItems.length === 0) {
@@ -105,7 +105,7 @@ export const getActiveSubMenuItem = ({ pathname, menuItem }: { pathname: string;
   }
 
   // Pathname includes multiple sub menu item hrefs - find the most specific match
-  const mostSpecificMatch = orderBy(activeSubMenuItems, (subMenuItem) => subMenuItem?.href?.length, 'desc')[0]
+  const mostSpecificMatch = orderBy(activeSubMenuItems, subMenuItem => subMenuItem?.href?.length, 'desc')[0]
 
   return mostSpecificMatch
 }
@@ -134,7 +134,7 @@ export const Menu = ({ children }: { children: ReactNode }) => {
 
   return (
     <UIMenu
-      linkComponent={(linkProps) => {
+      linkComponent={linkProps => {
         return <NextLinkFromReactRouter to={linkProps.href} {...linkProps} prefetch={false} />
       }}
       links={menuItems}
@@ -158,8 +158,7 @@ export const Menu = ({ children }: { children: ReactNode }) => {
       activeSubItem={activeSubMenuItem?.href}
       toggleTheme={toggleTheme}
       buyCakeLabel={t('Buy CAKE')}
-      buyCakeLink="https://aptos.pancakeswap.finance/swap?outputCurrency=0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT"
-    >
+      buyCakeLink="https://aptos.pancakeswap.finance/swap?outputCurrency=0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT">
       {children}
     </UIMenu>
   )

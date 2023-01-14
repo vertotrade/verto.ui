@@ -87,8 +87,8 @@ const CreateProposal = () => {
         start: combineDateAndTime(startDate, startTime),
         end: combineDateAndTime(endDate, endTime),
         choices: choices
-          .filter((choice) => choice.value)
-          .map((choice) => {
+          .filter(choice => choice.value)
+          .map(choice => {
             return choice.value
           }),
         snapshot,
@@ -108,13 +108,13 @@ const CreateProposal = () => {
   }
 
   const updateValue = (key: string, value: string | Choice[] | Date) => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       [key]: value,
     }))
 
     // Keep track of what fields the user has attempted to edit
-    setFieldsState((prevFieldsState) => ({
+    setFieldsState(prevFieldsState => ({
       ...prevFieldsState,
       [key]: true,
     }))
@@ -148,7 +148,7 @@ const CreateProposal = () => {
 
   useEffect(() => {
     if (initialBlock > 0) {
-      setState((prevState) => ({
+      setState(prevState => ({
         ...prevState,
         snapshot: initialBlock,
       }))
@@ -279,8 +279,7 @@ const CreateProposal = () => {
                       isLoading={isLoading}
                       endIcon={isLoading ? <AutoRenewIcon spin color="currentColor" /> : null}
                       disabled={!isEmpty(formErrors)}
-                      mb="16px"
-                    >
+                      mb="16px">
                       {t('Publish')}
                     </Button>
                     <Text color="failure" as="p" mb="4px">

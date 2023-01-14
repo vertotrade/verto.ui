@@ -40,7 +40,7 @@ export const useGetWalletIfoData = (_ifo: Ifo): WalletIfoData => {
   const [state, setState] = useState<WalletIfoState>(initialState)
 
   const setPendingTx = (status: boolean, poolId: PoolIds) =>
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       [poolId]: {
         ...prevState[poolId],
@@ -49,7 +49,7 @@ export const useGetWalletIfoData = (_ifo: Ifo): WalletIfoData => {
     }))
 
   const setIsClaimed = (poolId: PoolIds) => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       [poolId]: {
         ...prevState[poolId],

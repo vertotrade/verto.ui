@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const RibbonDownMid: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const RibbonDownMid: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 124 72" {...props}>
       <g opacity="0.2" clipPath="url(#leaderboard_flippers_clip0)">
@@ -179,8 +179,7 @@ const RibbonDownMid: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           x="55"
           y="18"
           width="17"
-          height="20"
-        >
+          height="20">
           <path
             d="M61.146 19.0906C56.0546 20.3908 55.2124 25.2833 56.5041 29.878C57.7958 34.4726 61.0919 38.3083 66.1832 37.008C71.2746 35.7078 72.1013 31.8435 70.5409 26.2932C68.9806 20.743 66.2373 17.7904 61.146 19.0906Z"
             fill="#4F34A0"
@@ -205,8 +204,7 @@ const RibbonDownMid: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           x="79"
           y="18"
           width="16"
-          height="20"
-        >
+          height="20">
           <path
             d="M89.6221 19.0906C94.7135 20.3908 95.5557 25.2833 94.264 29.878C92.9723 34.4726 89.6762 38.3083 84.5848 37.008C79.4935 35.7078 78.6668 31.8435 80.2271 26.2932C81.7875 20.743 84.5307 17.7904 89.6221 19.0906Z"
             fill="#4F34A0"

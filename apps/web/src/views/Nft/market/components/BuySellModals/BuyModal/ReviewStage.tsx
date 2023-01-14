@@ -53,8 +53,7 @@ const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
                 pt="2px"
                 external
                 variant="text"
-                href={getBscScanLinkForNft(nftToBuy.collectionAddress, nftToBuy.tokenId)}
-              >
+                href={getBscScanLinkForNft(nftToBuy.collectionAddress, nftToBuy.tokenId)}>
                 {nftToBuy.tokenId}
               </Button>
             </Flex>
@@ -66,10 +65,9 @@ const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
           </Text>
           <ButtonMenu
             activeIndex={paymentCurrency}
-            onItemClick={(index) => setPaymentCurrency(index)}
+            onItemClick={index => setPaymentCurrency(index)}
             scale="sm"
-            variant="subtle"
-          >
+            variant="subtle">
             <ButtonMenuItem>BNB</ButtonMenuItem>
             <ButtonMenuItem>WBNB</ButtonMenuItem>
           </ButtonMenu>
@@ -111,8 +109,7 @@ const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
             height="16px"
             external
             variant="text"
-            href="/swap?inputCurrency=BNB&outputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
-          >
+            href="/swap?inputCurrency=BNB&outputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c">
             {t('Convert')}
           </Button>
         </Flex>
@@ -122,8 +119,7 @@ const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
         <Button
           onClick={continueToNextStage}
           disabled={walletFetchStatus !== FetchStatus.Fetched || notEnoughBnbForPurchase}
-          mb="8px"
-        >
+          mb="8px">
           {t('Checkout')}
         </Button>
         <Button as={Link} external style={{ width: '100%' }} href="/swap?outputCurrency=BNB" variant="secondary">

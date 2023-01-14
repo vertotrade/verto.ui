@@ -121,8 +121,7 @@ const Hero = () => {
         alignItems={['flex-end', null, null, 'center']}
         justifyContent="center"
         mt={[account ? '280px' : '50px', null, 0]}
-        id="homepage-hero"
-      >
+        id="homepage-hero">
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="secondary" mb="24px">
             {t('The moon is made of pancakes.')}
@@ -142,8 +141,7 @@ const Hero = () => {
           width={['192px', null, null, '100%']}
           flex={[null, null, null, '1']}
           mb={['24px', null, null, '0']}
-          position="relative"
-        >
+          position="relative">
           <BunnyWrapper>
             <Image src={bunnyImage} priority placeholder="blur" alt={t('Lunar bunny')} />
           </BunnyWrapper>

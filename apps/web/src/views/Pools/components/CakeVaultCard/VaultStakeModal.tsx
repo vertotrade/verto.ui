@@ -238,8 +238,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
     <Modal
       title={isRemovingStake ? t('Unstake') : t('Stake in Pool')}
       onDismiss={onDismiss}
-      headerBackground={theme.colors.gradientCardHeader}
-    >
+      headerBackground={theme.colors.gradientCardHeader}>
       <Flex alignItems="center" justifyContent="space-between" mb="8px">
         <Text bold>{isRemovingStake ? t('Unstake') : t('Stake')}:</Text>
         <Flex alignItems="center" minWidth="70px">
@@ -300,8 +299,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
               alignItems="center"
               onClick={() => {
                 setShowRoiCalculator(true)
-              }}
-            >
+              }}>
               <AnnualRoiDisplay>${formattedAnnualRoi}</AnnualRoiDisplay>
               <IconButton variant="text" scale="sm">
                 <CalculateIcon color="textSubtle" width="18px" />
@@ -322,8 +320,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
           isLoading={cakePendingTx}
           endIcon={cakePendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
           onClick={handleCakeApprove}
-          mt="24px"
-        >
+          mt="24px">
           {t('Enable')}
         </Button>
       ) : (
@@ -332,8 +329,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
           endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
           onClick={handleConfirmClick}
           disabled={!stakeAmount || parseFloat(stakeAmount) === 0 || stakingMax.lt(convertedStakeAmount)}
-          mt="24px"
-        >
+          mt="24px">
           {pendingTx ? t('Confirming') : t('Confirm')}
         </Button>
       )}

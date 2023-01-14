@@ -9,7 +9,7 @@ export function getBlockExploreLink(
   type: 'transaction' | 'token' | 'address' | 'block',
   chainId?: number,
 ): string {
-  const chain = chains.find((c) => c.id === chainId)
+  const chain = chains.find(c => c.id === chainId)
   if (!chain) return defaultChain.blockExplorers?.traceMove.url ?? ''
   switch (type) {
     case 'transaction': {
@@ -32,7 +32,7 @@ export function getBlockExploreLinkDefault(
   type: 'transaction' | 'token' | 'address' | 'block',
   chainId?: number,
 ): string {
-  const chain = chains.find((c) => c.id === chainId)
+  const chain = chains.find(c => c.id === chainId)
   if (!chain) return defaultChain.blockExplorers?.default.url ?? ''
   const query = chain.blockExplorers?.default.params ? `?${stringify(chain.blockExplorers?.default.params)}` : ''
   switch (type) {
@@ -49,7 +49,7 @@ export function getBlockExploreLinkDefault(
 }
 
 export const isChainSupported = (network?: string): network is string =>
-  !!network && chains.map((c) => c.network).includes(network.toLowerCase())
+  !!network && chains.map(c => c.network).includes(network.toLowerCase())
 
 export function isTokenOnList(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
   if (currency?.isNative) return true

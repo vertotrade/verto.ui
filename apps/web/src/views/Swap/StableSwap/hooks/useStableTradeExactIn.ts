@@ -41,7 +41,7 @@ export function useStableTradeResponse({
   tradeType,
 }: UseStableTradeResponse) {
   const maximumAmountIn = useCallback(
-    (slippageTolerance) => {
+    slippageTolerance => {
       if (tradeType === TradeType.EXACT_INPUT) {
         return currencyAmountIn
       }
@@ -54,7 +54,7 @@ export function useStableTradeResponse({
   )
 
   const minimumAmountOut = useCallback(
-    (slippageTolerance) => {
+    slippageTolerance => {
       if (tradeType === TradeType.EXACT_OUTPUT) {
         return currencyAmountOut
       }

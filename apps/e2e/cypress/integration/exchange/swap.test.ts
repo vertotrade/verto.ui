@@ -49,7 +49,7 @@ describe('Swap', () => {
 
   describe('expert mode', () => {
     beforeEach(() => {
-      cy.window().then((win) => {
+      cy.window().then(win => {
         cy.stub(win, 'prompt').returns('confirm')
       })
       cy.get('#open-settings-dialog-button-SWAP_LIQUIDITY').click()

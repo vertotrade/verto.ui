@@ -13,7 +13,7 @@ declare module 'styled-components' {
   export interface DefaultTheme extends VertoTheme {}
 }
 
-const StyledThemeProvider: React.FC<React.PropsWithChildren> = (props) => {
+const StyledThemeProvider: React.FC<React.PropsWithChildren> = props => {
   const { resolvedTheme } = useNextTheme()
   return (
     <UIKitProvider theme={resolvedTheme === 'dark' ? dark : light} {...props}>

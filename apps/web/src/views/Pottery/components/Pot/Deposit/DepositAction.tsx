@@ -135,7 +135,7 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
               style={{ textAlign: 'left' }}
               className="pottery-amount-input"
               value={depositAmount}
-              onUserInput={(val) => setDepositAmount(val)}
+              onUserInput={val => setDepositAmount(val)}
             />
             <Flex ml="8px">
               {!showMaxButton && (

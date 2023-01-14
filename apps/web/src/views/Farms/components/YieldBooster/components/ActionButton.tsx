@@ -35,8 +35,7 @@ const BoosterTooltip = () => {
       )}
       <LinkExternal
         href="https://docs.pancakeswap.finance/products/yield-farming/bcake/faq#how-are-the-bcake-multipliers-calculated"
-        external
-      >
+        external>
         {t('Learn More')}
       </LinkExternal>
     </>

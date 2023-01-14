@@ -5,7 +5,7 @@ import { ifosConfig, FAST_INTERVAL } from 'config/constants'
 import BigNumber from 'bignumber.js'
 import { fetchUserWalletIfoData } from './fetchUserWalletIfoData'
 
-const allVestingIfo: Ifo[] = ifosConfig.filter((ifo) => ifo.version >= 3.2 && ifo.vestingTitle)
+const allVestingIfo: Ifo[] = ifosConfig.filter(ifo => ifo.version >= 3.2 && ifo.vestingTitle)
 
 const useFetchVestingData = () => {
   const { address: account } = useAccount()
@@ -14,7 +14,7 @@ const useFetchVestingData = () => {
     account ? ['vestingData'] : null,
     async () => {
       const allData = await Promise.all(
-        allVestingIfo.map(async (ifo) => {
+        allVestingIfo.map(async ifo => {
           const response = await fetchUserWalletIfoData(ifo, account)
           return response
         }),
@@ -24,7 +24,7 @@ const useFetchVestingData = () => {
 
       return allData.filter(
         // eslint-disable-next-line array-callback-return, consistent-return
-        (ifo) => {
+        ifo => {
           const { userVestingData } = ifo
           if (
             userVestingData[PoolIds.poolBasic].offeringAmountInToken.gt(0) ||

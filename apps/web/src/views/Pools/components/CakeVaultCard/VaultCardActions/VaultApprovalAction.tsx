@@ -28,8 +28,7 @@ const VaultApprovalAction: React.FC<React.PropsWithChildren<ApprovalActionProps>
           endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
           disabled={pendingTx}
           onClick={handleApprove}
-          width="100%"
-        >
+          width="100%">
           {t('Enable')}
         </Button>
       )}

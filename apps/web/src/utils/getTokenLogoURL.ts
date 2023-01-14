@@ -16,7 +16,7 @@ const getTokenLogoURL = memoize(
     }
     return null
   },
-  (t) => `${t.chainId}#${t.address}`,
+  t => `${t.chainId}#${t.address}`,
 )
 
 export const getTokenLogoURLByAddress = memoize(

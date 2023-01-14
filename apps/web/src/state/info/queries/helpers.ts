@@ -110,7 +110,7 @@ export const fetchChartData = async (
   }
 
   const formattedDayDatas = fromPairs(
-    chartEntries.map((dayData) => {
+    chartEntries.map(dayData => {
       // At this stage we track unix day ordinal for each data point to check for empty days later
       const dayOrdinal = parseInt((dayData.date / ONE_DAY_UNIX).toFixed(0))
       return [dayOrdinal, dayData]
@@ -119,7 +119,7 @@ export const fetchChartData = async (
 
   console.warn(formattedDayDatas)
 
-  const availableDays = Object.keys(formattedDayDatas).map((dayOrdinal) => parseInt(dayOrdinal, 10))
+  const availableDays = Object.keys(formattedDayDatas).map(dayOrdinal => parseInt(dayOrdinal, 10))
 
   const firstAvailableDayData = formattedDayDatas[availableDays[0]]
   // fill in empty days ( there will be no day datas if no trades made that day )
@@ -174,7 +174,7 @@ export const fetchChartDataWithAddress = async (
   }
 
   const formattedDayDatas = fromPairs(
-    chartEntries.map((dayData) => {
+    chartEntries.map(dayData => {
       // At this stage we track unix day ordinal for each data point to check for empty days later
       const dayOrdinal = parseInt((dayData.date / ONE_DAY_UNIX).toFixed(0))
       return [dayOrdinal, dayData]
@@ -182,7 +182,7 @@ export const fetchChartDataWithAddress = async (
   )
   console.warn(formattedDayDatas)
 
-  const availableDays = Object.keys(formattedDayDatas).map((dayOrdinal) => parseInt(dayOrdinal, 10))
+  const availableDays = Object.keys(formattedDayDatas).map(dayOrdinal => parseInt(dayOrdinal, 10))
 
   const firstAvailableDayData = formattedDayDatas[availableDays[0]]
   // fill in empty days ( there will be no day datas if no trades made that day )
@@ -212,7 +212,7 @@ export const fetchChartDataWithAddress = async (
 export async function getPairTokenMap(poolAddresses: string[], chainName: 'ETH' | 'BSC') {
   let rawPairTokenResults: string[][]
   const calls = poolAddresses
-    .map((poolAddress) => {
+    .map(poolAddress => {
       return [
         { address: poolAddress, name: 'token0' },
         { address: poolAddress, name: 'token1' },
@@ -230,7 +230,7 @@ export async function getPairTokenMap(poolAddresses: string[], chainName: 'ETH' 
     console.info('Error fetching tokenIds from pair')
   }
   const pairTokenResults = rawPairTokenResults
-    ? rawPairTokenResults.map((rawPairTokenResult) => rawPairTokenResult[0].toLowerCase())
+    ? rawPairTokenResults.map(rawPairTokenResult => rawPairTokenResult[0].toLowerCase())
     : []
   const pairTokenMap: { [tokenAddress: string]: { token0: string; token1: string } } = chunk(
     pairTokenResults,
@@ -241,7 +241,7 @@ export async function getPairTokenMap(poolAddresses: string[], chainName: 'ETH' 
   let rawTokenResults
   const uniquePairTokenResults = uniq(pairTokenResults)
   const tokenCalls = uniquePairTokenResults
-    .map((pairToken) => {
+    .map(pairToken => {
       return [
         { address: pairToken, name: 'name' },
         { address: pairToken, name: 'symbol' },
@@ -258,11 +258,11 @@ export async function getPairTokenMap(poolAddresses: string[], chainName: 'ETH' 
   } catch (error) {
     console.info('Error fetching tokenIds from pair')
   }
-  const tokenResults = rawTokenResults ? rawTokenResults.map((rawTokenResult) => rawTokenResult[0]) : []
+  const tokenResults = rawTokenResults ? rawTokenResults.map(rawTokenResult => rawTokenResult[0]) : []
   const tokenMap = chunk(tokenResults, 2).reduce((acc, tokenResult, index) => {
     return { ...acc, [uniquePairTokenResults[index].toLowerCase()]: { name: tokenResult[0], symbol: tokenResult[1] } }
   }, {})
-  return mapValues(pairTokenMap, (pairTokenValue) => {
+  return mapValues(pairTokenMap, pairTokenValue => {
     return {
       token0: { id: pairTokenValue.token0, ...tokenMap[pairTokenValue.token0] },
       token1: { id: pairTokenValue.token1, ...tokenMap[pairTokenValue.token1] },

@@ -49,7 +49,7 @@ export const ActivityFilter: React.FC<React.PropsWithChildren<ActivityFilterProp
   const { t } = useTranslation()
   const { addActivityTypeFilters, removeActivityTypeFilters } = useNftStorage()
 
-  const isEventSelected = nftActivityFilters.typeFilters.some((nftActivityFilter) => nftActivityFilter === eventType)
+  const isEventSelected = nftActivityFilters.typeFilters.some(nftActivityFilter => nftActivityFilter === eventType)
 
   const handleMenuClick = () => {
     if (!isEventSelected) {
@@ -68,8 +68,7 @@ export const ActivityFilter: React.FC<React.PropsWithChildren<ActivityFilterProp
           onClick={handleMenuClick}
           variant={isEventSelected ? 'subtle' : 'light'}
           scale="sm"
-          hasItem={isEventSelected}
-        >
+          hasItem={isEventSelected}>
           {eventName(t, eventType)}
         </TriggerButton>
       </Box>

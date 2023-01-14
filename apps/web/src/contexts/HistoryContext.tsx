@@ -17,12 +17,12 @@ function useHistoryManager() {
   useEffect(() => {
     const handleRouteChange = (url, { shallow }) => {
       if (!shallow) {
-        setHistory((prevState) => [...prevState, url])
+        setHistory(prevState => [...prevState, url])
       }
     }
 
     router.beforePopState(() => {
-      setHistory((prevState) => prevState.slice(0, -2))
+      setHistory(prevState => prevState.slice(0, -2))
       return true
     })
 

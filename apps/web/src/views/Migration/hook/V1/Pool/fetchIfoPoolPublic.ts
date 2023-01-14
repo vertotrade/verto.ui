@@ -6,7 +6,7 @@ import { BIG_ZERO } from '@verto/utils/bigNumber'
 
 export const fetchPublicIfoPoolData = async (ifoPoolAddress: string) => {
   try {
-    const calls = ['getPricePerFullShare', 'totalShares', 'startBlock', 'endBlock'].map((method) => ({
+    const calls = ['getPricePerFullShare', 'totalShares', 'startBlock', 'endBlock'].map(method => ({
       address: ifoPoolAddress,
       name: method,
     }))
@@ -34,7 +34,7 @@ export const fetchPublicIfoPoolData = async (ifoPoolAddress: string) => {
 
 export const fetchIfoPoolFeesData = async (ifoPoolAddress: string) => {
   try {
-    const calls = ['performanceFee', 'withdrawFee', 'withdrawFeePeriod'].map((method) => ({
+    const calls = ['performanceFee', 'withdrawFee', 'withdrawFeePeriod'].map(method => ({
       address: ifoPoolAddress,
       name: method,
     }))

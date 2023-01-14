@@ -87,8 +87,7 @@ const ApproveConfirmButtons: React.FC<React.PropsWithChildren<ApproveConfirmButt
             onClick={onApprove}
             endIcon={isApproving ? spinnerIcon : undefined}
             isLoading={isApproving}
-            useMinWidth={useMinWidth}
-          >
+            useMinWidth={useMinWidth}>
             {isApproving ? t('Enabling') : t('Enable')}
           </Button>
         </Box>
@@ -103,8 +102,7 @@ const ApproveConfirmButtons: React.FC<React.PropsWithChildren<ApproveConfirmButt
             disabled={isConfirmDisabled}
             isLoading={isConfirming}
             endIcon={isConfirming ? spinnerIcon : undefined}
-            useMinWidth={useMinWidth}
-          >
+            useMinWidth={useMinWidth}>
             {isConfirming ? t('Confirming') : confirmButtonText}
           </Button>
         </Box>
@@ -122,8 +120,7 @@ const ApproveConfirmButtons: React.FC<React.PropsWithChildren<ApproveConfirmButt
               onClick={onConfirm}
               disabled={isConfirmDisabled}
               isLoading={isConfirming}
-              endIcon={isConfirming ? spinnerIcon : undefined}
-            >
+              endIcon={isConfirming ? spinnerIcon : undefined}>
               {isConfirming ? t('Confirming') : confirmButtonText}
             </Button>
           </Box>

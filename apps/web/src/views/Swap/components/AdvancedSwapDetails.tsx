@@ -103,8 +103,7 @@ function TradeSummary({
                           style={{ display: 'inline' }}
                           ml="4px"
                           external
-                          href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
-                        >
+                          href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees">
                           {t('here.')}
                         </Link>
                       </Text>
@@ -192,8 +191,7 @@ export function AdvancedSwapDetails({
                         />
                       </Flex>
                     }
-                    onDismiss={() => setIsModalOpen(false)}
-                  >
+                    onDismiss={() => setIsModalOpen(false)}>
                     <RouterViewer
                       inputCurrency={inputAmount.currency}
                       pairs={pairs}

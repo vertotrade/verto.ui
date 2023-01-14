@@ -49,7 +49,7 @@ interface PoolSearchResponse {
 }
 
 const getIds = (entityArrays: SingleQueryResponse[][]) => {
-  const ids = entityArrays.flat().map((entity) => entity.id)
+  const ids = entityArrays.flat().map(entity => entity.id)
   return Array.from(new Set(ids))
 }
 
@@ -97,7 +97,7 @@ const useFetchSearchResults = (
           id: searchString.toLowerCase(),
         })
 
-        const tokenIds = getIds([tokens.asAddress, tokens.asSymbol, tokens.asName]).map((d) => d.toLowerCase())
+        const tokenIds = getIds([tokens.asAddress, tokens.asSymbol, tokens.asName]).map(d => d.toLowerCase())
 
         const pools = await queryClient.request<PoolSearchResponse>(poolQuery, {
           tokens: tokenIds,
@@ -105,7 +105,7 @@ const useFetchSearchResults = (
         })
         setSearchResults({
           tokens: tokenIds,
-          pools: getIds([pools.asAddress, pools.as0, pools.as1]).map((d) => d.toLowerCase()),
+          pools: getIds([pools.asAddress, pools.as0, pools.as1]).map(d => d.toLowerCase()),
           loading: false,
           error: false,
         })

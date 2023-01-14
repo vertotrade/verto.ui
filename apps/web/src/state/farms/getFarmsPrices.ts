@@ -8,7 +8,7 @@ const getFarmFromTokenSymbol = (
   tokenSymbol: string,
   preferredQuoteTokens?: string[],
 ): SerializedFarm => {
-  const farmsWithTokenSymbol = farms.filter((farm) => farm.token.symbol === tokenSymbol)
+  const farmsWithTokenSymbol = farms.filter(farm => farm.token.symbol === tokenSymbol)
   const filteredFarm = filterFarmsByQuoteToken(farmsWithTokenSymbol, preferredQuoteTokens)
   return filteredFarm
 }
@@ -97,10 +97,10 @@ const getFarmsPrices = (farms: SerializedFarm[], chainId: number) => {
   }
 
   const nativeStableFarm = farms.find(
-    (farm) => farm.lpAddress.toLowerCase() === nativeStableLpMap[chainId].address.toLowerCase(),
+    farm => farm.lpAddress.toLowerCase() === nativeStableLpMap[chainId].address.toLowerCase(),
   )
   const nativePriceUSD = nativeStableFarm.tokenPriceVsQuote ? BIG_ONE.div(nativeStableFarm.tokenPriceVsQuote) : BIG_ZERO
-  const farmsWithPrices = farms.map((farm) => {
+  const farmsWithPrices = farms.map(farm => {
     const { wNative, stable } = nativeStableLpMap[chainId]
     const quoteTokenFarm =
       farm.quoteToken.symbol !== stable && farm.quoteToken.symbol !== wNative

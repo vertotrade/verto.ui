@@ -15,7 +15,7 @@ const findAndReplace = (
     return cacheRef
   }
   if (Array.isArray(cacheRef)) {
-    return cacheRef.map((item) => findAndReplace(item, { find, replace }))
+    return cacheRef.map(item => findAndReplace(item, { find, replace }))
   }
   if (cacheRef instanceof Object) {
     return Object.entries(cacheRef).reduce(

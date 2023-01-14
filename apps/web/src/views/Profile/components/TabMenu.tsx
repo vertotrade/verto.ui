@@ -38,16 +38,14 @@ const TabMenu = () => {
         onClick={() => setIsAchievementsActive(false)}
         $active={!achievementsActive}
         as={NextLinkFromReactRouter}
-        to={`/profile/${accountAddress}`}
-      >
+        to={`/profile/${accountAddress}`}>
         NFTs
       </Tab>
       <Tab
         onClick={() => setIsAchievementsActive(true)}
         $active={achievementsActive}
         as={NextLinkFromReactRouter}
-        to={`/profile/${accountAddress}/achievements`}
-      >
+        to={`/profile/${accountAddress}/achievements`}>
         {t('Achievements')}
       </Tab>
     </Flex>

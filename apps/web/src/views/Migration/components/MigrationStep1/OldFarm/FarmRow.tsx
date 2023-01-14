@@ -60,7 +60,7 @@ const FarmRow: React.FunctionComponent<React.PropsWithChildren<RowProps>> = ({
 
   const toggleExpanded = () => {
     if (!isLargerScreen) {
-      setExpanded((prev) => !prev)
+      setExpanded(prev => !prev)
     }
   }
 

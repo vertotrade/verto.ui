@@ -10,7 +10,7 @@ const useWhitelistedAddresses = (): FarmAuctionBidderConfig[] => {
   const { data } = useSWR(['farmAuction', 'whitelistedAddresses'], async () => {
     try {
       const [bidderAddresses] = await farmAuctionContract.viewBidders(0, AUCTION_WHITELISTED_BIDDERS_TO_FETCH)
-      return bidderAddresses.map((address) => getBidderInfo(address))
+      return bidderAddresses.map(address => getBidderInfo(address))
     } catch (error) {
       throw Error('Failed to fetch list of whitelisted addresses')
     }

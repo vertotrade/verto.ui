@@ -177,12 +177,12 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
 
     setLiquidityState({ attemptingTxn: true, liquidityErrorMessage: undefined, txHash: undefined })
     await estimate(...args, value ? { value } : {})
-      .then((estimatedGasLimit) =>
+      .then(estimatedGasLimit =>
         method(...args, {
           ...(value ? { value } : {}),
           gasLimit: calculateGasMargin(estimatedGasLimit),
           gasPrice,
-        }).then((response) => {
+        }).then(response => {
           setLiquidityState({ attemptingTxn: false, liquidityErrorMessage: undefined, txHash: response.hash })
 
           const symbolA = currencies[Field.CURRENCY_A]?.symbol
@@ -199,7 +199,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
           })
         }),
       )
-      .catch((err) => {
+      .catch(err => {
         if (err && err.code !== 4001) {
           logError(err)
           console.error(`Add Liquidity failed`, err, args, value)
@@ -310,7 +310,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
                 zapStyle="noZap"
                 value={formattedAmounts[Field.CURRENCY_A]}
                 onUserInput={onFieldAInput}
-                onPercentInput={(percent) => {
+                onPercentInput={percent => {
                   if (maxAmounts[Field.CURRENCY_A]) {
                     onFieldAInput(maxAmounts[Field.CURRENCY_A]?.multiply(new Percent(percent, 100)).toExact() ?? '')
                   }
@@ -335,7 +335,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
                 zapStyle="noZap"
                 value={formattedAmounts[Field.CURRENCY_B]}
                 onUserInput={onFieldBInput}
-                onPercentInput={(percent) => {
+                onPercentInput={percent => {
                   if (maxAmounts[Field.CURRENCY_B]) {
                     onFieldBInput(maxAmounts[Field.CURRENCY_B]?.multiply(new Percent(percent, 100)).toExact() ?? '')
                   }
@@ -456,8 +456,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
                         onPresentAddLiquidityModal()
                       }
                     }}
-                    disabled={buttonDisabled}
-                  >
+                    disabled={buttonDisabled}>
                     {errorText || t('Supply')}
                   </CommitButton>
                 </AutoColumn>

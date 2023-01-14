@@ -9,6 +9,6 @@ const priceHelperLps: SerializedFarmConfig[] = [
     quoteToken: goerliTestnetTokens.usdc,
     token: goerliTestnetTokens.weth,
   },
-].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
+].map(p => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default priceHelperLps

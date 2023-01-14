@@ -35,8 +35,7 @@ const DepositButton: React.FC<React.PropsWithChildren<DepositButtonProps>> = ({
       isLoading={isPending}
       disabled={status !== PotteryDepositStatus.BEFORE_LOCK || depositAmountAsBN.lte(0) || depositAmountAsBN.isNaN()}
       endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
-      onClick={onClickDeposit}
-    >
+      onClick={onClickDeposit}>
       {t('Deposit CAKE')}
     </Button>
   )

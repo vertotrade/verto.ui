@@ -160,26 +160,26 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const userDataReady = !account || (!!account && userDataLoaded)
 
   const activeFarms = farmsLP?.filter(
-    (farm) => farm.pid !== 0 && farm.multiplier !== '0X' && (!poolLength || poolLength > farm.pid),
+    farm => farm.pid !== 0 && farm.multiplier !== '0X' && (!poolLength || poolLength > farm.pid),
   )
-  const inactiveFarms = farmsLP?.filter((farm) => farm.pid !== 0 && farm.multiplier === '0X')
+  const inactiveFarms = farmsLP?.filter(farm => farm.pid !== 0 && farm.multiplier === '0X')
   const archivedFarms = farmsLP
 
   const stakedOnlyFarms = activeFarms?.filter(
-    (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
+    farm => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
   )
 
   const stakedInactiveFarms = inactiveFarms?.filter(
-    (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
+    farm => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
   )
 
   const stakedArchivedFarms = archivedFarms?.filter(
-    (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
+    farm => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
   )
 
   const farmsList = useCallback(
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
-      let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay?.map((farm) => {
+      let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay?.map(farm => {
         if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
           return farm
         }
@@ -275,7 +275,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (isIntersecting) {
-      setNumberOfFarmsVisible((farmsCurrentlyVisible) => {
+      setNumberOfFarmsVisible(farmsCurrentlyVisible => {
         if (farmsCurrentlyVisible <= chosenFarmsLength.current) {
           return farmsCurrentlyVisible + NUMBER_OF_FARMS_VISIBLE
         }

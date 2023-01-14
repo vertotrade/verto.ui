@@ -28,7 +28,7 @@ const useAuth = () => {
 
   const login = useCallback(
     async (connectorID: ConnectorNames) => {
-      const findConnector = connectors.find((c) => c.id === connectorID)
+      const findConnector = connectors.find(c => c.id === connectorID)
       try {
         const connected = await connectAsync({ connector: findConnector, chainId })
         if (!connected.chain.unsupported && connected.chain.id !== chainId) {

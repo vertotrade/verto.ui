@@ -145,7 +145,7 @@ function CurrencySearch({
     if (!isMobile) inputRef.current?.focus()
   }, [isMobile])
 
-  const handleInput = useCallback((event) => {
+  const handleInput = useCallback(event => {
     const input = event.target.value
     const checksummedInput = isAddress(input)
     setSearchQuery(checksummedInput || input)

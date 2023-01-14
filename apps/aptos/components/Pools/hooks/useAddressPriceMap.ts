@@ -64,7 +64,7 @@ export default function useAddressPriceMap({ pools, chainId }) {
 
   const prices = {}
 
-  availablePairs.forEach((pair) => {
+  availablePairs.forEach(pair => {
     const token0 = pair?.token0
     const token1 = pair?.token1
 

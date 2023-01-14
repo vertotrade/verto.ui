@@ -102,7 +102,7 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
         setIsLoading(false)
         setActivityData(activity)
         setMaxPages(Math.ceil(activity.length / MAX_PER_PAGE) || 1)
-        setQueryPage((prevState) => prevState + 1)
+        setQueryPage(prevState => prevState + 1)
       } catch (error) {
         console.error('Failed to fetch collection activity', error)
       }
@@ -123,8 +123,7 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
         pt="24px"
         flexDirection="column"
         justifyContent="space-between"
-        height="100%"
-      >
+        height="100%">
         <PaginationButton showMaxPageText currentPage={currentPage} maxPage={maxPage} setCurrentPage={setCurrentPage} />
       </Flex>
     </Container>
@@ -137,8 +136,7 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
           style={{ gap: '16px', padding: '0 16px' }}
           alignItems={[null, null, 'center']}
           flexDirection={['column', 'column', 'row']}
-          flexWrap={isMd ? 'wrap' : 'nowrap'}
-        >
+          flexWrap={isMd ? 'wrap' : 'nowrap'}>
           <ActivityFilters address={collection?.address || ''} nftActivityFilters={nftActivityFilters} />
           <Button
             scale="sm"
@@ -146,8 +144,7 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
             onClick={() => {
               refresh()
             }}
-            {...(isMd && { width: '100%' })}
-          >
+            {...(isMd && { width: '100%' })}>
             {t('Refresh')}
           </Button>
         </Flex>
@@ -183,9 +180,9 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
                 {!isInitialized ? (
                   <TableLoader />
                 ) : (
-                  activitiesSlice.map((activity) => {
+                  activitiesSlice.map(activity => {
                     const nftMeta = nftMetadata.find(
-                      (metaNft) =>
+                      metaNft =>
                         metaNft.tokenId === activity.nft.tokenId &&
                         isAddress(metaNft.collectionAddress) === isAddress(activity.nft?.collection.id),
                     )

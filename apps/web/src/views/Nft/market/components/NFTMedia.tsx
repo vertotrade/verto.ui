@@ -38,7 +38,7 @@ const NFTMedia: FC<
   useEffect(() => {
     if (vidRef.current) {
       if (isIntersecting) {
-        vidRef.current.play().catch((error) => {
+        vidRef.current.play().catch(error => {
           if (error instanceof DOMException && error.name === 'NotAllowedError') {
             setTryVideoNftMedia(false)
           }

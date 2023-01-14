@@ -33,7 +33,7 @@ export function watchProvider<TProvider extends AptosClient = AptosClient>(
 
 export function getDefaultProviders({ networkName }: { networkName?: string }) {
   if (networkName) {
-    const foundChain = defaultChains.find((c) => c.network === networkName.toLowerCase())
+    const foundChain = defaultChains.find(c => c.network === networkName.toLowerCase())
     if (foundChain) {
       return new AptosClient(foundChain.nodeUrls.default)
     }

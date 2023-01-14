@@ -29,8 +29,8 @@ const ClaimPointsCallout: React.FC<React.PropsWithChildren<{ onSuccess?: () => v
 
   const handleCollectSuccess = (achievement: Achievement) => {
     refreshProfile()
-    setClaimableAchievement((prevClaimableAchievements) =>
-      prevClaimableAchievements.filter((prevClaimableAchievement) => prevClaimableAchievement.id !== achievement.id),
+    setClaimableAchievement(prevClaimableAchievements =>
+      prevClaimableAchievements.filter(prevClaimableAchievement => prevClaimableAchievement.id !== achievement.id),
     )
     onSuccess?.()
   }
@@ -56,7 +56,7 @@ const ClaimPointsCallout: React.FC<React.PropsWithChildren<{ onSuccess?: () => v
         </Flex>
       </CardHeader>
       <CardBody>
-        {claimableAchievements.map((achievement) => (
+        {claimableAchievements.map(achievement => (
           <AchievementRow key={achievement.address} achievement={achievement} onCollectSuccess={handleCollectSuccess} />
         ))}
       </CardBody>

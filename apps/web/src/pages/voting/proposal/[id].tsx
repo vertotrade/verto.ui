@@ -10,8 +10,7 @@ const ProposalPage = ({ fallback = {} }: InferGetStaticPropsType<typeof getStati
     <SWRConfig
       value={{
         fallback,
-      }}
-    >
+      }}>
       <Overview />
     </SWRConfig>
   )

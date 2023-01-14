@@ -118,7 +118,7 @@ const useApproveConfirmTransaction = ({
   // Check if approval is necessary, re-check if account changes
   useEffect(() => {
     if (account && handlePreApprove.current) {
-      handlePreApprove.current().then((requiresApproval) => {
+      handlePreApprove.current().then(requiresApproval => {
         if (!requiresApproval) {
           dispatch({ type: 'approve_receipt' })
         }

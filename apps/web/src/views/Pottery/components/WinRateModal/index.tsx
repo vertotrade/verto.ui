@@ -90,8 +90,7 @@ const WinRateModal: React.FC<React.PropsWithChildren<WinRateModalProps>> = ({
       title={t('Winning % Calculator')}
       onDismiss={onBack || onDismiss}
       onBack={onBack ?? null}
-      headerBackground="gradientCardHeader"
-    >
+      headerBackground="gradientCardHeader">
       <ScrollableContainer>
         <Flex flexDirection="column" mb="8px">
           <Box>

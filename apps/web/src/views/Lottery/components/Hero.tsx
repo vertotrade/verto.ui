@@ -263,8 +263,7 @@ const Hero = () => {
         width={['240px', '288px']}
         height={['94px', '113px']}
         alignItems="center"
-        justifyContent="center"
-      >
+        justifyContent="center">
         <ButtonWrapper>
           <StyledBuyTicketButton disabled={ticketBuyIsDisabled} themeMode="light" />
         </ButtonWrapper>

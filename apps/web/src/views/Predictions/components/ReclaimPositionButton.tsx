@@ -42,8 +42,7 @@ const ReclaimPositionButton: React.FC<React.PropsWithChildren<ReclaimPositionBut
       onClick={handleReclaim}
       isLoading={isPendingTx}
       endIcon={isPendingTx ? <AutoRenewIcon spin color="white" /> : null}
-      {...props}
-    >
+      {...props}>
       {children || t('Reclaim Position')}
     </Button>
   )

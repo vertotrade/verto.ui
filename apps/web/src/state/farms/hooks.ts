@@ -47,7 +47,7 @@ export const usePollFarmsWithUserData = () => {
     chainId ? ['publicFarmData', chainId] : null,
     async () => {
       const farmsConfig = await getFarmConfig(chainId)
-      const pids = farmsConfig.map((farmToFetch) => farmToFetch.pid)
+      const pids = farmsConfig.map(farmToFetch => farmToFetch.pid)
       dispatch(fetchFarmsPublicDataAsync({ pids, chainId, flag: farmFlag }))
     },
     {
@@ -63,7 +63,7 @@ export const usePollFarmsWithUserData = () => {
     account && chainId && !isProxyContractLoading ? name : null,
     async () => {
       const farmsConfig = await getFarmConfig(chainId)
-      const pids = farmsConfig.map((farmToFetch) => farmToFetch.pid)
+      const pids = farmsConfig.map(farmToFetch => farmToFetch.pid)
       const params = proxyCreated ? { account, pids, proxyAddress, chainId } : { account, pids, chainId }
 
       dispatch(fetchFarmUserDataAsync(params))

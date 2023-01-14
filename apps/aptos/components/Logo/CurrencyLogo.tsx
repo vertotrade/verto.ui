@@ -19,7 +19,7 @@ const getTokenLogoURL = memoize(
     }
     return null
   },
-  (t) => (t ? `${t.chainId}#${t.address}` : null),
+  t => (t ? `${t.chainId}#${t.address}` : null),
 )
 
 const StyledLogo = styled(TokenLogo)<{ size: string }>`

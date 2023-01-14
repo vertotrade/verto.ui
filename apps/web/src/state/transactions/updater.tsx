@@ -44,8 +44,8 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
     if (!chainId || !provider) return
 
     forEach(
-      pickBy(transactions, (transaction) => shouldCheck(fetchedTransactions.current, transaction)),
-      (transaction) => {
+      pickBy(transactions, transaction => shouldCheck(fetchedTransactions.current, transaction)),
+      transaction => {
         const getTransaction = async () => {
           await provider.getNetwork()
 
@@ -98,7 +98,7 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
   const nonBscFarmPendingTxns = useMemo(
     () =>
       Object.keys(transactions).filter(
-        (hash) =>
+        hash =>
           transactions[hash].receipt?.status === 1 &&
           transactions[hash].type === 'non-bsc-farm' &&
           transactions[hash].nonBscFarm?.status === FarmTransactionStatus.PENDING,
@@ -109,7 +109,7 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
   useSWRImmutable(
     chainId && Boolean(nonBscFarmPendingTxns?.length) && ['checkNonBscFarmTransaction', FAST_INTERVAL, chainId],
     () => {
-      nonBscFarmPendingTxns.forEach((hash) => {
+      nonBscFarmPendingTxns.forEach(hash => {
         const steps = transactions[hash]?.nonBscFarm?.steps
         if (steps.length) {
           const pendingStep = steps.findIndex(
@@ -122,7 +122,7 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
             const checkHash = previousHash.tx || hash
 
             fetchCelerApi(checkHash)
-              .then((response) => {
+              .then(response => {
                 const transaction = transactions[hash]
                 const { destinationTxHash, messageStatus } = response
                 const status =
@@ -174,8 +174,7 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
                       <Box>
                         <Text
                           as="span"
-                          bold
-                        >{`${transaction.nonBscFarm.amount} ${transaction.nonBscFarm.lpSymbol}`}</Text>
+                          bold>{`${transaction.nonBscFarm.amount} ${transaction.nonBscFarm.lpSymbol}`}</Text>
                         <Text as="span" ml="4px">
                           {errorText}
                         </Text>
@@ -184,7 +183,7 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
                   )
                 }
               })
-              .catch((error) => {
+              .catch(error => {
                 console.error(`Failed to check harvest transaction hash: ${hash}`, error)
               })
           }
@@ -194,7 +193,7 @@ export const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
     {
       refreshInterval: FAST_INTERVAL,
       errorRetryInterval: FAST_INTERVAL,
-      onError: (error) => {
+      onError: error => {
         console.error('[ERROR] updater checking non BSC farm transaction error: ', error)
       },
     },

@@ -12,10 +12,7 @@ const useBridgeInfo = ({ currency }: { currency?: Currency }) => {
     watch: true,
   })
 
-  const bridgeResult = useMemo(
-    () => bridgeInfo.find((bridge) => currency?.symbol.startsWith(bridge.symbol)),
-    [currency],
-  )
+  const bridgeResult = useMemo(() => bridgeInfo.find(bridge => currency?.symbol.startsWith(bridge.symbol)), [currency])
 
   const showBridgeWarning = useMemo(
     () => account?.address && bridgeResult && !isLoading && Number(data?.formatted ?? 0) <= 0,

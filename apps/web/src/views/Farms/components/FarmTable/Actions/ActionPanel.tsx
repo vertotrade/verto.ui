@@ -201,17 +201,17 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
       <ActionContainer>
         {shouldUseProxyFarm ? (
           <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
-            {(props) => <HarvestAction {...props} />}
+            {props => <HarvestAction {...props} />}
           </ProxyHarvestActionContainer>
         ) : (
           <HarvestActionContainer {...farm} userDataReady={userDataReady}>
-            {(props) => <HarvestAction {...props} />}
+            {props => <HarvestAction {...props} />}
           </HarvestActionContainer>
         )}
         {farm?.boosted && (
           <ActionContainerSection style={{ minHeight: 124.5 }}>
             <BoostedAction
-              title={(status) => (
+              title={status => (
                 <ActionTitles>
                   <Text mr="3px" bold textTransform="uppercase" color="textSubtle" fontSize="12px">
                     {t('Yield Booster')}
@@ -221,7 +221,7 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
                   </Text>
                 </ActionTitles>
               )}
-              desc={(actionBtn) => <ActionContent>{actionBtn}</ActionContent>}
+              desc={actionBtn => <ActionContent>{actionBtn}</ActionContent>}
               farmPid={farm?.pid}
               lpTotalSupply={farm?.lpTotalSupply}
               userBalanceInFarm={
@@ -234,11 +234,11 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
         )}
         {shouldUseProxyFarm ? (
           <ProxyStakedContainer {...proxyFarm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
-            {(props) => <StakedAction {...props} />}
+            {props => <StakedAction {...props} />}
           </ProxyStakedContainer>
         ) : (
           <StakedContainer {...farm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
-            {(props) => <StakedAction {...props} />}
+            {props => <StakedAction {...props} />}
           </StakedContainer>
         )}
       </ActionContainer>

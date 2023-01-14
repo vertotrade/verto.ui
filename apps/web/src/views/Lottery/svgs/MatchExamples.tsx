@@ -79,8 +79,7 @@ export const MatchExampleA: React.FC<React.PropsWithChildren<{ isDark: boolean }
             y1="41.1807"
             x2="1.2617"
             y2="41.18"
-            gradientUnits="userSpaceOnUse"
-          >
+            gradientUnits="userSpaceOnUse">
             <stop stopColor="#ED4B9E" />
             <stop offset="0.190071" stopColor="#7B61FF" />
             <stop offset="0.434873" stopColor="#1FC7D4" />

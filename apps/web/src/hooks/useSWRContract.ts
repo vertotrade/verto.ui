@@ -25,7 +25,7 @@ declare module 'swr' {
   }
 }
 
-export const fetchStatusMiddleware: Middleware = (useSWRNext) => {
+export const fetchStatusMiddleware: Middleware = useSWRNext => {
   return (key, fetcher, config) => {
     const swr = useSWRNext(key, fetcher, config)
     return Object.defineProperty(swr, 'status', {
@@ -127,7 +127,7 @@ export function useSWRContract<
   )
 }
 
-export const immutableMiddleware: Middleware = (useSWRNext) => (key, fetcher, config) => {
+export const immutableMiddleware: Middleware = useSWRNext => (key, fetcher, config) => {
   config.revalidateOnFocus = false
   config.revalidateIfStale = false
   config.revalidateOnReconnect = false
@@ -143,7 +143,7 @@ export function useSWRMulticall<Data>(abi: any[], calls: Call[], options?: Multi
   })
 }
 
-export const localStorageMiddleware: Middleware = (useSWRNext) => (key, fetcher, config) => {
+export const localStorageMiddleware: Middleware = useSWRNext => (key, fetcher, config) => {
   const swr = useSWRNext(key, fetcher, config)
   const { data } = swr
   const serializedKey = useMemo(() => unstable_serialize(key), [key])
@@ -179,7 +179,7 @@ export const localStorageMiddleware: Middleware = (useSWRNext) => (key, fetcher,
 }
 
 // dev only
-export const loggerMiddleware: Middleware = (useSWRNext) => {
+export const loggerMiddleware: Middleware = useSWRNext => {
   return (key, fetcher, config) => {
     // Add logger to the original fetcher.
     const extendedFetcher = fetcher

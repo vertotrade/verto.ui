@@ -15,7 +15,7 @@ const useActive = () => {
   const { connectAsync } = useConnect()
   return useCallback(
     () =>
-      connectAsync({ connector: injected }).catch((error) => {
+      connectAsync({ connector: injected }).catch(error => {
         console.log('🚀 ~ file: useEagerConnect.ts ~ line 183 ~ activate ~ error', error)
         // captureException(error)
       }),
@@ -38,7 +38,7 @@ export const useActiveHandle = () => {
     console.log('~ before getAccount')
     const address = await getAccount()
     console.log('~ after getAccount', address)
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       handleActive().then(resolve)
     })
   }

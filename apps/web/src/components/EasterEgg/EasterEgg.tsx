@@ -2,12 +2,11 @@ import { useState, useCallback, memo } from 'react'
 import { FallingBunniesProps, useKonamiCheatCode } from '@verto/uikit'
 import dynamic from 'next/dynamic'
 
-const FallingBunnies = dynamic<FallingBunniesProps>(
-  () => import('@verto/uikit').then((mod) => mod.FallingBunnies),
-  { ssr: false },
-)
+const FallingBunnies = dynamic<FallingBunniesProps>(() => import('@verto/uikit').then(mod => mod.FallingBunnies), {
+  ssr: false,
+})
 
-const EasterEgg: React.FC<React.PropsWithChildren<FallingBunniesProps>> = (props) => {
+const EasterEgg: React.FC<React.PropsWithChildren<FallingBunniesProps>> = props => {
   const [show, setShow] = useState(false)
   const startFalling = useCallback(() => setShow(true), [setShow])
   useKonamiCheatCode(startFalling)

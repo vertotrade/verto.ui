@@ -14,8 +14,8 @@ const TokensOverview: React.FC<React.PropsWithChildren> = () => {
 
   const formattedTokens = useMemo(() => {
     return Object.values(allTokens)
-      .map((token) => token.data)
-      .filter((token) => token)
+      .map(token => token.data)
+      .filter(token => token)
   }, [allTokens])
 
   const [savedTokens] = useWatchlistTokens()

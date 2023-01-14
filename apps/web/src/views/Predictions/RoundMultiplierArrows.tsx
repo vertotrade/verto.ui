@@ -28,8 +28,7 @@ export const RoundMultiplierDownArrow: React.FC<React.PropsWithChildren<Multipli
           width="224"
           height="62.9688"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix
@@ -69,8 +68,7 @@ export const RoundMultiplierUpArrow: React.FC<React.PropsWithChildren<Multiplier
           width="224"
           height="62.9688"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feColorMatrix

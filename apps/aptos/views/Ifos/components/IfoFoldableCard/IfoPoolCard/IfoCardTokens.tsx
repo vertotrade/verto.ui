@@ -70,9 +70,9 @@ const CommitTokenSection: React.FC<React.PropsWithChildren<TokenSectionProps & {
   return <TokenSection primaryToken={commitToken} {...props} />
 }
 
-const Label = (props) => <Text bold fontSize="12px" color="secondary" textTransform="uppercase" {...props} />
+const Label = props => <Text bold fontSize="12px" color="secondary" textTransform="uppercase" {...props} />
 
-const Value = (props) => <Text bold fontSize="20px" style={{ wordBreak: 'break-all' }} {...props} />
+const Value = props => <Text bold fontSize="20px" style={{ wordBreak: 'break-all' }} {...props} />
 
 interface IfoCardTokensProps {
   poolId: PoolIds

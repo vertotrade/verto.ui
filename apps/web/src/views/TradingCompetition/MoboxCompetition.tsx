@@ -49,9 +49,7 @@ const MoboxCompetition = () => {
   const [currentPhase, setCurrentPhase] = useState(() => {
     const now = Date.now()
     const actualPhase = orderBy(
-      Object.values(CompetitionPhases).filter(
-        (competitionPhase) => competitionPhase.ends && now < competitionPhase.ends,
-      ),
+      Object.values(CompetitionPhases).filter(competitionPhase => competitionPhase.ends && now < competitionPhase.ends),
       'endsIn',
       'asc',
     )[0]
@@ -175,8 +173,7 @@ const MoboxCompetition = () => {
           innerProps={{ style: { paddingTop: isMobile ? '30px' : '28px' } }}
           background={TRADINGCOMPETITIONBANNER}
           hasCurvedDivider={false}
-          index={1}
-        >
+          index={1}>
           <BannerFlex mb={shouldHideCta ? '0px' : '48px'}>
             <Countdown currentPhase={currentPhase} hasCompetitionEnded={hasCompetitionEnded} />
             <MoboxBattleBanner />
@@ -206,8 +203,7 @@ const MoboxCompetition = () => {
                 onClaimSuccess={onClaimSuccess}
               />
             )
-          }
-        >
+          }>
           <Box mt={shouldHideCta ? '0px' : ['94px', null, '36px']} mb="64px">
             {/* If competition has not yet started, render HowToJoin component - if not, render YourScore */}
             {currentPhase.state === REGISTRATION ? (
@@ -240,8 +236,7 @@ const MoboxCompetition = () => {
               <RibbonWithImage imageComponent={<RanksIcon width="175px" />} ribbonDirection="up">
                 {t('Team Ranks')}
               </RibbonWithImage>
-            }
-          >
+            }>
             <Box my="64px">
               <TeamRanksWithParticipants
                 image={MoboxCakerBunny}
@@ -268,8 +263,7 @@ const MoboxCompetition = () => {
             <RibbonWithImage imageComponent={<RulesIcon width="175px" />} ribbonDirection="up">
               {t('Rules')}
             </RibbonWithImage>
-          }
-        >
+          }>
           <Box mt="64px">
             <Rules />
           </Box>

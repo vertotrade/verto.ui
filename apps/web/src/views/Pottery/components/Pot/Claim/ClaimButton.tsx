@@ -19,8 +19,7 @@ const ClaimButton: React.FC<React.PropsWithChildren<ClaimButtonProps>> = ({ rewa
       ml="auto"
       disabled={isDisabledButton}
       endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
-      onClick={handleClaim}
-    >
+      onClick={handleClaim}>
       {t('Claim')}
     </Button>
   )

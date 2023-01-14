@@ -7,13 +7,13 @@ import { initialPoolVaultState } from './index'
 import { getVaultPosition, VaultPosition } from '../../utils/cakePool'
 
 const selectPoolsData = (state: State) => state.pools.data
-const selectPoolData = (sousId) => (state: State) => state.pools.data.find((p) => p.sousId === sousId)
+const selectPoolData = sousId => (state: State) => state.pools.data.find(p => p.sousId === sousId)
 const selectUserDataLoaded = (state: State) => state.pools.userDataLoaded
 const selectVault = (key: VaultKey) => (state: State) => key ? state.pools[key] : initialPoolVaultState
 const selectIfo = (state: State) => state.pools.ifo
 const selectIfoUserCredit = (state: State) => state.pools.ifo.credit ?? BIG_ZERO
 
-export const makePoolWithUserDataLoadingSelector = (sousId) =>
+export const makePoolWithUserDataLoadingSelector = sousId =>
   createSelector([selectPoolData(sousId), selectUserDataLoaded], (pool, userDataLoaded) => {
     return { pool: transformPool(pool), userDataLoaded }
   })
@@ -25,7 +25,7 @@ export const poolsWithUserDataLoadingSelector = createSelector(
   },
 )
 
-export const makeVaultPoolByKey = (key) => createSelector([selectVault(key)], (vault) => transformVault(key, vault))
+export const makeVaultPoolByKey = key => createSelector([selectVault(key)], vault => transformVault(key, vault))
 
 export const poolsWithVaultSelector = createSelector(
   [
@@ -35,8 +35,8 @@ export const poolsWithVaultSelector = createSelector(
   ],
   (poolsWithUserDataLoading, deserializedLockedCakeVault, deserializedFlexibleSideCakeVault) => {
     const { pools, userDataLoaded } = poolsWithUserDataLoading
-    const cakePool = pools.find((pool) => !pool.isFinished && pool.sousId === 0)
-    const withoutCakePool = pools.filter((pool) => pool.sousId !== 0)
+    const cakePool = pools.find(pool => !pool.isFinished && pool.sousId === 0)
+    const withoutCakePool = pools.filter(pool => pool.sousId !== 0)
 
     const cakeAutoVault = {
       ...cakePool,
@@ -64,13 +64,13 @@ export const poolsWithVaultSelector = createSelector(
   },
 )
 
-export const makeVaultPoolWithKeySelector = (vaultKey) =>
-  createSelector(poolsWithVaultSelector, ({ pools }) => pools.find((p) => p.vaultKey === vaultKey))
+export const makeVaultPoolWithKeySelector = vaultKey =>
+  createSelector(poolsWithVaultSelector, ({ pools }) => pools.find(p => p.vaultKey === vaultKey))
 
-export const ifoCreditSelector = createSelector([selectIfoUserCredit], (ifoUserCredit) => {
+export const ifoCreditSelector = createSelector([selectIfoUserCredit], ifoUserCredit => {
   return new BigNumber(ifoUserCredit)
 })
 
-export const ifoCeilingSelector = createSelector([selectIfo], (ifoData) => {
+export const ifoCeilingSelector = createSelector([selectIfo], ifoData => {
   return new BigNumber(ifoData.ceiling)
 })

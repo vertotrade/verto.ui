@@ -103,8 +103,7 @@ export default function PoolFinder() {
             onClick={() => {
               onPresentCurrencyModal()
               setActiveField(Fields.TOKEN0)
-            }}
-          >
+            }}>
             {currency0 ? (
               <Row>
                 <CurrencyLogo currency={currency0} />
@@ -124,8 +123,7 @@ export default function PoolFinder() {
             onClick={() => {
               onPresentCurrencyModal()
               setActiveField(Fields.TOKEN1)
-            }}
-          >
+            }}>
             {currency1 ? (
               <Row>
                 <CurrencyLogo currency={currency1} />
@@ -152,8 +150,7 @@ export default function PoolFinder() {
                     <Button
                       as={NextLinkFromReactRouter}
                       to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
-                      variant="secondary"
-                    >
+                      variant="secondary">
                       {t('Add Liquidity')}
                     </Button>
                   </AutoColumn>
@@ -166,8 +163,7 @@ export default function PoolFinder() {
                   <Button
                     as={NextLinkFromReactRouter}
                     to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
-                    variant="secondary"
-                  >
+                    variant="secondary">
                     {t('Create pair')}
                   </Button>
                 </AutoColumn>

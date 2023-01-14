@@ -28,7 +28,9 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
   opacity: 0.75;
   margin-bottom: -1px;
 
-  ${({ theme, $isActive }) => $isActive ? `
+  ${({ theme, $isActive }) =>
+    $isActive
+      ? `
     border-radius: 0px;
     font-weight: 800;
     border-bottom: 5px solid;
@@ -37,13 +39,14 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
     top: 0px;
     border-image-source: linear-gradient(to right, #30e8bf, #ff8235);
     color: ${theme.colors.text};
-  ` : ''}
+  `
+      : ""}
 
   :hover,
   :focus {
     color: ${({ theme }) => theme.colors.text};
     opacity: 1;
   }
-`
+`;
 
 export default StyledMenuItem;

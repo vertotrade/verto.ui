@@ -43,7 +43,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
   const { isChartSupported, isChartDisplayed, setIsChartDisplayed } = useContext(SwapFeaturesContext)
   const [expertMode] = useExpertModeManager()
   const toggleChartDisplayed = () => {
-    setIsChartDisplayed((currentIsChartDisplayed) => !currentIsChartDisplayed)
+    setIsChartDisplayed(currentIsChartDisplayed => !currentIsChartDisplayed)
   }
   const [onPresentTransactionsModal] = useModal(<TransactionsModal />)
   const handleOnClick = useCallback(() => onRefreshPrice?.(), [onRefreshPrice])
@@ -69,8 +69,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                   toggleChartDisplayed()
                 }}
                 variant="text"
-                scale="sm"
-              >
+                scale="sm">
                 {isChartDisplayed ? (
                   <ChartDisableIcon color="textSubtle" />
                 ) : (
@@ -87,8 +86,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                     toggleChartDisplayed()
                   }
                   setIsSwapHotTokenDisplay(!isSwapHotTokenDisplay)
-                }}
-              >
+                }}>
                 {isSwapHotTokenDisplay ? (
                   <HotDisableIcon color="textSubtle" width="24px" />
                 ) : (

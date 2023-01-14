@@ -1,16 +1,5 @@
 import { useState, useEffect } from 'react'
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  Heading,
-  Text,
-  TabMenu,
-  Tab,
-  Box,
-  Flex,
-  ExpandableLabel,
-} from '@verto/uikit'
+import { Card, CardFooter, CardHeader, Heading, Text, TabMenu, Tab, Box, Flex, ExpandableLabel } from '@verto/uikit'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
 import { useTranslation } from '@verto/localization'
 import { TeamRanksProps } from '../../../types'
@@ -95,7 +84,7 @@ const TopTradersCard: React.FC<React.PropsWithChildren<TeamRanksProps & { subgra
         </CardHeader>
         <Box mt="16px">
           <TabMenu activeIndex={activeTab} onItemClick={handleItemClick}>
-            {tabs.map((tabText) => {
+            {tabs.map(tabText => {
               return <Tab key={tabText}>{tabText}</Tab>
             })}
           </TabMenu>

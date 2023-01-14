@@ -34,7 +34,7 @@ const fetchMarketDataNfts = async (
     page * itemsPerPage,
   )
 
-  const moreTokensWithRequestedBunnyId = nftsMarket.map((marketData) => {
+  const moreTokensWithRequestedBunnyId = nftsMarket.map(marketData => {
     const apiMetadata = getMetadataWithFallback(nftMetadata.data, marketData.otherId)
     const attributes = getPancakeBunniesAttributesField(marketData.otherId)
     return combineApiAndSgResponseToNftToken(apiMetadata, marketData, attributes)
@@ -70,7 +70,7 @@ export const usePancakeBunnyOnSaleNfts = (
     async ([id, sortDirection, page]) => {
       const { newNfts, isPageLast } = await fetchMarketDataNfts(id, nftMetadata, sortDirection, page, itemsPerPage)
       isLastPage.current = isPageLast
-      const nftsMarketTokenIds = newNfts.map((marketData) => marketData.tokenId)
+      const nftsMarketTokenIds = newNfts.map(marketData => marketData.tokenId)
       const updatedMarketData = await getNftsUpdatedMarketData(pancakeBunniesAddress.toLowerCase(), nftsMarketTokenIds)
       if (!updatedMarketData) return newNfts
 
@@ -83,7 +83,7 @@ export const usePancakeBunnyOnSaleNfts = (
             : -1 * (sortDirection === 'desc' ? -1 : 1)
         })
         .map(({ tokenId, currentSeller, currentAskPrice }) => {
-          const nftData = newNfts.find((marketData) => marketData.tokenId === tokenId)
+          const nftData = newNfts.find(marketData => marketData.tokenId === tokenId)
           const isTradable = isAddress(currentSeller) !== NOT_ON_SALE_SELLER
           return {
             ...nftData,

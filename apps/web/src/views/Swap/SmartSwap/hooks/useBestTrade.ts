@@ -108,7 +108,7 @@ export const useBestTradeFromApi = createUseBestTrade(
         ...data.route,
         input,
         output,
-        pairs: data.route.pairs.map((p) => {
+        pairs: data.route.pairs.map(p => {
           const token0 = deserializeToken(p.token0)
           const token1 = deserializeToken(p.token1)
           const reserve0 = CurrencyAmount.fromRawAmount(token0, p.reserve0)
@@ -116,7 +116,7 @@ export const useBestTradeFromApi = createUseBestTrade(
           const pair = new Pair(reserve0, reserve1)
           return p.stableSwapAddress ? createStableSwapPair(pair, p.stableSwapAddress) : pair
         }),
-        path: data.route.path.map((t) => deserializeToken(t)),
+        path: data.route.path.map(t => deserializeToken(t)),
       },
       inputAmount: CurrencyAmount.fromRawAmount(input, data.inputAmount),
       outputAmount: CurrencyAmount.fromRawAmount(output, data.outputAmount),

@@ -75,7 +75,7 @@ function CurrencyRow({
     address: account,
     coin: key,
     watch: true,
-    select: (d) => {
+    select: d => {
       return CurrencyAmount.fromRawAmount(currency, d.value)
     },
   })
@@ -87,8 +87,7 @@ function CurrencyRow({
       className={`token-item-${key}`}
       onClick={() => (isSelected ? null : onSelect())}
       disabled={isSelected}
-      selected={otherSelected}
-    >
+      selected={otherSelected}>
       <CurrencyLogo currency={currency} size="24px" />
       <Column>
         <Text bold>{currency.symbol}</Text>
@@ -215,8 +214,7 @@ export default function CurrencyList({
       itemData={itemData}
       itemCount={itemData.length}
       itemSize={56}
-      itemKey={itemKey}
-    >
+      itemKey={itemKey}>
       {Row}
     </FixedSizeList>
   )

@@ -75,14 +75,12 @@ export default function Swap() {
 
         <ModalV2
           isOpen={isMobile && isSwapHotTokenDisplay && isChartSupported}
-          onDismiss={() => setIsSwapHotTokenDisplay(false)}
-        >
+          onDismiss={() => setIsSwapHotTokenDisplay(false)}>
           <Modal
             style={{ padding: 0 }}
             title={t('Top Token')}
             onDismiss={() => setIsSwapHotTokenDisplay(false)}
-            bodyPadding="0px"
-          >
+            bodyPadding="0px">
             <HotTokenList />
           </Modal>
         </ModalV2>

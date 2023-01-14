@@ -21,9 +21,9 @@ export const filterProposalsByType = (proposals: Proposal[], proposalType: Propo
   if (proposals) {
     switch (proposalType) {
       case ProposalType.COMMUNITY:
-        return proposals.filter((proposal) => !isCoreProposal(proposal))
+        return proposals.filter(proposal => !isCoreProposal(proposal))
       case ProposalType.CORE:
-        return proposals.filter((proposal) => isCoreProposal(proposal))
+        return proposals.filter(proposal => isCoreProposal(proposal))
       case ProposalType.ALL:
       default:
         return proposals
@@ -34,7 +34,7 @@ export const filterProposalsByType = (proposals: Proposal[], proposalType: Propo
 }
 
 export const filterProposalsByState = (proposals: Proposal[], state: ProposalState) => {
-  return proposals.filter((proposal) => proposal.state === state)
+  return proposals.filter(proposal => proposal.state === state)
 }
 
 export interface Message {
@@ -199,7 +199,7 @@ export const getVotingPower = async (
 
 export const calculateVoteResults = (votes: Vote[]): { [key: string]: Vote[] } => {
   if (votes) {
-    const result = groupBy(votes, (vote) => vote.proposal.choices[vote.choice - 1])
+    const result = groupBy(votes, vote => vote.proposal.choices[vote.choice - 1])
     return result
   }
   return {}
@@ -227,7 +227,7 @@ export async function getVotingPowerByCakeStrategy(voters: string[], blockNumber
   const strategyResponse = await getScores(PANCAKE_SPACE, STRATEGIES, NETWORK, voters, blockNumber)
 
   const result = fromPairs(
-    voters.map((voter) => {
+    voters.map(voter => {
       const defaultTotal = strategyResponse.reduce(
         (total, scoreList) => total + (scoreList[voter] ? scoreList[voter] : 0),
         0,

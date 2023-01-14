@@ -9,7 +9,7 @@ import { useSessionChainId } from './useSessionChainId'
 
 const queryChainIdAtom = atom(-1) // -1 unload, 0 no chainId on query
 
-queryChainIdAtom.onMount = (set) => {
+queryChainIdAtom.onMount = set => {
   const params = new URL(window.location.href).searchParams
   let chainId
   // chain has higher priority than chainId

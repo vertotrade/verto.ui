@@ -190,8 +190,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
             mx="2px"
             p="4px 16px"
             variant="tertiary"
-            onClick={() => setPercentageValue(0.25)}
-          >
+            onClick={() => setPercentageValue(0.25)}>
             25%
           </Button>
           <Button
@@ -200,8 +199,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
             mx="2px"
             p="4px 16px"
             variant="tertiary"
-            onClick={() => setPercentageValue(0.5)}
-          >
+            onClick={() => setPercentageValue(0.5)}>
             50%
           </Button>
           <Button
@@ -210,8 +208,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
             mx="2px"
             p="4px 16px"
             variant="tertiary"
-            onClick={() => setPercentageValue(0.75)}
-          >
+            onClick={() => setPercentageValue(0.75)}>
             75%
           </Button>
           <Button
@@ -220,8 +217,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
             mx="2px"
             p="4px 16px"
             variant="tertiary"
-            onClick={() => setPercentageValue(1)}
-          >
+            onClick={() => setPercentageValue(1)}>
             <Text small color="currentColor" textTransform="uppercase">
               {t('Max')}
             </Text>

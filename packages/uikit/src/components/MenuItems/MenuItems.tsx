@@ -20,12 +20,7 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
         const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
         const Icon = icon;
         return (
-          <DropdownMenu
-            key={`${label}#${href}`}
-            items={menuItems}
-            activeItem={activeSubItem}
-            isDisabled={disabled}
-          >
+          <DropdownMenu key={`${label}#${href}`} items={menuItems} activeItem={activeSubItem} isDisabled={disabled}>
             <MenuItem {...linkProps} isActive={isActive} statusColor={statusColor} isDisabled={disabled}>
               {label || (icon && createElement(Icon as any, { color: isActive ? "secondary" : "textSubtle" }))}
             </MenuItem>

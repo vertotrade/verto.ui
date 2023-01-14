@@ -51,8 +51,8 @@ export const usePollFarmsV1WithUserData = () => {
   const { address: account } = useAccount()
 
   useSlowRefreshEffect(() => {
-    getFarmConfig(ChainId.BSC).then((farmsConfig) => {
-      const pids = farmsConfig.filter((farmToFetch) => farmToFetch.v1pid).map((farmToFetch) => farmToFetch.v1pid)
+    getFarmConfig(ChainId.BSC).then(farmsConfig => {
+      const pids = farmsConfig.filter(farmToFetch => farmToFetch.v1pid).map(farmToFetch => farmToFetch.v1pid)
 
       dispatch(fetchFarmsPublicDataAsync(pids))
 
@@ -93,12 +93,12 @@ export const useFarmsPoolLength = (): number => {
 }
 
 export const useFarmFromPid = (pid: number): DeserializedFarm => {
-  const farm = useSelector((state: State) => state.farmsV1.data.find((f) => f.v1pid === pid))
+  const farm = useSelector((state: State) => state.farmsV1.data.find(f => f.v1pid === pid))
   return deserializeFarm(farm)
 }
 
 export const useFarmFromLpSymbol = (lpSymbol: string): DeserializedFarm => {
-  const farm = useSelector((state: State) => state.farmsV1.data.find((f) => f.lpSymbol === lpSymbol))
+  const farm = useSelector((state: State) => state.farmsV1.data.find(f => f.lpSymbol === lpSymbol))
   return deserializeFarm(farm)
 }
 

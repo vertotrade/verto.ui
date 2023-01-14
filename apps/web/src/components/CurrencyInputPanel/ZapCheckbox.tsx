@@ -11,7 +11,7 @@ const ZapCheckBoxWrapper = styled.label`
   width: 40px;
 `
 
-export const ZapCheckbox = (props) => {
+export const ZapCheckbox = props => {
   return (
     <ZapCheckBoxWrapper>
       <Checkbox scale="sm" {...props} />

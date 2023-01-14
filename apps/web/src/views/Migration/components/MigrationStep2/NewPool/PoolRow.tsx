@@ -35,7 +35,7 @@ const PoolRow: React.FC<React.PropsWithChildren<PoolRowProps>> = ({ pool, accoun
   const { totalCakeInVault } = useVaultPoolByKey(pool.vaultKey)
 
   const toggleExpanded = () => {
-    setExpanded((prev) => !prev)
+    setExpanded(prev => !prev)
   }
 
   return (

@@ -91,7 +91,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
   }, [isFirstTime, native, t])
 
   const isStakeReady = useMemo(() => {
-    return ['history', 'archived'].some((item) => router.pathname.includes(item)) || pendingFarm.length > 0
+    return ['history', 'archived'].some(item => router.pathname.includes(item)) || pendingFarm.length > 0
   }, [pendingFarm, router])
 
   const handleStake = async (amount: string) => {
@@ -226,7 +226,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
     }
   }, [onApprove, t, toastSuccess, fetchWithCatchTxError, onDone])
 
-  const bCakeCalculatorSlot = (calculatorBalance) => (
+  const bCakeCalculatorSlot = calculatorBalance => (
     <BCakeCalculator
       targetInputBalance={calculatorBalance}
       earningTokenPrice={cakePrice.toNumber()}

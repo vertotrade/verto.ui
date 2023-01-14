@@ -26,12 +26,12 @@ export default function useProxyStakedActions(pid, lpContract) {
   const { onApprove } = useApproveBoostProxyFarm(lpContract, proxyAddress)
 
   const onStake = useCallback(
-    (value) => stakeFarm(bCakeProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
+    value => stakeFarm(bCakeProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
     [bCakeProxy, pid, gasPrice],
   )
 
   const onUnstake = useCallback(
-    (value) => unstakeFarm(bCakeProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
+    value => unstakeFarm(bCakeProxy, pid, value, gasPrice, BOOSTED_FARM_GAS_LIMIT),
     [bCakeProxy, pid, gasPrice],
   )
 

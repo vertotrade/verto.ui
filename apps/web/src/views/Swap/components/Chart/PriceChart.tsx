@@ -41,7 +41,7 @@ const PriceChart = ({
   currentSwapPrice,
 }) => {
   // const { isDesktop } = useMatchBreakpoints()
-  const toggleExpanded = () => setIsChartExpanded((currentIsExpanded) => !currentIsExpanded)
+  const toggleExpanded = () => setIsChartExpanded(currentIsExpanded => !currentIsExpanded)
   const [chartView] = useExchangeChartViewManager()
   // const [chartView, setChartView] = useExchangeChartViewManager()
   // const [twChartSymbol, setTwChartSymbol] = useState('')
@@ -57,8 +57,7 @@ const PriceChart = ({
       overflow={chartView === ChartViewMode.TRADING_VIEW ? 'hidden' : 'unset'}
       $isDark={isDark}
       $isExpanded={isChartExpanded}
-      $isFullWidthContainer={isFullWidthContainer}
-    >
+      $isFullWidthContainer={isFullWidthContainer}>
       <Flex justifyContent="space-between" px="24px">
         <Flex alignItems="center">
           {outputCurrency ? (

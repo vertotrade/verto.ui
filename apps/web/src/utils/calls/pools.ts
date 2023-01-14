@@ -14,8 +14,8 @@ const multicallAddress = getMulticallAddress()
  */
 export const getActivePools = async (block?: number) => {
   const eligiblePools = poolsConfig
-    .filter((pool) => pool.sousId !== 0)
-    .filter((pool) => pool.isFinished === false || pool.isFinished === undefined)
+    .filter(pool => pool.sousId !== 0)
+    .filter(pool => pool.isFinished === false || pool.isFinished === undefined)
   const startBlockCalls = eligiblePools.map(({ contractAddress }) => ({
     abi: sousChefV2,
     address: getAddress(contractAddress, 56),

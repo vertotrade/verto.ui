@@ -35,7 +35,7 @@ export async function getPairs(currencyPairs: CurrencyPair[], { provider, chainI
   const pairAddresses = tokens.map(getPairAddress)
 
   const { multicallv2 } = createMulticall(provider)
-  const reserveCalls: Call[] = pairAddresses.map((address) => ({
+  const reserveCalls: Call[] = pairAddresses.map(address => ({
     address: address as string,
     name: 'getReserves',
     params: [],

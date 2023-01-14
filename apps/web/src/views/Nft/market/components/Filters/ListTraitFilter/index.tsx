@@ -65,7 +65,7 @@ export const ListTraitFilter: React.FC<React.PropsWithChildren<ListTraitFilterPr
 
   const filteredItems =
     query && query.length > 1
-      ? items.filter((item) => item.label.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      ? items.filter(item => item.label.toLowerCase().indexOf(query.toLowerCase()) !== -1)
       : items
 
   const handleClearItem = () => {
@@ -94,7 +94,7 @@ export const ListTraitFilter: React.FC<React.PropsWithChildren<ListTraitFilterPr
   }
 
   const toggleSort = (newOrderKey: string) => () => {
-    setOrderState((prevOrderDir) => {
+    setOrderState(prevOrderDir => {
       if (prevOrderDir.orderKey !== newOrderKey) {
         return {
           orderKey: newOrderKey,
@@ -139,14 +139,12 @@ export const ListTraitFilter: React.FC<React.PropsWithChildren<ListTraitFilterPr
               onClick={handleMenuClick}
               variant={isTraitSelected ? 'subtle' : 'light'}
               scale="sm"
-              hasItem={isTraitSelected}
-            >
+              hasItem={isTraitSelected}>
               {title}
             </TriggerButton>
           }
           isOpen={isOpen}
-          options={{ placement: 'bottom' }}
-        >
+          options={{ placement: 'bottom' }}>
           <Box maxWidth="375px" ref={menuRef}>
             <SearchWrapper alignItems="center" p="16px">
               <InputGroup startIcon={<SearchIcon color="textSubtle" />}>
@@ -175,7 +173,7 @@ export const ListTraitFilter: React.FC<React.PropsWithChildren<ListTraitFilterPr
             </Flex>
             <Box height="240px" overflowY="auto">
               {filteredItems.length > 0 ? (
-                orderBy(filteredItems, orderKey, orderDir).map((filteredItem) => {
+                orderBy(filteredItems, orderKey, orderDir).map(filteredItem => {
                   const handleSelect = () => handleItemSelect(filteredItem)
                   const isItemSelected = traitFilter ? traitFilter.value === filteredItem.attr.value : false
 

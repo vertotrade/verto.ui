@@ -40,8 +40,7 @@ const RiskMessage: React.FC<RiskMessageProps> = ({ currency, riskTokenInfo }) =>
               mt="8px"
               ml="auto"
               external
-              href="https://hashdit.github.io/hashdit/docs/risk-level-description/"
-            >
+              href="https://hashdit.github.io/hashdit/docs/risk-level-description/">
               {t('Learn More')}
             </Link>
           </Flex>

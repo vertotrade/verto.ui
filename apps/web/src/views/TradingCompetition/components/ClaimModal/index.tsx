@@ -105,8 +105,7 @@ const ClaimModal: React.FC<React.PropsWithChildren<CompetitionProps>> = ({
           onClick={handleClaimClick}
           disabled={isConfirming}
           isLoading={isConfirming}
-          endIcon={isConfirming ? <AutoRenewIcon spin color="currentColor" /> : null}
-        >
+          endIcon={isConfirming ? <AutoRenewIcon spin color="currentColor" /> : null}>
           {t('Confirm')}
         </Button>
         <Text mt="24px" fontSize="12px" color="textSubtle" textAlign="center">

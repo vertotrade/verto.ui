@@ -76,8 +76,7 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
     <Button
       onClick={balance.isEqualTo(0) ? onPresentGetTokenModal : onPresentContributeModal}
       width="100%"
-      disabled={isDisabled}
-    >
+      disabled={isDisabled}>
       {/* TODO: Text should support another token. */}
       {isMaxCommitted && status === 'live' ? t('Max. Committed') : t('Commit CAKE')}
     </Button>

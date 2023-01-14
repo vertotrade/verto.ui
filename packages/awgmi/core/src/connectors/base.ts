@@ -64,6 +64,6 @@ export abstract class Connector<Provider = any, Options = any> extends EventEmit
   abstract signMessage(payload: SignMessagePayload): Promise<SignMessageResponse>
 
   isChainUnsupported(networkName: string) {
-    return !this.chains.some((x) => equalsIgnoreCase(x.name, networkName))
+    return !this.chains.some(x => equalsIgnoreCase(x.name, networkName))
   }
 }

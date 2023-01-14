@@ -188,7 +188,7 @@ export const BCakeMigrateModal: React.FC<BCakeMigrateModalProps> = ({
 
   useEffect(() => {
     if (!bCakeProxy) return
-    bCakeProxy.lpApproved(lpContract.address).then((enabled) => {
+    bCakeProxy.lpApproved(lpContract.address).then(enabled => {
       setIsApproved(enabled)
     })
   }, [lpContract, bCakeProxy])
@@ -244,8 +244,7 @@ export const BCakeMigrateModal: React.FC<BCakeMigrateModalProps> = ({
             <StepperWrapper
               key={step}
               active={step === activatedState.toString()}
-              finished={parseInt(step) < parseInt(activatedState.toString())}
-            >
+              finished={parseInt(step) < parseInt(activatedState.toString())}>
               {step === activatedState.toString() ? (
                 <LogoIcon width={22} />
               ) : (
@@ -273,8 +272,7 @@ export const BCakeMigrateModal: React.FC<BCakeMigrateModalProps> = ({
           onClick={onStepChange}
           isLoading={isLoading || loading}
           width="100%"
-          endIcon={isLoading || loading ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-        >
+          endIcon={isLoading || loading ? <AutoRenewIcon spin color="currentColor" /> : undefined}>
           {isLoading || loading ? t('Confirming...') : t(steps[activatedState])}
         </Button>
       </FooterBox>

@@ -95,7 +95,7 @@ const CompositeImage: React.FC<React.PropsWithChildren<ComponentProps>> = ({
         maxHeight={maxHeight}
         loading="lazy"
         decoding="async"
-        onError={(e) => {
+        onError={e => {
           const fallbackSrcSet = getSrcSet(path, attributes[0].src)
           if (e.currentTarget.srcset !== '' && e.currentTarget.srcset !== fallbackSrcSet) {
             // eslint-disable-next-line no-param-reassign
@@ -111,12 +111,12 @@ const CompositeImage: React.FC<React.PropsWithChildren<ComponentProps>> = ({
           }
         }}
       />
-      {attributes.map((image) => (
+      {attributes.map(image => (
         <ImageWrapper key={image.src}>
           <img
             srcSet={getSrcSet(path, image.src, '.webp')}
             alt={image.alt}
-            onError={(e) => {
+            onError={e => {
               const fallbackSrcSet = getSrcSet(path, image.src)
               if (e.currentTarget.srcset !== '' && e.currentTarget.srcset !== fallbackSrcSet) {
                 // eslint-disable-next-line no-param-reassign

@@ -41,7 +41,7 @@ const AStyle = styled.a`
   word-break: break-all;
 `
 
-const Title = (props) => {
+const Title = props => {
   return <Heading as="h4" scale="lg" my="16px" {...props} />
 }
 
@@ -52,7 +52,7 @@ const markdownComponents: Partial<NormalComponents & SpecialComponents> = {
   h4: Title,
   h5: Title,
   h6: Title,
-  p: (props) => {
+  p: props => {
     // @ts-ignore
     return <Text as="p" my="16px" {...props} />
   },
@@ -63,10 +63,10 @@ const markdownComponents: Partial<NormalComponents & SpecialComponents> = {
       </TableBox>
     )
   },
-  ol: (props) => {
+  ol: props => {
     return <ThemedComponent as="ol" {...props} />
   },
-  ul: (props) => {
+  ul: props => {
     return <ThemedComponent as="ul" {...props} />
   },
   pre: Pre,

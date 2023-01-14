@@ -4,7 +4,7 @@ import { multicallv2 } from '../utils/multicall'
 import { ifosConfig } from '../config/constants'
 import { Ifo } from '../config/constants/types'
 
-const activeIfo = ifosConfig.find((ifo) => ifo.isActive)
+const activeIfo = ifosConfig.find(ifo => ifo.isActive)
 
 export const useActiveIfoWithBlocks = (): Ifo & { startBlock: number; endBlock: number } => {
   const { data: currentIfoBlocks = { startBlock: 0, endBlock: 0 } } = useSWRImmutable(

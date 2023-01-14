@@ -182,8 +182,7 @@ const CardUserInfo: React.FC<React.PropsWithChildren<CardUserInfoProps>> = ({
                   title={t('Rank in team').toUpperCase()}
                   footer={userLeaderboardInformation ? t('#%global% Overall', { global: global.toLocaleString() }) : ''}
                   mr={[0, null, null, '8px']}
-                  mb={['8px', null, null, 0]}
-                >
+                  mb={['8px', null, null, 0]}>
                   {!userLeaderboardInformation ? (
                     <Skeleton height="26px" width="110px" />
                   ) : (
@@ -202,8 +201,7 @@ const CardUserInfo: React.FC<React.PropsWithChildren<CardUserInfoProps>> = ({
                 footer={t('Since start')}
                 // Add responsive mr if competition is LIVE
                 mr={currentPhase.state !== REGISTRATION ? [0, null, null, '8px'] : 0}
-                mb={['8px', null, null, 0]}
-              >
+                mb={['8px', null, null, 0]}>
                 {!userLeaderboardInformation ? (
                   <Skeleton height="26px" width="110px" />
                 ) : (
@@ -223,8 +221,7 @@ const CardUserInfo: React.FC<React.PropsWithChildren<CardUserInfoProps>> = ({
                   title={t('Your tier: gold').toUpperCase()}
                   footer={t('Love, The Chefs x')}
                   currentMedal={medal.current}
-                  hideArrow
-                >
+                  hideArrow>
                   <Heading scale="lg">{t('HECK YEAH!')}</Heading>
                 </NextRankBox>
               ) : (
@@ -233,8 +230,7 @@ const CardUserInfo: React.FC<React.PropsWithChildren<CardUserInfoProps>> = ({
                   title={`${t('Next tier').toUpperCase()}: ${nextTier.color}`}
                   footer={t('to become #%rank% in team', { rank: nextTier.rank })}
                   currentMedal={medal.current}
-                  nextMedal={medal.next}
-                >
+                  nextMedal={medal.next}>
                   <Heading scale="lg">+${userLeaderboardInformation && localiseTradingVolume(nextRank)}</Heading>
                 </NextRankBox>
               ))}

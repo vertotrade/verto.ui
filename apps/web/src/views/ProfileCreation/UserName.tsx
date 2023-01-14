@@ -87,7 +87,7 @@ const UserName: React.FC<React.PropsWithChildren> = () => {
   const debouncedUsernameToCheck = useDebounce(usernameToCheck, 200)
 
   useEffect(() => {
-    const fetchUsernameToCheck = async (abortSignal) => {
+    const fetchUsernameToCheck = async abortSignal => {
       try {
         setIsLoading(true)
         if (!debouncedUsernameToCheck) {
@@ -263,8 +263,7 @@ const UserName: React.FC<React.PropsWithChildren> = () => {
       <Button
         onClick={onPresentConfirmProfileCreation}
         disabled={!isValid || !isUserCreated}
-        id="completeProfileCreation"
-      >
+        id="completeProfileCreation">
         {t('Complete Profile')}
       </Button>
       {!hasMinimumCakeRequired && (

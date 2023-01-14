@@ -54,7 +54,7 @@ function ImportList({ listURL, list, onImport }: ImportProps) {
         dispatch(enableList(listURL))
         onImport()
       })
-      .catch((error) => {
+      .catch(error => {
         setAddError(error.message)
         dispatch(removeList(listURL))
       })
@@ -83,8 +83,7 @@ function ImportList({ listURL, list, onImport }: ImportProps) {
                     external
                     ellipsis
                     maxWidth="90%"
-                    href={`https://tokenlists.org/token-list?url=${listURL}`}
-                  >
+                    href={`https://tokenlists.org/token-list?url=${listURL}`}>
                     {listURL}
                   </Link>
                 </AutoColumn>

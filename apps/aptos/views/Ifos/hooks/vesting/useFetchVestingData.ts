@@ -9,7 +9,7 @@ const useFetchVestingData = () => {
 
   const filterVestingIfos = useMemo(
     () =>
-      allData.filter((ifo) => {
+      allData.filter(ifo => {
         const { userVestingData } = ifo
 
         const poolUnlimitedUserInfo = userVestingData[PoolIds.poolUnlimited]

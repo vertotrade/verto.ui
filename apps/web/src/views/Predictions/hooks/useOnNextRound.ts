@@ -24,7 +24,7 @@ const useOnNextRound = () => {
       previousEpoch &&
       (currentEpoch !== previousEpoch || roundsEpochsString !== previousRoundsEpochsString)
     ) {
-      const currentEpochIndex = rounds.findIndex((round) => round.epoch === currentEpoch)
+      const currentEpochIndex = rounds.findIndex(round => round.epoch === currentEpoch)
 
       // Slide to the current LIVE round which is always the one before the current round
       if (currentEpoch !== previousEpoch) {

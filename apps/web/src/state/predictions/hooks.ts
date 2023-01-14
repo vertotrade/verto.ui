@@ -33,7 +33,7 @@ export const useGetBetByEpoch = (account: string, epoch: number) => {
   return useSelector(getBetByEpochSelector)
 }
 
-export const useGetIsClaimable = (epoch) => {
+export const useGetIsClaimable = epoch => {
   const getIsClaimableSelector = useMemo(() => makeGetIsClaimableSelector(epoch), [epoch])
   return useSelector(getIsClaimableSelector)
 }

@@ -35,7 +35,7 @@ const ChangeProfilePicPage: React.FC<React.PropsWithChildren<ChangeProfilePicPag
   const profileContract = useProfileContract()
   const { toastSuccess } = useToast()
   const { callWithGasPrice } = useCallWithGasPrice()
-  const nftsInWallet = useMemo(() => nfts.filter((nft) => nft.location === NftLocation.WALLET), [nfts])
+  const nftsInWallet = useMemo(() => nfts.filter(nft => nft.location === NftLocation.WALLET), [nfts])
 
   const { data } = useApprovalNfts(nftsInWallet)
 
@@ -80,7 +80,7 @@ const ChangeProfilePicPage: React.FC<React.PropsWithChildren<ChangeProfilePicPag
         <Skeleton width="100%" height="80px" mb="16px" />
       ) : nftsInWallet.length > 0 ? (
         <Box maxHeight="300px" overflowY="scroll">
-          {nftsInWallet.map((walletNft) => {
+          {nftsInWallet.map(walletNft => {
             const handleChange = () => {
               setSelectedNft({
                 tokenId: walletNft.tokenId,
@@ -95,8 +95,7 @@ const ChangeProfilePicPage: React.FC<React.PropsWithChildren<ChangeProfilePicPag
                 image={walletNft.image.thumbnail}
                 isChecked={walletNft.tokenId === selectedNft.tokenId}
                 onChange={handleChange}
-                disabled={isApproving || isConfirming || isConfirmed}
-              >
+                disabled={isApproving || isConfirming || isConfirmed}>
                 <Text bold>{walletNft.name}</Text>
               </SelectionCard>
             )

@@ -87,21 +87,18 @@ export default function ImportRow({
         if (isActive) {
           onCurrencySelect?.(token)
         }
-      }}
-    >
+      }}>
       <CurrencyLogo currency={token} size={isMobile ? '20px' : '24px'} style={{ opacity: dim ? '0.6' : '1' }} />
       <AutoColumn gap="4px" style={{ opacity: dim ? '0.6' : '1' }}>
         <AutoRow>
           <Flex
             alignItems={isMobile && token.symbol.length > 14 ? undefined : 'center'}
-            flexDirection={isMobile && token.symbol.length > 14 ? 'column' : 'row'}
-          >
+            flexDirection={isMobile && token.symbol.length > 14 ? 'column' : 'row'}>
             <Text mr="8px">{token.symbol}</Text>
             <Text color="textDisabled">
               <NameOverflow
                 style={!isMobile && token.symbol.length > 14 ? { maxWidth: '58px' } : {}}
-                title={token.name}
-              >
+                title={token.name}>
                 {token.name}
               </NameOverflow>
             </Text>
@@ -125,8 +122,7 @@ export default function ImportRow({
               setImportToken(token)
             }
             showImportView()
-          }}
-        >
+          }}>
           {t('Import')}
         </Button>
       ) : (

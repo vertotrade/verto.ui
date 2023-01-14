@@ -62,14 +62,12 @@ const ResultAvatar: React.FC<React.PropsWithChildren<ResultAvatarProps>> = ({ us
           </UsernameWrapper>
           <AvatarWrapper
             width={['32px', null, null, null, null, '40px']}
-            height={['32px', null, null, null, null, '40px']}
-          >
+            height={['32px', null, null, null, null, '40px']}>
             <ProfileAvatar src={profile?.nft?.image?.thumbnail} height={40} width={40} />
           </AvatarWrapper>
         </Flex>
       }
-      options={{ placement: 'bottom-start' }}
-    >
+      options={{ placement: 'bottom-start' }}>
       <SubMenuItem onClick={onPresentWalletStatsModal}>{t('View Stats')}</SubMenuItem>
       <SubMenuItem as={Link} href={getBlockExploreLink(user.id, 'address')} bold={false} color="text" external>
         {t('View on BscScan')}

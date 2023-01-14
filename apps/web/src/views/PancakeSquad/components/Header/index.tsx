@@ -59,8 +59,7 @@ const PancakeSquadHeader: React.FC<React.PropsWithChildren<PancakeSquadHeaderTyp
       pt={['16px', null, null, '40px']}
       px={['16px', null, null, '80px']}
       flexDirection="column"
-      alignItems="center"
-    >
+      alignItems="center">
       <Flex width="100%">
         <Link href="/nfts" passHref>
           <Text as="a" color="primary" bold>{`< ${t('NFT Marketplace')}`}</Text>

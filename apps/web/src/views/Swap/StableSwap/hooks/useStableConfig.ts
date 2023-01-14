@@ -32,7 +32,7 @@ function useFindStablePair({ tokenA, tokenB }) {
 
   return useMemo(
     () =>
-      stableFarms.find((stablePair) => {
+      stableFarms.find(stablePair => {
         return (
           tokenA &&
           tokenB &&
@@ -57,7 +57,7 @@ export function useLPTokensWithBalanceByAccount(account) {
     [lpTokens, stableBalances],
   )
 
-  return lpTokensWithBalance.map((lpToken) => ({
+  return lpTokensWithBalance.map(lpToken => ({
     ...lpToken,
     tokenAmounts: [],
     reserve0: CurrencyAmount.fromRawAmount(lpToken?.token0, '0'),

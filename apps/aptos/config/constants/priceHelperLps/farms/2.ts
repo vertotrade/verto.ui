@@ -12,7 +12,7 @@ const priceHelperLps: Omit<SerializedFarmConfig, 'pid'>[] = [
     quoteToken: APT[ChainId.TESTNET],
     token: L0_USDC[ChainId.TESTNET],
   },
-].map((p) => ({
+].map(p => ({
   ...p,
   token: Pair.sortToken(p.token, p.quoteToken)[1].serialize,
   quoteToken: Pair.sortToken(p.token, p.quoteToken)[0].serialize,

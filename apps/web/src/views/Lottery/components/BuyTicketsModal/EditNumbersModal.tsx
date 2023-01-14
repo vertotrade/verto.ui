@@ -44,8 +44,7 @@ const EditNumbersModal: React.FC<
       title={t('Edit numbers')}
       onDismiss={onDismiss}
       headerBackground={theme.colors.gradientCardHeader}
-      onBack={onDismiss}
-    >
+      onBack={onDismiss}>
       <ScrollableContainer>
         <Flex justifyContent="space-between" mb="16px">
           <Text color="textSubtle">{t('Total cost')}:</Text>
@@ -59,7 +58,7 @@ const EditNumbersModal: React.FC<
         <Button disabled={isConfirming} mb="16px" variant="secondary" width="100%" height="32px" onClick={randomize}>
           {t('Randomize')}
         </Button>
-        {tickets.map((ticket) => (
+        {tickets.map(ticket => (
           <TicketInput
             key={ticket.id}
             ticket={ticket}
@@ -74,8 +73,7 @@ const EditNumbersModal: React.FC<
           id="lotteryBuyEdited"
           disabled={!allComplete || isConfirming}
           endIcon={isConfirming ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-          onClick={handleOnConfirm}
-        >
+          onClick={handleOnConfirm}>
           {isConfirming ? t('Confirming') : t('Confirm and buy')}
         </Button>
         <Button mt="8px" variant={isConfirming ? 'secondary' : 'text'} disabled={isConfirming} onClick={onDismiss}>

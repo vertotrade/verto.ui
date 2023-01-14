@@ -42,7 +42,7 @@ const HarvestCard = () => {
   const gasPrice = useGasPrice()
   const earningsBusd = new BigNumber(farmEarningsSum).multipliedBy(cakePriceBusd)
   const numTotalToCollect = farmsWithStakedBalance.length
-  const numFarmsToCollect = farmsWithStakedBalance.filter((value) => value.pid !== 0).length
+  const numFarmsToCollect = farmsWithStakedBalance.filter(value => value.pid !== 0).length
   const hasCakePoolToCollect = numTotalToCollect - numFarmsToCollect > 0
 
   const earningsText = getEarningsText(numFarmsToCollect, hasCakePoolToCollect, earningsBusd, t)
@@ -113,8 +113,7 @@ const HarvestCard = () => {
               isLoading={pendingTx}
               endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
               disabled={pendingTx}
-              onClick={harvestAllFarms}
-            >
+              onClick={harvestAllFarms}>
               <Text color="invertedContrast" bold>
                 {pendingTx ? t('Harvesting') : t('Harvest all')}
               </Text>

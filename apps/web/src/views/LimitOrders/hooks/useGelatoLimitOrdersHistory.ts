@@ -41,13 +41,11 @@ async function syncOrderToLocalStorage({
   const newOrders = orders.filter((order: Order) => !lsOrdersHashSet.has(hashOrder(order)))
   saveOrders(chainId, account, newOrders)
 
-  const typeOrdersLS = syncStatuses
-    ? allOrdersLS.filter((order) => syncStatuses.some((type) => type === order.status))
-    : []
+  const typeOrdersLS = syncStatuses ? allOrdersLS.filter(order => syncStatuses.some(type => type === order.status)) : []
 
   const results = await Promise.all(
-    typeOrdersLS.map((confOrder) => {
-      const orderFetched = orders.find((order) => confOrder.id.toLowerCase() === order.id.toLowerCase())
+    typeOrdersLS.map(confOrder => {
+      const orderFetched = orders.find(order => confOrder.id.toLowerCase() === order.id.toLowerCase())
       return !orderFetched
         ? gelatoLimitOrders
           ? Promise.allSettled([Promise.resolve(confOrder), gelatoLimitOrders.getOrder(confOrder.id)])
@@ -56,7 +54,7 @@ async function syncOrderToLocalStorage({
     }),
   )
 
-  results.forEach((result) => {
+  results.forEach(result => {
     const [confOrderPromiseResult, graphOrderPromiseResult] = result as PromiseSettledResult<Order>[]
     if (confOrderPromiseResult.status === 'fulfilled' && graphOrderPromiseResult.status === 'fulfilled') {
       if (isOrderUpdated(confOrderPromiseResult.value, graphOrderPromiseResult.value)) {
@@ -94,7 +92,7 @@ const useOpenOrders = (turnOn: boolean): Order[] => {
       }
 
       const openOrdersLS = getLSOrders(chainId, account).filter(
-        (order) => order.status === LimitOrderStatus.OPEN && !order.isExpired,
+        order => order.status === LimitOrderStatus.OPEN && !order.isExpired,
       )
 
       const pendingOrdersLS = getLSOrders(chainId, account, true)
@@ -102,11 +100,11 @@ const useOpenOrders = (turnOn: boolean): Order[] => {
       return [
         ...openOrdersLS.filter((order: Order) => {
           const orderCancelled = pendingOrdersLS
-            .filter((pendingOrder) => pendingOrder.status === LimitOrderStatus.CANCELLED)
-            .find((pendingOrder) => pendingOrder.id.toLowerCase() === order.id.toLowerCase())
+            .filter(pendingOrder => pendingOrder.status === LimitOrderStatus.CANCELLED)
+            .find(pendingOrder => pendingOrder.id.toLowerCase() === order.id.toLowerCase())
           return !orderCancelled
         }),
-        ...pendingOrdersLS.filter((order) => order.status === LimitOrderStatus.OPEN),
+        ...pendingOrdersLS.filter(order => order.status === LimitOrderStatus.OPEN),
       ].sort(newOrdersFirst)
     },
     {
@@ -143,16 +141,14 @@ const useHistoryOrders = (turnOn: boolean): Order[] => {
         console.error('Error fetching history orders from subgraph', e)
       }
 
-      const executedOrdersLS = getLSOrders(chainId, account).filter(
-        (order) => order.status === LimitOrderStatus.EXECUTED,
-      )
+      const executedOrdersLS = getLSOrders(chainId, account).filter(order => order.status === LimitOrderStatus.EXECUTED)
 
       const cancelledOrdersLS = getLSOrders(chainId, account).filter(
-        (order) => order.status === LimitOrderStatus.CANCELLED,
+        order => order.status === LimitOrderStatus.CANCELLED,
       )
 
       const pendingCancelledOrdersLS = getLSOrders(chainId, account, true).filter(
-        (order) => order.status === LimitOrderStatus.CANCELLED,
+        order => order.status === LimitOrderStatus.CANCELLED,
       )
 
       return [...pendingCancelledOrdersLS, ...cancelledOrdersLS, ...executedOrdersLS].sort(newOrdersFirst)
@@ -186,7 +182,7 @@ const useExpiredOrders = (turnOn: boolean): Order[] => {
       }
 
       const expiredOrdersLS = getLSOrders(chainId, account).filter(
-        (order) => order.isExpired && order.status === LimitOrderStatus.OPEN,
+        order => order.isExpired && order.status === LimitOrderStatus.OPEN,
       )
 
       return expiredOrdersLS.sort(newOrdersFirst)
@@ -218,7 +214,7 @@ export default function useGelatoLimitOrdersHistory(orderCategory: ORDER_CATEGOR
   }, [orderCategory, openOrders, historyOrders, expiredOrders])
 
   return useMemo(
-    () => (Array.isArray(orders) ? orderBy(orders, (order) => parseInt(order.createdAt), 'desc') : orders),
+    () => (Array.isArray(orders) ? orderBy(orders, order => parseInt(order.createdAt), 'desc') : orders),
     [orders],
   )
 }

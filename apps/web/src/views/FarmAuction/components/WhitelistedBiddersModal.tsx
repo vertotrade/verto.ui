@@ -76,7 +76,7 @@ const WhitelistedBiddersModal: React.FC<React.PropsWithChildren<WhitelistedBidde
     : []
 
   const modalContent = bidders ? (
-    filteredBidders.map((bidder) => <AddressRow key={bidder.account} bidder={bidder} isMobile={isMobile} />)
+    filteredBidders.map(bidder => <AddressRow key={bidder.account} bidder={bidder} isMobile={isMobile} />)
   ) : (
     <Flex justifyContent="center" alignItems="center" py="24px">
       <Spinner />
@@ -88,8 +88,7 @@ const WhitelistedBiddersModal: React.FC<React.PropsWithChildren<WhitelistedBidde
       p="0"
       title={t('All Whitelisted Project Wallets')}
       onDismiss={onDismiss}
-      headerBackground={theme.colors.gradientCardHeader}
-    >
+      headerBackground={theme.colors.gradientCardHeader}>
       <InputContainer py="16px" px="24px">
         <Input placeholder={t('Search address or token')} value={searchTerm} onChange={handleSearchChange} />
       </InputContainer>

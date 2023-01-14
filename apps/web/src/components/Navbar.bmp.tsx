@@ -55,8 +55,7 @@ const Navbar = ({ height = 44 }) => {
           background: theme.colors.backgroundAlt,
           paddingTop: `${top}px`,
           boxSizing: 'content-box',
-        }}
-      >
+        }}>
         <Wallet />
         <Image height={20} width={130} src={isDark ? title.dark : title.light} />
       </Box>

@@ -74,7 +74,7 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
             </Text>
             <Balance small bold decimals={3} value={cakeAsNumberBalance} />
           </StyledTokenContent>
-          <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} />
+          <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded(prev => !prev)} />
         </Flex>
       </CardHeader>
       {isExpanded && (

@@ -18,7 +18,7 @@ export const makeChoice = (): Choice => ({ id: uniqueId(), value: '' })
 
 const Choices: React.FC<React.PropsWithChildren<ChoicesProps>> = ({ choices, onChange }) => {
   const { t } = useTranslation()
-  const hasMinimumChoices = choices.filter((choice) => choice.value.length > 0).length >= MINIMUM_CHOICES
+  const hasMinimumChoices = choices.filter(choice => choice.value.length > 0).length >= MINIMUM_CHOICES
 
   const addChoice = () => {
     onChange([...choices, makeChoice()])
@@ -35,7 +35,7 @@ const Choices: React.FC<React.PropsWithChildren<ChoicesProps>> = ({ choices, onC
         {choices.map(({ id, value }, index) => {
           const handleTextInput = (newValue: string) => {
             const newChoices = [...choices]
-            const choiceIndex = newChoices.findIndex((newChoice) => newChoice.id === id)
+            const choiceIndex = newChoices.findIndex(newChoice => newChoice.id === id)
 
             newChoices[choiceIndex].value = newValue
 
@@ -43,7 +43,7 @@ const Choices: React.FC<React.PropsWithChildren<ChoicesProps>> = ({ choices, onC
           }
 
           const handleRemove = () => {
-            onChange(choices.filter((newPrevChoice) => newPrevChoice.id !== id))
+            onChange(choices.filter(newPrevChoice => newPrevChoice.id !== id))
           }
 
           return (

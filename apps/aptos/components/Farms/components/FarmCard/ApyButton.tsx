@@ -47,7 +47,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
     watch: true,
     address: account,
     coin: lpAddress,
-    select: (d) => new BigNumber(d.value),
+    select: d => new BigNumber(d.value),
   })
 
   let userBalanceInFarm = BIG_ZERO

@@ -66,7 +66,7 @@ export default function useAddLiquidityHandler({
       currencyB.wrapped.address,
     )
 
-    executeTransaction(payload, (error) => {
+    executeTransaction(payload, error => {
       log.error('Add Liquidity Simulation Error', { error, payload })
       if (error instanceof SimulateTransactionError) {
         setLiquidityState({
@@ -76,7 +76,7 @@ export default function useAddLiquidityHandler({
         })
       }
     })
-      .then((response) => {
+      .then(response => {
         setLiquidityState({ attemptingTxn: false, liquidityErrorMessage: undefined, txHash: response.hash })
         const symbolA = currencyA.symbol
         const amountA = parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) ?? ''
@@ -91,7 +91,7 @@ export default function useAddLiquidityHandler({
           type: 'add-liquidity',
         })
       })
-      .catch((err) => {
+      .catch(err => {
         log.error('Add Liquidity Error', { error: err, payload })
         console.error(`Add Liquidity failed`, { err }, payload)
 

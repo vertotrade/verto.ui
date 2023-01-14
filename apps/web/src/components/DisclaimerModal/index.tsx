@@ -54,8 +54,8 @@ const DisclaimerModal: React.FC<React.PropsWithChildren<RiskDisclaimerProps>> = 
   const { t } = useTranslation()
 
   const handleSetAcknowledgeRisk = useCallback(
-    (currentKey) => {
-      const newCheckState = checkState.map((check) => {
+    currentKey => {
+      const newCheckState = checkState.map(check => {
         if (currentKey === check.key) {
           return { ...check, value: !check.value }
         }
@@ -90,12 +90,11 @@ const DisclaimerModal: React.FC<React.PropsWithChildren<RiskDisclaimerProps>> = 
               {subtitle}
             </Text>
           )}
-          {checkState.map((check) => (
+          {checkState.map(check => (
             <label
               key={check.key}
               htmlFor={check.key}
-              style={{ display: 'block', cursor: 'pointer', marginBottom: '24px' }}
-            >
+              style={{ display: 'block', cursor: 'pointer', marginBottom: '24px' }}>
               <Flex alignItems="center">
                 <div style={{ flex: 'none', alignSelf: 'flex-start', paddingTop: '8px' }}>
                   <Checkbox
@@ -115,8 +114,7 @@ const DisclaimerModal: React.FC<React.PropsWithChildren<RiskDisclaimerProps>> = 
             id={`${id}-continue`}
             width="100%"
             onClick={handleConfirm}
-            disabled={checkState.some((check) => !check.value)}
-          >
+            disabled={checkState.some(check => !check.value)}>
             {t('Continue')}
           </Button>
         )}

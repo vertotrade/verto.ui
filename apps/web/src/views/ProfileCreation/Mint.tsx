@@ -41,7 +41,7 @@ const Mint: React.FC<React.PropsWithChildren> = () => {
       const response = await getNftsFromCollectionApi(pancakeBunniesAddress)
       if (!response) return
       const { data: allPbTokens } = response
-      const nfts = STARTER_NFT_BUNNY_IDS.map((bunnyId) => {
+      const nfts = STARTER_NFT_BUNNY_IDS.map(bunnyId => {
         if (allPbTokens && allPbTokens[bunnyId]) {
           return { ...allPbTokens[bunnyId], bunnyId }
         }
@@ -98,7 +98,7 @@ const Mint: React.FC<React.PropsWithChildren> = () => {
           <Text as="p" mb="24px" color="textSubtle">
             {t('Cost: %num% CAKE', { num: formatUnits(MINT_COST) })}
           </Text>
-          {starterNfts.map((nft) => {
+          {starterNfts.map(nft => {
             const handleChange = (value: string) => setSelectedBunnyId(value)
 
             return (
@@ -109,8 +109,7 @@ const Mint: React.FC<React.PropsWithChildren> = () => {
                 image={nft?.image.thumbnail}
                 isChecked={selectedBunnyId === nft?.bunnyId}
                 onChange={handleChange}
-                disabled={isApproving || isConfirming || isConfirmed || !hasMinimumCakeRequired}
-              >
+                disabled={isApproving || isConfirming || isConfirmed || !hasMinimumCakeRequired}>
                 <Text bold>{nft?.name}</Text>
               </SelectionCard>
             )

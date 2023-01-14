@@ -41,7 +41,7 @@ export function trackResult<
 >(result: TQueryResult, observer: QueryObserver<TQueryFnData, TError, TData, TQueryData, TQueryKey>): TQueryResult {
   const trackedResult = {} as TQueryResult
 
-  Object.keys(result).forEach((key) => {
+  Object.keys(result).forEach(key => {
     Object.defineProperty(trackedResult, key, {
       configurable: false,
       enumerable: true,

@@ -13,7 +13,7 @@ export function usePairsFromAddresses(pairReservesAddresses: string[]) {
 
   const parsesAddress = useMemo(
     () =>
-      pairReservesAddresses.flatMap((addr) => {
+      pairReservesAddresses.flatMap(addr => {
         return Pair.parseType(addr)
       }),
     [pairReservesAddresses],
@@ -22,14 +22,14 @@ export function usePairsFromAddresses(pairReservesAddresses: string[]) {
   const coinsResults = useCoins(parsesAddress)
 
   return useMemo(() => {
-    const coins = coinsResults.map((coinResult) => coinResult.data)
+    const coins = coinsResults.map(coinResult => coinResult.data)
 
-    return pairReservesAddresses.map((address) => {
+    return pairReservesAddresses.map(address => {
       if (pairReserves?.[address]) {
         const [address0, address1] = Pair.parseType(address)
 
-        const coin0 = coins?.find((c) => c?.address === address0)
-        const coin1 = coins?.find((c) => c?.address === address1)
+        const coin0 = coins?.find(c => c?.address === address0)
+        const coin1 = coins?.find(c => c?.address === address1)
 
         if (coin0 && coin1) {
           return [
@@ -60,7 +60,7 @@ export function usePairReservesQueries(pairReservesAddresses: (string | undefine
   const pairReservesQueries = useQueries({
     queries: useMemo(
       () =>
-        pairReservesAddresses.map((pairAddress) => ({
+        pairReservesAddresses.map(pairAddress => ({
           enable: Boolean(pairAddress),
           queryFn: () => {
             if (!pairAddress) throw new Error('No pair address')
@@ -81,9 +81,9 @@ export function usePairReservesQueries(pairReservesAddresses: (string | undefine
     () =>
       fromPairs(
         pairReservesQueries
-          .filter((p) => Boolean(p.data))
+          .filter(p => Boolean(p.data))
           .map(
-            (p) =>
+            p =>
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               [p.data!.type, p.data] as [
                 string,

@@ -161,8 +161,7 @@ const EasterCompetition = () => {
         innerProps={{ style: { paddingTop: isMobile ? '30px' : '28px' } }}
         background={DARKBG}
         hasCurvedDivider={false}
-        index={1}
-      >
+        index={1}>
         <BannerFlex mb={shouldHideCta ? '0px' : '48px'}>
           <Countdown currentPhase={currentPhase} hasCompetitionEnded={hasCompetitionEnded} />
           <EasterBattleBanner />
@@ -192,8 +191,7 @@ const EasterCompetition = () => {
               onClaimSuccess={onClaimSuccess}
             />
           )
-        }
-      >
+        }>
         <Box mt={shouldHideCta ? '0px' : ['94px', null, '36px']} mb="64px">
           {/* If competition has not yet started, render HowToJoin component - if not, render YourScore */}
           {currentPhase.state === REGISTRATION ? (

@@ -150,7 +150,7 @@ export const useMasterchefV1 = () => {
   return useMemo(() => getMasterchefV1Contract(signer), [signer])
 }
 
-export const useSousChef = (id) => {
+export const useSousChef = id => {
   const { data: signer } = useSigner()
   return useMemo(() => getSouschefContract(id, signer), [id, signer])
 }
@@ -337,7 +337,7 @@ export function useMulticallContract() {
   return useContract<Multicall>(getMulticallAddress(chainId), multiCallAbi, false)
 }
 
-export const usePotterytVaultContract = (address) => {
+export const usePotterytVaultContract = address => {
   const { data: signer } = useSigner()
   return useMemo(() => getPotteryVaultContract(address, signer), [address, signer])
 }

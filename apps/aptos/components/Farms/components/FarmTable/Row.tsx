@@ -81,7 +81,7 @@ const FarmMobileCell = styled.td`
   padding-top: 24px;
 `
 
-const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>> = (props) => {
+const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>> = props => {
   const { t } = useTranslation()
   const { details, initialActivity, multiplier } = props
   const userDataReady = multiplier.multiplier !== undefined
@@ -110,13 +110,13 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
 
   const isSmallerScreen = !isDesktop
   const tableSchema = isSmallerScreen ? MobileColumnSchema : DesktopColumnSchema
-  const columnNames = tableSchema.map((column) => column.name)
+  const columnNames = tableSchema.map(column => column.name)
 
   const handleRenderRow = () => {
     if (!isMobile) {
       return (
         <StyledTr onClick={toggleActionPanel}>
-          {Object.keys(props).map((key) => {
+          {Object.keys(props).map(key => {
             const columnIndex = columnNames.indexOf(key)
             if (columnIndex === -1) {
               return null

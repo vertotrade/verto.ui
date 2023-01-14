@@ -1,14 +1,5 @@
 import { useState } from 'react'
-import {
-  CardProps,
-  CardHeader,
-  Card,
-  Flex,
-  Heading,
-  IconButton,
-  ChevronUpIcon,
-  ChevronDownIcon,
-} from '@verto/uikit'
+import { CardProps, CardHeader, Card, Flex, Heading, IconButton, ChevronUpIcon, ChevronDownIcon } from '@verto/uikit'
 
 interface CollapsibleCardProps extends CardProps {
   initialOpenState?: boolean

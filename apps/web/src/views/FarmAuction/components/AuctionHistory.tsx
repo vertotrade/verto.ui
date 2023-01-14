@@ -131,8 +131,7 @@ const AuctionHistory: React.FC<React.PropsWithChildren<AuctionHistoryProps>> = (
             variant="text"
             scale="sm"
             mr={['8px', '12px']}
-            onClick={() => handleArrowPress(historyAuctionIdAsInt - 1)}
-          >
+            onClick={() => handleArrowPress(historyAuctionIdAsInt - 1)}>
             <ArrowBackIcon />
           </StyledIconButton>
           <StyledIconButton
@@ -140,16 +139,14 @@ const AuctionHistory: React.FC<React.PropsWithChildren<AuctionHistoryProps>> = (
             variant="text"
             scale="sm"
             mr={['8px', '12px']}
-            onClick={() => handleArrowPress(historyAuctionIdAsInt + 1)}
-          >
+            onClick={() => handleArrowPress(historyAuctionIdAsInt + 1)}>
             <ArrowForwardIcon />
           </StyledIconButton>
           <StyledIconButton
             disabled={historyAuctionIdAsInt >= mostRecentClosedAuctionId}
             variant="text"
             scale="sm"
-            onClick={() => handleArrowPress(mostRecentClosedAuctionId)}
-          >
+            onClick={() => handleArrowPress(mostRecentClosedAuctionId)}>
             <ArrowLastIcon />
           </StyledIconButton>
         </Flex>

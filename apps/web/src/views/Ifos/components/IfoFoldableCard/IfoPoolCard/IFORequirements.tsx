@@ -22,8 +22,7 @@ const NotOkNFT = ({ admissionProfile }) => {
         <>
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://pancakeswap.finance/nfts/collections/${admissionProfile}`}
-          >
+            href={`https://pancakeswap.finance/nfts/collections/${admissionProfile}`}>
             {t('Pancake Squad NFT')}
           </LinkExternal>
           <br />
@@ -50,8 +49,7 @@ const NotOkProfilePoints = ({ pointThreshold }) => {
           <br />
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://pancakeswap.finance/profile/${account}/achievements/`}
-          >
+            href={`https://pancakeswap.finance/profile/${account}/achievements/`}>
             {t('Pancake Profile')}
           </LinkExternal>
         </>
@@ -102,8 +100,7 @@ function Item({ type, isOk, isSingle, pointThreshold, admissionProfile }) {
       borderRadius="8px"
       border={isOk ? '1px solid' : '1px dashed'}
       borderColor={isOk ? 'secondary' : 'textDisabled'}
-      background={isOk ? 'bubblegum' : 'backgroundDisabled'}
-    >
+      background={isOk ? 'bubblegum' : 'backgroundDisabled'}>
       <Box px="8px">
         <Icon width="32px" color={isOk ? 'secondary' : 'textDisabled'} />
       </Box>

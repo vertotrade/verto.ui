@@ -72,8 +72,7 @@ const MintButton: React.FC<React.PropsWithChildren<PreEventProps>> = ({
           width="100%"
           onClick={mintTokenCallBack}
           disabled={isLoading}
-          endIcon={isLoading ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-        >
+          endIcon={isLoading ? <AutoRenewIcon spin color="currentColor" /> : undefined}>
           {t('Mint NFTs (%tickets%)', { tickets: numberTicketsOfUser })}
         </Button>
       )}

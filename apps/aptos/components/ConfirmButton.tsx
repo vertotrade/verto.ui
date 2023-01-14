@@ -26,8 +26,7 @@ export const ConfirmButton: React.FC<React.PropsWithChildren<ConfirmButtonProps>
       onClick={onConfirm}
       disabled={isConfirmDisabled}
       isLoading={isConfirming}
-      endIcon={isConfirming ? spinnerIcon : undefined}
-    >
+      endIcon={isConfirming ? spinnerIcon : undefined}>
       {isConfirming ? t('Confirming') : t('Confirm')}
     </Button>
   )

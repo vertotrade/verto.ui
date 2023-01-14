@@ -90,7 +90,7 @@ export function Menu() {
         <Logo href="https://pancakeswap.finance" />
 
         <Flex pl={['10px', null, '50px']}>
-          {MenuConfig.map((menu) => (
+          {MenuConfig.map(menu => (
             <Box key={menu.title} display="flex">
               <NextLink href={menu.href} passHref>
                 <StyledMenuItem $isActive={nextRouter.pathname === menu.href}>{menu.title}</StyledMenuItem>
@@ -121,7 +121,7 @@ const UserMenuItems = ({ onShowTx }: { onShowTx: () => void }) => {
         <Text>Select a Network</Text>
       </Box>
       <UserMenuDivider />
-      {CHAINS_STARGATE.map((chain) => (
+      {CHAINS_STARGATE.map(chain => (
         <UserMenuItem key={chain.id} style={{ justifyContent: 'flex-start' }} onClick={() => switchNetwork(chain.id)}>
           <Image width={24} height={24} src={`/chains/${chain.id}.png`} unoptimized alt={`chain-${chain.name}`} />
           <Text pl="12px">{chain.name}</Text>
@@ -136,7 +136,7 @@ const UserMenuItems = ({ onShowTx }: { onShowTx: () => void }) => {
 }
 
 async function switchNetwork(chainId: number) {
-  const chain = CHAINS_STARGATE.find((c) => c.id === chainId)
+  const chain = CHAINS_STARGATE.find(c => c.id === chainId)
   const provider = window.stargate?.wallet?.ethereum?.signer?.provider?.provider ?? (window as any).ethereum
   if (chain && provider) {
     try {
@@ -231,8 +231,7 @@ function RecentTransactionsModal({
                   }`
                 : `${txnChain?.chain.blockExplorers?.default.url}/tx/${txn.hash}`
             }
-            external
-          >
+            external>
             <TxnIcon>{renderIcon(txn)}</TxnIcon>
             <Summary>
               {txn.type === 'APPROVE' && (
@@ -284,7 +283,7 @@ function RecentTransactionsModal({
 function CountDown({ expected }: { expected: string }) {
   const secondLeft = (Date.now() - new Date(expected).getTime()) / 1000
   const { hours, minutes, seconds } = getTimePeriods(secondLeft)
-  const [, forceUpdate] = useReducer((s) => s + 1, 0)
+  const [, forceUpdate] = useReducer(s => s + 1, 0)
 
   useEffect(() => {
     setInterval(() => forceUpdate(), 1000)
@@ -385,8 +384,7 @@ function User() {
         variant={hasPendingTransactions ? 'pending' : 'default'}
         account={account}
         text={hasPendingTransactions ? `${pending.length} Pending` : ''}
-        avatarSrc={chain ? `/chains/${chain?.chain.id}.png` : undefined}
-      >
+        avatarSrc={chain ? `/chains/${chain?.chain.id}.png` : undefined}>
         {() => <UserMenuItems onShowTx={() => showRecentTxModal()} />}
       </UserMenu>
     )

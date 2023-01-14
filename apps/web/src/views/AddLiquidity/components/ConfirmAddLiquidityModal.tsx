@@ -77,8 +77,7 @@ const ConfirmAddLiquidityModal: React.FC<
         liquidityMinted={liquidityMinted}
         poolTokenPercentage={poolTokenPercentage}
         price={price}
-        noLiquidity={noLiquidity}
-      >
+        noLiquidity={noLiquidity}>
         <PairDistribution
           title={t('Input')}
           percent={percent}

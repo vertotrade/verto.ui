@@ -41,7 +41,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
   const allowance = useIfoAllowance(currencyContract, address, poolUnlimited.isPendingTx)
 
   const setPendingTx = (status: boolean) =>
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       [PoolIds.poolUnlimited]: {
         ...prevState.poolUnlimited,
@@ -50,7 +50,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
     }))
 
   const setIsClaimed = () => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       [PoolIds.poolUnlimited]: {
         ...prevState.poolUnlimited,
@@ -60,7 +60,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
   }
 
   const fetchIfoData = useCallback(async () => {
-    const ifoCalls = ['getOfferingAmount', 'userInfo', 'getRefundingAmount'].map((method) => ({
+    const ifoCalls = ['getOfferingAmount', 'userInfo', 'getRefundingAmount'].map(method => ({
       address,
       name: method,
       params: [account],
@@ -74,7 +74,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
         }
       : { amount: BIG_ZERO, claimed: false }
 
-    setState((prevState) => ({
+    setState(prevState => ({
       isInitialized: true,
       [PoolIds.poolUnlimited]: {
         ...prevState.poolUnlimited,

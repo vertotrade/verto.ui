@@ -26,7 +26,7 @@ export function createFarmFetcher(multicallv2: MultiCallV2) {
       masterChefAddress,
       isTestnet,
       chainId,
-      farms: farms.filter((f) => !f.pid || poolLength.gt(f.pid)),
+      farms: farms.filter(f => !f.pid || poolLength.gt(f.pid)),
       totalRegularAllocPoint,
       totalSpecialAllocPoint,
     })

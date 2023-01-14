@@ -28,18 +28,18 @@ export const useTeamInformation = (competitionId: number) => {
       }
     }
 
-    fetchTeamsLeaderboardStats(1, (data) =>
-      setTeam1LeaderboardInformation((prevState) => {
+    fetchTeamsLeaderboardStats(1, data =>
+      setTeam1LeaderboardInformation(prevState => {
         return { ...prevState, leaderboardData: data }
       }),
     )
-    fetchTeamsLeaderboardStats(2, (data) =>
-      setTeam2LeaderboardInformation((prevState) => {
+    fetchTeamsLeaderboardStats(2, data =>
+      setTeam2LeaderboardInformation(prevState => {
         return { ...prevState, leaderboardData: data }
       }),
     )
-    fetchTeamsLeaderboardStats(3, (data) =>
-      setTeam3LeaderboardInformation((prevState) => {
+    fetchTeamsLeaderboardStats(3, data =>
+      setTeam3LeaderboardInformation(prevState => {
         return { ...prevState, leaderboardData: data }
       }),
     )

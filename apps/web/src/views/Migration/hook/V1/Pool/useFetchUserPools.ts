@@ -33,7 +33,7 @@ const initialData = {
   userDataLoaded: false,
 }
 
-export const useFetchUserPools = (account) => {
+export const useFetchUserPools = account => {
   const { chainId } = useActiveChainId()
   const [userPoolsData, setPoolsUserData] = useState<PoolsState>(initialData)
 
@@ -55,7 +55,7 @@ export const useFetchUserPools = (account) => {
             pendingReward: pendingRewards,
           }
 
-          setPoolsUserData((old) => ({
+          setPoolsUserData(old => ({
             data: {
               ...old.data,
               userData,

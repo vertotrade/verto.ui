@@ -207,8 +207,7 @@ const Desktop: React.FC<React.PropsWithChildren> = () => {
             isChartPaneOpen={isChartPaneOpen}
             onClick={() => {
               openChartPane()
-            }}
-          >
+            }}>
             <PowerLinkStyle href="https://chain.link/" external>
               <img src="/images/powered-by-chainlink.svg" alt="Powered by ChainLink" width="170px" height="48px" />
             </PowerLinkStyle>
@@ -218,12 +217,11 @@ const Desktop: React.FC<React.PropsWithChildren> = () => {
                 as={Button}
                 style={{ whiteSpace: 'nowrap', alignItems: 'center' }}
                 isActive={chartView === PredictionsChartView.TradingView}
-                onMouseDown={(e) => {
+                onMouseDown={e => {
                   e.stopPropagation()
                   e.preventDefault()
                   dispatch(setChartView(PredictionsChartView.TradingView))
-                }}
-              >
+                }}>
                 {chartView === PredictionsChartView.TradingView && <ChartIcon mr="10px" />} TradingView {t('Chart')}
               </TabToggle>
               <TabToggle
@@ -231,12 +229,11 @@ const Desktop: React.FC<React.PropsWithChildren> = () => {
                 height="42px"
                 style={{ whiteSpace: 'nowrap', alignItems: 'center' }}
                 isActive={chartView === PredictionsChartView.Chainlink}
-                onMouseDown={(e) => {
+                onMouseDown={e => {
                   e.stopPropagation()
                   e.preventDefault()
                   dispatch(setChartView(PredictionsChartView.Chainlink))
-                }}
-              >
+                }}>
                 {chartView === PredictionsChartView.Chainlink && <ChartIcon mr="10px" />} Chainlink {t('Chart')}
               </TabToggle>
             </ExpandButtonGroup>
@@ -246,7 +243,7 @@ const Desktop: React.FC<React.PropsWithChildren> = () => {
                 symbol={`${token.symbol}/USD`}
                 by={chartView}
                 linkProps={{
-                  onMouseDown: (e) => {
+                  onMouseDown: e => {
                     window.open(
                       chartView === PredictionsChartView.TradingView
                         ? `https://www.tradingview.com/chart/?symbol=BINANCE%3A${token.symbol}USD`

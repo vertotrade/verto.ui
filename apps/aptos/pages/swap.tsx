@@ -13,18 +13,7 @@ import { useAccount } from '@verto/awgmi'
 import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@verto/awgmi/core'
 import { useTranslation } from '@verto/localization'
 import { AtomBox } from '@verto/ui'
-import {
-  AutoColumn,
-  Card,
-  Skeleton,
-  Swap as SwapUI,
-  useModal,
-  Flex,
-  ModalV2,
-  Modal,
-  Text,
-  Link,
-} from '@verto/uikit'
+import { AutoColumn, Card, Skeleton, Swap as SwapUI, useModal, Flex, ModalV2, Modal, Text, Link } from '@verto/uikit'
 import replaceBrowserHistory from '@verto/utils/replaceBrowserHistory'
 import tryParseAmount from '@verto/utils/tryParseAmount'
 import { CurrencyInputPanel } from 'components/CurrencyInputPanel'
@@ -83,7 +72,7 @@ function useWarningImport(currencies: (Currency | undefined)[]) {
   const isLoaded = !!loadedTokenList
   const importTokensNotInDefault = useMemo(() => {
     return !isWrongNetwork && urlLoadedTokens && isLoaded
-      ? urlLoadedTokens.filter((token) => {
+      ? urlLoadedTokens.filter(token => {
           return !(token.address in defaultTokens) && token.chainId === chainId
         })
       : []
@@ -177,7 +166,7 @@ const SwapPage = () => {
           throw new Error('Missing swap call')
         }
 
-        return executeTransaction(payload, (error) => {
+        return executeTransaction(payload, error => {
           if (error instanceof SimulateTransactionError) {
             console.info({ error })
             const parseError = parseVmStatusError(error.tx.vm_status)
@@ -195,7 +184,7 @@ const SwapPage = () => {
               ),
             )
           }
-        }).then((tx) => {
+        }).then(tx => {
           const inputSymbol = trade.inputAmount.currency.symbol
           const outputSymbol = trade.outputAmount.currency.symbol
           const pct = basisPointsToPercent(allowedSlippage)
@@ -251,12 +240,12 @@ const SwapPage = () => {
 
     setSwapState({ attemptingTxn: true, tradeToConfirm, swapErrorMessage: undefined, txHash: undefined })
     swapCallback()
-      .then((tx) => {
+      .then(tx => {
         setSwapState({ attemptingTxn: false, tradeToConfirm, swapErrorMessage: undefined, txHash: tx.hash })
       })
-      .catch((error) => {
+      .catch(error => {
         if (error instanceof UserRejectedRequestError) {
-          setSwapState((s) => ({
+          setSwapState(s => ({
             ...s,
             attemptingTxn: false,
           }))
@@ -326,7 +315,7 @@ const SwapPage = () => {
   }, [dispatch, maxAmountInput])
 
   const handlePercentInput = useCallback(
-    (percent) => {
+    percent => {
       if (maxAmountInput) {
         dispatch(
           typeInput({ field: Field.INPUT, typedValue: maxAmountInput.multiply(new Percent(percent, 100)).toExact() }),
@@ -366,7 +355,7 @@ const SwapPage = () => {
   useEffect(() => {
     if (indirectlyOpenConfirmModalState) {
       setIndirectlyOpenConfirmModalState(false)
-      setSwapState((state) => ({
+      setSwapState(state => ({
         ...state,
         swapErrorMessage: undefined,
       }))
@@ -422,7 +411,7 @@ const SwapPage = () => {
             currency={isLoaded ? inputCurrency : undefined}
             otherCurrency={outputCurrency}
             value={formattedAmounts[Field.INPUT]}
-            onUserInput={(value) => dispatch(typeInput({ field: Field.INPUT, typedValue: value }))}
+            onUserInput={value => dispatch(typeInput({ field: Field.INPUT, typedValue: value }))}
             showMaxButton
             onMax={handleMaxInput}
             maxAmount={maxAmountInput}
@@ -443,8 +432,7 @@ const SwapPage = () => {
                   fontSize="12px"
                   color="warning"
                   href={bridgeResult?.url}
-                  style={{ textDecoration: 'underline' }}
-                >
+                  style={{ textDecoration: 'underline' }}>
                   {bridgeResult?.platform}
                 </Link>
                 <Text fontSize="12px" color="warning">
@@ -468,7 +456,7 @@ const SwapPage = () => {
             label={independentField === Field.INPUT && trade ? t('To (estimated)') : t('to')}
             currency={isLoaded ? outputCurrency : undefined}
             otherCurrency={inputCurrency}
-            onUserInput={(value) => dispatch(typeInput({ field: Field.OUTPUT, typedValue: value }))}
+            onUserInput={value => dispatch(typeInput({ field: Field.OUTPUT, typedValue: value }))}
           />
 
           <Info
@@ -497,8 +485,7 @@ const SwapPage = () => {
                   })
                   onPresentConfirmModal()
                 }
-              }}
-            >
+              }}>
               {inputError ||
                 (priceImpactSeverity > 3 && !isExpertMode
                   ? t('Price Impact High')

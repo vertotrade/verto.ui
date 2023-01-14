@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const Ranks: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const Ranks: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 166 88" {...props}>
       <path
@@ -337,8 +337,7 @@ const Ranks: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           width="48.5135"
           height="49.8842"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
           <feOffset />
@@ -353,8 +352,7 @@ const Ranks: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           width="48.5135"
           height="49.81"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
           <feOffset />
@@ -369,8 +367,7 @@ const Ranks: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           width="85.7651"
           height="82.5"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
           <feOffset />

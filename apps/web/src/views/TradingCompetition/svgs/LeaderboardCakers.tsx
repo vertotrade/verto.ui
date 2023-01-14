@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 124 72" {...props}>
       <g opacity="0.2" clipPath="url(#leaderboard_cakers_clip0)">
@@ -172,8 +172,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="-0.453153"
           x2="62.8023"
           y2="68.2131"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFC73C" />
           <stop offset="1" stopColor="#FE9A03" />
         </linearGradient>

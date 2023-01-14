@@ -19,8 +19,7 @@ const IndexPage = ({ totalTx30Days, addressCount30Days, tvl }) => {
           addressCount30Days,
           tvl,
         },
-      }}
-    >
+      }}>
       <Home />
     </SWRConfig>
   )

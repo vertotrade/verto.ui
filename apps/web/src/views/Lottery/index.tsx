@@ -55,8 +55,7 @@ const Lottery = () => {
           concaveDivider
           clipFill={{ light: '#7645D9' }}
           dividerPosition="top"
-          index={2}
-        >
+          index={2}>
           <Flex alignItems="center" justifyContent="center" flexDirection="column" pt="24px">
             {status === LotteryStatus.OPEN && (
               <Heading scale="xl" color="#ffffff" mb="24px" textAlign="center">
@@ -84,8 +83,7 @@ const Lottery = () => {
           innerProps={{ style: { margin: '0', width: '100%' } }}
           background={isDark ? FINISHED_ROUNDS_BG_DARK : FINISHED_ROUNDS_BG}
           hasCurvedDivider={false}
-          index={2}
-        >
+          index={2}>
           <Flex width="100%" flexDirection="column" alignItems="center" justifyContent="center">
             <Heading mb="24px" scale="xl">
               {t('Finished Rounds')}
@@ -93,7 +91,7 @@ const Lottery = () => {
             <Box mb="24px">
               <HistoryTabMenu
                 activeIndex={historyTabMenuIndex}
-                setActiveIndex={(index) => setHistoryTabMenuIndex(index)}
+                setActiveIndex={index => setHistoryTabMenuIndex(index)}
               />
             </Box>
             {historyTabMenuIndex === 0 ? (
@@ -110,8 +108,7 @@ const Lottery = () => {
           dividerPosition="top"
           dividerFill={{ light: theme.colors.background }}
           clipFill={{ light: '#9A9FD0', dark: '#66578D' }}
-          index={2}
-        >
+          index={2}>
           <HowToPlay />
         </PageSection>
       </LotteryPage>

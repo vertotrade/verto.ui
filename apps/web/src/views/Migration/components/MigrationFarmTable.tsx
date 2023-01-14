@@ -43,7 +43,7 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
 }) => {
   const { t } = useTranslation()
 
-  const rowData = farms.map((farm) => {
+  const rowData = farms.map(farm => {
     const { token, quoteToken } = farm
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
@@ -99,7 +99,7 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
 
   const columns = useMemo(
     () =>
-      columnSchema.map((column) => ({
+      columnSchema.map(column => ({
         id: column.id,
         name: column.name,
         label: column.label,
@@ -116,10 +116,10 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
     [columnSchema],
   )
 
-  const sortedRows = rowData.map((row) => {
+  const sortedRows = rowData.map(row => {
     // @ts-ignore
     const newRow: RowProps = {}
-    columns.forEach((column) => {
+    columns.forEach(column => {
       if (!(column.name in row)) {
         throw new Error(`Invalid row data, ${column.name} not found`)
       }
@@ -141,7 +141,7 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
         {account && userDataReady && sortedRows.length === 0 && <EmptyText text={noStakedFarmText} />}
         {account &&
           userDataReady &&
-          sortedRows.map((row) => {
+          sortedRows.map(row => {
             if (columnSchema === DesktopV2ColumnSchema) {
               return <NewRow {...row} key={`table-row-${row.farm.pid}`} />
             }

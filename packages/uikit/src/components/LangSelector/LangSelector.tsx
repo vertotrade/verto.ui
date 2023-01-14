@@ -27,27 +27,28 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
   dropdownPosition = "bottom",
   buttonScale = "md",
   hideLanguage = false,
-}) => console.log(color) || (
-  <Dropdown
-    position={dropdownPosition}
-    target={
-      <Button scale={buttonScale} variant="text" startIcon={<LanguageIcon color={color} width="24px" />}>
-        {!hideLanguage && <Text color={color}>{currentLang?.toUpperCase()}</Text>}
-      </Button>
-    }
-  >
-    {langs.map((lang) => (
-      <MenuButton
-        key={lang.locale}
-        fullWidth
-        onClick={() => setLang(lang)}
-        // Safari fix
-        style={{ minHeight: "32px", height: "auto" }}
-      >
-        {lang.language}
-      </MenuButton>
-    ))}
-  </Dropdown>
-);
+}) =>
+  console.log(color) || (
+    <Dropdown
+      position={dropdownPosition}
+      target={
+        <Button scale={buttonScale} variant="text" startIcon={<LanguageIcon color={color} width="24px" />}>
+          {!hideLanguage && <Text color={color}>{currentLang?.toUpperCase()}</Text>}
+        </Button>
+      }
+    >
+      {langs.map((lang) => (
+        <MenuButton
+          key={lang.locale}
+          fullWidth
+          onClick={() => setLang(lang)}
+          // Safari fix
+          style={{ minHeight: "32px", height: "auto" }}
+        >
+          {lang.language}
+        </MenuButton>
+      ))}
+    </Dropdown>
+  );
 
 export default React.memo(LangSelector, (prev, next) => prev.currentLang === next.currentLang);

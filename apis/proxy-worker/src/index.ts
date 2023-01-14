@@ -86,10 +86,10 @@ router.options('*', handleCors(ALLOW))
 
 router.all('*', () => missing('Not found'))
 
-addEventListener('fetch', (event) =>
+addEventListener('fetch', event =>
   event.respondWith(
     router
       .handle(event.request, event, event.request.headers)
-      .then((res) => wrapCorsHeader(event.request, res, { allowedOrigin: ALLOW })),
+      .then(res => wrapCorsHeader(event.request, res, { allowedOrigin: ALLOW })),
   ),
 )

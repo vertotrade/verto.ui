@@ -104,7 +104,7 @@ export type WatchAccountConfig = {
   }): any
 }
 
-export function watchAccount(callback: WatchAccountCallback, { selector = (x) => x }: WatchAccountConfig = {}) {
+export function watchAccount(callback: WatchAccountCallback, { selector = x => x }: WatchAccountConfig = {}) {
   const client = getClient()
   const handleChange = () => callback(getAccount())
   const unsubscribe = client.subscribe(

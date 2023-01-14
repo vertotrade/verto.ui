@@ -16,13 +16,13 @@ export const usePoolsData = () => {
   // get all the pool datas that exist
   const poolsData = useMemo(() => {
     return Object.values(allPoolData)
-      .map((pool) => {
+      .map(pool => {
         return {
           ...pool.data,
           ...(isStableSwap && stableSwapsAprs && { lpApr7d: stableSwapsAprs[pool.data.address] }),
         }
       })
-      .filter((pool) => pool.token1.name !== 'unknown' && pool.token0.name !== 'unknown')
+      .filter(pool => pool.token1.name !== 'unknown' && pool.token0.name !== 'unknown')
   }, [allPoolData, isStableSwap, stableSwapsAprs])
   return { poolsData, stableSwapsAprs }
 }

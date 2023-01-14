@@ -58,8 +58,8 @@ export function useAllTransactions(): { [chainId: number]: { [txHash: string]: T
 
   const [state] = useTransactionState()
   return useMemo(() => {
-    return mapValues(state, (transactions) =>
-      pickBy(transactions, (transactionDetails) => transactionDetails.from.toLowerCase() === account?.toLowerCase()),
+    return mapValues(state, transactions =>
+      pickBy(transactions, transactionDetails => transactionDetails.from.toLowerCase() === account?.toLowerCase()),
     )
   }, [account, state])
 }
@@ -68,10 +68,10 @@ export function useAllSortedRecentTransactions(): { [chainId: number]: { [txHash
   const allTransactions = useAllTransactions()
   return useMemo(() => {
     return omitBy(
-      mapValues(allTransactions, (transactions) =>
+      mapValues(allTransactions, transactions =>
         keyBy(
           orderBy(
-            pickBy(transactions, (trxDetails) => isTransactionRecent(trxDetails)),
+            pickBy(transactions, trxDetails => isTransactionRecent(trxDetails)),
             ['addedTime'],
             'desc',
           ),
@@ -93,7 +93,7 @@ export function useAllChainTransactions(): { [txHash: string]: TransactionDetail
     if (chainId && state[chainId]) {
       return pickBy(
         state[chainId],
-        (transactionDetails) => transactionDetails.from.toLowerCase() === account?.toLowerCase(),
+        transactionDetails => transactionDetails.from.toLowerCase() === account?.toLowerCase(),
       )
     }
     return {}
@@ -123,7 +123,7 @@ export function useHasPendingApproval(tokenAddress: string | undefined, spender:
     () =>
       typeof tokenAddress === 'string' &&
       typeof spender === 'string' &&
-      Object.keys(allTransactions).some((hash) => {
+      Object.keys(allTransactions).some(hash => {
         const tx = allTransactions[hash]
         if (!tx) return false
         if (tx.receipt) {
@@ -150,7 +150,7 @@ export function usePendingTransactions(): { hasPendingTransactions: boolean; pen
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
   }, [allTransactions])
 
-  const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
+  const pending = sortedRecentTransactions.filter(tx => !tx.receipt).map(tx => tx.hash)
   const hasPendingTransactions = !!pending.length
 
   return {

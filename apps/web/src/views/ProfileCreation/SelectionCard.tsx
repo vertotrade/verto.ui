@@ -58,7 +58,7 @@ const SelectionCard: React.FC<React.PropsWithChildren<SelectionCardProps>> = ({
             name={name}
             checked={isChecked}
             value={value}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={e => onChange(e.target.value)}
             disabled={disabled}
             style={{ flex: 'none' }}
           />

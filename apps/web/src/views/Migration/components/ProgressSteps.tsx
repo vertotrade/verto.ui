@@ -152,8 +152,7 @@ const ProgressSteps: React.FC<React.PropsWithChildren<ProgressArrayProps>> = ({ 
             canHover={step.canHover}
             confirmed={step.stepId === pickedStep}
             disabled={step.stepId !== pickedStep && index + 1 > pickedStep}
-            onClick={() => onClick(step.stepId)}
-          >
+            onClick={() => onClick(step.stepId)}>
             <Circle>{index + 1}</Circle>
             <StepText bold>{step.text}</StepText>
           </Step>

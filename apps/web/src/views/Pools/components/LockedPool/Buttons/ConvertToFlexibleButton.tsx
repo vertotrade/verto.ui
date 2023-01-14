@@ -13,7 +13,7 @@ import { fetchCakeVaultUserData } from 'state/pools'
 import { VaultKey } from 'state/types'
 import { useSWRConfig } from 'swr'
 
-const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = (props) => {
+const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = props => {
   const dispatch = useAppDispatch()
 
   const { address: account } = useAccount()

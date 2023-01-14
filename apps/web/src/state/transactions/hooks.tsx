@@ -92,11 +92,11 @@ export function useAllTransactions(): { [chainId: number]: { [txHash: string]: T
     [chainId: number]: {
       [txHash: string]: TransactionDetails
     }
-  } = useSelector<AppState, AppState['transactions']>((s) => s.transactions)
+  } = useSelector<AppState, AppState['transactions']>(s => s.transactions)
 
   return useMemo(() => {
-    return mapValues(state, (transactions) =>
-      pickBy(transactions, (transactionDetails) => transactionDetails.from.toLowerCase() === account?.toLowerCase()),
+    return mapValues(state, transactions =>
+      pickBy(transactions, transactionDetails => transactionDetails.from.toLowerCase() === account?.toLowerCase()),
     )
   }, [account, state])
 }
@@ -105,10 +105,10 @@ export function useAllSortedRecentTransactions(): { [chainId: number]: { [txHash
   const allTransactions = useAllTransactions()
   return useMemo(() => {
     return omitBy(
-      mapValues(allTransactions, (transactions) =>
+      mapValues(allTransactions, transactions =>
         keyBy(
           orderBy(
-            pickBy(transactions, (trxDetails) => isTransactionRecent(trxDetails)),
+            pickBy(transactions, trxDetails => isTransactionRecent(trxDetails)),
             ['addedTime'],
             'desc',
           ),
@@ -130,13 +130,13 @@ export function useAllActiveChainTransactions(): { [txHash: string]: Transaction
 export function useAllChainTransactions(chainId: number): { [txHash: string]: TransactionDetails } {
   const { address: account } = useAccount()
 
-  const state = useSelector<AppState, AppState['transactions']>((s) => s.transactions)
+  const state = useSelector<AppState, AppState['transactions']>(s => s.transactions)
 
   return useMemo(() => {
     if (chainId && state[chainId]) {
       return pickBy(
         state[chainId],
-        (transactionDetails) => transactionDetails.from.toLowerCase() === account?.toLowerCase(),
+        transactionDetails => transactionDetails.from.toLowerCase() === account?.toLowerCase(),
       )
     }
     return {}
@@ -166,7 +166,7 @@ export function useHasPendingApproval(tokenAddress: string | undefined, spender:
     () =>
       typeof tokenAddress === 'string' &&
       typeof spender === 'string' &&
-      Object.keys(allTransactions).some((hash) => {
+      Object.keys(allTransactions).some(hash => {
         const tx = allTransactions[hash]
         if (!tx) return false
         if (tx.receipt) {
@@ -198,18 +198,18 @@ export function usePendingTransactions(): {
 } {
   const allTransactions = useAllTransactions()
   const sortedRecentTransactions = useMemo(() => {
-    const txs = Object.values(allTransactions).flatMap((trxObjects) => Object.values(trxObjects))
+    const txs = Object.values(allTransactions).flatMap(trxObjects => Object.values(trxObjects))
     return txs.filter(isTransactionRecent).sort(newTransactionsFirst)
   }, [allTransactions])
 
   const pending = sortedRecentTransactions
-    .filter((tx) => !tx.receipt || tx?.nonBscFarm?.status === FarmTransactionStatus.PENDING)
-    .map((tx) => tx.hash)
+    .filter(tx => !tx.receipt || tx?.nonBscFarm?.status === FarmTransactionStatus.PENDING)
+    .map(tx => tx.hash)
   const hasPendingTransactions = !!pending.length
 
   const nonBscFarmPendingList = sortedRecentTransactions
-    .filter((tx) => pending.includes(tx.hash) && !!tx.nonBscFarm)
-    .map((tx) => ({ txid: tx.hash, lpAddress: tx.nonBscFarm.lpAddress, type: tx.nonBscFarm.type }))
+    .filter(tx => pending.includes(tx.hash) && !!tx.nonBscFarm)
+    .map(tx => ({ txid: tx.hash, lpAddress: tx.nonBscFarm.lpAddress, type: tx.nonBscFarm.type }))
 
   return {
     hasPendingTransactions,
@@ -221,6 +221,6 @@ export function usePendingTransactions(): {
 export function useNonBscFarmPendingTransaction(lpAddress: string): NonBscPendingData[] {
   const { nonBscFarmPendingList } = usePendingTransactions()
   return useMemo(() => {
-    return nonBscFarmPendingList.filter((tx) => tx.lpAddress.toLocaleLowerCase() === lpAddress.toLocaleLowerCase())
+    return nonBscFarmPendingList.filter(tx => tx.lpAddress.toLocaleLowerCase() === lpAddress.toLocaleLowerCase())
   }, [lpAddress, nonBscFarmPendingList])
 }

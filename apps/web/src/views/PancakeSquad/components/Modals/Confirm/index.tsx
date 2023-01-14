@@ -95,8 +95,7 @@ const ConfirmModal: React.FC<React.PropsWithChildren<ConfirmModalProps>> = ({
                 width="100%"
                 px="16px"
                 pt="16px"
-                borderTop={`1px solid ${theme.colors.cardBorder}`}
-              >
+                borderTop={`1px solid ${theme.colors.cardBorder}`}>
                 <Button width="100%" variant="secondary" onClick={onCloseCallback}>
                   {successButtonLabel}
                 </Button>

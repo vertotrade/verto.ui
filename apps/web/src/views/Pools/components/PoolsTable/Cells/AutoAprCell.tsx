@@ -87,7 +87,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
                 />
                 {!isMobile && (
                   <Button
-                    onClick={(e) => {
+                    onClick={e => {
                       e.stopPropagation()
                       onPresentFlexibleApyModal()
                     }}
@@ -95,8 +95,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
                     width="20px"
                     height="20px"
                     padding="0px"
-                    marginLeft="4px"
-                  >
+                    marginLeft="4px">
                     <CalculateIcon color="textSubtle" width="20px" />
                   </Button>
                 )}
@@ -126,7 +125,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
                   />
                   {!isMobile && (
                     <Button
-                      onClick={(e) => {
+                      onClick={e => {
                         e.stopPropagation()
                         onPresentLockedApyModal()
                       }}
@@ -134,8 +133,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
                       width="20px"
                       height="20px"
                       padding="0px"
-                      marginLeft="4px"
-                    >
+                      marginLeft="4px">
                       <CalculateIcon color="textSubtle" width="20px" />
                     </Button>
                   )}
@@ -163,10 +161,9 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
                 {tooltipVisible && tooltip}
                 <TooltipText
                   ref={targetRef}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation()
-                  }}
-                >
+                  }}>
                   <Balance
                     fontSize="16px"
                     value={vaultPosition > VaultPosition.Flexible ? parseFloat(lockedApy) : parseFloat(flexibleApy)}
@@ -184,7 +181,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
               />
             )}
             <Button
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation()
                 return vaultPosition > VaultPosition.Flexible ? onPresentLockedApyModal() : onPresentFlexibleApyModal()
               }}
@@ -192,8 +189,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
               width="20px"
               height="20px"
               padding="0px"
-              marginLeft="4px"
-            >
+              marginLeft="4px">
               <CalculateIcon color="textSubtle" width="20px" />
             </Button>
           </AprLabelContainer>

@@ -177,8 +177,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.volumeUSD)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Volume 24H')} {arrow(SORT_FIELD.volumeUSD)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -186,8 +185,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.volumeUSDWeek)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Volume 7D')} {arrow(SORT_FIELD.volumeUSDWeek)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -195,8 +193,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.lpFees24h)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('LP reward fees 24H')} {arrow(SORT_FIELD.lpFees24h)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -204,8 +201,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.lpApr7d)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('LP reward APR')} {arrow(SORT_FIELD.lpApr7d)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -213,8 +209,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.liquidityUSD)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Liquidity')} {arrow(SORT_FIELD.liquidityUSD)}
         </ClickableColumnHeader>
       </ResponsiveGrid>
@@ -237,8 +232,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
             <Arrow
               onClick={() => {
                 setPage(page === 1 ? page : page - 1)
-              }}
-            >
+              }}>
               <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
             </Arrow>
 
@@ -247,8 +241,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
             <Arrow
               onClick={() => {
                 setPage(page === maxPage ? page : page + 1)
-              }}
-            >
+              }}>
               <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
             </Arrow>
           </PageButtons>

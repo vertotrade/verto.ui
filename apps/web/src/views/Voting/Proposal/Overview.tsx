@@ -36,7 +36,7 @@ const Overview = () => {
     data: votes,
     mutate: refetch,
   } = useSWRImmutable(proposal ? ['proposal', proposal, 'votes'] : null, async () => getAllVotes(proposal))
-  const hasAccountVoted = account && votes && votes.some((vote) => vote.voter.toLowerCase() === account.toLowerCase())
+  const hasAccountVoted = account && votes && votes.some(vote => vote.voter.toLowerCase() === account.toLowerCase())
 
   const isPageLoading = votesLoadingStatus === FetchStatus.Fetching || proposalLoadingStatus === FetchStatus.Fetching
 

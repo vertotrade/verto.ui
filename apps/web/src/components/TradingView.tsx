@@ -10,7 +10,7 @@ import { ChartByLabel } from './Chart/ChartbyLabel'
  * available on the window. So we listen for when it gets set
  */
 const tradingViewListener = async () =>
-  new Promise<void>((resolve) =>
+  new Promise<void>(resolve =>
     Object.defineProperty(window, 'TradingView', {
       configurable: true,
       set(value) {
@@ -76,7 +76,7 @@ const TradingView = ({ id, symbol }: TradingViewProps) => {
       // @ts-ignore
       initializeTradingView(window.tv, theme, currentLanguage.code, opts)
     } else {
-      tradingViewListener().then((tv) => {
+      tradingViewListener().then(tv => {
         initializeTradingView(tv, theme, currentLanguage.code, opts)
       })
     }

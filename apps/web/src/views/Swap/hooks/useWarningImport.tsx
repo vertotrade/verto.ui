@@ -56,7 +56,7 @@ export default function useWarningImport() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [swapWarningCurrency])
 
-  const swapWarningHandler = useCallback((currencyInput) => {
+  const swapWarningHandler = useCallback(currencyInput => {
     const showSwapWarning = shouldShowSwapWarning(currencyInput)
     if (showSwapWarning) {
       setSwapWarningCurrency(currencyInput)

@@ -37,8 +37,8 @@ const fetchFarmsWithAuctions = async (
     const sortedBidders = sortAuctionBidders(auctionBidders)
     const leaderboardThreshold = ethersToBigNumber(auctionData.leaderboardThreshold)
     const winnerFarms = sortedBidders
-      .filter((bidder) => bidder.amount.gt(leaderboardThreshold))
-      .map((bidder) => bidder.lpAddress)
+      .filter(bidder => bidder.amount.gt(leaderboardThreshold))
+      .map(bidder => bidder.lpAddress)
     const currentAuctionEndDate = sub(new Date(), { seconds: secondsSinceEnd })
     return {
       winnerFarms,

@@ -34,7 +34,7 @@ const useFarmsWithBalance = () => {
     accountToCheck: string,
     contract: Masterchef | BCakeProxy,
   ) => {
-    const masterChefCalls = farms.map((farm) => ({
+    const masterChefCalls = farms.map(farm => ({
       abi: masterChefABI,
       address: masterChefContract.address,
       name: 'pendingCake',
@@ -58,8 +58,8 @@ const useFarmsWithBalance = () => {
     const proxyCakeBalanceNumber = proxyCakeBalance ? getBalanceNumber(new BigNumber(proxyCakeBalance.toString())) : 0
     const results = farms.map((farm, index) => ({ ...farm, balance: new BigNumber(rawResults[index]) }))
     const farmsWithBalances: FarmWithBalance[] = results
-      .filter((balanceType) => balanceType.balance.gt(0))
-      .map((farm) => ({
+      .filter(balanceType => balanceType.balance.gt(0))
+      .map(farm => ({
         ...farm,
         contract,
       }))
@@ -84,7 +84,7 @@ const useFarmsWithBalance = () => {
       : null,
     async () => {
       const farmsConfig = await getFarmConfig(chainId)
-      const farmsCanFetch = farmsConfig.filter((f) => poolLength > f.pid)
+      const farmsCanFetch = farmsConfig.filter(f => poolLength > f.pid)
       const normalBalances = await getFarmsWithBalances(farmsCanFetch, account, masterChefContract)
       if (proxyAddress && farmsCanFetch?.length && verifyBscNetwork(chainId)) {
         const { farmsWithProxy } = splitProxyFarms(farmsCanFetch)

@@ -16,7 +16,7 @@ const FarmDetail: React.FC<React.PropsWithChildren<HarvestDetailProps>> = ({ ste
   const { t } = useTranslation()
   const isFail = step.status === FarmTransactionStatus.FAIL
   const isLoading = step.status === FarmTransactionStatus.PENDING
-  const chainInfo = useMemo(() => chains.find((chain) => chain.id === step.chainId), [step])
+  const chainInfo = useMemo(() => chains.find(chain => chain.id === step.chainId), [step])
   const isOneOfTheStepFail = status === FarmTransactionStatus.FAIL && isLoading
 
   return (
@@ -42,8 +42,7 @@ const FarmDetail: React.FC<React.PropsWithChildren<HarvestDetailProps>> = ({ ste
               {step.tx && (
                 <LinkExternal
                   isBscScan={step.chainId === ChainId.BSC}
-                  href={getBlockExploreLink(step.tx, 'transaction', step.chainId)}
-                >
+                  href={getBlockExploreLink(step.tx, 'transaction', step.chainId)}>
                   {getBlockExploreName(step.chainId)}
                 </LinkExternal>
               )}

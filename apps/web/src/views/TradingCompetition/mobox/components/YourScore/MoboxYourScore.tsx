@@ -41,8 +41,7 @@ const MoboxYourScore: React.FC<React.PropsWithChildren<YourScoreProps>> = ({
         <RibbonWithImage
           imageComponent={<ScoreHeader profile={profile} isLoading={isLoading} />}
           ribbonDirection="down"
-          isCardHeader
-        >
+          isCardHeader>
           {t('Your Score')}
         </RibbonWithImage>
       )}
@@ -55,8 +54,7 @@ const MoboxYourScore: React.FC<React.PropsWithChildren<YourScoreProps>> = ({
             title={t('Your MBOX volume rank').toUpperCase()}
             footer={t('Based on your MBOX/BNB and MBOX/BUSD trading')}
             // Add responsive mr if competition is LIVE
-            mr={currentPhase.state === LIVE ? [0, null, null, '8px'] : 0}
-          >
+            mr={currentPhase.state === LIVE ? [0, null, null, '8px'] : 0}>
             {!userLeaderboardInformation ? (
               <Skeleton height="26px" width="110px" />
             ) : (

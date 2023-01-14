@@ -30,7 +30,7 @@ export default function ChoosePair({ onNext }: { onNext: () => void }) {
       }
       footer={
         <>
-          {[currencyA, currencyB].map((currency) => (
+          {[currencyA, currencyB].map(currency => (
             <LiquidityBridgeWarning currency={currency} />
           ))}
           <CommitButton
@@ -38,8 +38,7 @@ export default function ChoosePair({ onNext }: { onNext: () => void }) {
             width="100%"
             variant={error ? 'danger' : 'primary'}
             onClick={onNext}
-            disabled={Boolean(error)}
-          >
+            disabled={Boolean(error)}>
             {error ?? t('Add Liquidity')}
           </CommitButton>
         </>

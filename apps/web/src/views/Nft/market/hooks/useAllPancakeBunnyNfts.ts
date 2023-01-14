@@ -28,7 +28,7 @@ const useAllPancakeBunnyNfts = (collectionAddress: string) => {
         getAllPancakeBunniesLowestPrice(bunnyIds),
         getAllPancakeBunniesRecentUpdatedAt(bunnyIds),
       ])
-      const allBunnies: NftToken[] = bunnyIds.map((bunnyId) => {
+      const allBunnies: NftToken[] = bunnyIds.map(bunnyId => {
         return {
           // tokenId here is just a dummy one to satisfy TS. TokenID does not play any role in gird display below
           tokenId: data[bunnyId].name,

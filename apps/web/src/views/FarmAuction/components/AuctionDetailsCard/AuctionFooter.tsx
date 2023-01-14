@@ -41,7 +41,7 @@ const AuctionFooter: React.FC<React.PropsWithChildren<{ auction: Auction }>> = (
         </FooterInner>
       )}
       <Flex p="8px" alignItems="center" justifyContent="center">
-        <ExpandableLabel expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)}>
+        <ExpandableLabel expanded={isExpanded} onClick={() => setIsExpanded(prev => !prev)}>
           {isExpanded ? t('Hide') : t('Details')}
         </ExpandableLabel>
       </Flex>

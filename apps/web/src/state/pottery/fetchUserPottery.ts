@@ -119,7 +119,7 @@ export const fetchWithdrawAbleData = async (account: string) => {
     )
 
     // eslint-disable-next-line array-callback-return, consistent-return
-    const withdrawAbleData = withdrawalsData.filter((data) => {
+    const withdrawAbleData = withdrawalsData.filter(data => {
       if (data.status === PotteryDepositStatus.UNLOCK && data.balanceOf === '0') {
         return null
       }

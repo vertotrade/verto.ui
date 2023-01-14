@@ -52,17 +52,15 @@ const ExpandableCard: React.FC<React.PropsWithChildren<ExpandableCardProps>> = (
         alignItems="center"
         height="72px"
         px="24px"
-        borderBottom={`1px solid ${theme.colors.cardBorder}`}
-      >
+        borderBottom={`1px solid ${theme.colors.cardBorder}`}>
         {icon}
         <Text bold>{title}</Text>
         <IconButton
           onClick={() => {
-            setExpanded((prev) => !prev)
+            setExpanded(prev => !prev)
           }}
           variant="text"
-          maxWidth="32px"
-        >
+          maxWidth="32px">
           {expanded ? (
             <ChevronUpIcon width="24px" height="24px" color="textSubtle" />
           ) : (

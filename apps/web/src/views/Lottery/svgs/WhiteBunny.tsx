@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const WhiteBunny: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const WhiteBunny: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 27 26" {...props}>
       <mask
@@ -10,8 +10,7 @@ const WhiteBunny: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
         y="-0.0263672"
         width="26"
         height="26"
-        fill="black"
-      >
+        fill="black">
         <rect fill="white" x="0.5" y="-0.0263672" width="26" height="26" />
         <path
           fillRule="evenodd"

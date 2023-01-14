@@ -30,7 +30,7 @@ export function useCoins<TData = unknown>({
 
   return useQueries({
     context,
-    queries: coins.map((coin) => {
+    queries: coins.map(coin => {
       return {
         cacheTime,
         enabled,

@@ -124,7 +124,7 @@ export function useIsUserAddedToken(currency: Currency | undefined | null): bool
     return false
   }
 
-  return !!userAddedTokens.find((token) => currency?.equals(token))
+  return !!userAddedTokens.find(token => currency?.equals(token))
 }
 
 // parse a name or symbol from a token response
@@ -153,7 +153,7 @@ export function useToken(tokenAddress?: string): ERC20Token | undefined | null {
   const { data, status } = useSWRImmutable(
     !token && chainId && address && ['fetchTokenInfo', chainId, address],
     async () => {
-      const calls = ['name', 'symbol', 'decimals'].map((method) => {
+      const calls = ['name', 'symbol', 'decimals'].map(method => {
         return { address: address.toString(), name: method }
       })
 
@@ -172,7 +172,7 @@ export function useToken(tokenAddress?: string): ERC20Token | undefined | null {
       (status === FetchStatus.Fetched || status === FetchStatus.Failed) &&
       (!tokenName || !symbol) && ['fetchTokenInfo32', chainId, address],
     async () => {
-      const calls = ['name', 'symbol'].map((method) => {
+      const calls = ['name', 'symbol'].map(method => {
         return { address: address.toString(), name: method }
       })
 

@@ -99,7 +99,7 @@ const PoolsPage: React.FC<React.PropsWithChildren> = () => {
                 </CardLayout>
               ) : (
                 <Pool.PoolsTable>
-                  {chosenPools.map((pool) => (
+                  {chosenPools.map(pool => (
                     <PoolRow
                       initialActivity={normalizedUrlSearch.toLowerCase() === pool.earningToken.symbol?.toLowerCase()}
                       key={pool.contractAddress[chainId]}

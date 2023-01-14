@@ -28,8 +28,7 @@ const TeamRanksSection: React.FC<React.PropsWithChildren<TeamRanksProps>> = ({
           <RibbonWithImage imageComponent={<RanksIcon width="175px" />} ribbonDirection="up">
             {t('Team Ranks')}
           </RibbonWithImage>
-        }
-      >
+        }>
         <Box my="64px">
           <TeamRanks
             team1LeaderboardInformation={team1LeaderboardInformation}

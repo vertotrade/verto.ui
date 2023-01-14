@@ -63,9 +63,8 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
           vaultPid={vaultPid}
           token={token}
           quoteToken={quoteToken}
-          lpSymbol={lpSymbol}
-        >
-          {(props) => <HarvestAction {...props} />}
+          lpSymbol={lpSymbol}>
+          {props => <HarvestAction {...props} />}
         </ProxyHarvestActionContainer>
       ) : (
         <HarvestActionContainer
@@ -74,14 +73,13 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
           vaultPid={vaultPid}
           token={token}
           quoteToken={quoteToken}
-          lpSymbol={lpSymbol}
-        >
-          {(props) => <HarvestAction {...props} />}
+          lpSymbol={lpSymbol}>
+          {props => <HarvestAction {...props} />}
         </HarvestActionContainer>
       )}
       {farm.boosted && (
         <BoostedAction
-          title={(status) => (
+          title={status => (
             <Flex>
               <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px" pr="4px">
                 {t('Yield Booster')}
@@ -91,7 +89,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
               </Text>
             </Flex>
           )}
-          desc={(actionBtn) => <ActionContainer>{actionBtn}</ActionContainer>}
+          desc={actionBtn => <ActionContainer>{actionBtn}</ActionContainer>}
           farmPid={farm.pid}
           lpTotalSupply={farm.lpTotalSupply}
           userBalanceInFarm={
@@ -117,11 +115,11 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
         <ConnectWalletButton mt="8px" width="100%" />
       ) : shouldUseProxyFarm ? (
         <ProxyStakedContainer {...farm} lpLabel={lpLabel} addLiquidityUrl={addLiquidityUrl} displayApr={displayApr}>
-          {(props) => <StakeAction {...props} />}
+          {props => <StakeAction {...props} />}
         </ProxyStakedContainer>
       ) : (
         <StakedContainer {...farm} lpLabel={lpLabel} addLiquidityUrl={addLiquidityUrl} displayApr={displayApr}>
-          {(props) => <StakeAction {...props} />}
+          {props => <StakeAction {...props} />}
         </StakedContainer>
       )}
     </Action>

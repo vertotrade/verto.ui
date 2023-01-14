@@ -179,8 +179,7 @@ const CollectRoundWinningsModal: React.FC<React.PropsWithChildren<CollectRoundWi
           mb="8px"
           onClick={handleClick}
           isLoading={isPendingTx || isLoading}
-          endIcon={isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
-        >
+          endIcon={isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}>
           {t('Confirm')}
         </Button>
       </ModalBody>

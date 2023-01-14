@@ -10,16 +10,16 @@ const selectLotteriesData = (state: State) => state.lottery.lotteriesData
 const selectMaxNumberTicketsPerBuyOrClaim = (state: State) => state.lottery.maxNumberTicketsPerBuyOrClaim
 
 export const makeLotteryGraphDataByIdSelector = (lotteryId: string) =>
-  createSelector([selectLotteriesData], (lotteriesData) => lotteriesData?.find((lottery) => lottery.id === lotteryId))
+  createSelector([selectLotteriesData], lotteriesData => lotteriesData?.find(lottery => lottery.id === lotteryId))
 
 export const maxNumberTicketsPerBuyOrClaimSelector = createSelector(
   [selectMaxNumberTicketsPerBuyOrClaim],
-  (maxNumberTicketsPerBuyOrClaimAsString) => {
+  maxNumberTicketsPerBuyOrClaimAsString => {
     return new BigNumber(maxNumberTicketsPerBuyOrClaimAsString)
   },
 )
 
-export const currentRoundSelector = createSelector([selectCurrentRound], (currentRound) => {
+export const currentRoundSelector = createSelector([selectCurrentRound], currentRound => {
   const {
     priceTicketInCake: priceTicketInCakeAsString,
     discountDivisor: discountDivisorAsString,

@@ -48,8 +48,7 @@ const ApproveCakePage: React.FC<React.PropsWithChildren<ApproveCakePageProps>> =
         endIcon={isApproving ? <AutoRenewIcon spin color="currentColor" /> : null}
         width="100%"
         mb="8px"
-        onClick={handleApprove}
-      >
+        onClick={handleApprove}>
         {t('Enable')}
       </Button>
       <Button variant="text" width="100%" onClick={onDismiss} disabled={isApproving}>

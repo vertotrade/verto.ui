@@ -38,8 +38,7 @@ const EasterYourScore: React.FC<React.PropsWithChildren<YourScoreProps>> = ({
         <RibbonWithImage
           imageComponent={<ScoreHeader profile={profile} isLoading={isLoading} />}
           ribbonDirection="down"
-          isCardHeader
-        >
+          isCardHeader>
           {t('Your Score')}
         </RibbonWithImage>
       )}

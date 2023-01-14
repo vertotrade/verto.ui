@@ -97,7 +97,7 @@ export function activeListeningKeys(
     const keyListeners = listeners[callKey]
 
     memo[callKey] = Object.keys(keyListeners)
-      .filter((key) => {
+      .filter(key => {
         const blocksPerFetch = parseInt(key)
         if (blocksPerFetch <= 0) return false
         return keyListeners[blocksPerFetch] > 0
@@ -127,7 +127,7 @@ export function outdatedListeningKeys(
   // no results at all, load everything
   if (!results) return Object.keys(listeningKeys)
 
-  return Object.keys(listeningKeys).filter((callKey) => {
+  return Object.keys(listeningKeys).filter(callKey => {
     const data = callResults[chainId][callKey]
     // no data, must fetch
     if (!data) return true
@@ -145,7 +145,7 @@ export function outdatedListeningKeys(
 
 export default function Updater(): null {
   const dispatch = useAppDispatch()
-  const state = useSelector<AppState, AppState['multicall']>((s) => s.multicall)
+  const state = useSelector<AppState, AppState['multicall']>(s => s.multicall)
   // wait for listeners to settle before triggering updates
   const debouncedListeners = useDebounce(state.callListeners, 100)
   const currentBlock = useCurrentBlock()
@@ -171,12 +171,12 @@ export default function Updater(): null {
 
     const outdatedCallKeys: string[] = JSON.parse(serializedOutdatedCallKeys)
     if (outdatedCallKeys.length === 0) return
-    const calls = outdatedCallKeys.map((key) => parseCallKey(key))
+    const calls = outdatedCallKeys.map(key => parseCallKey(key))
 
     const chunkedCalls = chunkArray(calls, CALL_CHUNK_SIZE)
 
     if (cancellations.current?.blockNumber !== currentBlock) {
-      cancellations.current?.cancellations?.forEach((c) => c())
+      cancellations.current?.cancellations?.forEach(c => c())
     }
 
     dispatch(

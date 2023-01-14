@@ -6,7 +6,7 @@ import BigNumber from 'bignumber.js'
 
 // TODO: refactor as useTokenApprovalStatus for generic use
 
-export const useCakeApprovalStatus = (spender) => {
+export const useCakeApprovalStatus = spender => {
   const { address: account } = useAccount()
   const { reader: cakeContract } = useCake()
 

@@ -11,8 +11,7 @@ const TeamPage = ({ fallback = {} }: InferGetStaticPropsType<typeof getStaticPro
     <SWRConfig
       value={{
         fallback,
-      }}
-    >
+      }}>
       <TeamPageRouter />
     </SWRConfig>
   )
@@ -35,7 +34,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const idNumber = Number(id)
 
-  const isValidTeamId = teams.findIndex((team) => team.id === idNumber) !== -1
+  const isValidTeamId = teams.findIndex(team => team.id === idNumber) !== -1
   if (!isValidTeamId) {
     return {
       notFound: true,

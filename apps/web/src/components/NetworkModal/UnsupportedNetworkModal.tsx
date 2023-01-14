@@ -32,7 +32,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
   }, [menuItems, pathname])
 
   const supportedMainnetChains = useMemo(
-    () => chains.filter((chain) => !chain.testnet && pageSupportedChains?.includes(chain.id)),
+    () => chains.filter(chain => !chain.testnet && pageSupportedChains?.includes(chain.id)),
     [chains, pageSupportedChains],
   )
 
@@ -41,7 +41,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
       <Grid style={{ gap: '16px' }} maxWidth="336px">
         <Text>
           {t('Currently %feature% only supported in', { feature: typeof title === 'string' ? title : 'this page' })}{' '}
-          {supportedMainnetChains?.map((c) => c.name).join(', ')}
+          {supportedMainnetChains?.map(c => c.name).join(', ')}
         </Text>
         <div style={{ textAlign: 'center' }}>
           <Image
@@ -59,13 +59,12 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
           <Button
             isLoading={isLoading}
             onClick={() => {
-              if (supportedMainnetChains.map((c) => c.id).includes(chainId)) {
+              if (supportedMainnetChains.map(c => c.id).includes(chainId)) {
                 switchNetworkAsync(chainId)
               } else {
                 switchNetworkAsync(ChainId.BSC)
               }
-            }}
-          >
+            }}>
             {isLoading ? <Dots>{t('Switch network in wallet')}</Dots> : t('Switch network in wallet')}
           </Button>
         ) : (
@@ -80,8 +79,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
               logout().then(() => {
                 switchNetworkLocal(ChainId.BSC)
               })
-            }
-          >
+            }>
             {t('Disconnect Wallet')}
           </Button>
         )}

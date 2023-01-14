@@ -65,8 +65,7 @@ const LineChart = ({ data, setHoverValue, setHoverDate, isChangePositive, timeWi
         onMouseLeave={() => {
           if (setHoverDate) setHoverDate(undefined)
           if (setHoverValue) setHoverValue(undefined)
-        }}
-      >
+        }}>
         <defs>
           <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor={colors.gradient1} stopOpacity={0.34} />
@@ -77,7 +76,7 @@ const LineChart = ({ data, setHoverValue, setHoverDate, isChangePositive, timeWi
           dataKey="time"
           axisLine={false}
           tickLine={false}
-          tickFormatter={(time) => time.toLocaleString(locale, dateFormatting)}
+          tickFormatter={time => time.toLocaleString(locale, dateFormatting)}
           minTickGap={8}
         />
         <YAxis dataKey="value" axisLine={false} tickLine={false} domain={['auto', 'auto']} hide />

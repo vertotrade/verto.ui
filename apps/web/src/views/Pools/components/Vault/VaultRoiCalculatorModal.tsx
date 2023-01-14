@@ -93,16 +93,14 @@ export const VaultRoiCalculatorModal = ({
             scale="sm"
             variant="subtle"
             activeIndex={cakeVaultView}
-            onItemClick={setCakeVaultView}
-          >
+            onItemClick={setCakeVaultView}>
             {buttonMenuItems}
           </ButtonMenu>
         ) : (
           <></>
         )
       }
-      {...rest}
-    >
+      {...rest}>
       {cakeVaultView && (
         <Box mt="16px">
           <LockDurationField

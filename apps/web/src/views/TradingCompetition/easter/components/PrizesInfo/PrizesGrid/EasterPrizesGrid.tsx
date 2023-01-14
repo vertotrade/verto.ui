@@ -88,7 +88,7 @@ const EasterPrizesGrid = () => {
   return (
     <Box pt="24px">
       <TabMenu activeIndex={tab} onItemClick={handleItemClick}>
-        {Object.keys(easterPrizes).map((team) => {
+        {Object.keys(easterPrizes).map(team => {
           return <Tab key={team}>{t('#%team% Team', { team })}</Tab>
         })}
       </TabMenu>
@@ -104,7 +104,7 @@ const EasterPrizesGrid = () => {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => {
+            {rows.map(row => {
               const { icon: Icon, label, color } = tierStyleMap[row.tier]
               const { champion, teamPlayer } = row.achievements
 

@@ -91,8 +91,7 @@ export function ChoosePair({
             width="100%"
             variant={!isValid ? 'danger' : 'primary'}
             onClick={onNext}
-            disabled={!isValid}
-          >
+            disabled={!isValid}>
             {error ?? t('Add Liquidity')}
           </CommitButton>
         )}

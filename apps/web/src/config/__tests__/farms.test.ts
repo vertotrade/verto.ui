@@ -6,17 +6,17 @@ import { getLpContract } from 'utils/contractHelpers'
 
 // Test only against the last 10 farms, for performance concern
 const farmsToTest: [number, SerializedFarm, number][] = farms56
-  .filter((farm) => farm.pid !== 0 && farm.pid !== null)
-  .filter((farm) => !farm.stableSwapAddress)
+  .filter(farm => farm.pid !== 0 && farm.pid !== null)
+  .filter(farm => !farm.stableSwapAddress)
   .slice(0, 10)
-  .map((farm) => [farm.pid, farm, 56])
+  .map(farm => [farm.pid, farm, 56])
 
-const farms1ToTest: [number, SerializedFarm, number][] = farms1.slice(0, 10).map((farm) => [farm.pid, farm, 1])
+const farms1ToTest: [number, SerializedFarm, number][] = farms1.slice(0, 10).map(farm => [farm.pid, farm, 1])
 
 const getDuplicates = (key: 'pid' | 'lpAddress') => {
   const farms = [...farms56, ...farms1]
-  const keys = farms.map((farm) => farm[key])
-  return keys.filter((data) => keys.indexOf(data) !== keys.lastIndexOf(data))
+  const keys = farms.map(farm => farm[key])
+  return keys.filter(data => keys.indexOf(data) !== keys.lastIndexOf(data))
 }
 
 describe('Config farms', () => {
@@ -56,7 +56,7 @@ describe('Config farms', () => {
   // BSC
   const START_PID = 2
   const FACTORY_ADDRESS = '0xca143ce32fe78f1f7019d7d551a6402fc5350c73'
-  const newFarmsToTest = farmsToTest.filter((farmSet) => farmSet[0] >= START_PID)
+  const newFarmsToTest = farmsToTest.filter(farmSet => farmSet[0] >= START_PID)
 
   it.each(newFarmsToTest)('farm %d is using correct factory address', async (pid, farm) => {
     const lpContract = getLpContract(farm.lpAddress)
@@ -67,7 +67,7 @@ describe('Config farms', () => {
   // ETH
   const ETH_START_PID = 124
   const ETH_FACTORY_ADDRESS = '0x1097053fd2ea711dad45caccc45eff7548fcb362'
-  const ethNewFarmsToTest = farms1ToTest.filter((farmSet) => farmSet[0] >= ETH_START_PID)
+  const ethNewFarmsToTest = farms1ToTest.filter(farmSet => farmSet[0] >= ETH_START_PID)
 
   it.each(ethNewFarmsToTest)('farm %d is using correct factory address', async (pid, farm) => {
     const lpContract = getLpContract(farm.lpAddress, farm.token.chainId)

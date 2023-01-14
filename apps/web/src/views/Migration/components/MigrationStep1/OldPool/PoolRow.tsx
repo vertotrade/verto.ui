@@ -86,7 +86,7 @@ const PoolRow: React.FC<React.PropsWithChildren<PoolRowProps>> = ({ pool, accoun
 
   const toggleExpanded = () => {
     if (!isLargerScreen) {
-      setExpanded((prev) => !prev)
+      setExpanded(prev => !prev)
     }
   }
 

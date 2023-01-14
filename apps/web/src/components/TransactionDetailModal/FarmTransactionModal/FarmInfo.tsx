@@ -56,7 +56,7 @@ const FarmPending: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedD
 const FarmResult: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedData }) => {
   const { t } = useTranslation()
   const { amount, lpSymbol, type, steps } = pickedData.nonBscFarm
-  const firstStep = steps.find((step) => step.step === 1)
+  const firstStep = steps.find(step => step.step === 1)
   const text =
     type === NonBscFarmStepType.STAKE ? t('token have been staked in the Farm!') : t('token have been unstaked!')
 
@@ -114,7 +114,7 @@ const FarmError: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedDat
   const { amount, lpSymbol, type, steps } = pickedData.nonBscFarm
   const text = type === NonBscFarmStepType.STAKE ? t('The attempt to stake') : t('The attempt to unstake')
   const errorText = type === NonBscFarmStepType.STAKE ? t('Token fail to stake.') : t('Token fail to unstake.')
-  const isFirstStepError = steps.find((step) => step.step === 1 && step.status === FarmTransactionStatus.FAIL)
+  const isFirstStepError = steps.find(step => step.step === 1 && step.status === FarmTransactionStatus.FAIL)
 
   return (
     <Box mb="24px">

@@ -108,8 +108,7 @@ const LeaderboardRow: React.FC<React.PropsWithChildren<LeaderboardRowProps>> = (
               isBscScan
               href={getBlockExploreLink(account, 'address')}
               bold={false}
-              color="text"
-            >
+              color="text">
               {t('Bidder Address')}
             </SubMenuItem>
           )}
@@ -157,13 +156,12 @@ const AuctionLeaderboardTable: React.FC<React.PropsWithChildren<{ bidders: Bidde
           textTransform="uppercase"
           textAlign="right"
           pr={[null, null, '24px']}
-          py="16px"
-        >
+          py="16px">
           {t('CAKE bid')}
         </Text>
         <Box />
         {/* Rows */}
-        {bidders.slice(0, visibleBidders).map((bidder) => (
+        {bidders.slice(0, visibleBidders).map(bidder => (
           <LeaderboardRow key={bidder.account} bidder={bidder} cakePriceBusd={cakePriceBusd} isMobile={isMobile} />
         ))}
       </LeaderboardContainer>
@@ -181,14 +179,13 @@ const AuctionLeaderboardTable: React.FC<React.PropsWithChildren<{ bidders: Bidde
             mt="16px"
             variant="text"
             onClick={() =>
-              setVisibleBidders((prev) => {
+              setVisibleBidders(prev => {
                 if (totalBidders - prev > 10) {
                   return prev + 10
                 }
                 return totalBidders
               })
-            }
-          >
+            }>
             {t('Show More')}
           </Button>
         )}

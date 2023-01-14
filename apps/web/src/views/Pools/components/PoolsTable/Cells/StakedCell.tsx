@@ -58,8 +58,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
           : pool.vaultKey === VaultKey.CakeVault && !hasStaked
           ? '1 0 120px'
           : '2 0 100px'
-      }
-    >
+      }>
       <Pool.CellContent>
         <Text fontSize="12px" color="textSubtle" textAlign="left">
           {labelText}

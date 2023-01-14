@@ -15,13 +15,13 @@ describe('utils isAccountAddress', () => {
     '0x912387',
     '0x2cf744dc90acb87c3bbf5f034b37c3718ac10a56e5181c1b43923e5c3623b493',
   ]
-  it.each(validCases)('should valid', (value) => {
+  it.each(validCases)('should valid', value => {
     expect(isAccountAddress(value)).toBeTruthy()
   })
 
   const invalidCases = ['123123', '02312', '0x1::aptos_coin:AptosCoin', 'apt']
 
-  it.each(invalidCases)('should invalid', (value) => {
+  it.each(invalidCases)('should invalid', value => {
     expect(isAccountAddress(value)).toBeFalsy()
   })
 })

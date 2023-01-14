@@ -181,8 +181,8 @@ export const fetchMasterChefData = async (
   masterChefAddress: string,
 ): Promise<any[]> => {
   try {
-    const masterChefCalls = farms.map((farm) => masterChefFarmCalls(farm, masterChefAddress))
-    const masterChefAggregatedCalls = masterChefCalls.filter((masterChefCall) => masterChefCall !== null) as Call[]
+    const masterChefCalls = farms.map(farm => masterChefFarmCalls(farm, masterChefAddress))
+    const masterChefAggregatedCalls = masterChefCalls.filter(masterChefCall => masterChefCall !== null) as Call[]
 
     const masterChefMultiCallResult = await multicallv2({
       abi: masterChefV2Abi,
@@ -191,7 +191,7 @@ export const fetchMasterChefData = async (
     })
 
     let masterChefChunkedResultCounter = 0
-    return masterChefCalls.map((masterChefCall) => {
+    return masterChefCalls.map(masterChefCall => {
       if (masterChefCall === null) {
         return null
       }

@@ -23,12 +23,12 @@ const fetchCheapestBunny = async (
 
   if (!nftsMarket.length) return null
 
-  const nftsMarketTokenIds = nftsMarket.map((marketData) => marketData.tokenId)
+  const nftsMarketTokenIds = nftsMarket.map(marketData => marketData.tokenId)
   const lowestPriceUpdatedBunny = await getLowestUpdatedToken(pancakeBunniesAddress.toLowerCase(), nftsMarketTokenIds)
 
   const cheapestBunnyOfAccount = nftsMarket
-    .filter((marketData) => marketData.tokenId === lowestPriceUpdatedBunny?.tokenId)
-    .map((marketData) => {
+    .filter(marketData => marketData.tokenId === lowestPriceUpdatedBunny?.tokenId)
+    .map(marketData => {
       const apiMetadata = getMetadataWithFallback(nftMetadata.data, marketData.otherId)
       const attributes = getPancakeBunniesAttributesField(marketData.otherId)
       const bunnyToken = combineApiAndSgResponseToNftToken(apiMetadata, marketData, attributes)

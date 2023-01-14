@@ -119,7 +119,7 @@ const IFOBanner = () => {
         <RightWrapper>
           <IFOIconImage
             src={`/images/tokens/${activeIfoWithBlocks.token.address}.png`}
-            onError={(event) => {
+            onError={event => {
               // @ts-ignore
               // eslint-disable-next-line no-param-reassign
               event.target.style.display = 'none'

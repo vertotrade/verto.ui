@@ -20,7 +20,7 @@ import { useUserSingleHopOnly } from 'state/user/singleHop'
 import styled from 'styled-components'
 
 export const withCustomOnDismiss =
-  (Component) =>
+  Component =>
   ({ onDismiss, customOnDismiss, ...props }: { onDismiss?: () => void; customOnDismiss: () => void }) => {
     const handleDismiss = useCallback(() => {
       onDismiss?.()
@@ -106,8 +106,7 @@ const SlippageSetting = () => {
             setSlippageInput('')
             setUserSlippageTolerance(10)
           }}
-          variant={userSlippageTolerance === 10 ? 'primary' : 'tertiary'}
-        >
+          variant={userSlippageTolerance === 10 ? 'primary' : 'tertiary'}>
           0.1%
         </Button>
         <Button
@@ -118,8 +117,7 @@ const SlippageSetting = () => {
             setSlippageInput('')
             setUserSlippageTolerance(50)
           }}
-          variant={userSlippageTolerance === 50 ? 'primary' : 'tertiary'}
-        >
+          variant={userSlippageTolerance === 50 ? 'primary' : 'tertiary'}>
           0.5%
         </Button>
         <Button
@@ -130,8 +128,7 @@ const SlippageSetting = () => {
             setSlippageInput('')
             setUserSlippageTolerance(100)
           }}
-          variant={userSlippageTolerance === 100 ? 'primary' : 'tertiary'}
-        >
+          variant={userSlippageTolerance === 100 ? 'primary' : 'tertiary'}>
           1.0%
         </Button>
         <Flex alignItems="center">
@@ -145,7 +142,7 @@ const SlippageSetting = () => {
               onBlur={() => {
                 parseCustomSlippage((userSlippageTolerance / 100).toFixed(2))
               }}
-              onChange={(event) => {
+              onChange={event => {
                 if (event.currentTarget.validity.valid) {
                   parseCustomSlippage(event.target.value.replace(/,/g, '.'))
                 }
@@ -186,8 +183,7 @@ export const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>
       title={t('Settings')}
       headerBackground="gradientCardHeader"
       onDismiss={onDismiss}
-      style={{ maxWidth: '420px' }}
-    >
+      style={{ maxWidth: '420px' }}>
       <ScrollableContainer>
         <Flex justifyContent="space-between" mb="24px">
           <Text>{t('Dark mode')}</Text>
@@ -224,13 +220,9 @@ export const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>
           <Flex justifyContent="space-between" alignItems="center" mb="24px">
             <Flex alignItems="center">
               <Text>{t('Flippy sounds')}</Text>
-              <QuestionHelper
-                text={t('Fun sounds')}
-                placement="top-start"
-                ml="4px"
-              />
+              <QuestionHelper text={t('Fun sounds')} placement="top-start" ml="4px" />
             </Flex>
-            <PancakeToggle checked={audioPlay} onChange={(e) => setAudioPlay(e.target.checked)} scale="md" />
+            <PancakeToggle checked={audioPlay} onChange={e => setAudioPlay(e.target.checked)} scale="md" />
           </Flex>
         </Flex>
       </ScrollableContainer>

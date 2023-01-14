@@ -44,7 +44,7 @@ export const StakedContainer = ({ children, ...props }) => {
     watch: true,
     address: account,
     coin: props.lpAddress,
-    select: (d) => new BigNumber(d.value),
+    select: d => new BigNumber(d.value),
   })
 
   const userData = useMemo(
@@ -98,7 +98,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
 
   const isStakeReady = useMemo(() => {
-    return ['history', 'archived'].some((item) => router.pathname.includes(item))
+    return ['history', 'archived'].some(item => router.pathname.includes(item))
   }, [router])
 
   const handleStake = async (amount: string) => {
@@ -173,8 +173,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
         lpSymbol={lpSymbol}
         disabledPlusButton={isStakeReady}
         onPresentWithdraw={onPresentWithdraw}
-        onPresentDeposit={onPresentDeposit}
-      >
+        onPresentDeposit={onPresentDeposit}>
         <FarmUI.StakedLP
           decimals={FARM_DEFAULT_DECIMALS}
           stakedBalance={stakedBalance}

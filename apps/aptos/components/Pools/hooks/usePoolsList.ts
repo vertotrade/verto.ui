@@ -31,10 +31,10 @@ export const usePoolsList = () => {
   const { data: pools } = useAccountResources({
     networkName,
     address: SMARTCHEF_ADDRESS,
-    select: (resources) => {
+    select: resources => {
       return resources.filter(
         // ignore LP Token Type for now
-        (resource) => resource.type.includes(SMARTCHEF_POOL_INFO_TYPE_TAG) && !resource.type.includes(PAIR_LP_TYPE_TAG),
+        resource => resource.type.includes(SMARTCHEF_POOL_INFO_TYPE_TAG) && !resource.type.includes(PAIR_LP_TYPE_TAG),
       )
     },
     watch: true,
@@ -42,7 +42,7 @@ export const usePoolsList = () => {
 
   const { data: balances } = useAccountResources({
     address: account,
-    select: (resources) => {
+    select: resources => {
       return resources
     },
     watch: true,
@@ -76,7 +76,7 @@ export const useCakePool = ({ balances, chainId }) => {
   const aptCoin = APT[chainId]
 
   // Since Aptos is timestamp-based update for earning, we will forcely refresh in 6 seconds.
-  const cakeFarm = useMemo(() => getFarmConfig(chainId)?.find((f) => f.pid === CAKE_PID), [chainId])
+  const cakeFarm = useMemo(() => getFarmConfig(chainId)?.find(f => f.pid === CAKE_PID), [chainId])
 
   const cakeToken = useMemo(() => cakeFarm?.token && deserializeToken(cakeFarm?.token), [cakeFarm])
 
@@ -108,7 +108,7 @@ export const useCakePool = ({ balances, chainId }) => {
 
   const { data: masterChef } = useMasterChefResource()
 
-  const poolUserInfo = balances?.find((balance) => balance.type.includes(FARMS_USER_INFO_RESOURCE))
+  const poolUserInfo = balances?.find(balance => balance.type.includes(FARMS_USER_INFO_RESOURCE))
 
   const poolUserInfoHandle = poolUserInfo?.data?.pid_to_user_info?.inner?.handle
 

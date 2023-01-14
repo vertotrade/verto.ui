@@ -62,7 +62,7 @@ export function useSwapCallArguments(
       )
     }
 
-    return swapMethods.map((parameters) => ({ parameters, contract }))
+    return swapMethods.map(parameters => ({ parameters, contract }))
   }, [account, allowedSlippage, chainId, contract, deadline, recipient, trade])
 }
 
@@ -97,7 +97,7 @@ function swapCallParameters(
   let methodName: string
   let args: (string | string[])[]
   let value: string
-  const flag: string[] = trade.route.pairs.map((pair) => {
+  const flag: string[] = trade.route.pairs.map(pair => {
     if (isStableSwapPair(pair)) return '0x0'
     return '0x1'
   })

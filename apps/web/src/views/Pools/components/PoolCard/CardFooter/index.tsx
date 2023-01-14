@@ -45,7 +45,7 @@ const Footer: React.FC<React.PropsWithChildren<FooterProps>> = ({
       <ExpandableButtonWrapper>
         <Flex alignItems="center">
           <PoolTypeTag vaultKey={vaultKey} isLocked={isLocked} account={account}>
-            {(targetRef) => (
+            {targetRef => (
               <Flex ref={targetRef}>
                 <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
               </Flex>

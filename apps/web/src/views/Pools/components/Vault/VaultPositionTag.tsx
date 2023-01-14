@@ -1,15 +1,4 @@
-import {
-  Tag,
-  TagProps,
-  Text,
-  SplitIcon,
-  LockIcon,
-  UnlockIcon,
-  HotIcon,
-  Box,
-  FlexGap,
-  FlexGapProps,
-} from '@verto/uikit'
+import { Tag, TagProps, Text, SplitIcon, LockIcon, UnlockIcon, HotIcon, Box, FlexGap, FlexGapProps } from '@verto/uikit'
 import Trans from 'components/Trans'
 import { useTranslation } from '@verto/localization'
 import { FC, ReactNode, useMemo } from 'react'

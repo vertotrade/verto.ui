@@ -88,7 +88,7 @@ export class Client<TProvider extends AptosClient = AptosClient> {
           {
             name: storeKey,
             getStorage: () => storage,
-            partialize: (state) => ({
+            partialize: state => ({
               ...(autoConnect && {
                 data: {
                   account: state?.data?.account,
@@ -151,7 +151,7 @@ export class Client<TProvider extends AptosClient = AptosClient> {
   }
 
   clearState() {
-    this.setState((x) => ({
+    this.setState(x => ({
       ...x,
       chains: undefined,
       connector: undefined,
@@ -172,14 +172,14 @@ export class Client<TProvider extends AptosClient = AptosClient> {
     if (this.isAutoConnecting) return
     this.isAutoConnecting = true
 
-    this.setState((x) => ({
+    this.setState(x => ({
       ...x,
       status: x.data?.account ? 'reconnecting' : 'connecting',
     }))
 
     // Try last used connector first
     const sorted = this.lastUsedConnector
-      ? [...this.connectors].sort((x) => (x.id === this.lastUsedConnector ? -1 : 1))
+      ? [...this.connectors].sort(x => (x.id === this.lastUsedConnector ? -1 : 1))
       : this.connectors
 
     let connected = false
@@ -189,7 +189,7 @@ export class Client<TProvider extends AptosClient = AptosClient> {
       if (!isAuthorized) continue
 
       const data = await connector.connect()
-      this.setState((x) => ({
+      this.setState(x => ({
         ...x,
         connector,
         chains: connector?.chains,
@@ -202,7 +202,7 @@ export class Client<TProvider extends AptosClient = AptosClient> {
 
     // If connecting didn't succeed, set to disconnected
     if (!connected)
-      this.setState((x) => ({
+      this.setState(x => ({
         ...x,
         data: undefined,
         status: 'disconnected',
@@ -219,7 +219,7 @@ export class Client<TProvider extends AptosClient = AptosClient> {
 
   addEffects() {
     const onChange = (data: Data) => {
-      this.setState((x) => ({
+      this.setState(x => ({
         ...x,
         data: { ...x.data, ...data },
       }))
@@ -228,7 +228,7 @@ export class Client<TProvider extends AptosClient = AptosClient> {
       this.clearState()
     }
     const onError = (error: Error) => {
-      this.setState((x) => ({ ...x, error }))
+      this.setState(x => ({ ...x, error }))
     }
 
     this.store.subscribe(
@@ -251,8 +251,8 @@ export class Client<TProvider extends AptosClient = AptosClient> {
     if (subscribeProvider)
       this.store.subscribe(
         ({ data }) => data?.network,
-        (networkName) => {
-          this.setState((x) => ({
+        networkName => {
+          this.setState(x => ({
             ...x,
             provider: subscribeProvider ? provider({ networkName }) : x.provider,
           }))

@@ -1,17 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardProps,
-  Heading,
-  Radio,
-  Text,
-  useModal,
-  useToast,
-} from '@verto/uikit'
+import { Button, Card, CardBody, CardHeader, CardProps, Heading, Radio, Text, useModal, useToast } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { Proposal } from 'state/types'
 import { useTranslation } from '@verto/localization'

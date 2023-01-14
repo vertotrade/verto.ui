@@ -42,7 +42,7 @@ export class BloctoConnector extends Connector<EthereumProviderInterface, { defa
       options: { defaultChainId: 56 },
     },
   ) {
-    const chains = config.chains?.filter((c) => !!chainIdToNetwork[c.id])
+    const chains = config.chains?.filter(c => !!chainIdToNetwork[c.id])
     super({
       chains,
       options: config.options,

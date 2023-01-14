@@ -35,7 +35,7 @@ const SpaciousLimitOrderTable = ({ orders }) => {
           </tr>
         </thead>
         <tbody>
-          {orders.map((order) => (
+          {orders.map(order => (
             <FullRow key={order.id} order={order} />
           ))}
         </tbody>

@@ -47,11 +47,11 @@ const TableNavigation: React.FC<TableNavigationProps> = ({
   }, [total, itemsPerPage])
 
   const onPageNext = useCallback(() => {
-    setPage((page) => (page === maxPage ? page : page + 1))
+    setPage(page => (page === maxPage ? page : page + 1))
   }, [maxPage])
 
   const onPagePrev = useCallback(() => {
-    setPage((page) => (page === 1 ? page : page - 1))
+    setPage(page => (page === 1 ? page : page - 1))
   }, [])
 
   const from = useMemo(() => itemsPerPage * (currentPage - 1), [currentPage, itemsPerPage])

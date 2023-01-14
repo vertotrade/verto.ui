@@ -24,21 +24,19 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
           variant="secondary"
           minWidth="132px"
           scale="sm"
-          endIcon={<ChevronRightIcon color="primary" width="24px" />}
-        >
+          endIcon={<ChevronRightIcon color="primary" width="24px" />}>
           {t('View All')}
         </Button>
       </Flex>
       <Grid gridGap="16px" gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']} mb="64px">
-        {collections.slice(0, 6).map((collection) => {
+        {collections.slice(0, 6).map(collection => {
           return (
             <CollectionCard
               key={collection.address}
               bgSrc={collection.banner.small}
               avatarSrc={collection.avatar}
               collectionName={collection.name}
-              url={`${nftsBaseUrl}/collections/${collection.address}`}
-            >
+              url={`${nftsBaseUrl}/collections/${collection.address}`}>
               <Flex alignItems="center">
                 <Text fontSize="12px" color="textSubtle">
                   {t('Volume')}

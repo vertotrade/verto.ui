@@ -54,13 +54,12 @@ const Chart = ({ data, setHoverValue, setHoverDate }: LineChartProps) => {
         onMouseLeave={() => {
           setHoverDate(undefined)
           setHoverValue(undefined)
-        }}
-      >
+        }}>
         <XAxis
           dataKey="time"
           axisLine={false}
           tickLine={false}
-          tickFormatter={(time) => time.toLocaleDateString(undefined, { month: '2-digit' })}
+          tickFormatter={time => time.toLocaleDateString(undefined, { month: '2-digit' })}
           minTickGap={30}
         />
         <YAxis
@@ -71,7 +70,7 @@ const Chart = ({ data, setHoverValue, setHoverDate }: LineChartProps) => {
           tickLine={false}
           color={theme.colors.textSubtle}
           fontSize="12px"
-          tickFormatter={(val) => `$${formatAmount(val)}`}
+          tickFormatter={val => `$${formatAmount(val)}`}
           orientation="right"
           tick={{ dx: 10, fill: theme.colors.textSubtle }}
         />
@@ -93,7 +92,7 @@ const Chart = ({ data, setHoverValue, setHoverDate }: LineChartProps) => {
         <Bar
           dataKey="value"
           fill={theme.colors.primary}
-          shape={(props) => (
+          shape={props => (
             <CustomBar height={props.height} width={props.width} x={props.x} y={props.y} fill={theme.colors.primary} />
           )}
         />

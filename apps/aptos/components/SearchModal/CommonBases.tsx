@@ -72,8 +72,7 @@ export default function CommonBases({
                 onSelect(native)
               }
             }}
-            disable={selectedCurrency?.isNative}
-          >
+            disable={selectedCurrency?.isNative}>
             <CurrencyLogo currency={native} style={{ marginRight: 8 }} />
             <Text>{native?.symbol}</Text>
           </BaseWrapper>

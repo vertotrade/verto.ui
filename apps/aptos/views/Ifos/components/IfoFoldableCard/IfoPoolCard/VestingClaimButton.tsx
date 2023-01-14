@@ -79,8 +79,7 @@ const VestingClaimButton: React.FC<React.PropsWithChildren<Props>> = ({
       onClick={handleClaim}
       isLoading={userPoolCharacteristics.isPendingTx}
       disabled={amountAvailableToClaim.lte(0) || userPoolCharacteristics.isPendingTx}
-      endIcon={userPoolCharacteristics.isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
-    >
+      endIcon={userPoolCharacteristics.isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}>
       {t('Claim')}
     </Button>
   )

@@ -14,7 +14,7 @@ export enum ConnectorNames {
   Ledger = 'ledger',
 }
 
-const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
+const delay = (t: number) => new Promise(resolve => setTimeout(resolve, t))
 
 const createQrCode = (chainId: number, connect) => async () => {
   connect({ connector: walletConnectNoQrCodeConnector, chainId })
@@ -162,7 +162,7 @@ const walletsConfig = ({
 export const createWallets = (chainId: number, connect: any) => {
   const hasInjected = typeof window !== 'undefined' && !window.ethereum
   const config = walletsConfig({ chainId, connect })
-  return hasInjected && config.some((c) => c.installed && c.connectorId === ConnectorNames.Injected)
+  return hasInjected && config.some(c => c.installed && c.connectorId === ConnectorNames.Injected)
     ? config // add injected icon if none of injected type wallets installed
     : [
         ...config,

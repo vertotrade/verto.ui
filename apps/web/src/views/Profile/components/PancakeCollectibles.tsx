@@ -33,9 +33,8 @@ const PancakeCollectibles = () => {
               gridGap="16px"
               gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
               mb="32px"
-              data-test="nft-collection-row"
-            >
-              {collections.map((collection) => {
+              data-test="nft-collection-row">
+              {collections.map(collection => {
                 return (
                   <CollectionCardWithVolume
                     key={collection.address}

@@ -20,8 +20,8 @@ export async function middleware(req: NextRequest) {
 
   if (url.pathname === '/') {
     url.pathname = '/swap'
-    return NextResponse.redirect(url)   
-  } 
+    return NextResponse.redirect(url)
+  }
 
   return res
 }

@@ -211,8 +211,7 @@ const BattleCta: React.FC<React.PropsWithChildren<CompetitionProps>> = ({
                   variant="secondary"
                   onClick={() => {
                     window.open('https://twitter.com/vertotrade', '_blank', 'noopener noreferrer')
-                  }}
-                >
+                  }}>
                   <TwitterIcon color="textSubtle" fontSize="12px" mr="5px" />
                   {t('Follow Update')}
                 </Button>

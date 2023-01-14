@@ -16,7 +16,7 @@ export function useSyncExternalStoreWithTracked<Snapshot extends Selection, Sele
     subscribe,
     getSnapshot,
     getServerSnapshot,
-    (x) => x,
+    x => x,
     (a, b) => {
       if (isPlainObject(a) && isPlainObject(b)) {
         for (const key of trackedKeys.current) {

@@ -7,13 +7,13 @@ export function filterTokens(tokens: Token[], search: string): Token[] {
   if (search.length === 0) return tokens
 
   if (isStructTag(search)) {
-    return tokens.filter((token) => token.address === search)
+    return tokens.filter(token => token.address === search)
   }
 
   const lowerSearchParts = search
     .toLowerCase()
     .split(/\s+/)
-    .filter((s) => s.length > 0)
+    .filter(s => s.length > 0)
 
   if (lowerSearchParts.length === 0) {
     return tokens
@@ -23,12 +23,12 @@ export function filterTokens(tokens: Token[], search: string): Token[] {
     const sParts = s
       .toLowerCase()
       .split(/\s+/)
-      .filter((s_) => s_.length > 0)
+      .filter(s_ => s_.length > 0)
 
-    return lowerSearchParts.every((p) => p.length === 0 || sParts.some((sp) => sp.startsWith(p) || sp.endsWith(p)))
+    return lowerSearchParts.every(p => p.length === 0 || sParts.some(sp => sp.startsWith(p) || sp.endsWith(p)))
   }
 
-  return tokens.filter((token) => {
+  return tokens.filter(token => {
     const { symbol, name } = token
     return (symbol && matchesSearch(symbol)) || (name && matchesSearch(name))
   })
@@ -43,7 +43,7 @@ export function createFilterToken<T extends TokenInfo | Token>(search: string): 
   const lowerSearchParts = search
     .toLowerCase()
     .split(/\s+/)
-    .filter((s) => s.length > 0)
+    .filter(s => s.length > 0)
 
   if (lowerSearchParts.length === 0) {
     return () => true
@@ -53,11 +53,11 @@ export function createFilterToken<T extends TokenInfo | Token>(search: string): 
     const sParts = s
       .toLowerCase()
       .split(/\s+/)
-      .filter((s_) => s_.length > 0)
+      .filter(s_ => s_.length > 0)
 
-    return lowerSearchParts.every((p) => p.length === 0 || sParts.some((sp) => sp.startsWith(p) || sp.endsWith(p)))
+    return lowerSearchParts.every(p => p.length === 0 || sParts.some(sp => sp.startsWith(p) || sp.endsWith(p)))
   }
-  return (token) => {
+  return token => {
     const { symbol, name } = token
     return Boolean((symbol && matchesSearch(symbol)) || (name && matchesSearch(name)))
   }
@@ -71,7 +71,7 @@ export function useSortedTokensByQuery(tokens: Token[] | undefined, searchQuery:
 
     const trimmedSearchQuery = searchQuery.toLowerCase().trim()
 
-    const symbolMatch = trimmedSearchQuery.split(/\s+/).filter((s) => s.length > 0)
+    const symbolMatch = trimmedSearchQuery.split(/\s+/).filter(s => s.length > 0)
 
     if (symbolMatch.length > 1) {
       return tokens
@@ -82,7 +82,7 @@ export function useSortedTokensByQuery(tokens: Token[] | undefined, searchQuery:
     const rest: Token[] = []
 
     // sort tokens by exact match -> substring on symbol match -> rest
-    tokens.forEach((token) => {
+    tokens.forEach(token => {
       const tokenSymbol = token.symbol?.toLowerCase()
       if (tokenSymbol === symbolMatch[0] || token.name?.toLowerCase() === trimmedSearchQuery) {
         return exactMatches.push(token)

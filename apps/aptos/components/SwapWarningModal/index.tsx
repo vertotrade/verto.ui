@@ -1,14 +1,5 @@
 import styled from 'styled-components'
-import {
-  ModalBody,
-  ModalContainer,
-  Message,
-  ModalHeader,
-  Box,
-  Heading,
-  Acknowledgement,
-  useModal,
-} from '@verto/uikit'
+import { ModalBody, ModalContainer, Message, ModalHeader, Box, Heading, Acknowledgement, useModal } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import _noop from 'lodash/noop'
 import { useCallback, useState, useEffect } from 'react'

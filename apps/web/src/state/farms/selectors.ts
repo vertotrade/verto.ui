@@ -73,20 +73,20 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
   }
 }
 
-const selectCakeFarm = (state: State) => state.farms.data.find((f) => f.pid === 2)
+const selectCakeFarm = (state: State) => state.farms.data.find(f => f.pid === 2)
 const selectFarmByKey = (key: string, value: string | number) => (state: State) =>
-  state.farms.data.find((f) => f[key] === value)
+  state.farms.data.find(f => f[key] === value)
 
 export const makeFarmFromPidSelector = (pid: number) =>
-  createSelector([selectFarmByKey('pid', pid)], (farm) => deserializeFarm(farm))
+  createSelector([selectFarmByKey('pid', pid)], farm => deserializeFarm(farm))
 
 export const makeBusdPriceFromPidSelector = (pid: number) =>
-  createSelector([selectFarmByKey('pid', pid)], (farm) => {
+  createSelector([selectFarmByKey('pid', pid)], farm => {
     return farm && new BigNumber(farm.tokenPriceBusd)
   })
 
 export const makeUserFarmFromPidSelector = (pid: number) =>
-  createSelector([selectFarmByKey('pid', pid)], (farm) => {
+  createSelector([selectFarmByKey('pid', pid)], farm => {
     const { allowance, tokenBalance, stakedBalance, earnings, proxy } = deserializeFarmUserData(farm)
     return {
       allowance,
@@ -97,16 +97,16 @@ export const makeUserFarmFromPidSelector = (pid: number) =>
     }
   })
 
-export const priceCakeFromPidSelector = createSelector([selectCakeFarm], (cakeBnbFarm) => {
+export const priceCakeFromPidSelector = createSelector([selectCakeFarm], cakeBnbFarm => {
   const cakePriceBusdAsString = cakeBnbFarm?.tokenPriceBusd
   return new BigNumber(cakePriceBusdAsString)
 })
 
 export const farmFromLpSymbolSelector = (lpSymbol: string) =>
-  createSelector([selectFarmByKey('lpSymbol', lpSymbol)], (farm) => deserializeFarm(farm))
+  createSelector([selectFarmByKey('lpSymbol', lpSymbol)], farm => deserializeFarm(farm))
 
 export const makeLpTokenPriceFromLpSymbolSelector = (lpSymbol: string) =>
-  createSelector([selectFarmByKey('lpSymbol', lpSymbol)], (farm) => {
+  createSelector([selectFarmByKey('lpSymbol', lpSymbol)], farm => {
     let lpTokenPrice = BIG_ZERO
     if (farm) {
       const lpTotalInQuoteToken = farm.lpTotalInQuoteToken ? new BigNumber(farm.lpTotalInQuoteToken) : BIG_ZERO
@@ -131,8 +131,8 @@ export const makeLpTokenPriceFromLpSymbolSelector = (lpSymbol: string) =>
 export const farmSelector = (chainId: number) =>
   createSelector(
     (state: State) => state.farms,
-    (farms) => {
-      const deserializedFarmsData = farms.data.map(deserializeFarm).filter((farm) => farm.token.chainId === chainId)
+    farms => {
+      const deserializedFarmsData = farms.data.map(deserializeFarm).filter(farm => farm.token.chainId === chainId)
       const { loadArchivedFarmsData, userDataLoaded, poolLength, regularCakePerBlock } = farms
 
       return {

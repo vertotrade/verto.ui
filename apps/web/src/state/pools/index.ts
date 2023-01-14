@@ -89,7 +89,7 @@ export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => 
   const farmsData = getState().farms.data
   const prices = getTokenPricesFromFarm(farmsData)
 
-  const cakePool = poolsConfig.filter((p) => p.sousId === 0)[0]
+  const cakePool = poolsConfig.filter(p => p.sousId === 0)[0]
 
   const stakingTokenAddress = isAddress(cakePool.stakingToken.address)
   const stakingTokenPrice = stakingTokenAddress ? prices[stakingTokenAddress] : 0
@@ -108,7 +108,7 @@ export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => 
   )
 }
 
-export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) => {
+export const fetchCakePoolUserDataAsync = (account: string) => async dispatch => {
   const allowanceCall = {
     address: bscTokens.cake.address,
     name: 'allowance',
@@ -147,13 +147,11 @@ export const fetchPoolsPublicDataAsync =
       const totalStakingsSousIdMap = keyBy(totalStakings, 'sousId')
 
       const priceHelperLpsConfig = getPoolsPriceHelperLpFiles(chainId)
-      const activePriceHelperLpsConfig = priceHelperLpsConfig.filter((priceHelperLpConfig) => {
+      const activePriceHelperLpsConfig = priceHelperLpsConfig.filter(priceHelperLpConfig => {
         return (
           poolsConfig
-            .filter(
-              (pool) => pool.earningToken.address.toLowerCase() === priceHelperLpConfig.token.address.toLowerCase(),
-            )
-            .filter((pool) => {
+            .filter(pool => pool.earningToken.address.toLowerCase() === priceHelperLpConfig.token.address.toLowerCase())
+            .filter(pool => {
               const poolBlockLimit = blockLimitsSousIdMap[pool.sousId]
               if (poolBlockLimit) {
                 return poolBlockLimit.endBlock > currentBlock
@@ -167,7 +165,7 @@ export const fetchPoolsPublicDataAsync =
       const farmsData = getState().farms.data
       const bnbBusdFarm =
         activePriceHelperLpsConfig.length > 0
-          ? farmsData.find((farm) => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WBNB')
+          ? farmsData.find(farm => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WBNB')
           : null
       const farmsWithPricesOfDifferentTokenPools = bnbBusdFarm
         ? getFarmsPrices([bnbBusdFarm, ...poolsWithDifferentFarmToken], chainId)
@@ -175,7 +173,7 @@ export const fetchPoolsPublicDataAsync =
 
       const prices = getTokenPricesFromFarm([...farmsData, ...farmsWithPricesOfDifferentTokenPools])
 
-      const liveData = poolsConfig.map((pool) => {
+      const liveData = poolsConfig.map(pool => {
         const blockLimit = blockLimitsSousIdMap[pool.sousId]
         const totalStaking = totalStakingsSousIdMap[pool.sousId]
         const isPoolEndBlockExceeded =
@@ -218,12 +216,12 @@ export const fetchPoolsPublicDataAsync =
 export const fetchPoolsStakingLimitsAsync = () => async (dispatch, getState) => {
   const poolsWithStakingLimit = getState()
     .pools.data.filter(({ stakingLimit }) => stakingLimit !== null && stakingLimit !== undefined)
-    .map((pool) => pool.sousId)
+    .map(pool => pool.sousId)
 
   try {
     const stakingLimits = await fetchPoolsStakingLimits(poolsWithStakingLimit)
 
-    const stakingLimitData = poolsConfig.map((pool) => {
+    const stakingLimitData = poolsConfig.map(pool => {
       if (poolsWithStakingLimit.includes(pool.sousId)) {
         return { sousId: pool.sousId }
       }
@@ -256,7 +254,7 @@ export const fetchPoolsUserDataAsync = createAsyncThunk<
       fetchUserPendingRewards(account),
     ])
 
-    const userData = poolsConfig.map((pool) => ({
+    const userData = poolsConfig.map(pool => ({
       sousId: pool.sousId,
       allowance: allowances[pool.sousId],
       stakingTokenBalance: stakingTokenBalances[pool.sousId],
@@ -343,7 +341,7 @@ export const fetchIfoPublicDataAsync = createAsyncThunk<PublicIfoData>('ifoVault
   return publicIfoData
 })
 
-export const fetchUserIfoCreditDataAsync = (account: string) => async (dispatch) => {
+export const fetchUserIfoCreditDataAsync = (account: string) => async dispatch => {
   try {
     const credit = await fetchUserIfoCredit(account)
     dispatch(setIfoUserCreditData(credit))
@@ -365,7 +363,7 @@ export const PoolsSlice = createSlice({
   reducers: {
     setPoolPublicData: (state, action) => {
       const { sousId } = action.payload
-      const poolIndex = state.data.findIndex((pool) => pool.sousId === sousId)
+      const poolIndex = state.data.findIndex(pool => pool.sousId === sousId)
       state.data[poolIndex] = {
         ...state.data[poolIndex],
         ...action.payload.data,
@@ -373,7 +371,7 @@ export const PoolsSlice = createSlice({
     },
     setPoolUserData: (state, action) => {
       const { sousId } = action.payload
-      state.data = state.data.map((pool) => {
+      state.data = state.data.map(pool => {
         if (pool.sousId === sousId) {
           return { ...pool, userDataLoaded: true, userData: action.payload.data }
         }
@@ -383,7 +381,7 @@ export const PoolsSlice = createSlice({
     setPoolsPublicData: (state, action) => {
       const livePoolsData: SerializedPool[] = action.payload
       const livePoolsSousIdMap = keyBy(livePoolsData, 'sousId')
-      state.data = state.data.map((pool) => {
+      state.data = state.data.map(pool => {
         const livePoolData = livePoolsSousIdMap[pool.sousId]
         return { ...pool, ...livePoolData }
       })
@@ -394,8 +392,8 @@ export const PoolsSlice = createSlice({
       state.ifo = { ...state.ifo, credit }
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(resetUserState, (state) => {
+  extraReducers: builder => {
+    builder.addCase(resetUserState, state => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       state.data = state.data.map(({ userData, ...pool }) => {
         return { ...pool }
@@ -414,7 +412,7 @@ export const PoolsSlice = createSlice({
       ) => {
         const userData = action.payload
         const userDataSousIdMap = keyBy(userData, 'sousId')
-        state.data = state.data.map((pool) => ({
+        state.data = state.data.map(pool => ({
           ...pool,
           userDataLoaded: true,
           userData: userDataSousIdMap[pool.sousId],
@@ -470,7 +468,7 @@ export const PoolsSlice = createSlice({
       ),
       (state, action: PayloadAction<{ sousId: number; field: string; value: any }>) => {
         const { field, value, sousId } = action.payload
-        const index = state.data.findIndex((p) => p.sousId === sousId)
+        const index = state.data.findIndex(p => p.sousId === sousId)
 
         if (index >= 0) {
           state.data[index] = { ...state.data[index], userData: { ...state.data[index].userData, [field]: value } }

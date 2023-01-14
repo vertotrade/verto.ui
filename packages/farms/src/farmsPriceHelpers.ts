@@ -10,8 +10,8 @@ export const filterFarmsByQuoteToken = (
   farms: SerializedFarmPublicData[],
   preferredQuoteTokens: string[] = ['BUSD', 'WBNB'],
 ): SerializedFarmPublicData => {
-  const preferredFarm = farms.find((farm) => {
-    return preferredQuoteTokens.some((quoteToken) => {
+  const preferredFarm = farms.find(farm => {
+    return preferredQuoteTokens.some(quoteToken => {
       return farm.quoteToken.symbol === quoteToken
     })
   })

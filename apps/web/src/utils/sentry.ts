@@ -17,7 +17,7 @@ const assignError = (maybeError: any) => {
   return maybeError
 }
 
-export const isUserRejected = (err) => {
+export const isUserRejected = err => {
   // provider user rejected error code
   return typeof err === 'object' && 'code' in err && err.code === 4001
 }

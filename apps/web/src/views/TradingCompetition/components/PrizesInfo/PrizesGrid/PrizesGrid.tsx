@@ -84,7 +84,7 @@ const PrizesGrid: React.FC<React.PropsWithChildren<PrizesGridProps>> = ({ prizes
   return (
     <Box pt="24px">
       <TabMenu activeIndex={tab} onItemClick={handleItemClick}>
-        {Object.keys(prizesConfig).map((team) => {
+        {Object.keys(prizesConfig).map(team => {
           return <Tab key={team}>{t('#%team% Team', { team })}</Tab>
         })}
       </TabMenu>
@@ -100,7 +100,7 @@ const PrizesGrid: React.FC<React.PropsWithChildren<PrizesGridProps>> = ({ prizes
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => {
+            {rows.map(row => {
               const { icon: Icon, label, color } = tierStyleMap[row.tier]
 
               return (

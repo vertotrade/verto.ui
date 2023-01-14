@@ -13,7 +13,7 @@ import bgShineImg from '../../../pngs/MoD-bg-shine.png'
 import { Heading1Text, Heading2Text } from '../../../components/CompetitionHeadingText'
 import { MoDLogo } from '../../../svgs'
 
-const TextStyles = (theme) => `
+const TextStyles = theme => `
   text-align: center;
   ${theme.mediaQueries.md} {
     text-align: left;
@@ -194,8 +194,7 @@ const ModBattleBanner = () => {
           style={{
             textShadow:
               '0px 0px 10px rgba(255, 175, 0, 0.22), 0px 0px 8px rgba(255, 61, 0, 0.25), 0px 0px 18px rgba(255, 135, 0, 0.55)',
-          }}
-        >
+          }}>
           {new Date(2022, 4).toLocaleString(locale, {
             month: 'short',
           })}{' '}

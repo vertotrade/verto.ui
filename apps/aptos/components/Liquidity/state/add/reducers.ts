@@ -17,7 +17,7 @@ const initialState: MintState = {
 
 export const mintStateAtom = atom(initialState)
 
-export const reducer = createReducer<MintState>(initialState, (builder) =>
+export const reducer = createReducer<MintState>(initialState, builder =>
   builder
     .addCase(resetMintState, () => initialState)
     .addCase(typeInput, (state, { payload: { field, typedValue, noLiquidity } }) => {

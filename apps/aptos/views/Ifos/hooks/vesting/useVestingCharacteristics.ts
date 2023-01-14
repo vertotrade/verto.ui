@@ -60,7 +60,7 @@ function mapVestingCharacteristics({ pool, account, vestingSchedule, resourcesMe
   }
 }
 
-export const useVestingCharacteristicsList = (resourcesList) => {
+export const useVestingCharacteristicsList = resourcesList => {
   const { account } = useAccount()
 
   const vestingScheduleId = useMemo(

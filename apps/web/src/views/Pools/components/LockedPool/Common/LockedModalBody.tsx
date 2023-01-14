@@ -158,8 +158,7 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
             width="100%"
             isLoading={approvePendingTx}
             endIcon={approvePendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
-            onClick={handleApprove}
-          >
+            onClick={handleApprove}>
             {approvePendingTx ? t('Enabling') : t('Enable')}
           </Button>
         ) : showEnableConfirmButtons ? (
@@ -176,8 +175,7 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
             isLoading={pendingTx}
             endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
             onClick={handleConfirmClick}
-            disabled={!(isValidAmount && isValidDuration)}
-          >
+            disabled={!(isValidAmount && isValidDuration)}>
             {pendingTx ? t('Confirming') : t('Confirm')}
           </Button>
         )}

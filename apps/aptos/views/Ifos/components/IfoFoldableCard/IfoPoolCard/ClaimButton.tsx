@@ -56,8 +56,7 @@ export const ClaimButton: React.FC<React.PropsWithChildren<Props>> = ({ ifo, poo
       disabled={!pool?.data || userPoolCharacteristics.isPendingTx || userPoolCharacteristics.hasClaimed}
       width="100%"
       isLoading={userPoolCharacteristics.isPendingTx}
-      endIcon={userPoolCharacteristics.isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
-    >
+      endIcon={userPoolCharacteristics.isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}>
       {t('Claim')}
     </Button>
   )

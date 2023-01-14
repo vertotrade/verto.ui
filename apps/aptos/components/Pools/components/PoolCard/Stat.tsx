@@ -41,8 +41,7 @@ export const TotalStaked: FC<React.PropsWithChildren<{ totalStaked: BigNumber; s
         <TooltipText ref={targetRef} small>
           {t('Total staked')}:
         </TooltipText>
-      }
-    >
+      }>
       {tooltipVisible && tooltip}
       <TotalToken total={totalStaked} token={stakingToken} />
     </StatWrapper>

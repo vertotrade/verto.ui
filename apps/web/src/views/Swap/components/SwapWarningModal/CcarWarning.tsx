@@ -11,8 +11,7 @@ const CcarWarning = () => {
         <Link
           style={{ display: 'inline' }}
           external
-          href="https://bscscan.com/token/0x322e5015Cc464Ada7f99dE7131CE494dE1834396"
-        >
+          href="https://bscscan.com/token/0x322e5015Cc464Ada7f99dE7131CE494dE1834396">
           {t('a new contract address.')}
         </Link>{' '}
         {t(

@@ -102,7 +102,7 @@ export const getAllVotes = async (proposal: Proposal, votesPerChunk = 1000): Pro
     fetchVoteChunk(0)
   })
 
-  return voters.map((v) => ({
+  return voters.map(v => ({
     ...v,
     metadata: {
       votingPower: String(v.vp) || '0',

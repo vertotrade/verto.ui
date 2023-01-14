@@ -54,8 +54,7 @@ const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ collection }) 
         <MarketPageTitle
           address={collection.address}
           title={collection.name}
-          description={collection.description ? <Text color="textSubtle">{t(collection.description)}</Text> : null}
-        >
+          description={collection.description ? <Text color="textSubtle">{t(collection.description)}</Text> : null}>
           <StatBox>
             <StatBoxItem title={t('Items')} stat={formatNumber(Number(totalSupply), 0, 0)} />
             <StatBoxItem

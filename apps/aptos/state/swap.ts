@@ -51,7 +51,7 @@ export const useSwapState = () => {
   return useReducerAtom(swapStateAtom, reducer)
 }
 
-const reducer = createReducer<SwapState>(initialState, (builder) =>
+const reducer = createReducer<SwapState>(initialState, builder =>
   builder
     .addCase(replaceSwapState, (state, { payload: { typedValue, field, inputCurrencyId, outputCurrencyId } }) => {
       return {
@@ -82,7 +82,7 @@ const reducer = createReducer<SwapState>(initialState, (builder) =>
         [field]: { currencyId },
       }
     })
-    .addCase(switchCurrencies, (state) => {
+    .addCase(switchCurrencies, state => {
       return {
         ...state,
         independentField: state.independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT,

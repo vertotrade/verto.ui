@@ -8,14 +8,14 @@ import { pancakeBunniesAddress } from '../../constants'
 export const fetchActivityNftMetadata = async (activities: Activity[]): Promise<NftToken[]> => {
   const [pbCollections, nonPBCollections] = partition(
     activities,
-    (activity) => isAddress(activity.nft.collection.id) === pancakeBunniesAddress,
+    activity => isAddress(activity.nft.collection.id) === pancakeBunniesAddress,
   )
 
   const activityNftTokenIds = uniqBy(
     nonPBCollections.map((activity): TokenIdWithCollectionAddress => {
       return { tokenId: activity.nft.tokenId, collectionAddress: activity.nft.collection.id }
     }),
-    (tokenWithCollectionAddress) =>
+    tokenWithCollectionAddress =>
       `${tokenWithCollectionAddress.tokenId}#${tokenWithCollectionAddress.collectionAddress}`,
   )
 
@@ -25,7 +25,7 @@ export const fetchActivityNftMetadata = async (activities: Activity[]): Promise<
   ])
 
   const pbNfts = bunniesMetadata
-    ? pbCollections.map((activity) => {
+    ? pbCollections.map(activity => {
         const { name: collectionName } = bunniesMetadata.data[activity.nft.otherId].collection
         return {
           ...bunniesMetadata.data[activity.nft.otherId],

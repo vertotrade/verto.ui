@@ -10,7 +10,7 @@ export const featureFarmApiAtom = atomWithStorage<typeof FLAG_FARM>(
   storage,
 )
 
-featureFarmApiAtom.onMount = (set) => {
+featureFarmApiAtom.onMount = set => {
   const params = new URL(window.location.href).searchParams
   const flag = params.get('use')
   if (flag === 'farmApi') {

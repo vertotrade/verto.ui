@@ -20,10 +20,10 @@ export function PageNetworkSupportModal() {
   const { chainId, isConnected, isWrongNetwork } = useActiveWeb3React()
   const { logout } = useAuth()
 
-  const foundChain = useMemo(() => chains.find((c) => c.id === chainId), [chainId])
+  const foundChain = useMemo(() => chains.find(c => c.id === chainId), [chainId])
   const historyManager = useHistory()
 
-  const lastValidPath = historyManager?.history?.find((h) => ['/swap', 'liquidity', '/', '/info'].includes(h))
+  const lastValidPath = historyManager?.history?.find(h => ['/swap', 'liquidity', '/', '/info'].includes(h))
 
   const menuItems = useMenuItems()
   const { pathname, push } = useRouter()
@@ -57,8 +57,7 @@ export function PageNetworkSupportModal() {
           <Button
             variant={foundChain && lastValidPath ? 'secondary' : 'primary'}
             isLoading={isLoading}
-            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.BSC) : switchNetworkAsync(ChainId.BSC))}
-          >
+            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.BSC) : switchNetworkAsync(ChainId.BSC))}>
             {t('Switch to %chain%', { chain: 'BNB Smart Chain' })}
           </Button>
         ) : (
@@ -73,8 +72,7 @@ export function PageNetworkSupportModal() {
               logout().then(() => {
                 push('/')
               })
-            }
-          >
+            }>
             {t('Disconnect Wallet')}
           </Button>
         )}

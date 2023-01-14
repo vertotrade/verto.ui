@@ -100,8 +100,7 @@ const AddToWalletButton: React.FC<AddToWalletButtonProps & ButtonProps> = ({
           // @ts-ignore
           decimals: tokenDecimals,
         })
-      }}
-    >
+      }}>
       {getWalletText(textOptions, tokenSymbol, t)}
       {getWalletIcon(marginTextBetweenLogo, connector?.name)}
     </Button>

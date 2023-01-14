@@ -163,11 +163,10 @@ const TokenTable: React.FC<
 
   const sortedTokens = useMemo(() => {
     return tokenDatas
-      ? orderBy(
-          tokenDatas,
-          (tokenData) => tokenData[sortField as keyof TokenData],
-          sortDirection ? 'desc' : 'asc',
-        ).slice(maxItems * (page - 1), page * maxItems)
+      ? orderBy(tokenDatas, tokenData => tokenData[sortField as keyof TokenData], sortDirection ? 'desc' : 'asc').slice(
+          maxItems * (page - 1),
+          page * maxItems,
+        )
       : []
   }, [tokenDatas, maxItems, page, sortDirection, sortField])
 
@@ -201,8 +200,7 @@ const TokenTable: React.FC<
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.name)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Name')} {arrow(SORT_FIELD.name)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -210,8 +208,7 @@ const TokenTable: React.FC<
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.priceUSD)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Price')} {arrow(SORT_FIELD.priceUSD)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -219,8 +216,7 @@ const TokenTable: React.FC<
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.priceUSDChange)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Price Change')} {arrow(SORT_FIELD.priceUSDChange)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -228,8 +224,7 @@ const TokenTable: React.FC<
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.volumeUSD)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Volume 24H')} {arrow(SORT_FIELD.volumeUSD)}
         </ClickableColumnHeader>
         <ClickableColumnHeader
@@ -237,8 +232,7 @@ const TokenTable: React.FC<
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.liquidityUSD)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Liquidity')} {arrow(SORT_FIELD.liquidityUSD)}
         </ClickableColumnHeader>
       </ResponsiveGrid>
@@ -261,16 +255,14 @@ const TokenTable: React.FC<
             <Arrow
               onClick={() => {
                 setPage(page === 1 ? page : page - 1)
-              }}
-            >
+              }}>
               <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
             </Arrow>
             <Text>{t('Page %page% of %maxPage%', { page, maxPage })}</Text>
             <Arrow
               onClick={() => {
                 setPage(page === maxPage ? page : page + 1)
-              }}
-            >
+              }}>
               <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
             </Arrow>
           </PageButtons>

@@ -37,8 +37,7 @@ const LineChart = ({ data, setHoverValue, setHoverDate }: LineChartProps) => {
         onMouseLeave={() => {
           if (setHoverDate) setHoverDate(undefined)
           if (setHoverValue) setHoverValue(undefined)
-        }}
-      >
+        }}>
         <defs>
           <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor={theme.colors.inputSecondary} stopOpacity={0.5} />
@@ -49,7 +48,7 @@ const LineChart = ({ data, setHoverValue, setHoverDate }: LineChartProps) => {
           dataKey="time"
           axisLine={false}
           tickLine={false}
-          tickFormatter={(time) => time.toLocaleDateString(undefined, { month: '2-digit' })}
+          tickFormatter={time => time.toLocaleDateString(undefined, { month: '2-digit' })}
           minTickGap={30}
         />
         <YAxis
@@ -59,7 +58,7 @@ const LineChart = ({ data, setHoverValue, setHoverDate }: LineChartProps) => {
           axisLine={false}
           tickLine={false}
           fontSize="12px"
-          tickFormatter={(val) => `$${formatAmount(val)}`}
+          tickFormatter={val => `$${formatAmount(val)}`}
           orientation="right"
           tick={{ dx: 10, fill: theme.colors.textSubtle }}
         />

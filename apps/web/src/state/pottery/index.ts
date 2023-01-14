@@ -108,7 +108,7 @@ export const fetchPotteryUserDataAsync = createAsyncThunk<SerializedPotteryUserD
 
 export const fetchPotteryRoundData = createAsyncThunk<PotteryRoundInfo, number>(
   'pottery/fetchPotteryRound',
-  async (roundId) => {
+  async roundId => {
     const response = await fetchPotteryFinishedRound(roundId)
     return response
   },
@@ -126,8 +126,8 @@ export const PotterySlice = createSlice({
       }
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(resetUserState, (state) => {
+  extraReducers: builder => {
+    builder.addCase(resetUserState, state => {
       state.userData = { ...initialState.userData }
     })
     builder.addCase(fetchLastVaultAddressAsync.fulfilled, (state, action: PayloadAction<string>) => {

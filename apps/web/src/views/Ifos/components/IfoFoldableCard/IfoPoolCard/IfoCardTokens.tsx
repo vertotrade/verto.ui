@@ -83,9 +83,9 @@ const CommitTokenSection: React.FC<React.PropsWithChildren<TokenSectionProps & {
   return <TokenSection primaryToken={commitToken} {...props} />
 }
 
-const Label = (props) => <Text bold fontSize="12px" color="secondary" textTransform="uppercase" {...props} />
+const Label = props => <Text bold fontSize="12px" color="secondary" textTransform="uppercase" {...props} />
 
-const Value = (props) => <Text bold fontSize="20px" style={{ wordBreak: 'break-all' }} {...props} />
+const Value = props => <Text bold fontSize="20px" style={{ wordBreak: 'break-all' }} {...props} />
 
 interface IfoCardTokensProps {
   poolId: PoolIds
@@ -167,7 +167,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
   })
 
   const hasNFT = useMemo(() => {
-    const data = criterias.find((obj) => obj.type === 'isQualifiedNFT')
+    const data = criterias.find(obj => obj.type === 'isQualifiedNFT')
     const userHasNFT = data?.value
     return userHasNFT
   }, [criterias])
@@ -282,8 +282,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
               mt="16px"
               onClick={onApprove}
               isLoading={enableStatus === EnableStatus.IS_ENABLING}
-              endIcon={enableStatus === EnableStatus.IS_ENABLING ? <AutoRenewIcon spin color="currentColor" /> : null}
-            >
+              endIcon={enableStatus === EnableStatus.IS_ENABLING ? <AutoRenewIcon spin color="currentColor" /> : null}>
               {t('Enable')}
             </Button>
           )}

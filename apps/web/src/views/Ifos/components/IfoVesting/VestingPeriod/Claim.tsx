@@ -58,8 +58,7 @@ const ClaimButton: React.FC<React.PropsWithChildren<Props>> = ({
       onClick={handleClaim}
       isLoading={isPending}
       disabled={isReady}
-      endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
-    >
+      endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}>
       {t('Claim %symbol%', { symbol: token.symbol })}
     </Button>
   )

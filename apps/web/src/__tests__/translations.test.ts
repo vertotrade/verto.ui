@@ -11,7 +11,7 @@ const allTranslationKeys = Object.keys(translations)
 // when some keys are hard to be extracted from code
 const whitelist = [
   ...Object.values(NftLocation),
-  ...teams.map((t) => t.description),
+  ...teams.map(t => t.description),
   // NFT description moved to profile sdk
   `Oopsie daisy! Hiccup's had a bit of an accident. Poor little fella.`,
   'Eggscellent! Celebrating Syrup Storm winning the Easter Battle!',
@@ -46,7 +46,7 @@ const whitelist = [
 ]
 
 describe('Check translations integrity', () => {
-  it.each(allTranslationKeys)('Translation key value should be equal', (key) => {
+  it.each(allTranslationKeys)('Translation key value should be equal', key => {
     expect(key).toEqual(translations[key])
   })
 })
@@ -56,7 +56,7 @@ describe('Check translations available', () => {
   const translationKeys = new Set(allTranslationKeys)
 
   function throughDirectory(directory, includeJs = false) {
-    fs.readdirSync(directory).forEach((file) => {
+    fs.readdirSync(directory).forEach(file => {
       const absolute = Path.join(directory, file)
       if (fs.statSync(absolute).isDirectory()) return throughDirectory(absolute)
       if (
@@ -127,7 +127,7 @@ describe('Check translations available', () => {
   }
 
   it('Translation key should exist in translations json', () => {
-    Array.from(extractedKeys).forEach((key) => {
+    Array.from(extractedKeys).forEach(key => {
       if (translationKeys.has(key)) {
         extractedKeys.delete(key)
         translationKeys.delete(key)

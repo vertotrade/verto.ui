@@ -85,13 +85,13 @@ export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEv
     const { farmsWithPrice, poolLength, regularCakePerBlock } = await farmFetcher.fetchFarms({
       chainId,
       isTestnet,
-      farms: farmsConfig.filter((f) => f.pid !== 0).concat(lpPriceHelpers),
+      farms: farmsConfig.filter(f => f.pid !== 0).concat(lpPriceHelpers),
     })
 
     const cakeBusdPrice = await getCakePrice(isTestnet)
     const lpAprs = await handleLpAprs(chainId, farmsConfig)
 
-    const finalFarm = farmsWithPrice.map((f) => {
+    const finalFarm = farmsWithPrice.map(f => {
       return {
         ...f,
         lpApr: lpAprs?.[f.lpAddress.toLowerCase()] || 0,

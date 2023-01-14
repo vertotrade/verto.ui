@@ -173,8 +173,7 @@ const ConfirmZapInModal: React.FC<React.PropsWithChildren<InjectedModalProps & C
         currencies={currencies}
         liquidityMinted={liquidityMinted}
         poolTokenPercentage={poolTokenPercentage}
-        price={price}
-      >
+        price={price}>
         <PairDistribution
           title={t('Input')}
           percent={inputPercent}

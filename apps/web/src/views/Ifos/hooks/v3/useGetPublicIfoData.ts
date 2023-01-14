@@ -19,7 +19,7 @@ const TAX_PRECISION = new BigNumber(10000000000)
 
 const NO_QUALIFIED_NFT_ADDRESS = '0x0000000000000000000000000000000000000000'
 
-const formatPool = (pool) => ({
+const formatPool = pool => ({
   raisingAmountPool: pool ? new BigNumber(pool[0].toString()) : BIG_ZERO,
   offeringAmountPool: pool ? new BigNumber(pool[1].toString()) : BIG_ZERO,
   limitPerUserInLP: pool ? new BigNumber(pool[2].toString()) : BIG_ZERO,
@@ -28,7 +28,7 @@ const formatPool = (pool) => ({
   sumTaxesOverflow: pool ? new BigNumber(pool[5].toString()) : BIG_ZERO,
 })
 
-const formatVestingInfo = (pool) => ({
+const formatVestingInfo = pool => ({
   percentage: pool ? pool[0].toNumber() : 0,
   cliff: pool ? pool[1].toNumber() : 0,
   duration: pool ? pool[2].toNumber() : 0,
@@ -183,7 +183,7 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
 
       const totalOfferingAmount = poolBasicFormatted.offeringAmountPool.plus(poolUnlimitedFormatted.offeringAmountPool)
 
-      setState((prev) => ({
+      setState(prev => ({
         ...prev,
         isInitialized: true,
         secondsUntilEnd: blocksRemaining * BSC_BLOCK_TIME,

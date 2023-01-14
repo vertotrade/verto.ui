@@ -16,8 +16,7 @@ const StatCardContent: React.FC<
       width="fit-content"
       flexDirection="column"
       justifyContent="flex-end"
-      mt={[null, null, null, '64px']}
-    >
+      mt={[null, null, null, '64px']}>
       {isSmallerScreen && remainingWords.length > 13 ? (
         <Heading scale="lg">{remainingWords}</Heading>
       ) : (

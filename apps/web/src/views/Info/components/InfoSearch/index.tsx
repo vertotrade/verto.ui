@@ -210,16 +210,16 @@ const Search = () => {
   const [showWatchlist, setShowWatchlist] = useState(false)
   const tokensForList = useMemo(() => {
     if (showWatchlist) {
-      return watchListTokenData.filter((token) => tokenIncludesSearchTerm(token, value))
+      return watchListTokenData.filter(token => tokenIncludesSearchTerm(token, value))
     }
-    return orderBy(tokens, (token) => token.volumeUSD, 'desc')
+    return orderBy(tokens, token => token.volumeUSD, 'desc')
   }, [showWatchlist, tokens, watchListTokenData, value])
 
   const poolForList = useMemo(() => {
     if (showWatchlist) {
-      return watchListPoolData.filter((pool) => poolIncludesSearchTerm(pool, value))
+      return watchListPoolData.filter(pool => poolIncludesSearchTerm(pool, value))
     }
-    return orderBy(pools, (pool) => pool.volumeUSD, 'desc')
+    return orderBy(pools, pool => pool.volumeUSD, 'desc')
   }, [pools, showWatchlist, watchListPoolData, value])
 
   const contentUnderTokenList = () => {
@@ -267,7 +267,7 @@ const Search = () => {
         <StyledInput
           type="text"
           value={value}
-          onChange={(e) => {
+          onChange={e => {
             setValue(e.target.value)
           }}
           placeholder={t('Search liquidity pairs or tokens')}
@@ -308,12 +308,11 @@ const Search = () => {
                 </Text>
               )}
             </ResponsiveGrid>
-            {tokensForList.slice(0, tokensShown).map((token) => {
+            {tokensForList.slice(0, tokensShown).map(token => {
               return (
                 <HoverRowLink
                   onClick={() => handleItemClick(`/info${chainPath}/tokens/${token.address}${stableSwapQuery}`)}
-                  key={`searchTokenResult${token.address}`}
-                >
+                  key={`searchTokenResult${token.address}`}>
                   <ResponsiveGrid>
                     <Flex>
                       <CurrencyLogo address={token.address} chainName={chainName} />
@@ -324,7 +323,7 @@ const Search = () => {
                         id="watchlist-icon"
                         style={{ marginLeft: '8px' }}
                         fill={savedTokens.includes(token.address)}
-                        onClick={(e) => {
+                        onClick={e => {
                           e.stopPropagation()
                           addSavedToken(token.address)
                         }}
@@ -345,8 +344,7 @@ const Search = () => {
                 else setTokensShown(tokensForList.length)
               }}
               ref={showMoreTokenRef}
-              style={{ display: tokensForList.length <= tokensShown && 'none' }}
-            >
+              style={{ display: tokensForList.length <= tokensShown && 'none' }}>
               {t('See more...')}
             </HoverText>
 
@@ -371,12 +369,11 @@ const Search = () => {
                 </Text>
               )}
             </ResponsiveGrid>
-            {poolForList.slice(0, poolsShown).map((p) => {
+            {poolForList.slice(0, poolsShown).map(p => {
               return (
                 <HoverRowLink
                   onClick={() => handleItemClick(`/info${chainPath}/pairs/${p.address}${stableSwapQuery}`)}
-                  key={`searchPoolResult${p.address}`}
-                >
+                  key={`searchPoolResult${p.address}`}>
                   <ResponsiveGrid>
                     <Flex>
                       <DoubleCurrencyLogo
@@ -391,7 +388,7 @@ const Search = () => {
                         id="watchlist-icon"
                         style={{ marginLeft: '10px' }}
                         fill={savedPools.includes(p.address)}
-                        onClick={(e) => {
+                        onClick={e => {
                           e.stopPropagation()
                           addSavedPool(p.address)
                         }}
@@ -411,8 +408,7 @@ const Search = () => {
                 else setPoolsShown(poolForList.length)
               }}
               ref={showMorePoolRef}
-              style={{ display: poolForList.length <= poolsShown && 'none' }}
-            >
+              style={{ display: poolForList.length <= poolsShown && 'none' }}>
               {t('See more...')}
             </HoverText>
           </Menu>

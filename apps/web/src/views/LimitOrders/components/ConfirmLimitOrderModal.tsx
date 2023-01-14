@@ -83,8 +83,7 @@ export const ConfirmLimitOrderModal: React.FC<React.PropsWithChildren<ConfirmLim
       title={t('Confirm Limit Order')}
       headerBackground={theme.colors.gradientCardHeader}
       onDismiss={handleDismiss}
-      style={{ width: isMobile ? '100%' : '436px' }}
-    >
+      style={{ width: isMobile ? '100%' : '436px' }}>
       {attemptingTxn ? (
         <LoadingContent />
       ) : txHash ? (

@@ -73,10 +73,10 @@ export default function StableSwapForm() {
   const stableFarms = useStableFarms()
   const stableTokens = useMemo(() => {
     return stableFarms.reduce((tokens, farm) => {
-      if (!tokens.find((token) => farm.token0.address === token.address)) {
+      if (!tokens.find(token => farm.token0.address === token.address)) {
         tokens.push(farm.token0)
       }
-      if (!tokens.find((token) => farm.token1.address === token.address)) {
+      if (!tokens.find(token => farm.token1.address === token.address)) {
         tokens.push(farm.token1)
       }
       return tokens
@@ -160,7 +160,7 @@ export default function StableSwapForm() {
   const maxAmountInput: CurrencyAmount<Currency> | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
 
   const handleInputSelect = useCallback(
-    (newCurrencyInput) => {
+    newCurrencyInput => {
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, newCurrencyInput)
 
@@ -180,7 +180,7 @@ export default function StableSwapForm() {
   }, [maxAmountInput, onUserInput])
 
   const handleOutputSelect = useCallback(
-    (newCurrencyOutput) => {
+    newCurrencyOutput => {
       onCurrencySelection(Field.OUTPUT, newCurrencyOutput)
 
       const newCurrencyOutputId = currencyId(newCurrencyOutput)
@@ -194,7 +194,7 @@ export default function StableSwapForm() {
   )
 
   const handlePercentInput = useCallback(
-    (percent) => {
+    percent => {
       if (maxAmountInput) {
         onUserInput(Field.INPUT, maxAmountInput.multiply(new Percent(percent, 100)).toExact())
       }
@@ -254,8 +254,7 @@ export default function StableSwapForm() {
                 onClick={() => {
                   setApprovalSubmitted(false) // reset 2 step UI for approvals
                   onSwitchTokens()
-                }}
-              >
+                }}>
                 <ArrowDownIcon
                   className="icon-down"
                   color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? 'primary' : 'text'}

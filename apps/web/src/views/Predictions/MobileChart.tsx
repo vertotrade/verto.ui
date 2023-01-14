@@ -44,14 +44,12 @@ const MobileChart = () => {
         <TabToggleGroup>
           <TabToggle
             isActive={chartView === PredictionsChartView.TradingView}
-            onClick={() => dispatch(setChartView(PredictionsChartView.TradingView))}
-          >
+            onClick={() => dispatch(setChartView(PredictionsChartView.TradingView))}>
             TradingView {t('Chart')}
           </TabToggle>
           <TabToggle
             isActive={chartView === PredictionsChartView.Chainlink}
-            onClick={() => dispatch(setChartView(PredictionsChartView.Chainlink))}
-          >
+            onClick={() => dispatch(setChartView(PredictionsChartView.Chainlink))}>
             Chainlink {t('Chart')}
           </TabToggle>
         </TabToggleGroup>

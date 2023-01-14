@@ -62,7 +62,7 @@ export function useStablePair(currencyA: Token, currencyB: Token): UseStablePair
       tokenAmounts: [],
       token0: currencyA,
       token1: currencyB,
-      priceOf: (token) =>
+      priceOf: token =>
         isPriceValid ? (token?.address === currencyA?.address ? token0Price : token0Price.invert()) : ZERO_AMOUNT,
       token0Price: () => token0Price,
       token1Price: () => token0Price.invert(),

@@ -72,7 +72,7 @@ export function confirmOrderCancellation(chainId: number, account: string, cance
   const cancelHash = cancellationHash.toLowerCase()
   const pendingKey = lsKey(`${LS_ORDERS}pending_`, account, chainId)
   const pendingOrders = get<Order[]>(pendingKey)
-  const confirmedOrder = pendingOrders.find((order) => order.cancelledTxHash?.toLowerCase() === cancelHash)
+  const confirmedOrder = pendingOrders.find(order => order.cancelledTxHash?.toLowerCase() === cancelHash)
 
   if (confirmedOrder) removeOrder(chainId, account, confirmedOrder, true)
 
@@ -101,7 +101,7 @@ export function confirmOrderSubmission(chainId: number, account: string, submiss
   const creationHash = submissionHash.toLowerCase()
   const pendingKey = lsKey(`${LS_ORDERS}pending_`, account, chainId)
   const pendingOrders = get<Order[]>(pendingKey)
-  const confirmedOrder = pendingOrders.find((order) => order.createdTxHash?.toLowerCase() === creationHash)
+  const confirmedOrder = pendingOrders.find(order => order.createdTxHash?.toLowerCase() === creationHash)
 
   if (confirmedOrder) removeOrder(chainId, account, confirmedOrder, true)
 
@@ -130,7 +130,5 @@ export function confirmOrderSubmission(chainId: number, account: string, submiss
 }
 
 export const getUniqueOrders = (allOrders: Order[]): Order[] => [
-  ...new Map(
-    orderBy(allOrders, (order) => parseFloat(order.updatedAt), 'desc').map((order) => [order.id, order]),
-  ).values(),
+  ...new Map(orderBy(allOrders, order => parseFloat(order.updatedAt), 'desc').map(order => [order.id, order])).values(),
 ]

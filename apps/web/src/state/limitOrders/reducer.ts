@@ -17,7 +17,7 @@ export const initialState: OrderState = {
   rateType: Rate.MUL,
 }
 
-export default createReducer<OrderState>(initialState, (builder) =>
+export default createReducer<OrderState>(initialState, builder =>
   builder
     .addCase(replaceLimitOrdersState, (state, { payload }) => {
       return payload
@@ -48,7 +48,7 @@ export default createReducer<OrderState>(initialState, (builder) =>
         [field]: { currencyId },
       }
     })
-    .addCase(switchCurrencies, (state) => {
+    .addCase(switchCurrencies, state => {
       return {
         ...state,
         rateType: state.rateType,

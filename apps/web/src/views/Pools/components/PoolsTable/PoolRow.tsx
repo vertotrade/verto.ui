@@ -34,8 +34,7 @@ export const VaultPoolRow: React.FC<
       initialActivity={initialActivity}
       panel={
         <ActionPanel account={account} pool={pool} expanded breakpoints={{ isXs, isSm, isMd, isLg, isXl, isXxl }} />
-      }
-    >
+      }>
       <NameCell pool={pool} />
       {isXLargerScreen && <AutoEarningsCell pool={pool} account={account} />}
       {isXLargerScreen ? <StakedCell pool={pool} account={account} /> : null}
@@ -70,8 +69,7 @@ const PoolRow: React.FC<React.PropsWithChildren<{ sousId: number; account: strin
       initialActivity={initialActivity}
       panel={
         <ActionPanel account={account} pool={pool} expanded breakpoints={{ isXs, isSm, isMd, isLg, isXl, isXxl }} />
-      }
-    >
+      }>
       <NameCell pool={pool} />
       <EarningsCell pool={pool} account={account} />
       {isLargerScreen && (

@@ -7,7 +7,7 @@ const useEagerConnect = () => {
   const client = useClient()
   const { connectAsync, connectors } = useConnect()
   useEffect(() => {
-    const connectorInstance = connectors.find((c) => c.id === SAFE_ID && c.ready)
+    const connectorInstance = connectors.find(c => c.id === SAFE_ID && c.ready)
     if (
       connectorInstance &&
       // @ts-ignore

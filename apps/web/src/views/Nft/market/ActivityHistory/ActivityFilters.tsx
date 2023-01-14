@@ -44,7 +44,7 @@ const ActivityFilters: React.FC<React.PropsWithChildren<FiltersProps>> = ({ addr
       </Text>
       <ScrollableFlexContainer>
         {address === '' && <ListCollectionFilter nftActivityFilters={nftActivityFilters} />}
-        {[MarketEvent.NEW, MarketEvent.CANCEL, MarketEvent.MODIFY, MarketEvent.SELL].map((eventType) => {
+        {[MarketEvent.NEW, MarketEvent.CANCEL, MarketEvent.MODIFY, MarketEvent.SELL].map(eventType => {
           return (
             <ActivityFilter
               key={eventType}

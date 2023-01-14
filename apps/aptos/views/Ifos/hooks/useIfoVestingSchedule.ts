@@ -29,12 +29,11 @@ export const useIfoVestingSchedules = ({ key, resourcesList }: { key?: string; r
     networkName: networkName || '',
     handles: hasLength
       ? resourcesList?.map(
-          (resources) =>
-            resources?.[IFO_RESOURCE_ACCOUNT_TYPE_VESTING_METADATA]?.data.vesting_schedules.handle as string,
+          resources => resources?.[IFO_RESOURCE_ACCOUNT_TYPE_VESTING_METADATA]?.data.vesting_schedules.handle as string,
         )
       : [],
     data: hasLength
-      ? resourcesList?.map((resources) => {
+      ? resourcesList?.map(resources => {
           return {
             key,
             keyType: 'vector<u8>',

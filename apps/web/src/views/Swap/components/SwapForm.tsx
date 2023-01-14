@@ -66,7 +66,7 @@ export default function SwapForm() {
   const inputCurrency = useCurrency(inputCurrencyId)
   const outputCurrency = useCurrency(outputCurrencyId)
   const hasStableSwapAlternative = useMemo(() => {
-    return stableFarms.some((stableFarm) => {
+    return stableFarms.some(stableFarm => {
       const checkSummedToken0 = isAddress(stableFarm?.token0.address)
       const checkSummedToken1 = isAddress(stableFarm?.token1.address)
       return (
@@ -151,7 +151,7 @@ export default function SwapForm() {
   const maxAmountInput: CurrencyAmount<Currency> | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
 
   const handleInputSelect = useCallback(
-    (newCurrencyInput) => {
+    newCurrencyInput => {
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, newCurrencyInput)
 
@@ -173,7 +173,7 @@ export default function SwapForm() {
   }, [maxAmountInput, onUserInput])
 
   const handleOutputSelect = useCallback(
-    (newCurrencyOutput) => {
+    newCurrencyOutput => {
       onCurrencySelection(Field.OUTPUT, newCurrencyOutput)
       warningSwapHandler(newCurrencyOutput)
 
@@ -188,7 +188,7 @@ export default function SwapForm() {
   )
 
   const handlePercentInput = useCallback(
-    (percent) => {
+    percent => {
       if (maxAmountInput) {
         onUserInput(Field.INPUT, maxAmountInput.multiply(new Percent(percent, 100)).toExact())
       }

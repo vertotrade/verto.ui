@@ -168,7 +168,7 @@ export function SmartSwapForm() {
   const maxAmountInput: CurrencyAmount<Currency> | undefined = maxAmountSpend(currencyBalances[Field.INPUT])
 
   const handleInputSelect = useCallback(
-    (newCurrencyInput) => {
+    newCurrencyInput => {
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, newCurrencyInput)
 
@@ -190,7 +190,7 @@ export function SmartSwapForm() {
   }, [maxAmountInput, onUserInput])
 
   const handleOutputSelect = useCallback(
-    (newCurrencyOutput) => {
+    newCurrencyOutput => {
       onCurrencySelection(Field.OUTPUT, newCurrencyOutput)
       warningSwapHandler(newCurrencyOutput)
 
@@ -205,7 +205,7 @@ export function SmartSwapForm() {
   )
 
   const handlePercentInput = useCallback(
-    (percent) => {
+    percent => {
       if (maxAmountInput) {
         onUserInput(Field.INPUT, maxAmountInput.multiply(new Percent(percent, 100)).toExact())
       }

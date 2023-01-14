@@ -1,15 +1,6 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import {
-  ArrowUpIcon,
-  ArrowDownIcon,
-  Flex,
-  FlexProps,
-  Text,
-  useTooltip,
-  TooltipText,
-  InfoIcon,
-} from '@verto/uikit'
+import { ArrowUpIcon, ArrowDownIcon, Flex, FlexProps, Text, useTooltip, TooltipText, InfoIcon } from '@verto/uikit'
 import { BetPosition } from 'state/types'
 import { useTranslation } from '@verto/localization'
 
@@ -40,8 +31,7 @@ export const Tag: React.FC<React.PropsWithChildren<TagProps>> = ({
       px="8px"
       onClick={onClick}
       style={{ cursor: onClick ? 'pointer' : 'normal' }}
-      {...props}
-    >
+      {...props}>
       {icon}
       <Text textTransform="uppercase" color="white" ml="4px">
         {children}

@@ -24,8 +24,8 @@ module.exports = {
     "airbnb/hooks",
     "prettier",
     "prettier/react",
-    "prettier/@typescript-eslint",
     "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
   ],
   rules: {
     "import/prefer-default-export": 0,

@@ -20,17 +20,15 @@ const BunniesSection = () => {
         pb={['64px', null, null, '0']}
         pt={['64px', null, null, '40px']}
         alignItems={['flex-end', null, 'center', null]}
-        flexDirection={['column', null, null, 'row']}
-      >
+        flexDirection={['column', null, null, 'row']}>
         <BunniesImages basePath={images.basePath} altText={images.alt} />
         <StyledTextContainer
           flexDirection="column"
           alignSelf={['flex-start', null, null, 'center']}
-          width={['100%', null, null, '50%']}
-        >
+          width={['100%', null, null, '50%']}>
           <ColoredWordHeading text={headingText} color="text" mb="0" />
           <ColoredWordHeading text={subHeadingText} color="text" firstColor="failure" />
-          {bodyText.map((text) => (
+          {bodyText.map(text => (
             <Text key={text} color="textSubtle" mb="20px">
               {text}
             </Text>

@@ -11,7 +11,7 @@ export function useAuth() {
 
   // eslint-disable-next-line consistent-return
   const login = async (connectorId: ConnectorNames) => {
-    const findConnector = connectors.find((c) => c.id === connectorId)
+    const findConnector = connectors.find(c => c.id === connectorId)
     if (!findConnector) {
       throw new WalletConnectorNotFoundError()
     }

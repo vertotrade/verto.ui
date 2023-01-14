@@ -23,7 +23,7 @@ const Claim: React.FC<React.PropsWithChildren> = () => {
   const { publicData, userData } = usePotteryData()
 
   const allDeposit = userData.withdrawAbleData
-    .map((data) => {
+    .map(data => {
       const { status, shares, previewRedeem, totalSupply, totalLockCake } = data
       return calculateCakeAmount({
         status,
@@ -44,7 +44,7 @@ const Claim: React.FC<React.PropsWithChildren> = () => {
             <Flex justifyContent="space-between" mb="20px">
               <YourDeposit depositBalance={allDeposit} />
             </Flex>
-            {userData.withdrawAbleData.map((data) => (
+            {userData.withdrawAbleData.map(data => (
               <AvailableWithdraw key={data.id} withdrawData={data} />
             ))}
             <PrizeToBeClaimed userData={userData} />

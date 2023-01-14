@@ -46,7 +46,7 @@ export const getUsername = async (address: string): Promise<string> => {
 
 export const getProfile = async (address: string): Promise<GetProfileResponse> => {
   try {
-    const profileCalls = ['hasRegistered', 'getUserProfile'].map((method) => {
+    const profileCalls = ['hasRegistered', 'getUserProfile'].map(method => {
       return { address: getPancakeProfileAddress(), name: method, params: [address] }
     })
     const profileCallsResult = await multicallv2({

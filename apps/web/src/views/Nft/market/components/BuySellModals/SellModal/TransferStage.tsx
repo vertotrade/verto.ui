@@ -69,7 +69,7 @@ const TransferStage: React.FC<React.PropsWithChildren<TransferStageProps>> = ({
           isWarning={isInvalidTransferAddress || transferAddressEqualsConnectedAddress}
           placeholder={t('Paste BSC address')}
           value={transferAddress}
-          onChange={(e) => setTransferAddress(e.target.value)}
+          onChange={e => setTransferAddress(e.target.value)}
         />
         {isInvalidTransferAddress ||
           (transferAddressEqualsConnectedAddress && (
@@ -91,8 +91,7 @@ const TransferStage: React.FC<React.PropsWithChildren<TransferStageProps>> = ({
         <Button
           mb="8px"
           onClick={continueToNextStage}
-          disabled={isInvalidTransferAddress || transferAddress.length === 0 || transferAddressEqualsConnectedAddress}
-        >
+          disabled={isInvalidTransferAddress || transferAddress.length === 0 || transferAddressEqualsConnectedAddress}>
           {t('Confirm')}
         </Button>
       </Flex>

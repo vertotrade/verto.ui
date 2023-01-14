@@ -1,9 +1,9 @@
 import { SerializedFarm } from '@verto/farms'
 
 const getFarmsAuctionData = (farms: SerializedFarm[], winnerFarms: string[], auctionHostingEndDate: string) => {
-  return farms.map((farm) => {
+  return farms.map(farm => {
     const isAuctionWinnerFarm = winnerFarms.find(
-      (winnerFarm) => winnerFarm.toLowerCase() === farm.lpAddress.toLowerCase(),
+      winnerFarm => winnerFarm.toLowerCase() === farm.lpAddress.toLowerCase(),
     )
     return {
       ...farm,

@@ -125,7 +125,7 @@ const Collectible = () => {
       if (viewMode === ViewMode.CARD && sortField !== SORT_FIELD.lowestPrice && sortField !== SORT_FIELD.highestPrice)
         return shuffledCollections
       return Promise.all(
-        shuffledCollections.map(async (collection) => {
+        shuffledCollections.map(async collection => {
           const [lowestPrice, highestPrice] = await Promise.all([
             getLeastMostPriceInCollection(collection.address, 'asc'),
             getLeastMostPriceInCollection(collection.address, 'desc'),
@@ -183,7 +183,7 @@ const Collectible = () => {
   const sortedCollections = useMemo(() => {
     return orderBy(
       collections,
-      (collection) => {
+      collection => {
         if (sortField === SORT_FIELD.createdAt) {
           if (collection.createdAt) {
             return Date.parse(collection.createdAt)
@@ -193,7 +193,7 @@ const Collectible = () => {
         return parseFloat(collection[sortField])
       },
       sortDirection ? 'desc' : 'asc',
-    ).filter((collection) => !DELIST_COLLECTIONS[collection.address])
+    ).filter(collection => !DELIST_COLLECTIONS[collection.address])
   }, [collections, sortField, sortDirection])
 
   return (
@@ -213,8 +213,7 @@ const Collectible = () => {
               alignItems="center"
               pr={[null, null, '4px']}
               pl={['4px', null, '0']}
-              mb="8px"
-            >
+              mb="8px">
               <ToggleView idPrefix="clickCollection" viewMode={viewMode} onToggle={setViewMode} />
               <Flex width="max-content" style={{ gap: '4px' }} flexDirection="column">
                 <Text fontSize="12px" textTransform="uppercase" color="textSubtle" fontWeight={600}>
@@ -236,32 +235,28 @@ const Collectible = () => {
                       <Th
                         textAlign="left"
                         style={{ cursor: 'pointer' }}
-                        onClick={() => handleSort(SORT_FIELD.createdAt)}
-                      >
+                        onClick={() => handleSort(SORT_FIELD.createdAt)}>
                         {t('Collection')}
                         {arrow(SORT_FIELD.createdAt)}
                       </Th>
                       <Th
                         textAlign="left"
                         style={{ cursor: 'pointer' }}
-                        onClick={() => handleSort(SORT_FIELD.volumeBNB)}
-                      >
+                        onClick={() => handleSort(SORT_FIELD.volumeBNB)}>
                         {t('Volume')}
                         {arrow(SORT_FIELD.volumeBNB)}
                       </Th>
                       <Th
                         textAlign="left"
                         style={{ cursor: 'pointer' }}
-                        onClick={() => handleSort(SORT_FIELD.lowestPrice)}
-                      >
+                        onClick={() => handleSort(SORT_FIELD.lowestPrice)}>
                         {t('Lowest')}
                         {arrow(SORT_FIELD.lowestPrice)}
                       </Th>
                       <Th
                         textAlign="left"
                         style={{ cursor: 'pointer' }}
-                        onClick={() => handleSort(SORT_FIELD.highestPrice)}
-                      >
+                        onClick={() => handleSort(SORT_FIELD.highestPrice)}>
                         {t('Highest')}
                         {arrow(SORT_FIELD.highestPrice)}
                       </Th>
@@ -277,7 +272,7 @@ const Collectible = () => {
                   </thead>
                   <tbody>
                     {sortedCollections
-                      .map((collection) => {
+                      .map(collection => {
                         const volume = collection.totalVolumeBNB
                           ? parseFloat(collection.totalVolumeBNB).toLocaleString(undefined, {
                               minimumFractionDigits: 3,
@@ -328,9 +323,8 @@ const Collectible = () => {
                 gridGap="16px"
                 gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
                 mb="32px"
-                data-test="nft-collection-row"
-              >
-                {sortedCollections.slice(ITEMS_PER_PAGE * (page - 1), page * ITEMS_PER_PAGE).map((collection) => {
+                data-test="nft-collection-row">
+                {sortedCollections.slice(ITEMS_PER_PAGE * (page - 1), page * ITEMS_PER_PAGE).map(collection => {
                   return (
                     <CollectionCardWithVolume
                       key={collection.address}
@@ -348,16 +342,14 @@ const Collectible = () => {
               <Arrow
                 onClick={() => {
                   setPage(page === 1 ? page : page - 1)
-                }}
-              >
+                }}>
                 <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
               </Arrow>
               <Text>{t('Page %page% of %maxPage%', { page, maxPage })}</Text>
               <Arrow
                 onClick={() => {
                   setPage(page === maxPage ? page : page + 1)
-                }}
-              >
+                }}>
                 <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
               </Arrow>
             </PageButtons>

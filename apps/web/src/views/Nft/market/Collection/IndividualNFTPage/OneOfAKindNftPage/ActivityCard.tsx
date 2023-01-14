@@ -101,7 +101,7 @@ const ActivityCard: React.FC<React.PropsWithChildren<ActivityCardProps>> = ({ nf
               {isLoading ? (
                 <TableLoader />
               ) : (
-                activitiesSlice.map((activity) => {
+                activitiesSlice.map(activity => {
                   return (
                     <ActivityRow
                       key={`${activity.nft.tokenId}${activity.timestamp}`}
@@ -120,8 +120,7 @@ const ActivityCard: React.FC<React.PropsWithChildren<ActivityCardProps>> = ({ nf
             pt="24px"
             flexDirection="column"
             justifyContent="space-between"
-            height="100%"
-          >
+            height="100%">
             <PaginationButton
               showMaxPageText
               currentPage={currentPage}

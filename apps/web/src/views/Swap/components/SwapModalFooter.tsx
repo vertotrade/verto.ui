@@ -57,8 +57,7 @@ export default function SwapModalFooter({
               display: 'flex',
               textAlign: 'right',
               paddingLeft: '10px',
-            }}
-          >
+            }}>
             {formatExecutionPrice(trade, showInverted)}
             <StyledBalanceMaxMini onClick={() => setShowInverted(!showInverted)}>
               <AutoRenewIcon width="14px" />
@@ -129,8 +128,7 @@ export default function SwapModalFooter({
           disabled={disabledConfirm}
           mt="12px"
           id="confirm-swap-or-send"
-          width="100%"
-        >
+          width="100%">
           {severity > 2 || (trade.tradeType === TradeType.EXACT_OUTPUT && !isEnoughInputBalance)
             ? t('Swap Anyway')
             : t('Confirm Swap')}

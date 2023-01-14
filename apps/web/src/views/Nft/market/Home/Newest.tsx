@@ -19,12 +19,12 @@ const useNewestNfts = () => {
     const fetchNewestNfts = async () => {
       const nftsFromSg = await getLatestListedNfts(16)
       const nftsFromApi = await getNftsFromDifferentCollectionsApi(
-        nftsFromSg.map((nft) => ({ collectionAddress: nft.collection.id, tokenId: nft.tokenId })),
+        nftsFromSg.map(nft => ({ collectionAddress: nft.collection.id, tokenId: nft.tokenId })),
       )
 
       const nfts = nftsFromSg
-        .map((nftFromSg) => {
-          const foundNftFromApi = nftsFromApi.find((nftFromApi) => nftFromApi.tokenId === nftFromSg.tokenId)
+        .map(nftFromSg => {
+          const foundNftFromApi = nftsFromApi.find(nftFromApi => nftFromApi.tokenId === nftFromSg.tokenId)
           if (foundNftFromApi) {
             return { ...foundNftFromApi, marketData: nftFromSg }
           }
@@ -52,8 +52,7 @@ const Newest: React.FC<React.PropsWithChildren> = () => {
           to={`${nftsBaseUrl}/activity/`}
           variant="secondary"
           scale="sm"
-          endIcon={<ChevronRightIcon color="primary" />}
-        >
+          endIcon={<ChevronRightIcon color="primary" />}>
           {t('View All')}
         </Button>
       </Flex>
@@ -61,9 +60,8 @@ const Newest: React.FC<React.PropsWithChildren> = () => {
         <Grid
           gridRowGap="24px"
           gridColumnGap="16px"
-          gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}
-        >
-          {nfts.map((nft) => {
+          gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}>
+          {nfts.map(nft => {
             const isPBCollection = isAddress(nft.collectionAddress) === pancakeBunniesAddress
             const currentAskPrice =
               !isPBCollection && nft.marketData?.isTradable ? parseFloat(nft.marketData?.currentAskPrice) : undefined

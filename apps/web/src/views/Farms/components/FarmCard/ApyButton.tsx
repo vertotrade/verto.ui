@@ -77,7 +77,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       displayApr={bCakeMultiplier ? (_toNumber(displayApr) - apr + apr * bCakeMultiplier).toFixed(2) : displayApr}
       linkHref={addLiquidityUrl}
       isFarm
-      bCakeCalculatorSlot={(calculatorBalance) =>
+      bCakeCalculatorSlot={calculatorBalance =>
         boosted ? (
           <BCakeCalculator
             targetInputBalance={calculatorBalance}
@@ -139,8 +139,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       variant={variant}
       hideButton={hideButton}
       strikethrough={strikethrough}
-      handleClickButton={handleClickButton}
-    >
+      handleClickButton={handleClickButton}>
       {useTooltipText ? (
         <>
           <TooltipText ref={targetRef} decorationColor="secondary">

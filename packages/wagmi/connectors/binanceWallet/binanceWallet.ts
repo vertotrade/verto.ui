@@ -29,7 +29,7 @@ const mappingNetwork: Record<number, string> = {
 }
 
 const _binanceChainListener = async () =>
-  new Promise<void>((resolve) =>
+  new Promise<void>(resolve =>
     Object.defineProperty(window, 'BinanceChain', {
       get() {
         return this.bsc
@@ -59,7 +59,7 @@ export class BinanceWalletConnector extends InjectedConnector {
       shimDisconnect: false,
       shimChainChangedDisconnect: true,
     }
-    const chains = _chains?.filter((c) => !!mappingNetwork[c.id])
+    const chains = _chains?.filter(c => !!mappingNetwork[c.id])
     super({
       chains,
       options,
@@ -122,7 +122,7 @@ export class BinanceWalletConnector extends InjectedConnector {
         await provider.switchNetwork?.(mappingNetwork[chainId])
 
         return (
-          this.chains.find((x) => x.id === chainId) || {
+          this.chains.find(x => x.id === chainId) || {
             id: chainId,
             name: `Chain ${id}`,
             network: `${id}`,

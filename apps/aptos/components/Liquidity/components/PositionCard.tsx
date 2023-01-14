@@ -270,8 +270,7 @@ function FullPositionCardView({
                 to={addTo}
                 variant="text"
                 startIcon={<AddIcon color="primary" />}
-                width="100%"
-              >
+                width="100%">
                 {t('Add liquidity instead')}
               </Button>
             </Flex>

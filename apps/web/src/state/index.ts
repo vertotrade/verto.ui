@@ -56,7 +56,7 @@ let store: ReturnType<typeof makeStore>
 export function makeStore(preloadedState = undefined) {
   return configureStore({
     reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
+    middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
         thunk: true,
         serializableCheck: {

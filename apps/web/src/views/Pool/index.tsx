@@ -25,11 +25,11 @@ export default function Pool() {
   const trackedTokenPairs = useTrackedTokenPairs()
 
   const tokenPairsWithLiquidityTokens = useMemo(
-    () => trackedTokenPairs.map((tokens) => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
+    () => trackedTokenPairs.map(tokens => ({ liquidityToken: toV2LiquidityToken(tokens), tokens })),
     [trackedTokenPairs],
   )
   const liquidityTokens = useMemo(
-    () => tokenPairsWithLiquidityTokens.map((tpwlt) => tpwlt.liquidityToken),
+    () => tokenPairsWithLiquidityTokens.map(tpwlt => tpwlt.liquidityToken),
     [tokenPairsWithLiquidityTokens],
   )
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(

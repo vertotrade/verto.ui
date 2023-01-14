@@ -24,8 +24,7 @@ const NoChartAvailable: React.FC<React.PropsWithChildren<NoChartAvailableProps>>
           mb={['8px', '8px', '0px']}
           color="textSubtle"
           small
-          style={isMobile && { wordSpacing: '100vw' }}
-        >
+          style={isMobile && { wordSpacing: '100vw' }}>
           Token0: {token0Address ?? 'null'}
         </Text>
         <Text
@@ -33,8 +32,7 @@ const NoChartAvailable: React.FC<React.PropsWithChildren<NoChartAvailableProps>>
           mb={['8px', '8px', '0px']}
           color="textSubtle"
           small
-          style={isMobile && { wordSpacing: '100vw' }}
-        >
+          style={isMobile && { wordSpacing: '100vw' }}>
           Token1: {token1Address ?? 'null'}
         </Text>
         <Text
@@ -42,8 +40,7 @@ const NoChartAvailable: React.FC<React.PropsWithChildren<NoChartAvailableProps>>
           mb={['8px', '8px', '0px']}
           color="textSubtle"
           small
-          style={isMobile && { wordSpacing: '100vw' }}
-        >
+          style={isMobile && { wordSpacing: '100vw' }}>
           Pair: {pairAddress ?? 'null'}
         </Text>
       </Flex>

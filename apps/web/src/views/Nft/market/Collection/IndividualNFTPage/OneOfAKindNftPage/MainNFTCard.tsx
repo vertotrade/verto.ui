@@ -44,8 +44,7 @@ const MainNFTCard: React.FC<React.PropsWithChildren<MainNFTCardProps>> = ({
         mr="16px"
         width={['100%', null, 'max-content']}
         mt="24px"
-        onClick={onPresentSellModal}
-      >
+        onClick={onPresentSellModal}>
         {nft.marketData?.isTradable ? t('Adjust price') : t('List for sale')}
       </Button>
       {!nft.marketData?.isTradable && (
@@ -54,8 +53,7 @@ const MainNFTCard: React.FC<React.PropsWithChildren<MainNFTCardProps>> = ({
           variant="secondary"
           width={['100%', null, 'max-content']}
           mt="24px"
-          onClick={onEditProfileModal}
-        >
+          onClick={onEditProfileModal}>
           {nftIsProfilePic ? t('Change Profile Pic') : t('Set as Profile Pic')}
         </Button>
       )}
@@ -111,8 +109,7 @@ const MainNFTCard: React.FC<React.PropsWithChildren<MainNFTCardProps>> = ({
                   mr="16px"
                   width={['100%', null, 'max-content']}
                   mt="24px"
-                  onClick={onPresentBuyModal}
-                >
+                  onClick={onPresentBuyModal}>
                   {t('Buy')}
                 </Button>
               )}

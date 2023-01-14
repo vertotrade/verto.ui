@@ -162,8 +162,7 @@ const NextDrawCard = () => {
               <Flex
                 flexDirection="column"
                 mr={[null, null, null, '24px']}
-                alignItems={['center', null, null, 'flex-start']}
-              >
+                alignItems={['center', null, null, 'flex-start']}>
                 {account && (
                   <Flex justifyContent={['center', null, null, 'flex-start']}>
                     <Text display="inline">{youHaveText} </Text>
@@ -183,8 +182,7 @@ const NextDrawCard = () => {
                     p="0"
                     mb={['32px', null, null, '0']}
                     variant="text"
-                    scale="sm"
-                  >
+                    scale="sm">
                     {t('View your tickets')}
                   </Button>
                 )}

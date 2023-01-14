@@ -39,8 +39,7 @@ const CircleSvg = ({ percent = 1, stroke = '#1FC7D4', ...props }: SvgProps & { p
         width={60}
         height={60}
         filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
+        colorInterpolationFilters="sRGB">
         <feFlood floodOpacity={0} result="BackgroundImageFix" />
         <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
         <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />

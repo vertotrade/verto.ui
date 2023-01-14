@@ -109,7 +109,7 @@ const PoolPage: React.FC<React.PropsWithChildren<{ address: string }>> = ({ addr
   const feeDisplay = useMemo(() => {
     if (isStableSwap && farmConfig) {
       const stableLpFee =
-        farmConfig?.default.find((d) => d.stableSwapAddress?.toLowerCase() === address)?.stableLpFee ?? 0
+        farmConfig?.default.find(d => d.stableSwapAddress?.toLowerCase() === address)?.stableLpFee ?? 0
       return new BigNumber(stableLpFee)
         .times(showWeeklyData ? poolData?.volumeOutUSDWeek : poolData?.volumeOutUSD)
         .toNumber()
@@ -156,8 +156,7 @@ const PoolPage: React.FC<React.PropsWithChildren<{ address: string }>> = ({ addr
                 ml="38px"
                 bold
                 fontSize={isXs || isSm ? '24px' : '40px'}
-                id="info-pool-pair-title"
-              >{`${poolData.token0.symbol} / ${poolData.token1.symbol}`}</Text>
+                id="info-pool-pair-title">{`${poolData.token0.symbol} / ${poolData.token1.symbol}`}</Text>
             </Flex>
             <Flex justifyContent="space-between" flexDirection={['column', 'column', 'column', 'row']}>
               <Flex flexDirection={['column', 'column', 'row']} mb={['8px', '8px', null]}>
@@ -188,15 +187,13 @@ const PoolPage: React.FC<React.PropsWithChildren<{ address: string }>> = ({ addr
               </Flex>
               <Flex>
                 <NextLinkFromReactRouter
-                  to={`/add/${poolData.token0.address}/${poolData.token1.address}?chain=${CHAIN_QUERY_NAME[chainId]}`}
-                >
+                  to={`/add/${poolData.token0.address}/${poolData.token1.address}?chain=${CHAIN_QUERY_NAME[chainId]}`}>
                   <Button mr="8px" variant="secondary">
                     {t('Add Liquidity')}
                   </Button>
                 </NextLinkFromReactRouter>
                 <NextLinkFromReactRouter
-                  to={`/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}&chainId=${multiChainId[chainName]}`}
-                >
+                  to={`/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}&chainId=${multiChainId[chainName]}`}>
                   <Button>{t('Trade')}</Button>
                 </NextLinkFromReactRouter>
               </Flex>
@@ -263,10 +260,9 @@ const PoolPage: React.FC<React.PropsWithChildren<{ address: string }>> = ({ addr
                 <Flex flexDirection="column" p="24px">
                   <ButtonMenu
                     activeIndex={showWeeklyData}
-                    onItemClick={(index) => setShowWeeklyData(index)}
+                    onItemClick={index => setShowWeeklyData(index)}
                     scale="sm"
-                    variant="subtle"
-                  >
+                    variant="subtle">
                     <ButtonMenuItem width="100%">{t('24H')}</ButtonMenuItem>
                     <ButtonMenuItem width="100%">{t('7D')}</ButtonMenuItem>
                   </ButtonMenu>

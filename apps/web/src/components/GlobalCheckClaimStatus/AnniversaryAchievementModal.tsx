@@ -72,8 +72,7 @@ const AnniversaryAchievementModal: React.FC<AnniversaryModalProps> = ({ onDismis
         <Button
           disabled={isLoading}
           onClick={handleClick}
-          endIcon={isLoading ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-        >
+          endIcon={isLoading ? <AutoRenewIcon spin color="currentColor" /> : undefined}>
           {isLoading ? <Dots>{t('Claiming')}</Dots> : t('Claim now')}
         </Button>
       </Flex>

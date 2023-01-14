@@ -154,7 +154,7 @@ const CollectWinningsPopup = () => {
 
         if (!isCancelled) {
           // Filter out bets that were not winners
-          const winnerBets = bets.filter((bet) => {
+          const winnerBets = bets.filter(bet => {
             return bet.position === bet.round.position
           })
 

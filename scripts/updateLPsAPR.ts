@@ -72,7 +72,7 @@ const getAprsForFarmGroup = async (addresses: string[], blockWeekAgo: number, ch
       { addresses, blockWeekAgo },
     )
     const aprs: AprMap = farmsAtLatestBlock.reduce((aprMap, farm) => {
-      const farmWeekAgo = farmsOneWeekAgo.find((oldFarm) => oldFarm.id === farm.id)
+      const farmWeekAgo = farmsOneWeekAgo.find(oldFarm => oldFarm.id === farm.id)
       // In case farm is too new to estimate LP APR (i.e. not returned in farmsOneWeekAgo query) - return 0
       let lpApr = new BigNumber(0)
       if (farmWeekAgo) {
@@ -175,14 +175,14 @@ function splitNormalAndStableFarmsReducer(result: SplitFarmResult, farm: any): S
 const FETCH_CHAIN_ID = [ChainId.BSC, ChainId.ETHEREUM]
 const fetchAndUpdateLPsAPR = async () => {
   Promise.all(
-    FETCH_CHAIN_ID.map(async (chainId) => {
+    FETCH_CHAIN_ID.map(async chainId => {
       const farmsConfig = await getFarmConfig(chainId)
       const { normalFarms, stableFarms }: SplitFarmResult = farmsConfig.reduce(splitNormalAndStableFarmsReducer, {
         normalFarms: [],
         stableFarms: [],
       })
 
-      const lowerCaseAddresses = normalFarms.map((farm) => farm.lpAddress.toLowerCase())
+      const lowerCaseAddresses = normalFarms.map(farm => farm.lpAddress.toLowerCase())
       console.info(`Fetching farm data for ${lowerCaseAddresses.length} addresses`)
       // Split it into chunks of 30 addresses to avoid gateway timeout
       const addressesInGroups = chunk(lowerCaseAddresses, 30)
@@ -199,7 +199,7 @@ const fetchAndUpdateLPsAPR = async () => {
 
       try {
         if (stableFarms?.length) {
-          const stableAprs: BigNumber[] = await Promise.all(stableFarms.map((f) => getAprsForStableFarm(f)))
+          const stableAprs: BigNumber[] = await Promise.all(stableFarms.map(f => getAprsForStableFarm(f)))
 
           const stableAprsMap = stableAprs.reduce(
             (result, apr, index) => ({
@@ -218,7 +218,7 @@ const fetchAndUpdateLPsAPR = async () => {
       fs.writeFile(
         `apps/web/src/config/constants/lpAprs/${chainId}.json`,
         JSON.stringify(allAprs, null, 2) + os.EOL,
-        (err) => {
+        err => {
           if (err) throw err
           console.info(` ✅ - lpAprs.json has been updated!`)
         },

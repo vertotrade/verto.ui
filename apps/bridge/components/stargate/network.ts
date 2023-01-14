@@ -39,4 +39,4 @@ const stargateNetowrk = [
   },
 ]
 
-export const findChainByStargateId = (chainId: number) => stargateNetowrk.find((s) => s.chainId === chainId)
+export const findChainByStargateId = (chainId: number) => stargateNetowrk.find(s => s.chainId === chainId)

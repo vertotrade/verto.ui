@@ -100,8 +100,7 @@ const WalletStatsModal: React.FC<React.PropsWithChildren<WalletStatsModalProps>>
             gridGap="16px"
             p="24px"
             borderBottom="1px solid"
-            borderColor="cardBorder"
-          >
+            borderColor="cardBorder">
             <Box>
               <Text as="h6" fontSize="12px" textTransform="uppercase" color="textSubtle" fontWeight="bold" mb="8px">
                 {t('Net Winnings')}

@@ -161,8 +161,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
               color={valueWithTokenDecimals.isGreaterThan(userCurrencyBalance) ? 'failure' : 'warning'}
               textAlign="right"
               fontSize="12px"
-              mb="8px"
-            >
+              mb="8px">
               {valueWithTokenDecimals.isGreaterThan(userCurrencyBalance)
                 ? t('Insufficient Balance')
                 : t('Exceeded max CAKE entry')}
@@ -187,8 +186,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
                     ),
                   )
                 }
-                mr={index < multiplierValues.length - 1 ? '8px' : 0}
-              >
+                mr={index < multiplierValues.length - 1 ? '8px' : 0}>
                 {multiplierValue * 100}%
               </Button>
             ))}
@@ -202,8 +200,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
               fontSize="12px"
               display="inline"
               href="https://docs.pancakeswap.finance/products/ifo-initial-farm-offering"
-              external
-            >
+              external>
               {t('Read more')}
             </Link>
           </Text>

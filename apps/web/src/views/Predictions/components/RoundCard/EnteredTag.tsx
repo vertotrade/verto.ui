@@ -47,8 +47,7 @@ const EnteredTag: React.FC<React.PropsWithChildren<EnteredTagProps>> = ({ amount
           fontWeight="bold"
           textTransform="uppercase"
           outline={!hasClaimed}
-          startIcon={hasClaimed ? <CheckmarkCircleFillIcon width="18px" /> : <CheckmarkCircleIcon width="18px" />}
-        >
+          startIcon={hasClaimed ? <CheckmarkCircleFillIcon width="18px" /> : <CheckmarkCircleIcon width="18px" />}>
           {hasClaimed ? t('Claimed') : t('Entered')}
         </Tag>{' '}
       </span>{' '}

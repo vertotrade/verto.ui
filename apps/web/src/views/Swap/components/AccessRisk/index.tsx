@@ -53,18 +53,18 @@ const AccessRisk: React.FC<AccessRiskProps> = ({ inputCurrency, outputCurrency }
   const handleScan = useCallback(() => {
     const fetchTokenRisks = async () => {
       const tokenRiskResults = await Promise.all(
-        tokensForScan.map((tokenToScan) => {
+        tokensForScan.map(tokenToScan => {
           const { address, chainId } = tokenToScan as any
           return fetchRiskToken(address, chainId)
         }),
       )
 
-      setState((prevState) => ({
+      setState(prevState => ({
         ...prevState,
         loading: false,
         results: merge(
           { ...prevState.results },
-          mapValues(groupBy(tokenRiskResults, 'chainId'), (tokenRiskResult) => keyBy(tokenRiskResult, 'address')),
+          mapValues(groupBy(tokenRiskResults, 'chainId'), tokenRiskResult => keyBy(tokenRiskResult, 'address')),
         ),
       }))
     }
@@ -72,10 +72,10 @@ const AccessRisk: React.FC<AccessRiskProps> = ({ inputCurrency, outputCurrency }
     toastInfo(
       t('Scanning Risk'),
       t('Please wait until we scan the risk for %symbol% token', {
-        symbol: tokensForScan.map((currency) => currency.symbol).join(','),
+        symbol: tokensForScan.map(currency => currency.symbol).join(','),
       }),
     )
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       loading: true,
     }))

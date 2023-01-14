@@ -51,8 +51,7 @@ export const StepIntro = ({ docLink, docText }: { docLink: string; docText: stri
       mx="auto"
       my="48px"
       textAlign="center"
-      alignItems="center"
-    >
+      alignItems="center">
       {introStep && (
         <>
           <Heading as="h2" color="secondary">

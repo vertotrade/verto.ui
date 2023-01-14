@@ -20,28 +20,26 @@ const NewFarmStep2: React.FC<React.PropsWithChildren> = () => {
 
   const userDataReady = !account || (!!account && userDataLoaded)
 
-  const activeFarms = farmsLP.filter((farm) => farm.pid !== 0 && farm.multiplier !== '0X')
-  const activeFarmsV1 = farmsV1LP.filter((farm) => farm.pid !== 0)
+  const activeFarms = farmsLP.filter(farm => farm.pid !== 0 && farm.multiplier !== '0X')
+  const activeFarmsV1 = farmsV1LP.filter(farm => farm.pid !== 0)
 
-  const v1StakedOrHasTokenBalance = activeFarmsV1.filter((farm) => {
+  const v1StakedOrHasTokenBalance = activeFarmsV1.filter(farm => {
     const hasStakedBalance = new BigNumber(farm.userData.stakedBalance).isGreaterThan(0)
     const hasTokenBalance = new BigNumber(farm.userData.tokenBalance).isGreaterThan(0)
     return farm.userData && (hasStakedBalance || hasTokenBalance)
   })
 
   // Only show farms that has staked or has balance in v1 & v2
-  const stakedOrHasTokenBalance = activeFarms.filter((farm) => {
+  const stakedOrHasTokenBalance = activeFarms.filter(farm => {
     const hasStakedBalance = new BigNumber(farm.userData.stakedBalance).isGreaterThan(0)
     const hasTokenBalance = new BigNumber(farm.userData.tokenBalance).isGreaterThan(0)
-    const farms = v1StakedOrHasTokenBalance.find(
-      (v1Farm) => v1Farm.pid === farm.pid && v1Farm.lpSymbol === farm.lpSymbol,
-    )
+    const farms = v1StakedOrHasTokenBalance.find(v1Farm => v1Farm.pid === farm.pid && v1Farm.lpSymbol === farm.lpSymbol)
     return farm.userData && (hasStakedBalance || hasTokenBalance || farms)
   })
 
   const farmsList = useCallback(
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
-      const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
+      const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
         if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
           return farm
         }

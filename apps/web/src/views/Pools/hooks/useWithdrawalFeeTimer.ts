@@ -19,7 +19,7 @@ const useWithdrawalFeeTimer = (lastDepositedTime: number, userShares: BigNumber,
     const doesUnstakingFeeApply = userShares.gt(0) && secondsRemainingCalc > 0
 
     const tick = () => {
-      setCurrentSeconds((prevSeconds) => prevSeconds + 1)
+      setCurrentSeconds(prevSeconds => prevSeconds + 1)
     }
     const timerInterval = setInterval(() => tick(), 1000)
     if (doesUnstakingFeeApply) {

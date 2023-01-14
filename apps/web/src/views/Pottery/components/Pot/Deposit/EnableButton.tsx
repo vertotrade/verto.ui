@@ -15,8 +15,7 @@ const EnableButton: React.FC<React.PropsWithChildren<Props>> = ({ potteryVaultAd
       width="100%"
       disabled={isPending}
       onClick={onApprove}
-      endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
-    >
+      endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}>
       {t('Enable')}
     </Button>
   )

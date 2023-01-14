@@ -43,7 +43,7 @@ function getWeb3Provider() {
         postMessage({
           action: 'request',
           payload: params,
-          cb: (payload) => {
+          cb: payload => {
             if (payload?.error) {
               reject(payload?.message)
             } else {
@@ -63,24 +63,24 @@ function getWeb3Provider() {
 
 const _bridgeUtils = {
   jump(payload) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       postMessage({ action: 'jump', payload, cb: resolve })
     })
   },
   getSystemInfo() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       postMessage({ action: 'getSystemInfo', cb: resolve })
     })
   },
   toExternal(payload) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       postMessage({ action: 'toExternal', payload, cb: resolve })
     })
   },
 }
 export const bridgeUtils = {
   toWallet() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       postMessage({ action: 'toWallet', cb: resolve })
     })
   },
@@ -92,7 +92,7 @@ export const useSystemInfo = () => {
   const [info, setInfo] = useState(globalInfo)
   useEffect(() => {
     if (!globalInfo && typeof __NEZHA_BRIDGE__ !== 'undefined') {
-      _bridgeUtils.getSystemInfo().then((value) => {
+      _bridgeUtils.getSystemInfo().then(value => {
         globalInfo = value
         setInfo(value)
       })

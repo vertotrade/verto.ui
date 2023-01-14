@@ -33,7 +33,7 @@ const HotTokenList: React.FC = () => {
   const listsByUrl = useAtomValue(selectorByUrlsAtom)
   const { current: list } = listsByUrl[PANCAKE_EXTENDED]
   const whiteList = useMemo(() => {
-    return list ? list.tokens.map((t) => t.address.toLowerCase()) : []
+    return list ? list.tokens.map(t => t.address.toLowerCase()) : []
   }, [list])
   const allTokens = useTokenDatasSWR(whiteList, false)
   const [index, setIndex] = useState(0)
@@ -41,7 +41,7 @@ const HotTokenList: React.FC = () => {
   const formattedTokens = useMemo(
     () =>
       allTokens.filter(
-        (t) => t.priceUSD !== 0 && t.priceUSDChange !== 0 && t.volumeUSD !== 0 && t.liquidityUSD >= LIQUIDITY_FILTER,
+        t => t.priceUSD !== 0 && t.priceUSDChange !== 0 && t.volumeUSD !== 0 && t.liquidityUSD >= LIQUIDITY_FILTER,
       ),
     [allTokens],
   )

@@ -89,8 +89,8 @@ const TeamRanksWithParticipants: React.FC<React.PropsWithChildren<TeamRanksWithP
 
   const isGlobalLeaderboardDataComplete = Boolean(isTeamLeaderboardDataComplete && globalLeaderboardInformation)
 
-  const getTeamsSortedByVolume = (arrayOfTeams) => {
-    return orderBy(arrayOfTeams, (team) => team.leaderboardData.volume, 'desc')
+  const getTeamsSortedByVolume = arrayOfTeams => {
+    return orderBy(arrayOfTeams, team => team.leaderboardData.volume, 'desc')
   }
 
   const teamsSortedByVolume =
