@@ -8,6 +8,7 @@ import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { useRouter } from 'next/router'
 import { FarmWithStakedValue } from '@verto/farms'
 import { getDisplayApr } from '../getDisplayApr'
+import { GradientContainer } from '../../../../components/shared/styled'
 
 import Row, { RowProps } from './Row'
 import ProxyFarmContainer from '../YieldBooster/components/ProxyFarmContainer'
@@ -23,7 +24,6 @@ const Container = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.card.background};
   border-radius: 16px;
-  margin: 16px 0px;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
 `
 
@@ -63,6 +63,12 @@ const TableBody = styled.tbody`
 `
 const TableContainer = styled.div`
   position: relative;
+`
+const StyledGradientContainer = styled(GradientContainer)`
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  margin-bottom: 16px;
+  margin-top: 6px;
 `
 
 const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cakePrice, userDataReady }) => {
@@ -178,25 +184,27 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
   const sortedRows = rowData.map(generateSortedRow)
 
   return (
-    <Container id="farms-table">
-      <TableContainer id="table-container">
-        <TableWrapper ref={tableWrapperEl}>
-          <StyledTable>
-            <TableBody>
-              {sortedRows.map(row => {
-                return row?.details?.boosted ? (
-                  <ProxyFarmContainer key={`table-row-${row.farm.pid}`} farm={row.details}>
-                    <Row {...row} userDataReady={userDataReady} />
-                  </ProxyFarmContainer>
-                ) : (
-                  <Row {...row} userDataReady={userDataReady} key={`table-row-${row.farm.pid}`} />
-                )
-              })}
-            </TableBody>
-          </StyledTable>
-        </TableWrapper>
-      </TableContainer>
-    </Container>
+    <StyledGradientContainer>
+      <Container id="farms-table">
+        <TableContainer id="table-container">
+          <TableWrapper ref={tableWrapperEl}>
+            <StyledTable>
+              <TableBody>
+                {sortedRows.map(row => {
+                  return row?.details?.boosted ? (
+                    <ProxyFarmContainer key={`table-row-${row.farm.pid}`} farm={row.details}>
+                      <Row {...row} userDataReady={userDataReady} />
+                    </ProxyFarmContainer>
+                  ) : (
+                    <Row {...row} userDataReady={userDataReady} key={`table-row-${row.farm.pid}`} />
+                  )
+                })}
+              </TableBody>
+            </StyledTable>
+          </TableWrapper>
+        </TableContainer>
+      </Container>
+    </StyledGradientContainer>
   )
 }
 

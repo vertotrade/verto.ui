@@ -26,7 +26,7 @@ export const StargateWidget = ({ theme }: { theme: VertoTheme }) => {
         }
 
         .StgHeader .MuiTypography-subtitle1::after {
-          font-family: ${FontFamily.KANIT};
+          font-family: ${FontFamily.SYNE};
           visibility: visible;
           position: absolute;
           content: 'Bridge';

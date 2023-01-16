@@ -13,6 +13,7 @@ import PriceChartContainer from './components/Chart/PriceChartContainer'
 import HotTokenList from './components/HotTokenList'
 import { SmartSwapForm } from './SmartSwap'
 import { StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
+import { GradientContainer } from '../../components/shared/styled'
 import { SwapFeaturesContext } from './SwapFeaturesContext'
 
 export default function Swap() {
@@ -88,9 +89,11 @@ export default function Swap() {
         <Flex flexDirection="column">
           <StyledSwapContainer $isChartExpanded={isChartExpanded}>
             <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>
-              <AppBody>
-                <SmartSwapForm />
-              </AppBody>
+              <GradientContainer>
+                <AppBody>
+                  <SmartSwapForm />
+                </AppBody>
+              </GradientContainer>
             </StyledInputCurrencyWrapper>
           </StyledSwapContainer>
         </Flex>

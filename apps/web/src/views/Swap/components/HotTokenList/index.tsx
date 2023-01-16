@@ -7,6 +7,7 @@ import { PANCAKE_EXTENDED } from 'config/constants/lists'
 
 import { useTokenDatasSWR } from 'state/info/hooks'
 import styled from 'styled-components'
+import { GradientContainer } from '../../../../components/shared/styled'
 import TokenTable from './SwapTokenTable'
 
 const Wrapper = styled.div`
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
     width: 725px;
     padding: 24px;
     box-sizing: border-box;
-    background: ${({ theme }) => (theme.isDark ? 'rgba(39, 38, 44, 0.5)' : 'rgba(255, 255, 255, 0.5)')};
+    background: ${({ theme }) => (theme.isDark ? theme.colors.backgroundAlt : '#f6f5f5')};
     border: 1px solid ${({ theme }) => theme.colors.cardBorder};
     border-radius: 32px;
   }
@@ -48,29 +49,31 @@ const HotTokenList: React.FC = () => {
 
   const { t } = useTranslation()
   return (
-    <Wrapper>
-      <MenuWrapper>
-        <ButtonMenu activeIndex={index} onItemClick={setIndex} fullWidth scale="sm" variant="subtle">
-          <ButtonMenuItem>{t('Price Change')}</ButtonMenuItem>
-          <ButtonMenuItem>{t('Volume (24H)')}</ButtonMenuItem>
-        </ButtonMenu>
-      </MenuWrapper>
-      {index === 0 ? (
-        <TokenTable
-          tokenDatas={formattedTokens}
-          type="priceChange"
-          defaultSortField="priceUSDChange"
-          maxItems={isMobile ? 100 : 6}
-        />
-      ) : (
-        <TokenTable
-          tokenDatas={formattedTokens}
-          type="volume"
-          defaultSortField="volumeUSD"
-          maxItems={isMobile ? 100 : 6}
-        />
-      )}
-    </Wrapper>
+    <GradientContainer>
+      <Wrapper>
+        <MenuWrapper>
+          <ButtonMenu activeIndex={index} onItemClick={setIndex} fullWidth scale="sm" variant="primary">
+            <ButtonMenuItem>{t('Price Change')}</ButtonMenuItem>
+            <ButtonMenuItem>{t('Volume (24H)')}</ButtonMenuItem>
+          </ButtonMenu>
+        </MenuWrapper>
+        {index === 0 ? (
+          <TokenTable
+            tokenDatas={formattedTokens}
+            type="priceChange"
+            defaultSortField="priceUSDChange"
+            maxItems={isMobile ? 100 : 6}
+          />
+        ) : (
+          <TokenTable
+            tokenDatas={formattedTokens}
+            type="volume"
+            defaultSortField="volumeUSD"
+            maxItems={isMobile ? 100 : 6}
+          />
+        )}
+      </Wrapper>
+    </GradientContainer>
   )
 }
 
