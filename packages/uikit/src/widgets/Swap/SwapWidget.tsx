@@ -9,9 +9,15 @@ import { SwapInfo, SwapInfoLabel } from "./SwapInfo";
 import { TradePrice } from "./TradePrice";
 
 const SwapSwitchButton = (props: ButtonProps) => (
-  <IconButton className={switchButtonClass} variant="light" scale="sm" {...props}>
-    <ArrowDownIcon className={iconDownClass} color="primary" />
-    <ArrowUpDownIcon className={iconUpDownClass} color="primary" />
+  <IconButton
+    className={switchButtonClass}
+    variant="light"
+    style={{ backgroundColor: "#F29544" }}
+    scale="sm"
+    {...props}
+  >
+    <ArrowDownIcon className={iconDownClass} color="white" />
+    <ArrowUpDownIcon className={iconUpDownClass} color="white" />
   </IconButton>
 );
 

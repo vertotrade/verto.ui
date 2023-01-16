@@ -31,7 +31,7 @@ interface Props {
 }
 
 const ColoredIconButton = styled(IconButton)`
-  color: ${({ theme }) => theme.colors.textSubtle};
+  color: ${({ theme }) => theme.colors.primary};
 `
 
 const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({

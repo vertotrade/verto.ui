@@ -6,7 +6,6 @@ import {
   InjectedModalProps,
   Input,
   Modal,
-  PancakeToggle,
   QuestionHelper,
   Text,
   ThemeSwitcher,
@@ -15,7 +14,7 @@ import {
 import { escapeRegExp } from '@verto/utils/escapeRegExp'
 import { useTheme } from 'next-themes'
 import { useCallback, useState } from 'react'
-import { useAudioPlay, useUserSlippage } from 'state/user'
+import { useUserSlippage } from 'state/user'
 import { useUserSingleHopOnly } from 'state/user/singleHop'
 import styled from 'styled-components'
 
@@ -170,7 +169,6 @@ const SlippageSetting = () => {
 }
 
 export const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ onDismiss }) => {
-  const [audioPlay, setAudioPlay] = useAudioPlay()
   const [singleHopOnly, setSingleHopOnly] = useUserSingleHopOnly()
 
   const { t } = useTranslation()
@@ -216,13 +214,6 @@ export const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>
                 setSingleHopOnly(!singleHopOnly)
               }}
             />
-          </Flex>
-          <Flex justifyContent="space-between" alignItems="center" mb="24px">
-            <Flex alignItems="center">
-              <Text>{t('Flippy sounds')}</Text>
-              <QuestionHelper text={t('Fun sounds')} placement="top-start" ml="4px" />
-            </Flex>
-            <PancakeToggle checked={audioPlay} onChange={e => setAudioPlay(e.target.checked)} scale="md" />
           </Flex>
         </Flex>
       </ScrollableContainer>

@@ -105,7 +105,11 @@ const AccessRisk: React.FC<AccessRiskProps> = ({ inputCurrency, outputCurrency }
   return (
     <>
       <Flex justifyContent="flex-end">
-        <Button scale="xs" style={{ textTransform: 'uppercase' }} disabled={disabledButton} onClick={handleScan}>
+        <Button
+          scale="xs"
+          style={{ textTransform: 'uppercase', color: '#fff' }}
+          disabled={disabledButton}
+          onClick={handleScan}>
           {loading ? t('scanning...') : t('scan risk')}
         </Button>
         {tooltipVisible && tooltip}

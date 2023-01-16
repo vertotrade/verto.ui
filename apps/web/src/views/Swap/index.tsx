@@ -48,7 +48,7 @@ export default function Swap() {
             outputCurrency={currencies[Field.OUTPUT]}
             isChartExpanded={isChartExpanded}
             setIsChartExpanded={setIsChartExpanded}
-            isChartDisplayed={isChartDisplayed || !isMobile}
+            isChartDisplayed={isChartDisplayed}
             currentSwapPrice={singleTokenPrice}
           />
         )}

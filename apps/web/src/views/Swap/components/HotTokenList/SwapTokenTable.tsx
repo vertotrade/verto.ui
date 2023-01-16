@@ -255,7 +255,7 @@ const TokenTable: React.FC<
     <TableWrapper>
       <ResponsiveGrid>
         <StyledClickableColumnHeader
-          color="secondary"
+          color="primary"
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.name)}
@@ -264,7 +264,7 @@ const TokenTable: React.FC<
         </StyledClickableColumnHeader>
         {type === 'priceChange' && (
           <StyledClickableColumnHeader
-            color="secondary"
+            color="primary"
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.priceUSD)}
@@ -276,7 +276,7 @@ const TokenTable: React.FC<
           </StyledClickableColumnHeader>
         )}
         <StyledClickableColumnHeader
-          color="secondary"
+          color="primary"
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.priceUSDChange)}
@@ -288,7 +288,7 @@ const TokenTable: React.FC<
         </StyledClickableColumnHeader>
         {type === 'volume' && (
           <StyledClickableColumnHeader
-            color="secondary"
+            color="primary"
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.volumeUSD)}

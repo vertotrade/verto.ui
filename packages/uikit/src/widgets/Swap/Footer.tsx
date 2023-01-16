@@ -1,7 +1,7 @@
 import { memo, ReactNode } from "react";
 import styled from "styled-components";
 import { useTranslation } from "@verto/localization";
-import { LinkExternal, Flex, Svg, Image, Button } from "../../components";
+import { LinkExternal, Flex, Svg, Button } from "../../components";
 
 const Wrapper = styled.div<{ $isSide: boolean }>`
   width: 100%;
@@ -45,13 +45,7 @@ const Footer: React.FC<
     externalText?: string;
     externalLinkUrl?: string;
   }>
-> = ({
-  variant = "default",
-  helpUrl,
-  externalText,
-  externalLinkUrl,
-  helpImage = <Image src="https://cdn.pancakeswap.com/help/help.png" alt="Get some help" width={160} height={108} />,
-}) => {
+> = ({ variant = "default", helpUrl, externalText, externalLinkUrl }) => {
   const { t } = useTranslation();
   const isSide = variant === "side";
   return (
@@ -85,7 +79,6 @@ const Footer: React.FC<
               <path d="M0 16V0C0 0 3 1 6 1C9 1 16 -2 16 3.5C16 10.5 7.5 16 0 16Z" />
             </Svg>
           </BubbleWrapper>
-          {helpImage}
         </Flex>
       )}
     </Wrapper>
