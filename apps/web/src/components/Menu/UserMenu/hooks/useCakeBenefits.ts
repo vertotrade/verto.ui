@@ -27,7 +27,7 @@ const useCakeBenefits = () => {
   const currentBscBlock = useChainCurrentBlock(ChainId.BSC)
 
   const { data, status } = useSWR(account && currentBscBlock && ['cakeBenefits', account], async () => {
-    const userVaultCalls = ['userInfo', 'calculatePerformanceFee', 'calculateOverdueFee'].map((method) => ({
+    const userVaultCalls = ['userInfo', 'calculatePerformanceFee', 'calculateOverdueFee'].map(method => ({
       address: cakeVaultAddress,
       name: method,
       params: [account],

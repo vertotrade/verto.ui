@@ -94,8 +94,8 @@ export function useAccountBalances<TData = unknown>({
   const coins = useMemo(
     () =>
       (Object.keys(coinStoreResourceMap ?? {})
-        .map((d) => unwrapTypeFromString(d))
-        .filter((d) => (coinFilter && d ? isHexStringEquals(coinFilter, d) : true))
+        .map(d => unwrapTypeFromString(d))
+        .filter(d => (coinFilter && d ? isHexStringEquals(coinFilter, d) : true))
         .filter(Boolean) ?? []) as string[],
     [coinFilter, coinStoreResourceMap],
   )

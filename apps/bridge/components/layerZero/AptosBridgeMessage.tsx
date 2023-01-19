@@ -13,8 +13,7 @@ const AptosBridgeMessage = () => {
         mt={['24px', '24px', '24px', '0']}
         mb={['0', '0', '24px']}
         variant="warning"
-        icon={<WarningIcon color="#D67E0A" style={{ minWidth: '24px' }} />}
-      >
+        icon={<WarningIcon color="#D67E0A" style={{ minWidth: '24px' }} />}>
         <Flex flexDirection="column">
           <MessageText>
             For CAKE bridging, the waiting time is around 3-10 mins. For assets other than CAKE, outbound transfers from
@@ -25,8 +24,7 @@ const AptosBridgeMessage = () => {
             <InlineLink
               ml="4px"
               external
-              href="https://docs.pancakeswap.finance/get-started-aptos/aptos-faq#cake-bridging"
-            >
+              href="https://docs.pancakeswap.finance/get-started-aptos/aptos-faq#cake-bridging">
               FAQ.
             </InlineLink>
           </MessageText>

@@ -69,8 +69,7 @@ const PauseProfilePage: React.FC<React.PropsWithChildren<PauseProfilePageProps>>
         endIcon={isConfirming ? <AutoRenewIcon spin color="currentColor" /> : null}
         disabled={!isAcknowledged || isConfirming}
         onClick={handleDeactivateProfile}
-        mb="8px"
-      >
+        mb="8px">
         {t('Confirm')}
       </Button>
       <Button variant="text" width="100%" onClick={onDismiss}>

@@ -8,8 +8,7 @@ const FilterFooter: React.FC<React.PropsWithChildren<GridProps>> = ({ children, 
     px="24px"
     py="16px"
     borderTop="1px solid"
-    borderTopColor="cardBorder"
-  >
+    borderTopColor="cardBorder">
     {children}
   </Grid>
 )

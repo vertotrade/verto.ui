@@ -34,6 +34,6 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: ethereumTokens.weth,
     token: ethereumTokens.sdao,
   },
-].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
+].map(p => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default farms

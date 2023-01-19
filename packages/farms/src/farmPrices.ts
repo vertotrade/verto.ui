@@ -83,7 +83,7 @@ const getFarmFromTokenAddress = (
   tokenAddress: string,
   preferredQuoteTokens?: string[],
 ): SerializedFarmPublicData => {
-  const farmsWithTokenSymbol = farms.filter((farm) => equalsIgnoreCase(farm.token.address, tokenAddress))
+  const farmsWithTokenSymbol = farms.filter(farm => equalsIgnoreCase(farm.token.address, tokenAddress))
   const filteredFarm = filterFarmsByQuoteToken(farmsWithTokenSymbol, preferredQuoteTokens)
   return filteredFarm
 }
@@ -92,8 +92,8 @@ const filterFarmsByQuoteToken = (
   farms: SerializedFarmPublicData[],
   preferredQuoteTokens: string[] = ['BUSD', 'WBNB'],
 ): SerializedFarmPublicData => {
-  const preferredFarm = farms.find((farm) => {
-    return preferredQuoteTokens.some((quoteToken) => {
+  const preferredFarm = farms.find(farm => {
+    return preferredQuoteTokens.some(quoteToken => {
       return farm.quoteToken.symbol === quoteToken
     })
   })
@@ -160,7 +160,7 @@ export const getFarmsPrices = (
   },
   decimals: number,
 ): FarmWithPrices[] => {
-  const nativeStableFarm = farms.find((farm) => equalsIgnoreCase(farm.lpAddress, nativeStableLp.address))
+  const nativeStableFarm = farms.find(farm => equalsIgnoreCase(farm.lpAddress, nativeStableLp.address))
 
   const isNativeFirst = nativeStableFarm?.token.symbol === nativeStableLp.wNative
 
@@ -171,7 +171,7 @@ export const getFarmsPrices = (
         : FIXED_ONE.divUnsafe(FixedNumber.from(nativeStableFarm.tokenPriceVsQuote))
       : FIXED_ZERO
 
-  const farmsWithPrices = farms.map((farm) => {
+  const farmsWithPrices = farms.map(farm => {
     const quoteTokenFarm = getFarmFromTokenAddress(farms, farm.quoteToken.address, [
       nativeStableLp.wNative,
       nativeStableLp.stable,

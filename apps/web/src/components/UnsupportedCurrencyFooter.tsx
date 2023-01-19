@@ -30,7 +30,7 @@ const UnsupportedModal: React.FC<React.PropsWithChildren<Props>> = ({ currencies
   const { t } = useTranslation()
   const tokens =
     chainId && currencies
-      ? currencies.map((currency) => {
+      ? currencies.map(currency => {
           return wrappedCurrency(currency, chainId)
         })
       : []
@@ -40,7 +40,7 @@ const UnsupportedModal: React.FC<React.PropsWithChildren<Props>> = ({ currencies
   return (
     <Modal title={t('Unsupported Assets')} onDismiss={onDismiss}>
       <AutoColumn gap="lg">
-        {tokens.map((token) => {
+        {tokens.map(token => {
           return (
             token &&
             unsupportedTokens &&
@@ -55,8 +55,7 @@ const UnsupportedModal: React.FC<React.PropsWithChildren<Props>> = ({ currencies
                     external
                     small
                     color="primaryDark"
-                    href={getBlockExploreLink(token.address, 'address', chainId)}
-                  >
+                    href={getBlockExploreLink(token.address, 'address', chainId)}>
                     {token.address}
                   </Link>
                 )}

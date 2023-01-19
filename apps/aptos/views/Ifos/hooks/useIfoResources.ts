@@ -27,14 +27,14 @@ export const useIfoResourcesListByUserInfoType = (userInfoTypes?: string[]) => {
     enabled: Boolean(userInfoTypes?.length),
     address: IFO_ADDRESS,
     watch: true,
-    select: (data) => {
+    select: data => {
       let resourcesList = {}
 
       for (const it of data) {
         const res: ResourceType = {}
         const [raisingCoin, offeringCoin, uid] = splitTypeTag(it.type)
 
-        const foundType = userInfoTypes?.find((type) => {
+        const foundType = userInfoTypes?.find(type => {
           const [userRaisingCoin, userOfferingCoin, userUid] = splitTypeTag(type)
 
           if (raisingCoin === userRaisingCoin && offeringCoin === userOfferingCoin) {
@@ -78,7 +78,7 @@ export const useIfoResources = (ifo: Ifo) => {
     networkName,
     address: IFO_ADDRESS,
     watch: true,
-    select: (data) => {
+    select: data => {
       const res: {
         [IFO_RESOURCE_ACCOUNT_TYPE_METADATA]?: IFOMetadata
         [IFO_RESOURCE_ACCOUNT_TYPE_POOL_STORE]?: IFOPoolStore

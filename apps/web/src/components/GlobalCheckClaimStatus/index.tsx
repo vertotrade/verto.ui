@@ -17,7 +17,7 @@ interface GlobalCheckClaimStatusProps {
 // change it to true if we have events to check claim status
 const enable = false
 
-const GlobalCheckClaimStatus: React.FC<React.PropsWithChildren<GlobalCheckClaimStatusProps>> = (props) => {
+const GlobalCheckClaimStatus: React.FC<React.PropsWithChildren<GlobalCheckClaimStatusProps>> = props => {
   const { account, chainId } = useActiveWeb3React()
   if (!enable || chainId !== ChainId.BSC) {
     return null
@@ -66,7 +66,7 @@ const GlobalCheckClaim: React.FC<React.PropsWithChildren<GlobalCheckClaimStatusP
 
   // // Check if we need to display the modal
   useEffect(() => {
-    const matchesSomeLocations = excludeLocations.some((location) => pathname.includes(location))
+    const matchesSomeLocations = excludeLocations.some(location => pathname.includes(location))
 
     if (canClaimAnniversaryPoints && !matchesSomeLocations && !hasDisplayedModal.current) {
       onPresentAnniversaryModal()

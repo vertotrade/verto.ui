@@ -37,7 +37,7 @@ const Team: React.FC<React.PropsWithChildren> = () => {
             )}
           </Text>
           {teamValues &&
-            teamValues.map((team) => {
+            teamValues.map(team => {
               return (
                 <SelectionCard
                   key={team.name}
@@ -46,8 +46,7 @@ const Team: React.FC<React.PropsWithChildren> = () => {
                   isChecked={currentTeamId === team.id}
                   image={`/images/teams/${team.images.md}`}
                   onChange={handleTeamSelection}
-                  disabled={!team.isJoinable}
-                >
+                  disabled={!team.isJoinable}>
                   <Text bold>{team.name}</Text>
                   <Flex>
                     <CommunityIcon mr="8px" />

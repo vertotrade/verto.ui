@@ -117,8 +117,7 @@ const MultipleBanner: React.FC<React.PropsWithChildren> = () => {
         speed={500}
         autoplay={{ delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false }}
         loop
-        pagination={{ clickable: true }}
-      >
+        pagination={{ clickable: true }}>
         {bannerList.map((banner, index) => {
           const childKey = `Banner${index}`
           return (

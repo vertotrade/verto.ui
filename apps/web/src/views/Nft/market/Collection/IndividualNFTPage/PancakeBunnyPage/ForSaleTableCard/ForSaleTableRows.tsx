@@ -67,8 +67,7 @@ const Row: React.FC<React.PropsWithChildren<RowProps>> = ({ t, nft, bnbBusdPrice
             scale="sm"
             variant="danger"
             maxWidth="128px"
-            onClick={onPresentAdjustPriceModal}
-          >
+            onClick={onPresentAdjustPriceModal}>
             {t('Edit')}
           </Button>
         ) : (
@@ -77,8 +76,7 @@ const Row: React.FC<React.PropsWithChildren<RowProps>> = ({ t, nft, bnbBusdPrice
             scale="sm"
             variant="secondary"
             maxWidth="128px"
-            onClick={onPresentBuyModal}
-          >
+            onClick={onPresentBuyModal}>
             {t('Buy')}
           </Button>
         )}
@@ -98,7 +96,7 @@ const ForSaleTableRow: React.FC<React.PropsWithChildren<ForSaleTableRowsProps>> 
   const bnbBusdPrice = useBNBBusdPrice()
   return (
     <OwnersTableRow>
-      {nftsForSale.map((nft) => (
+      {nftsForSale.map(nft => (
         <Row
           key={nft.tokenId}
           t={t}

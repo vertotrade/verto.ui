@@ -39,7 +39,7 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
             <Flex alignItems="center" justifyContent="flex-start">
               <Balance fontSize="16px" value={parseFloat(flexibleApy)} decimals={2} unit="%" fontWeight="600" />
               <Button
-                onClick={(e) => {
+                onClick={e => {
                   e.stopPropagation()
                   onPresentFlexibleApyModal()
                 }}
@@ -47,8 +47,7 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
                 width="20px"
                 height="20px"
                 padding="0px"
-                marginLeft="4px"
-              >
+                marginLeft="4px">
                 <CalculateIcon color="textSubtle" width="20px" />
               </Button>
             </Flex>
@@ -77,7 +76,7 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
                   fontWeight="600"
                 />
                 <Button
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation()
                     onPresentLockedApyModal()
                   }}
@@ -85,8 +84,7 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
                   width="20px"
                   height="20px"
                   padding="0px"
-                  marginLeft="4px"
-                >
+                  marginLeft="4px">
                   <CalculateIcon color="textSubtle" width="20px" />
                 </Button>
               </Flex>

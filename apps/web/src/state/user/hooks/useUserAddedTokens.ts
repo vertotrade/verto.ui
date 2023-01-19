@@ -9,7 +9,7 @@ import { AppState } from '../../index'
 const selectUserTokens = ({ user: { tokens } }: AppState) => tokens
 
 export const userAddedTokenSelector = (chainId: number) =>
-  createSelector(selectUserTokens, (serializedTokensMap) =>
+  createSelector(selectUserTokens, serializedTokensMap =>
     Object.values(serializedTokensMap?.[chainId] ?? {}).map(deserializeToken),
   )
 export default function useUserAddedTokens(): Token[] {

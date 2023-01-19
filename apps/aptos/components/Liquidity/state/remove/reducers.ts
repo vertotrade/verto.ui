@@ -13,7 +13,7 @@ const initialState: BurnState = {
   typedValue: '0',
 }
 
-const reducer = createReducer<BurnState>(initialState, (builder) =>
+const reducer = createReducer<BurnState>(initialState, builder =>
   builder.addCase(typeInput, (state, { payload: { field, typedValue } }) => {
     return {
       ...state,

@@ -99,8 +99,7 @@ const SlippageTabs = () => {
               setSlippageInput('')
               setUserSlippageTolerance(10)
             }}
-            variant={userSlippageTolerance === 10 ? 'primary' : 'tertiary'}
-          >
+            variant={userSlippageTolerance === 10 ? 'primary' : 'tertiary'}>
             0.1%
           </Button>
           <Button
@@ -111,8 +110,7 @@ const SlippageTabs = () => {
               setSlippageInput('')
               setUserSlippageTolerance(50)
             }}
-            variant={userSlippageTolerance === 50 ? 'primary' : 'tertiary'}
-          >
+            variant={userSlippageTolerance === 50 ? 'primary' : 'tertiary'}>
             0.5%
           </Button>
           <Button
@@ -123,8 +121,7 @@ const SlippageTabs = () => {
               setSlippageInput('')
               setUserSlippageTolerance(100)
             }}
-            variant={userSlippageTolerance === 100 ? 'primary' : 'tertiary'}
-          >
+            variant={userSlippageTolerance === 100 ? 'primary' : 'tertiary'}>
             1.0%
           </Button>
           <Flex alignItems="center">
@@ -138,7 +135,7 @@ const SlippageTabs = () => {
                 onBlur={() => {
                   parseCustomSlippage((userSlippageTolerance / 100).toFixed(2))
                 }}
-                onChange={(event) => {
+                onChange={event => {
                   if (event.currentTarget.validity.valid) {
                     parseCustomSlippage(event.target.value.replace(/,/g, '.'))
                   }
@@ -183,7 +180,7 @@ const SlippageTabs = () => {
               }}
               placeholder={(ttl / 60).toString()}
               value={deadlineInput}
-              onChange={(event) => {
+              onChange={event => {
                 if (event.currentTarget.validity.valid) {
                   parseCustomDeadline(event.target.value)
                 }

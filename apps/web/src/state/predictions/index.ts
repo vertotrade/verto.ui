@@ -218,7 +218,7 @@ export const fetchNodeHistory = createAsyncThunk<
     return emptyResult
   }
 
-  const epochs = Object.keys(userRounds).map((epochStr) => Number(epochStr))
+  const epochs = Object.keys(userRounds).map(epochStr => Number(epochStr))
   const [roundData, claimableStatuses] = await Promise.all([
     getRoundsData(epochs, extra.address),
     getClaimStatuses(account, epochs, extra.address),
@@ -387,8 +387,8 @@ export const predictionsSlice = createSlice({
       state.leaderboard.selectedAddress = action.payload
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(resetUserState, (state) => {
+  extraReducers: builder => {
+    builder.addCase(resetUserState, state => {
       state.claimableStatuses = {}
       state.ledgers = {}
       state.isFetchingHistory = false
@@ -398,7 +398,7 @@ export const predictionsSlice = createSlice({
       state.currentHistoryPage = 1
     })
     // Leaderboard filter
-    builder.addCase(filterLeaderboard.pending, (state) => {
+    builder.addCase(filterLeaderboard.pending, state => {
       // Only mark as loading if we come from Fetched. This allows initialization.
       if (state.leaderboard.loadingState === FetchStatus.Fetched) {
         state.leaderboard.loadingState = FetchStatus.Fetching
@@ -427,7 +427,7 @@ export const predictionsSlice = createSlice({
     })
 
     // Leaderboard account result
-    builder.addCase(fetchAddressResult.pending, (state) => {
+    builder.addCase(fetchAddressResult.pending, state => {
       state.leaderboard.loadingState = FetchStatus.Fetching
     })
     builder.addCase(fetchAddressResult.fulfilled, (state, action) => {
@@ -441,7 +441,7 @@ export const predictionsSlice = createSlice({
     })
 
     // Leaderboard next page
-    builder.addCase(filterNextPageLeaderboard.pending, (state) => {
+    builder.addCase(filterNextPageLeaderboard.pending, state => {
       state.leaderboard.loadingState = FetchStatus.Fetching
     })
     builder.addCase(filterNextPageLeaderboard.fulfilled, (state, action) => {
@@ -512,10 +512,10 @@ export const predictionsSlice = createSlice({
     })
 
     // History from the node
-    builder.addCase(fetchNodeHistory.pending, (state) => {
+    builder.addCase(fetchNodeHistory.pending, state => {
       state.isFetchingHistory = true
     })
-    builder.addCase(fetchNodeHistory.rejected, (state) => {
+    builder.addCase(fetchNodeHistory.rejected, state => {
       state.isFetchingHistory = false
     })
     builder.addCase(fetchNodeHistory.fulfilled, (state, action) => {

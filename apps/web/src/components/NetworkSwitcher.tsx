@@ -41,13 +41,12 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
       </Box>
       <UserMenuDivider />
       {chains
-        .filter((chain) => !chain.testnet || chain.id === chainId)
-        .map((chain) => (
+        .filter(chain => !chain.testnet || chain.id === chainId)
+        .map(chain => (
           <UserMenuItem
             key={chain.id}
             style={{ justifyContent: 'flex-start' }}
-            onClick={() => chain.id !== chainId && switchNetwork(chain.id)}
-          >
+            onClick={() => chain.id !== chainId && switchNetwork(chain.id)}>
             <ChainLogo chainId={chain.id} />
             <Text color={chain.id === chainId ? 'secondary' : 'text'} bold={chain.id === chainId} pl="12px">
               {chain.name}
@@ -59,8 +58,7 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
         style={{ justifyContent: 'flex-start' }}
         as="a"
         target="_blank"
-        href="https://aptos.pancakeswap.finance/swap"
-      >
+        href="https://aptos.pancakeswap.finance/swap">
         <Image
           src="https://aptos.pancakeswap.finance/images/apt.png"
           width={24}
@@ -83,7 +81,7 @@ const WrongNetworkSelect = ({ switchNetwork, chainId }) => {
       'The URL you are accessing (Chain id: %chainId%) belongs to %network%; mismatching your wallet’s network. Please switch the network to continue.',
       {
         chainId,
-        network: chains.find((c) => c.id === chainId)?.name ?? 'Unknown network',
+        network: chains.find(c => c.id === chainId)?.name ?? 'Unknown network',
       },
     ),
     {
@@ -95,7 +93,7 @@ const WrongNetworkSelect = ({ switchNetwork, chainId }) => {
   const localChainId = useLocalNetworkChain() || ChainId.BSC
   const [, setSessionChainId] = useSessionChainId()
 
-  const localChainName = chains.find((c) => c.id === localChainId)?.name ?? 'BSC'
+  const localChainName = chains.find(c => c.id === localChainId)?.name ?? 'BSC'
 
   const [ref1, isHover] = useHover<HTMLButtonElement>()
 
@@ -141,7 +139,7 @@ export const NetworkSwitcher = () => {
   useNetworkConnectorUpdater()
 
   const foundChain = useMemo(
-    () => chains.find((c) => c.id === (isLoading ? pendingChainId || chainId : chainId)),
+    () => chains.find(c => c.id === (isLoading ? pendingChainId || chainId : chainId)),
     [isLoading, pendingChainId, chainId],
   )
   const symbol = NATIVE[foundChain?.id]?.symbol ?? foundChain?.nativeCurrency?.symbol
@@ -178,8 +176,7 @@ export const NetworkSwitcher = () => {
           ) : (
             t('Select a Network')
           )
-        }
-      >
+        }>
         {() =>
           isNotMatched ? (
             <WrongNetworkSelect switchNetwork={switchNetworkAsync} chainId={chainId} />

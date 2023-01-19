@@ -1,17 +1,7 @@
 import { useAccount, useAccountBalance, APTOS_COIN } from '@verto/awgmi'
 
 import { useTranslation } from '@verto/localization'
-import {
-  Box,
-  Button,
-  CopyAddress,
-  Flex,
-  InjectedModalProps,
-  LinkExternal,
-  Message,
-  Skeleton,
-  Text,
-} from '@verto/uikit'
+import { Box, Button, CopyAddress, Flex, InjectedModalProps, LinkExternal, Message, Skeleton, Text } from '@verto/uikit'
 import { useAuth } from 'hooks/useAuth'
 
 import { useActiveChainId } from 'hooks/useNetwork'

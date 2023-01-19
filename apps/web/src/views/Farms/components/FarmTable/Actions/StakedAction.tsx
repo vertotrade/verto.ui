@@ -159,7 +159,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
 
   const isStakeReady = useMemo(() => {
-    return ['history', 'archived'].some((item) => router.pathname.includes(item)) || pendingFarm.length > 0
+    return ['history', 'archived'].some(item => router.pathname.includes(item)) || pendingFarm.length > 0
   }, [pendingFarm, router])
 
   const crossChainWarningText = useMemo(() => {
@@ -293,7 +293,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     }
   }
 
-  const bCakeCalculatorSlot = (calculatorBalance) => (
+  const bCakeCalculatorSlot = calculatorBalance => (
     <BCakeCalculator
       targetInputBalance={calculatorBalance}
       earningTokenPrice={cakePrice.toNumber()}
@@ -389,8 +389,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
         disabledMinusButton={pendingFarm.length > 0}
         disabledPlusButton={isStakeReady || isBloctoETH}
         onPresentWithdraw={onPresentWithdraw}
-        onPresentDeposit={onPresentDeposit}
-      >
+        onPresentDeposit={onPresentDeposit}>
         <FarmUI.StakedLP
           decimals={18}
           stakedBalance={stakedBalance}

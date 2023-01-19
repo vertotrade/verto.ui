@@ -23,14 +23,13 @@ const NetworkSelect = () => {
         <Text color="textSubtle">{t('Select a Network')}</Text>
       </Box>
       <UserMenuDivider />
-      {evmChains.map((chain) => (
+      {evmChains.map(chain => (
         <UserMenuItem
           key={chain.id}
           style={{ justifyContent: 'flex-start' }}
           as="a"
           target="_blank"
-          href={`${APEX_DOMAIN}?chain=${ChainIdName[chain.id]}`}
-        >
+          href={`${APEX_DOMAIN}?chain=${ChainIdName[chain.id]}`}>
           <Image
             src={`${APEX_DOMAIN}/images/chains/${chain.id}.png`}
             width={24}
@@ -68,8 +67,7 @@ export const NetworkSwitcher = () => {
           </Box>
           <Box display={['block', null, null, null, null, 'none']}>APT</Box>
         </>
-      }
-    >
+      }>
       {() => <NetworkSelect />}
     </UserMenu>
   )

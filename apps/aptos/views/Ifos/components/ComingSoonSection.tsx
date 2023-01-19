@@ -42,8 +42,7 @@ export default function ComingSoonSection() {
       background="bubblegum"
       style={{
         width: '100%',
-      }}
-    >
+      }}>
       <CurveBox height={[100, 110, 160, 160]} backgroundImage="url('/images/ifos/assets/ifo-coming-soon.png')" />
       <StyledCardBody>
         <CardsWrapper singleCard>

@@ -138,8 +138,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
               vaultKey ? cakeVaultContractAddress : poolContractAddress
             }`}
             bold={false}
-            small
-          >
+            small>
             {t('View Contract')}
           </LinkExternal>
         </Flex>

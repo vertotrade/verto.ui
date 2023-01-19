@@ -5,16 +5,16 @@ import {
   SwapFillIcon,
   EarnFillIcon,
   EarnIcon,
-  TrophyIcon,
-  TrophyFillIcon,
-  NftIcon,
-  NftFillIcon,
+  // TrophyIcon,
+  // TrophyFillIcon,
+  // NftIcon,
+  // NftFillIcon,
   MoreIcon,
   DropdownMenuItems,
 } from '@verto/uikit'
 import { ContextApi } from '@verto/localization'
-import { nftsBaseUrl } from 'views/Nft/market/constants'
-import { getPerpetualUrl } from 'utils/getPerpetualUrl'
+// import { nftsBaseUrl } from 'views/Nft/market/constants'
+// import { getPerpetualUrl } from 'utils/getPerpetualUrl'
 import { SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
 
 export type ConfigMenuDropDownItemsType = DropdownMenuItems & { hideSubNav?: boolean }
@@ -77,7 +77,7 @@ const config: (
         //   href: 'https://bridge.pancakeswap.finance/',
         //   type: DropdownMenuItemType.EXTERNAL_LINK,
         // },
-      ].map((item) => addMenuItemSupported(item, chainId)),
+      ].map(item => addMenuItemSupported(item, chainId)),
     },
     {
       label: t('Earn'),
@@ -95,7 +95,7 @@ const config: (
           href: '/pools',
           supportChainIds: SUPPORT_ONLY_BSC,
         },
-      ].map((item) => addMenuItemSupported(item, chainId)),
+      ].map(item => addMenuItemSupported(item, chainId)),
     },
     // {
     //   label: t('Win'),
@@ -193,8 +193,8 @@ const config: (
           href: 'https://docs.pancakeswap.finance',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
-      ].map((item) => addMenuItemSupported(item, chainId)),
+      ].map(item => addMenuItemSupported(item, chainId)),
     },
-  ].map((item) => addMenuItemSupported(item, chainId))
+  ].map(item => addMenuItemSupported(item, chainId))
 
 export default config

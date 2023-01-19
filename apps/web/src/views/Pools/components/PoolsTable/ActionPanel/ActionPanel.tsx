@@ -156,7 +156,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
         </Flex>
         <Flex alignItems="center">
           <PoolTypeTag vaultKey={vaultKey} isLocked={isLocked} account={account}>
-            {(tagTargetRef) => (
+            {tagTargetRef => (
               <Flex ref={tagTargetRef}>
                 <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
               </Flex>

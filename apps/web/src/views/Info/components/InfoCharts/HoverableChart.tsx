@@ -39,7 +39,7 @@ const HoverableChart = ({
 
   const formattedData = useMemo(() => {
     if (chartData) {
-      return chartData.map((day) => {
+      return chartData.map(day => {
         return {
           time: fromUnixTime(day.date),
           value: day[valueProperty],

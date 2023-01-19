@@ -124,8 +124,7 @@ const FarmAuction = () => {
           p="24px 0"
           index={2}
           concaveDivider
-          dividerPosition="top"
-        >
+          dividerPosition="top">
           <NotWhitelistedNotice connectedBidder={connectedBidder} auction={currentAuction} />
           <AuctionTimer auction={currentAuction} />
           <AuctionContainer flexDirection={['column', null, null, 'row']}>
@@ -148,8 +147,7 @@ const FarmAuction = () => {
           index={2}
           innerProps={{ style: { width: '100%' } }}
           dividerPosition="top"
-          dividerFill={{ light: CAKE_BURN_TOP_FILL_LIGHT, dark: CAKE_BURN_TOP_FILL_DARK }}
-        >
+          dividerFill={{ light: CAKE_BURN_TOP_FILL_LIGHT, dark: CAKE_BURN_TOP_FILL_DARK }}>
           <AuctionCakeBurn />
         </PageSection>
         <PageSection
@@ -158,8 +156,7 @@ const FarmAuction = () => {
           dividerFill={{ light: CAKE_BURN_BG_LIGHT, dark: CAKE_BURN_BG_DARK }}
           concaveDivider
           index={3}
-          dividerPosition="top"
-        >
+          dividerPosition="top">
           <FAQs />
         </PageSection>
       </>

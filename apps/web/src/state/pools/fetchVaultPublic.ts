@@ -11,7 +11,7 @@ const cakeVaultV2 = getCakeVaultAddress()
 const cakeFlexibleSideVaultV2 = getCakeFlexibleSideVaultAddress()
 export const fetchPublicVaultData = async (cakeVaultAddress = cakeVaultV2) => {
   try {
-    const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map((method) => ({
+    const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map(method => ({
       abi: cakeVaultAbi,
       address: cakeVaultAddress,
       name: method,
@@ -50,7 +50,7 @@ export const fetchPublicVaultData = async (cakeVaultAddress = cakeVaultV2) => {
 
 export const fetchPublicFlexibleSideVaultData = async (cakeVaultAddress = cakeFlexibleSideVaultV2) => {
   try {
-    const calls = ['getPricePerFullShare', 'totalShares'].map((method) => ({
+    const calls = ['getPricePerFullShare', 'totalShares'].map(method => ({
       abi: cakeVaultAbi,
       address: cakeVaultAddress,
       name: method,
@@ -86,7 +86,7 @@ export const fetchPublicFlexibleSideVaultData = async (cakeVaultAddress = cakeFl
 
 export const fetchVaultFees = async (cakeVaultAddress = cakeVaultV2) => {
   try {
-    const calls = ['performanceFee', 'withdrawFee', 'withdrawFeePeriod'].map((method) => ({
+    const calls = ['performanceFee', 'withdrawFee', 'withdrawFeePeriod'].map(method => ({
       address: cakeVaultAddress,
       name: method,
     }))

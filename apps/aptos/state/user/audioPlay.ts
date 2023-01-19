@@ -4,7 +4,7 @@ import { atomWithStorage } from 'jotai/utils'
 const userAudioPlayAtom = atomWithStorage<'0' | '1'>('pcs:audio-play', '0')
 
 const userAudioAtomWithLocalStorage = atom(
-  (get) => {
+  get => {
     const got = get(userAudioPlayAtom)
     if (got === '1') {
       return true

@@ -56,8 +56,7 @@ const Filters = () => {
       <Flex
         flexDirection={['column', null, null, null, null, 'row']}
         alignItems={['start', null, null, null, null, 'center']}
-        justifyContent={['start', null, null, null, null, 'space-between']}
-      >
+        justifyContent={['start', null, null, null, null, 'space-between']}>
         <FilterWrapper>
           <Select options={orderByOptions} onOptionChange={handleOrderBy} />
         </FilterWrapper>

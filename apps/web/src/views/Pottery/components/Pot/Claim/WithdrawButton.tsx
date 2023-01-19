@@ -40,8 +40,7 @@ const WithdrawButton: React.FC<React.PropsWithChildren<WithdrawButtonProps>> = (
       variant="secondary"
       disabled={isDisabled}
       endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
-      onClick={handleWithdraw}
-    >
+      onClick={handleWithdraw}>
       {t('Withdraw')}
     </Button>
   )

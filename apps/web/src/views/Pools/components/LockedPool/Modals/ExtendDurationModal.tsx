@@ -98,8 +98,7 @@ const ExtendDurationModal: React.FC<ExtendDurationModal> = ({
       <Modal
         title={modalTitle || t('Extend Lock')}
         onDismiss={onDismiss}
-        headerBackground={theme.colors.gradientCardHeader}
-      >
+        headerBackground={theme.colors.gradientCardHeader}>
         <Box mb="16px">
           <StaticAmount
             stakingAddress={stakingToken.address}

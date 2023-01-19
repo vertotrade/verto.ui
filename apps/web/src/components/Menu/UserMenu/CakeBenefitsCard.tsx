@@ -166,8 +166,7 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
               <NextLinkFromReactRouter
                 style={{ textDecoration: 'underline', fontWeight: 'bold' }}
                 to="/pools"
-                onClick={onDismiss}
-              >
+                onClick={onDismiss}>
                 {t('Go to Pools')}
               </NextLinkFromReactRouter>
             </MessageText>
@@ -192,8 +191,7 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
               <NextLinkFromReactRouter
                 style={{ textDecoration: 'underline', fontWeight: 'bold' }}
                 to="/pools"
-                onClick={onDismiss}
-              >
+                onClick={onDismiss}>
                 {t('Go to Pools')}
               </NextLinkFromReactRouter>
             </MessageText>

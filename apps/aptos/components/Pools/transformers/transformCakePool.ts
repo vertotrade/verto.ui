@@ -60,7 +60,7 @@ const transformCakePool = ({
   }
 
   const foundStakingBalance = balances?.find(
-    (balance) => balance.type === `0x1::coin::CoinStore<${cakeFarm.token.address}>`,
+    balance => balance.type === `0x1::coin::CoinStore<${cakeFarm.token.address}>`,
   )
 
   const amount = _toNumber(_get(foundStakingBalance, 'data.coin.value', '0'))

@@ -57,7 +57,7 @@ export function useNftStorage() {
     ({ collection, field }: { collection: string; field: MarketEvent }) => {
       if (nftMarketActivityFilters[collection]) {
         nftMarketActivityFilters[collection].typeFilters = nftMarketActivityFilters[collection].typeFilters.filter(
-          (activeFilter) => activeFilter !== field,
+          activeFilter => activeFilter !== field,
         )
       }
       setNftMarketActivityFilters({ ...nftMarketActivityFilters })
@@ -70,7 +70,7 @@ export function useNftStorage() {
       if (nftMarketActivityFilters['']) {
         nftMarketActivityFilters[collection].collectionFilters = nftMarketActivityFilters[
           collection
-        ].collectionFilters.filter((activeFilter) => activeFilter !== collection)
+        ].collectionFilters.filter(activeFilter => activeFilter !== collection)
       }
       setNftMarketActivityFilters({ ...nftMarketActivityFilters })
     },

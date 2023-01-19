@@ -1,7 +1,7 @@
 import { Svg, SvgProps } from '@verto/uikit'
 import { useTheme } from '@verto/hooks'
 
-const BunnyKnownPlaceholder: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const BunnyKnownPlaceholder: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   const { theme } = useTheme()
   const primaryColor = theme.isDark ? '#3C3742' : '#e9eaeb'
   const secondaryColor = theme.isDark ? '#666171' : '#bdc2c4'
@@ -21,8 +21,7 @@ const BunnyKnownPlaceholder: React.FC<React.PropsWithChildren<SvgProps>> = (prop
         x="4"
         y="4"
         width="72"
-        height="72"
-      >
+        height="72">
         <path
           d="M75.8333 40.0001C75.8333 59.7903 59.7902 75.8334 40 75.8334C20.2098 75.8334 4.16663 59.7903 4.16663 40.0001C4.16663 20.2099 20.2098 4.16675 40 4.16675C59.7902 4.16675 75.8333 20.2099 75.8333 40.0001Z"
           fill="#C4C4C4"

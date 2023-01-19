@@ -2,17 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { JSBI, CurrencyAmount, Token, WNATIVE, MINIMUM_LIQUIDITY, Percent } from '@verto/sdk'
-import {
-  Button,
-  Text,
-  AddIcon,
-  CardBody,
-  Message,
-  useModal,
-  TooltipText,
-  useTooltip,
-  MessageText,
-} from '@verto/uikit'
+import { Button, Text, AddIcon, CardBody, Message, useModal, TooltipText, useTooltip, MessageText } from '@verto/uikit'
 import { logError } from 'utils/sentry'
 import { useIsTransactionUnsupported, useIsTransactionWarning } from 'hooks/Trades'
 import { useTranslation } from '@verto/localization'
@@ -269,12 +259,12 @@ export default function AddLiquidity({ currencyA, currencyB }) {
 
     setLiquidityState({ attemptingTxn: true, liquidityErrorMessage: undefined, txHash: undefined })
     await estimate(...args, value ? { value } : {})
-      .then((estimatedGasLimit) =>
+      .then(estimatedGasLimit =>
         method(...args, {
           ...(value ? { value } : {}),
           gasLimit: calculateGasMargin(estimatedGasLimit),
           gasPrice,
-        }).then((response) => {
+        }).then(response => {
           setLiquidityState({ attemptingTxn: false, liquidityErrorMessage: undefined, txHash: response.hash })
 
           const symbolA = currencies[Field.CURRENCY_A]?.symbol
@@ -295,7 +285,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
           }
         }),
       )
-      .catch((err) => {
+      .catch(err => {
         if (err && err.code !== 4001) {
           logError(err)
           console.error(`Add Liquidity failed`, err, args, value)
@@ -439,7 +429,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
     setLiquidityState({ attemptingTxn: true, liquidityErrorMessage: undefined, txHash: undefined })
 
     callWithEstimateGas(zapContract, method, args, value ? { value, gasPrice } : { gasPrice })
-      .then((response) => {
+      .then(response => {
         setLiquidityState({ attemptingTxn: false, liquidityErrorMessage: undefined, txHash: response.hash })
 
         addTransaction(response, {
@@ -452,7 +442,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
           addPair(pair)
         }
       })
-      .catch((err) => {
+      .catch(err => {
         if (err && err.code !== 4001) {
           logError(err)
           console.error(`Add Liquidity failed`, err, args, value)
@@ -617,7 +607,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                       <ZapCheckbox
                         disabled={currencyBalances?.[Field.CURRENCY_A]?.equalTo(0)}
                         checked={zapTokenCheckedA}
-                        onChange={(e) => {
+                        onChange={e => {
                           setZapTokenToggleA(e.target.checked)
                         }}
                       />
@@ -627,7 +617,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                   zapStyle={canZap ? 'zap' : 'noZap'}
                   value={formattedAmounts[Field.CURRENCY_A]}
                   onUserInput={onFieldAInput}
-                  onPercentInput={(percent) => {
+                  onPercentInput={percent => {
                     if (maxAmounts[Field.CURRENCY_A]) {
                       onFieldAInput(maxAmounts[Field.CURRENCY_A]?.multiply(new Percent(percent, 100)).toExact() ?? '')
                     }
@@ -656,7 +646,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                       <ZapCheckbox
                         disabled={currencyBalances?.[Field.CURRENCY_B]?.equalTo(0)}
                         checked={zapTokenCheckedB}
-                        onChange={(e) => {
+                        onChange={e => {
                           setZapTokenToggleB(e.target.checked)
                         }}
                       />
@@ -667,7 +657,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                   zapStyle={canZap ? 'zap' : 'noZap'}
                   value={formattedAmounts[Field.CURRENCY_B]}
                   onUserInput={onFieldBInput}
-                  onPercentInput={(percent) => {
+                  onPercentInput={percent => {
                     if (maxAmounts[Field.CURRENCY_B]) {
                       onFieldBInput(maxAmounts[Field.CURRENCY_B]?.multiply(new Percent(percent, 100)).toExact() ?? '')
                     }
@@ -762,8 +752,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                       } else {
                         onFieldBInput(maxAmounts[dependentField]?.toExact() ?? '')
                       }
-                    }}
-                  >
+                    }}>
                     <Button variant="secondary" scale="sm">
                       {t('Don’t convert')}
                     </Button>
@@ -827,8 +816,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                           <Button
                             onClick={approveACallback}
                             disabled={approvalA === ApprovalState.PENDING}
-                            width="100%"
-                          >
+                            width="100%">
                             {approvalA === ApprovalState.PENDING ? (
                               <Dots>{t('Enabling %asset%', { asset: currencies[Field.CURRENCY_A]?.symbol })}</Dots>
                             ) : (
@@ -840,8 +828,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                           <Button
                             onClick={approveBCallback}
                             disabled={approvalB === ApprovalState.PENDING}
-                            width="100%"
-                          >
+                            width="100%">
                             {approvalB === ApprovalState.PENDING ? (
                               <Dots>{t('Enabling %asset%', { asset: currencies[Field.CURRENCY_B]?.symbol })}</Dots>
                             ) : (
@@ -875,8 +862,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                           onPresentAddLiquidityModal()
                         }
                       }}
-                      disabled={buttonDisabled}
-                    >
+                      disabled={buttonDisabled}>
                       {errorText || t('Supply')}
                     </CommitButton>
                   </AutoColumn>

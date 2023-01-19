@@ -97,8 +97,7 @@ const MultiChainHarvestModal: React.FC<MultiChainHarvestModalProp> = ({
     <Modal
       title={isBscNetwork ? t('Harvest now!') : t('Switch chain to harvest')}
       style={{ maxWidth: '340px' }}
-      onDismiss={handleCancel}
-    >
+      onDismiss={handleCancel}>
       <Flex flexDirection="column">
         <Flex justifyContent="space-between" mb="16px">
           <TokenWrapper>
@@ -155,8 +154,7 @@ const MultiChainHarvestModal: React.FC<MultiChainHarvestModalProp> = ({
                 variant="secondary"
                 disabled={isPending || !account || isWrongNetwork}
                 endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
-                onClick={handleHarvest}
-              >
+                onClick={handleHarvest}>
                 {isPending ? t('Harvesting') : t('Harvest')}
               </Button>
             ) : (

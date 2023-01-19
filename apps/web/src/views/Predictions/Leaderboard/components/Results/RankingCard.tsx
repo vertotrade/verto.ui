@@ -88,8 +88,7 @@ const RankingCard: React.FC<React.PropsWithChildren<RankingCardProps>> = ({ rank
                 </Text>
               </>
             }
-            options={{ placement: 'bottom' }}
-          >
+            options={{ placement: 'bottom' }}>
             <SubMenuItem onClick={onPresentWalletStatsModal}>{t('View Stats')}</SubMenuItem>
             <SubMenuItem as={Link} href={getBlockExploreLink(user.id, 'address')} bold={false} color="text" external>
               {t('View on BscScan')}

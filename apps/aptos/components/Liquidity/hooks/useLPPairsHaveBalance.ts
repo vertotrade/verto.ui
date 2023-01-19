@@ -45,7 +45,7 @@ export default function useLPPairsHaveBalance(): LPPairsResponse {
   const mmV2PairsBalances = useMemo(
     () =>
       (v2PairsBalances
-        ?.map((p) => `${PAIR_RESERVE_TYPE_TAG}<${unwrapTypeArgFromString(p.type)}>`)
+        ?.map(p => `${PAIR_RESERVE_TYPE_TAG}<${unwrapTypeArgFromString(p.type)}>`)
         .filter(Boolean) as string[]) ?? [],
     [v2PairsBalances],
   )

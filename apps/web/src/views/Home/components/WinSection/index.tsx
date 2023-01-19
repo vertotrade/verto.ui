@@ -115,8 +115,7 @@ const WinSection = () => {
               flex="1"
               maxWidth={['275px', null, null, '100%']}
               mr={[null, null, null, '24px']}
-              mb={['32px', null, null, '0']}
-            >
+              mb={['32px', null, null, '0']}>
               <IconCard {...PredictionCardData}>
                 <PredictionCardContent />
               </IconCard>

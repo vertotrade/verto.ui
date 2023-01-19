@@ -34,8 +34,7 @@ const Results = () => {
       <Container mb="16px">
         <Grid
           gridGap={['16px', null, null, null, null, '24px']}
-          gridTemplateColumns={['1fr', null, null, null, null, 'repeat(3, 1fr)']}
-        >
+          gridTemplateColumns={['1fr', null, null, null, null, 'repeat(3, 1fr)']}>
           {first && <RankingCard rank={1} user={first} />}
           {second && <RankingCard rank={2} user={second} />}
           {third && <RankingCard rank={3} user={third} />}
@@ -48,8 +47,7 @@ const Results = () => {
             variant="secondary"
             isLoading={isLoading}
             endIcon={isLoading ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-            onClick={handleClick}
-          >
+            onClick={handleClick}>
             {isLoading ? t('Loading...') : t('View More')}
           </Button>
         )}

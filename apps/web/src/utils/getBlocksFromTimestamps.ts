@@ -5,7 +5,7 @@ import { Block } from '../state/info/types'
 import { multiQuery } from '../views/Info/utils/infoQueryHelpers'
 
 const getBlockSubqueries = (timestamps: number[]) =>
-  timestamps.map((timestamp) => {
+  timestamps.map(timestamp => {
     return `t${timestamp}:blocks(first: 1, orderBy: timestamp, orderDirection: desc, where: { timestamp_gt: ${timestamp}, timestamp_lt: ${
       timestamp + 600
     } }) {
@@ -52,7 +52,7 @@ export const getBlocksFromTimestamps = async (
       }
     }
     // graphql-request does not guarantee same ordering of batched requests subqueries, hence manual sorting
-    return orderBy(blocks, (block) => block.number, sortDirection)
+    return orderBy(blocks, block => block.number, sortDirection)
   }
   return blocks
 }

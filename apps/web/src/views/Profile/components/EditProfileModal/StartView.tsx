@@ -120,8 +120,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
               width="100%"
               mb="8px"
               onClick={needsApproval === true ? goToApprove : goToChange}
-              disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
-            >
+              disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}>
               {t('Change Profile Pic')}
             </Button>
           )}
@@ -146,8 +145,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
           width="100%"
           mb="8px"
           onClick={needsApproval === true ? goToApprove : goToChange}
-          disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
-        >
+          disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}>
           {t('Reactivate Profile')}
         </Button>
       )}

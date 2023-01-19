@@ -53,4 +53,4 @@ export const getBestPriceWithRouter = (requestBody: RequestBody): Promise<SmartR
     method: 'POST',
     headers,
     body: JSON.stringify(requestBody),
-  }).then((response) => response.json())
+  }).then(response => response.json())

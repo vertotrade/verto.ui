@@ -65,13 +65,13 @@ const Home = () => {
 
   const hotCollections = orderBy(
     collections,
-    (collection) => (collection.totalVolumeBNB ? parseFloat(collection.totalVolumeBNB) : 0),
+    collection => (collection.totalVolumeBNB ? parseFloat(collection.totalVolumeBNB) : 0),
     'desc',
   )
 
   const newestCollections = orderBy(
     collections,
-    (collection) => (collection.createdAt ? Date.parse(collection.createdAt) : 0),
+    collection => (collection.createdAt ? Date.parse(collection.createdAt) : 0),
     'desc',
   )
 
@@ -104,8 +104,7 @@ const Home = () => {
           background={theme.colors.background}
           index={1}
           concaveDivider
-          dividerPosition="top"
-        >
+          dividerPosition="top">
           <Collections
             key="newest-collections"
             title={t('Newest Collections')}

@@ -110,8 +110,7 @@ const ProfileHeader: React.FC<React.PropsWithChildren<HeaderProps>> = ({
               }}
               href={getBlockExploreLink(accountPath, 'address') || ''}
               // @ts-ignore
-              alt={t('View BscScan for user address')}
-            >
+              alt={t('View BscScan for user address')}>
               <BscScanIcon width="20px" color="primary" />
             </IconButton>
           )}
@@ -191,8 +190,7 @@ const ProfileHeader: React.FC<React.PropsWithChildren<HeaderProps>> = ({
         pb="48px"
         gridGap="16px"
         alignItems="center"
-        gridTemplateColumns={['1fr', null, null, null, 'repeat(2, 1fr)']}
-      >
+        gridTemplateColumns={['1fr', null, null, null, 'repeat(2, 1fr)']}>
         <Box>
           <Heading as="h1" scale="xl" color="secondary" mb="16px">
             {title}

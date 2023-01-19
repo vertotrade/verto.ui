@@ -13,7 +13,7 @@ const accounts = [
 ]
 
 export function getAptosAccounts() {
-  return accounts.map((x) => AptosAccount.fromAptosAccountObject(x))
+  return accounts.map(x => AptosAccount.fromAptosAccountObject(x))
 }
 
 class AptosProvider extends AptosClient {

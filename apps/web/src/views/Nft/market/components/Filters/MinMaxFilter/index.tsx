@@ -65,8 +65,7 @@ export const MinMaxFilter: React.FC<React.PropsWithChildren<MinMaxFilterProps>> 
           {t('Price')}
         </Button>
       }
-      {...props}
-    >
+      {...props}>
       <Box width="320px">
         <Box px="24px" py="16px">
           <Grid gridGap="16px" gridTemplateColumns="repeat(2, 1fr)">

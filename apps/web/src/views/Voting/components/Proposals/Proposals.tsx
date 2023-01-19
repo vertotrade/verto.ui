@@ -30,14 +30,14 @@ const Proposals = () => {
   const { status, data } = useSWR(['proposals', filterState], async () => getProposals(1000, 0, filterState))
 
   const handleProposalTypeChange = (newProposalType: ProposalType) => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       proposalType: newProposalType,
     }))
   }
 
   const handleFilterChange = (newFilterState: ProposalState) => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       filterState: newFilterState,
     }))
@@ -66,7 +66,7 @@ const Proposals = () => {
         {status !== FetchStatus.Fetched && <ProposalsLoading />}
         {status === FetchStatus.Fetched &&
           filteredProposals.length > 0 &&
-          filteredProposals.map((proposal) => {
+          filteredProposals.map(proposal => {
             return <ProposalRow key={proposal.id} proposal={proposal} />
           })}
         {status === FetchStatus.Fetched && filteredProposals.length === 0 && (

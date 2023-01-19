@@ -43,8 +43,7 @@ const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
         variant="tertiary"
         style={{ textTransform: 'uppercase' }}
         disabled={!stakingTokenBalance.isFinite() || stakingTokenBalance.lte(0) || !account}
-        onClick={() => setPrincipalFromUSDValue(getBalanceNumber(stakingTokenBalance.times(cakePrice)).toString())}
-      >
+        onClick={() => setPrincipalFromUSDValue(getBalanceNumber(stakingTokenBalance.times(cakePrice)).toString())}>
         {t('My Balance')}
       </Button>
       <span ref={targetRef}>

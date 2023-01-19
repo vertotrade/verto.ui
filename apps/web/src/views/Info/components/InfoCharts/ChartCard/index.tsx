@@ -44,7 +44,7 @@ const ChartCard: React.FC<React.PropsWithChildren<ChartCardProps>> = ({
 
   const formattedTvlData = useMemo(() => {
     if (chartData) {
-      return chartData.map((day) => {
+      return chartData.map(day => {
         return {
           time: fromUnixTime(day.date),
           value: day.liquidityUSD,
@@ -55,7 +55,7 @@ const ChartCard: React.FC<React.PropsWithChildren<ChartCardProps>> = ({
   }, [chartData])
   const formattedVolumeData = useMemo(() => {
     if (chartData) {
-      return chartData.map((day) => {
+      return chartData.map(day => {
         return {
           time: fromUnixTime(day.date),
           value: day.volumeUSD,

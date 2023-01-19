@@ -70,8 +70,7 @@ const SellStage: React.FC<React.PropsWithChildren<SellStageProps>> = ({
             height="16px"
             external
             variant="text"
-            href={`${nftsBaseUrl}/collections/${nftToSell.collectionAddress}/${itemPageUrlId}`}
-          >
+            href={`${nftsBaseUrl}/collections/${nftToSell.collectionAddress}/${itemPageUrlId}`}>
             {t('View Item')}
           </Button>
           <HorizontalDivider />
@@ -79,8 +78,7 @@ const SellStage: React.FC<React.PropsWithChildren<SellStageProps>> = ({
             isBscScan
             p="0px"
             height="16px"
-            href={getBscScanLinkForNft(nftToSell.collectionAddress, nftToSell.tokenId)}
-          >
+            href={getBscScanLinkForNft(nftToSell.collectionAddress, nftToSell.tokenId)}>
             BscScan
           </LinkExternal>
         </Flex>

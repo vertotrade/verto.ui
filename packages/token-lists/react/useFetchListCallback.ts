@@ -16,13 +16,13 @@ function useFetchListCallback(
       // lazy load avj and token list schema
       const getTokenList = (await import('./getTokenList')).default
       return getTokenList(listUrl)
-        .then((tokenList) => {
+        .then(tokenList => {
           if (sendDispatch) {
             dispatch(fetchTokenList.fulfilled({ url: listUrl, tokenList, requestId }))
           }
           return tokenList
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(`Failed to get list at url ${listUrl}`, error)
           if (sendDispatch) {
             dispatch(fetchTokenList.rejected({ url: listUrl, requestId, errorMessage: error.message }))

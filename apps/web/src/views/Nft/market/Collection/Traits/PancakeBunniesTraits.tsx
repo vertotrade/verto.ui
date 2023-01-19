@@ -52,13 +52,13 @@ const PancakeBunniesTraits: React.FC<React.PropsWithChildren<PancakeBunniesTrait
 
     return orderBy(
       distributionValues.map((token, index) => ({ ...token, tokenId: distributionKeys[index] })),
-      (token) => token.tokenCount,
+      token => token.tokenCount,
       raritySort,
     )
   }, [raritySort, distributionData])
 
   const toggleRaritySort = () => {
-    setRaritySort((currentValue) => (currentValue === 'asc' ? 'desc' : 'asc'))
+    setRaritySort(currentValue => (currentValue === 'asc' ? 'desc' : 'asc'))
   }
 
   return (
@@ -83,7 +83,7 @@ const PancakeBunniesTraits: React.FC<React.PropsWithChildren<PancakeBunniesTrait
                 </tr>
               </thead>
               <tbody>
-                {sortedTokenList.map((token) => {
+                {sortedTokenList.map(token => {
                   const count: number = token.tokenCount
                   const percentage = (count / totalBunnyCount) * 100
                   const handleClick = () => {
@@ -119,7 +119,7 @@ const PancakeBunniesTraits: React.FC<React.PropsWithChildren<PancakeBunniesTrait
               </tr>
             </thead>
             <tbody>
-              {times(19).map((bunnyCnt) => (
+              {times(19).map(bunnyCnt => (
                 <tr key={bunnyCnt}>
                   <Td>
                     <Flex alignItems="center">

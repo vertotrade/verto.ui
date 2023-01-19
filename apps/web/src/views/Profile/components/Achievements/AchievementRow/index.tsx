@@ -82,8 +82,7 @@ const AchievementRow: React.FC<React.PropsWithChildren<AchievementRowProps>> = (
             isLoading={isCollecting}
             endIcon={isCollecting ? <AutoRenewIcon spin color="currentColor" /> : null}
             disabled={isCollecting}
-            variant="secondary"
-          >
+            variant="secondary">
             {t('Collect')}
           </Button>
         </ActionColumn>

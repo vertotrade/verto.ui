@@ -42,10 +42,10 @@ export const ListCollectionFilter: React.FC<React.PropsWithChildren<ListCollecti
 
   const filteredCollections = (
     query && query.length > 1
-      ? Object.values(collections).filter((item) => item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
+      ? Object.values(collections).filter(item => item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1)
       : Object.values(collections)
-  ).map((item) => {
-    const isItemSelected = nftActivityFilters.collectionFilters.some((collectionAddress) => {
+  ).map(item => {
+    const isItemSelected = nftActivityFilters.collectionFilters.some(collectionAddress => {
       return isAddress(item.address) === isAddress(collectionAddress)
     })
     return { ...item, isSelected: isItemSelected }
@@ -71,7 +71,7 @@ export const ListCollectionFilter: React.FC<React.PropsWithChildren<ListCollecti
   }
 
   const toggleSort = (newOrderKey: string) => () => {
-    setOrderState((prevOrderDir) => {
+    setOrderState(prevOrderDir => {
       if (prevOrderDir.orderKey !== newOrderKey) {
         return {
           orderKey: newOrderKey,
@@ -116,14 +116,12 @@ export const ListCollectionFilter: React.FC<React.PropsWithChildren<ListCollecti
               onClick={handleMenuClick}
               variant={isAnyCollectionSelected ? 'subtle' : 'light'}
               scale="sm"
-              hasItem={isAnyCollectionSelected}
-            >
+              hasItem={isAnyCollectionSelected}>
               {t('Collection')}
             </TriggerButton>
           }
           isOpen={isOpen}
-          options={{ placement: 'bottom' }}
-        >
+          options={{ placement: 'bottom' }}>
           <Box maxWidth="375px" ref={menuRef}>
             <SearchWrapper alignItems="center" p="16px">
               <InputGroup startIcon={<SearchIcon color="textSubtle" />}>
@@ -152,7 +150,7 @@ export const ListCollectionFilter: React.FC<React.PropsWithChildren<ListCollecti
             </Flex>
             <Box height="240px" overflowY="auto">
               {filteredCollections.length > 0 ? (
-                orderBy(filteredCollections, orderKey, orderDir).map((collection) => {
+                orderBy(filteredCollections, orderKey, orderDir).map(collection => {
                   const handleClick = (evt: ChangeEvent<HTMLInputElement>) => handleItemClick(evt, collection)
 
                   return (

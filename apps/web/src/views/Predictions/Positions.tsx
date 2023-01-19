@@ -29,7 +29,7 @@ const Positions: React.FC<React.PropsWithChildren<{ view?: PageView }>> = ({ vie
   const { setSwiper, swiper } = useSwiper()
   const { currentEpoch, rounds } = useGetSortedRoundsCurrentEpoch()
   const previousEpoch = currentEpoch > 0 ? currentEpoch - 1 : currentEpoch
-  const swiperIndex = rounds.findIndex((round) => round.epoch === previousEpoch)
+  const swiperIndex = rounds.findIndex(round => round.epoch === previousEpoch)
 
   useOnNextRound()
   useOnViewChange(swiperIndex, view)
@@ -60,9 +60,8 @@ const Positions: React.FC<React.PropsWithChildren<{ view?: PageView }>> = ({ vie
         centeredSlides
         mousewheel
         keyboard
-        resizeObserver
-      >
-        {rounds.map((round) => (
+        resizeObserver>
+        {rounds.map(round => (
           <SwiperSlide key={round.epoch}>
             {({ isActive }) => <RoundCard round={round} isActive={isChangeTransition && isActive} />}
           </SwiperSlide>

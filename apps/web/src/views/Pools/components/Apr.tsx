@@ -5,7 +5,7 @@ import { useCurrentBlock } from 'state/block/hooks'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
 import { Token } from '@verto/sdk'
 
-const withShownApr = (AprComp) => (props) => {
+const withShownApr = AprComp => props => {
   const { account } = useActiveWeb3React()
 
   const currentBlock = useCurrentBlock()

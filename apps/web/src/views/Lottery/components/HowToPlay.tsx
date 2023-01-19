@@ -252,7 +252,7 @@ const HowToPlay: React.FC<React.PropsWithChildren> = () => {
         <Text>{t('Simple!')}</Text>
       </Flex>
       <StepContainer>
-        {steps.map((step) => (
+        {steps.map(step => (
           <StepCard key={step.label} step={step} />
         ))}
       </StepContainer>

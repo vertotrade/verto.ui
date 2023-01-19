@@ -33,10 +33,10 @@ export enum Result {
   LIVE = 'live',
 }
 
-export const transformBetResponse = (tokenSymbol) =>
+export const transformBetResponse = tokenSymbol =>
   tokenSymbol === 'CAKE' ? transformBetResponseCAKE : transformBetResponseBNB
 
-export const transformUserResponse = (tokenSymbol) =>
+export const transformUserResponse = tokenSymbol =>
   tokenSymbol === 'CAKE' ? transformUserResponseCAKE : transformUserResponseBNB
 
 export const getRoundResult = (bet: Bet, currentEpoch: number): Result => {
@@ -61,9 +61,9 @@ export const getRoundResult = (bet: Bet, currentEpoch: number): Result => {
 export const getFilteredBets = (bets: Bet[], filter: HistoryFilter) => {
   switch (filter) {
     case HistoryFilter.COLLECTED:
-      return bets.filter((bet) => bet.claimed === true)
+      return bets.filter(bet => bet.claimed === true)
     case HistoryFilter.UNCOLLECTED:
-      return bets.filter((bet) => {
+      return bets.filter(bet => {
         return !bet.claimed && (bet.position === bet.round.position || bet.round.failed === true)
       })
     case HistoryFilter.ALL:
@@ -141,7 +141,7 @@ export const getBetHistory = async (
 }
 
 export const getLedgerData = async (account: string, epochs: number[], address: string) => {
-  const ledgerCalls = epochs.map((epoch) => ({
+  const ledgerCalls = epochs.map(epoch => ({
     address,
     name: 'ledger',
     params: [epoch, account],
@@ -224,7 +224,7 @@ export const getClaimStatuses = async (
   epochs: number[],
   address: string,
 ): Promise<PredictionsState['claimableStatuses']> => {
-  const claimableCalls = epochs.map((epoch) => ({
+  const claimableCalls = epochs.map(epoch => ({
     address,
     name: 'claimable',
     params: [epoch, account],
@@ -247,7 +247,7 @@ export const getClaimStatuses = async (
 
 export type MarketData = Pick<PredictionsState, 'status' | 'currentEpoch' | 'intervalSeconds' | 'minBetAmount'>
 export const getPredictionData = async (address: string): Promise<MarketData> => {
-  const staticCalls = ['currentEpoch', 'intervalSeconds', 'minBetAmount', 'paused'].map((method) => ({
+  const staticCalls = ['currentEpoch', 'intervalSeconds', 'minBetAmount', 'paused'].map(method => ({
     address,
     name: method,
   }))
@@ -265,7 +265,7 @@ export const getPredictionData = async (address: string): Promise<MarketData> =>
 }
 
 export const getRoundsData = async (epochs: number[], address: string): Promise<PredictionsRoundsResponse[]> => {
-  const calls = epochs.map((epoch) => ({
+  const calls = epochs.map(epoch => ({
     address,
     name: 'rounds',
     params: [epoch],

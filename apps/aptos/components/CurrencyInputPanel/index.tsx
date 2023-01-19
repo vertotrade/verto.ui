@@ -113,8 +113,7 @@ export const CurrencyInputPanel = ({
               py={0}
               px="0.5rem"
               onClick={onPresentCurrencyModal}
-              title={currency?.name}
-            >
+              title={currency?.name}>
               <SkeletonV2 isDataReady={isMounted} width="24px" height="24px" variant="circle" mr="8px">
                 <CurrencyLogo currency={currency} size="24px" />
               </SkeletonV2>
@@ -142,8 +141,7 @@ export const CurrencyInputPanel = ({
               color="textSubtle"
               fontSize="12px"
               textAlign="right"
-              style={{ display: 'inline', cursor: 'pointer' }}
-            >
+              style={{ display: 'inline', cursor: 'pointer' }}>
               {!hideBalance && !!currency
                 ? t('Balance: %balance%', { balance: !isLoading ? data?.formatted ?? '0' : t('Loading') })
                 : ' -'}
@@ -156,7 +154,7 @@ export const CurrencyInputPanel = ({
           {isShowPercentButton &&
             showQuickInputButton &&
             onPercentInput &&
-            [25, 50, 75].map((percent) => {
+            [25, 50, 75].map(percent => {
               const isAtCurrentPercent =
                 (maxAmount && value === percentAmount[percent]) || (lpPercent && lpPercent === percent.toString())
 
@@ -169,8 +167,7 @@ export const CurrencyInputPanel = ({
                   scale="xs"
                   mr="5px"
                   variant={isAtCurrentPercent ? 'primary' : 'secondary'}
-                  style={{ textTransform: 'uppercase' }}
-                >
+                  style={{ textTransform: 'uppercase' }}>
                   {percent}%
                 </Button>
               )
@@ -180,8 +177,7 @@ export const CurrencyInputPanel = ({
               onClick={onMax}
               scale="xs"
               variant={isAtPercentMax ? 'primary' : 'secondary'}
-              style={{ textTransform: 'uppercase' }}
-            >
+              style={{ textTransform: 'uppercase' }}>
               {t('Max')}
             </Button>
           )}

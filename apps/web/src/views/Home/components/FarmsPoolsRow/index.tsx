@@ -40,7 +40,7 @@ const FarmsPoolsRow = () => {
 
   const startTimer = useCallback(() => {
     timer.current = setInterval(() => {
-      setShowFarms((prev) => !prev)
+      setShowFarms(prev => !prev)
     }, 6000)
   }, [timer])
 
@@ -76,11 +76,10 @@ const FarmsPoolsRow = () => {
               height="100%"
               width="auto"
               onClick={() => {
-                setShowFarms((prev) => !prev)
+                setShowFarms(prev => !prev)
                 clearInterval(timer.current)
                 startTimer()
-              }}
-            >
+              }}>
               <SwapVertIcon height="24px" width="24px" color="textSubtle" />
             </IconButton>
           )}

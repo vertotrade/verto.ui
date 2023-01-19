@@ -100,7 +100,7 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
     }
   }
 
-  const bCakeCalculatorSlot = (calculatorBalance) => (
+  const bCakeCalculatorSlot = calculatorBalance => (
     <BCakeCalculator
       targetInputBalance={calculatorBalance}
       earningTokenPrice={cakePrice.toNumber()}
@@ -189,8 +189,7 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
       onClick={handleApprove}
       variant="tertiary"
       marginLeft="auto"
-      width={isDesktop ? '142px' : '120px'}
-    >
+      width={isDesktop ? '142px' : '120px'}>
       {t('Enable')}
     </Button>
   )

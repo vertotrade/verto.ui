@@ -30,8 +30,7 @@ const PrizesInfoSection: React.FC<React.PropsWithChildren<PrizesInfoSectionProps
         }}
         dividerPosition="top"
         background={isDark ? LIGHTBLUEBG_DARK : LIGHTBLUEBG}
-        index={4}
-      >
+        index={4}>
         <Box my="64px">{prizesInfoComponent}</Box>
       </PageSection>
     </>

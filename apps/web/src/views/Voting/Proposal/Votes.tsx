@@ -1,14 +1,5 @@
 import { useState } from 'react'
-import {
-  AutoRenewIcon,
-  Card,
-  CardHeader,
-  ChevronDownIcon,
-  Flex,
-  Heading,
-  Button,
-  ChevronUpIcon,
-} from '@verto/uikit'
+import { AutoRenewIcon, Card, CardHeader, ChevronDownIcon, Flex, Heading, Button, ChevronUpIcon } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import orderBy from 'lodash/orderBy'
 import { useTranslation } from '@verto/localization'
@@ -57,7 +48,7 @@ const Votes: React.FC<React.PropsWithChildren<VotesProps>> = ({ votes, votesLoad
 
       {isFetched && displayVotes.length > 0 && (
         <>
-          {displayVotes.map((vote) => {
+          {displayVotes.map(vote => {
             const isVoter = account && vote.voter.toLowerCase() === account.toLowerCase()
             return <VoteRow key={vote.id} vote={vote} isVoter={isVoter} />
           })}
@@ -73,8 +64,7 @@ const Votes: React.FC<React.PropsWithChildren<VotesProps>> = ({ votes, votesLoad
                   <ChevronDownIcon color="primary" width="21px" />
                 )
               }
-              disabled={!isFetched}
-            >
+              disabled={!isFetched}>
               {showAll ? t('Hide') : t('See All')}
             </Button>
           </Flex>

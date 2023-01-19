@@ -80,7 +80,7 @@ export default function ManageTokens({
 
   // manage focus on modal show
   const inputRef = useRef<HTMLInputElement>()
-  const handleInput = useCallback((event) => {
+  const handleInput = useCallback(event => {
     const input = event.target.value
     setSearchQuery(input)
   }, [])
@@ -110,7 +110,7 @@ export default function ManageTokens({
 
   const handleRemoveAll = useCallback(() => {
     if (chainId && userAddedTokens) {
-      userAddedTokens.forEach((token) => {
+      userAddedTokens.forEach(token => {
         clearQuery(token.address)
         return removeToken(chainId, token.address)
       })
@@ -119,13 +119,13 @@ export default function ManageTokens({
 
   const { account } = useAccount()
 
-  const balances = useAccountBalances({ address: account?.address, watch: true })?.map((b) => b.data)
+  const balances = useAccountBalances({ address: account?.address, watch: true })?.map(b => b.data)
   const allTokens = useAllTokens()
 
   const tokenList = useMemo(() => {
     return (
       chainId &&
-      userAddedTokens.map((token) => (
+      userAddedTokens.map(token => (
         <RowBetween key={token.address} width="100%">
           <RowFixed>
             <CurrencyLogo currency={token} size="20px" />
@@ -151,8 +151,7 @@ export default function ManageTokens({
                 setTimeout(() => {
                   removeToken(chainId, token.address)
                 })
-              }}
-            >
+              }}>
               <DeleteOutlineIcon color="textSubtle" />
             </IconButton>
           </RowFixed>
@@ -166,8 +165,8 @@ export default function ManageTokens({
   const discoverRegisterTokens = useMemo(
     () =>
       balances
-        .filter((b) => b && !allTokens[b.address] && b.address !== APTOS_COIN && !b.address.includes(PAIR_LP_TYPE_TAG))
-        .map((b) => b && new Coin(chainId, b.address, b.decimals, b.symbol, b.name)) as Coin[],
+        .filter(b => b && !allTokens[b.address] && b.address !== APTOS_COIN && !b.address.includes(PAIR_LP_TYPE_TAG))
+        .map(b => b && new Coin(chainId, b.address, b.decimals, b.symbol, b.name)) as Coin[],
     [allTokens, balances, chainId],
   )
 
@@ -204,7 +203,7 @@ export default function ManageTokens({
           <>
             <Text color="textSubtle">{t('Discovered from registered coins')}</Text>
             <AutoColumn gap="2">
-              {discoverRegisterTokens.map((discoveredToken) => (
+              {discoverRegisterTokens.map(discoveredToken => (
                 <RowBetween key={discoveredToken.address} width="100%">
                   <RowFixed>
                     <CurrencyLogo currency={discoveredToken} size="20px" />
@@ -212,8 +211,7 @@ export default function ManageTokens({
                       external
                       href={getBlockExploreLink(discoveredToken.address, 'token', chainId)}
                       color="textSubtle"
-                      ml="10px"
-                    >
+                      ml="10px">
                       {discoveredToken.symbol}
                     </Link>
                     <Text color="textSubtle" fontSize="14px" ml="8px">
@@ -227,8 +225,7 @@ export default function ManageTokens({
                     <a
                       href={getBlockExploreLink(discoveredToken.address, 'token', chainId)}
                       target="_blank"
-                      rel="noreferrer noopener"
-                    >
+                      rel="noreferrer noopener">
                       <IconButton scale="sm" variant="text">
                         <AptosIcon color="textSubtle" width="16px" />
                       </IconButton>

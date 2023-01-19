@@ -34,7 +34,7 @@ export function useToken(coinId?: string) {
           symbol: token.symbol,
         }
       : undefined,
-    select: (d) => {
+    select: d => {
       const { decimals, symbol, name } = d
       if (token) return token
       if (!coinId) return undefined
@@ -52,7 +52,7 @@ export function useCoins(addresses: string[]) {
   const native = useNativeCurrency()
 
   const select = useCallback(
-    (result) => {
+    result => {
       const isNative = result.address === APTOS_COIN
 
       if (isNative) return native
@@ -104,7 +104,7 @@ export function useIsUserAddedToken(currency: Currency | undefined | null): bool
     return false
   }
 
-  return !!userAddedTokens.find((token) => currency?.equals(token))
+  return !!userAddedTokens.find(token => currency?.equals(token))
 }
 
 export function useIsTokenActive(token: Token | undefined | null): boolean {
@@ -124,10 +124,10 @@ export function useAllTokenBalances() {
   const accountResources = useAccountResources({
     address: useAccount()?.account?.address,
     watch: true,
-    select: (data) => {
+    select: data => {
       const coinStore = data
         .filter(coinStoreResourcesFilter)
-        .map((coin) => {
+        .map(coin => {
           const address = unwrapTypeFromString(coin.type)
 
           if (address && allTokens[address]) {

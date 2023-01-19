@@ -7,9 +7,9 @@ export type ClientStorage = {
 }
 
 export const noopStorage: BaseStorage = {
-  getItem: (_key) => '',
+  getItem: _key => '',
   setItem: (_key, _value) => null,
-  removeItem: (_key) => null,
+  removeItem: _key => null,
 }
 
 export function createStorage({
@@ -41,6 +41,6 @@ export function createStorage({
         }
       }
     },
-    removeItem: (key) => storage.removeItem(`${prefix}.${key}`),
+    removeItem: key => storage.removeItem(`${prefix}.${key}`),
   }
 }

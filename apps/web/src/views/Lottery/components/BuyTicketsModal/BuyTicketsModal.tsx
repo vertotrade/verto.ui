@@ -440,8 +440,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
                 disabled={disableBuying || isConfirming}
                 onClick={() => {
                   setBuyingStage(BuyingStage.EDIT)
-                }}
-              >
+                }}>
                 {t('View/Edit Numbers')}
               </Button>
             )}

@@ -121,8 +121,7 @@ export default function CurrencySearchModal({
       onDragEnd={(e, info) => {
         if (info.velocity.y > MODAL_SWIPE_TO_CLOSE_VELOCITY && onDismiss) onDismiss()
       }}
-      ref={wrapperRef}
-    >
+      ref={wrapperRef}>
       <ModalHeader>
         <ModalTitle>
           {config[modalView].onBack && <ModalBackButton onBack={config[modalView].onBack} />}
@@ -164,8 +163,7 @@ export default function CurrencySearchModal({
               scale="sm"
               variant="text"
               onClick={() => setModalView(CurrencyModalView.manage)}
-              className="list-token-manage-button"
-            >
+              className="list-token-manage-button">
               {t('Manage Tokens')}
             </Button>
           </Footer>

@@ -31,8 +31,7 @@ const Providers: React.FC<React.PropsWithChildren<{ store: Store; children: Reac
               <SWRConfig
                 value={{
                   use: [fetchStatusMiddleware],
-                }}
-              >
+                }}>
                 <HistoryManagerProvider>
                   <ModalProvider>{children}</ModalProvider>
                 </HistoryManagerProvider>

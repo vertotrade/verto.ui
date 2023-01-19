@@ -44,8 +44,7 @@ const ClaimButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, ifoVers
       disabled={userPoolCharacteristics.isPendingTx}
       width="100%"
       isLoading={userPoolCharacteristics.isPendingTx}
-      endIcon={userPoolCharacteristics.isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
-    >
+      endIcon={userPoolCharacteristics.isPendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}>
       {t('Claim')}
     </Button>
   )

@@ -58,7 +58,7 @@ const ProfilePicture: React.FC = () => {
 
         if (nftsByCollection.length > 0) {
           const nftRole = await profileContract.NFT_ROLE()
-          const collectionsNftRoleCalls = nftsByCollection.map((collectionAddress) => {
+          const collectionsNftRoleCalls = nftsByCollection.map(collectionAddress => {
             return {
               address: profileContract.address,
               name: 'hasRole',
@@ -68,7 +68,7 @@ const ProfilePicture: React.FC = () => {
           const collectionRolesRaw = await multicall(profileABI, collectionsNftRoleCalls)
           const collectionRoles = collectionRolesRaw.flat()
           setUserProfileCreationNfts(
-            nfts.filter((nft) => collectionRoles[nftsByCollection.indexOf(nft.collectionAddress)]),
+            nfts.filter(nft => collectionRoles[nftsByCollection.indexOf(nft.collectionAddress)]),
           )
         } else {
           setUserProfileCreationNfts(null)
@@ -152,8 +152,8 @@ const ProfilePicture: React.FC = () => {
           <NftWrapper>
             {userProfileCreationNfts?.length ? (
               userProfileCreationNfts
-                .filter((walletNft) => walletNft.location === NftLocation.WALLET)
-                .map((walletNft) => {
+                .filter(walletNft => walletNft.location === NftLocation.WALLET)
+                .map(walletNft => {
                   return (
                     <SelectionCard
                       name="profilePicture"
@@ -161,8 +161,7 @@ const ProfilePicture: React.FC = () => {
                       value={walletNft.tokenId}
                       image={walletNft.image.thumbnail}
                       isChecked={walletNft.tokenId === selectedNft.tokenId}
-                      onChange={(value: string) => actions.setSelectedNft(value, walletNft.collectionAddress)}
-                    >
+                      onChange={(value: string) => actions.setSelectedNft(value, walletNft.collectionAddress)}>
                       <Text bold>{walletNft.name}</Text>
                     </SelectionCard>
                   )
@@ -184,8 +183,7 @@ const ProfilePicture: React.FC = () => {
             disabled={isApproved || isApproving || selectedNft.tokenId === null}
             onClick={handleApprove}
             endIcon={isApproving ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-            id="approveStarterCollectible"
-          >
+            id="approveStarterCollectible">
             {t('Enable')}
           </Button>
         </CardBody>

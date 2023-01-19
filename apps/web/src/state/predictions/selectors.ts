@@ -12,7 +12,7 @@ const selectMinBetAmount = (state: PredictionsState) => state.minBetAmount
 const selectIntervalSeconds = (state: PredictionsState) => state.intervalSeconds
 
 export const makeGetBetByEpochSelector = (account: string, epoch: number) =>
-  createSelector([selectLedgers], (bets) => {
+  createSelector([selectLedgers], bets => {
     if (!bets[account]) {
       return null
     }
@@ -25,11 +25,11 @@ export const makeGetBetByEpochSelector = (account: string, epoch: number) =>
   })
 
 export const makeGetIsClaimableSelector = (epoch: number) =>
-  createSelector([selectClaimableStatuses], (claimableStatuses) => {
+  createSelector([selectClaimableStatuses], claimableStatuses => {
     return claimableStatuses[epoch] || false
   })
 
-export const getRoundsByCloseOracleIdSelector = createSelector([selectRounds], (rounds) => {
+export const getRoundsByCloseOracleIdSelector = createSelector([selectRounds], rounds => {
   return Object.keys(rounds).reduce((accum, epoch) => {
     const parsed = parseBigNumberObj<ReduxNodeRound, NodeRound>(rounds[epoch])
     return {
@@ -39,7 +39,7 @@ export const getRoundsByCloseOracleIdSelector = createSelector([selectRounds], (
   }, {}) as { [key: string]: NodeRound }
 })
 
-export const getBigNumberRounds = createSelector([selectRounds], (rounds) => {
+export const getBigNumberRounds = createSelector([selectRounds], rounds => {
   return Object.keys(rounds).reduce((accum, epoch) => {
     return {
       ...accum,
@@ -48,7 +48,7 @@ export const getBigNumberRounds = createSelector([selectRounds], (rounds) => {
   }, {}) as { [key: string]: NodeRound }
 })
 
-export const getSortedRoundsSelector = createSelector([getBigNumberRounds], (rounds) => {
+export const getSortedRoundsSelector = createSelector([getBigNumberRounds], rounds => {
   return orderBy(Object.values(rounds), ['epoch'], ['asc'])
 })
 

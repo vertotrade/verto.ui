@@ -53,15 +53,13 @@ const AfterLockedActions: React.FC<React.PropsWithChildren<AfterLockedActionsPro
             variant="primary"
             mr={isDesktopView && '14px'}
             mb={!isDesktopView && '8px'}
-            isRenew
-          >
+            isRenew>
             {t('Renew')}
           </ExtendButton>
           <ConvertToFlexibleButton minWidth={isDesktopView && '200px'} />
         </Container>
       }
-      actionInline={isDesktopView}
-    >
+      actionInline={isDesktopView}>
       <MessageText>{msg[position]}</MessageText>
     </Message>
   )

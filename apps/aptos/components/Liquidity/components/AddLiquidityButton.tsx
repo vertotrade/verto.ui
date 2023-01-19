@@ -86,8 +86,7 @@ export default function AddLiquidityButton({
             onPresentAddLiquidityModal()
           }
         }}
-        disabled={Boolean(errorText)}
-      >
+        disabled={Boolean(errorText)}>
         {errorText || t('Supply')}
       </CommitButton>
     </AutoColumn>

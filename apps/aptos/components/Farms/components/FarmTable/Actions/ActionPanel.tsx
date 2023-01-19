@@ -174,10 +174,10 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
       </InfoContainer>
       <ActionContainer>
         <HarvestActionContainer {...farm} userDataReady={userDataReady}>
-          {(props) => <HarvestAction {...props} />}
+          {props => <HarvestAction {...props} />}
         </HarvestActionContainer>
         <StakedContainer {...farm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
-          {(props) => <StakedAction {...props} />}
+          {props => <StakedAction {...props} />}
         </StakedContainer>
       </ActionContainer>
     </Container>

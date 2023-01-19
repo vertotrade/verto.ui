@@ -37,7 +37,7 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   })
   const fetchIfoData = useCallback(
     async (currentBlock: number) => {
-      const ifoCalls = ['startBlock', 'endBlock', 'raisingAmount', 'totalAmount'].map((method) => ({
+      const ifoCalls = ['startBlock', 'endBlock', 'raisingAmount', 'totalAmount'].map(method => ({
         address,
         name: method,
       }))
@@ -54,7 +54,7 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
       // Calculate the total progress until finished or until start
       const progress = status === 'live' ? ((currentBlock - startBlockNum) / totalBlocks) * 100 : null
 
-      setState((prev) => ({
+      setState(prev => ({
         ...prev,
         isInitialized: true,
         status,

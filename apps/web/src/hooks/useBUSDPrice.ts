@@ -1,15 +1,4 @@
-import {
-  ChainId,
-  Currency,
-  CurrencyAmount,
-  JSBI,
-  Pair,
-  Price,
-  Token,
-  WNATIVE,
-  WBNB,
-  ERC20Token,
-} from '@verto/sdk'
+import { ChainId, Currency, CurrencyAmount, JSBI, Pair, Price, Token, WNATIVE, WBNB, ERC20Token } from '@verto/sdk'
 import { FAST_INTERVAL } from 'config/constants'
 import { BUSD, CAKE, USDC } from '@verto/tokens'
 import { useMemo } from 'react'

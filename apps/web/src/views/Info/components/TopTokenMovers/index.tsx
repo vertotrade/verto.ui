@@ -71,7 +71,7 @@ const TopTokenMovers: React.FC<React.PropsWithChildren> = () => {
         return a && b ? (Math.abs(a?.priceUSDChange) > Math.abs(b?.priceUSDChange) ? -1 : 1) : -1
       })
       .slice(0, Math.min(20, Object.values(allTokens).length))
-      .filter((d) => d?.data?.exists)
+      .filter(d => d?.data?.exists)
   }, [allTokens])
 
   const increaseRef = useRef<HTMLDivElement>(null)
@@ -97,7 +97,7 @@ const TopTokenMovers: React.FC<React.PropsWithChildren> = () => {
     }
   }, [])
 
-  if (topPriceIncrease.length === 0 || !topPriceIncrease.some((entry) => entry.data)) {
+  if (topPriceIncrease.length === 0 || !topPriceIncrease.some(entry => entry.data)) {
     return null
   }
 
@@ -107,7 +107,7 @@ const TopTokenMovers: React.FC<React.PropsWithChildren> = () => {
         {t('Top Movers')}
       </Text>
       <ScrollableRow ref={increaseRef}>
-        {topPriceIncrease.map((entry) =>
+        {topPriceIncrease.map(entry =>
           entry.data ? <DataCard key={`top-card-token-${entry.data?.address}`} tokenData={entry.data} /> : null,
         )}
       </ScrollableRow>

@@ -79,7 +79,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
               )}
               {viewMode === ViewMode.CARD ? (
                 <CardLayout>
-                  {chosenPools.map((pool) =>
+                  {chosenPools.map(pool =>
                     pool.vaultKey ? (
                       <CakeVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
                     ) : (
@@ -115,7 +115,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                 </CardLayout>
               ) : (
                 <Pool.PoolsTable>
-                  {chosenPools.map((pool) =>
+                  {chosenPools.map(pool =>
                     pool.vaultKey ? (
                       <VaultPoolRow
                         initialActivity={normalizedUrlSearch.toLowerCase() === pool.earningToken.symbol?.toLowerCase()}

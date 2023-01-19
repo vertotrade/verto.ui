@@ -51,8 +51,7 @@ const UnstakeButton: React.FC<React.PropsWithChildren<UnstakeButtonProps>> = ({ 
           width="138px"
           marginLeft="auto"
           isLoading={pendingTx}
-          endIcon={<AutoRenewIcon spin color="currentColor" />}
-        >
+          endIcon={<AutoRenewIcon spin color="currentColor" />}>
           {t('Confirming')}
         </Button>
       ) : (

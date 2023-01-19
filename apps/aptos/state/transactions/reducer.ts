@@ -34,7 +34,7 @@ export interface TransactionState {
 
 export const initialState: TransactionState = {}
 
-const reducer = createReducer(initialState, (builder) =>
+const reducer = createReducer(initialState, builder =>
   builder
     .addCase(
       addTransaction,

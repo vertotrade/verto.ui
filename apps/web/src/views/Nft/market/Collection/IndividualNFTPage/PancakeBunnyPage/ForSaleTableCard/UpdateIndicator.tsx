@@ -14,7 +14,7 @@ const UpdateIndicator: React.FC<React.PropsWithChildren<{ isFetchingPancakeBunni
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setSecondsRemaining((prev) => prev - 1)
+      setSecondsRemaining(prev => prev - 1)
     }, 1000)
 
     return () => {

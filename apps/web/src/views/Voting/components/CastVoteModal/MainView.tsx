@@ -121,8 +121,7 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
         disabled={disabled || isLoading || total === 0}
         width="100%"
         mb="8px"
-        onClick={onConfirm}
-      >
+        onClick={onConfirm}>
         {t('Confirm Vote')}
       </Button>
       <Button variant="secondary" width="100%" onClick={onDismiss}>

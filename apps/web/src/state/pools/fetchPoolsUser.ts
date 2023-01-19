@@ -10,14 +10,14 @@ import multiCallAbi from 'config/abi/Multicall.json'
 
 // Pool 0, Cake / Cake is a different kind of contract (master chef)
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
-const nonBnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol !== 'BNB')
-const bnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol === 'BNB')
-const nonMasterPools = poolsConfig.filter((pool) => pool.sousId !== 0)
+const nonBnbPools = poolsConfig.filter(pool => pool.stakingToken.symbol !== 'BNB')
+const bnbPools = poolsConfig.filter(pool => pool.stakingToken.symbol === 'BNB')
+const nonMasterPools = poolsConfig.filter(pool => pool.sousId !== 0)
 
 const multicallAddress = getMulticallAddress()
 
-export const fetchPoolsAllowance = async (account) => {
-  const calls = nonBnbPools.map((pool) => ({
+export const fetchPoolsAllowance = async account => {
+  const calls = nonBnbPools.map(pool => ({
     address: pool.stakingToken.address,
     name: 'allowance',
     params: [account, getAddress(pool.contractAddress)],
@@ -27,10 +27,10 @@ export const fetchPoolsAllowance = async (account) => {
   return fromPairs(nonBnbPools.map((pool, index) => [pool.sousId, new BigNumber(allowances[index]).toJSON()]))
 }
 
-export const fetchUserBalances = async (account) => {
+export const fetchUserBalances = async account => {
   // Non BNB pools
-  const tokens = uniq(nonBnbPools.map((pool) => pool.stakingToken.address))
-  const tokenBalanceCalls = tokens.map((token) => ({
+  const tokens = uniq(nonBnbPools.map(pool => pool.stakingToken.address))
+  const tokenBalanceCalls = tokens.map(token => ({
     abi: erc20ABI,
     address: token,
     name: 'balanceOf',
@@ -48,7 +48,7 @@ export const fetchUserBalances = async (account) => {
 
   const poolTokenBalances = fromPairs(
     nonBnbPools
-      .map((pool) => {
+      .map(pool => {
         if (!tokenBalances[pool.stakingToken.address]) return null
         return [pool.sousId, new BigNumber(tokenBalances[pool.stakingToken.address]).toJSON()]
       })
@@ -57,13 +57,13 @@ export const fetchUserBalances = async (account) => {
 
   // BNB pools
   const bnbBalanceJson = new BigNumber(bnbBalance.toString()).toJSON()
-  const bnbBalances = fromPairs(bnbPools.map((pool) => [pool.sousId, bnbBalanceJson]))
+  const bnbBalances = fromPairs(bnbPools.map(pool => [pool.sousId, bnbBalanceJson]))
 
   return { ...poolTokenBalances, ...bnbBalances }
 }
 
-export const fetchUserStakeBalances = async (account) => {
-  const calls = nonMasterPools.map((p) => ({
+export const fetchUserStakeBalances = async account => {
+  const calls = nonMasterPools.map(p => ({
     address: getAddress(p.contractAddress),
     name: 'userInfo',
     params: [account],
@@ -74,8 +74,8 @@ export const fetchUserStakeBalances = async (account) => {
   )
 }
 
-export const fetchUserPendingRewards = async (account) => {
-  const calls = nonMasterPools.map((p) => ({
+export const fetchUserPendingRewards = async account => {
+  const calls = nonMasterPools.map(p => ({
     address: getAddress(p.contractAddress),
     name: 'pendingReward',
     params: [account],

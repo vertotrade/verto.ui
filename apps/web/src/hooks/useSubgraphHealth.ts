@@ -32,7 +32,7 @@ const useSubgraphHealth = (subgraphName: string) => {
   })
 
   useSlowRefreshEffect(
-    (currentBlockNumber) => {
+    currentBlockNumber => {
       const getSubgraphHealth = async () => {
         try {
           const [{ indexingStatusForCurrentVersion }, currentBlock] = await Promise.all([

@@ -19,7 +19,7 @@ export const initialState: GlobalState = {
   },
 }
 
-export default createReducer(initialState, (builder) =>
+export default createReducer(initialState, builder =>
   builder
     .addCase(toggleFarmTransactionModal, (state, { payload: { showModal } }) => {
       state.showFarmTransactionModal = showModal

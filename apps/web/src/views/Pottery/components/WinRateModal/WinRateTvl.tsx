@@ -46,15 +46,14 @@ const WinRateTvl: React.FC<React.PropsWithChildren<WinRateTvlProps>> = ({
         {t('TVL')}
       </Text>
       <Flex flexWrap="wrap" mb="8px">
-        {tvlArray.map((tvl) => (
+        {tvlArray.map(tvl => (
           <Button
             scale="sm"
             mt="4px"
             key={tvl.multiply}
             mr={['2px', '2px', '4px', '4px']}
             variant={multiply === tvl.multiply ? 'primary' : 'tertiary'}
-            onClick={() => setMultiplyNumber(tvl.multiply)}
-          >
+            onClick={() => setMultiplyNumber(tvl.multiply)}>
             {tvl.title}
           </Button>
         ))}

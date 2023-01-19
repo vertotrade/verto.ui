@@ -22,7 +22,7 @@ const getTokenDerivedBnbPrices = async (tokenAddress: string, blocks: Block[]) =
     return null
   }
 
-  const prices = mapValues(rawPrices, (value) => {
+  const prices = mapValues(rawPrices, value => {
     return value.derivedBNB
   })
 
@@ -34,7 +34,7 @@ const getTokenDerivedBnbPrices = async (tokenAddress: string, blocks: Block[]) =
   }[] = []
 
   // Get Token prices in BNB
-  Object.keys(prices).forEach((priceKey) => {
+  Object.keys(prices).forEach(priceKey => {
     const timestamp = priceKey.split('t')[1]
     if (timestamp) {
       tokenPrices.push({
@@ -45,7 +45,7 @@ const getTokenDerivedBnbPrices = async (tokenAddress: string, blocks: Block[]) =
     }
   })
 
-  return orderBy(tokenPrices, (tokenPrice) => parseInt(tokenPrice.timestamp, 10))
+  return orderBy(tokenPrices, tokenPrice => parseInt(tokenPrice.timestamp, 10))
 }
 
 const getInterval = (timeWindow: PairDataTimeWindowEnum) => {

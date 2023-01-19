@@ -38,7 +38,7 @@ export class MockConnector extends Connector {
       network: network!,
     }
 
-    return new Promise<Required<ConnectorData>>((res) => setTimeout(() => res(data), 100))
+    return new Promise<Required<ConnectorData>>(res => setTimeout(() => res(data), 100))
   }
 
   async disconnect() {

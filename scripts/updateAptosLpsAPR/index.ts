@@ -53,7 +53,7 @@ const fetchFarmLpsInfo = async (addresses: string[]): Promise<SingleFarmResponse
 
   return addresses.map((address): SingleFarmResponse => {
     // eslint-disable-next-line array-callback-return, consistent-return
-    const farmPriceInfo = allPairs.find((pair) => {
+    const farmPriceInfo = allPairs.find(pair => {
       const token = pair.quotoTokenAddress.toLowerCase()
       const quoteToken = pair.baseTokenAddress.toLowerCase()
       const [address0, address1] = Pair.parseType(address)
@@ -75,7 +75,7 @@ const fetchFarmsOneWeekAgo = async (farmsAtLatestBlock: SingleFarmResponse[]) =>
   const response: FarmsOneWeekData = (await import('./farmsOneWeekAgo.json')).default
 
   let newDate = {}
-  farmsAtLatestBlock.forEach((farm) => {
+  farmsAtLatestBlock.forEach(farm => {
     if (response[farm.id]) {
       if (response[farm.id].updateDate !== currentDate) {
         const isMoreThanAWeek = response[farm.id].usdList.length >= 7
@@ -106,7 +106,7 @@ const fetchFarmsOneWeekAgo = async (farmsAtLatestBlock: SingleFarmResponse[]) =>
   // Save to farmsOneWeekAgo.json
   const hasNewData = Object.keys(newDate).length > 0
   if (hasNewData) {
-    fs.writeFile(`scripts/updateAptosLpsAPR/farmsOneWeekAgo.json`, JSON.stringify(newDate, null, 2) + os.EOL, (err) => {
+    fs.writeFile(`scripts/updateAptosLpsAPR/farmsOneWeekAgo.json`, JSON.stringify(newDate, null, 2) + os.EOL, err => {
       if (err) throw err
       console.info(` ✅ - farmsOneWeekAgo.json has been updated!`)
     })
@@ -132,7 +132,7 @@ const getAprsForFarmGroup = async (addresses: string[]): Promise<any> => {
     const farmsOneWeekAgo = await fetchFarmsOneWeekAgo(farmsAtLatestBlock)
 
     const aprs: AprMap = farmsAtLatestBlock.reduce((aprMap, farm) => {
-      const farmWeekAgo = farmsOneWeekAgo.find((oldFarm) => oldFarm.id === farm.id)
+      const farmWeekAgo = farmsOneWeekAgo.find(oldFarm => oldFarm.id === farm.id)
       // In case farm is too new to estimate LP APR (i.e. not returned in farmsOneWeekAgo query) - return 0
       let lpApr = new BigNumber(0)
       if (farmWeekAgo) {
@@ -157,9 +157,9 @@ const getAprsForFarmGroup = async (addresses: string[]): Promise<any> => {
 }
 
 const fetchAndUpdateAptosLPsAPR = async () => {
-  const farmsConfig = getFarmConfig(ChainId.MAINNET).filter((i) => i.pid !== CAKE_PID)
+  const farmsConfig = getFarmConfig(ChainId.MAINNET).filter(i => i.pid !== CAKE_PID)
 
-  const lowerCaseAddresses = farmsConfig.map((farm) => farm.lpAddress.toLowerCase())
+  const lowerCaseAddresses = farmsConfig.map(farm => farm.lpAddress.toLowerCase())
   console.info(`Fetching farm data for ${lowerCaseAddresses.length} addresses`)
   // Split it into chunks of 30 addresses to avoid gateway timeout
   const addressesInGroups = chunk(lowerCaseAddresses, 30)
@@ -170,7 +170,7 @@ const fetchAndUpdateAptosLPsAPR = async () => {
     allAprs = { ...allAprs, ...aprs }
   }
 
-  fs.writeFile(`apps/aptos/config/constants/lpAprs/1.json`, JSON.stringify(allAprs, null, 2) + os.EOL, (err) => {
+  fs.writeFile(`apps/aptos/config/constants/lpAprs/1.json`, JSON.stringify(allAprs, null, 2) + os.EOL, err => {
     if (err) throw err
     console.info(` ✅ - lpAprs.json has been updated!`)
   })

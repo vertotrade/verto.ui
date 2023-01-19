@@ -56,7 +56,7 @@ const PreviousRoundCardBody: React.FC<
     currentRound: { status },
   } = useLottery()
   const userLotteryData = useGetUserLotteriesGraphData()
-  const userDataForRound = userLotteryData.rounds.find((userLotteryRound) => userLotteryRound.lotteryId === lotteryId)
+  const userDataForRound = userLotteryData.rounds.find(userLotteryRound => userLotteryRound.lotteryId === lotteryId)
   const { isLg, isXl, isXxl } = useMatchBreakpoints()
   const isLargerScreen = isLg || isXl || isXxl
 
@@ -117,8 +117,7 @@ const PreviousRoundCardBody: React.FC<
             <Flex
               flexDirection="column"
               mr={[null, null, null, '24px']}
-              alignItems={['center', null, null, 'flex-start']}
-            >
+              alignItems={['center', null, null, 'flex-start']}>
               <Box mt={['32px', null, null, 0]}>
                 <Text display="inline">{youHadText} </Text>
                 <Text display="inline" bold>
@@ -132,8 +131,7 @@ const PreviousRoundCardBody: React.FC<
                 width="fit-content"
                 p="0"
                 variant="text"
-                scale="sm"
-              >
+                scale="sm">
                 {t('View your tickets')}
               </Button>
             </Flex>

@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 387 111" {...props}>
       <ellipse cx="140.426" cy="29.5931" rx="7.74" ry="6.08143" fill="#C9C9C9" />
@@ -118,8 +118,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="41.2031"
           x2="65.2372"
           y2="104.229"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#CFC9DF" />
           <stop offset="1" stopColor="#808080" />
         </linearGradient>
@@ -134,8 +133,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="57.9834"
           x2="321.763"
           y2="104.237"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFB850" />
           <stop offset="1" stopColor="#EB8C00" />
         </linearGradient>
@@ -154,8 +152,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="14.5"
           x2="130"
           y2="7.99999"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFDC5E" />
           <stop offset="1" stopColor="#FEED8D" />
         </linearGradient>
@@ -165,8 +162,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="38.2319"
           x2="192.287"
           y2="88.0002"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFD939" />
           <stop offset="0.253876" stopColor="#FFCA0B" />
           <stop offset="0.56118" stopColor="#FFE35B" />
@@ -178,8 +174,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="45.8213"
           x2="161.916"
           y2="88.4027"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFD939" />
           <stop offset="0.253876" stopColor="#FFCA0B" />
           <stop offset="0.56118" stopColor="#FFE35B" />
@@ -191,8 +186,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="46.1274"
           x2="227.588"
           y2="88.7089"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFD939" />
           <stop offset="0.253876" stopColor="#FFCA0B" />
           <stop offset="0.56118" stopColor="#FFE35B" />
@@ -204,8 +198,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           y1="61.1445"
           x2="68.9762"
           y2="87.0849"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop offset="0.0507426" stopColor="#8A8B92" />
           <stop offset="0.483052" stopColor="#A8AABC" />
           <stop offset="1" stopColor="#5E5E5E" />

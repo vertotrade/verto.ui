@@ -16,7 +16,7 @@ import ConnectWalletButton from '../../ConnectWalletButton'
 function renderTransactions(transactions: TransactionDetails[], chainId: number) {
   return (
     <Flex flexDirection="column">
-      {transactions.map((tx) => {
+      {transactions.map(tx => {
         return <Transaction key={tx.hash + tx.addedTime} tx={tx} chainId={chainId} />
       })}
     </Flex>
@@ -50,7 +50,7 @@ const TransactionsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> =
               </AutoRow>
               {Object.entries(sortedRecentTransactions).map(([chainId, transactions]) => {
                 const chainIdNumber = Number(chainId)
-                const groupedTransactions = groupBy(Object.values(transactions), (trxDetails) =>
+                const groupedTransactions = groupBy(Object.values(transactions), trxDetails =>
                   Boolean(trxDetails.receipt),
                 )
 
@@ -60,7 +60,7 @@ const TransactionsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> =
                 return (
                   <div key={`transactions#${chainIdNumber}`}>
                     <Text fontSize="12px" color="textSubtle" mb="4px">
-                      {chains.find((c) => c.id === chainIdNumber)?.name ?? 'Unknown network'}
+                      {chains.find(c => c.id === chainIdNumber)?.name ?? 'Unknown network'}
                     </Text>
                     {renderTransactions(pending, chainIdNumber)}
                     {renderTransactions(confirmed, chainIdNumber)}

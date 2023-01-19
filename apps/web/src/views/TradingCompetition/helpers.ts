@@ -118,7 +118,7 @@ export const useModCompetitionRewards = ({
 // Achievement keys are consistent across different teams regardless of team team rank
 // If a teamRank value isn't passed, this helper can be used to return achievement keys for a given userRewardGroup
 export const getEasterRewardGroupAchievements = (userRewardGroup: string, teamRank = 1) => {
-  const userGroup = easterPrizes[teamRank].filter((prizeGroup) => {
+  const userGroup = easterPrizes[teamRank].filter(prizeGroup => {
     return prizeGroup.group === userRewardGroup
   })[0]
   return userGroup?.achievements || {}
@@ -128,7 +128,7 @@ export const getEasterRewardGroupAchievements = (userRewardGroup: string, teamRa
 export const getRewardGroupAchievements = (prizes: PrizesConfig, userRewardGroup: string, userPointReward: string) => {
   const prize = Object.values(prizes)
     .flat()
-    .find((rank) => rank.achievements.points === Number(userPointReward) && rank.group === userRewardGroup)
+    .find(rank => rank.achievements.points === Number(userPointReward) && rank.group === userRewardGroup)
   return prize && prize.achievements
 }
 

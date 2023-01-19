@@ -2,18 +2,7 @@ import React from 'react'
 import { Percent, CurrencyAmount, Price } from '@verto/aptos-swap-sdk'
 import { Currency } from '@verto/swap-sdk-core'
 
-import {
-  Text,
-  useTooltip,
-  TooltipText,
-  Box,
-  Flex,
-  Svg,
-  SvgProps,
-  AutoColumn,
-  RowBetween,
-  AutoRow,
-} from '@verto/uikit'
+import { Text, useTooltip, TooltipText, Box, Flex, Svg, SvgProps, AutoColumn, RowBetween, AutoRow } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { getLPSymbol } from 'utils/getLpSymbol'
 import styled from 'styled-components'
@@ -53,8 +42,7 @@ const CircleSvg = ({ percent = 1, ...props }: SvgProps & { percent?: number }) =
         width={60}
         height={60}
         filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
+        colorInterpolationFilters="sRGB">
         <feFlood floodOpacity={0} result="BackgroundImageFix" />
         <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
         <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />

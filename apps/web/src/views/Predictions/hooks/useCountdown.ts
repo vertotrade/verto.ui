@@ -24,7 +24,7 @@ const useCountdown = (timestamp: number) => {
     let cancel
     if (!isPaused) {
       const { cancel: timerCancel } = accurateTimer(() => {
-        setSecondsRemaining((prevSecondsRemaining) => {
+        setSecondsRemaining(prevSecondsRemaining => {
           if (prevSecondsRemaining) {
             return prevSecondsRemaining - 1
           }

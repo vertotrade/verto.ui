@@ -72,7 +72,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
   const isPromotedFarm = farm.token?.symbol === 'CAKE'
 
   const toggleExpandableSection = useCallback(() => {
-    setShowExpandableSection((prev) => !prev)
+    setShowExpandableSection(prev => !prev)
   }, [])
 
   return (

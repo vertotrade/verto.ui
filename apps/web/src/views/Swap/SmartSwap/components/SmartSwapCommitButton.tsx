@@ -110,10 +110,10 @@ export default function SwapCommitButton({
     }
     setSwapState({ attemptingTxn: true, tradeToConfirm, swapErrorMessage: undefined, txHash: undefined })
     swapCallback()
-      .then((hash) => {
+      .then(hash => {
         setSwapState({ attemptingTxn: false, tradeToConfirm, swapErrorMessage: undefined, txHash: hash })
       })
-      .catch((error) => {
+      .catch(error => {
         setSwapState({
           attemptingTxn: false,
           tradeToConfirm,
@@ -186,7 +186,7 @@ export default function SwapCommitButton({
   useEffect(() => {
     if (indirectlyOpenConfirmModalState) {
       setIndirectlyOpenConfirmModalState(false)
-      setSwapState((state) => ({
+      setSwapState(state => ({
         ...state,
         swapErrorMessage: undefined,
       }))
@@ -252,8 +252,7 @@ export default function SwapCommitButton({
             variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
             onClick={approveCallback}
             disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
-            width="48%"
-          >
+            width="48%">
             {approval === ApprovalState.PENDING ? (
               <AutoRow gap="6px" justify="center">
                 {t('Enabling')} <CircleLoader stroke="white" />
@@ -271,8 +270,7 @@ export default function SwapCommitButton({
             }}
             width="48%"
             id="swap-button"
-            disabled={!isValid || !approved || (priceImpactSeverity > 3 && !isExpertMode)}
-          >
+            disabled={!isValid || !approved || (priceImpactSeverity > 3 && !isExpertMode)}>
             {priceImpactSeverity > 3 && !isExpertMode
               ? t('Price Impact High')
               : priceImpactSeverity > 2
@@ -297,8 +295,7 @@ export default function SwapCommitButton({
         }}
         id="swap-button"
         width="100%"
-        disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError || !approved}
-      >
+        disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError || !approved}>
         {swapInputError ||
           (priceImpactSeverity > 3 && !isExpertMode
             ? t('Price Impact Too High')

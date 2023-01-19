@@ -59,7 +59,7 @@ export default function useRemoveLiquidityHandler({
 
     setLiquidityState({ attemptingTxn: true, liquidityErrorMessage: undefined, txHash: undefined })
 
-    executeTransaction(payload, (error) => {
+    executeTransaction(payload, error => {
       if (error instanceof SimulateTransactionError) {
         setLiquidityState({
           attemptingTxn: false,
@@ -68,7 +68,7 @@ export default function useRemoveLiquidityHandler({
         })
       }
     })
-      .then((response) => {
+      .then(response => {
         setLiquidityState({ attemptingTxn: false, liquidityErrorMessage: undefined, txHash: response.hash })
         const symbolA = currencyA.symbol
         const amountA = parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) ?? ''
@@ -83,7 +83,7 @@ export default function useRemoveLiquidityHandler({
           type: 'remove-liquidity',
         })
       })
-      .catch((err) => {
+      .catch(err => {
         let errorMsg = ''
 
         if (!(err instanceof UserRejectedRequestError)) {

@@ -10,7 +10,7 @@ const useNextEventCountdown = (nextEventTime: number): number => {
     setSecondsRemaining(secondsRemainingCalc)
 
     timer.current = setInterval(() => {
-      setSecondsRemaining((prevSecondsRemaining) => Math.max(prevSecondsRemaining - 1, 0))
+      setSecondsRemaining(prevSecondsRemaining => Math.max(prevSecondsRemaining - 1, 0))
     }, 1000)
 
     return () => clearInterval(timer.current)

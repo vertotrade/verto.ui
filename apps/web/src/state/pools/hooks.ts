@@ -50,9 +50,9 @@ const getActiveFarms = async (chainId: number) => {
         pid !== 0 &&
         ((token.symbol === 'CAKE' && quoteToken.symbol === 'WBNB') ||
           (token.symbol === 'BUSD' && quoteToken.symbol === 'WBNB') ||
-          lPoolAddresses.find((poolAddress) => poolAddress === token.address)),
+          lPoolAddresses.find(poolAddress => poolAddress === token.address)),
     )
-    .map((farm) => farm.pid)
+    .map(farm => farm.pid)
 }
 
 const getCakePriceFarms = async (chainId: number) => {
@@ -64,7 +64,7 @@ const getCakePriceFarms = async (chainId: number) => {
         ((token.symbol === 'CAKE' && quoteToken.symbol === 'WBNB') ||
           (token.symbol === 'BUSD' && quoteToken.symbol === 'WBNB')),
     )
-    .map((farm) => farm.pid)
+    .map(farm => farm.pid)
 }
 
 export const useFetchPublicPoolsData = () => {
@@ -73,7 +73,7 @@ export const useFetchPublicPoolsData = () => {
   const farmFlag = useFeatureFlag(featureFarmApiAtom)
 
   useSlowRefreshEffect(
-    (currentBlock) => {
+    currentBlock => {
       const fetchPoolsDataWithFarms = async () => {
         const activeFarms = await getActiveFarms(chainId)
         await dispatch(fetchFarmsPublicDataAsync({ pids: activeFarms, chainId, flag: farmFlag }))
@@ -99,7 +99,7 @@ export const usePoolsWithVault = () => {
   return useSelector(poolsWithVaultSelector)
 }
 
-export const useDeserializedPoolByVaultKey = (vaultKey) => {
+export const useDeserializedPoolByVaultKey = vaultKey => {
   const vaultPoolWithKeySelector = useMemo(() => makeVaultPoolWithKeySelector(vaultKey), [vaultKey])
 
   return useSelector(vaultPoolWithKeySelector)

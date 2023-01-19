@@ -7,13 +7,7 @@ import { useAtomValue } from 'jotai'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useListState } from 'state/lists/lists'
 import styled from 'styled-components'
-import {
-  useFetchListCallback,
-  acceptListUpdate,
-  disableList,
-  enableList,
-  removeList,
-} from '@verto/token-lists/react'
+import { useFetchListCallback, acceptListUpdate, disableList, enableList, removeList } from '@verto/token-lists/react'
 import uriToHttp from '@verto/utils/uriToHttp'
 import { ChainId } from '@verto/sdk'
 
@@ -110,8 +104,7 @@ const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
       active={isActive}
       hasActiveTokens={activeTokensOnThisChain > 0}
       key={listUrl}
-      id={listUrlRowHTMLId(listUrl)}
-    >
+      id={listUrlRowHTMLId(listUrl)}>
       {tooltipVisible && tooltip}
       {list.logoURI ? (
         <ListLogo size="40px" style={{ marginRight: '1rem' }} logoURI={list.logoURI} alt={`${list.name} list logo`} />
@@ -178,7 +171,7 @@ function ManageLists({
     }
   }, [activeCopy, activeListUrls])
 
-  const handleInput = useCallback((e) => {
+  const handleInput = useCallback(e => {
     setListUrlInput(e.target.value)
   }, [])
 
@@ -191,7 +184,7 @@ function ManageLists({
   const sortedLists = useMemo(() => {
     const listUrls = Object.keys(lists)
     return listUrls
-      .filter((listUrl) => {
+      .filter(listUrl => {
         // only show loaded lists, hide unsupported lists
         const isValid = Boolean(lists[listUrl].current) && !UNSUPPORTED_LIST_URLS.includes(listUrl)
 
@@ -242,7 +235,7 @@ function ManageLists({
   useEffect(() => {
     async function fetchTempList() {
       fetchList(listUrlInput, false)
-        .then((list) => setTempList(list))
+        .then(list => setTempList(list))
         .catch(() => setAddError('Error importing list'))
     }
     // if valid url, fetch details for card
@@ -319,7 +312,7 @@ function ManageLists({
       )}
       <ListContainer>
         <AutoColumn gap="md">
-          {sortedLists.map((listUrl) => (
+          {sortedLists.map(listUrl => (
             <ListRow key={listUrl} listUrl={listUrl} />
           ))}
         </AutoColumn>

@@ -85,7 +85,7 @@ export default function AddressInputPanel({
   const address = isAddress(value) ? value : undefined
 
   const handleInput = useCallback(
-    (event) => {
+    event => {
       const input = event.target.value
       const withoutSpaces = input.replace(/\s+/g, '')
       onChange(withoutSpaces)

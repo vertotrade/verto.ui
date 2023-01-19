@@ -214,7 +214,7 @@ export default function RemoveStableLiquidity({ currencyA, currencyB, currencyId
             type: 'remove-liquidity',
           })
         })
-        .catch((err) => {
+        .catch(err => {
           if (err && err.code !== 4001) {
             logError(err)
             console.error(`Remove Liquidity failed`, err, args)
@@ -285,7 +285,7 @@ export default function RemoveStableLiquidity({ currencyA, currencyB, currencyId
   )
 
   const handleChangePercent = useCallback(
-    (value) => setInnerLiquidityPercentage(Math.ceil(value)),
+    value => setInnerLiquidityPercentage(Math.ceil(value)),
     [setInnerLiquidityPercentage],
   )
 
@@ -413,16 +413,14 @@ export default function RemoveStableLiquidity({ currencyA, currencyB, currencyId
                         <StyledInternalLink
                           href={`/remove/${currencyA?.isNative ? WNATIVE[chainId]?.address : currencyIdA}/${
                             currencyB?.isNative ? WNATIVE[chainId]?.address : currencyIdB
-                          }`}
-                        >
+                          }`}>
                           {t('Receive %currency%', { currency: WNATIVE[chainId]?.symbol })}
                         </StyledInternalLink>
                       ) : oneCurrencyIsWNative ? (
                         <StyledInternalLink
                           href={`/remove/${
                             currencyA && currencyA.equals(WNATIVE[chainId]) ? native?.symbol : currencyIdA
-                          }/${currencyB && currencyB.equals(WNATIVE[chainId]) ? native?.symbol : currencyIdB}`}
-                        >
+                          }/${currencyB && currencyB.equals(WNATIVE[chainId]) ? native?.symbol : currencyIdB}`}>
                           {t('Receive %currency%', { currency: native?.symbol })}
                         </StyledInternalLink>
                       ) : null}
@@ -438,7 +436,7 @@ export default function RemoveStableLiquidity({ currencyA, currencyB, currencyId
               <CurrencyInputPanel
                 value={formattedAmounts[Field.LIQUIDITY]}
                 onUserInput={onLiquidityInput}
-                onPercentInput={(percent) => {
+                onPercentInput={percent => {
                   onUserInput(Field.LIQUIDITY_PERCENT, percent.toString())
                 }}
                 onMax={() => {
@@ -537,8 +535,7 @@ export default function RemoveStableLiquidity({ currencyA, currencyB, currencyId
                   onClick={approveCallback}
                   disabled={approval !== ApprovalState.NOT_APPROVED}
                   width="100%"
-                  mr="0.5rem"
-                >
+                  mr="0.5rem">
                   {approval === ApprovalState.PENDING ? (
                     <Dots>{t('Enabling')}</Dots>
                   ) : approval === ApprovalState.APPROVED ? (
@@ -562,8 +559,7 @@ export default function RemoveStableLiquidity({ currencyA, currencyB, currencyId
                     onPresentRemoveLiquidity()
                   }}
                   width="100%"
-                  disabled={!isValid || approval !== ApprovalState.APPROVED}
-                >
+                  disabled={!isValid || approval !== ApprovalState.APPROVED}>
                   {error || t('Remove')}
                 </Button>
               </RowBetween>

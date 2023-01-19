@@ -31,7 +31,7 @@ const AchievementsList: React.FC<React.PropsWithChildren<{ achievements: Achieve
   return (
     <>
       <Grid>
-        {achievements.map((achievement) => (
+        {achievements.map(achievement => (
           <AchievementCard key={achievement.id} achievement={achievement} />
         ))}
       </Grid>

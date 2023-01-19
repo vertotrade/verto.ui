@@ -81,7 +81,7 @@ const HowToPlay: React.FC<React.PropsWithChildren> = () => {
       </Text>
       <Text mb="40px">{t('Simple!')}</Text>
       <CardContainer>
-        {steps.map((step) => (
+        {steps.map(step => (
           <CardStyle key={step.label}>
             <Flex flexDirection="column" padding="24px">
               <Text fontSize="12px" mb="16px" textTransform="uppercase" bold textAlign="right">

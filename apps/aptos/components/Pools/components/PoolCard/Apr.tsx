@@ -2,7 +2,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { Pool } from '@verto/uikit'
 import { Coin } from '@verto/aptos-swap-sdk'
 
-const withShownApr = (AprComp) => (props) => {
+const withShownApr = AprComp => props => {
   const { account } = useActiveWeb3React()
 
   const { shouldShowBlockCountdown, hasPoolStarted } = {

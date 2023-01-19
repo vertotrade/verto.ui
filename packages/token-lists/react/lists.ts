@@ -56,7 +56,7 @@ export const createListsAtom = (storeName: string, reducer: any, initialState: a
   )
 
   const defaultStateAtom = atom<ListsState, any>(
-    (get) => {
+    get => {
       const got = get(listsStorageAtom)
       if (got === EMPTY) {
         return initialState
@@ -68,7 +68,7 @@ export const createListsAtom = (storeName: string, reducer: any, initialState: a
     },
   )
 
-  const isReadyAtom = atom((get) => get(listsStorageAtom) !== EMPTY)
+  const isReadyAtom = atom(get => get(listsStorageAtom) !== EMPTY)
 
   function useListState() {
     return useAtom(defaultStateAtom)

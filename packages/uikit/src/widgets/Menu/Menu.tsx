@@ -75,7 +75,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   isDark,
   toggleTheme,
   currentLang,
-  defaultHomeLink = '/',
+  defaultHomeLink = "/",
   setLang,
   cakePriceUsd,
   links,

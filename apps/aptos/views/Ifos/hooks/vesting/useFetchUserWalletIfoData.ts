@@ -32,7 +32,7 @@ export const useFetchUserWalletIfoData = (): VestingData[] => {
   const poolListArray = useMemo(() => {
     const poolListData = poolList?.data || {}
 
-    return Object.keys(poolListData)?.map((k) => ({ ...poolListData[k], type: k }))
+    return Object.keys(poolListData)?.map(k => ({ ...poolListData[k], type: k }))
   }, [poolList])
 
   const vestingCharacteristicsList = useVestingCharacteristicsList(poolListArray)
@@ -48,11 +48,11 @@ export const useFetchUserWalletIfoData = (): VestingData[] => {
       const pool = resource[IFO_RESOURCE_ACCOUNT_TYPE_POOL_STORE]
       const metadata = resource[IFO_RESOURCE_ACCOUNT_TYPE_METADATA]
 
-      const ifo = ifos.find((i) => i.address === pool.type)
+      const ifo = ifos.find(i => i.address === pool.type)
 
       if (!ifo) return result
 
-      const foundUserIfo = userIfoListWithAmount.find((userIfo) => userIfo.type === resource.type)
+      const foundUserIfo = userIfoListWithAmount.find(userIfo => userIfo.type === resource.type)
 
       const { offering_amount: offeringAmountInToken } = foundUserIfo
         ? computeOfferingAndRefundAmount(foundUserIfo?.data?.amount, pool?.data)

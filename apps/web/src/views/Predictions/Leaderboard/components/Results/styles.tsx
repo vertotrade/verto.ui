@@ -19,7 +19,7 @@ interface NetWinningsProps extends FlexProps {
   textColor?: string
 }
 
-export const NetWinnings: React.FC<React.PropsWithChildren<NetWinningsProps>> = (props) => {
+export const NetWinnings: React.FC<React.PropsWithChildren<NetWinningsProps>> = props => {
   const { token } = useConfig()
   return <NetWinningsView token={token} {...props} />
 }

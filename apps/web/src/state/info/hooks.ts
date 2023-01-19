@@ -98,10 +98,10 @@ export const usePoolDatasSWR = (poolAddresses: string[]): PoolData[] => {
   )
 
   const poolsWithData = poolAddresses
-    .map((address) => {
+    .map(address => {
       return data?.[address]?.data
     })
-    .filter((pool) => pool)
+    .filter(pool => pool)
 
   return poolsWithData
 }
@@ -153,7 +153,7 @@ const fetcher = (addresses: string[], chainName: MultiChainName, blocks: Block[]
   for (let i = 0; i < times; i++) {
     addressGroup.push(addresses.slice(i * graphPerPage, (i + 1) * graphPerPage))
   }
-  return Promise.all(addressGroup.map((d) => fetchAllTokenDataByAddresses(chainName, blocks, d)))
+  return Promise.all(addressGroup.map(d => fetchAllTokenDataByAddresses(chainName, blocks, d)))
 }
 
 export const useTokenDatasSWR = (addresses?: string[], withSettings = true): TokenData[] | undefined => {
@@ -180,10 +180,10 @@ export const useTokenDatasSWR = (addresses?: string[], withSettings = true): Tok
       return undefined
     }
     return addresses
-      .map((a) => {
+      .map(a => {
         return allData?.[a]?.data
       })
-      .filter((d) => d && d.exists)
+      .filter(d => d && d.exists)
   }, [addresses, allData])
 
   return tokensWithData ?? undefined
@@ -191,7 +191,7 @@ export const useTokenDatasSWR = (addresses?: string[], withSettings = true): Tok
 
 export const useTokenDataSWR = (address: string | undefined): TokenData | undefined => {
   const allTokenData = useTokenDatasSWR([address])
-  return allTokenData.find((d) => d.address === address) ?? undefined
+  return allTokenData.find(d => d.address === address) ?? undefined
 }
 
 export const usePoolsForTokenSWR = (address: string): string[] | undefined => {
@@ -264,7 +264,7 @@ export const useGetChainName = () => {
 }
 
 const stableSwapAPRWithAddressesFetcher = async (addresses: string[]) => {
-  return Promise.all(addresses.map((d) => getAprsForStableFarm(d)))
+  return Promise.all(addresses.map(d => getAprsForStableFarm(d)))
 }
 
 export const useStableSwapTopPoolsAPR = (addresses: string[]): Record<string, number> => {

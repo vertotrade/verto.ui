@@ -106,8 +106,7 @@ const DataRow: React.FC<React.PropsWithChildren<{ transaction: Transaction }>> =
     <ResponsiveGrid>
       <LinkExternal
         isBscScan
-        href={getBlockExploreLink(transaction.hash, 'transaction', chainName === 'ETH' && ChainId.ETHEREUM)}
-      >
+        href={getBlockExploreLink(transaction.hash, 'transaction', chainName === 'ETH' && ChainId.ETHEREUM)}>
         <Text>
           {transaction.type === TransactionType.MINT
             ? t('Add %token0% and %token1%', { token0: transaction.token0Symbol, token1: transaction.token1Symbol })
@@ -125,8 +124,7 @@ const DataRow: React.FC<React.PropsWithChildren<{ transaction: Transaction }>> =
       </Text>
       <LinkExternal
         isBscScan
-        href={getBlockExploreLink(transaction.sender, 'address', chainName === 'ETH' && ChainId.ETHEREUM)}
-      >
+        href={getBlockExploreLink(transaction.sender, 'address', chainName === 'ETH' && ChainId.ETHEREUM)}>
         {truncateHash(transaction.sender)}
       </LinkExternal>
       <Text>{formatDistanceToNowStrict(parseInt(transaction.timestamp, 10) * 1000)}</Text>
@@ -165,7 +163,7 @@ const TransactionTable: React.FC<
             }
             return -1
           })
-          .filter((x) => {
+          .filter(x => {
             return txFilter === undefined || x.type === txFilter
           })
           .slice(ITEMS_PER_INFO_TABLE_PAGE * (page - 1), page * ITEMS_PER_INFO_TABLE_PAGE)
@@ -175,7 +173,7 @@ const TransactionTable: React.FC<
   // Update maxPage based on amount of items & applied filtering
   useEffect(() => {
     if (transactions) {
-      const filteredTransactions = transactions.filter((tx) => {
+      const filteredTransactions = transactions.filter(tx => {
         return txFilter === undefined || tx.type === txFilter
       })
       if (filteredTransactions.length % ITEMS_PER_INFO_TABLE_PAGE === 0) {
@@ -249,8 +247,7 @@ const TransactionTable: React.FC<
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.amountUSD)}
-            textTransform="uppercase"
-          >
+            textTransform="uppercase">
             {t('Total Value')} {arrow(SORT_FIELD.amountUSD)}
           </ClickableColumnHeader>
           <ClickableColumnHeader
@@ -258,8 +255,7 @@ const TransactionTable: React.FC<
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.amountToken0)}
-            textTransform="uppercase"
-          >
+            textTransform="uppercase">
             {t('Token Amount')} {arrow(SORT_FIELD.amountToken0)}
           </ClickableColumnHeader>
           <ClickableColumnHeader
@@ -267,8 +263,7 @@ const TransactionTable: React.FC<
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.amountToken1)}
-            textTransform="uppercase"
-          >
+            textTransform="uppercase">
             {t('Token Amount')} {arrow(SORT_FIELD.amountToken1)}
           </ClickableColumnHeader>
           <ClickableColumnHeader
@@ -276,8 +271,7 @@ const TransactionTable: React.FC<
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.sender)}
-            textTransform="uppercase"
-          >
+            textTransform="uppercase">
             {t('Account')} {arrow(SORT_FIELD.sender)}
           </ClickableColumnHeader>
           <ClickableColumnHeader
@@ -285,8 +279,7 @@ const TransactionTable: React.FC<
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.timestamp)}
-            textTransform="uppercase"
-          >
+            textTransform="uppercase">
             {t('Time')} {arrow(SORT_FIELD.timestamp)}
           </ClickableColumnHeader>
         </ResponsiveGrid>
@@ -315,8 +308,7 @@ const TransactionTable: React.FC<
               <Arrow
                 onClick={() => {
                   setPage(page === 1 ? page : page - 1)
-                }}
-              >
+                }}>
                 <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
               </Arrow>
 
@@ -324,8 +316,7 @@ const TransactionTable: React.FC<
               <Arrow
                 onClick={() => {
                   setPage(page === maxPage ? page : page + 1)
-                }}
-              >
+                }}>
                 <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
               </Arrow>
             </PageButtons>

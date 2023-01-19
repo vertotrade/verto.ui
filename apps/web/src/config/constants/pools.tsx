@@ -128,7 +128,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '6.944',
     version: 3,
   },
-].map((p) => ({
+].map(p => ({
   ...p,
   stakingToken: p.stakingToken.serialize,
   earningToken: p.earningToken.serialize,
@@ -3508,7 +3508,7 @@ const finishedPools = [
     enableEmergencyWithdraw: true,
     tokenPerBlock: '7.502',
   },
-].map((p) => ({
+].map(p => ({
   ...p,
   isFinished: true,
   stakingToken: p.stakingToken.serialize,

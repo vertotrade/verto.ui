@@ -50,10 +50,10 @@ describe('createClient', () => {
           const localStorage: Record<string, any> = {}
           const storage = createStorage({
             storage: {
-              getItem: (key) => localStorage[key],
+              getItem: key => localStorage[key],
               // eslint-disable-next-line no-return-assign
               setItem: (key, value) => (localStorage[key] = JSON.stringify(value)),
-              removeItem: (key) => delete localStorage[key],
+              removeItem: key => delete localStorage[key],
             },
           })
           storage.setItem('store', {
@@ -96,7 +96,7 @@ describe('createClient', () => {
         const client = createClient({
           provider,
         })
-        expect(client.connectors.map((x) => x.name)).toMatchInlineSnapshot(`
+        expect(client.connectors.map(x => x.name)).toMatchInlineSnapshot(`
           [
             "Petra",
           ]
@@ -114,7 +114,7 @@ describe('createClient', () => {
           ],
           provider,
         })
-        expect(client.connectors.map((x) => x.name)).toMatchInlineSnapshot(`
+        expect(client.connectors.map(x => x.name)).toMatchInlineSnapshot(`
           [
             "Mock",
           ]

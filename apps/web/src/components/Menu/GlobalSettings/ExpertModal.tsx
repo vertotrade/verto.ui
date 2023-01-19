@@ -1,14 +1,5 @@
 import { useState } from 'react'
-import {
-  Button,
-  Text,
-  Flex,
-  Message,
-  Modal,
-  InjectedModalProps,
-  Checkbox,
-  useMatchBreakpoints,
-} from '@verto/uikit'
+import { Button, Text, Flex, Message, Modal, InjectedModalProps, Checkbox, useMatchBreakpoints } from '@verto/uikit'
 import { useExpertModeManager } from 'state/user/hooks'
 import { useTranslation } from '@verto/localization'
 
@@ -33,8 +24,7 @@ const ExpertModal: React.FC<React.PropsWithChildren<ExpertModalProps>> = ({
       onBack={() => setShowConfirmExpertModal(false)}
       onDismiss={() => setShowConfirmExpertModal(false)}
       headerBackground="gradientCardHeader"
-      style={{ width: isMobile ? '100%' : '436px' }}
-    >
+      style={{ width: isMobile ? '100%' : '436px' }}>
       <Message variant="warning" mb="24px">
         <Text>
           {t(
@@ -67,16 +57,14 @@ const ExpertModal: React.FC<React.PropsWithChildren<ExpertModalProps>> = ({
               setShowExpertModeAcknowledgement(false)
             }
           }
-        }}
-      >
+        }}>
         {t('Turn On Expert Mode')}
       </Button>
       <Button
         variant="secondary"
         onClick={() => {
           setShowConfirmExpertModal(false)
-        }}
-      >
+        }}>
         {t('Cancel')}
       </Button>
     </Modal>

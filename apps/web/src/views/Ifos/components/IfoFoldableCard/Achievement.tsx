@@ -21,7 +21,7 @@ import { BIG_TEN } from '@verto/utils/bigNumber'
 import { getBlockExploreLink } from 'utils'
 import { formatBigNumber } from '@verto/utils/formatBalance'
 
-const SmartContractIcon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const SmartContractIcon: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 -15 122.000000 122.000000" {...props}>
       <g transform="translate(0.000000,122.000000) scale(0.100000,-0.100000)" stroke="none">
@@ -41,7 +41,7 @@ const SmartContractIcon: React.FC<React.PropsWithChildren<SvgProps>> = (props) =
   )
 }
 
-const ProposalIcon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const ProposalIcon: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path d="M10.037 6a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5h-7.5zM9.287 9.75a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM10.037 12a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5h-7.5z" />

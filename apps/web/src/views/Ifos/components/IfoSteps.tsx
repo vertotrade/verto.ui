@@ -255,8 +255,7 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
             key={index}
             index={index}
             statusFirstPart={getStatusProp(index)}
-            statusSecondPart={getStatusProp(index + 1)}
-          >
+            statusSecondPart={getStatusProp(index + 1)}>
             <Card>{renderCardBody(index)}</Card>
           </Step>
         ))}

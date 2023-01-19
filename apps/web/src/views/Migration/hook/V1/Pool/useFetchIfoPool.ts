@@ -44,7 +44,7 @@ const fetchVaultUserV1 = async (account: string) => {
   }
 }
 
-const getIfoPoolData = async (account) => {
+const getIfoPoolData = async account => {
   const [ifoData, userData, feesData] = await Promise.all([
     fetchPublicIfoPoolData(ifoPoolV1Contract),
     fetchIfoPoolUser(account, ifoPoolV1Contract),
@@ -58,7 +58,7 @@ const getIfoPoolData = async (account) => {
   return transformData(ifoPoolData)
 }
 
-const getCakePoolData = async (account) => {
+const getCakePoolData = async account => {
   const [vaultData, userData, feesData] = await Promise.all([
     fetchPublicVaultData(cakeVaultAddress),
     fetchVaultUserV1(account),

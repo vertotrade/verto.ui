@@ -63,7 +63,7 @@ const PreviousBetsTable: React.FC<React.PropsWithChildren<PreviousBetsTableProps
       </thead>
       <tbody>
         {isFetching
-          ? times(numberOfBets).map((num) => (
+          ? times(numberOfBets).map(num => (
               <tr key={num}>
                 <Td>
                   <Skeleton width="80px" />
@@ -76,7 +76,7 @@ const PreviousBetsTable: React.FC<React.PropsWithChildren<PreviousBetsTableProps
                 </Td>
               </tr>
             ))
-          : orderedBets.map((bet) => {
+          : orderedBets.map(bet => {
               const isCancelled = bet.round.failed
               const isWinner = bet.position === bet.round.position
 

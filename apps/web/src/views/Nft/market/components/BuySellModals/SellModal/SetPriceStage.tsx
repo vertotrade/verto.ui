@@ -110,7 +110,7 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
               value={price}
               ref={inputRef}
               isWarning={priceIsOutOfRange}
-              onChange={(e) => {
+              onChange={e => {
                 enforcer(e.target.value.replace(/,/g, '.'))
               }}
             />
@@ -185,8 +185,7 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
         <Button
           mb="8px"
           onClick={continueToNextStage}
-          disabled={priceIsValid || adjustedPriceIsTheSame || priceIsOutOfRange}
-        >
+          disabled={priceIsValid || adjustedPriceIsTheSame || priceIsOutOfRange}>
           {getButtonText()}
         </Button>
       </Flex>

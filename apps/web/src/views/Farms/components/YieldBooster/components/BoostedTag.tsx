@@ -7,7 +7,7 @@ interface BoostedTag extends TagProps {
   style?: object
 }
 
-const BoostedTag: React.FC<BoostedTag> = (props) => {
+const BoostedTag: React.FC<BoostedTag> = props => {
   const { t } = useTranslation()
   return (
     <Tag
@@ -15,8 +15,7 @@ const BoostedTag: React.FC<BoostedTag> = (props) => {
       style={{ background: 'none' }}
       outline
       startIcon={<RocketIcon width="18px" color="success" mr="4px" />}
-      {...props}
-    >
+      {...props}>
       {t('Boosted')}
     </Tag>
   )

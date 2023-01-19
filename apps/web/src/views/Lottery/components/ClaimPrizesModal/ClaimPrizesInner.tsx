@@ -43,10 +43,10 @@ const ClaimInnerContainer: React.FC<React.PropsWithChildren<ClaimInnerProps>> = 
   const dollarRewardAsBalance = getBalanceAmount(dollarReward).toNumber()
 
   const parseUnclaimedTicketDataForClaimCall = (ticketsWithUnclaimedRewards: LotteryTicket[], lotteryId: string) => {
-    const ticketIds = ticketsWithUnclaimedRewards.map((ticket) => {
+    const ticketIds = ticketsWithUnclaimedRewards.map(ticket => {
       return ticket.id
     })
-    const brackets = ticketsWithUnclaimedRewards.map((ticket) => {
+    const brackets = ticketsWithUnclaimedRewards.map(ticket => {
       return ticket.rewardBracket
     })
     return { lotteryId, ticketIds, brackets }
@@ -161,8 +161,7 @@ const ClaimInnerContainer: React.FC<React.PropsWithChildren<ClaimInnerProps>> = 
         <Flex
           alignItems={['flex-start', null, 'center']}
           justifyContent={['flex-start', null, 'space-between']}
-          flexDirection={['column', null, 'row']}
-        >
+          flexDirection={['column', null, 'row']}>
           <Balance
             textAlign={['center', null, 'left']}
             lineHeight="1.1"
@@ -196,8 +195,7 @@ const ClaimInnerContainer: React.FC<React.PropsWithChildren<ClaimInnerProps>> = 
           endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
           mt="20px"
           width="100%"
-          onClick={() => (shouldBatchRequest ? handleBatchClaim() : handleClaim())}
-        >
+          onClick={() => (shouldBatchRequest ? handleBatchClaim() : handleClaim())}>
           {pendingTx ? t('Claiming') : t('Claim')} {pendingBatchClaims > 1 ? `(${pendingBatchClaims})` : ''}
         </Button>
       </Flex>

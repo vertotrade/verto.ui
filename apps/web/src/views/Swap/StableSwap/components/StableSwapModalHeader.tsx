@@ -80,8 +80,7 @@ export default function StableSwapModalHeader({
           <CurrencyLogo currency={trade.outputAmount.currency} size="24px" />
           <TruncatedText
             fontSize="24px"
-            color={showAcceptChanges && trade.tradeType === TradeType.EXACT_INPUT ? 'primary' : 'text'}
-          >
+            color={showAcceptChanges && trade.tradeType === TradeType.EXACT_INPUT ? 'primary' : 'text'}>
             {trade.outputAmount.toSignificant(6)}
           </TruncatedText>
         </RowFixed>

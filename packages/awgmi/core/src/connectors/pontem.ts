@@ -84,7 +84,7 @@ export class PontemConnector extends Connector<Window['pontem']> {
     const provider = await this.getProvider()
     if (!provider) throw new ConnectorNotFoundError()
     const providerNetwork = await provider.network()
-    const chain = this.chains.find((c) => c.id === parseInt(providerNetwork.chainId, 10))
+    const chain = this.chains.find(c => c.id === parseInt(providerNetwork.chainId, 10))
 
     return chain?.network ?? ''
   }
@@ -167,7 +167,7 @@ export class PontemConnector extends Connector<Window['pontem']> {
   }
 
   protected onNetworkChanged = (network: NetworkInfo) => {
-    const chain = this.chains.find((c) => c.id === parseInt(network.chainId, 10))
+    const chain = this.chains.find(c => c.id === parseInt(network.chainId, 10))
     if (chain) {
       this.emit('change', {
         network: chain.network,

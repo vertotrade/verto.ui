@@ -124,8 +124,7 @@ export default function SwapModalFooter({
           disabled={disabledConfirm}
           mt="12px"
           id="confirm-swap-or-send"
-          width="100%"
-        >
+          width="100%">
           {severity > 2 || (trade.tradeType === TradeType.EXACT_OUTPUT && !isEnoughInputBalance)
             ? t('Swap Anyway')
             : t('Confirm Swap')}

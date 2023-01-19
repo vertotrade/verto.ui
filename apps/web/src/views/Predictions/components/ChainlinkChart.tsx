@@ -63,7 +63,7 @@ function useChainlinkRoundDataSet() {
   const computedData: ChartData[] = useMemo(() => {
     return (
       data
-        ?.filter((d) => !!d && d.answer.gt(0))
+        ?.filter(d => !!d && d.answer.gt(0))
         .map(({ answer, roundId, startedAt }) => {
           return {
             answer: formatBigNumberToFixed(answer, 4, 8),
@@ -92,7 +92,7 @@ function useChartHoverMutate() {
   const { mutate } = useSWRConfig()
 
   const updateHover = useCallback(
-    (data) => {
+    data => {
       mutate('chainlinkChartHover', data)
     },
     [mutate],
@@ -128,8 +128,7 @@ const HoverData = ({ rounds }: { rounds: { [key: string]: NodeRound } }) => {
       format={false}
       flexWrap="wrap"
       alignItems="center"
-      columnGap="12px"
-    >
+      columnGap="12px">
       {hoverData && (
         <FlexGap minWidth="51%" alignItems="flex-end" gap="12px" height="22px">
           <Text color="textSubtle" lineHeight={1.1}>
@@ -169,8 +168,7 @@ const ChainLinkChart = (props: FlexProps & { isMobile?: boolean }) => {
         alignItems="center"
         flexWrap="wrap"
         columnGap="12px"
-        height={['56px', , , , '44px']}
-      >
+        height={['56px', , , , '44px']}>
         <HoverData rounds={rounds} />
       </FlexGap>
       <Flex height={[`calc(100% - 56px)`]}>
@@ -210,8 +208,7 @@ const Chart = ({
         }}
         onMouseLeave={() => {
           mutate(undefined)
-        }}
-      >
+        }}>
         <defs>
           <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor={chartColor.gradient1} stopOpacity={0.34} />
@@ -220,7 +217,7 @@ const Chart = ({
         </defs>
         <XAxis
           dataKey="startedAt"
-          tickFormatter={(time) => {
+          tickFormatter={time => {
             return new Date(time * 1000).toLocaleString(locale, {
               hour: 'numeric',
               minute: '2-digit',
@@ -258,13 +255,13 @@ const Chart = ({
           stroke={chartColor.stroke}
           fill="url(#gradient)"
           strokeWidth={2}
-          activeDot={(props) => {
+          activeDot={props => {
             if (rounds[props.payload.roundId]) {
               return <ActiveDot {...props} />
             }
             return null
           }}
-          dot={(props) => {
+          dot={props => {
             if (rounds[props.payload.roundId]) {
               return (
                 <Dot
@@ -284,7 +281,7 @@ const Chart = ({
   )
 }
 
-const ActiveDot = (props) => {
+const ActiveDot = props => {
   const { swiper } = useSwiper()
   const sortedRounds = useGetSortedRounds()
   const { theme } = useTheme()
@@ -298,7 +295,7 @@ const ActiveDot = (props) => {
       fill={theme.colors.background}
       style={{ cursor: 'pointer' }}
       onClick={() => {
-        const roundIndex = sortedRounds.findIndex((round) => round.closeOracleId === props.payload.roundId)
+        const roundIndex = sortedRounds.findIndex(round => round.closeOracleId === props.payload.roundId)
         if (roundIndex >= 0 && swiper) {
           swiper.slideTo(roundIndex)
           swiper.el.dispatchEvent(new Event(CHART_DOT_CLICK_EVENT))

@@ -30,8 +30,8 @@ export async function sendTransaction({
   if (networkName && !equalsIgnoreCase(networkName, activeChain?.network)) {
     throw new ChainMismatchError({
       activeChain:
-        chains.find((x) => equalsIgnoreCase(x.network, activeNetworkName))?.name ?? `Chain ${activeNetworkName}`,
-      targetChain: chains.find((x) => equalsIgnoreCase(x.name, networkName))?.name ?? `Chain ${networkName}`,
+        chains.find(x => equalsIgnoreCase(x.network, activeNetworkName))?.name ?? `Chain ${activeNetworkName}`,
+      targetChain: chains.find(x => equalsIgnoreCase(x.name, networkName))?.name ?? `Chain ${networkName}`,
     })
   }
 
@@ -40,7 +40,7 @@ export async function sendTransaction({
 
     const response = pending as TransactionResponse
     if (response) {
-      response.wait = async (opts) => {
+      response.wait = async opts => {
         return provider.waitForTransactionWithResult(pending.hash, opts)
       }
     }

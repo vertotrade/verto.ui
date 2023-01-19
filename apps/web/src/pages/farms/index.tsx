@@ -34,7 +34,7 @@ const FarmsPage = () => {
   const cakePrice = usePriceCakeBusd()
   return (
     <>
-      {chosenFarmsMemoized.map((farm) =>
+      {chosenFarmsMemoized.map(farm =>
         farm.boosted ? (
           <ProxyFarmContainer farm={farm} key={farm.pid}>
             <ProxyFarmCardContainer farm={farm} />

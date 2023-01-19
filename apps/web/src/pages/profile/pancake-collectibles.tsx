@@ -12,8 +12,7 @@ const PancakeCollectiblesPage = ({ fallback = {} }: InferGetStaticPropsType<type
     <SWRConfig
       value={{
         fallback,
-      }}
-    >
+      }}>
       <PancakeCollectiblesPageRouter />
     </SWRConfig>
   )
@@ -33,7 +32,7 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     const profileContract = getProfileContract(null)
     const nftRole = await profileContract.NFT_ROLE()
-    const collectionsNftRoleCalls = Object.keys(fetchedCollections).map((collectionAddress) => {
+    const collectionsNftRoleCalls = Object.keys(fetchedCollections).map(collectionAddress => {
       return {
         address: profileContract.address,
         name: 'hasRole',

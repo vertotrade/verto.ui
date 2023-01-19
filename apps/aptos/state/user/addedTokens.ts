@@ -20,7 +20,7 @@ export const useRemoveUserAddedToken = () => {
 
   return useCallback(
     (chainId: number, address: string) => {
-      set((s) => {
+      set(s => {
         if (!s) {
           return {}
         }
@@ -50,7 +50,7 @@ export const useAddUserToken = () => {
 
   return useCallback(
     (serializedToken: SerializedToken) => {
-      set((state) => {
+      set(state => {
         if (!state) {
           return {}
         }

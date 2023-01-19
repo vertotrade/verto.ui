@@ -123,8 +123,7 @@ const ForSaleTableCard: React.FC<React.PropsWithChildren<ForSaleTableCardProps>>
         alignItems="center"
         height="72px"
         px="24px"
-        borderBottom={`1px solid ${theme.colors.cardBorder}`}
-      >
+        borderBottom={`1px solid ${theme.colors.cardBorder}`}>
         <SellIcon width="24px" height="24px" />
         <Text bold>{t('For Sale')}</Text>
         <UpdateIndicator isFetchingPancakeBunnies={isValidating} />

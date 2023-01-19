@@ -42,9 +42,9 @@ const WalletTransactions: React.FC<React.PropsWithChildren> = () => {
             return (
               <Box key={chainId}>
                 <Text fontSize="12px" color="textSubtle" mb="4px">
-                  {chains.find((c) => c.id === chainIdNumber)?.name ?? 'Unknown network'}
+                  {chains.find(c => c.id === chainIdNumber)?.name ?? 'Unknown network'}
                 </Text>
-                {Object.values(transactions).map((txn) => (
+                {Object.values(transactions).map(txn => (
                   <TransactionRow key={txn.hash} txn={txn} chainId={chainIdNumber} />
                 ))}
               </Box>

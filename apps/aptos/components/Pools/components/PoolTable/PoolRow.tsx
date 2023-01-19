@@ -22,8 +22,7 @@ const PoolRow: React.FC<
       initialActivity={initialActivity}
       panel={
         <ActionPanel account={account} pool={pool} expanded breakpoints={{ isXs, isSm, isMd, isLg, isXl, isXxl }} />
-      }
-    >
+      }>
       <Pool.NameCell<Coin>
         pool={pool}
         tokenPairImage={

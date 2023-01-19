@@ -20,7 +20,7 @@ const customJestConfig = {
 // createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async
 const jestConfig = createJestConfig(customJestConfig)
 
-module.exports = jestConfig().then((config) => {
+module.exports = jestConfig().then(config => {
   // Remove default css mock
   // eslint-disable-next-line no-param-reassign
   delete config.moduleNameMapper['^.+\\.(css|sass|scss)$']

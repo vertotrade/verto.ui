@@ -131,8 +131,7 @@ const CheckPrizesSection = () => {
             disabled={isCheckNowDisabled}
             onClick={fetchAllRewards}
             isLoading={isFetchingRewards}
-            endIcon={isFetchingRewards ? <AutoRenewIcon color="currentColor" spin /> : null}
-          >
+            endIcon={isFetchingRewards ? <AutoRenewIcon color="currentColor" spin /> : null}>
             {checkNowText()}
           </Button>
         </Flex>

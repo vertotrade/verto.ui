@@ -89,7 +89,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
   }, [chainId, farm.isStable, lpAddress, stableSwapAddress])
 
   const toggleExpandableSection = useCallback(() => {
-    setShowExpandableSection((prev) => !prev)
+    setShowExpandableSection(prev => !prev)
   }, [])
 
   return (

@@ -1,14 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  InjectedModalProps,
-  LinkExternal,
-  Message,
-  Skeleton,
-  Text,
-  CopyAddress,
-} from '@verto/uikit'
+import { Box, Button, Flex, InjectedModalProps, LinkExternal, Message, Skeleton, Text, CopyAddress } from '@verto/uikit'
 import { ChainId, WNATIVE } from '@verto/sdk'
 import { FetchStatus } from 'config/constants/types'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

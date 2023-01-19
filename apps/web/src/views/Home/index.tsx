@@ -87,8 +87,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
           id: 'home-1',
         }}
         index={2}
-        hasCurvedDivider={false}
-      >
+        hasCurvedDivider={false}>
         {account && chainId === ChainId.BSC && (
           <UserBannerWrapper>
             <UserBanner />
@@ -103,8 +102,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
           id: 'home-2',
         }}
         index={2}
-        hasCurvedDivider={false}
-      >
+        hasCurvedDivider={false}>
         <MetricsSection />
       </PageSection>
       <PageSection
@@ -114,8 +112,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
           id: 'home-4',
         }}
         index={2}
-        hasCurvedDivider={false}
-      >
+        hasCurvedDivider={false}>
         <OuterWedgeWrapper>
           <InnerWedgeWrapper top>
             <WedgeTopLeft />
@@ -127,8 +124,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.gradientCardHeader}
         index={2}
-        hasCurvedDivider={false}
-      >
+        hasCurvedDivider={false}>
         <OuterWedgeWrapper>
           <InnerWedgeWrapper width="150%" top>
             <WedgeTopRight />
@@ -144,16 +140,14 @@ const Home: React.FC<React.PropsWithChildren> = () => {
           id: 'home-3',
         }}
         index={2}
-        hasCurvedDivider={false}
-      >
+        hasCurvedDivider={false}>
         <WinSection />
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         index={2}
-        hasCurvedDivider={false}
-      >
+        hasCurvedDivider={false}>
         <SalesSection {...cakeSectionData(t)} />
         <CakeDataRow />
       </PageSection>
@@ -161,8 +155,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(180deg, #7645D9 0%, #5121B1 100%)"
         index={2}
-        hasCurvedDivider={false}
-      >
+        hasCurvedDivider={false}>
         <Footer />
       </PageSection>
     </>

@@ -4,7 +4,7 @@ import { multicallv2 } from 'utils/multicall'
 
 const fetchIfoPoolUser = async (account: string, ifoPoolAddress: string) => {
   try {
-    const calls = ['userInfo', 'getUserCredit'].map((method) => ({
+    const calls = ['userInfo', 'getUserCredit'].map(method => ({
       address: ifoPoolAddress,
       name: method,
       params: [account],

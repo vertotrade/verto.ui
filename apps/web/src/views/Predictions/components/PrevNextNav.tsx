@@ -41,7 +41,7 @@ const PrevNextNav = () => {
 
   const handleSlideToLive = () => {
     if (swiper) {
-      const currentEpochIndex = rounds.findIndex((round) => round.epoch === currentEpoch)
+      const currentEpochIndex = rounds.findIndex(round => round.epoch === currentEpoch)
       swiper.slideTo(currentEpochIndex - 1)
     }
   }

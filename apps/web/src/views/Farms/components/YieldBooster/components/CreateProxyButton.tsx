@@ -39,8 +39,7 @@ const CreateProxyButton: React.FC<React.PropsWithChildren<CreateProxyButtonProps
         }
       }}
       isLoading={isCreateProxyLoading || loading}
-      endIcon={isCreateProxyLoading || loading ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-    >
+      endIcon={isCreateProxyLoading || loading ? <AutoRenewIcon spin color="currentColor" /> : undefined}>
       {isCreateProxyLoading || loading ? t('Confirming...') : t('Enable')}
     </Button>
   )

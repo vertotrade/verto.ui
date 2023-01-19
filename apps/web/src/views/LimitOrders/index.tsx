@@ -2,16 +2,7 @@ import { useCallback, useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { CurrencyAmount, Token, Trade, TradeType, Currency, Percent, ChainId } from '@verto/sdk'
 import replaceBrowserHistory from '@verto/utils/replaceBrowserHistory'
-import {
-  Button,
-  Box,
-  Flex,
-  useModal,
-  BottomDrawer,
-  Link,
-  useMatchBreakpoints,
-  Swap as SwapUI,
-} from '@verto/uikit'
+import { Button, Box, Flex, useModal, BottomDrawer, Link, useMatchBreakpoints, Swap as SwapUI } from '@verto/uikit'
 import AccessRisk from 'views/Swap/components/AccessRisk'
 import { useTranslation } from '@verto/localization'
 import { AutoColumn } from 'components/Layout/Column'
@@ -152,7 +143,7 @@ const LimitOrders = () => {
     [handleInput],
   )
   const handleInputSelect = useCallback(
-    (newInputCurrency) => {
+    newInputCurrency => {
       setApprovalSubmitted(false)
       handleCurrencySelection(Field.INPUT, newInputCurrency)
 
@@ -171,7 +162,7 @@ const LimitOrders = () => {
     [handleInput],
   )
   const handlePercentInput = useCallback(
-    (percent) => {
+    percent => {
       if (maxAmountInput) {
         handleInput(Field.INPUT, maxAmountInput.multiply(new Percent(percent, 100)).toExact())
       }
@@ -184,7 +175,7 @@ const LimitOrders = () => {
     }
   }, [maxAmountInput, handleInput])
   const handleOutputSelect = useCallback(
-    (newOutputCurrency) => {
+    newOutputCurrency => {
       handleCurrencySelection(Field.OUTPUT, newOutputCurrency)
 
       const newOutputCurrencyId = currencyId(newOutputCurrency)
@@ -219,7 +210,7 @@ const LimitOrders = () => {
     if (!handleLimitOrderSubmission) {
       return
     }
-    setSwapState((prev) => ({
+    setSwapState(prev => ({
       attemptingTxn: true,
       tradeToConfirm: prev.tradeToConfirm,
       swapErrorMessage: undefined,
@@ -255,15 +246,15 @@ const LimitOrders = () => {
       }
       handleLimitOrderSubmission(orderToSubmit)
         .then(({ hash }) => {
-          setSwapState((prev) => ({
+          setSwapState(prev => ({
             attemptingTxn: false,
             tradeToConfirm: prev.tradeToConfirm,
             swapErrorMessage: undefined,
             txHash: hash,
           }))
         })
-        .catch((error) => {
-          setSwapState((prev) => ({
+        .catch(error => {
+          setSwapState(prev => ({
             attemptingTxn: false,
             tradeToConfirm: prev.tradeToConfirm,
             swapErrorMessage: error.message,
@@ -336,8 +327,7 @@ const LimitOrders = () => {
       removePadding={isChartExpanded}
       hideFooterOnDesktop={isSideFooter}
       noMinHeight
-      helpUrl={LIMIT_ORDERS_DOCS_URL}
-    >
+      helpUrl={LIMIT_ORDERS_DOCS_URL}>
       <ClaimWarning />
       <Flex
         width="100%"
@@ -345,8 +335,7 @@ const LimitOrders = () => {
         justifyContent="center"
         position="relative"
         mb={isSideFooter ? null : '24px'}
-        mt={isChartExpanded ? '24px' : null}
-      >
+        mt={isChartExpanded ? '24px' : null}>
         {!isMobile && (
           <Flex width={isChartExpanded ? '100%' : '50%'} maxWidth="928px" flexDirection="column">
             <PriceChartContainer
@@ -440,8 +429,7 @@ const LimitOrders = () => {
                         onClick={handleApprove}
                         id="enable-order-button"
                         width="100%"
-                        disabled={approvalSubmitted}
-                      >
+                        disabled={approvalSubmitted}>
                         {approvalSubmitted
                           ? t('Enabling %asset%', { asset: currencies.input?.symbol })
                           : t('Enable %asset%', { asset: currencies.input?.symbol })}
@@ -460,8 +448,7 @@ const LimitOrders = () => {
                         }}
                         id="place-order-button"
                         width="100%"
-                        disabled={!!inputError || realExecutionPriceAsString === 'never executes'}
-                      >
+                        disabled={!!inputError || realExecutionPriceAsString === 'never executes'}>
                         {inputError || realExecutionPriceAsString === 'never executes'
                           ? inputError || t("Can't execute this order")
                           : t('Place an Order')}

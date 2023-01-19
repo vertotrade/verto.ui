@@ -122,8 +122,7 @@ const CollectRoundWinningsModal: React.FC<React.PropsWithChildren<InjectedModalP
         <Button
           onClick={handleClick}
           isLoading={isFetching}
-          endIcon={isFetching ? <AutoRenewIcon spin width="24px" color="white" /> : null}
-        >
+          endIcon={isFetching ? <AutoRenewIcon spin width="24px" color="white" /> : null}>
           {t('Download .CSV')}
         </Button>
       </ModalBody>

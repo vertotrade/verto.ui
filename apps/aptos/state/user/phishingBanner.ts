@@ -5,7 +5,7 @@ import { atomWithStorage } from 'jotai/utils'
 const pishingBannerAtom = atomWithStorage<number>('pcs:phishing-banner', 0)
 
 const hidePhishingBannerAtom = atom(
-  (get) => {
+  get => {
     const now = Date.now()
     const last = get(pishingBannerAtom)
     return last ? differenceInDays(now, last) >= 1 : true

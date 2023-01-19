@@ -112,7 +112,7 @@ function CurrencySearch({
   const filteredTokens: Token[] = useMemo(() => {
     const filterToken = createFilterToken(debouncedQuery)
     return Object.values(allTokens)
-      .filter((token) => token.address !== APTOS_COIN)
+      .filter(token => token.address !== APTOS_COIN)
       .filter(filterToken)
   }, [allTokens, debouncedQuery])
 
@@ -143,7 +143,7 @@ function CurrencySearch({
     if (!isMobile) inputRef.current?.focus()
   }, [isMobile])
 
-  const handleInput = useCallback((event) => {
+  const handleInput = useCallback(event => {
     const input = event.target.value
     setSearchQuery(input)
     fixedList.current?.scrollTo(0)

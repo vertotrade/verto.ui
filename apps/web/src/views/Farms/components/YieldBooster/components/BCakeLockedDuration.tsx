@@ -50,7 +50,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
           </Text>
         </Flex>
         <Flex flexWrap="wrap" justifyContent="space-between">
-          {DURATIONS.map((week) => {
+          {DURATIONS.map(week => {
             const weekSeconds = weeksToSeconds(week)
             return (
               <Button
@@ -62,8 +62,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
                 pr="12px"
                 scale="sm"
                 disabled={weekSeconds > maxAvailableDuration}
-                variant={weekSeconds === duration ? 'subtle' : 'light'}
-              >
+                variant={weekSeconds === duration ? 'subtle' : 'light'}>
                 {week}W
               </Button>
             )
@@ -78,7 +77,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
             pattern="^[0-9]+$"
             inputMode="numeric"
             scale="sm"
-            onChange={(e) => {
+            onChange={e => {
               const weeks = _toNumber(e?.target?.value)
               if (e.currentTarget.validity.valid && weeks < 53) {
                 setDuration(weeksToSeconds(_toNumber(e?.target?.value)))
@@ -91,8 +90,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
             top="8px"
             right="0px"
             color={theme.colors.text}
-            style={{ textAlign: 'center' }}
-          >
+            style={{ textAlign: 'center' }}>
             {t('Weeks')}
           </Box>
         </Box>
@@ -105,8 +103,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
           scale="sm"
           disabled={currentDuration === 0}
           variant="tertiary"
-          width="50%"
-        >
+          width="50%">
           {t('My Duration')}
         </Button>
       </Flex>

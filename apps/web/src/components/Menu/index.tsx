@@ -13,7 +13,7 @@ import GlobalSettings from './GlobalSettings'
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
 import { SettingsMode } from './GlobalSettings/types'
 
-const Menu = (props) => {
+const Menu = props => {
   const { isDark, setTheme } = useTheme()
   const cakePriceUsd = useCakeBusdPrice({ forceMainnet: true })
   const { currentLanguage, setLanguage, t } = useTranslation()
@@ -36,7 +36,7 @@ const Menu = (props) => {
   return (
     <>
       <UikitMenu
-        linkComponent={(linkProps) => {
+        linkComponent={linkProps => {
           return <NextLinkFromReactRouter to={linkProps.href} {...linkProps} prefetch={false} />
         }}
         rightSide={

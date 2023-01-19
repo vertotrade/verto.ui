@@ -42,7 +42,7 @@ export const useCakeEnable = (enableAmount: BigNumber) => {
     }
     setPendingEnableTx(true)
     swapCallback()
-      .then((hash) => {
+      .then(hash => {
         setTransactionHash(hash)
       })
       .catch(() => {

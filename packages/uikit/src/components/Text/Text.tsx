@@ -10,7 +10,7 @@ interface ThemedProps extends TextProps {
 const getColor = ({ color, theme }: ThemedProps) => {
   const value = getThemeValue(theme, `colors.${color}`, color);
 
-  if (value.includes('gradient')) {
+  if (value.includes("gradient")) {
     return `
       background: ${value};
       -webkit-background-clip: text;

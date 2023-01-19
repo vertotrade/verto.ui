@@ -87,8 +87,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
                   key={index}
                   variant={index + 1 === ticketsNumber ? 'primary' : 'tertiary'}
                   onClick={() => setTicketsNumber(index + 1)}
-                  disabled={index + 1 > maxBuyTickets}
-                >
+                  disabled={index + 1 > maxBuyTickets}>
                   {index + 1}
                 </Button>
               ))}
@@ -113,8 +112,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
               justifyContent="space-between"
               font-size="14px"
               color="textSubtle"
-              borderBottom={`1px solid ${theme.colors.cardBorder}`}
-            >
+              borderBottom={`1px solid ${theme.colors.cardBorder}`}>
               <Text font-size="14px" color="textSubtle">
                 {t('Your remaining limit')}
               </Text>
@@ -136,8 +134,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
             background={theme.colors.background}
             borderBottom={`1px solid ${theme.colors.cardBorder}`}
             borderTop={`1px solid ${theme.colors.cardBorder}`}
-            alignItems="start"
-          >
+            alignItems="start">
             <Box>
               <InfoIcon width="20px" mt="4px" mr="10px" color="textSubtle" />
             </Box>
@@ -159,8 +156,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
             <Button
               disabled={isCakeBalanceInsufficient}
               onClick={() => buyTicketCallBack({ ticketsNumber })}
-              width="100%"
-            >
+              width="100%">
               {isCakeBalanceInsufficient ? t('Insufficient Balance') : t('Confirm')}
             </Button>
           </Box>

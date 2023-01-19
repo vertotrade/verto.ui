@@ -43,7 +43,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
         </Text>
       </Flex>
       <HarvestActionContainer earnings={earnings} pid={pid} lpAddress={lpAddress}>
-        {(props) => <HarvestAction {...props} />}
+        {props => <HarvestAction {...props} />}
       </HarvestActionContainer>
       {isReady ? (
         <Flex>
@@ -61,7 +61,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
         <ConnectWalletButton mt="8px" width="100%" />
       ) : (
         <StakedContainer {...farm} lpLabel={lpLabel} addLiquidityUrl={addLiquidityUrl} displayApr={displayApr}>
-          {(props) => <StakeAction {...props} />}
+          {props => <StakeAction {...props} />}
         </StakedContainer>
       )}
     </Action>

@@ -32,7 +32,7 @@ const CollectionTraits: React.FC<React.PropsWithChildren<CollectionTraitsProps>>
             </tr>
           </thead>
           <tbody>
-            {times(19).map((bunnyCnt) => (
+            {times(19).map(bunnyCnt => (
               <tr key={bunnyCnt}>
                 <Td>
                   <Skeleton width="100px" />
@@ -59,7 +59,7 @@ const CollectionTraits: React.FC<React.PropsWithChildren<CollectionTraitsProps>>
 
           // Parse the distribution values into an array to make it easier to sort
           const traitValues: { value: string; count: number; rarity: number }[] = Object.keys(data[traitType]).map(
-            (traitValue) => {
+            traitValue => {
               const count = data[traitType][traitValue]
               const rarity = (count / total) * 100
 
@@ -69,7 +69,7 @@ const CollectionTraits: React.FC<React.PropsWithChildren<CollectionTraitsProps>>
           const sortType = raritySort[traitType] || 'desc'
 
           const toggleRaritySort = () => {
-            setRaritySort((prevRaritySort) => {
+            setRaritySort(prevRaritySort => {
               if (!prevRaritySort[traitType]) {
                 return {
                   ...prevRaritySort,

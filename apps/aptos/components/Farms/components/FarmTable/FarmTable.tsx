@@ -69,7 +69,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
 
   const columns = useMemo(
     () =>
-      DesktopColumnSchema.map((column) => ({
+      DesktopColumnSchema.map(column => ({
         id: column.id,
         name: column.name,
         label: column.label,
@@ -93,12 +93,12 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
     [],
   )
 
-  const getFarmEarnings = (farm) => {
+  const getFarmEarnings = farm => {
     const earnings = new BigNumber(farm?.userData?.earnings)
     return getBalanceNumber(earnings, FARM_DEFAULT_DECIMALS)
   }
 
-  const generateRow = (farm) => {
+  const generateRow = farm => {
     const { token, quoteToken } = farm
     const tokenAddress = token?.address
     const quoteTokenAddress = quoteToken?.address
@@ -147,12 +147,12 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
     return row
   }
 
-  const rowData = farms?.map((farm) => generateRow(farm))
+  const rowData = farms?.map(farm => generateRow(farm))
 
-  const generateSortedRow = (row) => {
+  const generateSortedRow = row => {
     // @ts-ignore
     const newRow: RowProps = {}
-    columns.forEach((column) => {
+    columns.forEach(column => {
       if (!(column.name in row)) {
         throw new Error(`Invalid row data, ${column.name} not found`)
       }
@@ -170,7 +170,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
         <TableWrapper ref={tableWrapperEl}>
           <StyledTable>
             <TableBody>
-              {sortedRows?.map((row) => (
+              {sortedRows?.map(row => (
                 <Row {...row} userDataReady={userDataReady} key={`table-row-${row.farm.pid}`} />
               ))}
             </TableBody>

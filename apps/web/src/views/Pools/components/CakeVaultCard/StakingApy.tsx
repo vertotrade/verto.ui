@@ -33,7 +33,7 @@ export const StakingApy = memo(({ pool }: { pool: Pool.DeserializedPool<Token> }
           <AprLabelContainer alignItems="center" justifyContent="flex-start">
             <Balance fontSize="16px" value={parseFloat(flexibleApy)} decimals={2} unit="%" bold />
             <Button
-              onClick={(e) => {
+              onClick={e => {
                 e.stopPropagation()
                 onPresentFlexibleApyModal()
               }}
@@ -41,8 +41,7 @@ export const StakingApy = memo(({ pool }: { pool: Pool.DeserializedPool<Token> }
               width="20px"
               height="20px"
               padding="0px"
-              marginLeft="4px"
-            >
+              marginLeft="4px">
               <CalculateIcon color="textSubtle" width="20px" />
             </Button>
           </AprLabelContainer>
@@ -63,7 +62,7 @@ export const StakingApy = memo(({ pool }: { pool: Pool.DeserializedPool<Token> }
               <AprLabelContainer alignItems="center">
                 <Balance fontSize="16px" value={parseFloat(lockedApy)} decimals={2} unit="%" bold />
                 <Button
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation()
                     onPresentLockedApyModal()
                   }}
@@ -71,8 +70,7 @@ export const StakingApy = memo(({ pool }: { pool: Pool.DeserializedPool<Token> }
                   width="20px"
                   height="20px"
                   padding="0px"
-                  marginLeft="4px"
-                >
+                  marginLeft="4px">
                   <CalculateIcon color="textSubtle" width="20px" />
                 </Button>
               </AprLabelContainer>

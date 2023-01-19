@@ -31,7 +31,7 @@ const FoldableText: React.FC<React.PropsWithChildren<FoldableTextProps>> = ({ ti
 
   return (
     <Flex {...props} flexDirection="column">
-      <Wrapper justifyContent="space-between" alignItems="center" pb="16px" onClick={() => setIsExpanded((s) => !s)}>
+      <Wrapper justifyContent="space-between" alignItems="center" pb="16px" onClick={() => setIsExpanded(s => !s)}>
         <Text fontWeight="bold">{title}</Text>
         <StyledExpandableLabelWrapper>
           <ExpandableLabel expanded={isExpanded}>{isExpanded ? t('Hide') : t('Details')}</ExpandableLabel>

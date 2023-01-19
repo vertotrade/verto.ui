@@ -11,7 +11,7 @@ import multicall from 'utils/multicall'
 // remove aBNBc because the token has been exploited
 const tokensToTest = omitBy(
   bscTokens,
-  (token) =>
+  token =>
     token.symbol.toLowerCase() === 'bnb' ||
     token.symbol.toLowerCase() === 'one' ||
     token.symbol.toLowerCase() === 'bttold' ||

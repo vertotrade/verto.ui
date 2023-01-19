@@ -15,9 +15,9 @@ export const getFarmFromTokenAddress = (
   tokenAddress: string,
   preferredQuoteTokensAddress: string[] = [BUSD[ChainId.BSC].address, WBNB[ChainId.BSC].address],
 ): FarmData => {
-  const farmsWithToken = farms.filter((farm) => equalsIgnoreCase(farm.token.address, tokenAddress))
-  const filteredFarm = farmsWithToken.find((farm) => {
-    return preferredQuoteTokensAddress.some((quoteTokenAddress) => {
+  const farmsWithToken = farms.filter(farm => equalsIgnoreCase(farm.token.address, tokenAddress))
+  const filteredFarm = farmsWithToken.find(farm => {
+    return preferredQuoteTokensAddress.some(quoteTokenAddress => {
       return equalsIgnoreCase(farm.quoteToken.address, quoteTokenAddress)
     })
   })

@@ -18,8 +18,7 @@ const ArtistSection = () => {
       <LandingBodyWrapper
         py={['64px', null, null, '100px']}
         alignItems={['center']}
-        flexDirection={['column', null, null, 'row']}
-      >
+        flexDirection={['column', null, null, 'row']}>
         <Box mb={['24px', null, null, '-3px']} maxWidth={['192px', null, '250px', '100%']}>
           <img src={image.src} alt={image.alt} />
         </Box>
@@ -28,8 +27,7 @@ const ArtistSection = () => {
             maxWidth="550px"
             flexDirection="column"
             alignSelf={['flex-start', null, null, 'center']}
-            mb="40px"
-          >
+            mb="40px">
             <Text fontSize="40px" mr="4px" bold>
               {`${headingText}, `}{' '}
               <Text as="span" fontSize="40px" color="secondary" bold>
@@ -37,7 +35,7 @@ const ArtistSection = () => {
               </Text>
             </Text>
 
-            {bodyText.map((text) => (
+            {bodyText.map(text => (
               <Text key={text} color="textSubtle">
                 {text}
               </Text>
@@ -48,16 +46,14 @@ const ArtistSection = () => {
             flexDirection={['column', null, null, 'row']}
             justifyContent={['center', null, null, 'flex-start']}
             alignItems="center"
-            mx={['10%', null, null, '0']}
-          >
-            {buttons.map((button) => (
+            mx={['10%', null, null, '0']}>
+            {buttons.map(button => (
               <StyledSocialButton
                 key={button.text}
                 mb={['16px', null, null, '0']}
                 mr={['0', null, null, '16px']}
                 external={button.external}
-                href={button.to}
-              >
+                href={button.to}>
                 <Button width="100%" startIcon={button.icon}>
                   <Text color="card" bold fontSize="16px">
                     {button.text}

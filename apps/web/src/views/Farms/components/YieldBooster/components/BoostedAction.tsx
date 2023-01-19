@@ -92,8 +92,7 @@ const BoostedAction: React.FunctionComponent<BoostedActionPropsType> = ({
           <ActionButton
             title={`${boostMultiplierDisplay}x`}
             description={t('Stake LP tokens to start boosting')}
-            disabled
-          >
+            disabled>
             {t('Boost')}
           </ActionButton>
         )
@@ -105,8 +104,7 @@ const BoostedAction: React.FunctionComponent<BoostedActionPropsType> = ({
             title={`${boostMultiplierDisplay}x`}
             isLoading={isConfirming}
             description={t('Yield booster available')}
-            endIcon={isConfirming && <AutoRenewIcon spin color="currentColor" />}
-          >
+            endIcon={isConfirming && <AutoRenewIcon spin color="currentColor" />}>
             {t('Boost')}
           </ActionButton>
         )
@@ -119,8 +117,7 @@ const BoostedAction: React.FunctionComponent<BoostedActionPropsType> = ({
             title={`${boostMultiplierDisplay}x`}
             isLoading={isConfirming}
             description={t('Active')}
-            endIcon={isConfirming && <AutoRenewIcon spin color="currentColor" />}
-          >
+            endIcon={isConfirming && <AutoRenewIcon spin color="currentColor" />}>
             {t('Unset')}
           </ActionButton>
         )
@@ -129,8 +126,7 @@ const BoostedAction: React.FunctionComponent<BoostedActionPropsType> = ({
           <ActionButton
             title={`${boostMultiplierDisplay}x`}
             description={t('Unset other boosters to activate')}
-            disabled
-          >
+            disabled>
             {t('Boost')}
           </ActionButton>
         )

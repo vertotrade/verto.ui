@@ -85,8 +85,7 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
       onBack={handleBack}
       onDismiss={onDismiss}
       hideCloseButton={!isStartView}
-      headerBackground={theme.colors.gradientCardHeader}
-    >
+      headerBackground={theme.colors.gradientCardHeader}>
       <Box mb="24px">
         {view === ConfirmVoteView.MAIN && (
           <MainView

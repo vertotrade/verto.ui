@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 166 88" {...props}>
       <ellipse
@@ -78,8 +78,7 @@ const Prizes: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
         y="-20.4542"
         width="121.076"
         height="120.71"
-        fill="black"
-      >
+        fill="black">
         <rect fill="white" x="-14.7755" y="-20.4542" width="121.076" height="120.71" />
         <path
           fillRule="evenodd"

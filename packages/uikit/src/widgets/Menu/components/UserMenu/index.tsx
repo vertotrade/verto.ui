@@ -16,7 +16,7 @@ interface ThemedUserMenuProps extends FlexProps {
 export const StyledUserMenu = styled(Flex)<ThemedUserMenuProps>`
   align-items: center;
   background: ${({ theme }) => theme.colors.gradientDarkBlue};
-  border: 1px solid ${({ $isOpen, theme }) => $isOpen ? theme.colors.primary : 'transparent'};
+  border: 1px solid ${({ $isOpen, theme }) => ($isOpen ? theme.colors.primary : "transparent")};
   border-radius: 16px;
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
   color: ${({ theme }) => theme.colors.primary};

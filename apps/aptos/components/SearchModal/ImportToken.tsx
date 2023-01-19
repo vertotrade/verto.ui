@@ -40,7 +40,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
         </Text>
       </Message>
 
-      {tokens.map((token) => {
+      {tokens.map(token => {
         const list = chainId && inactiveTokenList?.[chainId]?.[token.address]?.list
         const address = token.address ? `${truncateHash(token.address)}` : null
         return (
@@ -50,8 +50,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
                 variant="success"
                 outline
                 scale="sm"
-                startIcon={list.logoURI && <ListLogo logoURI={list.logoURI} size="12px" />}
-              >
+                startIcon={list.logoURI && <ListLogo logoURI={list.logoURI} size="12px" />}>
                 {t('via')} {list.name}
               </Tag>
             ) : (
@@ -96,7 +95,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
           variant="danger"
           disabled={!confirmed}
           onClick={() => {
-            tokens.forEach((token) => {
+            tokens.forEach(token => {
               const inactiveToken = chainId && inactiveTokenList?.[token.chainId]?.[token.address]
               let tokenToAdd = token
               if (inactiveToken) {
@@ -112,8 +111,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
               handleCurrencySelect(tokens[0])
             }
           }}
-          className=".token-dismiss-button"
-        >
+          className=".token-dismiss-button">
           {t('Import')}
         </Button>
       </Flex>

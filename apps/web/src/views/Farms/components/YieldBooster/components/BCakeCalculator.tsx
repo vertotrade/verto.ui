@@ -133,8 +133,7 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
                 p="4px 16px"
                 width="68px"
                 variant="tertiary"
-                onClick={() => setPrincipalFromUSDValue('100')}
-              >
+                onClick={() => setPrincipalFromUSDValue('100')}>
                 $100
               </Button>
               <Button
@@ -142,8 +141,7 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
                 p="4px 16px"
                 width="68px"
                 variant="tertiary"
-                onClick={() => setPrincipalFromUSDValue('1000')}
-              >
+                onClick={() => setPrincipalFromUSDValue('1000')}>
                 $1000
               </Button>
               {myBalanceTooltipVisible && myBalanceTooltip}
@@ -157,8 +155,7 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
                   style={{ textTransform: 'uppercase' }}
                   onClick={() =>
                     setPrincipalFromUSDValue(getBalanceNumber(lockedAmount.times(earningTokenPrice)).toFixed(2))
-                  }
-                >
+                  }>
                   {t('My Balance')}
                 </Button>
               </Box>

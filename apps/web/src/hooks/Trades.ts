@@ -34,7 +34,7 @@ export function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): P
   }, [chainId, tokenA, tokenB])
 
   const basePairs: [Token, Token][] = useMemo(
-    () => flatMap(bases, (base): [Token, Token][] => bases.map((otherBase) => [base, otherBase])),
+    () => flatMap(bases, (base): [Token, Token][] => bases.map(otherBase => [base, otherBase])),
     [bases],
   )
 
@@ -62,8 +62,8 @@ export function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): P
 
               if (!customBasesA && !customBasesB) return true
 
-              if (customBasesA && !customBasesA.find((base) => tokenB_.equals(base))) return false
-              if (customBasesB && !customBasesB.find((base) => tokenA_.equals(base))) return false
+              if (customBasesA && !customBasesA.find(base => tokenB_.equals(base))) return false
+              if (customBasesB && !customBasesB.find(base => tokenA_.equals(base))) return false
 
               return true
             })

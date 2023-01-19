@@ -55,7 +55,7 @@ const usePoolTokenPercentage = ({ userPoolBalance, totalPoolTokens }) => {
   )
 }
 
-const withLPValues = (Component) =>
+const withLPValues = Component =>
   memo(({ pair, mb }: { pair: Pair; mb?: string }) => {
     const currency0 = pair.token0
     const currency1 = pair.token1

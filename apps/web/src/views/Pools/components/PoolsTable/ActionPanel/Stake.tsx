@@ -285,8 +285,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                     isDataReady={Number.isFinite(vaultKey ? stakedAutoDollarValue : stakedTokenDollarBalance)}
                     width={120}
                     wrapperProps={{ height: '20px' }}
-                    skeletonTop="2px"
-                  >
+                    skeletonTop="2px">
                     <Balance
                       fontSize="12px"
                       display="inline"
@@ -322,8 +321,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                   mt="5px"
                   bold
                   fontSize="20px"
-                  color={vaultPosition >= VaultPosition.LockedEnd ? '#D67E0A' : 'text'}
-                >
+                  color={vaultPosition >= VaultPosition.LockedEnd ? '#D67E0A' : 'text'}>
                   {vaultPosition >= VaultPosition.LockedEnd ? t('Unlocked') : remainingTime}
                   {tagTooltipVisibleOfBurn && tagTooltipOfBurn}
                   <span ref={tagTargetRefOfBurn}>
@@ -334,8 +332,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                   height="20px"
                   fontSize="12px"
                   display="inline"
-                  color={vaultPosition >= VaultPosition.LockedEnd ? '#D67E0A' : 'text'}
-                >
+                  color={vaultPosition >= VaultPosition.LockedEnd ? '#D67E0A' : 'text'}>
                   {t('On %date%', { date: lockEndDate })}
                 </Text>
                 {vaultPosition === VaultPosition.Locked && (
@@ -345,8 +342,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                       lockStartTime={(vaultData as DeserializedLockedCakeVault).userData.lockStartTime}
                       stakingToken={stakingToken}
                       currentBalance={stakingTokenBalance}
-                      currentLockedAmount={cakeAsNumberBalance}
-                    >
+                      currentLockedAmount={cakeAsNumberBalance}>
                       {t('Extend')}
                     </ExtendButton>
                   </Box>
@@ -368,8 +364,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                   <IconButton
                     variant="secondary"
                     onClick={stakingTokenBalance.gt(0) ? onStake : onPresentTokenRequired}
-                    disabled={isFinished}
-                  >
+                    disabled={isFinished}>
                     <AddIcon color="primary" width="14px" />
                   </IconButton>
                 )}
@@ -431,8 +426,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             width="100%"
             mt={['0', '0', '24px', '24px', '24px']}
             ml={['0', '0', '12px', '12px', '12px', '32px']}
-            mr={['0', '0', '12px', '12px', '12px', '0px']}
-          >
+            mr={['0', '0', '12px', '12px', '12px', '0px']}>
             <AfterLockedActions
               isInline
               position={vaultPosition}
@@ -448,8 +442,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             width="100%"
             mt={['0', '0', '24px', '24px', '24px']}
             ml={['0', '0', '12px', '12px', '32px']}
-            mr={['0', '0', '12px', '12px', '0']}
-          >
+            mr={['0', '0', '12px', '12px', '0']}>
             <ConvertToLock stakingToken={stakingToken} currentStakedAmount={cakeAsNumberBalance} isInline />
           </Box>
         )}
@@ -478,8 +471,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             width="100%"
             onClick={stakingTokenBalance.gt(0) ? onStake : onPresentTokenRequired}
             variant="secondary"
-            disabled={isFinished}
-          >
+            disabled={isFinished}>
             {t('Stake')}
           </Button>
         )}

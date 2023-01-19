@@ -31,11 +31,10 @@ export default function Manage({
     <ModalBody style={{ overflow: 'visible' }}>
       <StyledButtonMenu
         activeIndex={showLists ? 0 : 1}
-        onItemClick={() => setShowLists((prev) => !prev)}
+        onItemClick={() => setShowLists(prev => !prev)}
         scale="sm"
         variant="subtle"
-        mb="32px"
-      >
+        mb="32px">
         {[
           <ButtonMenuItem key="0" width="50%">
             {t('Lists')}

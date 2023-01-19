@@ -53,15 +53,14 @@ const EventStepsSection: React.FC<React.PropsWithChildren<EventStepsProps>> = ({
                   key={step.id}
                   index={index}
                   statusFirstPart={step.status}
-                  statusSecondPart={stepsConfig[index + 1]?.status}
-                >
+                  statusSecondPart={stepsConfig[index + 1]?.status}>
                   <Card>
                     <CardBody>
                       <Box maxWidth="388px">
                         <Text color="secondary" fontSize="20px" mb="16px" bold>
                           {step.title}
                         </Text>
-                        {step.bodyText.map((text) => (
+                        {step.bodyText.map(text => (
                           <Text key={text} color="textSubtle" mb="16px">
                             {text}
                           </Text>

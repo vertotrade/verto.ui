@@ -23,12 +23,12 @@ export async function connect({ connector, networkName }: ConnectArgs): Promise<
   if (connector.id === activeConnector?.id) throw new ConnectorAlreadyConnectedError()
 
   try {
-    client.setState((x) => ({ ...x, status: 'connecting' }))
+    client.setState(x => ({ ...x, status: 'connecting' }))
 
     const data = await connector.connect({ networkName })
 
     client.setLastUsedConnector(connector.id)
-    client.setState((x) => ({
+    client.setState(x => ({
       ...x,
       connector,
       data,
@@ -41,7 +41,7 @@ export async function connect({ connector, networkName }: ConnectArgs): Promise<
       connector,
     } as const
   } catch (err) {
-    client.setState((x) => {
+    client.setState(x => {
       return {
         ...x,
         // Keep existing connector connected in case of error

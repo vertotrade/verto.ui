@@ -29,7 +29,7 @@ const BasicChart = ({
     timeWindow,
     currentSwapPrice,
   })
-  const mountedRef = useRef(false);
+  const mountedRef = useRef(false)
   const [hoverValue, setHoverValue] = useState<number | undefined>()
   const [hoverDate, setHoverDate] = useState<string | undefined>()
   const valueToDisplay = hoverValue || pairPrices[pairPrices.length - 1]?.value
@@ -54,7 +54,7 @@ const BasicChart = ({
     pairPrices &&
     pairPrices.length > 0 &&
     pairPrices.every(
-      (price) => !price.value || price.value === 0 || price.value === Infinity || Number.isNaN(price.value),
+      price => !price.value || price.value === 0 || price.value === Infinity || Number.isNaN(price.value),
     )
 
   useEffect(() => {
@@ -65,13 +65,13 @@ const BasicChart = ({
     }
   }, [])
 
-  const onSetHoverValue = useCallback((arg) => {
+  const onSetHoverValue = useCallback(arg => {
     if (mountedRef.current) {
       setHoverValue(arg)
     }
   }, [])
 
-  const onSetHoverDate = useCallback((arg) => {
+  const onSetHoverDate = useCallback(arg => {
     if (mountedRef.current) {
       setHoverDate(arg)
     }
@@ -94,14 +94,12 @@ const BasicChart = ({
         flexDirection={['column', null, null, null, null, null, 'row']}
         alignItems={['flex-start', null, null, null, null, null, 'center']}
         justifyContent="space-between"
-        px="24px"
-      >
+        px="24px">
         <Flex flexDirection="column" pt="12px">
           <PairPriceDisplay
             value={pairPrices?.length > 0 && valueToDisplay}
             inputSymbol={inputCurrency?.symbol}
-            outputSymbol={outputCurrency?.symbol}
-          >
+            outputSymbol={outputCurrency?.symbol}>
             <Text color={isChangePositive ? 'success' : 'failure'} fontSize="20px" ml="4px" bold>
               {`${isChangePositive ? '+' : ''}${changeValue.toFixed(3)} (${changePercentage}%)`}
             </Text>

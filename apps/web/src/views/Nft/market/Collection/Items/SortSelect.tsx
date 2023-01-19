@@ -20,7 +20,7 @@ const SortSelect: React.FC<React.PropsWithChildren<{ collectionAddress: string }
   ]
 
   const defaultOptionIndex = sortByItems.findIndex(
-    (option) => option.value.field === selectedOrder.field && option.value.direction === selectedOrder.direction,
+    option => option.value.field === selectedOrder.field && option.value.direction === selectedOrder.direction,
   )
 
   return (

@@ -52,14 +52,14 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
 
   const formattedTokens = useMemo(() => {
     return Object.values(allTokens)
-      .map((token) => token.data)
-      .filter((token) => token.name !== 'unknown')
+      .map(token => token.data)
+      .filter(token => token.name !== 'unknown')
   }, [allTokens])
 
   const { poolsData } = usePoolsData()
 
   const somePoolsAreLoading = useMemo(() => {
-    return poolsData.some((pool) => !pool?.token0Price)
+    return poolsData.some(pool => !pool?.token0Price)
   }, [poolsData])
 
   return (

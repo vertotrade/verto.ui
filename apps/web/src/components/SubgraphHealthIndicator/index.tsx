@@ -132,8 +132,7 @@ const SubgraphHealthIndicator: React.FC<
       bottom="calc(55px + env(safe-area-inset-bottom))"
       right="5%"
       ref={targetRef}
-      data-test="subgraph-health-indicator"
-    >
+      data-test="subgraph-health-indicator">
       {tooltipVisible && tooltip}
       <StyledCard>
         <IndicatorWrapper alignItems="center" p="10px">

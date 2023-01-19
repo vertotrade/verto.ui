@@ -6,7 +6,7 @@ import { BIG_ZERO } from '@verto/utils/bigNumber'
 
 export const fetchPublicVaultData = async (cakeVaultAddress: string) => {
   try {
-    const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map((method) => ({
+    const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map(method => ({
       address: cakeVaultAddress,
       name: method,
     }))

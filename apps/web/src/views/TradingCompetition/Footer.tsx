@@ -34,8 +34,7 @@ const Footer: React.FC<
         dividerPosition="top"
         dividerFill={{ light: '#191326' }}
         clipFill={{ light: theme.colors.background }}
-        background={DARKBG}
-      >
+        background={DARKBG}>
         <Flex alignItems="center">
           <BottomBunnyWrapper>
             <Image src={image} alt="trading-competition-footer" width={254} height={227} />

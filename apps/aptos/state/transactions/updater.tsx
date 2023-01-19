@@ -27,13 +27,13 @@ export default function Updater(): null {
     queries: useMemo(
       () =>
         Object.keys(transactions)
-          .filter((hash) => shouldCheck(transactions[hash]))
-          .map((hash) => {
+          .filter(hash => shouldCheck(transactions[hash]))
+          .map(hash => {
             return {
               enabled: Boolean(chainId && provider),
               queryFn: () => provider.waitForTransactionWithResult(hash),
               queryKey: [{ entity: 'transaction', hash, networkName }],
-              onSuccess: (receipt) => {
+              onSuccess: receipt => {
                 if (receipt && isUserTransaction(receipt)) {
                   dispatch(
                     finalizeTransaction({
@@ -55,7 +55,7 @@ export default function Updater(): null {
                   toast(t('Transaction receipt'), <ToastDescriptionWithTx txHash={receipt.hash} />)
                 }
               },
-              onError: (err) => {
+              onError: err => {
                 console.error(`failed to check transaction hash: ${hash}`, err)
               },
             }

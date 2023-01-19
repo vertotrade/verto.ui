@@ -62,8 +62,7 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
         alignItems="center"
         height="72px"
         px="24px"
-        borderBottom={`1px solid ${theme.colors.cardBorder}`}
-      >
+        borderBottom={`1px solid ${theme.colors.cardBorder}`}>
         <SellIcon width="24px" height="24px" />
         <Text bold>{t('Owner')}</Text>
       </Grid>
@@ -113,8 +112,7 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
                   scale="sm"
                   variant="secondary"
                   maxWidth="128px"
-                  onClick={onPresentAdjustPriceModal}
-                >
+                  onClick={onPresentAdjustPriceModal}>
                   {nft.marketData?.isTradable ? t('Manage') : t('Sell')}
                 </Button>
               ) : (
@@ -123,8 +121,7 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
                   scale="sm"
                   variant="secondary"
                   maxWidth="128px"
-                  onClick={onPresentBuyModal}
-                >
+                  onClick={onPresentBuyModal}>
                   {t('Buy')}
                 </Button>
               )}

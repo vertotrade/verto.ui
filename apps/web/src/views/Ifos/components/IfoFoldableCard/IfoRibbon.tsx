@@ -69,8 +69,7 @@ export const IfoRibbon = ({ publicIfoData }: { publicIfoData: PublicIfoData }) =
         flexDirection="column"
         minHeight={['48px', '48px', '48px', '75px']}
         position="relative"
-        overflow="hidden"
-      >
+        overflow="hidden">
         {Component}
       </Flex>
     </>

@@ -23,8 +23,8 @@ const allowedOrigin = /[^\w](?:verto\.run|localhost:3000|vertotrade\.finance|ver
 router.get('/apr', async ({ query }) => {
   if (typeof query?.key === 'string' && query.key === FORCE_UPDATE_KEY) {
     try {
-      const result = await Promise.allSettled(farmFetcher.supportedChainId.map((id) => saveLPsAPR(id)))
-      return json(result.map((r) => r))
+      const result = await Promise.allSettled(farmFetcher.supportedChainId.map(id => saveLPsAPR(id)))
+      return json(result.map(r => r))
     } catch (err) {
       error(500, { err })
     }
@@ -60,13 +60,13 @@ router.all('*', () => missing('Not found'))
 
 router.options('*', handleCors(allowedOrigin))
 
-addEventListener('fetch', (event) =>
+addEventListener('fetch', event =>
   event.respondWith(
-    router.handle(event.request, event).then((res) => wrapCorsHeader(event.request, res, { allowedOrigin })),
+    router.handle(event.request, event).then(res => wrapCorsHeader(event.request, res, { allowedOrigin })),
   ),
 )
 
-addEventListener('scheduled', (event) => {
+addEventListener('scheduled', event => {
   event.waitUntil(handleScheduled(event))
 })
 
@@ -75,13 +75,13 @@ async function handleScheduled(event: ScheduledEvent) {
   switch (event.cron) {
     case '*/1 * * * *':
     case '*/2 * * * *': {
-      const result = await Promise.allSettled(farmFetcher.supportedChainId.map((id) => saveFarms(id, event)))
-      console.log(result.map((r) => r))
+      const result = await Promise.allSettled(farmFetcher.supportedChainId.map(id => saveFarms(id, event)))
+      console.log(result.map(r => r))
       return result
     }
     case '0 0 * * *': {
-      const result = await Promise.allSettled(farmFetcher.supportedChainId.map((id) => saveLPsAPR(id)))
-      console.log(result.map((r) => r))
+      const result = await Promise.allSettled(farmFetcher.supportedChainId.map(id => saveLPsAPR(id)))
+      console.log(result.map(r => r))
       return result
     }
     default:

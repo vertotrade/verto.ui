@@ -37,7 +37,7 @@ const AnimatedArrow: React.FC<React.PropsWithChildren<AnimatedArrowProps>> = ({ 
 
   // Trigger animation on state change
   useEffect(() => {
-    setKey((prevKey) => {
+    setKey(prevKey => {
       const prevId = parseInt(prevKey.split('-')[1], 10)
       return `roiArrow-${prevId + 1}`
     })

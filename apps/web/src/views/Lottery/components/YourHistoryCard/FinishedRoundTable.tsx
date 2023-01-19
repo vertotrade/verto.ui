@@ -24,7 +24,7 @@ const FinishedRoundTable: React.FC<React.PropsWithChildren<FinishedRoundTablePro
   const { t } = useTranslation()
   const userLotteryData = useGetUserLotteriesGraphData()
 
-  const filteredForClaimable = userLotteryData?.rounds.filter((round) => {
+  const filteredForClaimable = userLotteryData?.rounds.filter(round => {
     return round.status.toLowerCase() === LotteryStatus.CLAIMABLE
   })
 
@@ -48,7 +48,7 @@ const FinishedRoundTable: React.FC<React.PropsWithChildren<FinishedRoundTablePro
       </Grid>
       <Flex px="24px" pb="24px" flexDirection="column" overflowY="scroll" height="240px">
         {userLotteryData &&
-          sortedByRoundId.map((finishedRound) => (
+          sortedByRoundId.map(finishedRound => (
             <FinishedRoundRow
               key={finishedRound.lotteryId}
               roundId={finishedRound.lotteryId}

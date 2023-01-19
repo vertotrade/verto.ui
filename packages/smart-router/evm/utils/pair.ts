@@ -8,7 +8,7 @@ export function involvesToken(pair: Pair, token: Currency) {
 }
 
 export function includesPair(pairs: Pair[], pair: Pair) {
-  return pairs.some((p) => isSamePair(p, pair))
+  return pairs.some(p => isSamePair(p, pair))
 }
 
 export function isSamePair(one: Pair, another: Pair) {

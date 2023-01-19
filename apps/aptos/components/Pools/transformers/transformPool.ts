@@ -93,7 +93,7 @@ const transformPool = (
   const rewardPerSecond = _get(resource, 'data.reward_per_second')
 
   if (balances?.length) {
-    const stakingTokenBalance = balances.find((balance) => balance.type === `0x1::coin::CoinStore<${stakingAddress}>`)
+    const stakingTokenBalance = balances.find(balance => balance.type === `0x1::coin::CoinStore<${stakingAddress}>`)
     const amount = _get(stakingTokenBalance, 'data.coin.value')
     if (amount) {
       userData = { ...userData, stakingTokenBalance: new BigNumber(amount) }
@@ -101,7 +101,7 @@ const transformPool = (
 
     const resourceTypes = resource.type
     const foundStakedPoolBalance = balances.find(
-      (balance) => balance.type === resourceTypes.replace('PoolInfo', 'UserInfo'),
+      balance => balance.type === resourceTypes.replace('PoolInfo', 'UserInfo'),
     )
 
     if (foundStakedPoolBalance) {

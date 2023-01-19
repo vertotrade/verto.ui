@@ -178,8 +178,7 @@ export default function CurrencyInputPanel({
               if (!disableCurrencySelect) {
                 onPresentCurrencyModal()
               }
-            }}
-          >
+            }}>
             <Flex alignItems="center" justifyContent="space-between">
               {pair ? (
                 <DoubleCurrencyLogo currency0={pair.token0} currency1={pair.token1} size={16} margin />
@@ -229,8 +228,7 @@ export default function CurrencyInputPanel({
             onClick={!disabled && onMax}
             color="textSubtle"
             fontSize="14px"
-            style={{ display: 'inline', cursor: 'pointer' }}
-          >
+            style={{ display: 'inline', cursor: 'pointer' }}>
             {!hideBalance && !!currency
               ? t('Balance: %balance%', { balance: selectedCurrencyBalance?.toSignificant(6) ?? t('Loading') })
               : ' -'}
@@ -246,7 +244,7 @@ export default function CurrencyInputPanel({
               className="token-amount-input"
               value={value}
               onBlur={onInputBlur}
-              onUserInput={(val) => {
+              onUserInput={val => {
                 onUserInput(val)
                 setCurrentClickedPercent('')
               }}
@@ -267,7 +265,7 @@ export default function CurrencyInputPanel({
                 {maxAmount?.greaterThan(0) &&
                   showQuickInputButton &&
                   onPercentInput &&
-                  [25, 50, 75].map((percent) => {
+                  [25, 50, 75].map(percent => {
                     const isAtClickedPercent = currentClickedPercent === percent.toString()
                     const isAtCurrentPercent =
                       (maxAmount && value !== '0' && value === percentAmount[percent]) ||
@@ -283,15 +281,14 @@ export default function CurrencyInputPanel({
                         scale="xs"
                         mr="5px"
                         variant={isAtClickedPercent || isAtCurrentPercent ? 'primary' : 'secondary'}
-                        style={{ textTransform: 'uppercase' }}
-                      >
+                        style={{ textTransform: 'uppercase' }}>
                         {percent}%
                       </Button>
                     )
                   })}
                 {maxAmount?.greaterThan(0) && showMaxButton && (
                   <Button
-                    onClick={(e) => {
+                    onClick={e => {
                       e.stopPropagation()
                       e.preventDefault()
                       onMax?.()
@@ -299,8 +296,7 @@ export default function CurrencyInputPanel({
                     }}
                     scale="xs"
                     variant={isAtPercentMax ? 'primary' : 'secondary'}
-                    style={{ textTransform: 'uppercase' }}
-                  >
+                    style={{ textTransform: 'uppercase' }}>
                     {t('Max')}
                   </Button>
                 )}

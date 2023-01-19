@@ -68,8 +68,7 @@ const CollectibleRow: React.FC<React.PropsWithChildren<CollectibleRowProps>> = (
       px="16px"
       pb="8px"
       my="16px"
-      onClick={nft.location === NftLocation.PROFILE ? onPresentProfileNftModal : onPresentModal}
-    >
+      onClick={nft.location === NftLocation.PROFILE ? onPresentProfileNftModal : onPresentModal}>
       <SmallRoundedImage src={nft.image.thumbnail} width={64} height={64} mx="16px" />
       <Grid gridTemplateColumns="1fr 1fr">
         <Text bold>{nft.name}</Text>
@@ -131,7 +130,7 @@ const CollectiblesByLocation: React.FC<React.PropsWithChildren<CollectiblesByLoc
         </Text>
       </Grid>
       <ScrollableContainer>
-        {nfts.map((nft) => (
+        {nfts.map(nft => (
           <CollectibleRow key={nft.tokenId} nft={nft} lowestPrice={lowestPrice} onSuccessSale={onSuccessSale} />
         ))}
       </ScrollableContainer>
@@ -177,9 +176,9 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
   const forSaleFilter = getNftFilter(NftLocation.FORSALE)
   const profileFilter = getNftFilter(NftLocation.PROFILE)
 
-  const nftsInWallet = userNfts.filter((nft) => walletFilter(nft, collection.address, tokenId))
-  const nftsForSale = userNfts.filter((nft) => forSaleFilter(nft, collection.address, tokenId))
-  const profileNft = userNfts.filter((nft) => profileFilter(nft, collection.address, tokenId))
+  const nftsInWallet = userNfts.filter(nft => walletFilter(nft, collection.address, tokenId))
+  const nftsForSale = userNfts.filter(nft => forSaleFilter(nft, collection.address, tokenId))
+  const profileNft = userNfts.filter(nft => profileFilter(nft, collection.address, tokenId))
 
   const userHasNoNfts = !isLoading && nftsInWallet.length === 0 && nftsForSale.length === 0 && profileNft.length === 0
   const totalNfts = nftsInWallet.length + nftsForSale.length + profileNft.length

@@ -122,9 +122,9 @@ export const initialState: UserState = {
   hideTimestampPhishingWarningBanner: null,
 }
 
-export default createReducer(initialState, (builder) =>
+export default createReducer(initialState, builder =>
   builder
-    .addCase(updateVersion, (state) => {
+    .addCase(updateVersion, state => {
       // slippage is'nt being tracked in local storage, reset to default
       // noinspection SuspiciousTypeOfGuard
       if (typeof state.userSlippageTolerance !== 'number') {
@@ -186,10 +186,10 @@ export default createReducer(initialState, (builder) =>
         state.pairs[chainId] = omitBy(state.pairs[chainId], (value, key) => key === tokenAToB || key === tokenBToA)
       }
     })
-    .addCase(muteAudio, (state) => {
+    .addCase(muteAudio, state => {
       state.audioPlay = false
     })
-    .addCase(unmuteAudio, (state) => {
+    .addCase(unmuteAudio, state => {
       state.audioPlay = true
     })
     .addCase(updateUserFarmStakedOnly, (state, { payload: { userFarmStakedOnly } }) => {
@@ -232,7 +232,7 @@ export default createReducer(initialState, (builder) =>
         state.watchlistTokens = [...tokenWatchlist, address]
       } else {
         // Remove token from watchlist
-        const newTokens = state.watchlistTokens.filter((x) => x !== address)
+        const newTokens = state.watchlistTokens.filter(x => x !== address)
         state.watchlistTokens = newTokens
       }
     })
@@ -243,11 +243,11 @@ export default createReducer(initialState, (builder) =>
         state.watchlistPools = [...poolsWatchlist, address]
       } else {
         // Remove pool from watchlist
-        const newPools = state.watchlistPools.filter((x) => x !== address)
+        const newPools = state.watchlistPools.filter(x => x !== address)
         state.watchlistPools = newPools
       }
     })
-    .addCase(hidePhishingWarningBanner, (state) => {
+    .addCase(hidePhishingWarningBanner, state => {
       state.hideTimestampPhishingWarningBanner = currentTimestamp()
     })
     .addCase(setIsExchangeChartDisplayed, (state, { payload }) => {

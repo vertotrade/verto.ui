@@ -21,8 +21,7 @@ const LiquidityBridgeWarning = ({ currency }: { currency?: Currency }) => {
               fontSize="12px"
               color="warning"
               href={bridgeResult?.url}
-              style={{ textDecoration: 'underline' }}
-            >
+              style={{ textDecoration: 'underline' }}>
               {bridgeResult?.platform}
             </Link>
             <Text fontSize="12px" color="warning" m="auto">

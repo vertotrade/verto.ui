@@ -113,9 +113,9 @@ const ActivityHistory = () => {
               {isLoading ? (
                 <TableLoader />
               ) : (
-                activitiesSlice.map((activity) => {
+                activitiesSlice.map(activity => {
                   const nftMeta = nftMetadata.find(
-                    (metaNft) =>
+                    metaNft =>
                       metaNft.tokenId === activity.nft.tokenId &&
                       metaNft.collectionAddress.toLowerCase() === activity.nft?.collection.id.toLowerCase(),
                   )
@@ -137,8 +137,7 @@ const ActivityHistory = () => {
             pt="24px"
             flexDirection="column"
             justifyContent="space-between"
-            height="100%"
-          >
+            height="100%">
             <PaginationButton
               showMaxPageText
               currentPage={currentPage}

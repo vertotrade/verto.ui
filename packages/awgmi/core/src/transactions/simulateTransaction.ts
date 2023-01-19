@@ -55,7 +55,7 @@ export async function simulateTransaction({
   )
 
   if (throwOnError) {
-    const foundError = simulatedUserTransactions.find((simulatedTx) => !simulatedTx.success)
+    const foundError = simulatedUserTransactions.find(simulatedTx => !simulatedTx.success)
 
     if (foundError) {
       throw new SimulateTransactionError(foundError)

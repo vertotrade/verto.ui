@@ -36,8 +36,7 @@ const Page: React.FC<
         helpUrl={helpUrl}
         externalText={externalText}
         externalLinkUrl={externalLinkUrl}
-        {...props}
-      >
+        {...props}>
         {children}
       </Swap.Page>
     </>

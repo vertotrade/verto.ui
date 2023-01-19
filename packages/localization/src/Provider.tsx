@@ -54,7 +54,7 @@ export const LanguageProvider: React.FC<React.PropsWithChildren> = ({ children }
         }
       }
 
-      setState((prevState) => ({
+      setState(prevState => ({
         ...prevState,
         isFetching: false,
       }))
@@ -65,7 +65,7 @@ export const LanguageProvider: React.FC<React.PropsWithChildren> = ({ children }
 
   const setLanguage = useCallback(async (language: Language) => {
     if (!languageMap.has(language.locale)) {
-      setState((prevState) => ({
+      setState(prevState => ({
         ...prevState,
         isFetching: true,
       }))
@@ -74,20 +74,20 @@ export const LanguageProvider: React.FC<React.PropsWithChildren> = ({ children }
       if (locale) {
         languageMap.set(language.locale, locale)
         localStorage?.setItem(LS_KEY, language.locale)
-        setState((prevState) => ({
+        setState(prevState => ({
           ...prevState,
           isFetching: false,
           currentLanguage: language,
         }))
       } else {
-        setState((prevState) => ({
+        setState(prevState => ({
           ...prevState,
           isFetching: false,
         }))
       }
     } else {
       localStorage?.setItem(LS_KEY, language.locale)
-      setState((prevState) => ({
+      setState(prevState => ({
         ...prevState,
         isFetching: false,
         currentLanguage: language,

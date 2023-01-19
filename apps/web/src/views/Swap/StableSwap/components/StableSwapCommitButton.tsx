@@ -80,10 +80,10 @@ export default function StableSwapCommitButton({
     }
     setSwapState({ attemptingTxn: true, tradeToConfirm, swapErrorMessage: undefined, txHash: undefined })
     swapCallback()
-      .then((hash) => {
+      .then(hash => {
         setSwapState({ attemptingTxn: false, tradeToConfirm, swapErrorMessage: undefined, txHash: hash })
       })
-      .catch((error) => {
+      .catch(error => {
         setSwapState({
           attemptingTxn: false,
           tradeToConfirm,
@@ -157,7 +157,7 @@ export default function StableSwapCommitButton({
   useEffect(() => {
     if (indirectlyOpenConfirmModalState) {
       setIndirectlyOpenConfirmModalState(false)
-      setSwapState((state) => ({
+      setSwapState(state => ({
         ...state,
         swapErrorMessage: undefined,
       }))
@@ -196,8 +196,7 @@ export default function StableSwapCommitButton({
             variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
             onClick={approveCallback}
             disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
-            width="48%"
-          >
+            width="48%">
             {approval === ApprovalState.PENDING ? (
               <AutoRow gap="6px" justify="center">
                 {t('Enabling')} <CircleLoader stroke="white" />
@@ -215,8 +214,7 @@ export default function StableSwapCommitButton({
             }}
             width="48%"
             id="swap-button"
-            disabled={!isValid || approval !== ApprovalState.APPROVED}
-          >
+            disabled={!isValid || approval !== ApprovalState.APPROVED}>
             {t('Swap')}
           </CommitButton>
         </RowBetween>
@@ -237,8 +235,7 @@ export default function StableSwapCommitButton({
         }}
         id="swap-button"
         width="100%"
-        disabled={!isValid || !!swapCallbackError}
-      >
+        disabled={!isValid || !!swapCallbackError}>
         {swapInputError || t('Swap')}
       </CommitButton>
 

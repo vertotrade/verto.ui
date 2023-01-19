@@ -74,8 +74,7 @@ const RegisterWithProfile: React.FC<React.PropsWithChildren<CompetitionProps>> =
         onClick={handleConfirmClick}
         disabled={!isAcknowledged || isConfirming}
         isLoading={isConfirming}
-        endIcon={isConfirming ? <AutoRenewIcon spin color="currentColor" /> : null}
-      >
+        endIcon={isConfirming ? <AutoRenewIcon spin color="currentColor" /> : null}>
         {t('Confirm')}
       </Button>
     </>

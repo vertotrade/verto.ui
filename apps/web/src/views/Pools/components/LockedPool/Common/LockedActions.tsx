@@ -55,8 +55,7 @@ const LockedActions: React.FC<React.PropsWithChildren<LockedActionsPropsType>> =
             lockStartTime={lockStartTime}
             stakingToken={stakingToken}
             currentBalance={currentBalance}
-            currentLockedAmount={lockedAmountAsNumber}
-          >
+            currentLockedAmount={lockedAmountAsNumber}>
             {t('Extend')}
           </ExtendButton>
         </Box>

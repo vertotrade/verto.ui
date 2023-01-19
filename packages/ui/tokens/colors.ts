@@ -45,7 +45,8 @@ export const lightColors = {
   textSubtle: '#7A6EAA',
   disabled: '#E9EAEB',
   gradientGreenRed: 'linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%)',
-  gradientDarkBlue: 'linear-gradient(90deg, rgba(16, 16, 18, 0.9) 0%, rgba(9, 41, 70, 0.9) 35%, rgba(16, 16, 18, 0.9) 100%);',
+  gradientDarkBlue:
+    'linear-gradient(90deg, rgba(16, 16, 18, 0.9) 0%, rgba(9, 41, 70, 0.9) 35%, rgba(16, 16, 18, 0.9) 100%);',
   gradientBubblegum: 'linear-gradient(139.73deg, #E5FDFF 0%, #F3EFFF 100%)',
   gradientInverseBubblegum: 'linear-gradient(139.73deg, #F3EFFF 0%, #E5FDFF 100%)',
   gradientCardHeader: 'linear-gradient(111.68deg, #F2ECF2 0%, #E8F2F6 100%)',
@@ -80,7 +81,8 @@ export const darkColors = {
   textSubtle: '#B8ADD2',
   disabled: '#524B63',
   gradientGreenRed: 'linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%)',
-  gradientDarkBlue: 'linear-gradient(90deg, rgba(16, 16, 18, 0.9) 0%, rgba(9, 41, 70, 0.9) 35%, rgba(16, 16, 18, 0.9) 100%);',
+  gradientDarkBlue:
+    'linear-gradient(90deg, rgba(16, 16, 18, 0.9) 0%, rgba(9, 41, 70, 0.9) 35%, rgba(16, 16, 18, 0.9) 100%);',
   gradientBubblegum: 'linear-gradient(139.73deg, #313D5C 0%, #3D2A54 100%)',
   gradientInverseBubblegum: 'linear-gradient(139.73deg, #3D2A54 0%, #313D5C 100%)',
   gradientCardHeader: 'linear-gradient(166.77deg, #3B4155 0%, #3A3045 100%)',

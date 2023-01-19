@@ -10,7 +10,7 @@ const flexibleSideVaultContract = getCakeFlexibleSideVaultV2Contract()
 
 export const fetchVaultUser = async (account: string): Promise<SerializedLockedVaultUser> => {
   try {
-    const calls = ['userInfo', 'calculatePerformanceFee', 'calculateOverdueFee'].map((method) => ({
+    const calls = ['userInfo', 'calculatePerformanceFee', 'calculateOverdueFee'].map(method => ({
       address: cakeVaultAddress,
       name: method,
       params: [account],

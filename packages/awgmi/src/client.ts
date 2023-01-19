@@ -39,7 +39,7 @@ export function createClient<TProvider extends AptosClient>({
       queryClient,
       persister,
       dehydrateOptions: {
-        shouldDehydrateQuery: (query) => query.cacheTime !== 0,
+        shouldDehydrateQuery: query => query.cacheTime !== 0,
       },
     })
   return Object.assign(client, { queryClient })

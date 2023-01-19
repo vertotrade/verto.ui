@@ -14,7 +14,7 @@ export const IFO_HANDLER_ADDRESS = '0x9936836587ca33240d3d3f91844651b16cb07802fa
 
 export const USER_IFO_POOL_TAG = `${IFO_ADDRESS}::${IFO_MODULE_NAME}::${IFO_TYPE_USER_INFO}`
 export const IFO_POOL_STORE_TAG = `${IFO_ADDRESS}::${IFO_MODULE_NAME}::${IFO_RESOURCE_ACCOUNT_TYPE_POOL_STORE}`
-export const getIFOUID = (uid) => `${IFO_HANDLER_ADDRESS}::uints::U${uid}`
+export const getIFOUID = uid => `${IFO_HANDLER_ADDRESS}::uints::U${uid}`
 
 export enum IfoPoolKey {
   UNLIMITED = '0',

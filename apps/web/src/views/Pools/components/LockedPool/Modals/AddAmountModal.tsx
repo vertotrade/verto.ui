@@ -36,7 +36,7 @@ const RenewDuration = ({ setCheckedState, checkedState }) => {
         </Message>
       )}
       <Flex alignItems="center">
-        <Checkbox checked={checkedState} onChange={() => setCheckedState((prev) => !prev)} scale="sm" />
+        <Checkbox checked={checkedState} onChange={() => setCheckedState(prev => !prev)} scale="sm" />
         <Text ml="8px" color="text">
           {t('Renew and extend your lock to keep similar benefits.')}
         </Text>

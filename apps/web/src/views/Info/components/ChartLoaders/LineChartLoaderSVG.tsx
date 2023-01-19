@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const LineChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const LineChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 100 50" {...props}>
       <path
@@ -11,8 +11,7 @@ const LineChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = (props) 
         strokeDashoffset="156"
         fill="transparent"
         opacity="0.5"
-        filter="url(#glow)"
-      >
+        filter="url(#glow)">
         <animate
           id="firstline"
           attributeName="stroke-dashoffset"
@@ -30,8 +29,7 @@ const LineChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = (props) 
         strokeDashoffset="156"
         fill="transparent"
         opacity="0.5"
-        filter="url(#glow)"
-      >
+        filter="url(#glow)">
         <animate
           id="secondline"
           attributeName="stroke-dashoffset"

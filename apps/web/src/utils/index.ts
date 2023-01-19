@@ -25,7 +25,7 @@ export function getBlockExploreLink(
   chainIdOverride?: number,
 ): string {
   const chainId = chainIdOverride || ChainId.BSC
-  const chain = chains.find((c) => c.id === chainId)
+  const chain = chains.find(c => c.id === chainId)
   if (!chain) return bsc.blockExplorers.default.url
   switch (type) {
     case 'transaction': {
@@ -48,7 +48,7 @@ export function getBlockExploreLink(
 
 export function getBlockExploreName(chainIdOverride?: number) {
   const chainId = chainIdOverride || ChainId.BSC
-  const chain = chains.find((c) => c.id === chainId)
+  const chain = chains.find(c => c.id === chainId)
 
   return chain?.blockExplorers?.default.name || bsc.blockExplorers.default.name
 }

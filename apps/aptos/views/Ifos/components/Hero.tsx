@@ -35,8 +35,7 @@ const Hero = () => {
           <Flex
             justifyContent="space-between"
             flexDirection={['column', 'column', 'column', 'row']}
-            style={{ gap: '4px' }}
-          >
+            style={{ gap: '4px' }}>
             <Box>
               <StyledHeading as="h1" mb={['12px', '12px', '16px']}>
                 {t('IFO: Initial Farm Offerings')}

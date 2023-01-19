@@ -26,8 +26,7 @@ const MobileBetsTable: React.FC<React.PropsWithChildren<MobileBetsTableProps>> =
         borderBottom="1px solid"
         borderColor="cardBorder"
         style={{ cursor: 'pointer' }}
-        onClick={handleToggle}
-      >
+        onClick={handleToggle}>
         <Text as="h5" color="secondary" fontWeight="bold" textTransform="uppercase" fontSize="12px">
           {t('Last %num% Bets', { num: 5 })}
         </Text>

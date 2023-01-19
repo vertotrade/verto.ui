@@ -34,14 +34,12 @@ const ConvertToLock: React.FC<React.PropsWithChildren<ConvertToLockProps>> = ({
             lockEndTime="0"
             lockStartTime="0"
             stakingToken={stakingToken}
-            currentLockedAmount={currentStakedAmount}
-          >
+            currentLockedAmount={currentStakedAmount}>
             {t('Convert to Lock')}
           </ExtendButton>
         </Flex>
       }
-      actionInline={isTableView}
-    >
+      actionInline={isTableView}>
       <SkeletonV2 isDataReady={!!(avgLockDurationsInSeconds && lockedApy)} wrapperProps={{ height: 'fit-content' }}>
         <MessageText>
           {t('Lock staking users are earning an average of %amount%% APR. More benefits are coming soon.', {

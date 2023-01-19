@@ -10,7 +10,7 @@ import { GAS_PRICE_GWEI } from '../state/types'
 
 export function useCallWithGasPrice() {
   const gasPrice = useGasPrice()
-  const userGasPrice = useSelector<AppState, AppState['user']['gasPrice']>((state) => state.user.gasPrice)
+  const userGasPrice = useSelector<AppState, AppState['user']['gasPrice']>(state => state.user.gasPrice)
 
   /**
    * Perform a contract call with a gas price returned from useGasPrice

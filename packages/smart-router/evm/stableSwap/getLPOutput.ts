@@ -25,8 +25,8 @@ export function getLPOutput({
   const lpToken = totalSupply.currency
   const lpTotalSupply = totalSupply.quotient
   // No liquidity in pool
-  if (JSBI.equal(lpTotalSupply, ZERO) || !balances.length || balances.every((b) => JSBI.equal(b.quotient, ZERO))) {
-    const d = getD({ amplifier, balances: amounts.map((a) => a.quotient) })
+  if (JSBI.equal(lpTotalSupply, ZERO) || !balances.length || balances.every(b => JSBI.equal(b.quotient, ZERO))) {
+    const d = getD({ amplifier, balances: amounts.map(a => a.quotient) })
     return CurrencyAmount.fromRawAmount(lpToken, d)
   }
 

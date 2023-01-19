@@ -44,7 +44,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: string) => {
       'lockStartTime',
       'getLockTime',
       'getMaxTotalDeposit',
-    ].map((method) => ({
+    ].map(method => ({
       abi: potteryVaultAbi,
       address: potteryVaultAddress,
       name: method,

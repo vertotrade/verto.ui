@@ -80,8 +80,7 @@ const config = [
         <InlineLink
           ml="4px"
           external
-          href="https://medium.com/pancakeswap/community-initial-farm-offering-cifo-the-new-ifo-subtype-ac1abacf66be"
-        >
+          href="https://medium.com/pancakeswap/community-initial-farm-offering-cifo-the-new-ifo-subtype-ac1abacf66be">
           <Trans>here</Trans>
         </InlineLink>
       </>,

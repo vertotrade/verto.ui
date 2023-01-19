@@ -163,8 +163,7 @@ const MoDCompetition = () => {
           background={TRADINGCOMPETITIONBANNER}
           hasCurvedDivider={false}
           index={1}
-          overflow="hidden"
-        >
+          overflow="hidden">
           <BannerFlex mb={shouldHideCta ? '0px' : '48px'}>
             <Countdown currentPhase={currentPhase} hasCompetitionEnded={hasCompetitionEnded} />
             <ModBattleBanner />
@@ -195,8 +194,7 @@ const MoDCompetition = () => {
                 coinDecoration={<CoinDecoration />}
               />
             )
-          }
-        >
+          }>
           <Box mt={shouldHideCta ? '0px' : ['94px', null, '36px']} mb="64px">
             {/* If competition has not yet started, render HowToJoin component - if not, render YourScore */}
             {currentPhase.state === REGISTRATION ? (
@@ -229,8 +227,7 @@ const MoDCompetition = () => {
               <RibbonWithImage imageComponent={<RanksIcon width="175px" />} ribbonDirection="up">
                 {t('Team Ranks')}
               </RibbonWithImage>
-            }
-          >
+            }>
             <Box my="64px">
               <TeamRanksWithParticipants
                 image={MoDCakerBunny}
@@ -257,8 +254,7 @@ const MoDCompetition = () => {
             <RibbonWithImage imageComponent={<RulesIcon width="175px" />} ribbonDirection="up">
               {t('Rules')}
             </RibbonWithImage>
-          }
-        >
+          }>
           <Box mt="64px">
             <Rules />
           </Box>
@@ -268,8 +264,7 @@ const MoDCompetition = () => {
           dividerPosition="top"
           dividerFill={{ light: '#191326' }}
           clipFill={{ light: theme.colors.background }}
-          background={DARKBG}
-        >
+          background={DARKBG}>
           <Flex alignItems="center" position="relative">
             <BottomBunnyWrapper>
               <Image src={StormBunny} alt="storm-bunny" width={182} height={213} />

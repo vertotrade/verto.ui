@@ -39,8 +39,7 @@ export const PerformanceFee: FC<
         <TooltipText ref={targetRef} small>
           {t('Performance Fee')}
         </TooltipText>
-      }
-    >
+      }>
       {tooltipVisible && tooltip}
       <Text ml="4px" small>
         {isStake ? `${performanceFeeAsDecimal}%` : `0~${performanceFeeAsDecimal}%`}
@@ -84,8 +83,7 @@ export const DurationAvg = () => {
         <TooltipText ref={targetRef} small>
           {t('Average lock duration')}:
         </TooltipText>
-      }
-    >
+      }>
       {tooltipVisible && tooltip}
       <Text ml="4px" small>
         {avgLockDurationsInWeeks}
@@ -113,8 +111,7 @@ export const TotalStaked: FC<React.PropsWithChildren<{ totalStaked: BigNumber; s
         <TooltipText ref={targetRef} small>
           {t('Total staked')}:
         </TooltipText>
-      }
-    >
+      }>
       {tooltipVisible && tooltip}
       <TotalToken total={totalStaked} token={stakingToken} />
     </StatWrapper>

@@ -45,7 +45,7 @@ const fetchTopTokens = async (chainName: MultiChainName, timestamp24hAgo: number
       blacklist: multiChainTokenBlackList[chainName],
     })
     // tokenDayDatas id has compound id "0xTOKENADDRESS-NUMBERS", extracting token address with .split('-')
-    return data.tokenDayDatas.map((t) => t.id.split('-')[0])
+    return data.tokenDayDatas.map(t => t.id.split('-')[0])
   } catch (error) {
     console.warn('fetchTopTokens', { chainName, timestamp24hAgo })
     console.error('Failed to fetch top tokens', error)

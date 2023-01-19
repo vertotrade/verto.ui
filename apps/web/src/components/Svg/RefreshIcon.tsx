@@ -2,7 +2,7 @@ import { Svg } from '@verto/uikit'
 
 // NOTE: Temporary save icon here. Will move to uikit when the feature is done
 
-const DisabledIcon = (props) => (
+const DisabledIcon = props => (
   <Svg id="arrow_loading" viewBox="0 0 24 24" {...props}>
     <path
       stroke="none"
@@ -54,8 +54,7 @@ const Icon = ({ disabled, ...props }) =>
           stroke="#D7CAEC"
           strokeWidth="16"
           strokeDasharray="30"
-          strokeDashoffset="0"
-        >
+          strokeDashoffset="0">
           <animate
             attributeName="stroke-dashoffset"
             values="0;-30"

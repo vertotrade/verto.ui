@@ -44,7 +44,7 @@ const ScrollableContainer = styled(Flex)`
 `
 
 export const withCustomOnDismiss =
-  (Component) =>
+  Component =>
   ({
     onDismiss,
     customOnDismiss,
@@ -262,7 +262,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
               <Toggle
                 id="toggle-disable-smartRouter-button"
                 checked={isStableSwapByDefault}
-                onChange={(e) => setIsStableSwapByDefault(e.target.checked)}
+                onChange={e => setIsStableSwapByDefault(e.target.checked)}
                 scale="md"
               />
             </Flex>

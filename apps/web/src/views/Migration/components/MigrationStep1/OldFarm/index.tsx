@@ -17,9 +17,9 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
 
   const userDataReady = !account || (!!account && userDataLoaded)
 
-  const farms = farmsLP.filter((farm) => farm.pid !== 0)
+  const farms = farmsLP.filter(farm => farm.pid !== 0)
 
-  const stakedOrHasTokenBalance = farms.filter((farm) => {
+  const stakedOrHasTokenBalance = farms.filter(farm => {
     return (
       farm.userData &&
       (new BigNumber(farm.userData.stakedBalance).isGreaterThan(0) ||
@@ -29,7 +29,7 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
 
   const farmsList = useCallback(
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
-      const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
+      const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
         if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
           return farm
         }

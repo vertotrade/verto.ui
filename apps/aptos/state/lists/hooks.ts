@@ -35,18 +35,18 @@ function sortByListPriority(urlA: string, urlB: string) {
 }
 
 function enumKeys<O extends object, K extends keyof O = keyof O>(obj: O): K[] {
-  return Object.keys(obj).filter((k) => Number.isNaN(+k)) as K[]
+  return Object.keys(obj).filter(k => Number.isNaN(+k)) as K[]
 }
 
 // -------------------------------------
 //   Selectors
 // -------------------------------------
-const selectorActiveUrlsAtom = atom((get) => get(listsAtom)?.activeListUrls ?? [])
-export const selectorByUrlsAtom = atom((get) => get(listsAtom)?.byUrl ?? {})
+const selectorActiveUrlsAtom = atom(get => get(listsAtom)?.activeListUrls ?? [])
+export const selectorByUrlsAtom = atom(get => get(listsAtom)?.byUrl ?? {})
 
-const activeListUrlsAtom = atom((get) => {
+const activeListUrlsAtom = atom(get => {
   const urls = get(selectorActiveUrlsAtom)
-  return urls?.filter((url) => !UNSUPPORTED_LIST_URLS.includes(url))
+  return urls?.filter(url => !UNSUPPORTED_LIST_URLS.includes(url))
 })
 
 const combineTokenMapsWithDefault = (lists: ListsState['byUrl'], urls: string[]) => {
@@ -76,27 +76,27 @@ const combineTokenMaps = (lists: ListsState['byUrl'], urls: string[]) => {
   )
 }
 
-export const combinedTokenMapFromActiveUrlsAtom = atom((get) => {
+export const combinedTokenMapFromActiveUrlsAtom = atom(get => {
   const [selectorByUrls, selectorActiveUrls] = [get(selectorByUrlsAtom), get(selectorActiveUrlsAtom)]
   return combineTokenMapsWithDefault(selectorByUrls, selectorActiveUrls)
 })
 
-const inactiveUrlAtom = atom((get) => {
+const inactiveUrlAtom = atom(get => {
   const [lists, urls] = [get(selectorByUrlsAtom), get(selectorActiveUrlsAtom)]
-  return Object.keys(lists).filter((url) => !urls?.includes(url) && !UNSUPPORTED_LIST_URLS.includes(url))
+  return Object.keys(lists).filter(url => !urls?.includes(url) && !UNSUPPORTED_LIST_URLS.includes(url))
 })
 
-export const combinedTokenMapFromInActiveUrlsAtom = atom((get) => {
+export const combinedTokenMapFromInActiveUrlsAtom = atom(get => {
   const [lists, inactiveUrl] = [get(selectorByUrlsAtom), get(inactiveUrlAtom)]
   return combineTokenMaps(lists, inactiveUrl)
 })
 
-export const combinedTokenMapFromOfficialsUrlsAtom = atom((get) => {
+export const combinedTokenMapFromOfficialsUrlsAtom = atom(get => {
   const lists = get(selectorByUrlsAtom)
   return combineTokenMapsWithDefault(lists, OFFICIAL_LISTS)
 })
 
-export const combinedTokenMapFromUnsupportedUrlsAtom = atom((get) => {
+export const combinedTokenMapFromUnsupportedUrlsAtom = atom(get => {
   const lists = get(selectorByUrlsAtom)
   // get hard coded unsupported tokens
   const localUnsupportedListMap = listToTokenMap(UNSUPPORTED_TOKEN_LIST)
@@ -106,7 +106,7 @@ export const combinedTokenMapFromUnsupportedUrlsAtom = atom((get) => {
   return combineMaps(localUnsupportedListMap, loadedUnsupportedListMap)
 })
 
-export const combinedTokenMapFromWarningUrlsAtom = atom((get) => {
+export const combinedTokenMapFromWarningUrlsAtom = atom(get => {
   const lists = get(selectorByUrlsAtom)
   // get hard coded unsupported tokens
   const localUnsupportedListMap = listToTokenMap(WARNING_TOKEN_LIST)
@@ -124,23 +124,23 @@ export function listToTokenMap(list: TokenList): TokenAddressMap {
   if (result) return result
 
   const tokenMap: WrappedTokenInfo[] = uniqBy(
-    list.tokens.map((token) => ({ ...token, address: new HexString(token.address).toShortString() })),
-    (tokenInfo) => `${tokenInfo.chainId}#${tokenInfo.address}`,
-  ).map((tokenInfo) => {
+    list.tokens.map(token => ({ ...token, address: new HexString(token.address).toShortString() })),
+    tokenInfo => `${tokenInfo.chainId}#${tokenInfo.address}`,
+  ).map(tokenInfo => {
     return new WrappedTokenInfo(tokenInfo)
   })
 
-  const groupedTokenMap: { [chainId: string]: WrappedTokenInfo[] } = groupBy(tokenMap, (tokenInfo) => tokenInfo.chainId)
+  const groupedTokenMap: { [chainId: string]: WrappedTokenInfo[] } = groupBy(tokenMap, tokenInfo => tokenInfo.chainId)
 
   const tokenAddressMap = fromPairs(
     Object.entries(groupedTokenMap).map(([chainId, tokenInfoList]) => [
       chainId,
-      fromPairs(tokenInfoList.map((tokenInfo) => [tokenInfo.address, { token: tokenInfo, list }])),
+      fromPairs(tokenInfoList.map(tokenInfo => [tokenInfo.address, { token: tokenInfo, list }])),
     ]),
   ) as TokenAddressMap
 
   // add chain id item if not exist
-  enumKeys(ChainId).forEach((chainId) => {
+  enumKeys(ChainId).forEach(chainId => {
     if (!(ChainId[chainId] in tokenAddressMap)) {
       Object.defineProperty(tokenAddressMap, ChainId[chainId], {
         value: {},

@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const TicketCard: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const TicketCard: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 296 121" {...props}>
       <g filter="url(#filter0_dd_ticket_purchase_card)">
@@ -30,8 +30,7 @@ const TicketCard: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
           width="296"
           height="121"
           filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
+          colorInterpolationFilters="sRGB">
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"

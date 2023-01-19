@@ -5,7 +5,7 @@ import { useConfig } from 'views/Ifos/contexts/IfoContext'
 
 import { useTranslation } from '@verto/localization'
 
-const StakeVaultButton = (props) => {
+const StakeVaultButton = props => {
   const { t } = useTranslation()
   const router = useRouter()
   const { isExpanded, setIsExpanded } = useConfig()

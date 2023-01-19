@@ -187,7 +187,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   // NOTE: Temporarily inactive aBNBc-BNB LP on FE
   const activeFarms = farmsLP.filter(
-    (farm) =>
+    farm =>
       farm.lpAddress !== '0x272c2CF847A49215A3A1D4bFf8760E503A06f880' &&
       farm.lpAddress !== '0xB6040A9F294477dDAdf5543a24E5463B8F2423Ae' &&
       farm.pid !== 0 &&
@@ -196,7 +196,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   )
 
   const inactiveFarms = farmsLP.filter(
-    (farm) =>
+    farm =>
       farm.lpAddress === '0xB6040A9F294477dDAdf5543a24E5463B8F2423Ae' ||
       farm.lpAddress === '0x272c2CF847A49215A3A1D4bFf8760E503A06f880' ||
       (farm.pid !== 0 && farm.multiplier === '0X'),
@@ -204,21 +204,21 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const archivedFarms = farmsLP
 
   const stakedOnlyFarms = activeFarms.filter(
-    (farm) =>
+    farm =>
       farm.userData &&
       (new BigNumber(farm.userData.stakedBalance).isGreaterThan(0) ||
         new BigNumber(farm.userData.proxy?.stakedBalance).isGreaterThan(0)),
   )
 
   const stakedInactiveFarms = inactiveFarms.filter(
-    (farm) =>
+    farm =>
       farm.userData &&
       (new BigNumber(farm.userData.stakedBalance).isGreaterThan(0) ||
         new BigNumber(farm.userData.proxy?.stakedBalance).isGreaterThan(0)),
   )
 
   const stakedArchivedFarms = archivedFarms.filter(
-    (farm) =>
+    farm =>
       farm.userData &&
       (new BigNumber(farm.userData.stakedBalance).isGreaterThan(0) ||
         new BigNumber(farm.userData.proxy?.stakedBalance).isGreaterThan(0)),
@@ -226,7 +226,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const farmsList = useCallback(
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
-      let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
+      let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
         if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
           return farm
         }
@@ -278,11 +278,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
     if (boostedOnly || stableSwapOnly) {
       const boostedOrStableSwapFarms = chosenFs.filter(
-        (farm) => (boostedOnly && farm.boosted) || (stableSwapOnly && farm.isStable),
+        farm => (boostedOnly && farm.boosted) || (stableSwapOnly && farm.isStable),
       )
 
       const stakedBoostedOrStableSwapFarms = chosenFs.filter(
-        (farm) =>
+        farm =>
           farm.userData &&
           (new BigNumber(farm.userData.stakedBalance).isGreaterThan(0) ||
             new BigNumber(farm.userData.proxy?.stakedBalance).isGreaterThan(0)),
@@ -341,7 +341,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (isIntersecting) {
-      setNumberOfFarmsVisible((farmsCurrentlyVisible) => {
+      setNumberOfFarmsVisible(farmsCurrentlyVisible => {
         if (farmsCurrentlyVisible <= chosenFarmsLength.current) {
           return farmsCurrentlyVisible + NUMBER_OF_FARMS_VISIBLE
         }
@@ -469,8 +469,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                 external
                 color="failure"
                 fontSize={['16px', null, '20px']}
-                href="https://v1-farms.pancakeswap.finance/farms/history"
-              >
+                href="https://v1-farms.pancakeswap.finance/farms/history">
                 {t('check out v1 farms')}.
               </FinishedTextLink>
             </Flex>

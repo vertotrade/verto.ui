@@ -61,7 +61,7 @@ test('should get latest block number when block changes', async () => {
     () => {
       const [callbackResult, setCallbackResult] = useState<number>()
       const { mutate, data } = useSWR([SLOW_INTERVAL, 'blockNumber', 56])
-      useSlowRefreshEffect((b) => {
+      useSlowRefreshEffect(b => {
         setCallbackResult(b)
       }, [])
       return { mutate, data, callbackResult }

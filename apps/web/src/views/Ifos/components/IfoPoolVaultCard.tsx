@@ -11,7 +11,7 @@ const IfoPoolVaultCard = () => {
   const isSmallerThanXl = isXl || isLg || isMd || isXs || isSm
   const { pools } = usePoolsWithVault()
   const cakePool = useMemo(
-    () => pools.find((pool) => pool.userData && pool.sousId === 0),
+    () => pools.find(pool => pool.userData && pool.sousId === 0),
     [pools],
   ) as Pool.DeserializedPool<Token>
 

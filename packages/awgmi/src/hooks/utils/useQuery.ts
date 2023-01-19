@@ -68,7 +68,7 @@ export function useBaseQuery<
 
   useSyncExternalStore(
     React.useCallback(
-      (onStoreChange) => (isRestoring ? () => undefined : observer.subscribe(notifyManager.batchCalls(onStoreChange))),
+      onStoreChange => (isRestoring ? () => undefined : observer.subscribe(notifyManager.batchCalls(onStoreChange))),
       [observer, isRestoring],
     ),
     () => observer.getCurrentResult(),
@@ -93,7 +93,7 @@ export function useBaseQuery<
         defaultedOptions.onSuccess?.(data as TData)
         defaultedOptions.onSettled?.(data, null)
       })
-      .catch((error) => {
+      .catch(error => {
         errorResetBoundary.clearReset()
         defaultedOptions.onError?.(error)
         defaultedOptions.onSettled?.(undefined, error)

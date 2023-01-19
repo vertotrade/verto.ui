@@ -36,8 +36,7 @@ const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }
         <Link
           external
           href={getBlockExploreLink(hasPoolStarted ? endBlock : startBlock, 'countdown')}
-          onClick={(e) => e.stopPropagation()}
-        >
+          onClick={e => e.stopPropagation()}>
           <TimerIcon ml="4px" />
         </Link>
       </Flex>

@@ -62,8 +62,7 @@ const PhishingWarningBanner: React.FC<React.PropsWithChildren> = () => {
           small
           as="span"
           bold={text === domain}
-          color={text === domain ? '#FFFFFF' : '#BDC2C4'}
-        >
+          color={text === domain ? '#FFFFFF' : '#BDC2C4'}>
           {text}
         </Text>
       ))}
@@ -85,7 +84,7 @@ const PhishingWarningBanner: React.FC<React.PropsWithChildren> = () => {
               src="/images/decorations/phishing-warning-bunny.webp"
               alt="phishing-warning"
               width="92px"
-              onError={(e) => {
+              onError={e => {
                 const fallbackSrc = '/images/decorations/phishing-warning-bunny.png'
                 if (!e.currentTarget.src.endsWith(fallbackSrc)) {
                   // eslint-disable-next-line no-param-reassign

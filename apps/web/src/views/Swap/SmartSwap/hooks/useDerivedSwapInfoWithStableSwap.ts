@@ -21,9 +21,9 @@ function involvesAddress(
   checksummedAddress: string,
 ): boolean {
   return (
-    trade.route.path.some((token) => token.isToken && token.address === checksummedAddress) ||
+    trade.route.path.some(token => token.isToken && token.address === checksummedAddress) ||
     trade.route.pairs.some(
-      (pair) =>
+      pair =>
         (pair as StableSwapPair)?.stableSwapAddress === checksummedAddress ||
         (pair as Pair)?.liquidityToken?.address === checksummedAddress,
     )

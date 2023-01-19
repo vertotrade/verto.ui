@@ -80,7 +80,7 @@ const targetChains = [mainnet, bsc]
 export const NetworkSwitcher: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const { t } = useTranslation()
   const chainName = useGetChainName()
-  const foundChain = chains.find((d) => d.id === multiChainId[chainName])
+  const foundChain = chains.find(d => d.id === multiChainId[chainName])
   const symbol = foundChain?.nativeCurrency?.symbol
   const router = useRouter()
   const switchNetwork = useCallback(
@@ -107,8 +107,7 @@ export const NetworkSwitcher: React.FC<{ activeIndex: number }> = ({ activeIndex
           t('Select a Network')
         )
       }
-      recalculatePopover
-    >
+      recalculatePopover>
       {() => <NetworkSelect chainId={multiChainId[chainName]} switchNetwork={switchNetwork} />}
     </UserMenu>
   )
@@ -126,14 +125,13 @@ const NetworkSelect: React.FC<{ chainId: ChainId; switchNetwork: (chainPath: str
         <Text color="textSubtle">{t('Select a Network')}</Text>
       </Box>
       <UserMenuDivider />
-      {targetChains.map((chain) => (
+      {targetChains.map(chain => (
         <UserMenuItem
           key={chain.id}
           style={{ justifyContent: 'flex-start' }}
           onClick={() => {
             if (chain.id !== chainId) switchNetwork(multiChainPaths[chain.id])
-          }}
-        >
+          }}>
           <ChainLogo chainId={chain.id} />
           <Text color={chain.id === chainId ? 'secondary' : 'text'} bold={chain.id === chainId} pl="12px">
             {chain.name}

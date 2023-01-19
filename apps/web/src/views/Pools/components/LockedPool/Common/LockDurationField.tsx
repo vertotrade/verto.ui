@@ -52,7 +52,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
           </Text>
         </Flex>
         <Flex flexWrap="wrap">
-          {DURATIONS.map((week) => {
+          {DURATIONS.map(week => {
             const weekSeconds = weeksToSeconds(week)
             return (
               <Button
@@ -65,8 +65,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
                 mr={['2px', '2px', '4px', '4px']}
                 scale="sm"
                 disabled={weekSeconds > maxAvailableDuration}
-                variant={weekSeconds === duration ? 'subtle' : 'tertiary'}
-              >
+                variant={weekSeconds === duration ? 'subtle' : 'tertiary'}>
                 {week}W
               </Button>
             )
@@ -80,8 +79,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
             mr={['2px', '2px', '4px', '4px']}
             scale="sm"
             disabled={maxAvailableDuration < ONE_WEEK_DEFAULT}
-            variant={isMaxSelected ? 'subtle' : 'tertiary'}
-          >
+            variant={isMaxSelected ? 'subtle' : 'tertiary'}>
             {t('Max')}
           </Button>
         </Flex>
@@ -92,7 +90,7 @@ const LockDurationField: React.FC<React.PropsWithChildren<LockDurationFieldProps
           autoComplete="off"
           pattern="^[0-9]+$"
           inputMode="numeric"
-          onChange={(e) => {
+          onChange={e => {
             setIsMaxSelected(false)
             const weeks = _toNumber(e?.target?.value)
 

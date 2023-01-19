@@ -16,7 +16,7 @@ import { getStatus } from '../helpers'
 // 1,000,000,000 / 100
 const TAX_PRECISION = FixedNumber.from(10000000000)
 
-const formatPool = (pool) => ({
+const formatPool = pool => ({
   raisingAmountPool: pool ? new BigNumber(pool[0].toString()) : BIG_ZERO,
   offeringAmountPool: pool ? new BigNumber(pool[1].toString()) : BIG_ZERO,
   limitPerUserInLP: pool ? new BigNumber(pool[2].toString()) : BIG_ZERO,
@@ -117,7 +117,7 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
       // Calculate the total progress until finished or until start
       const progress = status === 'live' ? ((currentBlock - startBlockNum) / totalBlocks) * 100 : null
 
-      setState((prev) => ({
+      setState(prev => ({
         ...prev,
         isInitialized: true,
         secondsUntilEnd: blocksRemaining * BSC_BLOCK_TIME,

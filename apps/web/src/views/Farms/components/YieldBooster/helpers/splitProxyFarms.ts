@@ -8,7 +8,7 @@ interface SplitProxyFarmsResponse {
 }
 
 export default function splitProxyFarms(farms: SerializedFarmConfig[]): SplitProxyFarmsResponse {
-  const { false: normalFarms, true: farmsWithProxy } = groupBy(farms, (farm) =>
+  const { false: normalFarms, true: farmsWithProxy } = groupBy(farms, farm =>
     isUndefinedOrNull(farm.boosted) ? false : farm.boosted,
   )
 

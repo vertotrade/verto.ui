@@ -48,8 +48,7 @@ const FinishedRoundRow: React.FC<React.PropsWithChildren<FinishedRoundRowProps>>
         mx="6px"
         alignItems={['flex-start', null, 'center']}
         justifyContent={['center', null, 'flex-start']}
-        flexDirection={['column', null, 'row']}
-      >
+        flexDirection={['column', null, 'row']}>
         <Text fontSize="12px" mr={['0', null, '6px']}>
           {endTimeAsDate.toLocaleDateString(locale, dateOptions)}
         </Text>

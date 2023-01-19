@@ -87,22 +87,19 @@ const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }
       <Flex
         margin="auto"
         style={{ zIndex: '1' }}
-        flexDirection={['column-reverse', 'column-reverse', 'column-reverse', 'row']}
-      >
+        flexDirection={['column-reverse', 'column-reverse', 'column-reverse', 'row']}>
         <BannerBunny />
         <Flex
           ml={['0', '0', '0', '46px']}
           flexDirection="column"
-          alignItems={['center', 'center', 'center', 'flex-start']}
-        >
+          alignItems={['center', 'center', 'center', 'flex-start']}>
           <Flex>
             <OutlineText
               mb="4px"
               fontSize={['20px', '20px', '20px', '20px', '24px']}
               style={{ alignSelf: 'flex-end' }}
               bold
-              defaultType
-            >
+              defaultType>
               {t('The VertoTrade')}
             </OutlineText>
             <OutlineText fontSize={['24px', '24px', '24px', '24px', '32px']} bold ml="4px">
@@ -113,8 +110,7 @@ const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }
             isDataReady={Boolean(prizeTotal)}
             width={['144px', '240px']}
             height={['60px', '97px']}
-            wrapperProps={{ marginBottom: '8px' }}
-          >
+            wrapperProps={{ marginBottom: '8px' }}>
             <BalanceStyle bold prefix="$" value={prizeTotal} decimals={0} fontSize={['40px', '64px']} />
           </SkeletonV2>
           <DarkTextStyle m="-16px 0 0 0" fontSize={['32px', '40px']} bold>
@@ -140,8 +136,7 @@ const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }
               isDataReady={!!apy}
               width={52}
               height={24}
-              wrapperProps={{ marginLeft: '3px', display: 'inline-block', verticalAlign: 'text-top' }}
-            >
+              wrapperProps={{ marginLeft: '3px', display: 'inline-block', verticalAlign: 'text-top' }}>
               <DarkTextStyle bold as="span">
                 {apyDisplay}
               </DarkTextStyle>

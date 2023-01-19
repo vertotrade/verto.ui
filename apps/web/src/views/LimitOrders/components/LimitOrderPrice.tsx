@@ -115,8 +115,7 @@ const LimitOrderPrice: React.FC<React.PropsWithChildren<LimitOrderPriceProps>> =
             startIcon={<AutoRenewIcon color={isAtMarketPrice ? 'textDisabled' : 'primary'} />}
             variant="secondary"
             scale="xs"
-            disabled={isAtMarketPrice}
-          >
+            disabled={isAtMarketPrice}>
             <Text fontSize="12px" bold color={isAtMarketPrice ? 'textDisabled' : 'primary'} textTransform="uppercase">
               {t('Market')}
             </Text>

@@ -19,7 +19,7 @@ export async function getBestTradeWithStableSwap(
     return createTradeWithStableSwapFromV2Trade(baseTrade)
   }
 
-  const findStableSwapPair = (pair: Pair) => stableSwapPairs.find((p) => isSamePair(p, pair))
+  const findStableSwapPair = (pair: Pair) => stableSwapPairs.find(p => isSamePair(p, pair))
 
   let outputAmount: CurrencyAmount<Currency> = inputAmount
   let outputToken: Currency = inputAmount.currency

@@ -206,7 +206,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
     library
       .send('eth_signTypedData_v4', [account, data])
       .then(splitSignature)
-      .then((signature) => {
+      .then(signature => {
         setSignatureData({
           v: signature.v,
           r: signature.r,
@@ -214,7 +214,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
           deadline: deadline.toNumber(),
         })
       })
-      .catch((err) => {
+      .catch(err => {
         // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
         if (err?.code !== 4001) {
           approveCallback()
@@ -289,7 +289,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
     callWithEstimateGas(zapContract, methodName, args, {
       gasPrice,
     })
-      .then((response) => {
+      .then(response => {
         setLiquidityState({ attemptingTxn: false, liquidityErrorMessage: undefined, txHash: response.hash })
         const amount = parsedAmounts[Field.LIQUIDITY].toSignificant(3)
         const symbol = getLPSymbol(pair.token0.symbol, pair.token1.symbol, chainId)
@@ -302,7 +302,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
           type: 'remove-liquidity',
         })
       })
-      .catch((err) => {
+      .catch(err => {
         if (err && err.code !== 4001) {
           console.error(`Remove Liquidity failed`, err, args)
         }
@@ -455,7 +455,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
             type: 'remove-liquidity',
           })
         })
-        .catch((err) => {
+        .catch(err => {
           if (err && err.code !== 4001) {
             logError(err)
             console.error(`Remove Liquidity failed`, err, args)
@@ -527,7 +527,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
   )
 
   const handleChangePercent = useCallback(
-    (value) => setInnerLiquidityPercentage(Math.ceil(value)),
+    value => setInnerLiquidityPercentage(Math.ceil(value)),
     [setInnerLiquidityPercentage],
   )
 
@@ -631,7 +631,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                             disabled={isZapOutA}
                             scale="sm"
                             checked={removalCheckedA}
-                            onChange={(e) => setRemovalCheckedA(e.target.checked)}
+                            onChange={e => setRemovalCheckedA(e.target.checked)}
                           />
                         </Flex>
                       )}
@@ -657,7 +657,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                             disabled={isZapOutB}
                             scale="sm"
                             checked={removalCheckedB}
-                            onChange={(e) => setRemovalCheckedB(e.target.checked)}
+                            onChange={e => setRemovalCheckedB(e.target.checked)}
                           />
                         </Flex>
                       )}
@@ -681,16 +681,14 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                         <StyledInternalLink
                           href={`/remove/${currencyA?.isNative ? WNATIVE[chainId]?.address : currencyIdA}/${
                             currencyB?.isNative ? WNATIVE[chainId]?.address : currencyIdB
-                          }`}
-                        >
+                          }`}>
                           {t('Receive %currency%', { currency: WNATIVE[chainId]?.symbol })}
                         </StyledInternalLink>
                       ) : oneCurrencyIsWNative ? (
                         <StyledInternalLink
                           href={`/remove/${
                             currencyA && currencyA.equals(WNATIVE[chainId]) ? native?.symbol : currencyIdA
-                          }/${currencyB && currencyB.equals(WNATIVE[chainId]) ? native?.symbol : currencyIdB}`}
-                        >
+                          }/${currencyB && currencyB.equals(WNATIVE[chainId]) ? native?.symbol : currencyIdB}`}>
                           {t('Receive %currency%', { currency: native?.symbol })}
                         </StyledInternalLink>
                       ) : null}
@@ -706,7 +704,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
               <CurrencyInputPanel
                 value={formattedAmounts[Field.LIQUIDITY]}
                 onUserInput={onLiquidityInput}
-                onPercentInput={(percent) => {
+                onPercentInput={percent => {
                   onUserInput(Field.LIQUIDITY_PERCENT, percent.toString())
                 }}
                 onMax={() => {
@@ -732,7 +730,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                     <ZapCheckbox
                       disabled={!removalCheckedB && removalCheckedA}
                       checked={removalCheckedA}
-                      onChange={(e) => {
+                      onChange={e => {
                         setRemovalCheckedA(e.target.checked)
                       }}
                     />
@@ -762,7 +760,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                     <ZapCheckbox
                       disabled={!removalCheckedA && removalCheckedB}
                       checked={removalCheckedB}
-                      onChange={(e) => {
+                      onChange={e => {
                         setRemovalCheckedB(e.target.checked)
                       }}
                     />
@@ -841,8 +839,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                   onClick={isZap ? approveCallback : onAttemptToApprove}
                   disabled={approval !== ApprovalState.NOT_APPROVED || (!isZap && signatureData !== null)}
                   width="100%"
-                  mr="0.5rem"
-                >
+                  mr="0.5rem">
                   {approval === ApprovalState.PENDING ? (
                     <Dots>{t('Enabling')}</Dots>
                   ) : approval === ApprovalState.APPROVED || (!isZap && signatureData !== null) ? (
@@ -870,8 +867,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                     !isValid ||
                     (!isZap && signatureData === null && approval !== ApprovalState.APPROVED) ||
                     (isZap && approval !== ApprovalState.APPROVED)
-                  }
-                >
+                  }>
                   {error || t('Remove')}
                 </Button>
               </RowBetween>

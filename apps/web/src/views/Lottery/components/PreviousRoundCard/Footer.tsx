@@ -32,8 +32,7 @@ const PreviousRoundCardFooter: React.FC<React.PropsWithChildren<PreviousRoundCar
             if (lotteryId) {
               setIsExpanded(!isExpanded)
             }
-          }}
-        >
+          }}>
           {isExpanded ? t('Hide') : t('Details')}
         </ExpandableLabel>
       </Flex>

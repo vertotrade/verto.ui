@@ -33,7 +33,7 @@ const SimpleRemoveForm = ({ currencyA, currencyB, formattedAmounts }) => {
           {formattedAmounts[Field.LIQUIDITY_PERCENT]}%
         </Text>
         <PercentSlider
-          onValueChanged={(value) => _onUserInput(Field.LIQUIDITY_PERCENT, value)}
+          onValueChanged={value => _onUserInput(Field.LIQUIDITY_PERCENT, value)}
           currentValue={innerLiquidityPercentage}
         />
       </BorderCard>

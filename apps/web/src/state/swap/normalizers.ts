@@ -12,7 +12,7 @@ export const normalizeChartData = (
   switch (timeWindow) {
     case PairDataTimeWindowEnum.DAY:
     case PairDataTimeWindowEnum.WEEK:
-      return (data as PairHoursDatasResponse)?.pairHourDatas?.map((fetchPairEntry) => ({
+      return (data as PairHoursDatasResponse)?.pairHourDatas?.map(fetchPairEntry => ({
         time: fetchPairEntry.hourStartUnix,
         token0Id: token0Address,
         token1Id: token1Address,
@@ -21,7 +21,7 @@ export const normalizeChartData = (
       }))
     case PairDataTimeWindowEnum.MONTH:
     case PairDataTimeWindowEnum.YEAR:
-      return (data as PairDayDatasResponse)?.pairDayDatas?.map((fetchPairEntry) => ({
+      return (data as PairDayDatasResponse)?.pairDayDatas?.map(fetchPairEntry => ({
         time: fetchPairEntry.date,
         token0Id: token0Address,
         token1Id: token1Address,
@@ -38,9 +38,7 @@ export const normalizeDerivedChartData = (data: any) => {
     return []
   }
 
-  const token1DerivedBnbEntryMap: any = fromPairs(
-    data?.token1DerivedBnb?.map((entry) => [entry.timestamp, entry]) ?? [],
-  )
+  const token1DerivedBnbEntryMap: any = fromPairs(data?.token1DerivedBnb?.map(entry => [entry.timestamp, entry]) ?? [])
 
   return data?.token0DerivedBnb.reduce((acc, token0DerivedBnbEntry) => {
     const token1DerivedBnbEntry = token1DerivedBnbEntryMap[token0DerivedBnbEntry.timestamp]
@@ -67,7 +65,7 @@ export const normalizePairDataByActiveToken = ({
   activeToken,
 }: normalizePairDataByActiveTokenParams): PairPricesNormalized =>
   pairData
-    ?.map((pairPrice) => ({
+    ?.map(pairPrice => ({
       time: fromUnixTime(pairPrice.time),
       value:
         activeToken === pairPrice?.token0Id
@@ -85,7 +83,7 @@ export const normalizeDerivedPairDataByActiveToken = ({
   pairData,
   activeToken,
 }: normalizeDerivedPairDataByActiveTokenParams): PairPricesNormalized =>
-  pairData?.map((pairPrice) => ({
+  pairData?.map(pairPrice => ({
     time: fromUnixTime(pairPrice.time),
     value:
       activeToken === pairPrice?.token0Id

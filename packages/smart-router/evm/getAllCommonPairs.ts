@@ -39,7 +39,7 @@ export async function getAllCommonPairs(
   const bases: Token[] = [...common, ...additionalA, ...additionalB]
 
   const basePairs: [Token, Token][] = flatMap(bases, (base): [Token, Token][] =>
-    bases.map((otherBase) => [base, otherBase]),
+    bases.map(otherBase => [base, otherBase]),
   )
 
   const allPairCombinations = getAllPairCombinations(tokenA, tokenB, bases, basePairs, chainId)
@@ -86,8 +86,8 @@ const getAllPairCombinations = (
 
           if (!customBasesA && !customBasesB) return true
 
-          if (customBasesA && !customBasesA.find((base) => tokenB_.equals(base))) return false
-          if (customBasesB && !customBasesB.find((base) => tokenA_.equals(base))) return false
+          if (customBasesA && !customBasesA.find(base => tokenB_.equals(base))) return false
+          if (customBasesB && !customBasesB.find(base => tokenA_.equals(base))) return false
 
           return true
         })

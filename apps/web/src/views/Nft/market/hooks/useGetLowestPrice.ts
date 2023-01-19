@@ -12,7 +12,7 @@ export interface LowestNftPrice {
 }
 
 const getBunnyIdFromNft = (nft: NftToken): string => {
-  const bunnyId = nft.attributes?.find((attr) => attr.traitType === 'bunnyId')?.value
+  const bunnyId = nft.attributes?.find(attr => attr.traitType === 'bunnyId')?.value
   return bunnyId ? bunnyId.toString() : null
 }
 
@@ -22,7 +22,7 @@ export const getLowestUpdatedToken = async (collectionAddress: string, nftsMarke
   if (!updatedMarketData) return null
 
   return updatedMarketData
-    .filter((tokenUpdatedPrice) => {
+    .filter(tokenUpdatedPrice => {
       return tokenUpdatedPrice && tokenUpdatedPrice.currentAskPrice.gt(0) && tokenUpdatedPrice.isTradable
     })
     .sort((askInfoA, askInfoB) => {
@@ -40,7 +40,7 @@ export const useGetLowestPriceFromBunnyId = (bunnyId?: string): LowestNftPrice =
 
     if (!response.length) return null
 
-    const nftsMarketTokenIds = response.map((marketData) => marketData.tokenId)
+    const nftsMarketTokenIds = response.map(marketData => marketData.tokenId)
     const lowestPriceUpdatedBunny = await getLowestUpdatedToken(pancakeBunniesAddress.toLowerCase(), nftsMarketTokenIds)
 
     if (lowestPriceUpdatedBunny) {

@@ -36,7 +36,7 @@ const TokenInfo: React.FC<React.PropsWithChildren<TokenInfoProps>> = ({ index, d
   }, [index])
 
   const toggleExpanded = () => {
-    setExpanded((prev) => !prev)
+    setExpanded(prev => !prev)
   }
 
   const amountAvailable = useMemo(() => {

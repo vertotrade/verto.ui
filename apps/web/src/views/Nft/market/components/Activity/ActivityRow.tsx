@@ -60,7 +60,7 @@ const ActivityRow: React.FC<React.PropsWithChildren<ActivityRowProps>> = ({
   const isPBCollection = nft ? isAddress(nft.collectionAddress) === pancakeBunniesAddress : false
   const tokenId =
     nft && isPBCollection
-      ? nft.attributes.find((attribute) => attribute.traitType === 'bunnyId')?.value
+      ? nft.attributes.find(attribute => attribute.traitType === 'bunnyId')?.value
       : nft
       ? nft.tokenId
       : null
@@ -76,11 +76,10 @@ const ActivityRow: React.FC<React.PropsWithChildren<ActivityRowProps>> = ({
       {!isNftActivity ? (
         <Td
           {...((isXs || isSm) && {
-            onClick: (event) => {
+            onClick: event => {
               event.stopPropagation()
             },
-          })}
-        >
+          })}>
           <Flex justifyContent="flex-start" alignItems="center" flexDirection={['column', null, 'row']}>
             {!nft ? (
               <Skeleton height={[138, null, 64]} width={[80, null, 249]} />
@@ -97,16 +96,14 @@ const ActivityRow: React.FC<React.PropsWithChildren<ActivityRowProps>> = ({
                     to={`${nftsBaseUrl}/collections/${nft.collectionAddress}`}
                     textAlign={['center', null, 'left']}
                     color="textSubtle"
-                    fontSize="14px"
-                  >
+                    fontSize="14px">
                     {nft.collectionName}
                   </Text>
                   <Text
                     as={NextLinkFromReactRouter}
                     to={`${nftsBaseUrl}/collections/${nft.collectionAddress}/${tokenId}`}
                     textAlign={['center', null, 'left']}
-                    bold
-                  >
+                    bold>
                     {nft.name}
                   </Text>
                 </Flex>

@@ -1,6 +1,6 @@
 import { ArrowForwardIcon, Button, ButtonProps } from '@verto/uikit'
 
-const NextStepButton: React.FC<React.PropsWithChildren<ButtonProps>> = (props) => {
+const NextStepButton: React.FC<React.PropsWithChildren<ButtonProps>> = props => {
   return <Button endIcon={<ArrowForwardIcon color="currentColor" />} {...props} />
 }
 

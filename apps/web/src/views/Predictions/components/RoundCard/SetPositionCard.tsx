@@ -260,7 +260,7 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
           className={!account || isTxPending ? '' : 'swiper-no-swiping'}
         />
         <Flex alignItems="center" justifyContent="space-between" mb="16px">
-          {percentShortcuts.map((percentShortcut) => {
+          {percentShortcuts.map(percentShortcut => {
             const handleClick = () => {
               handlePercentChange(percentShortcut)
             }
@@ -273,8 +273,7 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
                 onClick={handleClick}
                 disabled={!account || isTxPending}
                 className={!account || isTxPending ? '' : 'swiper-no-swiping'}
-                style={{ flex: 1 }}
-              >
+                style={{ flex: 1 }}>
                 {`${percentShortcut}%`}
               </Button>
             )
@@ -284,8 +283,7 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
             variant="tertiary"
             onClick={() => handlePercentChange(100)}
             disabled={!account || isTxPending}
-            className={!account || isTxPending ? '' : 'swiper-no-swiping'}
-          >
+            className={!account || isTxPending ? '' : 'swiper-no-swiping'}>
             {t('Max')}
           </Button>
         </Flex>
@@ -298,8 +296,7 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
                 className={disabled ? '' : 'swiper-no-swiping'}
                 onClick={handleEnterPosition}
                 isLoading={isTxPending}
-                endIcon={isTxPending ? <AutoRenewIcon color="currentColor" spin /> : null}
-              >
+                endIcon={isTxPending ? <AutoRenewIcon color="currentColor" spin /> : null}>
                 {t(key, { symbol: token.symbol })}
               </Button>
             ) : (
@@ -308,8 +305,7 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
                 className="swiper-no-swiping"
                 onClick={handleApprove}
                 isLoading={pendingTx}
-                endIcon={pendingTx ? <AutoRenewIcon color="currentColor" spin /> : null}
-              >
+                endIcon={pendingTx ? <AutoRenewIcon color="currentColor" spin /> : null}>
                 {t('Enable')}
               </Button>
             )

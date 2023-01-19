@@ -1,18 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useAccount } from 'wagmi'
 import styled from 'styled-components'
-import {
-  CardHeader,
-  Card,
-  CardBody,
-  Text,
-  CardFooter,
-  ArrowBackIcon,
-  Flex,
-  Heading,
-  Skeleton,
-  Box,
-} from '@verto/uikit'
+import { CardHeader, Card, CardBody, Text, CardFooter, ArrowBackIcon, Flex, Heading, Skeleton, Box } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { LotteryStatus } from 'config/constants/types'
 import { useGetUserLotteriesGraphData, useLottery } from 'state/lottery/hooks'
@@ -110,7 +99,7 @@ const YourHistoryCard: React.FC<React.PropsWithChildren<YourHistoryCardProps>> =
       return <PreviousRoundCardBody lotteryNodeData={selectedLotteryNodeData} lotteryId={selectedLotteryId} />
     }
 
-    const claimableRounds = userLotteryData?.rounds.filter((round) => {
+    const claimableRounds = userLotteryData?.rounds.filter(round => {
       return round.status.toLowerCase() === LotteryStatus.CLAIMABLE
     })
 

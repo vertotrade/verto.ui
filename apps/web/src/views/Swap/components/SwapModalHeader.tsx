@@ -90,8 +90,7 @@ export default function SwapModalHeader({
                 : showAcceptChanges && trade.tradeType === TradeType.EXACT_INPUT
                 ? 'primary'
                 : 'text'
-            }
-          >
+            }>
             {trade.outputAmount.toSignificant(6)}
           </TruncatedText>
         </RowFixed>

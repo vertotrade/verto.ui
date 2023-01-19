@@ -101,7 +101,7 @@ const getAprsForFarmGroup = async (addresses: string[], blockWeekAgo: number, ch
       { addresses, blockWeekAgo },
     )
     return farmsAtLatestBlock.reduce((aprMap, farm) => {
-      const farmWeekAgo = farmsOneWeekAgo.find((oldFarm) => oldFarm.id === farm.id)
+      const farmWeekAgo = farmsOneWeekAgo.find(oldFarm => oldFarm.id === farm.id)
       // In case farm is too new to estimate LP APR (i.e. not returned in farmsOneWeekAgo query) - return 0
       let lpApr = new BigNumber(0)
       if (farmWeekAgo) {
@@ -200,7 +200,7 @@ export const updateLPsAPR = async (chainId: number, allFarms: any[]) => {
     stableFarms: [],
   })
 
-  const lowerCaseAddresses = normalFarms.map((farm) => farm.lpAddress.toLowerCase())
+  const lowerCaseAddresses = normalFarms.map(farm => farm.lpAddress.toLowerCase())
   console.info(`[LP APR Update] Fetching farm data for ${lowerCaseAddresses.length} addresses`)
   // Split it into chunks of 30 addresses to avoid gateway timeout
   const addressesInGroups = chunk<string>(lowerCaseAddresses, 30)
@@ -228,7 +228,7 @@ export const updateLPsAPR = async (chainId: number, allFarms: any[]) => {
 
   try {
     if (stableFarms?.length) {
-      const stableAprs: BigNumber[] = await Promise.all(stableFarms.map((f) => getAprsForStableFarm(f)))
+      const stableAprs: BigNumber[] = await Promise.all(stableFarms.map(f => getAprsForStableFarm(f)))
 
       const stableAprsMap = stableAprs.reduce(
         (result, apr, index) => ({

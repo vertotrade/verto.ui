@@ -27,7 +27,7 @@ export function useNativeBalances(uncheckedAddresses?: (string | undefined)[]): 
   const results = useSingleContractMultipleData(
     multicallContract,
     'getEthBalance',
-    useMemo(() => addresses.map((address) => [address]), [addresses]),
+    useMemo(() => addresses.map(address => [address]), [addresses]),
   )
 
   return useMemo(
@@ -53,7 +53,7 @@ export function useTokenBalancesWithLoadingIndicator(
     [tokens],
   )
 
-  const validatedTokenAddresses = useMemo(() => validatedTokens.map((vt) => vt.address), [validatedTokens])
+  const validatedTokenAddresses = useMemo(() => validatedTokens.map(vt => vt.address), [validatedTokens])
 
   const balances = useMultipleContractSingleData(
     validatedTokenAddresses,
@@ -62,7 +62,7 @@ export function useTokenBalancesWithLoadingIndicator(
     useMemo(() => [address], [address]),
   )
 
-  const anyLoading: boolean = useMemo(() => balances.some((callState) => callState.loading), [balances])
+  const anyLoading: boolean = useMemo(() => balances.some(callState => callState.loading), [balances])
 
   return [
     useMemo(
@@ -110,16 +110,13 @@ export function useCurrencyBalances(
   )
 
   const tokenBalances = useTokenBalances(account, tokens)
-  const containsNative: boolean = useMemo(
-    () => currencies?.some((currency) => currency?.isNative) ?? false,
-    [currencies],
-  )
+  const containsNative: boolean = useMemo(() => currencies?.some(currency => currency?.isNative) ?? false, [currencies])
   const uncheckedAddresses = useMemo(() => (containsNative ? [account] : []), [containsNative, account])
   const nativeBalance = useNativeBalances(uncheckedAddresses)
 
   return useMemo(
     () =>
-      currencies?.map((currency) => {
+      currencies?.map(currency => {
         if (!account || !currency) return undefined
         if (currency?.isToken) return tokenBalances[currency.address]
         if (currency?.isNative) return nativeBalance[account]

@@ -71,8 +71,7 @@ const UnstakingFeeCountdownRow: React.FC<React.PropsWithChildren<UnstakingFeeCou
     <Flex
       alignItems={isTableVariant ? 'flex-start' : 'center'}
       justifyContent="space-between"
-      flexDirection={isTableVariant ? 'column' : 'row'}
-    >
+      flexDirection={isTableVariant ? 'column' : 'row'}>
       {tooltipVisible && tooltip}
       <TooltipText ref={targetRef} small textTransform="lowercase">
         {noFeeToPay ? '0' : feeAsDecimal}% {getRowText()}

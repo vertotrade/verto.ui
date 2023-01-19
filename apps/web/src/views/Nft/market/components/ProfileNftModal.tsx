@@ -57,8 +57,7 @@ const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> =
               height="16px"
               external
               variant="text"
-              href={`${nftsBaseUrl}/collections/${nft.collectionAddress}/${itemPageUrlId}`}
-            >
+              href={`${nftsBaseUrl}/collections/${nft.collectionAddress}/${itemPageUrlId}`}>
               {t('View Item')}
             </Button>
             <HorizontalDivider />
@@ -66,8 +65,7 @@ const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> =
               isBscScan
               p="0px"
               height="16px"
-              href={getBscScanLinkForNft(nft.collectionAddress, nft.tokenId)}
-            >
+              href={getBscScanLinkForNft(nft.collectionAddress, nft.tokenId)}>
               BscScan
             </LinkExternal>
           </Flex>

@@ -30,7 +30,7 @@ export function useNetworkConnectorUpdater() {
     if (parsedQueryChainId !== chainId && isChainSupported(chainId)) {
       const removeQueriesFromPath =
         previousChainIdRef.current !== chainId &&
-        EXCHANGE_PAGE_PATHS.some((item) => {
+        EXCHANGE_PAGE_PATHS.some(item => {
           return router.pathname.startsWith(item)
         })
       const uriHash = getHashFromRouter(router)?.[0]

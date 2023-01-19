@@ -40,7 +40,7 @@ const FarmTransactionModal: React.FC<React.PropsWithChildren<FarmTransactionModa
         <Flex flexDirection="column">
           <FarmInfo pickedData={pickedData} />
           <LightGreyCard padding="16px 16px 0 16px">
-            {pickedData?.nonBscFarm?.steps.map((step) => (
+            {pickedData?.nonBscFarm?.steps.map(step => (
               <FarmDetail key={step.step} step={step} status={pickedData?.nonBscFarm?.status} />
             ))}
           </LightGreyCard>

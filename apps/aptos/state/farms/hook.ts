@@ -2,12 +2,7 @@
 import { ChainId, Coin, Pair, PAIR_RESERVE_TYPE_TAG } from '@verto/aptos-swap-sdk'
 import { DeserializedFarmsState } from '@verto/farms'
 import { useAccount, useAccountResource, useCoins, useQueries, useQuery } from '@verto/awgmi'
-import {
-  FetchCoinResult,
-  unwrapTypeArgFromString,
-  fetchTableItem,
-  FetchAccountResourceResult,
-} from '@verto/awgmi/core'
+import { FetchCoinResult, unwrapTypeArgFromString, fetchTableItem, FetchAccountResourceResult } from '@verto/awgmi/core'
 import { getFarmsPrices } from '@verto/farms/farmPrices'
 import { BIG_TWO, BIG_ZERO } from '@verto/utils/bigNumber'
 import { getFullDecimalMultiplier } from '@verto/utils/getFullDecimalMultiplier'
@@ -34,7 +29,7 @@ const farmsPriceHelpLpMap = {
 }
 
 export const useFarmsLength = (): number | undefined => {
-  const { data: farmsLength } = useMasterChefResource((s) => s.data.lps.length)
+  const { data: farmsLength } = useMasterChefResource(s => s.data.lps.length)
   return farmsLength
 }
 
@@ -58,11 +53,11 @@ export const useFarms = () => {
   const { data: masterChef } = useMasterChefResource()
 
   const farmConfig = useMemo(() => getFarmConfig(chainId).concat(farmsPriceHelpLpMap[chainId]), [chainId])
-  const farmAddresses = useMemo(() => farmConfig.map((f) => f.lpAddress), [farmConfig])
+  const farmAddresses = useMemo(() => farmConfig.map(f => f.lpAddress), [farmConfig])
   const lpReservesAddresses = useMemo(
     () =>
       farmAddresses
-        .map((a) => (unwrapTypeArgFromString(a) ? `${PAIR_RESERVE_TYPE_TAG}<${unwrapTypeArgFromString(a)}>` : null))
+        .map(a => (unwrapTypeArgFromString(a) ? `${PAIR_RESERVE_TYPE_TAG}<${unwrapTypeArgFromString(a)}>` : null))
         .filter(Boolean) as string[],
     [farmAddresses],
   )
@@ -75,16 +70,16 @@ export const useFarms = () => {
 
   const stakeCoinsInfoMap = useMemo(() => {
     return fromPairs(
-      stakeCoinsInfo.filter((c) => c.data).map((c) => [c.data?.address, c.data] as [string, FetchCoinResult]),
+      stakeCoinsInfo.filter(c => c.data).map(c => [c.data?.address, c.data] as [string, FetchCoinResult]),
     )
   }, [stakeCoinsInfo])
 
   const pairReserves = usePairReservesQueries(lpReservesAddresses)
   const lpInfo = useMemo(() => {
     return farmConfig
-      .filter((f) => f.pid !== 0 && f.pid !== CAKE_PID)
+      .filter(f => f.pid !== 0 && f.pid !== CAKE_PID)
       .concat()
-      .map((config) => {
+      .map(config => {
         const token = new Coin(config.token.chainId, config.token.address, config.token.decimals, config.token.symbol)
         const quoteToken = new Coin(
           config.quoteToken.chainId,
@@ -164,9 +159,9 @@ export const useFarms = () => {
       regularCakePerBlock: regularCakePerSeconds,
       loadArchivedFarmsData: false,
       data: farmsWithPrices
-        .filter((f) => !!f.pid)
+        .filter(f => !!f.pid)
         .map(deserializeFarm)
-        .map((f) => {
+        .map(f => {
           const accCakePerShare = masterChef?.data && f.pid ? calcRewardCakePerShare(masterChef.data, String(f.pid)) : 0
           const earningToken = calcPendingRewardCake(
             userInfos[f.pid]?.amount,
@@ -197,7 +192,7 @@ export function useFarmsUserInfo() {
 
   const userInfoQueries = useQueries({
     queries:
-      data?.data.pids.map((pid) => ({
+      data?.data.pids.map(pid => ({
         staleTime: Infinity,
         enable: Boolean(pid) && Boolean(account?.address) && Boolean(data.data.pid_to_user_info.inner.handle),
         refetchInterval: 3_000,
@@ -218,7 +213,7 @@ export function useFarmsUserInfo() {
   })
 
   const userInfos = useMemo(() => {
-    return fromPairs(userInfoQueries.filter((u) => !!u.data).map((u) => [(u as any).data.pid, u.data]))
+    return fromPairs(userInfoQueries.filter(u => !!u.data).map(u => [(u as any).data.pid, u.data]))
   }, [userInfoQueries])
 
   return userInfos

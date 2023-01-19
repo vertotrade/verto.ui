@@ -28,8 +28,7 @@ export const WrongNetworkModal: React.FC = () => {
         </Message>
         <StyledLink
           href="https://docs.pancakeswap.finance/get-started-aptos/connection-guide#connect-to-aptos-mainnet"
-          external
-        >
+          external>
           <Button width="100%" variant="secondary">
             {t('Learn How')}
             <HelpIcon color="primary" ml="6px" />

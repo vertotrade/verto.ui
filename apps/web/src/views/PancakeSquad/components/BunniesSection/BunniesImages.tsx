@@ -26,8 +26,7 @@ const BunniesImages: React.FC<React.PropsWithChildren<BunniesImages>> = ({ baseP
       mb={['24px', null, null, '-3px']}
       mr={['0', null, null, '64px']}
       width={['192px', null, '250px', '400px', '512px']}
-      height={['192px', null, '250px', '400px', '512px']}
-    >
+      height={['192px', null, '250px', '400px', '512px']}>
       {bunnies.map((_, index) => (
         <StyledBunnyImage
           $isSelected={index === selectedBunny}

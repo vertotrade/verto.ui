@@ -59,8 +59,7 @@ const StakeToWinButton: React.FC<React.PropsWithChildren<StakeToWinButtonProps>>
       width={['240px', '288px']}
       height={['94px', '113px']}
       alignItems="center"
-      justifyContent="center"
-    >
+      justifyContent="center">
       <ButtonWrapper>
         <StyledButton width="200px" onClick={handleScroll}>
           {t('Stake to WIN!')}

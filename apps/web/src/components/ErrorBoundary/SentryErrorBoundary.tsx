@@ -9,7 +9,7 @@ export function SentryErrorBoundary({ children }) {
   const handleOnClick = useCallback(() => window.location.reload(), [])
   return (
     <SErrorBoundary
-      beforeCapture={(scope) => {
+      beforeCapture={scope => {
         scope.setLevel('fatal')
       }}
       fallback={({ eventId }) => {
@@ -33,8 +33,7 @@ export function SentryErrorBoundary({ children }) {
             </Flex>
           </Page>
         )
-      }}
-    >
+      }}>
       {children}
     </SErrorBoundary>
   )

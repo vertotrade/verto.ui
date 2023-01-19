@@ -125,8 +125,7 @@ const PreviousRoundCardBody: React.FC<React.PropsWithChildren<PreviousRoundCardB
           <LinkExternal
             isBscScan
             m={['10px auto auto auto', '10px auto auto auto', 'auto 0 0 auto']}
-            href={getBlockExploreLink(txid, 'transaction')}
-          >
+            href={getBlockExploreLink(txid, 'transaction')}>
             {t('View on BscScan')}
           </LinkExternal>
         </Flex>

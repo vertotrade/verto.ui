@@ -89,9 +89,8 @@ const UserNfts: React.FC<
         <Grid
           gridGap="16px"
           gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)', null, 'repeat(4, 1fr)']}
-          alignItems="start"
-        >
-          {nfts.map((nft) => {
+          alignItems="start">
+          {nfts.map(nft => {
             const { marketData, location } = nft
 
             return (

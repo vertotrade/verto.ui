@@ -37,9 +37,8 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
           <Grid
             gridGap="16px"
             gridTemplateColumns={['1fr', null, 'repeat(3, 1fr)', null, 'repeat(4, 1fr)']}
-            alignItems="start"
-          >
-            {nfts.map((nft) => {
+            alignItems="start">
+            {nfts.map(nft => {
               const currentAskPriceAsNumber = nft.marketData && parseFloat(nft?.marketData?.currentAskPrice)
 
               return (
@@ -58,8 +57,7 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
                 onClick={handleLoadMore}
                 scale="sm"
                 disabled={isFetchingNfts}
-                endIcon={isFetchingNfts ? <AutoRenewIcon spin color="currentColor" /> : undefined}
-              >
+                endIcon={isFetchingNfts ? <AutoRenewIcon spin color="currentColor" /> : undefined}>
                 {isFetchingNfts ? t('Loading') : t('Load more')}
               </Button>
             )}

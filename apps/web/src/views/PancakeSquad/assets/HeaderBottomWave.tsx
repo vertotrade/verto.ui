@@ -15,8 +15,7 @@ const Icon: React.FC<React.PropsWithChildren<SvgProps & { isDark: boolean }>> = 
           y1={15.999}
           x2={1233.5}
           y2={16}
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor={isDark ? '#313D5C' : '#E5FDFF'} />
           <stop offset={1} stopColor={isDark ? '#3D2A54' : '#F3EFFF'} />
         </linearGradient>

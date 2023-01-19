@@ -43,8 +43,7 @@ const MainPancakeBunnyCard: React.FC<React.PropsWithChildren<MainPancakeBunnyCar
       minWidth="168px"
       width={['100%', null, 'max-content']}
       mt="24px"
-      onClick={onPresentAdjustPriceModal}
-    >
+      onClick={onPresentAdjustPriceModal}>
       {t('Adjust Sale Price')}
     </Button>
   ) : (

@@ -8,7 +8,7 @@ import { isChainSupported } from 'utils'
 
 const queryNetworkAtom = atom('')
 
-queryNetworkAtom.onMount = (set) => {
+queryNetworkAtom.onMount = set => {
   const params = new URL(window.location.href).searchParams
   const n = params.get('network')
   if (n && isChainSupported(n)) {
@@ -60,8 +60,5 @@ export function useActiveNetwork() {
 export function useActiveChainId() {
   const { networkName } = useActiveNetwork()
 
-  return useMemo(
-    () => chains.find((c) => equalsIgnoreCase(c.network, networkName))?.id ?? defaultChain.id,
-    [networkName],
-  )
+  return useMemo(() => chains.find(c => equalsIgnoreCase(c.network, networkName))?.id ?? defaultChain.id, [networkName])
 }

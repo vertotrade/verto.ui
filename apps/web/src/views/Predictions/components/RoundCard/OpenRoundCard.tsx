@@ -114,13 +114,13 @@ const OpenRoundCard: React.FC<React.PropsWithChildren<OpenRoundCardProps>> = ({
   const canEnterPosition = getHasEnteredPosition()
 
   const handleBack = () =>
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       isSettingPosition: false,
     }))
 
   const handleSetPosition = (newPosition: BetPosition) => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       isSettingPosition: true,
       position: newPosition,
@@ -128,7 +128,7 @@ const OpenRoundCard: React.FC<React.PropsWithChildren<OpenRoundCardProps>> = ({
   }
 
   const togglePosition = () => {
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
       position: prevState.position === BetPosition.BULL ? BetPosition.BEAR : BetPosition.BULL,
     }))
@@ -169,16 +169,14 @@ const OpenRoundCard: React.FC<React.PropsWithChildren<OpenRoundCardProps>> = ({
                   width="100%"
                   onClick={() => handleSetPosition(BetPosition.BULL)}
                   mb="4px"
-                  disabled={!canEnterPosition || isBufferPhase}
-                >
+                  disabled={!canEnterPosition || isBufferPhase}>
                   {t('Enter UP')}
                 </Button>
                 <Button
                   variant="danger"
                   width="100%"
                   onClick={() => handleSetPosition(BetPosition.BEAR)}
-                  disabled={!canEnterPosition || isBufferPhase}
-                >
+                  disabled={!canEnterPosition || isBufferPhase}>
                   {t('Enter DOWN')}
                 </Button>
               </>

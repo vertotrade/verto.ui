@@ -37,11 +37,11 @@ export const fetchFarmsPublicDataAsync = createAsyncThunk<
   }
 >(
   'farmsV1/fetchFarmsPublicDataAsync',
-  async (pids) => {
+  async pids => {
     const farmsConfig = await getFarmConfig(ChainId.BSC)
     const poolLength = await fetchMasterChefFarmPoolLength()
-    const farmsToFetch = farmsConfig.filter((farmConfig) => pids.includes(farmConfig.v1pid))
-    const farmsCanFetch = farmsToFetch.filter((f) => poolLength.gt(f.v1pid))
+    const farmsToFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.v1pid))
+    const farmsCanFetch = farmsToFetch.filter(f => poolLength.gt(f.v1pid))
 
     // Add price helper farms
     const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(56)
@@ -88,8 +88,8 @@ export const fetchFarmUserDataAsync = createAsyncThunk<
   async ({ account, pids }) => {
     const farmsConfig = await getFarmConfig(ChainId.BSC)
     const poolLength = await fetchMasterChefFarmPoolLength()
-    const farmsToFetch = farmsConfig.filter((farmConfig) => pids.includes(farmConfig.v1pid))
-    const farmsCanFetch = farmsToFetch.filter((f) => poolLength.gt(f.v1pid))
+    const farmsToFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.v1pid))
+    const farmsCanFetch = farmsToFetch.filter(f => poolLength.gt(f.v1pid))
     const userFarmAllowances = await fetchFarmUserAllowances(account, farmsCanFetch)
     const userFarmTokenBalances = await fetchFarmUserTokenBalances(account, farmsCanFetch)
     const userStakedBalances = await fetchFarmUserStakedBalances(account, farmsCanFetch)
@@ -137,13 +137,13 @@ export const farmsSlice = createSlice({
   name: 'FarmsV1',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // Update farms with live data
     builder.addCase(fetchFarmsPublicDataAsync.fulfilled, (state, action) => {
       const [farmPayload, poolLength] = action.payload
       if (state.data.length > 0) {
-        state.data = state.data.map((farm) => {
-          const liveFarmData = farmPayload.find((farmData) => farmData.v1pid === farm.v1pid)
+        state.data = state.data.map(farm => {
+          const liveFarmData = farmPayload.find(farmData => farmData.v1pid === farm.v1pid)
           return { ...farm, ...liveFarmData }
         })
       } else {
@@ -154,9 +154,9 @@ export const farmsSlice = createSlice({
 
     // Update farms with user data
     builder.addCase(fetchFarmUserDataAsync.fulfilled, (state, action) => {
-      action.payload.forEach((userDataEl) => {
+      action.payload.forEach(userDataEl => {
         const { pid } = userDataEl
-        const index = state.data.findIndex((farm) => farm.v1pid === pid)
+        const index = state.data.findIndex(farm => farm.v1pid === pid)
         state.data[index] = { ...state.data[index], userData: userDataEl }
       })
       state.userDataLoaded = true

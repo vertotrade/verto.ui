@@ -49,8 +49,7 @@ const AptosBanner = () => {
       style={{
         background: `linear-gradient(180deg, #00BFA5 0%, #005A5A 100%)`,
         overflow: isMobile ? 'hidden' : 'visible',
-      }}
-    >
+      }}>
       <S.Inner>
         <S.LeftWrapper>
           <Box>
@@ -62,8 +61,7 @@ const AptosBanner = () => {
             minHeight="48px"
             onClick={() =>
               window?.open('https://docs.pancakeswap.finance/aptos-deployment', '_blank', 'noopener noreferrer')
-            }
-          >
+            }>
             <Text color="invertedContrast" bold fontSize="16px" mr="4px">
               👋 {t('Get in Touch')}
             </Text>

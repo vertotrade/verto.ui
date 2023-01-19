@@ -30,7 +30,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
   isChartDisplayed,
 }) => {
   const toggleChartDisplayed = () => {
-    setIsChartDisplayed((currentIsChartDisplayed) => !currentIsChartDisplayed)
+    setIsChartDisplayed(currentIsChartDisplayed => !currentIsChartDisplayed)
   }
   const [onPresentTransactionsModal] = useModal(<TransactionsModal />)
 

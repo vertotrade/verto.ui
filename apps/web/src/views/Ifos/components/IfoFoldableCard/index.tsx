@@ -167,8 +167,7 @@ export const IfoCurrentCard = ({
           bottom="48px"
           width="100%"
           zIndex={6}
-          maxWidth={['400px', '400px', '400px', '100%']}
-        >
+          maxWidth={['400px', '400px', '400px', '100%']}>
           <Header $isCurrent ifoId={ifo.id} />
           <IfoRibbon publicIfoData={publicIfoData} />
           {shouldShowBunny && <NoHatBunny isLive={publicIfoData.status === 'live'} />}
@@ -229,7 +228,7 @@ const IfoFoldableCard = ({
       <Box as={StyledCard} borderRadius="32px">
         <Box position="relative">
           <Header ifoId={ifo.id}>
-            <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} />
+            <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded(prev => !prev)} />
           </Header>
           {isExpanded && (
             <>
@@ -351,8 +350,7 @@ const IfoCard: React.FC<React.PropsWithChildren<IfoFoldableCardProps>> = ({ ifo,
       <StyledCardBody>
         <CardsWrapper
           shouldReverse={ifo.version >= 3.1}
-          singleCard={!publicIfoData.poolBasic || !walletIfoData.poolBasic}
-        >
+          singleCard={!publicIfoData.poolBasic || !walletIfoData.poolBasic}>
           {publicIfoData.poolBasic && walletIfoData.poolBasic && (
             <IfoPoolCard
               poolId={PoolIds.poolBasic}

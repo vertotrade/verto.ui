@@ -75,7 +75,7 @@ export default function AddLiquidityForm({ notSupportPair }: { notSupportPair: b
             onFieldAInput(maxAmounts[Field.CURRENCY_A]?.toExact() ?? '')
           }}
           showQuickInputButton
-          onPercentInput={(percent) => {
+          onPercentInput={percent => {
             if (maxAmounts[Field.CURRENCY_A]) {
               onFieldAInput(maxAmounts[Field.CURRENCY_A]?.multiply(new Percent(percent, 100)).toExact() ?? '')
             }
@@ -97,7 +97,7 @@ export default function AddLiquidityForm({ notSupportPair }: { notSupportPair: b
             onFieldBInput(maxAmounts[Field.CURRENCY_B]?.toExact() ?? '')
           }}
           showQuickInputButton
-          onPercentInput={(percent) => {
+          onPercentInput={percent => {
             if (maxAmounts[Field.CURRENCY_B]) {
               onFieldBInput(maxAmounts[Field.CURRENCY_B]?.multiply(new Percent(percent, 100)).toExact() ?? '')
             }

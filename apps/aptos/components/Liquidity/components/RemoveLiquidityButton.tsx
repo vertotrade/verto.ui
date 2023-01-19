@@ -55,8 +55,7 @@ export default function RemoveLiquidityButton({ error, parsedAmounts, currencyA,
         onPresentRemoveLiquidity()
       }}
       width="100%"
-      disabled={error}
-    >
+      disabled={error}>
       {error || t('Remove')}
     </Button>
   )

@@ -225,11 +225,10 @@ const TokenTable: React.FC<
 
   const sortedTokens = useMemo(() => {
     return tokenDatas
-      ? orderBy(
-          tokenDatas,
-          (tokenData) => tokenData[sortField as keyof TokenData],
-          sortDirection ? 'desc' : 'asc',
-        ).slice(maxItems * (page - 1), page * maxItems)
+      ? orderBy(tokenDatas, tokenData => tokenData[sortField as keyof TokenData], sortDirection ? 'desc' : 'asc').slice(
+          maxItems * (page - 1),
+          page * maxItems,
+        )
       : []
   }, [tokenDatas, maxItems, page, sortDirection, sortField])
 
@@ -260,8 +259,7 @@ const TokenTable: React.FC<
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.name)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Token Name')}
         </StyledClickableColumnHeader>
         {type === 'priceChange' && (
@@ -270,8 +268,7 @@ const TokenTable: React.FC<
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.priceUSD)}
-            textTransform="uppercase"
-          >
+            textTransform="uppercase">
             {t('Price')}{' '}
             <SortButton scale="sm" variant="subtle" className={arrowClassName(SORT_FIELD.priceUSD)}>
               <SortArrowIcon />
@@ -283,8 +280,7 @@ const TokenTable: React.FC<
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.priceUSDChange)}
-          textTransform="uppercase"
-        >
+          textTransform="uppercase">
           {t('Change')}{' '}
           <SortButton scale="sm" variant="subtle" className={arrowClassName(SORT_FIELD.priceUSDChange)}>
             <SortArrowIcon />
@@ -296,8 +292,7 @@ const TokenTable: React.FC<
             fontSize="12px"
             bold
             onClick={() => handleSort(SORT_FIELD.volumeUSD)}
-            textTransform="uppercase"
-          >
+            textTransform="uppercase">
             {t('Volume 24H')}{' '}
             <SortButton scale="sm" variant="subtle" className={arrowClassName(SORT_FIELD.volumeUSD)}>
               <SortArrowIcon />
@@ -325,16 +320,14 @@ const TokenTable: React.FC<
               <Arrow
                 onClick={() => {
                   setPage(page === 1 ? page : page - 1)
-                }}
-              >
+                }}>
                 <ArrowBackIcon color={page === 1 ? 'textDisabled' : 'primary'} />
               </Arrow>
               <Text>{t('Page %page% of %maxPage%', { page, maxPage })}</Text>
               <Arrow
                 onClick={() => {
                   setPage(page === maxPage ? page : page + 1)
-                }}
-              >
+                }}>
                 <ArrowForwardIcon color={page === maxPage ? 'textDisabled' : 'primary'} />
               </Arrow>
             </PageButtons>

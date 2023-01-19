@@ -119,7 +119,7 @@ const CandleChart = ({ data, setValue, setLabel, ...rest }: LineChartProps) => {
       })
 
       // update the title when hovering on the chart
-      chartCreated.subscribeCrosshairMove((param) => {
+      chartCreated.subscribeCrosshairMove(param => {
         if (
           chartRef?.current &&
           (param === undefined ||

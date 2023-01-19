@@ -141,8 +141,7 @@ const TokenPage: React.FC<React.PropsWithChildren<{ routeAddress: string }>> = (
                 <LinkExternal
                   mr="8px"
                   color="primary"
-                  href={getBlockExploreLink(address, 'address', multiChainId[chainName])}
-                >
+                  href={getBlockExploreLink(address, 'address', multiChainId[chainName])}>
                   {t('View on %site%', { site: multiChainScan[chainName] })}
                 </LinkExternal>
                 {cmcLink && (
@@ -162,8 +161,7 @@ const TokenPage: React.FC<React.PropsWithChildren<{ routeAddress: string }>> = (
                     bold
                     lineHeight="0.7"
                     fontSize={isXs || isSm ? '24px' : '40px'}
-                    id="info-token-name-title"
-                  >
+                    id="info-token-name-title">
                     {tokenData.name}
                   </Text>
                   <Text ml="12px" lineHeight="1" color="textSubtle" fontSize={isXs || isSm ? '14px' : '20px'}>

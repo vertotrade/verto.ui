@@ -11,8 +11,7 @@ const NoProfileCard = () => {
         <Flex
           alignItems={['start', null, 'center']}
           justifyContent={['start', null, 'space-between']}
-          flexDirection={['column', null, 'row']}
-        >
+          flexDirection={['column', null, 'row']}>
           <div>
             <Heading scale="lg" mb="8px">
               {t('You haven’t set up your profile yet!')}

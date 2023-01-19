@@ -1,6 +1,6 @@
 import { Svg, SvgProps } from '@verto/uikit'
 
-const RibbonUpSide: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
+const RibbonUpSide: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg viewBox="0 0 32 64" {...props}>
       <path

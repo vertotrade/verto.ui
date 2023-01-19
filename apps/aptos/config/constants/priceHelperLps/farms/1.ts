@@ -22,7 +22,7 @@ const priceHelperLps: Omit<SerializedFarmConfig, 'pid'>[] = [
     quoteToken: APT[ChainId.MAINNET],
     token: mainnetTokens.cebnb,
   },
-].map((p) => ({
+].map(p => ({
   ...p,
   token: p.token.serialize,
   quoteToken: p.quoteToken.serialize,
