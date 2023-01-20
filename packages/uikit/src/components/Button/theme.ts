@@ -22,15 +22,14 @@ export const styleVariants = {
     color: "invertedContrast",
   },
   [variants.SECONDARY]: {
-    background: (theme: any) => theme.colors.gradientDarkBlue,
-    border: "1px solid",
+    background: (theme: any) => theme.colors.gradientGreenRed,
     borderColor: "transparent",
     boxShadow: "none",
-    color: "primary",
+    color: "white",
     fontWeight: "500",
     ":hover": {
       border: "1px solid",
-      borderColor: "primary",
+      borderColor: "white",
       opacity: "1 !important",
     },
     ":disabled": {

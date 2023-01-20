@@ -124,7 +124,7 @@ export const CurrencyInputPanel = ({
               <AtomBox display="flex" gap="4px" ml="4px" alignItems="center">
                 <CopyButton
                   width="16px"
-                  buttonColor="textSubtle"
+                  buttonColor="white"
                   text={currency.address}
                   tooltipMessage={t('Token address copied')}
                 />
