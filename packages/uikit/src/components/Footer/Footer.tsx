@@ -95,7 +95,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
               currentLang={currentLang}
               langs={langs}
               setLang={setLang}
-              color="gradientGreenRed"
+              color="gradientGreenOrange"
               dropdownPosition="top-right"
             />
           </Flex>

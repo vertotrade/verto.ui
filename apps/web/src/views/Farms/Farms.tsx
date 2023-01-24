@@ -7,8 +7,6 @@ import {
   Heading,
   Toggle,
   Text,
-  Button,
-  ArrowForwardIcon,
   Flex,
   Link,
   Box,
@@ -19,7 +17,6 @@ import {
   OptionProps,
   FlexLayout,
   PageHeader,
-  NextLinkFromReactRouter,
   ToggleView,
 } from '@verto/uikit'
 import styled from 'styled-components'
@@ -367,14 +364,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             <FarmH2 scale="lg" color="text">
               {t('Stake LP tokens to earn.')}
             </FarmH2>
-            <NextLinkFromReactRouter to="/farms/auction" prefetch={false}>
-              <Button p="0" variant="text">
-                <Text color="primary" bold fontSize="16px" mr="4px">
-                  {t('Community Auctions')}
-                </Text>
-                <ArrowForwardIcon color="primary" />
-              </Button>
-            </NextLinkFromReactRouter>
           </Box>
           {chainId === ChainId.BSC && (
             <Box>
@@ -486,7 +475,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </Flex>
         )}
         {poolLength && <div ref={observerRef} />}
-        <StyledImage src="/images/decorations/3dpan.png" alt="Pancake illustration" width={120} height={103} />
+        <StyledImage src="/images/decorations/verto-logo.png" alt="verto logo" width={60} height={51} />
       </Page>
     </FarmsContext.Provider>
   )

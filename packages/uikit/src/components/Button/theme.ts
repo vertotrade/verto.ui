@@ -22,7 +22,7 @@ export const styleVariants = {
     color: "invertedContrast",
   },
   [variants.SECONDARY]: {
-    background: (theme: any) => theme.colors.gradientGreenRed,
+    background: (theme: any) => theme.colors.gradientGreenOrange,
     borderColor: "transparent",
     boxShadow: "none",
     color: "white",

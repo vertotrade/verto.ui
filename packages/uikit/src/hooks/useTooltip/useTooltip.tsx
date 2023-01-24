@@ -30,6 +30,7 @@ const invertTheme = (currentTheme: DefaultTheme) => {
 
 const useTooltip = (content: React.ReactNode, options?: TooltipOptions): TooltipRefs => {
   const { isDark } = useTheme();
+
   const {
     placement = "auto",
     trigger = "hover",

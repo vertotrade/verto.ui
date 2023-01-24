@@ -17,7 +17,7 @@ import { ChartViewMode } from 'state/user/actions'
 import { useExchangeChartViewManager } from 'state/user/hooks'
 // import styled from 'styled-components'
 import BasicChart from './BasicChart'
-import { StyledPriceChart } from './styles'
+import { StyledPriceChart, StyledPriceChartContainer } from './styles'
 // import TradingViewChart from './TradingViewChart'
 // import PairPriceDisplay from '../../../../components/PairPriceDisplay'
 
@@ -52,28 +52,29 @@ const PriceChart = ({
   // }, [])
 
   return (
-    <StyledPriceChart
-      height={chartView === ChartViewMode.TRADING_VIEW ? '100%' : '70%'}
-      overflow={chartView === ChartViewMode.TRADING_VIEW ? 'hidden' : 'unset'}
-      $isDark={isDark}
-      $isExpanded={isChartExpanded}
-      $isFullWidthContainer={isFullWidthContainer}>
-      <Flex justifyContent="space-between" px="24px">
-        <Flex alignItems="center">
-          {outputCurrency ? (
-            <DoubleCurrencyLogo currency0={inputCurrency} currency1={outputCurrency} size={24} margin />
-          ) : (
-            inputCurrency && <CurrencyLogo currency={inputCurrency} size="24px" style={{ marginRight: '8px' }} />
-          )}
-          {inputCurrency && (
-            <Text color="text" bold>
-              {outputCurrency ? `${inputCurrency.symbol}/${outputCurrency.symbol}` : inputCurrency.symbol}
-            </Text>
-          )}
-          <IconButton variant="text" onClick={onSwitchTokens}>
-            <SyncAltIcon ml="6px" color="primary" />
-          </IconButton>
-          {/* {isDesktop && (
+    <StyledPriceChartContainer $isExpanded={isChartExpanded} $isFullWidthContainer={isFullWidthContainer}>
+      <StyledPriceChart
+        height={chartView === ChartViewMode.TRADING_VIEW ? '100%' : '70%'}
+        overflow={chartView === ChartViewMode.TRADING_VIEW ? 'hidden' : 'unset'}
+        $isDark={isDark}
+        $isExpanded={isChartExpanded}
+        $isFullWidthContainer={isFullWidthContainer}>
+        <Flex justifyContent="space-between" px="24px">
+          <Flex alignItems="center">
+            {outputCurrency ? (
+              <DoubleCurrencyLogo currency0={inputCurrency} currency1={outputCurrency} size={24} margin />
+            ) : (
+              inputCurrency && <CurrencyLogo currency={inputCurrency} size="24px" style={{ marginRight: '8px' }} />
+            )}
+            {inputCurrency && (
+              <Text color="text" bold>
+                {outputCurrency ? `${inputCurrency.symbol}/${outputCurrency.symbol}` : inputCurrency.symbol}
+              </Text>
+            )}
+            <IconButton variant="text" onClick={onSwitchTokens}>
+              <SyncAltIcon ml="6px" color="primary" />
+            </IconButton>
+            {/* {isDesktop && (
             <Flex>
               <ChartButton
                 aria-label={t('Basic')}
@@ -99,27 +100,27 @@ const PriceChart = ({
               </ChartButton>
             </Flex>
           )} */}
-        </Flex>
-        {!isMobile && (
-          <Flex>
-            <IconButton variant="text" onClick={toggleExpanded}>
-              {isChartExpanded ? <ShrinkIcon color="text" /> : <ExpandIcon color="text" />}
-            </IconButton>
           </Flex>
+          {!isMobile && (
+            <Flex>
+              <IconButton variant="text" onClick={toggleExpanded}>
+                {isChartExpanded ? <ShrinkIcon color="text" /> : <ExpandIcon color="text" />}
+              </IconButton>
+            </Flex>
+          )}
+        </Flex>
+        {chartView === ChartViewMode.BASIC && (
+          <BasicChart
+            token0Address={token0Address}
+            token1Address={token1Address}
+            isChartExpanded={isChartExpanded}
+            inputCurrency={inputCurrency}
+            outputCurrency={outputCurrency}
+            isMobile={isMobile}
+            currentSwapPrice={currentSwapPrice}
+          />
         )}
-      </Flex>
-      {chartView === ChartViewMode.BASIC && (
-        <BasicChart
-          token0Address={token0Address}
-          token1Address={token1Address}
-          isChartExpanded={isChartExpanded}
-          inputCurrency={inputCurrency}
-          outputCurrency={outputCurrency}
-          isMobile={isMobile}
-          currentSwapPrice={currentSwapPrice}
-        />
-      )}
-      {/* {chartView === ChartViewMode.TRADING_VIEW && (
+        {/* {chartView === ChartViewMode.TRADING_VIEW && (
         <Flex
           flexDirection="column"
           justifyContent="space-between"
@@ -145,7 +146,8 @@ const PriceChart = ({
           />
         </Flex>
       ) */}
-    </StyledPriceChart>
+      </StyledPriceChart>
+    </StyledPriceChartContainer>
   )
 }
 
