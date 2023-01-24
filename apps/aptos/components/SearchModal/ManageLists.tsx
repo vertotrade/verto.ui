@@ -210,8 +210,8 @@ function ManageLists({
         }
 
         if (l1 && l2) {
-          // Always make VertoTrade list in top.
-          const keyword = 'vertotrade'
+          // Always make PancakeSwap list in top.
+          const keyword = 'pancakeswap'
           if (l1.name.toLowerCase().includes(keyword) || l2.name.toLowerCase().includes(keyword)) {
             return -1
           }
