@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { useAccount } from 'wagmi'
-import { Heading, Flex, Image, Text, Link, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@verto/uikit'
+import { Heading, Flex, Text, Link, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { usePoolsPageFetch, usePoolsWithVault } from 'state/pools/hooks'
 import Page from 'components/Layout/Page'
@@ -64,10 +64,10 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
             <>
               {showFinishedPools && (
                 <FinishedTextContainer>
-                  <Text fontSize={['16px', null, '20px']} color="failure" pr="4px">
+                  <Text fontSize={['16px', null, '20px']} color="textSubtle" pr="4px">
                     {t('Looking for v1 CAKE syrup pools?')}
                   </Text>
-                  <FinishedTextLink href="/migration" fontSize={['16px', null, '20px']} color="failure">
+                  <FinishedTextLink href="/migration" fontSize={['16px', null, '20px']} color="textSubtle">
                     {t('Go to migration page')}.
                   </FinishedTextLink>
                 </FinishedTextContainer>
@@ -114,34 +114,32 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                   )}
                 </CardLayout>
               ) : (
-                <Pool.PoolsTable>
-                  {chosenPools.map(pool =>
-                    pool.vaultKey ? (
-                      <VaultPoolRow
-                        initialActivity={normalizedUrlSearch.toLowerCase() === pool.earningToken.symbol?.toLowerCase()}
-                        key={pool.vaultKey}
-                        vaultKey={pool.vaultKey}
-                        account={account}
-                      />
-                    ) : (
-                      <PoolRow
-                        initialActivity={normalizedUrlSearch.toLowerCase() === pool.earningToken.symbol?.toLowerCase()}
-                        key={pool.sousId}
-                        sousId={pool.sousId}
-                        account={account}
-                      />
-                    ),
-                  )}
-                </Pool.PoolsTable>
+                chosenPools.length > 0 && (
+                  <Pool.PoolsTable>
+                    {chosenPools.map(pool =>
+                      pool.vaultKey ? (
+                        <VaultPoolRow
+                          initialActivity={
+                            normalizedUrlSearch.toLowerCase() === pool.earningToken.symbol?.toLowerCase()
+                          }
+                          key={pool.vaultKey}
+                          vaultKey={pool.vaultKey}
+                          account={account}
+                        />
+                      ) : (
+                        <PoolRow
+                          initialActivity={
+                            normalizedUrlSearch.toLowerCase() === pool.earningToken.symbol?.toLowerCase()
+                          }
+                          key={pool.sousId}
+                          sousId={pool.sousId}
+                          account={account}
+                        />
+                      ),
+                    )}
+                  </Pool.PoolsTable>
+                )
               )}
-              <Image
-                mx="auto"
-                mt="12px"
-                src="/images/decorations/3d-syrup-bunnies.png"
-                alt="Pancake illustration"
-                width={192}
-                height={184.5}
-              />
             </>
           )}
         </PoolControls>

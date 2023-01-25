@@ -5,7 +5,7 @@ import { useTranslation } from "@verto/localization";
 import { Input } from "../Input";
 
 const StyledInput = styled(Input)`
-  border-radius: 16px;
+  border-radius: 7.5px;
   margin-left: auto;
 `;
 
