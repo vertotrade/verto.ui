@@ -9,6 +9,7 @@ export interface MenuItemProps {
   variant?: MenuItemVariant;
   statusColor?: keyof Colors;
   scrollLayerRef?: React.RefObject<HTMLDivElement>;
+  target?: string;
 }
 
 export type StyledMenuItemProps = {

@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Syne', sans-serif;
   }
   body {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.vertoBg1};
 
     img {
       height: auto;

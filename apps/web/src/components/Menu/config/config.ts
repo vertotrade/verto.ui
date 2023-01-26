@@ -1,15 +1,10 @@
 import {
   MenuItemsType,
   DropdownMenuItemType,
-  SwapIcon,
-  SwapFillIcon,
-  EarnFillIcon,
-  EarnIcon,
   // TrophyIcon,
   // TrophyFillIcon,
   // NftIcon,
   // NftFillIcon,
-  MoreIcon,
   DropdownMenuItems,
 } from '@verto/uikit'
 import { ContextApi } from '@verto/localization'
@@ -44,8 +39,6 @@ const config: (
   [
     {
       label: t('Trade'),
-      icon: SwapIcon,
-      fillIcon: SwapFillIcon,
       href: '/swap',
       showItemsOnMobile: false,
       items: [
@@ -82,9 +75,7 @@ const config: (
     {
       label: t('Earn'),
       href: '/farms',
-      icon: EarnIcon,
-      fillIcon: EarnFillIcon,
-      image: '/images/decorations/pe2.png',
+      showItemsOnMobile: true,
       items: [
         {
           label: t('Farms'),
@@ -150,51 +141,63 @@ const config: (
     //   ],
     // },
     {
-      label: '',
+      label: t('Info'),
       href: '/info',
-      icon: MoreIcon,
-      hideSubNav: true,
-      items: [
-        {
-          label: t('Info'),
-          href: '/info',
-        },
-        {
-          label: t('IFO'),
-          href: '/ifo',
-          supportChainIds: SUPPORT_ONLY_BSC,
-          image: '/images/ifos/ifo-bunny.png',
-        },
-        {
-          label: t('Voting'),
-          href: '/voting',
-          supportChainIds: SUPPORT_ONLY_BSC,
-          image: '/images/voting/voting-bunny.png',
-        },
-        {
-          type: DropdownMenuItemType.DIVIDER,
-        },
-        {
-          label: t('Leaderboard'),
-          href: '/teams',
-          supportChainIds: SUPPORT_ONLY_BSC,
-          image: '/images/decorations/leaderboard.png',
-        },
-        {
-          type: DropdownMenuItemType.DIVIDER,
-        },
-        {
-          label: t('Blog'),
-          href: 'https://medium.com/vertotrade',
-          type: DropdownMenuItemType.EXTERNAL_LINK,
-        },
-        {
-          label: t('Docs'),
-          href: 'https://docs.pancakeswap.finance',
-          type: DropdownMenuItemType.EXTERNAL_LINK,
-        },
-      ].map(item => addMenuItemSupported(item, chainId)),
+      showItemsOnMobile: false,
     },
+    {
+      label: t('Docs'),
+      href: 'https://docs.pancakeswap.finance',
+      target: '_blank',
+      showItemsOnMobile: false,
+      type: DropdownMenuItemType.EXTERNAL_LINK,
+    },
+    // {
+    //   label: '',
+    //   href: '/info',
+    //   icon: MoreIcon,
+    //   hideSubNav: true,
+    //   items: [
+    //     {
+    //       label: t('Info'),
+    //       href: '/info',
+    //     },
+    //     {
+    //       label: t('IFO'),
+    //       href: '/ifo',
+    //       supportChainIds: SUPPORT_ONLY_BSC,
+    //       image: '/images/ifos/ifo-bunny.png',
+    //     },
+    //     {
+    //       label: t('Voting'),
+    //       href: '/voting',
+    //       supportChainIds: SUPPORT_ONLY_BSC,
+    //       image: '/images/voting/voting-bunny.png',
+    //     },
+    //     {
+    //       type: DropdownMenuItemType.DIVIDER,
+    //     },
+    //     {
+    //       label: t('Leaderboard'),
+    //       href: '/teams',
+    //       supportChainIds: SUPPORT_ONLY_BSC,
+    //       image: '/images/decorations/leaderboard.png',
+    //     },
+    //     {
+    //       type: DropdownMenuItemType.DIVIDER,
+    //     },
+    //     {
+    //       label: t('Blog'),
+    //       href: 'https://medium.com/vertotrade',
+    //       type: DropdownMenuItemType.EXTERNAL_LINK,
+    //     },
+    //     {
+    //       label: t('Docs'),
+    //       href: 'https://docs.pancakeswap.finance',
+    //       type: DropdownMenuItemType.EXTERNAL_LINK,
+    //     },
+    //   ].map(item => addMenuItemSupported(item, chainId)),
+    // },
   ].map(item => addMenuItemSupported(item, chainId))
 
 export default config

@@ -34,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
   }
   body {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.vertoBg1};
 
     img {
       height: auto;

@@ -21,7 +21,17 @@ const BottomNav: React.FC<React.PropsWithChildren<BottomNavProps>> = ({
       <StyledBottomNav justifyContent="space-around" {...props}>
         {items.map(
           (
-            { label, items: menuItems, href, icon, fillIcon, showOnMobile = true, showItemsOnMobile = true, disabled },
+            {
+              label,
+              items: menuItems,
+              href,
+              target = "_self",
+              icon,
+              fillIcon,
+              showOnMobile = true,
+              showItemsOnMobile = true,
+              disabled,
+            },
             index
           ) => {
             const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
@@ -41,6 +51,7 @@ const BottomNav: React.FC<React.PropsWithChildren<BottomNavProps>> = ({
                     <NotificationDot show={!!statusColor} color={statusColor}>
                       <BottomNavItem
                         href={href}
+                        target={target}
                         disabled={disabled}
                         isActive={href === activeItem}
                         label={label}

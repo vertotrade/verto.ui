@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import { Menu as UikitMenu, NextLinkFromReactRouter, footerLinks } from '@verto/uikit'
 import { useTranslation, languageList } from '@verto/localization'
 // import PhishingWarningBanner from 'components/PhishingWarningBanner'
-import { NetworkSwitcher } from 'components/NetworkSwitcher'
 import useTheme from 'hooks/useTheme'
 import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
 // import { usePhishingBannerManager } from 'state/user/hooks'
@@ -37,12 +36,14 @@ const Menu = props => {
     <>
       <UikitMenu
         linkComponent={linkProps => {
-          return <NextLinkFromReactRouter to={linkProps.href} {...linkProps} prefetch={false} />
+          return (
+            <NextLinkFromReactRouter to={linkProps.href} target={linkProps.target} {...linkProps} prefetch={false} />
+          )
         }}
         rightSide={
           <>
             <GlobalSettings mode={SettingsMode.GLOBAL} />
-            <NetworkSwitcher />
+            {/* <NetworkSwitcher /> */}
             <UserMenu />
           </>
         }
