@@ -19,8 +19,10 @@ const StyledTable = styled.div`
 
 const StyledTableBorder = styled.div`
   border-radius: ${({ theme }) => theme.radii.card};
-  background-color: ${({ theme }) => theme.colors.cardBorder};
+  border: 2px solid ${({ theme }) => theme.colors.cardBorder};
+  border-top: 0;
   background-size: 400% 400%;
+  background-color: ${({ theme }) => theme.colors.backgroundAlt};
   position: relative;
   padding-top: 10px;
   margin-top: 10px;
@@ -28,7 +30,7 @@ const StyledTableBorder = styled.div`
   &:before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 0 -1px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     padding-top: 10px;
@@ -37,6 +39,7 @@ const StyledTableBorder = styled.div`
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: xor;
+    height: 30px;
   }
 `;
 
