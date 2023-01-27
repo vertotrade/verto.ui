@@ -7,6 +7,7 @@ import { useMatchBreakpoints } from "../../contexts";
 const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
   children,
   href,
+  target = "_self",
   isActive = false,
   isDisabled = false,
   variant = "default",
@@ -21,6 +22,7 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
     ? {
         as: linkComponent,
         href,
+        target,
       }
     : {
         as: "div",
@@ -37,6 +39,7 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
       scrollLayer.scrollLeft = menuNode.offsetLeft;
     }
   }, [isActive, isMobile, scrollLayerRef]);
+
   return (
     <StyledMenuItemContainer $isActive={isActive} $variant={variant} ref={menuItemRef}>
       <StyledMenuItem

@@ -10,6 +10,7 @@ const BottomNavItem: React.FC<React.PropsWithChildren<BottomNavItemProps>> = ({
   icon,
   fillIcon,
   href,
+  target,
   showItemsOnMobile = false,
   isActive = false,
   disabled = false,
@@ -30,7 +31,7 @@ const BottomNavItem: React.FC<React.PropsWithChildren<BottomNavItemProps>> = ({
         />
       )}
       <StyledBottomNavText
-        color={isActive ? "text" : "textSubtle"}
+        color={isActive ? "gradientGreenOrange" : "textSubtle"}
         fontWeight={isActive ? "600" : "400"}
         fontSize="10px"
       >
@@ -44,7 +45,13 @@ const BottomNavItem: React.FC<React.PropsWithChildren<BottomNavItemProps>> = ({
       {bottomNavItemContent}
     </StyledBottomNavItem>
   ) : (
-    <StyledBottomNavItem style={{ opacity: disabled ? 0.5 : 1 }} as={linkComponent} href={href} {...props}>
+    <StyledBottomNavItem
+      style={{ opacity: disabled ? 0.5 : 1 }}
+      as={linkComponent}
+      href={href}
+      target={target}
+      {...props}
+    >
       {bottomNavItemContent}
     </StyledBottomNavItem>
   );

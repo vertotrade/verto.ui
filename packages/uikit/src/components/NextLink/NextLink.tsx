@@ -9,6 +9,7 @@ interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   innerRef?: React.Ref<HTMLAnchorElement>;
   // next
   prefetch?: boolean;
+  target?: string;
 }
 
 const A = styled.a``;

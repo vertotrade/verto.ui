@@ -13,7 +13,9 @@ const StyledSubMenuItems = styled(Flex)`
   position: relative;
   z-index: 1;
   width: 100%;
-  display: block;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   white-space: nowrap;
   scroll-behavior: smooth;
   ${({ theme }) => theme.mediaQueries.md} {

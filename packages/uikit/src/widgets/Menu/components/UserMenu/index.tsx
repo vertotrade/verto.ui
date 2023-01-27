@@ -15,11 +15,10 @@ interface ThemedUserMenuProps extends FlexProps {
 
 export const StyledUserMenu = styled(Flex)<ThemedUserMenuProps>`
   align-items: center;
-  background: ${({ theme }) => theme.colors.gradientDarkBlue};
-  border: 1px solid ${({ $isOpen, theme }) => ($isOpen ? theme.colors.primary : "transparent")};
+  background: ${({ theme }) => theme.colors.gradientGreenOrange};
   border-radius: 16px;
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
   cursor: pointer;
   display: inline-flex;
   font-weight: 500;
@@ -27,14 +26,10 @@ export const StyledUserMenu = styled(Flex)<ThemedUserMenuProps>`
   padding-left: 32px;
   padding-right: 8px;
   position: relative;
-
-  &:hover {
-    border: 1px solid ${({ theme }) => theme.colors.primary};
-  }
 `;
 
 export const LabelText = styled.div`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
   display: none;
   font-weight: 500;
 
