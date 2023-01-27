@@ -1,12 +1,11 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
-import getThemeValue from "../../util/getThemeValue";
 import { CardHeader, Flex, Heading, Text } from "../../components";
 
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background: string }>`
-  background: ${({ isFinished, background, theme }) =>
-    isFinished ? theme.colors.backgroundDisabled : getThemeValue(theme, `colors.${background}`)};
+  background: transparent;
   border-radius: ${({ theme }) => `${theme.radii.card} ${theme.radii.card} 0 0`};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
 `;
 
 export const PoolCardHeader: React.FC<

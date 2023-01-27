@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    margin-left: 16px;
+    margin-left: 32px;
   }
 `;
 
@@ -90,7 +90,7 @@ const PoolTabButtons = ({
   const stakedOnlySwitch = (
     <ToggleWrapper>
       <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} scale="sm" />
-      <Text> {t("Staked only")}</Text>
+      <Text color="textSubtle"> {t("Staked only")}</Text>
     </ToggleWrapper>
   );
 

@@ -32,15 +32,16 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
     $isActive
       ? `
     border-radius: 0px;
-    font-weight: 800;
     border-bottom: 5px solid;
     border-image-slice: 1;
     border-width: 5px;
     top: 0px;
+    opacity: 1;
+    padding-top: 13px;
     border-image-source: linear-gradient(to right, #30e8bf, #ff8235);
     color: ${theme.colors.text};
   `
-      : ""}
+      : ""};
 
   :hover,
   :focus {

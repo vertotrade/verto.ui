@@ -17,7 +17,7 @@ export const tokens = {
     dark: darkColors,
   },
   fonts: {
-    normal: "'Kanit', sans-serif",
+    normal: "'Syne', sans-serif",
     mono: 'SFMono, ui-monospace, monospace',
   },
   space: {
@@ -57,7 +57,7 @@ export const tokens = {
     '20px': '20px',
     small: '4px',
     default: '16px',
-    card: '24px',
+    card: '30px',
     circle: '50%',
   },
   fontSizes: {

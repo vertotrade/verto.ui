@@ -11,6 +11,7 @@ export const StyledCard = styled(Card)<{ isFinished?: boolean }>`
   align-self: baseline;
   position: relative;
   color: ${({ isFinished, theme }) => theme.colors[isFinished ? "textDisabled" : "secondary"]};
+  border: 2px solid ${({ theme }) => theme.colors.cardBorder};
 
   ${({ theme }) => theme.mediaQueries.sm} {
     max-width: 350px;

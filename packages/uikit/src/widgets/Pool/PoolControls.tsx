@@ -17,7 +17,7 @@ import { sortPools } from "./helpers";
 const PoolControlsView = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
 
   justify-content: space-between;

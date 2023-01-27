@@ -47,7 +47,7 @@ const Footer: React.FC<React.PropsWithChildren<FooterProps>> = ({
           <PoolTypeTag vaultKey={vaultKey} isLocked={isLocked} account={account}>
             {targetRef => (
               <Flex ref={targetRef}>
-                <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
+                <HelpIcon ml="8px" width="20px" height="20px" color="textSubtle" />
               </Flex>
             )}
           </PoolTypeTag>

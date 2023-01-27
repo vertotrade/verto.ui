@@ -22,7 +22,7 @@ interface StyledCardProps extends CardProps {
 /**
  * Priority: Warning --> Success --> Active
  */
-const getBorderColor = ({ isActive, isSuccess, isWarning, borderBackground, theme }: StyledCardProps) => {
+const getBorderColor = ({ isSuccess, isWarning, borderBackground, theme }: StyledCardProps) => {
   if (borderBackground) {
     return borderBackground;
   }
@@ -32,10 +32,6 @@ const getBorderColor = ({ isActive, isSuccess, isWarning, borderBackground, them
 
   if (isSuccess) {
     return theme.colors.success;
-  }
-
-  if (isActive) {
-    return `linear-gradient(180deg, ${theme.colors.primaryBright}, ${theme.colors.secondary})`;
   }
 
   return theme.colors.cardBorder;
@@ -63,7 +59,6 @@ export const StyledCardInner = styled(Box)<{ background?: string; hasCustomBorde
   height: 100%;
   overflow: ${({ hasCustomBorder }) => (hasCustomBorder ? "initial" : "inherit")};
   background: ${({ theme, background }) => background ?? theme.card.background};
-  border-radius: ${({ theme }) => theme.radii.card};
 `;
 
 StyledCard.defaultProps = {
