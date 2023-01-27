@@ -29,7 +29,11 @@ export const StyledListItem = styled.li`
 `;
 
 export const StyledIconMobileContainer = styled(Box)`
-  margin-bottom: 24px;
+  margin-bottom: 0px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    margin-bottom: 24px;
+  }
 `;
 
 export const StyledToolsContainer = styled(Flex)`

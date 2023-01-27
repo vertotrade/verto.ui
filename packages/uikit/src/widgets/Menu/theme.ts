@@ -5,7 +5,7 @@ export interface NavThemeType {
 }
 
 export const light: NavThemeType = {
-  background: "#d7caec45",
+  background: "#eaeaea",
 };
 
 export const dark: NavThemeType = {

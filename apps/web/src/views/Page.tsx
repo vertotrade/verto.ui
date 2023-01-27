@@ -1,4 +1,3 @@
-import { useTranslation } from '@verto/localization'
 import { Swap } from '@verto/uikit'
 import { ChainId } from '@verto/sdk'
 import { PageMeta } from 'components/Layout/Page'
@@ -20,10 +19,8 @@ const Page: React.FC<
   helpUrl = EXCHANGE_HELP_URLS,
   ...props
 }) => {
-  const { t } = useTranslation()
   const { chainId } = useActiveChainId()
   const isBSC = chainId === ChainId.BSC
-  const externalText = isBSC ? t('Bridge assets to BNB Chain') : ''
   const externalLinkUrl = isBSC ? 'https://bridge.pancakeswap.finance/' : ''
 
   return (
@@ -34,7 +31,6 @@ const Page: React.FC<
         noMinHeight={noMinHeight}
         hideFooterOnDesktop={hideFooterOnDesktop}
         helpUrl={helpUrl}
-        externalText={externalText}
         externalLinkUrl={externalLinkUrl}
         {...props}>
         {children}
