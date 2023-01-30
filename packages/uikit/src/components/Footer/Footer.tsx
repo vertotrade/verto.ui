@@ -12,15 +12,11 @@ import { SkeletonV2 } from "../Skeleton";
 import useMatchBreakpoints from "../../contexts/MatchBreakpoints/useMatchBreakpoints";
 
 const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
-  items,
   isDark,
   toggleTheme,
   currentLang,
   langs,
   setLang,
-  cakePriceUsd,
-  buyCakeLabel,
-  buyCakeLink,
   ...props
 }) => {
   const isMounted = useIsMounted();

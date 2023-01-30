@@ -1,7 +1,7 @@
 import { memo, ReactNode } from "react";
 import styled from "styled-components";
 import { useTranslation } from "@verto/localization";
-import { LinkExternal, Flex, Svg, Button } from "../../components";
+import { LinkExternal, Flex, Button } from "../../components";
 
 const Wrapper = styled.div<{ $isSide: boolean }>`
   width: 100%;
