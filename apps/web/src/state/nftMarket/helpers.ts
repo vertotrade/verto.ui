@@ -10,13 +10,10 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { getNftMarketContract } from 'utils/contractHelpers'
 import { NOT_ON_SALE_SELLER } from 'config/constants'
 import DELIST_COLLECTIONS from 'config/constants/nftsCollections/delist'
-import { pancakeBunniesAddress } from 'views/Nft/market/constants'
 import { formatBigNumber } from '@verto/utils/formatBalance'
 import { getNftMarketAddress } from 'utils/addressHelpers'
 import nftMarketAbi from 'config/abi/nftMarket.json'
 import fromPairs from 'lodash/fromPairs'
-import pickBy from 'lodash/pickBy'
-import lodashSize from 'lodash/size'
 import {
   ApiCollection,
   ApiCollections,
@@ -139,45 +136,6 @@ export const getCollectionApi = async (collectionAddress: string): Promise<ApiCo
   }
   console.error(`API: Failed to fetch NFT collection ${collectionAddress}`, res.statusText)
   return null
-}
-
-/**
- * Fetch static data for all nfts in a collection using the API
- * @param collectionAddress
- * @param size
- * @param page
- * @returns
- */
-export const getNftsFromCollectionApi = async (
-  collectionAddress: string,
-  size = 100,
-  page = 1,
-): Promise<ApiResponseCollectionTokens> => {
-  const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
-  const requestPath = `${API_NFT}/collections/${collectionAddress}/tokens${
-    !isPBCollection ? `?page=${page}&size=${size}` : ``
-  }`
-
-  try {
-    const res = await fetch(requestPath)
-    if (res.ok) {
-      const data = await res.json()
-      const filteredAttributesDistribution = pickBy(data.attributesDistribution, Boolean)
-      const filteredData = pickBy(data.data, Boolean)
-      const filteredTotal = lodashSize(filteredData)
-      return {
-        ...data,
-        total: filteredTotal,
-        attributesDistribution: filteredAttributesDistribution,
-        data: filteredData,
-      }
-    }
-    console.error(`API: Failed to fetch NFT tokens for ${collectionAddress} collection`, res.statusText)
-    return null
-  } catch (error) {
-    console.error(`API: Failed to fetch NFT tokens for ${collectionAddress} collection`, error)
-    return null
-  }
 }
 
 /**
