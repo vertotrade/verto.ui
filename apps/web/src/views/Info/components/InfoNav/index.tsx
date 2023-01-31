@@ -19,11 +19,11 @@ import { useMultiChainPath, useGetChainName } from 'state/info/hooks'
 import { multiChainId, multiChainPaths } from 'state/info/constant'
 import { chains } from 'utils/wagmi'
 import { ChainLogo } from 'components/Logo/ChainLogo'
-import { useAccount } from 'wagmi'
 import { bsc, mainnet } from 'wagmi/chains'
+import useTheme from 'hooks/useTheme'
 
-const NavWrapper = styled(Flex)`
-  background: ${({ theme }) => theme.colors.gradientCardHeader};
+const NavWrapper = styled(Flex)<{ isDark: boolean }>`
+  background: ${({ theme, isDark }) => (isDark ? theme.colors.headerBackground2 : theme.colors.headerBackground1)};
   justify-content: space-between;
   padding: 20px 16px;
   flex-direction: column;
@@ -38,7 +38,7 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
   const { t } = useTranslation()
   const router = useRouter()
   const chainPath = useMultiChainPath()
-  const { address: account } = useAccount()
+  const { theme } = useTheme()
 
   const isPairs = router.pathname === `/info${chainPath && `/[chainName]`}/pairs`
   const isTokens = router.pathname === `/info${chainPath && `/[chainName]`}/tokens`
@@ -51,7 +51,7 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
     activeIndex = 2
   }
   return (
-    <NavWrapper>
+    <NavWrapper isDark={theme.isDark}>
       <Flex>
         <Box>
           <ButtonMenu activeIndex={activeIndex} scale="sm" variant="subtle">
@@ -66,7 +66,6 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
             </ButtonMenuItem>
           </ButtonMenu>
         </Box>
-        {!account && <NetworkSwitcher activeIndex={activeIndex} />}
       </Flex>
       <Box width={['100%', '100%', '250px']}>
         <Search />
