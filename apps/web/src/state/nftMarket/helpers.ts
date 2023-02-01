@@ -279,44 +279,6 @@ export const getNftsFromCollectionSg = async (
  * @param existingTokenIds - tokens that are already loaded into redux
  * @returns
  */
-export const getNftsByBunnyIdSg = async (
-  bunnyId: string,
-  existingTokenIds: string[],
-  orderDirection: 'asc' | 'desc',
-): Promise<TokenMarketData[]> => {
-  try {
-    const where =
-      existingTokenIds.length > 0
-        ? { otherId: bunnyId, isTradable: true, tokenId_not_in: existingTokenIds }
-        : { otherId: bunnyId, isTradable: true }
-    const res = await request(
-      GRAPH_API_NFTMARKET,
-      gql`
-        query getNftsByBunnyIdSg($collectionAddress: String!, $where: NFT_filter, $orderDirection: String!) {
-          nfts(first: 30, where: $where, orderBy: currentAskPrice, orderDirection: $orderDirection) {
-            ${baseNftFields}
-          }
-        }
-      `,
-      {
-        collectionAddress: pancakeBunniesAddress.toLowerCase(),
-        where,
-        orderDirection,
-      },
-    )
-    return res.nfts
-  } catch (error) {
-    console.error(`Failed to fetch collection NFTs for bunny id ${bunnyId}`, error)
-    return []
-  }
-}
-
-/**
- * Fetch market data for PancakeBunnies NFTs by bunny id using the Subgraph
- * @param bunnyId - bunny id to query
- * @param existingTokenIds - tokens that are already loaded into redux
- * @returns
- */
 export const getMarketDataForTokenIds = async (
   collectionAddress: string,
   existingTokenIds: string[],
