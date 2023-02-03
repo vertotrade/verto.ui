@@ -2,7 +2,7 @@ name: Deploys to Dev
 on:
   push:
     branches:
-      - DEV-467
+      - main
   repository_dispatch:
     types: [dev]
   workflow_dispatch:
@@ -18,22 +18,22 @@ concurrency: dev
 
 jobs:
   install-and-lint:
-    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@DEV-467
+    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
 
   build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@DEV-467
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
     needs: [install-and-lint]
     with:
       env: dev
 
   be-build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@DEV-467
+    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@main
     needs: [build]
     with:
       ecr_repo: verto-dev-ui-nginx
 
   be-publish-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@DEV-467
+    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@main
     needs: [be-build]
     with:
       aws_region: us-east-1
@@ -44,7 +44,7 @@ jobs:
       aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
 
   be-deploy-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@DEV-467
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@main
     needs: [be-publish-dev]
     with:
       env: dev
@@ -62,7 +62,7 @@ jobs:
       aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
 
   fe-deploy-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@DEV-467
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@main
     needs: [build]
     with:
       env: dev
