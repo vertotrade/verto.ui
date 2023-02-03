@@ -50,6 +50,7 @@ export const StepIntro = ({ docLink, docText }: { docLink: string; docText: stri
       style={{ gap: '24px' }}
       mx="auto"
       my="48px"
+      px="24px"
       textAlign="center"
       alignItems="center">
       {introStep && (
@@ -57,7 +58,6 @@ export const StepIntro = ({ docLink, docText }: { docLink: string; docText: stri
           <Heading as="h2" color="secondary">
             {introStep.title}
           </Heading>
-          <Image m="auto" src={introStep.icon} width={198} height={178} />
           <Text maxWidth="368px" m="auto" small color="textSubtle">
             {introStep.description}
           </Text>
@@ -67,7 +67,7 @@ export const StepIntro = ({ docLink, docText }: { docLink: string; docText: stri
         <StepDot place="left" active={step === 0} onClick={() => setStep(0)} />
         <StepDot place="right" active={step === 1} onClick={() => setStep(1)} />
       </AtomBox>
-      <Button minHeight={40} variant="subtle" external as={LinkExternal} color="backgroundAlt" href={docLink}>
+      <Button minHeight={40} variant="subtle" external as={LinkExternal} color="textSubtle" href={docLink}>
         {docText}
       </Button>
     </AtomBox>
