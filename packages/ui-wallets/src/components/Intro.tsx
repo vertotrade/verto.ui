@@ -1,6 +1,6 @@
 import { Trans } from '@verto/localization'
 import { AtomBox } from '@verto/ui/components/AtomBox'
-import { Button, Heading, Image, LinkExternal, Text } from '@verto/uikit'
+import { Button, Heading, LinkExternal, Text } from '@verto/uikit'
 import { useState } from 'react'
 
 const IntroSteps = [
