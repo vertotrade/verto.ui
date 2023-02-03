@@ -1,0 +1,107 @@
+name: Deploys an ECS Docker Image
+on:
+  workflow_call:
+    inputs:
+      env:
+        required: false
+        default: dev
+        type: string
+      task_definition:
+        required: true
+        type: string
+      container_name:
+        required: true
+        type: string
+      aws_region:
+        required: false
+        type: string
+        default: us-east-1
+      service:
+        required: true
+        type: string
+      cluster:
+        required: true
+        type: string
+      ecr_repo:
+        required: true
+        type: string
+      aws_log_group:
+        required: true
+        type: string
+      task_role_arn:
+        required: true
+        type: string
+      task_execution_role_arn:
+        required: true
+        type: string
+    secrets:
+      aws_access_key_id:
+        required: true
+      aws_secret_access_key:
+        required: true
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.4.0
+
+      - name: Configure AWS credentials
+        id: configure-aws-credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.aws_access_key_id }}
+          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          aws-region: ${{ inputs.aws_region }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Get image
+        id: get-img
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ${{ inputs.ecr_repo }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:latest" >> $GITHUB_OUTPUT
+          echo "${{needs.publish.outputs.image_name}}"
+
+      # - name: Replace task definition values
+      #   shell: bash
+      #   run: |
+      #     export IMAGE_NAME="${{ steps.login-ecr.outputs.registry }}/${{ inputs.ecr_repo }}:${GITHUB_RUN_ID}"
+      #     export ENV="${{ inputs.env }}"
+      #     export AWS_ACCOUNT_ID="${{ steps.configure-aws-credentials.outputs.aws-account-id }}"
+      #     export AWS_REGION="${{ inputs.aws_region }}"
+      #     export AWS_LOG_GROUP="${{ inputs.aws_log_group }}"
+      #     export ECR_REPO="${{ inputs.ecr_repo }}"
+      #     export TASK_ROLE_ARN="${{ inputs.task_role_arn }}"
+      #     export TASK_EXECUTION_ROLE_ARN="${{ inputs.task_execution_role_arn }}"
+
+      #     envsubst < ${{ inputs.task_definition }} > taskdefinition.json
+      #     cat taskdefinition.json
+
+      # - name: Deploy to Amazon ECS
+      #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      #   with:
+      #     task-definition: taskdefinition.json
+      #     service: ${{ inputs.service }}
+      #     cluster: ${{ inputs.cluster }}
+
+      - name: Replace task definition values
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ inputs.task_definition }}
+          container-name: ${{ inputs.container_name }}
+          image: ${{ steps.get-img.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ inputs.task_definition }}
+          service: ${{ inputs.service }}
+          cluster: ${{ inputs.cluster }}
+          wait-for-service-stability: true

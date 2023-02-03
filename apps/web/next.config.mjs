@@ -36,6 +36,7 @@ const config = {
     styledComponents: true,
   },
   experimental: {
+    outputStandalone: true,
     scrollRestoration: true,
     transpilePackages: [
       '@verto/ui',
