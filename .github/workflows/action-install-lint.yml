@@ -37,5 +37,17 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ env.cache-name }}-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Lint
-        run: yarn lint
+      - name: Get changed files
+        id: changed-files
+        uses: Ana06/get-changed-files@v2.1.0
+        with:
+            format: space-delimited
+            filter: |
+              **/*.ts
+              **/*.tsx
+              **/*.js
+              **/*.jsx
+            token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run ESLint
+        run:  yarn lint:report ${{ steps.changed-files.outputs.added_modified }}
