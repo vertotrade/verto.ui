@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import { Flex, Text, TicketFillIcon, PredictionsIcon } from '@verto/uikit'
+import { Flex, Text, PredictionsIcon } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import ColoredWordHeading from '../ColoredWordHeading'
 import IconCard, { IconCardData } from '../IconCard'
 import PredictionCardContent from './PredictionCardContent'
-import LotteryCardContent from './LotteryCardContent'
 import CompositeImage from '../CompositeImage'
 
 const TransparentFrame = styled.div<{ isDark: boolean }>`
@@ -61,13 +60,6 @@ const PredictionCardData: IconCardData = {
   rotation: '-2.36deg',
 }
 
-const LotteryCardData: IconCardData = {
-  icon: <TicketFillIcon color="white" width="36px" />,
-  background: ' linear-gradient(180deg, #7645D9 0%, #5121B1 100%);',
-  borderColor: '#3C1786',
-  rotation: '1.43deg',
-}
-
 const bottomLeftImage = {
   path: '/images/home/prediction-cards/',
   attributes: [
@@ -118,11 +110,6 @@ const WinSection = () => {
               mb={['32px', null, null, '0']}>
               <IconCard {...PredictionCardData}>
                 <PredictionCardContent />
-              </IconCard>
-            </Flex>
-            <Flex flex="1" maxWidth={['275px', null, null, '100%']}>
-              <IconCard {...LotteryCardData}>
-                <LotteryCardContent />
               </IconCard>
             </Flex>
           </Flex>

@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { LinkStatus } from '@verto/uikit/src/widgets/Menu/types'
 import { useTheme } from '@verto/hooks'
 import { useTranslation } from '@verto/localization'
 import { useActiveChainId } from 'hooks/useActiveChainId'

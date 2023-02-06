@@ -2,7 +2,6 @@ import { gql, request } from 'graphql-request'
 import { stringify } from 'querystring'
 import { API_NFT, GRAPH_API_NFTMARKET } from 'config/constants/endpoints'
 import { multicallv2 } from 'utils/multicall'
-import { isAddress } from 'utils'
 import erc721Abi from 'config/abi/erc721.json'
 import range from 'lodash/range'
 import groupBy from 'lodash/groupBy'
@@ -232,43 +231,6 @@ export const getCollectionsSg = async (): Promise<CollectionMarketDataBaseFields
     return res.collections
   } catch (error) {
     console.error('Failed to fetch NFT collections', error)
-    return []
-  }
-}
-
-/**
- * Fetch market data for nfts in a collection using the Subgraph
- * @param collectionAddress
- * @param first
- * @param skip
- * @returns
- */
-export const getNftsFromCollectionSg = async (
-  collectionAddress: string,
-  first = 1000,
-  skip = 0,
-): Promise<TokenMarketData[]> => {
-  // Squad to be sorted by tokenId as this matches the order of the paginated API return. For PBs - get the most recent,
-  const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
-
-  try {
-    const res = await request(
-      GRAPH_API_NFTMARKET,
-      gql`
-        query getNftCollectionMarketData($collectionAddress: String!) {
-          collection(id: $collectionAddress) {
-            id
-            nfts(orderBy:${isPBCollection ? 'updatedAt' : 'tokenId'}, skip: $skip, first: $first) {
-             ${baseNftFields}
-            }
-          }
-        }
-      `,
-      { collectionAddress: collectionAddress.toLowerCase(), skip, first },
-    )
-    return res.collection.nfts
-  } catch (error) {
-    console.error('Failed to fetch NFTs from collection', error)
     return []
   }
 }
@@ -832,7 +794,6 @@ export const combineApiAndSgResponseToNftToken = (
     name: apiMetadata.name,
     description: apiMetadata.description,
     collectionName: apiMetadata.collection.name,
-    collectionAddress: pancakeBunniesAddress,
     image: apiMetadata.image,
     marketData,
     attributes,
