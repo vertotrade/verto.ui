@@ -77,22 +77,22 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
   const { t } = useTranslation()
 
   return (
-    <AtomBox position="relative" zIndex="modal" className={modalWrapperClass}>
-      <AtomBox position="absolute" style={{ top: '-50px' }}>
-        <TabMenu activeIndex={index} onItemClick={setIndex} gap="0px" isColorInverse>
+    <AtomBox zIndex="modal" className={modalWrapperClass} flexDirection="column">
+      <AtomBox style={{ top: '-50px' }}>
+        <TabMenu activeIndex={index} onItemClick={setIndex} gap="0px">
           <Tab>{t('Connect Wallet')}</Tab>
           <Tab>{t('What’s a Web3 Wallet?')}</Tab>
         </TabMenu>
       </AtomBox>
       <AtomBox
         display="flex"
-        position="relative"
-        background="gradientCardHeader"
+        background="vertoBg1"
         borderRadius="card"
         borderBottomRadius={{
           xs: '0',
           md: 'card',
         }}
+        borderTopRadius="0"
         zIndex="modal"
         width="full">
         {index === 0 && children}
@@ -311,6 +311,7 @@ function DesktopModal<T>({
         py="32px"
         zIndex="modal"
         borderRadius="card"
+        borderTopLeftRadius="0"
         className={desktopWalletSelectionClass}>
         <AtomBox px="48px">
           <Heading color="color" as="h4">
@@ -338,6 +339,7 @@ function DesktopModal<T>({
       <AtomBox
         flex={1}
         mx="24px"
+        p="24px"
         display={{
           xs: 'none',
           sm: 'flex',
@@ -413,7 +415,7 @@ export function WalletModalV2<T = unknown>(props: WalletModalV2Props<T>) {
   return (
     <ModalV2 closeOnOverlayClick {...rest}>
       <ModalWrapper onDismiss={props.onDismiss} style={{ overflow: 'visible', border: 'none' }}>
-        <AtomBox position="relative">
+        <AtomBox>
           <TabContainer docLink={docLink} docText={docText}>
             {isMobile ? (
               <MobileModal connectWallet={connectWallet} wallets={wallets} docLink={docLink} docText={docText} />
@@ -434,8 +436,7 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
       <Heading as="h1" fontSize="20px" color="secondary">
         {t('Haven’t got a wallet yet?')}
       </Heading>
-      <Image src="https://cdn.pancakeswap.com/wallets/wallet_intro.png" width={198} height={178} />
-      <Button as={LinkExternal} color="backgroundAlt" variant="subtle" href={docLink}>
+      <Button as={LinkExternal} color="textSubtle" variant="subtle" href={docLink}>
         {docText}
       </Button>
     </>

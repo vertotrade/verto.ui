@@ -4,9 +4,9 @@ import Flex from "../Box/Flex";
 import { TabMenuProps } from "./types";
 
 const Wrapper = styled(Flex)<{ fullWidth?: boolean }>`
-  border-bottom: 2px solid ${({ theme }) => theme.colors.input};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.vertoBg1};
   overflow-x: scroll;
-  padding: ${({ fullWidth }) => (fullWidth ? 0 : "16px")};
+  padding: ${({ fullWidth }) => (fullWidth ? 0 : "32px 16px 0")};
 
   ::-webkit-scrollbar {
     display: none;
@@ -39,23 +39,20 @@ const TabMenu: React.FC<React.PropsWithChildren<TabMenuProps>> = ({
   children,
   fullWidth,
   gap,
-  isColorInverse = false,
 }) => {
   return (
     <Wrapper p={["0 4px", "0 16px"]} fullWidth={fullWidth}>
       <Inner fullWidth={fullWidth} gap={gap}>
         {Children.map(children, (child: ReactElement, index) => {
           const isActive = activeIndex === index;
-          const color = isActive ? "backgroundAlt" : "textSubtle";
-          const inverseColor = isActive ? "textSubtle" : "backgroundAlt";
-          const backgroundColor = isActive ? "textSubtle" : "input";
-          const inverseBackgroundColor = isActive ? "input" : "textSubtle";
+          const color = isActive ? "secondary" : "textSubtle";
+          const backgroundColor = "transparent";
 
           return cloneElement(child, {
             isActive,
             onClick: onItemClick ? () => onItemClick(index) : undefined,
-            color: isColorInverse ? inverseColor : color,
-            backgroundColor: isColorInverse ? inverseBackgroundColor : backgroundColor,
+            color,
+            backgroundColor,
           });
         })}
       </Inner>

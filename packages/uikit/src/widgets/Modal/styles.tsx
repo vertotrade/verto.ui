@@ -76,4 +76,19 @@ export const ModalContainer = styled(MotionBox)<{ $minWidth: string }>`
     border-radius: 32px;
     max-height: 100vh;
   }
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0 -1px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding-top: 10px;
+    background: linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    height: 30px;
+  }
 `;
