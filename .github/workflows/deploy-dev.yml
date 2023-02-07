@@ -3,7 +3,7 @@ on:
   # Trigger the workflow on push to the main branch
   push:
     branches:
-      - DEV-467-test-site
+      - main
   repository_dispatch:
     types:
       [dev]
@@ -24,11 +24,11 @@ concurrency: dev
 jobs:
   # Job to install dependencies and run lint checks
   install-and-lint:
-    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@DEV-467-test-site
+    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
 
   # Job to build the UI/Next.js
   build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@DEV-467-test-site
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
     needs: [install-and-lint]
     # Passes the environment variable "env" with value "dev" to the action
     with:
@@ -36,14 +36,14 @@ jobs:
 
   # Job to build the backend/Docker
   be-build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@DEV-467-test-site
+    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@main
     needs: [build]
     with:
       ecr_repo: verto-dev-ui-nginx
 
   # Job to publish the built backend/Docker image to ECR
   be-publish-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@DEV-467-test-site
+    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@main
     needs: [be-build]
     # Passes the environment variables "aws_region", "build_number", and "ecr_repo" to the action
     with:
@@ -57,7 +57,7 @@ jobs:
 
   # This job deploys the backend using AWS ECS
   be-deploy-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@DEV-467-test-site
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@main
     needs: [be-publish-dev]
     # The following inputs are passed to the AWS ECS deployment action
     with:
@@ -77,7 +77,7 @@ jobs:
 
   # This job deploys to teh assets bucket of the project
   fe-deploy-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@DEV-467-test-site
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@main
     # This job needs the frontend environment to be built
     # Will run simunteniously with be-build
     needs: [build]
