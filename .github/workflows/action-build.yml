@@ -1,0 +1,53 @@
+name: Builds Frontend
+on:
+  workflow_call:
+    # Required inputs
+    inputs:
+      env:
+        required: true
+        type: string
+  workflow_dispatch:
+jobs:
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        # Checkout code from repository
+        uses: actions/checkout@v2.4.0
+
+      - name: Cache node modules
+        # Restores the build from cache to speed up build process
+        uses: actions/cache@v3
+        id: cache-node-modules
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ env.cache-name }}-${{ github.sha }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        run: yarn
+
+      - name: Build application
+        run: yarn build
+
+      - name: Move files to build folder
+        # Moved files are used in Docker build
+        run: |
+          mv apps/web/.env.${{ inputs.env }} .env.production
+          mkdir build
+          mv apps/web/.next/standalone build/standalone
+          mv apps/web/.next/static build/standalone/.next/static
+          mv apps/web/public build/public
+          mv node_modules build/node_modules
+          mv .env.production build/.env.production
+
+      - name: Cache build
+        # Caches the built image for future builds
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-build-${{ github.run_id }}
+        with:
+          path: ./build
+          key: build-${{ github.run_id }}
+          restore-keys: build-${{ github.run_id }}
