@@ -147,7 +147,7 @@ const config: (
     },
     {
       label: t('Docs'),
-      href: 'https://docs.pancakeswap.finance',
+      href: 'https://docs.vertotrade.com',
       target: '_blank',
       showItemsOnMobile: false,
       type: DropdownMenuItemType.EXTERNAL_LINK,
