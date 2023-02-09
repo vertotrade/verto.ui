@@ -4,7 +4,8 @@ import Svg from "../Svg";
 import { SvgProps } from "../types";
 
 const WrappedSvg = styled(Svg)`
-  &:hover path {
+  &:hover path,
+  &:active path {
     fill: url(#gradient);
   }
 `;
