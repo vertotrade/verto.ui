@@ -1,7 +1,7 @@
 import { useIsMounted } from "@verto/hooks";
 import { AtomBox } from "@verto/ui/components/AtomBox";
 import throttle from "lodash/throttle";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
@@ -132,8 +132,10 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   const subLinksWithoutMobile = subLinks?.filter((subLink) => !subLink.isMobileOnly);
   const subLinksMobileOnly = subLinks?.filter((subLink) => subLink.isMobileOnly);
 
+  const providerValue = useMemo(() => ({ linkComponent }), [linkComponent]);
+
   return (
-    <MenuContext.Provider value={{ linkComponent }}>
+    <MenuContext.Provider value={providerValue}>
       <AtomBox
         asChild
         minHeight={{
