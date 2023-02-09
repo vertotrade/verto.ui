@@ -66,7 +66,7 @@ const StyledGradientButton = styled.button<BaseButtonProps>`
   }
 
   &:hover:first-child {
-    fill: url(#gradient);
+    fill: currentColor;
   }
 
   &:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {

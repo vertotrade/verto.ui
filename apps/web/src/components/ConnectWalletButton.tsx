@@ -36,7 +36,7 @@ const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
 
   return (
     <>
-      <Button onClick={handleClick} variant="secondary" {...props}>
+      <Button onClick={handleClick} variant="secondary" paddingX="16px" {...props}>
         {children || <Trans>Connect Wallet</Trans>}
       </Button>
       <WalletModalV2
