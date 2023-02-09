@@ -2,6 +2,7 @@ import { AtomBox } from "@verto/ui/components/AtomBox";
 import { useIsomorphicLayoutEffect } from "framer-motion";
 import debounce from "lodash/debounce";
 import React, { useCallback, useRef } from "react";
+import { useTheme } from "styled-components";
 import { Box } from "../Box";
 import { DropdownMenuItemType } from "../DropdownMenu/types";
 import MenuItem from "../MenuItem/MenuItem";
@@ -26,6 +27,7 @@ const SubMenuItems: React.FC<React.PropsWithChildren<SubMenuItemsProps>> = ({
   const scrollLayerRef = useRef<HTMLDivElement>(null);
   const chevronLeftRef = useRef<HTMLDivElement>(null);
   const chevronRightRef = useRef<HTMLDivElement>(null);
+  const { isDark } = useTheme();
   const layerController = useCallback(() => {
     if (!scrollLayerRef.current || !chevronLeftRef.current || !chevronRightRef.current) return;
     const scrollLayer = scrollLayerRef.current;
@@ -91,6 +93,7 @@ const SubMenuItems: React.FC<React.PropsWithChildren<SubMenuItemsProps>> = ({
                     scrollLayerRef={scrollLayerRef}
                     isActive={isActive}
                     isDisabled={disabled}
+                    isDark={isDark}
                     variant="subMenu"
                     {...itemProps}
                     {...linkProps}

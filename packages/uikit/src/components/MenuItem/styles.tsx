@@ -22,7 +22,7 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
   padding: 8px 12px;
   height: 100%;
   align-items: center;
-  background: linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%);
+  background: ${({ theme, $isDark }) => ($isDark ? theme.colors.textSubtle : "#333333")};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 0.75;
@@ -38,6 +38,9 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
     top: 0px;
     opacity: 1;
     padding-top: 13px;
+    background: linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     border-image-source: linear-gradient(to right, #30e8bf, #ff8235);
     color: ${theme.colors.text};
   `

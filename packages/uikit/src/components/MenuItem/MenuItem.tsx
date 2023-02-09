@@ -11,6 +11,7 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
   isActive = false,
   isDisabled = false,
   variant = "default",
+  isDark,
   scrollLayerRef,
   statusColor,
   ...props
@@ -48,6 +49,7 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
         $isDisabled={isDisabled}
         $variant={variant}
         $statusColor={statusColor}
+        $isDark={isDark}
         {...props}
       >
         {children}
