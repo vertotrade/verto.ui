@@ -43,7 +43,7 @@ const getOpacity = ({ $isLoading = false }: TransientButtonProps) => {
   return $isLoading ? ".5" : "1";
 };
 
-const StyledButton = styled.button<BaseButtonProps>`
+const StyledGradientButton = styled.button<BaseButtonProps>`
   position: relative;
   align-items: center;
   border: 0;
@@ -63,6 +63,10 @@ const StyledButton = styled.button<BaseButtonProps>`
 
   &:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
     opacity: 0.65;
+  }
+
+  &:hover:first-child {
+    fill: url(#gradient);
   }
 
   &:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
@@ -105,4 +109,4 @@ const StyledButton = styled.button<BaseButtonProps>`
     `}
 `;
 
-export default StyledButton;
+export default StyledGradientButton;

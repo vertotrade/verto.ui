@@ -1,4 +1,4 @@
-import { Flex, IconButton, CogIcon, useModal } from '@verto/uikit'
+import { Flex, GradientIconButton, CogIcon, useModal } from '@verto/uikit'
 import SettingsModal from './SettingsModal'
 
 type Props = {
@@ -12,14 +12,14 @@ const GlobalSettings = ({ color, mr = '8px', mode }: Props) => {
 
   return (
     <Flex>
-      <IconButton
+      <GradientIconButton
         onClick={onPresentSettingsModal}
         variant="text"
         scale="sm"
         mr={mr}
         id={`open-settings-dialog-button-${mode}`}>
         <CogIcon height={24} width={24} color={color || 'textSubtle'} />
-      </IconButton>
+      </GradientIconButton>
     </Flex>
   )
 }

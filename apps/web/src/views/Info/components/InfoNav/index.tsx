@@ -54,7 +54,7 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
     <NavWrapper isDark={theme.isDark}>
       <Flex>
         <Box>
-          <ButtonMenu activeIndex={activeIndex} scale="sm" variant="subtle">
+          <ButtonMenu activeIndex={activeIndex} scale="sm" variant="primary">
             <ButtonMenuItem as={NextLinkFromReactRouter} to={`/info${chainPath}${stableSwapQuery}`}>
               {t('Overview')}
             </ButtonMenuItem>

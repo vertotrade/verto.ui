@@ -10,6 +10,7 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
   items = [],
   activeItem,
   activeSubItem,
+  isDark,
   ...props
 }) => {
   return (
@@ -23,6 +24,7 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
           <DropdownMenu key={`${label}#${href}`} items={menuItems} activeItem={activeSubItem} isDisabled={disabled}>
             <MenuItem
               {...linkProps}
+              isDark={isDark}
               isActive={isActive}
               statusColor={statusColor}
               isDisabled={disabled}

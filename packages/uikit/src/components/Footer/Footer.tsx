@@ -23,13 +23,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   const { isMobile } = useMatchBreakpoints();
 
   return (
-    <StyledFooter
-      data-theme="dark"
-      p={["40px 16px", null, "56px 40px 32px 40px"]}
-      position="relative"
-      {...props}
-      justifyContent="center"
-    >
+    <StyledFooter p={["40px 16px", null, "56px 40px 32px 40px"]} position="relative" {...props} justifyContent="center">
       <Flex
         flexDirection={`${isMobile ? "column" : "row"}`}
         justifyContent="space-between"

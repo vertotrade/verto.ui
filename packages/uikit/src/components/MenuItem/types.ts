@@ -10,6 +10,7 @@ export interface MenuItemProps {
   statusColor?: keyof Colors;
   scrollLayerRef?: React.RefObject<HTMLDivElement>;
   target?: string;
+  isDark?: boolean;
 }
 
 export type StyledMenuItemProps = {
@@ -17,4 +18,5 @@ export type StyledMenuItemProps = {
   $isDisabled?: boolean;
   $variant?: MenuItemVariant;
   $statusColor?: keyof Colors;
+  $isDark?: boolean;
 };

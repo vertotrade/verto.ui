@@ -17,7 +17,7 @@ const LinkComponent = linkProps => {
 }
 
 const Menu = props => {
-  const { isDark, setTheme } = useTheme()
+  const { isDark, setTheme, theme } = useTheme()
   const cakePriceUsd = useCakeBusdPrice({ forceMainnet: true })
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
@@ -42,7 +42,7 @@ const Menu = props => {
         linkComponent={LinkComponent}
         rightSide={
           <>
-            <GlobalSettings mode={SettingsMode.GLOBAL} />
+            <GlobalSettings mode={SettingsMode.GLOBAL} color={theme.colors.notSelectedNavColor} />
             {/* <NetworkSwitcher /> */}
             <UserMenu />
           </>

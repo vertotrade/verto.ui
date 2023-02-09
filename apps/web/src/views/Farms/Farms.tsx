@@ -361,7 +361,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             <FarmH1 as="h1" scale="xxl" color="secondary" mb="24px">
               {t('Farms')}
             </FarmH1>
-            <FarmH2 scale="lg" color="text">
+            <FarmH2 scale="lg" color="notSelectedNavColor">
               {t('Stake LP tokens to earn.')}
             </FarmH2>
           </Box>
@@ -401,7 +401,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </ViewControls>
           <FilterContainer>
             <LabelWrapper>
-              <Text textTransform="uppercase" color="textSubtle" fontSize="12px" bold>
+              <Text textTransform="uppercase" color="primary" fontSize="12px" bold>
                 {t('Sort by')}
               </Text>
               <Select
@@ -435,7 +435,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               />
             </LabelWrapper>
             <LabelWrapper style={{ marginLeft: 16 }}>
-              <Text textTransform="uppercase" color="textSubtle" fontSize="12px" bold>
+              <Text textTransform="uppercase" color="primary" fontSize="12px" bold>
                 {t('Search')}
               </Text>
               <SearchInput initialValue={normalizedUrlSearch} onChange={handleChangeQuery} placeholder="Search Farms" />
