@@ -1,7 +1,7 @@
 {
   "family": "verto-dev-ui-nginx",
-  "taskRoleArn": "arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role",
-  "executionRoleArn": "arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role",
+  "taskRoleArn": "arn:aws:iam::504110330575:role/rebus-dev-ecs-task-role",
+  "executionRoleArn": "arn:aws:iam::504110330575:role/rebus-dev-ecs-task-execution-role",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
