@@ -4,7 +4,7 @@ import Container from "../Layouts/Container";
 import { PageHeaderProps } from "./types";
 
 const Outer = styled(Box)<{ background?: string }>`
-  background: ${({ theme, background }) => background || theme.colors.headerBackground1};
+  background: ${({ background }) => background};
 `;
 
 const Inner = styled(Container)`
