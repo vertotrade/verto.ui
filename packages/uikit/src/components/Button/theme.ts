@@ -45,6 +45,10 @@ export const styleVariants = {
     backgroundColor: "backgroundAlt2",
     color: "textSubtle",
   },
+  [variants.SUBTLE2]: {
+    backgroundColor: "subtleButton2",
+    color: "invertedContrast",
+  },
   [variants.DANGER]: {
     backgroundColor: "failure",
     color: "white",

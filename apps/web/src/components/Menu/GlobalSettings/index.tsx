@@ -21,7 +21,12 @@ const GlobalSettings = ({ color, mr = '8px', mode, hasGradient }: Props) => {
         scale="sm"
         mr={mr}
         id={`open-settings-dialog-button-${mode}`}>
-        <CogIcon height={24} width={24} color={color || theme.colors.textSubtle} hasGradient={hasGradient} />
+        <CogIcon
+          height={24}
+          width={24}
+          color={theme.colors[color] || color || theme.colors.primary}
+          hasGradient={hasGradient}
+        />
       </GradientIconButton>
     </Flex>
   )

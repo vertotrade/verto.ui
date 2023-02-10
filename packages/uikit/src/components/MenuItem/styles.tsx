@@ -22,7 +22,7 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
   padding: 8px 12px;
   height: 100%;
   align-items: center;
-  background: ${({ theme }) => theme.colors.textSubtle};
+  background: ${({ theme }) => (theme.isDark ? theme.colors.textSubtle : theme.colors.text)};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 1;

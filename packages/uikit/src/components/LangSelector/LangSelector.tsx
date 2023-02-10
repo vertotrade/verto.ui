@@ -12,6 +12,7 @@ import { Scale } from "../Button/types";
 
 interface Props {
   currentLang: string;
+  menuItemColor?: string;
   langs: Language[];
   setLang: (lang: Language) => void;
   color: keyof Colors;
@@ -24,6 +25,7 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
   currentLang,
   langs,
   color,
+  menuItemColor,
   setLang,
   dropdownPosition = "bottom",
   buttonScale = "md",
@@ -50,6 +52,7 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
     >
       {langs.map((lang) => (
         <MenuButton
+          $color={menuItemColor}
           key={lang.locale}
           fullWidth
           onClick={() => setLang(lang)}

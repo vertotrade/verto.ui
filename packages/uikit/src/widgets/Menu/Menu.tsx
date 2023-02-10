@@ -169,7 +169,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                     langs={langs}
                     setLang={setLang}
                     buttonScale="xs"
-                    color="textSubtle"
+                    color="text"
                     hideLanguage
                   />
                 </Box>

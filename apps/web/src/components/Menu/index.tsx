@@ -42,7 +42,7 @@ const Menu = props => {
         linkComponent={LinkComponent}
         rightSide={
           <>
-            <GlobalSettings mode={SettingsMode.GLOBAL} hasGradient />
+            <GlobalSettings color="text" mode={SettingsMode.GLOBAL} hasGradient />
             {/* <NetworkSwitcher /> */}
             <UserMenu />
           </>
