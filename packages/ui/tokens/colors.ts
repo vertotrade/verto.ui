@@ -56,6 +56,7 @@ export const lightColors = {
   filterTextColor: '#83bf88',
   disabled: '#E9EAEB',
   gradientGreenOrange: 'linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%)',
+  gradientGreenOrangeButton: 'linear-gradient(92.9deg, #30e8bf 34.25%, #ff8235 99.44%)',
   gradientDarkBlue:
     'linear-gradient(90deg, rgba(16, 16, 18, 0.9) 0%, rgba(9, 41, 70, 0.9) 35%, rgba(16, 16, 18, 0.9) 100%);',
   gradientBubblegum: 'linear-gradient(139.73deg, #E5FDFF 0%, #F3EFFF 100%)',
@@ -105,6 +106,7 @@ export const darkColors = {
   filterTextColor: '#83bf88',
   disabled: '#524B63',
   gradientGreenOrange: 'linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%)',
+  gradientGreenOrangeButton: 'linear-gradient(92.9deg, #30e8bf 34.25%, #ff8235 99.44%)',
   gradientDarkBlue:
     'linear-gradient(90deg, rgba(16, 16, 18, 0.9) 0%, rgba(9, 41, 70, 0.9) 35%, rgba(16, 16, 18, 0.9) 100%);',
   gradientBubblegum: 'linear-gradient(139.73deg, #313D5C 0%, #3D2A54 100%)',

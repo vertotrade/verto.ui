@@ -79,7 +79,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             </SkeletonV2>
             <LangSelector
               currentLang={currentLang}
-              menuItemColor="textSubtleInverse"
+              menuItemColor={isDark ? "textSubtle" : "textSubtleInverse"}
               langs={langs}
               setLang={setLang}
               color="text"
