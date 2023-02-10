@@ -70,6 +70,7 @@ const Footer: React.FC<
           alignItems="center"
           width={["100%", "100%", "100%", isSide ? "100%" : "auto"]}
           justifyContent={["center", "center", "center", "flex-end"]}
+          paddingBottom="4"
         >
           <BubbleWrapper>
             <Button id="clickExchangeHelp" as="a" external href={helpUrl} variant="subtle">

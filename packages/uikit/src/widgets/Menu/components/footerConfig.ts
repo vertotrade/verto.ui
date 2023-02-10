@@ -7,12 +7,12 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Contact"),
-        href: "https://docs.pancakeswap.finance/contact-us",
+        href: "https://docs.vertotrade.com//contact-us",
         isHighlighted: true,
       },
       {
         label: t("Brand"),
-        href: "https://docs.pancakeswap.finance/brand",
+        href: "https://docs.vertotrade.com//brand",
       },
       {
         label: t("Blog"),
@@ -20,7 +20,7 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       },
       {
         label: t("Community"),
-        href: "https://docs.pancakeswap.finance/contact-us/telegram",
+        href: "https://docs.vertotrade.com//contact-us/telegram",
       },
       {
         label: t("Litepaper"),
@@ -33,15 +33,15 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Customer Support"),
-        href: "https://docs.pancakeswap.finance/contact-us/customer-support",
+        href: "https://docs.vertotrade.com//contact-us/customer-support",
       },
       {
         label: t("Troubleshooting"),
-        href: "https://docs.pancakeswap.finance/help/troubleshooting",
+        href: "https://docs.vertotrade.com//help/troubleshooting",
       },
       {
         label: t("Guides"),
-        href: "https://docs.pancakeswap.finance/get-started",
+        href: "https://docs.vertotrade.com//get-started",
       },
     ],
   },
@@ -54,19 +54,19 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       },
       {
         label: t("Documentation"),
-        href: "https://docs.pancakeswap.finance",
+        href: "https://docs.vertotrade.com/",
       },
       {
         label: t("Bug Bounty"),
-        href: "https://docs.pancakeswap.finance/code/bug-bounty",
+        href: "https://docs.vertotrade.com/code/bug-bounty",
       },
       {
         label: t("Audits"),
-        href: "https://docs.pancakeswap.finance/help/faq#is-vertotrade-safe-has-vertotrade-been-audited",
+        href: "https://docs.vertotrade.com//help/faq#is-vertotrade-safe-has-vertotrade-been-audited",
       },
       {
         label: t("Careers"),
-        href: "https://docs.pancakeswap.finance/hiring/become-a-chef",
+        href: "https://docs.vertotrade.com//hiring/become-a-chef",
       },
     ],
   },

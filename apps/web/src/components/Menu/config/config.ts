@@ -193,7 +193,7 @@ const config: (
     //     },
     //     {
     //       label: t('Docs'),
-    //       href: 'https://docs.pancakeswap.finance',
+    //       href: 'https://docs.vertotrade.com',
     //       type: DropdownMenuItemType.EXTERNAL_LINK,
     //     },
     //   ].map(item => addMenuItemSupported(item, chainId)),
