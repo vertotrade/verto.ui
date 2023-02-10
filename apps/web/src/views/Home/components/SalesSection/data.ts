@@ -18,9 +18,9 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'BNB', alt: t('BNB token') },
+      { src: 'REBUS', alt: t('REBUS token') },
       { src: 'BTC', alt: t('BTC token') },
-      { src: 'CAKE', alt: t('CAKE token') },
+      { src: 'VERTO', alt: t('VERTO token') },
     ],
   },
 })
@@ -44,15 +44,15 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     attributes: [
       { src: 'pie', alt: t('Pie chart') },
       { src: 'stonks', alt: t('Stocks chart') },
-      { src: 'folder', alt: t('Folder with cake token') },
+      { src: 'folder', alt: t('Folder with verto token') },
     ],
   },
 })
 
-export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
+export const vertoSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('CAKE makes our world go round.'),
   bodyText: t(
-    'CAKE token is at the heart of the VertoTrade ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
+    'VERTO token is at the heart of the VertoTrade ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
   ),
   reverse: false,
   primaryButton: {
@@ -67,7 +67,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
   },
 
   images: {
-    path: '/images/home/cake/',
+    path: '/images/home/verto/',
     attributes: [
       { src: 'bottom-right', alt: t('Small 3d pancake') },
       { src: 'top-right', alt: t('Small 3d pancake') },

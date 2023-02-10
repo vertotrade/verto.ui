@@ -75,7 +75,7 @@ const emissionsPerBlock = 9.9
 const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')
 const cakeVaultAddress = getCakeVaultAddress()
 
-const CakeDataRow = () => {
+const VertoDataRow = () => {
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
@@ -179,4 +179,4 @@ const CakeDataRow = () => {
   )
 }
 
-export default CakeDataRow
+export default VertoDataRow
