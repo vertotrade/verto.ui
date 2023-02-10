@@ -68,8 +68,8 @@ jobs:
       service: verto-dev-ui-nginx
       cluster: verto-dev-ui-ecs-fargate
       aws_log_group: /verto/ecs/dev/ui-nginx
-      task_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role
-      task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
+      task_role_arn: arn:aws:iam::504110330575:role/rebus-dev-ecs-task-role
+      task_execution_role_arn: arn:aws:iam::504110330575:role/rebus-dev-ecs-task-execution-role
       container_name: nginx
     secrets:
       aws_access_key_id: ${{ secrets.DEV2_AWS_ACCESS_KEY_ID }}
