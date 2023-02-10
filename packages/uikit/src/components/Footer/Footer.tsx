@@ -79,9 +79,10 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             </SkeletonV2>
             <LangSelector
               currentLang={currentLang}
+              menuItemColor="textSubtleInverse"
               langs={langs}
               setLang={setLang}
-              color="gradientGreenOrange"
+              color="text"
               dropdownPosition="top-right"
             />
           </Flex>

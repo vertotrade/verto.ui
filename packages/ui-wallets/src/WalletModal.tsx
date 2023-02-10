@@ -307,11 +307,12 @@ function DesktopModal<T>({
       <AtomBox
         display="flex"
         flexDirection="column"
-        bg="backgroundAlt"
         py="32px"
         zIndex="modal"
         borderRadius="card"
+        borderBottomRightRadius="0"
         borderTopLeftRadius="0"
+        borderTopRightRadius="0"
         className={desktopWalletSelectionClass}>
         <AtomBox px="48px">
           <Heading color="color" as="h4">
@@ -338,15 +339,19 @@ function DesktopModal<T>({
       </AtomBox>
       <AtomBox
         flex={1}
-        mx="24px"
+        ml="24px"
         p="24px"
+        pr="48px"
         display={{
           xs: 'none',
           sm: 'flex',
         }}
         justifyContent="center"
         flexDirection="column"
-        alignItems="center">
+        alignItems="center"
+        bg="backgroundAlt"
+        mt="-2"
+        borderBottomRightRadius="card">
         <AtomBox display="flex" flexDirection="column" alignItems="center" style={{ gap: '24px' }} textAlign="center">
           {!selected && <Intro docLink={docLink} docText={docText} />}
           {selected && selected.installed !== false && (

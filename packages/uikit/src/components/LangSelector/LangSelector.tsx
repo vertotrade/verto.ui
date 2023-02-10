@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "@verto/hooks";
 import Text from "../Text/Text";
 import Dropdown from "../Dropdown/Dropdown";
 import Button from "../Button/Button";
@@ -11,6 +12,7 @@ import { Scale } from "../Button/types";
 
 interface Props {
   currentLang: string;
+  menuItemColor?: string;
   langs: Language[];
   setLang: (lang: Language) => void;
   color: keyof Colors;
@@ -23,31 +25,45 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
   currentLang,
   langs,
   color,
+  menuItemColor,
   setLang,
   dropdownPosition = "bottom",
   buttonScale = "md",
   hideLanguage = false,
-}) => (
-  <Dropdown
-    position={dropdownPosition}
-    target={
-      <Button scale={buttonScale} variant="text" startIcon={<LanguageIcon color={color} width="24px" />}>
-        {!hideLanguage && <Text color={color}>{currentLang?.toUpperCase()}</Text>}
-      </Button>
-    }
-  >
-    {langs.map((lang) => (
-      <MenuButton
-        key={lang.locale}
-        fullWidth
-        onClick={() => setLang(lang)}
-        // Safari fix
-        style={{ minHeight: "32px", height: "auto" }}
-      >
-        {lang.language}
-      </MenuButton>
-    ))}
-  </Dropdown>
-);
+}) => {
+  const { theme } = useTheme();
+
+  return (
+    <Dropdown
+      position={dropdownPosition}
+      target={
+        <Button
+          scale={buttonScale}
+          variant="text"
+          startIcon={<LanguageIcon color={theme.colors[color] || color} width="24px" hasGradient />}
+        >
+          {!hideLanguage && (
+            <Text className="hover-gradient" color={color}>
+              {currentLang?.toUpperCase()}
+            </Text>
+          )}
+        </Button>
+      }
+    >
+      {langs.map((lang) => (
+        <MenuButton
+          $color={menuItemColor}
+          key={lang.locale}
+          fullWidth
+          onClick={() => setLang(lang)}
+          // Safari fix
+          style={{ minHeight: "32px", height: "auto" }}
+        >
+          {lang.language}
+        </MenuButton>
+      ))}
+    </Dropdown>
+  );
+};
 
 export default React.memo(LangSelector, (prev, next) => prev.currentLang === next.currentLang);

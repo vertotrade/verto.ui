@@ -107,7 +107,8 @@ const AccessRisk: React.FC<AccessRiskProps> = ({ inputCurrency, outputCurrency }
       <Flex justifyContent="flex-end">
         <Button
           scale="xs"
-          style={{ textTransform: 'uppercase', color: '#fff' }}
+          style={{ textTransform: 'uppercase' }}
+          variant="subtle2"
           disabled={disabledButton}
           onClick={handleScan}>
           {loading ? t('scanning...') : t('scan risk')}

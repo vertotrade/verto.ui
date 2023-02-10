@@ -23,6 +23,16 @@ const Svg = styled.svg<SvgProps>`
   ${({ spin }) => spin && spinStyle};
   ${space};
 
+  ${(props) =>
+    props.hasGradient
+      ? `
+    &:hover path,
+    &:active path {
+      fill: url(#gradient);
+    }
+  `
+      : ""}
+
   // Safari fix
   @supports (-webkit-text-size-adjust: none) and (not (-ms-accelerator: true)) and (not (-moz-appearance: none)) {
     filter: none !important;

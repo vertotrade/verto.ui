@@ -41,6 +41,18 @@ const DropdownContent = styled.div<{ position: Position }>`
 
 const Container = styled.div<{ $scrolling: boolean }>`
   position: relative;
+
+  &:hover > *:first-child path {
+    fill: url(#gradient);
+  }
+
+  &:hover .hover-gradient {
+    background: ${({ theme }) => theme.colors.gradientGreenOrange};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.75;
+  }
+
   ${({ $scrolling }) =>
     !$scrolling &&
     css`

@@ -5,6 +5,7 @@ import { SpaceProps } from "styled-system";
 import { Colors } from "../../theme";
 
 export interface SvgProps extends SVGAttributes<HTMLOrSVGElement>, SpaceProps {
+  hasGradient?: boolean;
   theme?: DefaultTheme;
   spin?: boolean;
 }
