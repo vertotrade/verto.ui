@@ -80,8 +80,8 @@ const VertoDataRow = () => {
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
   const {
-    data: { cakeSupply, burnedBalance, circulatingSupply } = {
-      cakeSupply: 0,
+    data: { vertoSupply, burnedBalance, circulatingSupply } = {
+      vertoSupply: 0,
       burnedBalance: 0,
       circulatingSupply: 0,
     },
@@ -109,7 +109,7 @@ const VertoDataRow = () => {
       const circulating = totalSupply.sub(totalBurned.add(totalLockedAmount))
 
       return {
-        cakeSupply: totalSupply && burned ? +formatBigNumber(totalSupply.sub(totalBurned)) : 0,
+        vertoSupply: totalSupply && burned ? +formatBigNumber(totalSupply.sub(totalBurned)) : 0,
         burnedBalance: burned ? +formatBigNumber(totalBurned) : 0,
         circulatingSupply: circulating ? +formatBigNumber(circulating) : 0,
       }
@@ -133,15 +133,15 @@ const VertoDataRow = () => {
       <Flex flexDirection="column" style={{ gridArea: 'a' }}>
         <Text color="textSubtle">{t('Circulating Supply')}</Text>
         {circulatingSupply ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={circulatingSupply} />
+          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={circulatingSupply} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
       </Flex>
       <StyledColumn noMobileBorder style={{ gridArea: 'b' }}>
         <Text color="textSubtle">{t('Total supply')}</Text>
-        {cakeSupply ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={cakeSupply} />
+        {vertoSupply ? (
+          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={vertoSupply} />
         ) : (
           <>
             <div ref={observerRef} />
@@ -152,12 +152,14 @@ const VertoDataRow = () => {
       <StyledColumn noMobileBorder style={{ gridArea: 'c' }}>
         <Text color="textSubtle">{t('Max Supply')}</Text>
 
-        <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={750000000} />
+        <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={750000000} />
       </StyledColumn>
       <StyledColumn noDesktopBorder style={{ gridArea: 'd' }}>
         <Text color="textSubtle">{t('Market cap')}</Text>
         {mcap?.gt(0) && mcapString ? (
-          <Heading scale="lg">{t('$%marketCap%', { marketCap: mcapString })}</Heading>
+          <Heading scale="lg" color="textHome">
+            {t('$%marketCap%', { marketCap: mcapString })}
+          </Heading>
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
@@ -165,7 +167,7 @@ const VertoDataRow = () => {
       <StyledColumn style={{ gridArea: 'e' }}>
         <Text color="textSubtle">{t('Burned to date')}</Text>
         {burnedBalance ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={burnedBalance} />
+          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={burnedBalance} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
@@ -173,7 +175,9 @@ const VertoDataRow = () => {
       <StyledColumn style={{ gridArea: 'f' }}>
         <Text color="textSubtle">{t('Current emissions')}</Text>
 
-        <Heading scale="lg">{t('%cakeEmissions%/block', { cakeEmissions: emissionsPerBlock })}</Heading>
+        <Heading color="textHome" scale="lg">
+          {t('%cakeEmissions%/block', { cakeEmissions: emissionsPerBlock })}
+        </Heading>
       </StyledColumn>
     </Grid>
   )

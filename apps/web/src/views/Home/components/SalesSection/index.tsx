@@ -1,4 +1,4 @@
-import { Flex, Text, Button, Link, NextLinkFromReactRouter as RouterLink } from '@verto/uikit'
+import { Flex, Text, Button, Link, NextLinkFromReactRouter as RouterLink, LinkExternal } from '@verto/uikit'
 import CompositeImage, { CompositeImageProps } from '../CompositeImage'
 import ColoredWordHeading from '../ColoredWordHeading'
 
@@ -15,10 +15,11 @@ export interface SalesSectionProps {
   primaryButton: SalesSectionButton
   secondaryButton: SalesSectionButton
   images: CompositeImageProps
+  colorOverride?: boolean
 }
 
 const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props => {
-  const { headingText, bodyText, reverse, primaryButton, secondaryButton, images } = props
+  const { headingText, bodyText, reverse, primaryButton, secondaryButton, images, colorOverride } = props
 
   return (
     <Flex flexDirection="column">
@@ -32,32 +33,38 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
           ml={[null, null, null, reverse && '64px']}
           mr={[null, null, null, !reverse && '64px']}
           alignSelf={['flex-start', null, null, 'center']}>
-          <ColoredWordHeading text={headingText} />
-          <Text color="textSubtle" mb="24px">
+          <ColoredWordHeading
+            text={headingText}
+            firstColor="primary2"
+            color={colorOverride ? 'textHomeOverride' : 'textHome'}
+          />
+          <Text color={colorOverride ? 'textSubtleOverride' : 'textSubtle'} mb="24px">
             {bodyText}
           </Text>
           <Flex>
-            <Button mr="16px">
+            <Button mr="16px" variant="secondary">
               {primaryButton.external ? (
                 <Link external href={primaryButton.to}>
-                  <Text color="card" bold fontSize="16px">
+                  <Text color={colorOverride ? '' : 'card'} bold fontSize="16px">
                     {primaryButton.text}
                   </Text>
                 </Link>
               ) : (
                 <RouterLink to={primaryButton.to}>
-                  <Text color="card" bold fontSize="16px">
+                  <Text color={colorOverride ? '' : 'card'} bold fontSize="16px">
                     {primaryButton.text}
                   </Text>
                 </RouterLink>
               )}
             </Button>
             {secondaryButton.external ? (
-              <Link external href={secondaryButton.to}>
+              <LinkExternal color={colorOverride ? 'textSubtleOverride' : 'textSubtle'} href={secondaryButton.to}>
                 {secondaryButton.text}
-              </Link>
+              </LinkExternal>
             ) : (
-              <RouterLink to={secondaryButton.to}>{secondaryButton.text}</RouterLink>
+              <RouterLink color={colorOverride ? 'textSubtleOverride' : 'textSubtle'} to={secondaryButton.to}>
+                {secondaryButton.text}
+              </RouterLink>
             )}
           </Flex>
         </Flex>

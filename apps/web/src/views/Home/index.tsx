@@ -61,7 +61,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         background="linear-gradient(71.68deg,#f9f9f9,#e7cab7)"
         index={2}
         hasCurvedDivider={false}>
-        <SalesSection {...earnSectionData(t)} />
+        <SalesSection {...earnSectionData(t)} colorOverride />
         {/* {chainId === ChainId.BSC && <FarmsPoolsRow />} */}
       </PageSection>
       <PageSection

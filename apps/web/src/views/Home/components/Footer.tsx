@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link } from '@verto/uikit'
+import { Flex, Heading, Text, LinkExternal } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useAccount } from 'wagmi'
@@ -55,9 +55,9 @@ const Footer = () => {
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://docs.vertotrade.com/">
+        <LinkExternal color="textSubtle" external href="https://docs.vertotrade.com/">
           {t('Learn how to start')}
-        </Link>
+        </LinkExternal>
         {!account && <ConnectWalletButton mt="24px" />}
       </Wrapper>
     </>
