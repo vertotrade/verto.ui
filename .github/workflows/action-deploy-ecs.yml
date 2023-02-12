@@ -82,17 +82,12 @@ jobs:
           container-name: ${{ inputs.container_name }}
           # Retreive from step above(get-img)
           image: ${{ steps.get-img.outputs.image }}
-          taskRoleArn: arn:aws:iam::504110330575:role/rebus-dev-ecs-task-role
-          executionRoleArn: arn:aws:iam::504110330575:role/rebus-dev-ecs-task-execution-role
-          awslogs-group: "/verto/ecs/dev/ui-nginx"
-          awslogs-region: "us-east-1"
-          awslogs-stream-prefix: "dev"
 
       - name: Deploy Amazon ECS task definition
         # Deploy to ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          task-definition: ${{ inputs.task_definition }}
           service: ${{ inputs.service }}
           cluster: ${{ inputs.cluster }}
           wait-for-service-stability: true
