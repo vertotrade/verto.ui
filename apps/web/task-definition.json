@@ -9,7 +9,7 @@
   "containerDefinitions": [
     {
       "name": "nginx",
-      "image": "073696056884.dkr.ecr.us-east-1.amazonaws.com/verto-dev-ui-nginx:latest",
+      "image": "504110330575.dkr.ecr.us-east-1.amazonaws.com/verto-dev-ui-nginx:latest",
       "portMappings": [
         {
           "containerPort": 3000,
