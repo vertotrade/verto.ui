@@ -3,12 +3,12 @@ import { FooterLinkType } from "./types";
 import {
   TwitterIcon,
   TelegramIcon,
-  RedditIcon,
-  InstagramIcon,
+  // RedditIcon,
+  // InstagramIcon,
   GithubIcon,
-  DiscordIcon,
-  MediumIcon,
-  YoutubeIcon,
+  // DiscordIcon,
+  // MediumIcon,
+  // YoutubeIcon,
 } from "../Svg";
 
 export const footerLinks: FooterLinkType[] = [
@@ -121,7 +121,7 @@ export const socials = [
       },
       {
         label: "Español",
-        href: "https://t.me/PancakeswapEs",
+        href: "https://t.me/VertoTradeEs",
       },
       {
         label: "日本語",
@@ -137,7 +137,7 @@ export const socials = [
       },
       {
         label: "Filipino",
-        href: "https://t.me/Pancakeswap_Ph",
+        href: "https://t.me/VertoTrade_Ph",
       },
       {
         label: "ქართული ენა",
@@ -154,35 +154,35 @@ export const socials = [
     ],
   },
   {
-    label: "Reddit",
-    icon: RedditIcon,
-    href: "https://reddit.com/r/vertotrade",
-  },
-  {
-    label: "Instagram",
-    icon: InstagramIcon,
-    href: "https://instagram.com/vertotrade_official",
-  },
-  {
     label: "Github",
     icon: GithubIcon,
-    href: "https://github.com/pancakeswap/",
+    href: "https://github.com/vertotrade/",
   },
-  {
-    label: "Discord",
-    icon: DiscordIcon,
-    href: "https://discord.gg/vertotrade",
-  },
-  {
-    label: "Medium",
-    icon: MediumIcon,
-    href: "https://medium.com/vertotrade",
-  },
-  {
-    label: "Youtube",
-    icon: YoutubeIcon,
-    href: "https://www.youtube.com/@vertotrade_official",
-  },
+  // {
+  //   label: "Reddit",
+  //   icon: RedditIcon,
+  //   href: "https://reddit.com/r/vertotrade",
+  // },
+  // {
+  //   label: "Instagram",
+  //   icon: InstagramIcon,
+  //   href: "https://instagram.com/vertotrade_official",
+  // },
+  // {
+  //   label: "Discord",
+  //   icon: DiscordIcon,
+  //   href: "https://discord.gg/vertotrade",
+  // },
+  // {
+  //   label: "Medium",
+  //   icon: MediumIcon,
+  //   href: "https://medium.com/vertotrade",
+  // },
+  // {
+  //   label: "Youtube",
+  //   icon: YoutubeIcon,
+  //   href: "https://www.youtube.com/@vertotrade_official",
+  // },
 ];
 
 export const langs: Language[] = [...Array(20)].map((_, i) => ({
