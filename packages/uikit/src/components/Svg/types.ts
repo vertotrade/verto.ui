@@ -8,6 +8,7 @@ export interface SvgProps extends SVGAttributes<HTMLOrSVGElement>, SpaceProps {
   hasGradient?: boolean;
   theme?: DefaultTheme;
   spin?: boolean;
+  class?: string;
 }
 
 export type IconComponentType = {
