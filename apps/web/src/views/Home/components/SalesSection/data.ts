@@ -3,7 +3,7 @@ import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Trade anything. No registration, no hassle.'),
-  bodyText: t('Trade any token on BNB Smart Chain in seconds, just by connecting your wallet.'),
+  bodyText: t('Trade any token on Rebuschain in seconds, just by connecting your wallet.'),
   reverse: false,
   primaryButton: {
     to: '/swap',
@@ -18,9 +18,9 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'BNB', alt: t('BNB token') },
+      { src: 'REBUS', alt: t('REBUS token') },
       { src: 'BTC', alt: t('BTC token') },
-      { src: 'CAKE', alt: t('CAKE token') },
+      { src: 'VERTO', alt: t('VERTO token') },
     ],
   },
 })
@@ -44,15 +44,15 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     attributes: [
       { src: 'pie', alt: t('Pie chart') },
       { src: 'stonks', alt: t('Stocks chart') },
-      { src: 'folder', alt: t('Folder with cake token') },
+      { src: 'folder', alt: t('Folder with verto token') },
     ],
   },
 })
 
-export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('CAKE makes our world go round.'),
+export const vertoSectionData = (t: TranslateFunction): SalesSectionProps => ({
+  headingText: t('VERTO the future of DeFi is here.'),
   bodyText: t(
-    'CAKE token is at the heart of the VertoTrade ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
+    'VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!',
   ),
   reverse: false,
   primaryButton: {
@@ -67,7 +67,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
   },
 
   images: {
-    path: '/images/home/cake/',
+    path: '/images/home/verto/',
     attributes: [
       { src: 'bottom-right', alt: t('Small 3d pancake') },
       { src: 'top-right', alt: t('Small 3d pancake') },
