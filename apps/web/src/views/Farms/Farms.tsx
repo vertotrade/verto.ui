@@ -475,7 +475,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </Flex>
         )}
         {poolLength && <div ref={observerRef} />}
-        <StyledImage src="/images/decorations/verto-logo.svg" alt="verto logo" width={60} height={51} />
+        <StyledImage src="/images/verto-icon-gradient.svg" alt="verto logo" width={60} height={51} />
       </Page>
     </FarmsContext.Provider>
   )
