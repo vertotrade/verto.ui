@@ -1,9 +1,15 @@
 import styled from "styled-components";
 import { darkColors } from "../../theme/colors";
 import { Box, Flex } from "../Box";
+import LangSelector from "../LangSelector/LangSelector";
 
 export const StyledFooter = styled(Flex)`
   background: ${({ theme }) => theme.colors.footerBg};
+`;
+
+// remove this display none when translations are ready
+export const HiddenLangSelector = styled(LangSelector)`
+  display: none;
 `;
 
 export const StyledList = styled.ul`

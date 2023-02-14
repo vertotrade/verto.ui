@@ -13,9 +13,9 @@ import {
   StyledListItem,
   StyledText,
   StyledToolsContainer,
+  HiddenLangSelector,
 } from "./styles";
 
-import LangSelector from "../LangSelector/LangSelector";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { FooterProps } from "./types";
 import { SkeletonV2 } from "../Skeleton";
@@ -84,7 +84,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             <SkeletonV2 variant="round" width="56px" height="32px" isDataReady={isMounted}>
               <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
             </SkeletonV2>
-            <LangSelector
+            <HiddenLangSelector
               currentLang={currentLang}
               menuItemColor="textSubtle"
               langs={langs}
