@@ -1,12 +1,27 @@
 import React from "react";
+import styled from "styled-components";
 import { FlexProps } from "../../Box";
 import Flex from "../../Box/Flex";
 import Dropdown from "../../Dropdown/Dropdown";
 import Link from "../../Link/Link";
 import { socials } from "../config";
 
+const SocialLink = styled(Link)`
+  &:hover > *:first-child path {
+    fill: url(#gradient);
+  }
+
+  &:hover .hover-gradient {
+    background: ${({ theme }) => theme.colors.gradientGreenOrange};
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.75;
+  }
+`;
+
 const SocialLinks: React.FC<React.PropsWithChildren<FlexProps>> = ({ ...props }) => (
-  <Flex {...props} data-theme="dark">
+  <Flex {...props}>
     {socials.map((social, index) => {
       const iconProps = {
         width: "20px",
@@ -17,7 +32,7 @@ const SocialLinks: React.FC<React.PropsWithChildren<FlexProps>> = ({ ...props })
       const mr = index < socials.length - 1 ? "24px" : 0;
       if (social.items) {
         return (
-          <Dropdown key={social.label} position="top" target={<Icon {...iconProps} mr={mr} />}>
+          <Dropdown key={social.label} position="top" target={<Icon {...iconProps} mr={mr} mb="-3px" />}>
             {social.items.map((item) => (
               <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
                 {item.label}
@@ -27,9 +42,9 @@ const SocialLinks: React.FC<React.PropsWithChildren<FlexProps>> = ({ ...props })
         );
       }
       return (
-        <Link external key={social.label} href={social.href} aria-label={social.label} mr={mr}>
+        <SocialLink external key={social.label} href={social.href} aria-label={social.label} mr={mr}>
           <Icon {...iconProps} />
-        </Link>
+        </SocialLink>
       );
     })}
   </Flex>

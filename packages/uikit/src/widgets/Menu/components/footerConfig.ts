@@ -15,16 +15,8 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
         href: "https://docs.vertotrade.com//brand",
       },
       {
-        label: t("Blog"),
-        href: "https://medium.com/vertotrade",
-      },
-      {
         label: t("Community"),
         href: "https://docs.vertotrade.com//contact-us/telegram",
-      },
-      {
-        label: t("Litepaper"),
-        href: "https://v2litepaper.pancakeswap.finance/",
       },
     ],
   },
@@ -55,18 +47,6 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       {
         label: t("Documentation"),
         href: "https://docs.vertotrade.com/",
-      },
-      {
-        label: t("Bug Bounty"),
-        href: "https://docs.vertotrade.com/code/bug-bounty",
-      },
-      {
-        label: t("Audits"),
-        href: "https://docs.vertotrade.com//help/faq#is-vertotrade-safe-has-vertotrade-been-audited",
-      },
-      {
-        label: t("Careers"),
-        href: "https://docs.vertotrade.com//hiring/become-a-chef",
       },
     ],
   },

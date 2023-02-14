@@ -8,13 +8,16 @@ const getLeft = ({ position }: PositionProps) => {
   if (position === "top-right") {
     return "100%";
   }
+  if (position === "top-left") return "unset";
+
   return "50%";
 };
 
 const getBottom = ({ position }: PositionProps) => {
-  if (position === "top" || position === "top-right") {
+  if (position === "top" || position === "top-right" || position === "top-left") {
     return "100%";
   }
+
   return "auto";
 };
 
@@ -48,6 +51,7 @@ const Container = styled.div<{ $scrolling: boolean }>`
 
   &:hover .hover-gradient {
     background: ${({ theme }) => theme.colors.gradientGreenOrange};
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0.75;
