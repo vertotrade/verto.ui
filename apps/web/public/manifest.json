@@ -2,23 +2,33 @@
   "short_name": "VertoTrade",
   "name": "VertoTrade",
   "description": "Trade with Verto",
-  "homepage_url": "https://vertotrade.com",
+  "homepage_url": "https://www.vertotrade.com",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#1FC7D4",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "orientation": "portrait",
   "icons": [
     {
       "src": "favicon.ico",
       "type": "image/x-icon",
-      "sizes": "16x16"
+      "sizes": "32x32"
     },
     {
-      "src": "logo.png",
+      "src": "/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-256x256.png",
       "type": "image/png",
       "sizes": "256x256"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
-  "iconPath": "/images/cake.svg"
+  "iconPath": "/images/verto-icon.svg"
 }
