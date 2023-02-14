@@ -66,17 +66,25 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         />
         <meta
           name="description"
-          content="Verto http://D.exchange. Where #DeFi, #Metaverse, #P2E and #TradFi meet to create the future of #Fintech."
+          content="Verto D.exchange. Where DeFi, Metaverse, P2E and TradFi meet to create the future of Fintech."
         />
         <meta name="theme-color" content="#FFFFFF" />
-        <meta name="twitter:image" content="https://pancakeswap.finance/images/hero.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VertoTrade - the future of Defi and TradFi is here" />
+        <meta name="twitter:image" content="https://vertotrade.com/images/hero.png" />
         <meta
           name="twitter:description"
-          content="Verto http://D.exchange. Where #DeFi, #Metaverse, #P2E and #TradFi meet to create the future of #Fintech."
+          content="Verto D.exchange. Where #DeFi, #Metaverse, #P2E and #TradFi meet to create the future of #Fintech."
         />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="🥞 VertoTrade - the future of Defi and TradFi is here" />
-        <title>VertoTrade</title>
+
+        <meta property="og:title" content="VertoTrade - the future of Defi and TradFi is here" />
+        <meta property="og:image" content="https://vertotrade.com/images/hero.png" />
+        <meta
+          property="og:description"
+          content="Verto D.exchange. Where DeFi, Metaverse, P2E and TradFi meet to create the future of Fintech."
+        />
+
+        <title>VertoTrade - D.exchange</title>
         {/* removed since it is not needed for Rebuschain
         (Component as NextPageWithLayout).mp && (
           // eslint-disable-next-line @next/next/no-sync-scripts
