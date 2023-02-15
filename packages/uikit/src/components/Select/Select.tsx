@@ -11,8 +11,7 @@ const DropDownHeader = styled.div<{ hasPrimaryBorderColor: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: 0px 16px;
-  box-shadow: ${({ theme }) => theme.shadows.inset};
-  border: 1px solid
+  border: 2px solid
     ${({ theme, hasPrimaryBorderColor }) =>
       hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary};
   border-radius: 7.5px;
@@ -57,9 +56,8 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean; hasPrimaryBorderColor: 
     props.isOpen &&
     css`
       ${DropDownHeader} {
-        border-bottom: 1px solid
+        border-bottom: 2px solid
           ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
-        box-shadow: ${({ theme }) => theme.tooltip.boxShadow};
         border-radius: 7.5px 7.5px 0 0;
         border: 1px solid
           ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
@@ -69,11 +67,10 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean; hasPrimaryBorderColor: 
         height: auto;
         transform: scaleY(1);
         opacity: 1;
-        border: 1px solid
+        border: 2px solid
           ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
         border-top-width: 0;
         border-radius: 0 0 7.5px 7.5px;
-        box-shadow: ${({ theme }) => theme.tooltip.boxShadow};
       }
     `}
 
