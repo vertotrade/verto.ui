@@ -18,6 +18,7 @@ export const variants = {
   SUBTLE2: "subtle2",
   SUCCESS: "success",
   LIGHT: "light",
+  VERTOCUSTOM: "vertoCustom",
 } as const;
 
 export type Scale = typeof scales[keyof typeof scales];

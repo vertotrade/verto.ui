@@ -7,6 +7,14 @@ import { Input } from "../Input";
 const StyledInput = styled(Input)`
   border-radius: 7.5px;
   margin-left: auto;
+  border-color: ${({ theme }) => theme.colors.primary0f};
+  color: ${({ theme }) => theme.colors.primary};
+
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.primary};
+    opacity: 0.5; 
+  }
+}
 `;
 
 const InputWrapper = styled.div`

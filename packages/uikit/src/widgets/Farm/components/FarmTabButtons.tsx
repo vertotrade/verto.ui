@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Text } from "@verto/uikit";
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { useRouter } from "next/router";
 import { useTranslation } from "@verto/localization";
 import { NextLinkFromReactRouter } from "../../../components/NextLink";
@@ -24,6 +24,7 @@ interface FarmTabButtonsProps {
 export const FarmTabButtons: React.FC<React.PropsWithChildren<FarmTabButtonsProps>> = ({ hasStakeInFinishedFarms }) => {
   const router = useRouter();
   const { t } = useTranslation();
+  const { isDark } = useTheme();
 
   let activeIndex;
   switch (router.pathname) {
@@ -47,7 +48,7 @@ export const FarmTabButtons: React.FC<React.PropsWithChildren<FarmTabButtonsProp
   return (
     <Wrapper>
       <Flex width="max-content" flexDirection="column">
-        <Text textTransform="uppercase" color="textSubtle" fontSize="12px" bold>
+        <Text textTransform="uppercase" color={isDark ? "textSubtle" : "primary"} fontSize="12px" bold>
           {t("Filter by")}
         </Text>
         <ButtonMenu activeIndex={activeIndex} scale="sm" variant="primary">

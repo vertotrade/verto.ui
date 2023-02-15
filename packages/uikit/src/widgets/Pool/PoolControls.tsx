@@ -188,7 +188,7 @@ export function PoolControls<T>({
         />
         <FilterContainer>
           <LabelWrapper>
-            <Text fontSize="12px" bold color="textSubtle" textTransform="uppercase">
+            <Text fontSize="12px" bold color="primary" textTransform="uppercase">
               {t("Sort by")}
             </Text>
             <ControlStretch>
@@ -216,11 +216,13 @@ export function PoolControls<T>({
                   },
                 ]}
                 onOptionChange={handleSortOptionChange}
+                color="primary"
+                hasPrimaryBorderColor
               />
             </ControlStretch>
           </LabelWrapper>
           <LabelWrapper style={{ marginLeft: 16 }}>
-            <Text fontSize="12px" bold color="textSubtle" textTransform="uppercase">
+            <Text fontSize="12px" bold color="primary" textTransform="uppercase">
               {t("Search")}
             </Text>
             <SearchInput initialValue={searchQuery} onChange={handleChangeSearchQuery} placeholder="Search Pools" />

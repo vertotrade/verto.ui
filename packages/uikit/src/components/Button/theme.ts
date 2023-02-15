@@ -69,4 +69,13 @@ export const styleVariants = {
     color: "primary",
     boxShadow: "none",
   },
+  [variants.VERTOCUSTOM]: {
+    backgroundColor: "input",
+    color: "primary",
+    boxShadow: "none",
+    borderColor: "primary0f",
+    borderStyle: "solid",
+    borderWidth: "2px",
+    height: "36px",
+  },
 };

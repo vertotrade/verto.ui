@@ -25,7 +25,7 @@ export const lightColors = {
   ...additionalColors,
   primary: '#83bf88',
   primary2: '#5BD2A2',
-  primary0f: '#83bf8814',
+  primary0f: '#83bf8830',
   secondary: '#ff8235',
   secondary80: '#7645D980',
   background: '#FAF9FA',
