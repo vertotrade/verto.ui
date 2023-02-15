@@ -60,6 +60,21 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
   return (
     <>
       <Head>
+        {process.env.NEXT_PUBLIC_NODE_PRODUCTION && (
+          <>
+            {/* Google tag (gtag.js) */}
+            <Script src="https://www.googletagmanager.com/gtag/js?id=G-3VJTV0DLFK" strategy="afterInteractive" />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-3VJTV0DLFK');
+              `}
+            </Script>
+          </>
+        )}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, viewport-fit=cover"
