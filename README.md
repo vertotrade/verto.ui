@@ -35,28 +35,12 @@ yarn start
 ```
 </details>
 
-## `apps/aptos`
-<details>
-<summary>
-How to start
-</summary>
-
-```sh
-yarn dev:aptos
-```
-```sh
-yarn turbo run build --filter=aptos-web
-```
-</details>
-
 
 ## Packages
 
 | Package                                                       | Description                                                                                                            |
 |---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | [sdk](/packages/swap-sdk)                                     | An SDK for building applications on top of Verto                                                                 |
-| [aptos-swap-sdk](/packages/aptos-swap-sdk)                    | Aptos version of Swap SDK                                                                                              |
 | [swap-sdk-core](/packages/swap-sdk-core)                      | Swap SDK Shared code                                                                                                   |
 | [wagmi](/packages/wagmi)                                      | Extension for [wagmi](https://github.com/wagmi-dev/wagmi), including bsc chain and binance wallet connector            |
-| [awgmi](/packages/awgmi)                                      | connect to Aptos with similar wagmi React hooks.                                                                       |
 

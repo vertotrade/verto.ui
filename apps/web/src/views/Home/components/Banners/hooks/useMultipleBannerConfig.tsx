@@ -3,7 +3,6 @@ import shuffle from 'lodash/shuffle'
 import CompetitionBanner from '../CompetitionBanner'
 import PerpetualBanner from '../PerpetualBanner'
 import useIsRenderCompetitionBanner from './useIsRenderCompetitionBanner'
-import AptosBanner from '../AptosBanner'
 
 interface IBannerConfig {
   shouldRender: boolean
@@ -26,8 +25,6 @@ export const useMultipleBannerConfig = () => {
   const isRenderCompetitionBanner = useIsRenderCompetitionBanner()
 
   return useMemo(() => {
-    const NO_SHUFFLE_BANNERS: IBannerConfig[] = [{ shouldRender: true, banner: <AptosBanner /> }]
-
     const SHUFFLE_BANNERS: IBannerConfig[] = [
       {
         shouldRender: isRenderCompetitionBanner,
@@ -38,7 +35,7 @@ export const useMultipleBannerConfig = () => {
         banner: <PerpetualBanner />,
       },
     ]
-    return [...NO_SHUFFLE_BANNERS, ...shuffle(SHUFFLE_BANNERS)]
+    return [...shuffle(SHUFFLE_BANNERS)]
       .filter((bannerConfig: IBannerConfig) => bannerConfig.shouldRender)
       .map((bannerConfig: IBannerConfig) => bannerConfig.banner)
   }, [isRenderCompetitionBanner])
