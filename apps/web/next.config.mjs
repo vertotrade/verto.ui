@@ -143,7 +143,7 @@ const config = {
         permanent: true,
       },
       {
-        source: '/syrup',
+        source: '/res',
         destination: '/pools',
         permanent: true,
       },
