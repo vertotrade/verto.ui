@@ -6,7 +6,7 @@ const scaleKeyValues = {
     handleHeight: "16px",
     handleWidth: "16px",
     handleLeft: "2px",
-    handleTop: "2px",
+    handleTop: "0px",
     checkedLeft: "calc(100% - 18px)",
     toggleHeight: "20px",
     toggleWidth: "36px",
@@ -15,7 +15,7 @@ const scaleKeyValues = {
     handleHeight: "26px",
     handleWidth: "26px",
     handleLeft: "3px",
-    handleTop: "3px",
+    handleTop: "1px",
     checkedLeft: "calc(100% - 30px)",
     toggleHeight: "32px",
     toggleWidth: "56px",
@@ -24,7 +24,7 @@ const scaleKeyValues = {
     handleHeight: "32px",
     handleWidth: "32px",
     handleLeft: "4px",
-    handleTop: "4px",
+    handleTop: "2px",
     checkedLeft: "calc(100% - 36px)",
     toggleHeight: "40px",
     toggleWidth: "72px",
@@ -76,7 +76,7 @@ const StyledToggle = styled.div<StyleToggleProps>`
   background-color: ${({ theme, $checked, $checkedColor, $defaultColor }) =>
     theme.colors[$checked ? $checkedColor : $defaultColor]};
   border-radius: 24px;
-  box-shadow: ${({ theme }) => theme.shadows.inset};
+  border: 2px solid ${({ theme }) => theme.colors.primary0f};
   cursor: pointer;
   display: inline-flex;
   height: ${getScale("toggleHeight")};

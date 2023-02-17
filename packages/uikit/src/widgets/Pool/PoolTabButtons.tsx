@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import styled from "styled-components";
+import { Flex } from "@verto/uikit";
+import styled, { useTheme } from "styled-components";
 import { useTranslation } from "@verto/localization";
 import { ButtonMenu, ButtonMenuItem, Toggle, Text, NotificationDot, NextLinkFromReactRouter } from "../../components";
 import { ToggleView, ViewMode } from "../../components/ToggleView";
@@ -27,6 +28,7 @@ const ViewControls = styled.div`
 
   ${({ theme }) => theme.mediaQueries.sm} {
     justify-content: flex-start;
+    align-items: flex-end;
     width: auto;
 
     > div {
@@ -41,7 +43,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    margin-left: 32px;
+    margin: 0px 16px;
   }
 `;
 
@@ -63,6 +65,7 @@ const PoolTabButtons = ({
   hideViewMode = false,
 }: PoolTableButtonsPropsType) => {
   const router = useRouter();
+  const { isDark } = useTheme();
 
   const { t } = useTranslation();
 
@@ -74,31 +77,36 @@ const PoolTabButtons = ({
 
   const liveOrFinishedSwitch = (
     <Wrapper>
-      <ButtonMenu activeIndex={isExact ? 0 : 1} scale="sm" variant="subtle">
-        <ButtonMenuItem as={NextLinkFromReactRouter} to="/pools" replace>
-          {t("Live")}
-        </ButtonMenuItem>
-        <NotificationDot show={hasStakeInFinishedPools}>
-          <ButtonMenuItem id="finished-pools-button" as={NextLinkFromReactRouter} to="/pools/history" replace>
-            {t("Finished")}
+      <Flex width="max-content" flexDirection="column">
+        <Text textTransform="uppercase" color={isDark ? "textSubtle" : "primary"} fontSize="12px" bold>
+          {t("Filter by")}
+        </Text>
+        <ButtonMenu activeIndex={isExact ? 0 : 1} scale="sm" variant="primary">
+          <ButtonMenuItem as={NextLinkFromReactRouter} to="/pools" replace>
+            {t("Live")}
           </ButtonMenuItem>
-        </NotificationDot>
-      </ButtonMenu>
+          <NotificationDot show={hasStakeInFinishedPools}>
+            <ButtonMenuItem id="finished-pools-button" as={NextLinkFromReactRouter} to="/pools/history" replace>
+              {t("Finished")}
+            </ButtonMenuItem>
+          </NotificationDot>
+        </ButtonMenu>
+      </Flex>
     </Wrapper>
   );
 
   const stakedOnlySwitch = (
     <ToggleWrapper>
       <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} scale="sm" />
-      <Text color="textSubtle"> {t("Staked only")}</Text>
+      <Text color="primary"> {t("Staked only")}</Text>
     </ToggleWrapper>
   );
 
   return (
     <ViewControls>
       {viewModeToggle}
-      {stakedOnlySwitch}
       {liveOrFinishedSwitch}
+      <Flex pb="6px">{stakedOnlySwitch}</Flex>
     </ViewControls>
   );
 };

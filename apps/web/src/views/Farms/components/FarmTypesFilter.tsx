@@ -72,7 +72,7 @@ export const FarmTypesFilter: React.FC<FarmTypesFilterProps> = ({
         <Box ref={wrapperRef}>
           <InlineMenu
             component={
-              <Button onClick={handleMenuClick} variant="light" scale="sm">
+              <Button onClick={handleMenuClick} variant="vertoCustom" scale="sm">
                 {t('Farm Types')}
                 {farmTypesEnableCount > 0 && `(${farmTypesEnableCount})`}
               </Button>

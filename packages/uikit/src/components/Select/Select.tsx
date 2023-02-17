@@ -4,21 +4,22 @@ import { Box, BoxProps } from "../Box";
 import { ArrowDropDownIcon } from "../Svg";
 import { Text } from "../Text";
 
-const DropDownHeader = styled.div`
+const DropDownHeader = styled.div<{ hasPrimaryBorderColor: boolean }>`
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0px 16px;
-  box-shadow: ${({ theme }) => theme.shadows.inset};
-  border: 1px solid ${({ theme }) => theme.colors.inputSecondary};
+  border: 2px solid
+    ${({ theme, hasPrimaryBorderColor }) =>
+      hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary};
   border-radius: 7.5px;
   background: ${({ theme }) => theme.colors.input};
   transition: border-radius 0.15s;
 `;
 
-const DropDownListContainer = styled.div`
+const DropDownListContainer = styled.div<{ hasPrimaryBorderColor: boolean }>`
   min-width: 136px;
   height: 0;
   position: absolute;
@@ -36,7 +37,7 @@ const DropDownListContainer = styled.div`
   }
 `;
 
-const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
+const DropDownContainer = styled(Box)<{ isOpen: boolean; hasPrimaryBorderColor: boolean }>`
   cursor: pointer;
   width: 100%;
   position: relative;
@@ -55,19 +56,21 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
     props.isOpen &&
     css`
       ${DropDownHeader} {
-        border-bottom: 1px solid ${({ theme }) => theme.colors.inputSecondary};
-        box-shadow: ${({ theme }) => theme.tooltip.boxShadow};
+        border-bottom: 2px solid
+          ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
         border-radius: 7.5px 7.5px 0 0;
+        border: 1px solid
+          ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
       }
 
       ${DropDownListContainer} {
         height: auto;
         transform: scaleY(1);
         opacity: 1;
-        border: 1px solid ${({ theme }) => theme.colors.inputSecondary};
+        border: 2px solid
+          ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
         border-top-width: 0;
         border-radius: 0 0 7.5px 7.5px;
-        box-shadow: ${({ theme }) => theme.tooltip.boxShadow};
       }
     `}
 
@@ -99,6 +102,8 @@ export interface SelectProps extends BoxProps {
   onOptionChange?: (option: OptionProps) => void;
   placeHolderText?: string;
   defaultOptionIndex?: number;
+  color?: string;
+  hasPrimaryBorderColor?: boolean;
 }
 
 export interface OptionProps {
@@ -111,6 +116,8 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   onOptionChange,
   defaultOptionIndex = 0,
   placeHolderText,
+  color = "textSubtle",
+  hasPrimaryBorderColor = false,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -151,19 +158,19 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   }, [defaultOptionIndex]);
 
   return (
-    <DropDownContainer isOpen={isOpen} {...props}>
-      <DropDownHeader onClick={toggling}>
-        <Text color="textSubtle">
+    <DropDownContainer isOpen={isOpen} {...props} hasPrimaryBorderColor={hasPrimaryBorderColor}>
+      <DropDownHeader hasPrimaryBorderColor={hasPrimaryBorderColor} onClick={toggling}>
+        <Text color={color}>
           {!optionSelected && placeHolderText ? placeHolderText : options[selectedOptionIndex].label}
         </Text>
       </DropDownHeader>
-      <ArrowDropDownIcon color="textSubtle" onClick={toggling} />
-      <DropDownListContainer>
+      <ArrowDropDownIcon color={color} onClick={toggling} />
+      <DropDownListContainer hasPrimaryBorderColor={hasPrimaryBorderColor}>
         <DropDownList>
           {options.map((option, index) =>
             placeHolderText || index !== selectedOptionIndex ? (
               <ListItem onClick={onOptionClicked(index)} key={option.label}>
-                <Text color="textSubtle">{option.label}</Text>
+                <Text color={color}>{option.label}</Text>
               </ListItem>
             ) : null
           )}

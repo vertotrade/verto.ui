@@ -395,7 +395,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                   onChange={() => setStakedOnly(!stakedOnly)}
                   scale="sm"
                 />
-                <Text> {t('Staked only')}</Text>
+                <Text color="primary"> {t('Staked only')}</Text>
               </ToggleWrapper>
             </Flex>
           </ViewControls>
@@ -432,6 +432,8 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                   },
                 ]}
                 onOptionChange={handleSortOptionChange}
+                color="primary"
+                hasPrimaryBorderColor
               />
             </LabelWrapper>
             <LabelWrapper style={{ marginLeft: 16 }}>
