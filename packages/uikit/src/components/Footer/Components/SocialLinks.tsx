@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { FlexProps } from "../../Box";
 import Flex from "../../Box/Flex";
-import Dropdown from "../../Dropdown/Dropdown";
 import Link from "../../Link/Link";
 import { socials } from "../config";
 
