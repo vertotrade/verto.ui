@@ -5,11 +5,11 @@ export const bscTestnetTokens = {
   wbnb: WBNB[ChainId.BSC_TESTNET],
   cake: CAKE_TESTNET,
   busd: BUSD_TESTNET,
-  syrup: new ERC20Token(
+  res: new ERC20Token(
     ChainId.BSC_TESTNET,
     '0xfE1e507CeB712BDe086f3579d2c03248b2dB77f9',
     18,
-    'SYRUP',
+    'RES',
     'SyrupBar Token',
     'https://pancakeswap.finance/',
   ),

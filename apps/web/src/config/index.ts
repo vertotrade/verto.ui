@@ -5,7 +5,7 @@ export const BSC_BLOCK_TIME = 3
 // CAKE_PER_BLOCK details
 // 40 CAKE is minted per block
 // 20 CAKE per block is sent to Burn pool (A farm just for burning cake)
-// 10 CAKE per block goes to CAKE syrup pool
+// 10 CAKE per block goes to CAKE res pool
 // 9 CAKE per block goes to Yield farms and lottery
 // CAKE_PER_BLOCK in config/index.ts = 40 as we only change the amount sent to the burn pool which is effectively a farm.
 // CAKE/Block in src/views/Home/components/CakeDataRow.tsx = 15 (40 - Amount sent to burn pool)

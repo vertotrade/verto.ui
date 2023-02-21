@@ -8,7 +8,7 @@
       },
       {
         "internalType": "contract SyrupBar",
-        "name": "_syrup",
+        "name": "_res",
         "type": "address"
       },
       {
@@ -468,7 +468,7 @@
   },
   {
     "inputs": [],
-    "name": "syrup",
+    "name": "res",
     "outputs": [
       {
         "internalType": "contract SyrupBar",
