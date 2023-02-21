@@ -15,7 +15,6 @@
     "@verto/ui-wallets",
     "@verto/uikit",
     "farms-api",
-    "aptos-web",
     "bridge",
     "e2e",
     "web"
