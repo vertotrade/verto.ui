@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { getActiveMenuItem, getActiveSubMenuItem } from 'components/Menu/utils'
 import { useAccount, useNetwork } from 'wagmi'
 import { useMemo } from 'react'
-import { ChainId } from '@verto/sdk'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import Dots from '../Loader/Dots'
 
 // Where chain is not supported or page not supported
@@ -17,7 +17,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
   const { switchNetworkAsync, isLoading, canSwitch } = useSwitchNetwork()
   const switchNetworkLocal = useSwitchNetworkLocal()
   const { chains } = useNetwork()
-  const chainId = useLocalNetworkChain() || ChainId.BSC
+  const chainId = useLocalNetworkChain() || DEFAULT_CHAIN_ID
   const { isConnected } = useAccount()
   const { logout } = useAuth()
   const { t } = useTranslation()
@@ -62,7 +62,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
               if (supportedMainnetChains.map(c => c.id).includes(chainId)) {
                 switchNetworkAsync(chainId)
               } else {
-                switchNetworkAsync(ChainId.BSC)
+                switchNetworkAsync(DEFAULT_CHAIN_ID)
               }
             }}>
             {isLoading ? <Dots>{t('Switch network in wallet')}</Dots> : t('Switch network in wallet')}
@@ -77,7 +77,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
             variant="secondary"
             onClick={() =>
               logout().then(() => {
-                switchNetworkLocal(ChainId.BSC)
+                switchNetworkLocal(DEFAULT_CHAIN_ID)
               })
             }>
             {t('Disconnect Wallet')}

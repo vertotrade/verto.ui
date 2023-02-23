@@ -1,5 +1,5 @@
 import { useTranslation } from '@verto/localization'
-import { ChainId, NATIVE } from '@verto/sdk'
+import { NATIVE } from '@verto/sdk'
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -22,6 +22,7 @@ import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 import { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { chains } from 'utils/wagmi'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 import { ChainLogo } from './Logo/ChainLogo'
 
@@ -67,7 +68,7 @@ const WrongNetworkSelect = ({ switchNetwork, chainId }) => {
     },
   )
   const { chain } = useNetwork()
-  const localChainId = useLocalNetworkChain() || ChainId.BSC
+  const localChainId = useLocalNetworkChain() || DEFAULT_CHAIN_ID
   const [, setSessionChainId] = useSessionChainId()
 
   const localChainName = chains.find(c => c.id === localChainId)?.name ?? 'BSC'

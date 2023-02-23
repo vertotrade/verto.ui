@@ -19,7 +19,9 @@ env:
   CONTAINER_NAME: nginx
   ASSETS_BUCKET: verto-dev-assets
   # Concurrency for the workflow
-concurrency: dev
+concurrency:
+  group: dev
+  cancel-in-progress: true
 
 jobs:
   # Job to install dependencies and run lint checks

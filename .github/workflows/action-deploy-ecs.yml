@@ -82,6 +82,8 @@ jobs:
           container-name: ${{ inputs.container_name }}
           # Retreive from step above(get-img)
           image: ${{ steps.get-img.outputs.image }}
+          environment-variables: |
+            APP_ENV=${{ inputs.env }}
 
       - name: Deploy Amazon ECS task definition
         # Deploy to ECS

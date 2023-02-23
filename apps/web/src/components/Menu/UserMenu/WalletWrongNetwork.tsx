@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { useTranslation } from '@verto/localization'
 import { Button, Text, Link, HelpIcon, Message, MessageText } from '@verto/uikit'
-import { ChainId } from '@verto/sdk'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 const StyledLink = styled(Link)`
   width: 100%;
@@ -20,7 +20,7 @@ const WalletWrongNetwork: React.FC<React.PropsWithChildren<WalletWrongNetworkPro
   const { switchNetworkAsync, canSwitch } = useSwitchNetwork()
 
   const handleSwitchNetwork = async (): Promise<void> => {
-    await switchNetworkAsync(ChainId.BSC)
+    await switchNetworkAsync(DEFAULT_CHAIN_ID)
     onDismiss?.()
   }
 

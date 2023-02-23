@@ -1,7 +1,7 @@
 import { Router } from 'itty-router'
 import { missing, error } from 'itty-router-extras'
 
-const ALLOW = /[^\w](?:verto\.run|localhost:3000|vertotrade\.finance|vertotrade\.com)$/
+const ALLOW = /[^\w](?:verto\.run|localhost:3000|vertotrade\.com)$/
 
 function isString(s: any): s is string {
   return typeof s === 'string' || s instanceof String

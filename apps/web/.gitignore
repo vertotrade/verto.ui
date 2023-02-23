@@ -17,6 +17,7 @@ dist
 # misc
 .DS_Store
 .eslintcache
+__ENV.js
 
 # local env files
 .env.local

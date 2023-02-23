@@ -32,7 +32,7 @@ export default function useBUSDPrice(currency?: Currency): Price<Currency, Curre
   const [[bnbPairState, bnbPair], [busdPairState, busdPair], [busdBnbPairState, busdBnbPair]] = usePairs(tokenPairs)
 
   return useMemo(() => {
-    if (!currency || !wrapped || !chainId || !wnative) {
+    if (!currency || !wrapped || !chainId || !wnative || !stable) {
       return undefined
     }
 

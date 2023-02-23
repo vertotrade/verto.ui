@@ -111,6 +111,8 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
+  [ChainId.REBUS]: null,
+  [ChainId.REBUS_TESTNET]: null,
 }
 
 export const CAKE = {

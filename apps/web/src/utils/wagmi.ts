@@ -9,9 +9,11 @@ import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { SafeConnector } from './safeConnector'
+import { rebus, rebusTestnet } from './wagmi-chains'
 
-const CHAINS = [bsc, mainnet, bscTestnet, goerli]
+const CHAINS = [bsc, mainnet, bscTestnet, goerli, rebus, rebusTestnet]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null
@@ -98,8 +100,7 @@ export const metaMaskConnector = new MetaMaskConnector({
 const bloctoConnector = new BloctoConnector({
   chains,
   options: {
-    defaultChainId: 56,
-    appId: 'e2f2f0cd-3ceb-4dec-b293-bb555f2ed5af',
+    defaultChainId: DEFAULT_CHAIN_ID,
   },
 })
 

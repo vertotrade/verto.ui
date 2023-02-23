@@ -14,7 +14,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useAllTokens, useIsUserAddedToken, useToken } from '../../hooks/Tokens'
 import Column, { AutoColumn } from '../Layout/Column'
 import Row from '../Layout/Row'
-import CommonBases from './CommonBases'
+// import CommonBases from './CommonBases'
 import CurrencyList from './CurrencyList'
 import { createFilterToken, useSortedTokensByQuery } from './filtering'
 import useTokenComparator from './sorting'
@@ -80,7 +80,7 @@ function CurrencySearch({
   onCurrencySelect,
   otherSelectedCurrency,
   showCommonBases,
-  commonBasesType,
+  // commonBasesType,
   showSearchInput = true,
   showImportView,
   setImportToken,
@@ -88,7 +88,7 @@ function CurrencySearch({
   tokensToShow,
 }: CurrencySearchProps) {
   const { t } = useTranslation()
-  const { chainId } = useActiveChainId()
+  // const { chainId } = useActiveChainId()
 
   // refs for fixed size lists
   const fixedList = useRef<FixedSizeList>()
@@ -250,14 +250,14 @@ function CurrencySearch({
             />
           </Row>
         )}
-        {showCommonBases && (
+        {/* {showCommonBases && (
           <CommonBases
             chainId={chainId}
             onSelect={handleCurrencySelect}
             selectedCurrency={selectedCurrency}
             commonBasesType={commonBasesType}
           />
-        )}
+        )} */}
       </AutoColumn>
       {getCurrencyListRows()}
     </>

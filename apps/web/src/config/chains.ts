@@ -1,3 +1,4 @@
+import env from '@beam-australia/react-env'
 import { ChainId } from '@verto/sdk'
 import memoize from 'lodash/memoize'
 import invert from 'lodash/invert'
@@ -7,7 +8,11 @@ export const CHAIN_QUERY_NAME = {
   [ChainId.GOERLI]: 'goerli',
   [ChainId.BSC]: 'bsc',
   [ChainId.BSC_TESTNET]: 'bscTestnet',
+  [ChainId.REBUS]: 'rebus',
+  [ChainId.REBUS_TESTNET]: 'rebusTestnet',
 }
+
+export const DEFAULT_CHAIN_ID = env('IS_MAINNET') === 'true' ? ChainId.REBUS : ChainId.REBUS_TESTNET
 
 const CHAIN_QUERY_NAME_TO_ID = invert(CHAIN_QUERY_NAME)
 
