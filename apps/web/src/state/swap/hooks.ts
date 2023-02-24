@@ -1,6 +1,6 @@
 import { useTranslation } from '@verto/localization'
 import { Currency, CurrencyAmount, Trade, TradeType } from '@verto/sdk'
-import { CAKE, USDC } from '@verto/tokens'
+import { vertoTokensTestnet } from '@verto/tokens'
 import tryParseAmount from '@verto/utils/tryParseAmount'
 import IPancakePairABI from 'config/abi/IPancakePair.json'
 import { DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from 'config/constants/exchange'
@@ -238,7 +238,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToSwapState(query, native.symbol, CAKE[chainId]?.address ?? USDC[chainId]?.address)
+    const parsed = queryParametersToSwapState(query, native.symbol, vertoTokensTestnet.ludus?.address)
 
     dispatch(
       replaceSwapState({

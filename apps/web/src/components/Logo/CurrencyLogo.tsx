@@ -13,6 +13,8 @@ const StyledLogo = styled(TokenLogo)<{ size: string }>`
   border-radius: 50%;
 `
 
+const EMPTY_OBJ = {}
+
 export default function CurrencyLogo({
   currency,
   size = '24px',
@@ -23,6 +25,12 @@ export default function CurrencyLogo({
   style?: React.CSSProperties
 }) {
   const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
+  const parsedStyle: React.CSSProperties = style || EMPTY_OBJ
+
+  if (currency?.chainId === ChainId.REBUS || currency?.chainId === ChainId.REBUS_TESTNET) {
+    // eslint-disable-next-line no-param-reassign
+    parsedStyle.borderRadius = '0'
+  }
 
   const srcs: string[] = useMemo(() => {
     if (currency?.isNative) return []
@@ -44,18 +52,25 @@ export default function CurrencyLogo({
     if (currency.chainId === ChainId.BSC) {
       return <BinanceIcon width={size} style={style} />
     }
+
     return (
       <StyledLogo
         badSrcs={BAD_SRCS}
         size={size}
         srcs={[`/images/chains/${currency.chainId}.png`]}
         width={size}
-        style={style}
+        style={parsedStyle}
       />
     )
   }
 
   return (
-    <StyledLogo badSrcs={BAD_SRCS} size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
+    <StyledLogo
+      badSrcs={BAD_SRCS}
+      size={size}
+      srcs={srcs}
+      alt={`${currency?.symbol ?? 'token'} logo`}
+      style={parsedStyle}
+    />
   )
 }

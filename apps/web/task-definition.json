@@ -17,6 +17,12 @@
           "protocol": "tcp"
         }
       ],
+      "environment": [
+        {
+          "name": "APP_ENV",
+          "value": "${APP_ENV}"
+        }
+      ],
       "essential": true,
       "logConfiguration": {
         "logDriver": "awslogs",

@@ -1,5 +1,4 @@
 import { useTranslation } from '@verto/localization'
-import { ChainId } from '@verto/sdk'
 import { ArrowForwardIcon, Button, Grid, Message, MessageText, Modal, Text, FlexGap } from '@verto/uikit'
 import { ChainLogo } from 'components/Logo/ChainLogo'
 import useAuth from 'hooks/useAuth'
@@ -7,6 +6,7 @@ import { useSessionChainId } from 'hooks/useSessionChainId'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 import Image from 'next/image'
 import { Chain, useAccount, useNetwork } from 'wagmi'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import Dots from '../Loader/Dots'
 
 // Where page network is not equal to wallet network
@@ -16,7 +16,7 @@ export function WrongNetworkModal({ currentChain, onDismiss }: { currentChain: C
   const { logout } = useAuth()
   const { isConnected } = useAccount()
   const [, setSessionChainId] = useSessionChainId()
-  const chainId = currentChain.id || ChainId.BSC
+  const chainId = currentChain.id || DEFAULT_CHAIN_ID
   const { t } = useTranslation()
 
   const switchText = t('Switch to %network%', { network: currentChain.name })

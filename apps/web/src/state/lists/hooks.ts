@@ -18,10 +18,36 @@ import { EMPTY_LIST } from '@verto/tokens'
 import uniqBy from 'lodash/uniqBy'
 import { useMemo } from 'react'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import DEFAULT_TOKEN_LIST from '../../config/constants/tokenLists/pancake-default.tokenlist.json'
-import UNSUPPORTED_TOKEN_LIST from '../../config/constants/tokenLists/pancake-unsupported.tokenlist.json'
-import WARNING_TOKEN_LIST from '../../config/constants/tokenLists/pancake-warning.tokenlist.json'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
+import DEFAULT_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-default.tokenlist.json'
+import UNSUPPORTED_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-unsupported.tokenlist.json'
+import WARNING_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-warning.tokenlist.json'
 import { listsAtom } from './lists'
+
+// Replace chainId for the tokens for whatever the current default chain id is, either rebus testnet or rebus mainnet
+const defaultTokenList = {
+  ...DEFAULT_TOKEN_LIST,
+  tokens: DEFAULT_TOKEN_LIST.tokens.map(token => ({
+    ...token,
+    chainId: DEFAULT_CHAIN_ID,
+  })),
+}
+
+const unsupportedTokenList = {
+  ...UNSUPPORTED_TOKEN_LIST,
+  tokens: UNSUPPORTED_TOKEN_LIST.tokens.map(token => ({
+    ...token,
+    chainId: DEFAULT_CHAIN_ID,
+  })),
+}
+
+const warningTokenList = {
+  ...WARNING_TOKEN_LIST,
+  tokens: WARNING_TOKEN_LIST.tokens.map(token => ({
+    ...token,
+    chainId: DEFAULT_CHAIN_ID,
+  })),
+}
 
 type TokenAddressMap = TTokenAddressMap<ChainId>
 
@@ -52,7 +78,7 @@ const activeListUrlsAtom = atom(get => {
 })
 
 const combineTokenMapsWithDefault = (lists: ListsState['byUrl'], urls: string[]) => {
-  const defaultTokenMap = listToTokenMap(DEFAULT_TOKEN_LIST)
+  const defaultTokenMap = listToTokenMap(defaultTokenList)
 
   if (!urls) return defaultTokenMap
 
@@ -111,7 +137,7 @@ export const tokenListFromOfficialsUrlsAtom = atom(get => {
   }, [])
 
   const mergedList =
-    mergedTokenLists.length > 0 ? [...DEFAULT_TOKEN_LIST.tokens, ...mergedTokenLists] : DEFAULT_TOKEN_LIST.tokens
+    mergedTokenLists.length > 0 ? [...defaultTokenList.tokens, ...mergedTokenLists] : defaultTokenList.tokens
   return mapValues(
     groupBy(
       uniqBy(mergedList, tokenInfo => `${tokenInfo.chainId}#${tokenInfo.address}`),
@@ -124,7 +150,7 @@ export const tokenListFromOfficialsUrlsAtom = atom(get => {
 export const combinedTokenMapFromUnsupportedUrlsAtom = atom(get => {
   const lists = get(selectorByUrlsAtom)
   // get hard coded unsupported tokens
-  const localUnsupportedListMap = listToTokenMap(UNSUPPORTED_TOKEN_LIST)
+  const localUnsupportedListMap = listToTokenMap(unsupportedTokenList)
   // get any loaded unsupported tokens
   const loadedUnsupportedListMap = combineTokenMaps(lists, UNSUPPORTED_LIST_URLS)
 
@@ -134,7 +160,7 @@ export const combinedTokenMapFromUnsupportedUrlsAtom = atom(get => {
 export const combinedTokenMapFromWarningUrlsAtom = atom(get => {
   const lists = get(selectorByUrlsAtom)
   // get hard coded unsupported tokens
-  const localUnsupportedListMap = listToTokenMap(WARNING_TOKEN_LIST)
+  const localUnsupportedListMap = listToTokenMap(warningTokenList)
   // get any loaded unsupported tokens
   const loadedUnsupportedListMap = combineTokenMaps(lists, WARNING_LIST_URLS)
 
@@ -205,6 +231,8 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
     [ChainId.GOERLI]: { ...map1[ChainId.GOERLI], ...map2[ChainId.GOERLI] },
     [ChainId.BSC]: { ...map1[ChainId.BSC], ...map2[ChainId.BSC] },
     [ChainId.BSC_TESTNET]: { ...map1[ChainId.BSC_TESTNET], ...map2[ChainId.BSC_TESTNET] },
+    [ChainId.REBUS]: { ...map1[ChainId.REBUS], ...map2[ChainId.REBUS] },
+    [ChainId.REBUS_TESTNET]: { ...map1[ChainId.REBUS_TESTNET], ...map2[ChainId.REBUS_TESTNET] },
   }
 }
 

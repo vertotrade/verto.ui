@@ -1,5 +1,6 @@
-import { ChainId, Native, NativeCurrency } from '@verto/sdk'
+import { Native, NativeCurrency } from '@verto/sdk'
 import { useMemo } from 'react'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { useActiveChainId } from './useActiveChainId'
 
 export default function useNativeCurrency(): NativeCurrency {
@@ -8,7 +9,7 @@ export default function useNativeCurrency(): NativeCurrency {
     try {
       return Native.onChain(chainId)
     } catch (e) {
-      return Native.onChain(ChainId.BSC)
+      return Native.onChain(DEFAULT_CHAIN_ID)
     }
   }, [chainId])
 }

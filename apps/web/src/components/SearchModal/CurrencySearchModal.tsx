@@ -9,7 +9,7 @@ import {
   ModalBody,
   InjectedModalProps,
   Heading,
-  Button,
+  // Button,
   useMatchBreakpoints,
   MODAL_SWIPE_TO_CLOSE_VELOCITY,
 } from '@verto/uikit'
@@ -23,11 +23,11 @@ import Manage from './Manage'
 import ImportList from './ImportList'
 import { CurrencyModalView } from './types'
 
-const Footer = styled.div`
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
-  text-align: center;
-`
+// const Footer = styled.div`
+//   width: 100%;
+//   background-color: ${({ theme }) => theme.colors.backgroundAlt};
+//   text-align: center;
+// `
 const StyledModalContainer = styled(ModalContainer)`
   width: 100%;
   min-width: 320px;
@@ -157,7 +157,7 @@ export default function CurrencySearchModal({
         ) : (
           ''
         )}
-        {modalView === CurrencyModalView.search && (
+        {/* {modalView === CurrencyModalView.search && (
           <Footer>
             <Button
               scale="sm"
@@ -167,7 +167,7 @@ export default function CurrencySearchModal({
               {t('Manage Tokens')}
             </Button>
           </Footer>
-        )}
+        )} */}
       </StyledModalBody>
     </StyledModalContainer>
   )

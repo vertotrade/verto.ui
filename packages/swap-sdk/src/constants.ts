@@ -6,6 +6,8 @@ export enum ChainId {
   GOERLI = 5,
   BSC = 56,
   BSC_TESTNET = 97,
+  REBUS = 1111,
+  REBUS_TESTNET = 3333,
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -20,6 +22,8 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.GOERLI]: FACTORY_ADDRESS_ETH,
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
+  [ChainId.REBUS]: '0xa5A785D77ECcc28ECcBDCc9Fc1E81B0d57618D12',
+  [ChainId.REBUS_TESTNET]: '0xa5A785D77ECcc28ECcBDCc9Fc1E81B0d57618D12',
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
 
@@ -29,6 +33,8 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.GOERLI]: INIT_CODE_HASH_ETH,
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
+  [ChainId.REBUS]: '0x117bda4593deabbe392aebbdccfcaaf3f0f3e0d5f14d250a6e496d6a2e974ef4',
+  [ChainId.REBUS_TESTNET]: '0x117bda4593deabbe392aebbdccfcaaf3f0f3e0d5f14d250a6e496d6a2e974ef4',
 }
 
 export const WETH9 = {
@@ -77,11 +83,32 @@ export const WBNB = {
   ),
 }
 
+export const REBUS = {
+  [ChainId.REBUS]: new ERC20Token(
+    ChainId.REBUS,
+    '0xe21ee29B2E8A4cE8229b40Fc972A54501daD655B',
+    18,
+    'WREBUS',
+    'Wrapped Rebus',
+    'https://www.rebuschain.com/'
+  ),
+  [ChainId.REBUS_TESTNET]: new ERC20Token(
+    ChainId.REBUS_TESTNET,
+    '0xe21ee29B2E8A4cE8229b40Fc972A54501daD655B',
+    18,
+    'WREBUS',
+    'Wrapped Rebus',
+    'https://www.rebuschain.com/'
+  ),
+}
+
 export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.ETHEREUM]: WETH9[ChainId.ETHEREUM],
   [ChainId.GOERLI]: WETH9[ChainId.GOERLI],
   [ChainId.BSC]: WBNB[ChainId.BSC],
   [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
+  [ChainId.REBUS]: REBUS[ChainId.REBUS],
+  [ChainId.REBUS_TESTNET]: REBUS[ChainId.REBUS_TESTNET],
 }
 
 export const NATIVE: Record<
@@ -102,6 +129,16 @@ export const NATIVE: Record<
   [ChainId.BSC_TESTNET]: {
     name: 'Binance Chain Native Token',
     symbol: 'tBNB',
+    decimals: 18,
+  },
+  [ChainId.REBUS]: {
+    name: 'Rebus Chain Native Token',
+    symbol: 'REBUS',
+    decimals: 18,
+  },
+  [ChainId.REBUS_TESTNET]: {
+    name: 'Rebus Chain Native Token',
+    symbol: 'REBUS',
     decimals: 18,
   },
 }

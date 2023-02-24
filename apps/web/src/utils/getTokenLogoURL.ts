@@ -14,7 +14,7 @@ const getTokenLogoURL = memoize(
         token.address,
       )}/logo.png`
     }
-    return null
+    return (token as any)?.logoURI || null
   },
   t => `${t.chainId}#${t.address}`,
 )
