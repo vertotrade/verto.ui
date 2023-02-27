@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_cakeVault",
+        "name": "_rebusVault",
         "type": "address"
       },
       {
@@ -169,10 +169,10 @@
   },
   {
     "inputs": [],
-    "name": "cakeVault",
+    "name": "rebusVault",
     "outputs": [
       {
-        "internalType": "contract CakeVault",
+        "internalType": "contract RebusVault",
         "name": "",
         "type": "address"
       }

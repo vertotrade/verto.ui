@@ -5,7 +5,7 @@ import orderBy from "lodash/orderBy";
 
 import { DeserializedPool, DeserializedPoolVault, VaultKey, DeserializedPoolLockedVault } from "../types";
 
-import { getCakeVaultEarnings } from "./getCakeVaultEarnings";
+import { getRebusVaultEarnings } from "./getRebusVaultEarnings";
 
 export function sortPools<T>(account: string, sortOption: string, poolsToSort: DeserializedPool<T>[]) {
   switch (sortOption) {
@@ -25,13 +25,13 @@ export function sortPools<T>(account: string, sortOption: string, poolsToSort: D
             if (!userData || !userData.userShares) {
               return 0;
             }
-            return getCakeVaultEarnings(
+            return getRebusVaultEarnings(
               account,
               userData.cakeAtLastUserAction,
               userData.userShares,
               pricePerFullShare,
               pool.earningTokenPrice,
-              pool.vaultKey === VaultKey.CakeVault
+              pool.vaultKey === VaultKey.RebusVault
                 ? (pool as DeserializedPoolLockedVault<T>)?.userData?.currentPerformanceFee?.plus(
                     (pool as DeserializedPoolLockedVault<T>)?.userData?.currentOverdueFee || 0
                   )

@@ -1,10 +1,10 @@
-import { ChainId } from '@verto/sdk'
 import { Pool } from '@verto/uikit'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import addresses from 'config/constants/contracts'
 import { VaultKey } from 'state/types'
 
 export const getAddress = (address: Pool.Address, chainId?: number): string => {
-  return address[chainId] ? address[chainId] : address[ChainId.BSC]
+  return address[chainId] ? address[chainId] : address[DEFAULT_CHAIN_ID]
 }
 
 export const getMasterChefAddress = (chainId?: number) => {
@@ -66,16 +66,16 @@ export const getVaultPoolAddress = (vaultKey: VaultKey) => {
   return getAddress(addresses[vaultKey])
 }
 
-export const getCakeVaultAddress = () => {
-  return getAddress(addresses.cakeVault)
+export const getRebusVaultAddress = () => {
+  return getAddress(addresses.rebusVault)
 }
 
-export const getCakeFlexibleSideVaultAddress = () => {
-  return getAddress(addresses.cakeFlexibleSideVault)
+export const getRebusFlexibleSideVaultAddress = () => {
+  return getAddress(addresses.rebusFlexibleSideVault)
 }
 
-export const getBunnySpecialCakeVaultAddress = () => {
-  return getAddress(addresses.bunnySpecialCakeVault)
+export const getBunnySpecialRebusVaultAddress = () => {
+  return getAddress(addresses.bunnySpecialRebusVault)
 }
 export const getBunnySpecialPredictionAddress = () => {
   return getAddress(addresses.bunnySpecialPrediction)

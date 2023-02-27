@@ -1,14 +1,14 @@
 import { useMemo } from 'react'
 import { BOOST_WEIGHT, DURATION_FACTOR } from 'config/constants/pools'
 import BigNumber from 'bignumber.js'
-import { useCakeVault } from 'state/pools/hooks'
+import { useRebusVault } from 'state/pools/hooks'
 import { getFullDecimalMultiplier } from '@verto/utils/getFullDecimalMultiplier'
 
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import formatSecondsToWeeks, { secondsToWeeks } from '../../utils/formatSecondsToWeeks'
 
 export default function useAvgLockDuration() {
-  const { totalLockedAmount, totalShares, totalCakeInVault, pricePerFullShare } = useCakeVault()
+  const { totalLockedAmount, totalShares, totalCakeInVault, pricePerFullShare } = useRebusVault()
 
   const avgLockDurationsInSeconds = useMemo(() => {
     const flexibleCakeAmount = totalCakeInVault.minus(totalLockedAmount)

@@ -58,7 +58,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
     <VaultRoiCalculatorModal pool={pool} initialView={1} />,
     true,
     true,
-    pool.vaultKey === VaultKey.CakeVault ? 'LockedVaultRoiCalculatorModal' : 'FlexibleSideVaultRoiCalculatorModal',
+    pool.vaultKey === VaultKey.RebusVault ? 'LockedVaultRoiCalculatorModal' : 'FlexibleSideVaultRoiCalculatorModal',
   )
 
   const boostedYieldAmount = useMemo(() => {
@@ -68,7 +68,7 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
   const tooltipContent = <LockedAprTooltipContent boostedYieldAmount={boostedYieldAmount} />
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 
-  if (pool.vaultKey === VaultKey.CakeVault && vaultPosition === VaultPosition.None) {
+  if (pool.vaultKey === VaultKey.RebusVault && vaultPosition === VaultPosition.None) {
     return (
       <>
         <Pool.BaseCell role="cell" flex={['1 0 50px', '4.5', '1 0 120px', null, '2 0 100px']}>

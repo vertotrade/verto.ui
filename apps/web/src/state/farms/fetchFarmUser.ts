@@ -9,6 +9,7 @@ import { SerializedFarmConfig } from 'config/constants/types'
 import { verifyBscNetwork } from 'utils/verifyBscNetwork'
 import { getCrossFarmingReceiverContract } from 'utils/contractHelpers'
 import { farmFetcher } from 'state/farms'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 export const fetchFarmUserAllowances = async (
   account: string,
@@ -83,7 +84,7 @@ export const fetchFarmUserStakedBalances = async (
 
 export const fetchFarmUserEarnings = async (account: string, farmsToFetch: SerializedFarmConfig[], chainId: number) => {
   const isBscNetwork = verifyBscNetwork(chainId)
-  const multiCallChainId = farmFetcher.isTestnet(chainId) ? ChainId.BSC_TESTNET : ChainId.BSC
+  const multiCallChainId = DEFAULT_CHAIN_ID
   const userAddress = isBscNetwork ? account : await fetchCProxyAddress(account, multiCallChainId)
   const masterChefAddress = getMasterChefAddress(multiCallChainId)
 

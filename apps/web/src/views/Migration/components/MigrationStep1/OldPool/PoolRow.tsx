@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
+import { getRebusVaultEarnings } from 'views/Pools/helpers'
 import { useMatchBreakpoints, Pool } from '@verto/uikit'
 import { Token } from '@verto/sdk'
 import { useDelayedUnmount } from '@verto/hooks'
@@ -63,7 +63,7 @@ const PoolRow: React.FC<React.PropsWithChildren<PoolRowProps>> = ({ pool, accoun
   const { cakeAtLastUserAction, userShares } = vaultPoolData.userData
 
   const vaultPools = {
-    [VaultKey.CakeVaultV1]: useVaultPoolByKeyV1(VaultKey.CakeVaultV1).vaultPoolData,
+    [VaultKey.RebusVaultV1]: useVaultPoolByKeyV1(VaultKey.RebusVaultV1).vaultPoolData,
     [VaultKey.IfoPool]: useVaultPoolByKeyV1(VaultKey.IfoPool).vaultPoolData,
   }
   const cakeInVaults = Object.values(vaultPools).reduce((total, vault) => {
@@ -73,7 +73,7 @@ const PoolRow: React.FC<React.PropsWithChildren<PoolRowProps>> = ({ pool, accoun
   // Auto Earning
   let earningTokenBalance = 0
   if (pricePerFullShare) {
-    const { autoCakeToDisplay } = getCakeVaultEarnings(
+    const { autoCakeToDisplay } = getRebusVaultEarnings(
       account,
       cakeAtLastUserAction,
       userShares,
@@ -92,7 +92,7 @@ const PoolRow: React.FC<React.PropsWithChildren<PoolRowProps>> = ({ pool, accoun
 
   const EarningComponent = () => {
     if (isLargerScreen || !expanded) {
-      return pool.vaultKey === VaultKey.IfoPool || pool.vaultKey === VaultKey.CakeVaultV1 ? (
+      return pool.vaultKey === VaultKey.IfoPool || pool.vaultKey === VaultKey.RebusVaultV1 ? (
         <AutoEarningsCell hasEarnings={hasEarnings} earningTokenBalance={earningTokenBalance} />
       ) : (
         <EarningsCell pool={pool} account={account} />

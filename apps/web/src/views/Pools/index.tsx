@@ -12,7 +12,7 @@ import { TokenPairImage } from 'components/TokenImage'
 import CardActions from './components/PoolCard/CardActions'
 import AprRow from './components/PoolCard/AprRow'
 import CardFooter from './components/PoolCard/CardFooter'
-import CakeVaultCard from './components/CakeVaultCard'
+import RebusVaultCard from './components/RebusVaultCard'
 import PoolControls from './components/PoolControls'
 import PoolRow, { VaultPoolRow } from './components/PoolsTable/PoolRow'
 
@@ -60,18 +60,8 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
       </PageHeader>
       <Page>
         <PoolControls pools={pools}>
-          {({ chosenPools, viewMode, stakedOnly, normalizedUrlSearch, showFinishedPools }) => (
+          {({ chosenPools, viewMode, stakedOnly, normalizedUrlSearch }) => (
             <>
-              {showFinishedPools && (
-                <FinishedTextContainer>
-                  <Text fontSize={['16px', null, '20px']} color="textSubtle" pr="4px">
-                    {t('Looking for v1 CAKE Res Pools?')}
-                  </Text>
-                  <FinishedTextLink href="/migration" fontSize={['16px', null, '20px']} color="textSubtle">
-                    {t('Go to migration page')}.
-                  </FinishedTextLink>
-                </FinishedTextContainer>
-              )}
               {account && !userDataLoaded && stakedOnly && (
                 <Flex justifyContent="center" mb="4px">
                   <Loading />
@@ -81,7 +71,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                 <CardLayout>
                   {chosenPools.map(pool =>
                     pool.vaultKey ? (
-                      <CakeVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
+                      <RebusVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
                     ) : (
                       <Pool.PoolCard<Token>
                         key={pool.sousId}

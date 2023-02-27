@@ -12,6 +12,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useSwapCallArguments } from 'hooks/useSwapCallArguments'
 import { INITIAL_ALLOWED_SLIPPAGE } from 'config/constants'
 import BigNumber from 'bignumber.js'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 export const useCakeEnable = (enableAmount: BigNumber) => {
   const { account, chainId } = useActiveWeb3React()
@@ -23,7 +24,7 @@ export const useCakeEnable = (enableAmount: BigNumber) => {
 
   const parsedAmount = tryParseAmount(swapAmount, CAKE[chainId])
 
-  const trade = useTradeExactOut(Native.onChain(ChainId.BSC), parsedAmount)
+  const trade = useTradeExactOut(Native.onChain(DEFAULT_CHAIN_ID), parsedAmount)
 
   const swapCalls = useSwapCallArguments(trade, INITIAL_ALLOWED_SLIPPAGE, null)
 

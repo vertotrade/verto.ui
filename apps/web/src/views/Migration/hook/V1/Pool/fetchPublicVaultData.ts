@@ -1,17 +1,17 @@
 import BigNumber from 'bignumber.js'
 import { convertSharesToCake } from 'views/Pools/helpers'
 import { multicallv2 } from 'utils/multicall'
-import cakeVaultAbi from 'config/abi/cakeVaultV2.json'
+import rebusVaultAbi from 'config/abi/rebusVaultV2.json'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 
-export const fetchPublicVaultData = async (cakeVaultAddress: string) => {
+export const fetchPublicVaultData = async (rebusVaultAddress: string) => {
   try {
     const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map(method => ({
-      address: cakeVaultAddress,
+      address: rebusVaultAddress,
       name: method,
     }))
     const [[sharePrice], [shares], totalLockedAmount] = await multicallv2({
-      abi: cakeVaultAbi,
+      abi: rebusVaultAbi,
       calls,
       options: { requireSuccess: false },
     })

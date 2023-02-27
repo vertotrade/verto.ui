@@ -1,9 +1,9 @@
-import { ChainId } from '@verto/sdk'
 import erc20 from 'config/abi/erc20.json'
 import chunk from 'lodash/chunk'
 import { getMasterChefAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
 import { SerializedFarm } from '@verto/farms'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { SerializedFarmConfig } from '../../config/constants/types'
 
 const fetchFarmCalls = (farm: SerializedFarm, chainId: number) => {
@@ -45,7 +45,10 @@ const fetchFarmCalls = (farm: SerializedFarm, chainId: number) => {
   ]
 }
 
-export const fetchPublicFarmsData = async (farms: SerializedFarmConfig[], chainId = ChainId.BSC): Promise<any[]> => {
+export const fetchPublicFarmsData = async (
+  farms: SerializedFarmConfig[],
+  chainId = DEFAULT_CHAIN_ID,
+): Promise<any[]> => {
   const farmCalls = farms.flatMap(farm => fetchFarmCalls(farm, chainId))
   const chunkSize = farmCalls.length / farms.length
   const farmMultiCallResult = await multicallv2({ abi: erc20, calls: farmCalls, chainId })

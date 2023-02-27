@@ -8,13 +8,13 @@ import { Token } from '@verto/sdk'
 
 import { VaultRoiCalculatorModal } from '../../Vault/VaultRoiCalculatorModal'
 
-interface CakeVaultAprProps {
+interface RebusVaultAprProps {
   pool: Pool.DeserializedPool<Token>
   userData: DeserializedVaultUser
   vaultPosition: VaultPosition
 }
 
-const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ pool, userData, vaultPosition }) => {
+const RebusVaultApr: React.FC<React.PropsWithChildren<RebusVaultAprProps>> = ({ pool, userData, vaultPosition }) => {
   const { t } = useTranslation()
 
   const { flexibleApy, lockedApy } = useVaultApy({
@@ -56,7 +56,7 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
           )}
         </Flex>
       </Box>
-      {pool.vaultKey === VaultKey.CakeVault && (
+      {pool.vaultKey === VaultKey.RebusVault && (
         <Box marginX="8px" mb="8px">
           <Flex justifyContent="space-between">
             <Text fontSize="16px" color="textSubtle" textAlign="left">
@@ -98,4 +98,4 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
   )
 }
 
-export default CakeVaultApr
+export default RebusVaultApr

@@ -11,6 +11,7 @@ import { deserializeToken } from '@verto/token-lists'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { getBalanceAmount } from '@verto/utils/formatBalance'
 import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, SerializedFarm } from '@verto/farms'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync } from '.'
 import { State } from '../types'
 
@@ -51,7 +52,7 @@ export const usePollFarmsV1WithUserData = () => {
   const { address: account } = useAccount()
 
   useSlowRefreshEffect(() => {
-    getFarmConfig(ChainId.BSC).then(farmsConfig => {
+    getFarmConfig(DEFAULT_CHAIN_ID).then(farmsConfig => {
       const pids = farmsConfig.filter(farmToFetch => farmToFetch.v1pid).map(farmToFetch => farmToFetch.v1pid)
 
       dispatch(fetchFarmsPublicDataAsync(pids))

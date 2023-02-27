@@ -3,7 +3,7 @@ import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints, B
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { useTranslation } from '@verto/localization'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
+import { getRebusVaultEarnings } from 'views/Pools/helpers'
 import { Token } from '@verto/sdk'
 import AutoEarningsBreakdown from '../../AutoEarningsBreakdown'
 
@@ -33,13 +33,13 @@ const AutoEarningsCell: React.FC<React.PropsWithChildren<AutoEarningsCellProps>>
     userData: { userShares, cakeAtLastUserAction, isLoading },
     pricePerFullShare,
   } = vaultData
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getRebusVaultEarnings(
     account,
     cakeAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
-    vaultKey === VaultKey.CakeVault
+    vaultKey === VaultKey.RebusVault
       ? (vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.currentPerformanceFee
           .plus((vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.currentOverdueFee)
           .plus((vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.userBoostedShare)
@@ -55,7 +55,7 @@ const AutoEarningsCell: React.FC<React.PropsWithChildren<AutoEarningsCellProps>>
     placement: 'bottom',
   })
 
-  if (vaultKey === VaultKey.CakeVault && !userShares.gt(0)) {
+  if (vaultKey === VaultKey.RebusVault && !userShares.gt(0)) {
     return null
   }
 

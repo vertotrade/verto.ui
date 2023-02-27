@@ -11,6 +11,7 @@
     "@verto/sdk": "^3.1.0"
   },
   "dependencies": {
+    "@beam-australia/react-env": "^3.1.1",
     "@ethersproject/abi": "^5.0.0",
     "@ethersproject/contracts": "^5.0.0",
     "@ethersproject/providers": "^5.0.0"

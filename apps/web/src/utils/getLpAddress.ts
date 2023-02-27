@@ -1,9 +1,10 @@
-import { ERC20Token, Pair, ChainId } from '@verto/sdk'
+import { ERC20Token, Pair } from '@verto/sdk'
 import { isAddress } from 'utils'
 import memoize from 'lodash/memoize'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 const getLpAddress = memoize(
-  (token1: string | ERC20Token, token2: string | ERC20Token, chainId: number = ChainId.BSC) => {
+  (token1: string | ERC20Token, token2: string | ERC20Token, chainId: number = DEFAULT_CHAIN_ID) => {
     let token1AsTokenInstance = token1
     let token2AsTokenInstance = token2
     if (!token1 || !token2) {

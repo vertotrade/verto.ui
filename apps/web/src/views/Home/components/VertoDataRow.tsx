@@ -8,10 +8,10 @@ import { usePriceCakeBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
 import { formatBigNumber, formatLocalisedCompactNumber } from '@verto/utils/formatBalance'
 import { multicallv3 } from 'utils/multicall'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
+import { getRebusVaultAddress } from 'utils/addressHelpers'
 import useSWR from 'swr'
 import { SLOW_INTERVAL } from 'config/constants'
-import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
+import rebusVaultV2Abi from 'config/abi/rebusVaultV2.json'
 import { BigNumber } from '@ethersproject/bignumber'
 
 const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: boolean }>`
@@ -73,7 +73,7 @@ const emissionsPerBlock = 9.9
  * https://bscscan.com/tx/0xd5ffea4d9925d2f79249a4ce05efd4459ed179152ea5072a2df73cd4b9e88ba7
  */
 const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')
-const cakeVaultAddress = getCakeVaultAddress()
+const rebusVaultAddress = getRebusVaultAddress()
 
 const VertoDataRow = () => {
   const { t } = useTranslation()
@@ -95,14 +95,14 @@ const VertoDataRow = () => {
         name: 'balanceOf',
         params: ['0x000000000000000000000000000000000000dEaD'],
       }
-      const cakeVaultCall = {
-        abi: cakeVaultV2Abi,
-        address: cakeVaultAddress,
+      const rebusVaultCall = {
+        abi: rebusVaultV2Abi,
+        address: rebusVaultAddress,
         name: 'totalLockedAmount',
       }
 
       const [[totalSupply], [burned], [totalLockedAmount]] = await multicallv3({
-        calls: [totalSupplyCall, burnedTokenCall, cakeVaultCall],
+        calls: [totalSupplyCall, burnedTokenCall, rebusVaultCall],
         allowFailure: true,
       })
       const totalBurned = planetFinanceBurnedTokensWei.add(burned)

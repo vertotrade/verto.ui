@@ -31,9 +31,9 @@ export interface BigNumberToJson {
 export type SerializedBigNumber = string
 
 export enum VaultKey {
-  CakeVaultV1 = 'cakeVaultV1',
-  CakeVault = 'cakeVault',
-  CakeFlexibleSideVault = 'cakeFlexibleSideVault',
+  RebusVaultV1 = 'rebusVaultV1',
+  RebusVault = 'rebusVault',
+  RebusFlexibleSideVault = 'rebusFlexibleSideVault',
   IfoPool = 'ifoPool',
 }
 
@@ -131,7 +131,7 @@ export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   currentOverdueFee: BigNumber
 }
 
-export interface DeserializedCakeVault {
+export interface DeserializedRebusVault {
   totalShares?: BigNumber
   totalLockedAmount?: BigNumber
   pricePerFullShare?: BigNumber
@@ -140,17 +140,17 @@ export interface DeserializedCakeVault {
   userData?: DeserializedVaultUser
 }
 
-export interface DeserializedLockedCakeVault extends Omit<DeserializedCakeVault, 'userData'> {
+export interface DeserializedLockedRebusVault extends Omit<DeserializedRebusVault, 'userData'> {
   totalLockedAmount?: BigNumber
   userData?: DeserializedLockedVaultUser
 }
 
-export interface SerializedLockedCakeVault extends Omit<SerializedCakeVault, 'userData'> {
+export interface SerializedLockedRebusVault extends Omit<SerializedRebusVault, 'userData'> {
   totalLockedAmount?: SerializedBigNumber
   userData?: SerializedLockedVaultUser
 }
 
-export interface SerializedCakeVault {
+export interface SerializedRebusVault {
   totalShares?: SerializedBigNumber
   pricePerFullShare?: SerializedBigNumber
   totalCakeInVault?: SerializedBigNumber
@@ -170,8 +170,8 @@ export interface PublicIfoData {
 export interface PoolsState {
   data: SerializedPool[]
   ifo: IfoState
-  cakeVault: SerializedLockedCakeVault
-  cakeFlexibleSideVault: SerializedCakeVault
+  rebusVault: SerializedLockedRebusVault
+  rebusFlexibleSideVault: SerializedRebusVault
   userDataLoaded: boolean
 }
 

@@ -1,7 +1,7 @@
 import {
   Cake,
-  CakeFlexibleSideVaultV2,
-  CakeVaultV2,
+  RebusFlexibleSideVaultV2,
+  RebusVaultV2,
   Erc20,
   Erc20Bytes32,
   Erc721collection,
@@ -20,15 +20,15 @@ import {
   getBCakeProxyContract,
   getBep20Contract,
   getBunnyFactoryContract,
-  getBunnySpecialCakeVaultContract,
+  getBunnySpecialRebusVaultContract,
   getBunnySpecialContract,
   getBunnySpecialLotteryContract,
   getBunnySpecialPredictionContract,
   getBunnySpecialXmasContract,
   getCakeContract,
-  getCakeFlexibleSideVaultV2Contract,
+  getRebusFlexibleSideVaultV2Contract,
   getCakePredictionsContract,
-  getCakeVaultV2Contract,
+  getRebusVaultV2Contract,
   getChainlinkOracleContract,
   getClaimRefundContract,
   getEasterNftContract,
@@ -195,22 +195,22 @@ export const useEasterNftContract = () => {
   return useMemo(() => getEasterNftContract(signer), [signer])
 }
 
-export const useVaultPoolContract = (vaultKey: VaultKey): CakeVaultV2 | CakeFlexibleSideVaultV2 => {
+export const useVaultPoolContract = (vaultKey: VaultKey): RebusVaultV2 | RebusFlexibleSideVaultV2 => {
   const { data: signer } = useSigner()
   return useMemo(() => {
-    if (vaultKey === VaultKey.CakeVault) {
-      return getCakeVaultV2Contract(signer)
+    if (vaultKey === VaultKey.RebusVault) {
+      return getRebusVaultV2Contract(signer)
     }
-    if (vaultKey === VaultKey.CakeFlexibleSideVault) {
-      return getCakeFlexibleSideVaultV2Contract(signer)
+    if (vaultKey === VaultKey.RebusFlexibleSideVault) {
+      return getRebusFlexibleSideVaultV2Contract(signer)
     }
     return null
   }, [signer, vaultKey])
 }
 
-export const useCakeVaultContract = (withSignerIfPossible = true) => {
+export const useRebusVaultContract = (withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
-  return useMemo(() => getCakeVaultV2Contract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getRebusVaultV2Contract(providerOrSigner), [providerOrSigner])
 }
 
 export const useIfoCreditAddressContract = () => {
@@ -234,9 +234,9 @@ export const useChainlinkOracleContract = (address, withSignerIfPossible = true)
   return useMemo(() => getChainlinkOracleContract(address, providerOrSigner), [providerOrSigner, address])
 }
 
-export const useSpecialBunnyCakeVaultContract = () => {
+export const useSpecialBunnyRebusVaultContract = () => {
   const { data: signer } = useSigner()
-  return useMemo(() => getBunnySpecialCakeVaultContract(signer), [signer])
+  return useMemo(() => getBunnySpecialRebusVaultContract(signer), [signer])
 }
 
 export const useSpecialBunnyPredictionContract = () => {

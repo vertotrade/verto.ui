@@ -25,7 +25,7 @@ const LockedStakeModal: React.FC<React.PropsWithChildren<GenericModalProps>> = (
 
   const usdValueStaked = useBUSDCakeAmount(_toNumber(lockedAmount))
 
-  const { allowance } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
+  const { allowance } = useCheckVaultApprovalStatus(VaultKey.RebusVault)
   const needApprove = useMemo(() => {
     const amount = getDecimalAmount(new BigNumber(lockedAmount))
     return amount.gt(allowance)

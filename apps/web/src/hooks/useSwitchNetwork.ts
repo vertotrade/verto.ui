@@ -1,12 +1,11 @@
 /* eslint-disable consistent-return */
 import { useTranslation } from '@verto/localization'
-import { ChainId } from '@verto/sdk'
 import { useToast } from '@verto/uikit'
 import { useCallback, useMemo } from 'react'
 import replaceBrowserHistory from '@verto/utils/replaceBrowserHistory'
 import { ConnectorNames } from 'config/wallet'
 import { useAccount, useSwitchNetwork as useSwitchNetworkWallet } from 'wagmi'
-import { CHAIN_QUERY_NAME } from 'config/chains'
+import { CHAIN_QUERY_NAME, DEFAULT_CHAIN_ID } from 'config/chains'
 import { useSessionChainId } from './useSessionChainId'
 import { useSwitchNetworkLoading } from './useSwitchNetworkLoading'
 
@@ -15,7 +14,7 @@ export function useSwitchNetworkLocal() {
   return useCallback(
     (chainId: number) => {
       setSessionChainId(chainId)
-      replaceBrowserHistory('chain', chainId === ChainId.BSC ? null : CHAIN_QUERY_NAME[chainId])
+      replaceBrowserHistory('chain', chainId === DEFAULT_CHAIN_ID ? null : CHAIN_QUERY_NAME[chainId])
     },
     [setSessionChainId],
   )

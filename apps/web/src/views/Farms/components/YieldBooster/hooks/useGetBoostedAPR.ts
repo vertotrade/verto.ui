@@ -1,15 +1,15 @@
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import { useMemo } from 'react'
-import { useCakeVaultPublicData, useCakeVaultUserData } from 'state/pools/hooks'
+import { useRebusVaultPublicData, useRebusVaultUserData } from 'state/pools/hooks'
 import { getBCakeMultiplier } from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
 import { useUserLockedCakeStatus } from 'views/Farms/hooks/useUserLockedCakeStatus'
 import useAvgLockDuration from 'views/Pools/components/LockedPool/hooks/useAvgLockDuration'
 import { secondsToDays } from 'views/Pools/components/utils/formatSecondsToWeeks'
 
 export const useGetBoostedMultiplier = (userBalanceInFarm: BigNumber, lpTotalSupply: BigNumber) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useRebusVaultPublicData()
+  useRebusVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
   const { isLoading, lockedAmount, totalLockedAmount, lockedStart, lockedEnd } = useUserLockedCakeStatus()
   const bCakeMultiplier = useMemo(() => {
@@ -41,8 +41,8 @@ export const useGetCalculatorMultiplier = (
   lockedAmount: BigNumber,
   userLockDuration: number,
 ) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useRebusVaultPublicData()
+  useRebusVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
   const { isLoading, totalLockedAmount } = useUserLockedCakeStatus()
   const bCakeMultiplier = useMemo(() => {

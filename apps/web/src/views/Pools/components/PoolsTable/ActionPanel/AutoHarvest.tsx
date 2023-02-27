@@ -1,15 +1,15 @@
 import { Text, Flex, Skeleton, Heading, Box, useMatchBreakpoints, BalanceWithLoading, Pool } from '@verto/uikit'
 import { useAccount } from 'wagmi'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
+import { getRebusVaultEarnings } from 'views/Pools/helpers'
 import { useTranslation } from '@verto/localization'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { VaultKey, DeserializedLockedCakeVault } from 'state/types'
+import { VaultKey, DeserializedLockedRebusVault } from 'state/types'
 import { getVaultPosition, VaultPosition } from 'utils/cakePool'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { Token } from '@verto/sdk'
 
 import { ActionContainer, ActionTitles, ActionContent, RowActionContainer } from './styles'
-import UnstakingFeeCountdownRow from '../../CakeVaultCard/UnstakingFeeCountdownRow'
+import UnstakingFeeCountdownRow from '../../RebusVaultCard/UnstakingFeeCountdownRow'
 import useUserDataInVaultPresenter from '../../LockedPool/hooks/useUserDataInVaultPresenter'
 
 const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.DeserializedPool<Token>>> = ({
@@ -26,24 +26,26 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.De
     userData: { userShares, cakeAtLastUserAction },
     pricePerFullShare,
   } = vaultData
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getRebusVaultEarnings(
     account,
     cakeAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
-    vaultKey === VaultKey.CakeVault
-      ? (vaultData as DeserializedLockedCakeVault).userData.currentPerformanceFee
-          .plus((vaultData as DeserializedLockedCakeVault).userData.currentOverdueFee)
-          .plus((vaultData as DeserializedLockedCakeVault).userData.userBoostedShare)
+    vaultKey === VaultKey.RebusVault
+      ? (vaultData as DeserializedLockedRebusVault).userData.currentPerformanceFee
+          .plus((vaultData as DeserializedLockedRebusVault).userData.currentOverdueFee)
+          .plus((vaultData as DeserializedLockedRebusVault).userData.userBoostedShare)
       : null,
   )
 
   const { secondDuration, weekDuration } = useUserDataInVaultPresenter({
     lockStartTime:
-      vaultKey === VaultKey.CakeVault ? (vaultData as DeserializedLockedCakeVault).userData?.lockStartTime ?? '0' : '0',
+      vaultKey === VaultKey.RebusVault
+        ? (vaultData as DeserializedLockedRebusVault).userData?.lockStartTime ?? '0'
+        : '0',
     lockEndTime:
-      vaultKey === VaultKey.CakeVault ? (vaultData as DeserializedLockedCakeVault).userData?.lockEndTime ?? '0' : '0',
+      vaultKey === VaultKey.RebusVault ? (vaultData as DeserializedLockedRebusVault).userData?.lockEndTime ?? '0' : '0',
   })
 
   const { boostFactor } = useVaultApy({ duration: secondDuration })
@@ -118,7 +120,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.De
           </Flex>
         </ActionContent>
       </Box>
-      {!isMobile && vaultKey === VaultKey.CakeVault && (vaultData as DeserializedLockedCakeVault).userData.locked && (
+      {!isMobile && vaultKey === VaultKey.RebusVault && (vaultData as DeserializedLockedRebusVault).userData.locked && (
         <Box minWidth="123px">
           <ActionTitles>
             <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">

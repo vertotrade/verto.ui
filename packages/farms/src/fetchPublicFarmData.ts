@@ -1,8 +1,7 @@
 import { MultiCallV2 } from '@verto/multicall'
-import { ChainId } from '@verto/sdk'
 import chunk from 'lodash/chunk'
 import { SerializedFarmPublicData, SerializedFarmConfig } from './types'
-import { nonBSCVaultAddresses } from './const'
+import { DEFAULT_CHAIN_ID, nonBSCVaultAddresses } from './const'
 
 const abi = [
   {
@@ -71,7 +70,7 @@ const fetchFarmCalls = (farm: SerializedFarmPublicData, masterChefAddress: strin
 
 export const fetchPublicFarmsData = async (
   farms: SerializedFarmConfig[],
-  chainId = ChainId.BSC,
+  chainId = DEFAULT_CHAIN_ID,
   multicall: MultiCallV2,
   masterChefAddress: string,
 ): Promise<any[]> => {

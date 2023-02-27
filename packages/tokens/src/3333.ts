@@ -17,4 +17,12 @@ export const vertoTokensTestnet = {
     'Ludus',
     'https://www.rebuschain.com/',
   ),
+  aureus: new ERC20Token(
+    ChainId.REBUS_TESTNET,
+    '0xE4b2549E64F2A040c66813b2bCA301A97d135a43',
+    18,
+    'AUREUS',
+    'Aureus',
+    'https://www.rebuschain.com/',
+  ),
 }

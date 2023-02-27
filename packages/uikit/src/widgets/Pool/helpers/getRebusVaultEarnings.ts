@@ -22,7 +22,7 @@ export const convertSharesToCake = (
   return { cakeAsNumberBalance, cakeAsBigNumber, cakeAsDisplayBalance };
 };
 
-export const getCakeVaultEarnings = (
+export const getRebusVaultEarnings = (
   account: string,
   cakeAtLastUserAction: BigNumber,
   userShares: BigNumber,
@@ -40,4 +40,4 @@ export const getCakeVaultEarnings = (
   return { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay };
 };
 
-export default getCakeVaultEarnings;
+export default getRebusVaultEarnings;
