@@ -12,6 +12,7 @@ import { useMenuItems } from 'components/Menu/hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuItem } from 'components/Menu/utils'
 import { useRouter } from 'next/router'
 import useAuth from 'hooks/useAuth'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 export function PageNetworkSupportModal() {
   const { t } = useTranslation()
@@ -57,7 +58,9 @@ export function PageNetworkSupportModal() {
           <Button
             variant={foundChain && lastValidPath ? 'secondary' : 'primary'}
             isLoading={isLoading}
-            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.BSC) : switchNetworkAsync(ChainId.BSC))}>
+            onClick={() =>
+              isWrongNetwork ? switchNetworkLocal(DEFAULT_CHAIN_ID) : switchNetworkAsync(DEFAULT_CHAIN_ID)
+            }>
             {t('Switch to %chain%', { chain: 'BNB Smart Chain' })}
           </Button>
         ) : (

@@ -62,7 +62,7 @@ export default function useYieldBoosterState(yieldBoosterStateArgs: UseYieldBoos
   if (!account || isUndefinedOrNull(locked)) {
     state = YieldBoosterState.UNCONNECTED
   } else if (!locked && stakedBalance.eq(0)) {
-    // NOTE: depend on useCakeVaultUserData in Farm Component to check state
+    // NOTE: depend on useRebusVaultUserData in Farm Component to check state
     state = YieldBoosterState.NO_LOCKED
   } else if (!proxyCreated) {
     state = YieldBoosterState.NO_PROXY_CREATED

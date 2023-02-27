@@ -3,7 +3,7 @@ import { useAppDispatch } from 'state'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { VaultKey } from 'state/types'
-import { fetchCakeVaultFees, fetchPoolsPublicDataAsync, fetchCakeVaultPublicData } from 'state/pools'
+import { fetchRebusVaultFees, fetchPoolsPublicDataAsync, fetchRebusVaultPublicData } from 'state/pools'
 import { usePoolsWithVault } from 'state/pools/hooks'
 import { useInitialBlock } from 'state/block/hooks'
 import { FetchStatus } from 'config/constants/types'
@@ -28,8 +28,8 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
       try {
         // It should all be blocking calls since data only fetched once
         await Promise.all([
-          dispatch(fetchCakeVaultFees()),
-          dispatch(fetchCakeVaultPublicData()),
+          dispatch(fetchRebusVaultFees()),
+          dispatch(fetchRebusVaultPublicData()),
           dispatch(fetchPoolsPublicDataAsync(initialBlock, chainId)),
         ])
         setFetchStatus(FetchStatus.Fetched)
@@ -46,7 +46,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
 
   useEffect(() => {
     const [cakePools, otherPools] = partition(pools, pool => pool.sousId === 0)
-    const masterCakePool = cakePools.filter(cakePool => cakePool.vaultKey === VaultKey.CakeVault)
+    const masterCakePool = cakePools.filter(cakePool => cakePool.vaultKey === VaultKey.RebusVault)
     const getTopPoolsByApr = (activePools: Pool.DeserializedPool<Token>[]) => {
       const sortedByApr = orderBy(activePools, (pool: Pool.DeserializedPool<Token>) => pool.apr || 0, 'desc')
       setTopPools([...masterCakePool, ...sortedByApr.slice(0, 4)])

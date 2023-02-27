@@ -14,7 +14,7 @@ const InlineText = styled(Text)`
   display: inline;
 `
 
-const CakeVaultCardActions: React.FC<
+const RebusVaultCardActions: React.FC<
   React.PropsWithChildren<{
     pool: Pool.DeserializedPool<Token>
     accountHasSharesStaked: boolean
@@ -62,4 +62,4 @@ const CakeVaultCardActions: React.FC<
   )
 }
 
-export default CakeVaultCardActions
+export default RebusVaultCardActions

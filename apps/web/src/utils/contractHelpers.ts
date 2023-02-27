@@ -20,9 +20,9 @@ import {
   getClaimRefundAddress,
   getTradingCompetitionAddressEaster,
   getEasterNftAddress,
-  getCakeVaultAddress,
+  getRebusVaultAddress,
   getMulticallAddress,
-  getBunnySpecialCakeVaultAddress,
+  getBunnySpecialRebusVaultAddress,
   getBunnySpecialPredictionAddress,
   getBunnySpecialLotteryAddress,
   getFarmAuctionAddress,
@@ -36,7 +36,7 @@ import {
   getBunnySpecialXmasAddress,
   getICakeAddress,
   getPotteryDrawAddress,
-  getCakeFlexibleSideVaultAddress,
+  getRebusFlexibleSideVaultAddress,
   getPredictionsV1Address,
   getBCakeFarmBoosterAddress,
   getBCakeFarmBoosterProxyFactoryAddress,
@@ -69,13 +69,13 @@ import tradingCompetitionFanTokenAbi from 'config/abi/tradingCompetitionFanToken
 import tradingCompetitionMoboxAbi from 'config/abi/tradingCompetitionMobox.json'
 import tradingCompetitionMoDAbi from 'config/abi/tradingCompetitionMoD.json'
 import easterNftAbi from 'config/abi/easterNft.json'
-import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
-import cakeFlexibleSideVaultV2Abi from 'config/abi/cakeFlexibleSideVaultV2.json'
+import rebusVaultV2Abi from 'config/abi/rebusVaultV2.json'
+import rebusFlexibleSideVaultV2Abi from 'config/abi/rebusFlexibleSideVaultV2.json'
 import predictionsAbi from 'config/abi/predictions.json'
 import predictionsV1Abi from 'config/abi/predictionsV1.json'
 import chainlinkOracleAbi from 'config/abi/chainlinkOracle.json'
 import MultiCallAbi from 'config/abi/Multicall.json'
-import bunnySpecialCakeVaultAbi from 'config/abi/bunnySpecialCakeVault.json'
+import bunnySpecialRebusVaultAbi from 'config/abi/bunnySpecialRebusVault.json'
 import bunnySpecialPredictionAbi from 'config/abi/bunnySpecialPrediction.json'
 import bunnySpecialLotteryAbi from 'config/abi/bunnySpecialLottery.json'
 import bunnySpecialXmasAbi from 'config/abi/bunnySpecialXmas.json'
@@ -124,7 +124,7 @@ import type {
   TradingCompetitionFanToken,
   EasterNft,
   Multicall,
-  BunnySpecialCakeVault,
+  BunnySpecialRebusVault,
   BunnySpecialPrediction,
   BunnySpecialLottery,
   NftMarket,
@@ -132,8 +132,8 @@ import type {
   PancakeSquad,
   Erc721collection,
   PointCenterIfo,
-  CakeVaultV2,
-  CakeFlexibleSideVaultV2,
+  RebusVaultV2,
+  RebusFlexibleSideVaultV2,
   TradingCompetitionMobox,
   ICake,
   TradingCompetitionMoD,
@@ -149,11 +149,12 @@ import type {
   CrossFarmingProxy,
 } from 'config/abi/types'
 import { ChainId } from '@verto/sdk'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 export const getContract = ({
   abi,
   address,
-  chainId = ChainId.BSC,
+  chainId = DEFAULT_CHAIN_ID,
   signer,
 }: {
   abi: any
@@ -261,16 +262,16 @@ export const getTradingCompetitionContractMoD = (signer?: Signer | Provider) => 
 export const getEasterNftContract = (signer?: Signer | Provider) => {
   return getContract({ abi: easterNftAbi, address: getEasterNftAddress(), signer }) as EasterNft
 }
-export const getCakeVaultV2Contract = (signer?: Signer | Provider) => {
-  return getContract({ abi: cakeVaultV2Abi, address: getCakeVaultAddress(), signer }) as CakeVaultV2
+export const getRebusVaultV2Contract = (signer?: Signer | Provider) => {
+  return getContract({ abi: rebusVaultV2Abi, address: getRebusVaultAddress(), signer }) as RebusVaultV2
 }
 
-export const getCakeFlexibleSideVaultV2Contract = (signer?: Signer | Provider) => {
+export const getRebusFlexibleSideVaultV2Contract = (signer?: Signer | Provider) => {
   return getContract({
-    abi: cakeFlexibleSideVaultV2Abi,
-    address: getCakeFlexibleSideVaultAddress(),
+    abi: rebusFlexibleSideVaultV2Abi,
+    address: getRebusFlexibleSideVaultAddress(),
     signer,
-  }) as CakeFlexibleSideVaultV2
+  }) as RebusFlexibleSideVaultV2
 }
 
 export const getPredictionsContract = (address: string, signer?: Signer | Provider) => {
@@ -291,12 +292,12 @@ export const getChainlinkOracleContract = (address: string, signer?: Signer | Pr
 export const getMulticallContract = (chainId: ChainId) => {
   return getContract({ abi: MultiCallAbi, address: getMulticallAddress(chainId), chainId }) as Multicall
 }
-export const getBunnySpecialCakeVaultContract = (signer?: Signer | Provider) => {
+export const getBunnySpecialRebusVaultContract = (signer?: Signer | Provider) => {
   return getContract({
-    abi: bunnySpecialCakeVaultAbi,
-    address: getBunnySpecialCakeVaultAddress(),
+    abi: bunnySpecialRebusVaultAbi,
+    address: getBunnySpecialRebusVaultAddress(),
     signer,
-  }) as BunnySpecialCakeVault
+  }) as BunnySpecialRebusVault
 }
 export const getBunnySpecialPredictionContract = (signer?: Signer | Provider) => {
   return getContract({

@@ -16,15 +16,15 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import {
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchCakeVaultPublicData,
-  fetchCakeVaultUserData,
-  fetchCakeVaultFees,
+  fetchRebusVaultPublicData,
+  fetchRebusVaultUserData,
+  fetchRebusVaultFees,
   fetchPoolsStakingLimitsAsync,
   fetchUserIfoCreditDataAsync,
   fetchIfoPublicDataAsync,
-  fetchCakeFlexibleSideVaultPublicData,
-  fetchCakeFlexibleSideVaultUserData,
-  fetchCakeFlexibleSideVaultFees,
+  fetchRebusFlexibleSideVaultPublicData,
+  fetchRebusFlexibleSideVaultUserData,
+  fetchRebusFlexibleSideVaultFees,
   fetchCakePoolUserDataAsync,
   fetchCakePoolPublicDataAsync,
 } from '.'
@@ -112,40 +112,40 @@ export const usePoolsPageFetch = () => {
 
   useFastRefreshEffect(() => {
     batch(() => {
-      dispatch(fetchCakeVaultPublicData())
-      dispatch(fetchCakeFlexibleSideVaultPublicData())
+      dispatch(fetchRebusVaultPublicData())
+      dispatch(fetchRebusFlexibleSideVaultPublicData())
       dispatch(fetchIfoPublicDataAsync())
       if (account) {
         dispatch(fetchPoolsUserDataAsync(account))
-        dispatch(fetchCakeVaultUserData({ account }))
-        dispatch(fetchCakeFlexibleSideVaultUserData({ account }))
+        dispatch(fetchRebusVaultUserData({ account }))
+        dispatch(fetchRebusFlexibleSideVaultUserData({ account }))
       }
     })
   }, [account, dispatch])
 
   useEffect(() => {
     batch(() => {
-      dispatch(fetchCakeVaultFees())
-      dispatch(fetchCakeFlexibleSideVaultFees())
+      dispatch(fetchRebusVaultFees())
+      dispatch(fetchRebusFlexibleSideVaultFees())
     })
   }, [dispatch])
 }
 
-export const useCakeVaultUserData = () => {
+export const useRebusVaultUserData = () => {
   const { address: account } = useAccount()
   const dispatch = useAppDispatch()
 
   useFastRefreshEffect(() => {
     if (account) {
-      dispatch(fetchCakeVaultUserData({ account }))
+      dispatch(fetchRebusVaultUserData({ account }))
     }
   }, [account, dispatch])
 }
 
-export const useCakeVaultPublicData = () => {
+export const useRebusVaultPublicData = () => {
   const dispatch = useAppDispatch()
   useFastRefreshEffect(() => {
-    dispatch(fetchCakeVaultPublicData())
+    dispatch(fetchRebusVaultPublicData())
   }, [dispatch])
 }
 
@@ -161,7 +161,7 @@ export const useFetchIfo = () => {
       await dispatch(fetchFarmsPublicDataAsync({ pids: cakePriceFarms, chainId, flag: farmFlag }))
       batch(() => {
         dispatch(fetchCakePoolPublicDataAsync())
-        dispatch(fetchCakeVaultPublicData())
+        dispatch(fetchRebusVaultPublicData())
         dispatch(fetchIfoPublicDataAsync())
       })
     },
@@ -175,7 +175,7 @@ export const useFetchIfo = () => {
     async () => {
       batch(() => {
         dispatch(fetchCakePoolUserDataAsync(account))
-        dispatch(fetchCakeVaultUserData({ account }))
+        dispatch(fetchRebusVaultUserData({ account }))
         dispatch(fetchUserIfoCreditDataAsync(account))
       })
     },
@@ -184,13 +184,13 @@ export const useFetchIfo = () => {
     },
   )
 
-  useSWRImmutable('fetchCakeVaultFees', async () => {
-    dispatch(fetchCakeVaultFees())
+  useSWRImmutable('fetchRebusVaultFees', async () => {
+    dispatch(fetchRebusVaultFees())
   })
 }
 
-export const useCakeVault = () => {
-  return useVaultPoolByKey(VaultKey.CakeVault)
+export const useRebusVault = () => {
+  return useVaultPoolByKey(VaultKey.RebusVault)
 }
 
 export const useVaultPoolByKey = (key: VaultKey) => {

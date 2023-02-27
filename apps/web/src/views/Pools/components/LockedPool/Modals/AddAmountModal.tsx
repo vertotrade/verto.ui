@@ -115,7 +115,7 @@ const AddAmountModal: React.FC<React.PropsWithChildren<AddAmountModalProps>> = (
     ],
   )
 
-  const { allowance } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
+  const { allowance } = useCheckVaultApprovalStatus(VaultKey.RebusVault)
   const needApprove = useMemo(() => {
     const amount = getDecimalAmount(new BigNumber(lockedAmount))
     return amount.gt(allowance)

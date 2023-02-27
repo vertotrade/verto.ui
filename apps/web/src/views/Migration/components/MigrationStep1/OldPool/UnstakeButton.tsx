@@ -3,7 +3,7 @@ import { AutoRenewIcon, Button, useToast, Pool } from '@verto/uikit'
 import { useAccount, useSigner } from 'wagmi'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import cakeVaultAbi from 'config/abi/cakeVaultV2.json'
+import rebusVaultAbi from 'config/abi/rebusVaultV2.json'
 import ifoPoolAbi from 'config/abi/ifoPool.json'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
@@ -12,7 +12,7 @@ import React, { useMemo } from 'react'
 import { VaultKey } from 'state/types'
 import { getContract } from 'utils/contractHelpers'
 import { getFullDisplayBalance } from '@verto/utils/formatBalance'
-import { cakeVaultAddress, ifoPoolV1Contract, useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
+import { rebusVaultAddress, ifoPoolV1Contract, useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
 import { Token } from '@verto/sdk'
 import { useFetchUserPools } from '../../../hook/V1/Pool/useFetchUserPools'
 import useUnstakePool from '../../../hook/V1/Pool/useUnstakePool'
@@ -35,8 +35,8 @@ const UnstakeButton: React.FC<React.PropsWithChildren<UnstakeButtonProps>> = ({ 
   const { userShares } = vaultPoolData.userData
 
   const vaultPoolContract = useMemo(() => {
-    return vaultKey === VaultKey.CakeVaultV1
-      ? getContract({ abi: cakeVaultAbi, address: cakeVaultAddress, signer })
+    return vaultKey === VaultKey.RebusVaultV1
+      ? getContract({ abi: rebusVaultAbi, address: rebusVaultAddress, signer })
       : getContract({ abi: ifoPoolAbi, address: ifoPoolV1Contract, signer })
   }, [signer, vaultKey])
 

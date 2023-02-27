@@ -13,7 +13,7 @@ BigNumber.config({
 jest.mock('../state/pools/hooks', () => ({
   // @ts-ignore
   ...jest.requireActual('state/pools/hooks'),
-  useCakeVault: jest.fn(),
+  useRebusVault: jest.fn(),
 }))
 
 describe('useVaultApy', () => {
@@ -31,7 +31,7 @@ describe('useVaultApy', () => {
     ],
   ])('should get correct vault apy', (cases, want) => {
     // @ts-ignore
-    PoolHooks.useCakeVault.mockReturnValue({
+    PoolHooks.useRebusVault.mockReturnValue({
       totalShares: cases.totalShares,
       pricePerFullShare: cases.pricePerFullShare,
     })

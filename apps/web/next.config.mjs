@@ -35,9 +35,9 @@ const config = {
   compiler: {
     styledComponents: true,
   },
+  output: 'standalone',
   assetPrefix: process.env.NEXT_ASSETS_URL,
   experimental: {
-    outputStandalone: true,
     scrollRestoration: true,
     transpilePackages: [
       '@verto/ui',

@@ -3,7 +3,7 @@ import styled, { keyframes, css } from 'styled-components'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
+import { getRebusVaultEarnings } from 'views/Pools/helpers'
 import { Token } from '@verto/sdk'
 import { Pool } from '@verto/uikit'
 
@@ -82,7 +82,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ pool
   const { cakeAtLastUserAction, userShares } = vaultPoolData.userData
 
   const vaultPools = {
-    [VaultKey.CakeVaultV1]: useVaultPoolByKeyV1(VaultKey.CakeVaultV1).vaultPoolData,
+    [VaultKey.RebusVaultV1]: useVaultPoolByKeyV1(VaultKey.RebusVaultV1).vaultPoolData,
     [VaultKey.IfoPool]: useVaultPoolByKeyV1(VaultKey.IfoPool).vaultPoolData,
   }
   const cakeInVaults = Object.values(vaultPools).reduce((total, vault) => {
@@ -93,7 +93,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ pool
   let earningTokenBalance = 0
   let earningTokenDollarBalance = 0
   if (pricePerFullShare) {
-    const { autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+    const { autoCakeToDisplay, autoUsdToDisplay } = getRebusVaultEarnings(
       account,
       cakeAtLastUserAction,
       userShares,

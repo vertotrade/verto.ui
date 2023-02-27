@@ -56,7 +56,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
 
   const tokenAddress = earningToken.address || ''
   const poolContractAddress = getAddress(contractAddress)
-  const cakeVaultContractAddress = getVaultPoolAddress(vaultKey)
+  const rebusVaultContractAddress = getVaultPoolAddress(vaultKey)
 
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
@@ -80,8 +80,8 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       {showTotalStaked && (
         <TotalStaked totalStaked={vaultKey ? totalCakeInVault : totalStaked} stakingToken={stakingToken} />
       )}
-      {vaultKey === VaultKey.CakeVault && <TotalLocked totalLocked={totalLockedAmount} lockedToken={stakingToken} />}
-      {vaultKey === VaultKey.CakeVault && <DurationAvg />}
+      {vaultKey === VaultKey.RebusVault && <TotalLocked totalLocked={totalLockedAmount} lockedToken={stakingToken} />}
+      {vaultKey === VaultKey.RebusVault && <DurationAvg />}
       {!isFinished && stakingLimit && stakingLimit.gt(0) && (
         <MaxStakeRow
           small
@@ -135,7 +135,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           <LinkExternal
             isBscScan
             href={`${bsc.blockExplorers.default.url}/address/${
-              vaultKey ? cakeVaultContractAddress : poolContractAddress
+              vaultKey ? rebusVaultContractAddress : poolContractAddress
             }`}
             bold={false}
             small>

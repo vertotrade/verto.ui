@@ -4,7 +4,7 @@ import { differenceInHours } from 'date-fns'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey, DeserializedLockedVaultUser } from 'state/types'
 import { Token } from '@verto/sdk'
-import { getCakeVaultEarnings } from '../helpers'
+import { getRebusVaultEarnings } from '../helpers'
 
 interface AutoEarningsBreakdownProps {
   pool: Pool.DeserializedPool<Token>
@@ -18,13 +18,13 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
   } = useTranslation()
   const { earningTokenPrice } = pool
   const { pricePerFullShare, userData } = useVaultPoolByKey(pool.vaultKey)
-  const { autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { autoCakeToDisplay, autoUsdToDisplay } = getRebusVaultEarnings(
     account,
     userData.cakeAtLastUserAction,
     userData.userShares,
     pricePerFullShare,
     earningTokenPrice,
-    pool.vaultKey === VaultKey.CakeVault
+    pool.vaultKey === VaultKey.RebusVault
       ? (userData as DeserializedLockedVaultUser).currentPerformanceFee
           .plus((userData as DeserializedLockedVaultUser).currentOverdueFee)
           .plus((userData as DeserializedLockedVaultUser).userBoostedShare)

@@ -1,9 +1,9 @@
 import BigNumber from 'bignumber.js'
 import {
   SerializedPool,
-  SerializedCakeVault,
-  DeserializedCakeVault,
-  SerializedLockedCakeVault,
+  SerializedRebusVault,
+  DeserializedRebusVault,
+  SerializedLockedRebusVault,
   VaultKey,
 } from 'state/types'
 import { SerializedFarm } from '@verto/farms'
@@ -69,7 +69,7 @@ export const transformPool = (pool: SerializedPool): Pool.DeserializedPool<Token
   }
 }
 
-export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): DeserializedCakeVault => {
+export const transformVault = (vaultKey: VaultKey, vault: SerializedRebusVault): DeserializedRebusVault => {
   const {
     totalShares: totalSharesAsString,
     pricePerFullShare: pricePerFullShareAsString,
@@ -89,7 +89,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
   const cakeAtLastUserAction = new BigNumber(cakeAtLastUserActionAsString)
   let userDataExtra
   let publicDataExtra
-  if (vaultKey === VaultKey.CakeVault) {
+  if (vaultKey === VaultKey.RebusVault) {
     const {
       totalCakeInVault: totalCakeInVaultAsString,
       totalLockedAmount: totalLockedAmountAsString,
@@ -102,7 +102,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
         currentOverdueFee: currentOverdueFeeAsString,
         currentPerformanceFee: currentPerformanceFeeAsString,
       },
-    } = vault as SerializedLockedCakeVault
+    } = vault as SerializedLockedRebusVault
 
     const totalCakeInVault = new BigNumber(totalCakeInVaultAsString)
     const totalLockedAmount = new BigNumber(totalLockedAmountAsString)

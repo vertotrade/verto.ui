@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from '@reduxjs/toolkit'
 import { ChainId } from '@verto/sdk'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { toggleFarmTransactionModal, pickFarmTransactionTx } from './actions'
 
 export interface GlobalState {
@@ -15,7 +16,7 @@ export const initialState: GlobalState = {
   showFarmTransactionModal: false,
   pickedFarmTransactionModalTx: {
     tx: '',
-    chainId: ChainId.BSC,
+    chainId: DEFAULT_CHAIN_ID,
   },
 }
 

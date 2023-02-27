@@ -34,7 +34,7 @@ export const VaultRoiCalculatorModal = ({
   const { t } = useTranslation()
   const { account } = useActiveWeb3React()
 
-  const [cakeVaultView, setCakeVaultView] = useState(initialView || 0)
+  const [rebusVaultView, setRebusVaultView] = useState(initialView || 0)
 
   const [duration, setDuration] = useState(() => weeksToSeconds(1))
 
@@ -47,14 +47,14 @@ export const VaultRoiCalculatorModal = ({
   )
 
   const apy = useMemo(() => {
-    return cakeVaultView === 0 ? flexibleApy : getLockedApy(duration)
-  }, [cakeVaultView, getLockedApy, flexibleApy, duration])
+    return rebusVaultView === 0 ? flexibleApy : getLockedApy(duration)
+  }, [rebusVaultView, getLockedApy, flexibleApy, duration])
 
   const [isMaxSelected, setIsMaxSelected] = useState(false)
 
   return (
     <RoiCalculatorModal
-      isLocked={cakeVaultView === 1}
+      isLocked={rebusVaultView === 1}
       account={account}
       stakingTokenSymbol={pool.stakingToken.symbol}
       apy={+apy}
@@ -73,7 +73,7 @@ export const VaultRoiCalculatorModal = ({
       stakingTokenDecimals={pool.stakingToken.decimals}
       autoCompoundFrequency={1}
       strategy={
-        cakeVaultView
+        rebusVaultView
           ? (state, dispatch) => (
               <LockedRoiStrategy
                 state={state}
@@ -86,14 +86,14 @@ export const VaultRoiCalculatorModal = ({
           : null
       }
       header={
-        pool.vaultKey === VaultKey.CakeVault ? (
+        pool.vaultKey === VaultKey.RebusVault ? (
           <ButtonMenu
             mb="24px"
             fullWidth
             scale="sm"
             variant="subtle"
-            activeIndex={cakeVaultView}
-            onItemClick={setCakeVaultView}>
+            activeIndex={rebusVaultView}
+            onItemClick={setRebusVaultView}>
             {buttonMenuItems}
           </ButtonMenu>
         ) : (
@@ -101,7 +101,7 @@ export const VaultRoiCalculatorModal = ({
         )
       }
       {...rest}>
-      {cakeVaultView && (
+      {rebusVaultView && (
         <Box mt="16px">
           <LockDurationField
             duration={duration}

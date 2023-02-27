@@ -11,6 +11,7 @@
     "tsx": "^3.12.1"
   },
   "dependencies": {
+    "@beam-australia/react-env": "^3.1.1",
     "@verto/sdk": "*",
     "@verto/tokens": "*",
     "@verto/token-lists": "*",

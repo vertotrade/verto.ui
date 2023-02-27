@@ -30,7 +30,7 @@ import useWithdrawalFeeTimer from 'views/Pools/hooks/useWithdrawalFeeTimer'
 import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from '@verto/utils/formatBalance'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { fetchCakeVaultUserData } from 'state/pools'
+import { fetchRebusVaultUserData } from 'state/pools'
 import { VaultKey } from 'state/types'
 import { getInterestBreakdown } from '@verto/utils/compoundApyHelpers'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -169,7 +169,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
         return callWithGasPrice(vaultPoolContract, 'withdrawAll', undefined, callOptions)
       }
 
-      if (pool.vaultKey === VaultKey.CakeFlexibleSideVault) {
+      if (pool.vaultKey === VaultKey.RebusFlexibleSideVault) {
         const { sharesAsBigNumber } = convertCakeToShares(convertedStakeAmount, pricePerFullShare)
         return callWithGasPrice(vaultPoolContract, 'withdraw', [sharesAsBigNumber.toString()], callOptions)
       }
@@ -185,7 +185,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
         </ToastDescriptionWithTx>,
       )
       onDismiss?.()
-      dispatch(fetchCakeVaultUserData({ account }))
+      dispatch(fetchRebusVaultUserData({ account }))
     }
   }
 
@@ -193,7 +193,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
     const receipt = await fetchWithCatchTxError(() => {
       // .toString() being called to fix a BigNumber error in prod
       // as suggested here https://github.com/ChainSafe/web3.js/issues/2077
-      const extraArgs = pool.vaultKey === VaultKey.CakeVault ? [lockDuration.toString()] : []
+      const extraArgs = pool.vaultKey === VaultKey.RebusVault ? [lockDuration.toString()] : []
       const methodArgs = [convertedStakeAmount.toString(), ...extraArgs]
       return callWithGasPrice(vaultPoolContract, 'deposit', methodArgs, callOptions)
     })
@@ -206,7 +206,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
         </ToastDescriptionWithTx>,
       )
       onDismiss?.()
-      dispatch(fetchCakeVaultUserData({ account }))
+      dispatch(fetchRebusVaultUserData({ account }))
     }
   }
 
@@ -310,7 +310,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
           )}
         </Flex>
       )}
-      {pool.vaultKey === VaultKey.CakeVault && cakeAsNumberBalance ? (
+      {pool.vaultKey === VaultKey.RebusVault && cakeAsNumberBalance ? (
         <Box mt="8px" maxWidth="370px">
           <ConvertToLock stakingToken={stakingToken} currentStakedAmount={cakeAsNumberBalance} />
         </Box>

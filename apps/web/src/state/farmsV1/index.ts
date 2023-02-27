@@ -11,6 +11,7 @@ import stringify from 'fast-json-stable-stringify'
 import { getFarmConfig } from '@verto/farms/constants'
 import type { AppState } from 'state'
 import { getFarmsPriceHelperLpFiles } from 'config/constants/priceHelperLps/index'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import fetchFarms from './fetchFarms'
 import getFarmsPrices from './getFarmsPrices'
 import {
@@ -38,7 +39,7 @@ export const fetchFarmsPublicDataAsync = createAsyncThunk<
 >(
   'farmsV1/fetchFarmsPublicDataAsync',
   async pids => {
-    const farmsConfig = await getFarmConfig(ChainId.BSC)
+    const farmsConfig = await getFarmConfig(DEFAULT_CHAIN_ID)
     const poolLength = await fetchMasterChefFarmPoolLength()
     const farmsToFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.v1pid))
     const farmsCanFetch = farmsToFetch.filter(f => poolLength.gt(f.v1pid))
@@ -86,7 +87,7 @@ export const fetchFarmUserDataAsync = createAsyncThunk<
 >(
   'farmsV1/fetchFarmUserDataAsync',
   async ({ account, pids }) => {
-    const farmsConfig = await getFarmConfig(ChainId.BSC)
+    const farmsConfig = await getFarmConfig(DEFAULT_CHAIN_ID)
     const poolLength = await fetchMasterChefFarmPoolLength()
     const farmsToFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.v1pid))
     const farmsCanFetch = farmsToFetch.filter(f => poolLength.gt(f.v1pid))

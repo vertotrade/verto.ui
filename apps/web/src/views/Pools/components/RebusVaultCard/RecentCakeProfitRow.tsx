@@ -5,7 +5,7 @@ import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey, DeserializedLockedVaultUser } from 'state/types'
 import { Token } from '@verto/sdk'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
+import { getRebusVaultEarnings } from 'views/Pools/helpers'
 import RecentCakeProfitBalance from './RecentCakeProfitBalance'
 
 const RecentCakeProfitCountdownRow = ({ pool }: { pool: Pool.DeserializedPool<Token> }) => {
@@ -13,13 +13,13 @@ const RecentCakeProfitCountdownRow = ({ pool }: { pool: Pool.DeserializedPool<To
   const { address: account } = useAccount()
   const { pricePerFullShare, userData } = useVaultPoolByKey(pool.vaultKey)
   const cakePriceBusd = usePriceCakeBusd()
-  const { hasAutoEarnings, autoCakeToDisplay } = getCakeVaultEarnings(
+  const { hasAutoEarnings, autoCakeToDisplay } = getRebusVaultEarnings(
     account,
     userData.cakeAtLastUserAction,
     userData.userShares,
     pricePerFullShare,
     cakePriceBusd.toNumber(),
-    pool.vaultKey === VaultKey.CakeVault
+    pool.vaultKey === VaultKey.RebusVault
       ? (userData as DeserializedLockedVaultUser).currentPerformanceFee.plus(
           (userData as DeserializedLockedVaultUser).currentOverdueFee,
         )

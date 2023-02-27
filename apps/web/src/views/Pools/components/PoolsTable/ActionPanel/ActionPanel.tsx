@@ -3,7 +3,7 @@ import { Box, Flex, HelpIcon, Text, useMatchBreakpoints, Pool } from '@verto/uik
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { getVaultPosition, VaultPosition } from 'utils/cakePool'
 import BigNumber from 'bignumber.js'
-import { VaultKey, DeserializedLockedCakeVault, DeserializedLockedVaultUser } from 'state/types'
+import { VaultKey, DeserializedLockedRebusVault, DeserializedLockedVaultUser } from 'state/types'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { Token } from '@verto/sdk'
 import Harvest from './Harvest'
@@ -13,7 +13,7 @@ import { VaultPositionTagWithLabel } from '../../Vault/VaultPositionTag'
 import YieldBoostRow from '../../LockedPool/Common/YieldBoostRow'
 import LockDurationRow from '../../LockedPool/Common/LockDurationRow'
 import useUserDataInVaultPresenter from '../../LockedPool/hooks/useUserDataInVaultPresenter'
-import CakeVaultApr from './CakeVaultApr'
+import RebusVaultApr from './RebusVaultApr'
 import PoolStatsInfo from '../../PoolStatsInfo'
 import PoolTypeTag from '../../PoolTypeTag'
 
@@ -131,7 +131,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
 
   const vaultPosition = getVaultPosition(vaultData.userData)
 
-  const isLocked = (vaultData as DeserializedLockedCakeVault).userData.locked
+  const isLocked = (vaultData as DeserializedLockedRebusVault).userData.locked
 
   const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
@@ -143,11 +143,11 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
   return (
     <StyledActionPanel expanded={expanded}>
       <InfoSection>
-        {isMobile && vaultKey === VaultKey.CakeVault && isLocked && (
+        {isMobile && vaultKey === VaultKey.RebusVault && isLocked && (
           <Box mb="16px">
             <YieldBoostDurationRow
-              lockEndTime={(vaultData as DeserializedLockedCakeVault).userData.lockEndTime}
-              lockStartTime={(vaultData as DeserializedLockedCakeVault).userData.lockStartTime}
+              lockEndTime={(vaultData as DeserializedLockedRebusVault).userData.lockEndTime}
+              lockStartTime={(vaultData as DeserializedLockedRebusVault).userData.lockStartTime}
             />
           </Box>
         )}
@@ -165,11 +165,11 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
         </Flex>
       </InfoSection>
       <ActionContainer>
-        {isMobile && vaultKey === VaultKey.CakeVault && vaultPosition === VaultPosition.None && (
-          <CakeVaultApr pool={pool} userData={vaultData.userData} vaultPosition={vaultPosition} />
+        {isMobile && vaultKey === VaultKey.RebusVault && vaultPosition === VaultPosition.None && (
+          <RebusVaultApr pool={pool} userData={vaultData.userData} vaultPosition={vaultPosition} />
         )}
         <Box width="100%">
-          {pool.vaultKey === VaultKey.CakeVault && (
+          {pool.vaultKey === VaultKey.RebusVault && (
             <VaultPositionTagWithLabel
               userData={vaultData.userData as DeserializedLockedVaultUser}
               width={['auto', , 'fit-content']}

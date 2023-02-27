@@ -20,6 +20,7 @@ import multicall, { multicallv2 } from 'utils/multicall'
 import { chains } from 'utils/wagmi'
 import splitProxyFarms from 'views/Farms/components/YieldBooster/helpers/splitProxyFarms'
 import { verifyBscNetwork } from 'utils/verifyBscNetwork'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { resetUserState } from '../global/actions'
 import fetchFarms from './fetchFarms'
 import {
@@ -40,7 +41,7 @@ const fetchFetchPublicDataOld = async ({ pids, chainId }): Promise<[SerializedFa
     multicall(masterchefABI, [
       {
         // BSC only
-        address: getMasterChefAddress(ChainId.BSC),
+        address: getMasterChefAddress(DEFAULT_CHAIN_ID),
         name: 'cakePerBlock',
         params: [true],
       },
@@ -248,7 +249,7 @@ export const fetchFarmUserDataAsync = createAsyncThunk<
     if (state.farms.chainId !== chainId) {
       await dispatch(fetchInitialFarmsData({ chainId }))
     }
-    const poolLength = state.farms.poolLength ?? (await fetchMasterChefFarmPoolLength(ChainId.BSC))
+    const poolLength = state.farms.poolLength ?? (await fetchMasterChefFarmPoolLength(DEFAULT_CHAIN_ID))
     const farmsConfig = await getFarmConfig(chainId)
     const farmsCanFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.pid) && poolLength > farmConfig.pid)
     if (proxyAddress && farmsCanFetch?.length && verifyBscNetwork(chainId)) {

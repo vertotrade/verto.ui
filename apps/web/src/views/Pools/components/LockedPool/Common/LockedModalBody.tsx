@@ -67,8 +67,8 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
 
   const needsEnable = useMemo(() => cakeNeeded && !hasEnoughBalanceToExtend, [cakeNeeded, hasEnoughBalanceToExtend])
 
-  const { allowance, setLastUpdated } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
-  const { handleApprove, pendingTx: approvePendingTx } = useVaultApprove(VaultKey.CakeVault, setLastUpdated)
+  const { allowance, setLastUpdated } = useCheckVaultApprovalStatus(VaultKey.RebusVault)
+  const { handleApprove, pendingTx: approvePendingTx } = useVaultApprove(VaultKey.RebusVault, setLastUpdated)
   const [showApproveWarning, setShowApproveWarning] = useState(false)
 
   const needsApprove = useMemo(() => {

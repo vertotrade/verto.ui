@@ -4,7 +4,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { useTranslation } from '@verto/localization'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { VaultKey, DeserializedLockedCakeVault, DeserializedCakeVault } from 'state/types'
+import { VaultKey, DeserializedLockedRebusVault, DeserializedRebusVault } from 'state/types'
 import styled from 'styled-components'
 import { Token } from '@verto/sdk'
 
@@ -20,7 +20,7 @@ const StyledCardBody = styled(CardBody)<{ isLoading: boolean }>`
   min-height: ${({ isLoading }) => (isLoading ? '0' : '254px')};
 `
 
-interface CakeVaultProps extends CardProps {
+interface RebusVaultProps extends CardProps {
   pool: Pool.DeserializedPool<Token>
   showStakedOnly: boolean
   defaultFooterExpanded?: boolean
@@ -28,18 +28,18 @@ interface CakeVaultProps extends CardProps {
   showSkeleton?: boolean
 }
 
-interface CakeVaultDetailProps {
+interface RebusVaultDetailProps {
   isLoading?: boolean
   account: string
   pool: Pool.DeserializedPool<Token>
-  vaultPool: DeserializedCakeVault
+  vaultPool: DeserializedRebusVault
   accountHasSharesStaked: boolean
   defaultFooterExpanded?: boolean
   showICake?: boolean
   performanceFeeAsDecimal: number
 }
 
-export const CakeVaultDetail: React.FC<React.PropsWithChildren<CakeVaultDetailProps>> = ({
+export const RebusVaultDetail: React.FC<React.PropsWithChildren<RebusVaultDetailProps>> = ({
   isLoading = false,
   account,
   pool,
@@ -51,17 +51,17 @@ export const CakeVaultDetail: React.FC<React.PropsWithChildren<CakeVaultDetailPr
 }) => {
   const { t } = useTranslation()
 
-  const isLocked = (vaultPool as DeserializedLockedCakeVault).userData.locked
+  const isLocked = (vaultPool as DeserializedLockedRebusVault).userData.locked
 
   return (
     <>
       <StyledCardBody isLoading={isLoading}>
-        {account && pool.vaultKey === VaultKey.CakeVault && (
-          <VaultPositionTagWithLabel userData={(vaultPool as DeserializedLockedCakeVault).userData} />
+        {account && pool.vaultKey === VaultKey.RebusVault && (
+          <VaultPositionTagWithLabel userData={(vaultPool as DeserializedLockedRebusVault).userData} />
         )}
-        {account && pool.vaultKey === VaultKey.CakeVault && isLocked ? (
+        {account && pool.vaultKey === VaultKey.RebusVault && isLocked ? (
           <LockedStakingApy
-            userData={(vaultPool as DeserializedLockedCakeVault).userData}
+            userData={(vaultPool as DeserializedLockedRebusVault).userData}
             stakingToken={pool?.stakingToken}
             stakingTokenBalance={pool?.userData?.stakingTokenBalance}
             showICake={showICake}
@@ -104,7 +104,7 @@ export const CakeVaultDetail: React.FC<React.PropsWithChildren<CakeVaultDetailPr
   )
 }
 
-const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
+const RebusVaultCard: React.FC<React.PropsWithChildren<RebusVaultProps>> = ({
   pool,
   showStakedOnly,
   defaultFooterExpanded,
@@ -150,7 +150,7 @@ const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
           </Flex>
         )}
       </Pool.PoolCardHeader>
-      <CakeVaultDetail
+      <RebusVaultDetail
         isLoading={isLoading}
         account={account}
         pool={pool}
@@ -164,4 +164,4 @@ const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
   )
 }
 
-export default CakeVaultCard
+export default RebusVaultCard

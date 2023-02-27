@@ -4,7 +4,7 @@ import { getUnixTime, sub } from 'date-fns'
 import { gql } from 'graphql-request'
 import { GetStaticProps } from 'next'
 import { SWRConfig } from 'swr'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
+import { getRebusVaultAddress } from 'utils/addressHelpers'
 import { getCakeContract } from 'utils/contractHelpers'
 import { getBlocksFromTimestamps } from 'utils/getBlocksFromTimestamps'
 import { bitQueryServerClient, infoServerClient } from 'utils/graphql'
@@ -118,9 +118,9 @@ export const getStaticProps: GetStaticProps = async () => {
     `)
     const cake = await (await fetch('https://farms.pancake-swap.workers.dev/price/cake')).json()
     const { totalLiquidityUSD } = result.pancakeFactories[0]
-    const cakeVaultV2 = getCakeVaultAddress()
+    const rebusVaultV2 = getRebusVaultAddress()
     const cakeContract = getCakeContract()
-    const totalCakeInVault = await cakeContract.balanceOf(cakeVaultV2)
+    const totalCakeInVault = await cakeContract.balanceOf(rebusVaultV2)
     results.tvl = parseFloat(formatEther(totalCakeInVault)) * cake.price + parseFloat(totalLiquidityUSD)
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {

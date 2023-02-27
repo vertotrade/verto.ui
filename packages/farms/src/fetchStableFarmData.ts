@@ -1,7 +1,7 @@
 import { parseUnits } from '@ethersproject/units'
 import { Call, MultiCallV2 } from '@verto/multicall'
-import { ChainId } from '@verto/sdk'
 import chunk from 'lodash/chunk'
+import { DEFAULT_CHAIN_ID } from './const'
 import { SerializedStableFarmConfig } from './types'
 
 const stableSwapAbi = [
@@ -34,7 +34,7 @@ const stableSwapAbi = [
 
 export async function fetchStableFarmData(
   farms: SerializedStableFarmConfig[],
-  chainId = ChainId.BSC,
+  chainId = DEFAULT_CHAIN_ID,
   multicallv2: MultiCallV2,
 ) {
   const calls: Call[] = farms.flatMap(f => [

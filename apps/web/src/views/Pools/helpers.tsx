@@ -58,7 +58,7 @@ export const getAprData = (pool: Pool.DeserializedPool<Token>, performanceFee: n
   return { apr, autoCompoundFrequency }
 }
 
-export const getCakeVaultEarnings = (
+export const getRebusVaultEarnings = (
   account: string,
   cakeAtLastUserAction: BigNumber,
   userShares: BigNumber,

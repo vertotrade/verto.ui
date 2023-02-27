@@ -78,7 +78,7 @@ const HasSharesActions: React.FC<React.PropsWithChildren<HasStakeActionProps>> =
           </IconButton>
         </Flex>
       </Flex>
-      {pool.vaultKey === VaultKey.CakeVault && (
+      {pool.vaultKey === VaultKey.RebusVault && (
         <Box mb="16px">
           <ConvertToLock stakingToken={stakingToken} currentStakedAmount={cakeAsNumberBalance} />
         </Box>

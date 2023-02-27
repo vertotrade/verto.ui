@@ -5,7 +5,7 @@ import { vaultPoolConfig } from 'config/constants/pools'
 import { useTranslation } from '@verto/localization'
 import { memo, useMemo } from 'react'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { VaultKey, DeserializedLockedCakeVault } from 'state/types'
+import { VaultKey, DeserializedLockedRebusVault } from 'state/types'
 import styled from 'styled-components'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { getVaultPosition, VaultPosition, VaultPositionParams } from 'utils/cakePool'
@@ -71,11 +71,11 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) =>
           )}
           <Pool.CellContent>
             {showStakedTag &&
-              (vaultKey === VaultKey.CakeVault ? (
+              (vaultKey === VaultKey.RebusVault ? (
                 <StakedCakeStatus
                   userShares={userShares}
-                  locked={(vaultData as DeserializedLockedCakeVault).userData.locked}
-                  lockEndTime={(vaultData as DeserializedLockedCakeVault).userData.lockEndTime}
+                  locked={(vaultData as DeserializedLockedRebusVault).userData.locked}
+                  lockEndTime={(vaultData as DeserializedLockedRebusVault).userData.lockEndTime}
                 />
               ) : (
                 <Text fontSize="12px" bold color={isFinished ? 'failure' : 'secondary'} textTransform="uppercase">

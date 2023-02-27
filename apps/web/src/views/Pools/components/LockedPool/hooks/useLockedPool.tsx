@@ -9,7 +9,7 @@ import BigNumber from 'bignumber.js'
 import { getDecimalAmount } from '@verto/utils/formatBalance'
 import { useToast } from '@verto/uikit'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { fetchCakeVaultUserData } from 'state/pools'
+import { fetchRebusVaultUserData } from 'state/pools'
 import { Token } from '@verto/sdk'
 import { ONE_WEEK_DEFAULT, vaultPoolConfig } from 'config/constants/pools'
 import { VaultKey } from 'state/types'
@@ -41,7 +41,7 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
 
   const { address: account } = useAccount()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const vaultPoolContract = useVaultPoolContract(VaultKey.CakeVault)
+  const vaultPoolContract = useVaultPoolContract(VaultKey.RebusVault)
   const { callWithGasPrice } = useCallWithGasPrice()
 
   const { t } = useTranslation()
@@ -53,7 +53,7 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
   const handleDeposit = useCallback(
     async (convertedStakeAmount: BigNumber, lockDuration: number) => {
       const callOptions = {
-        gasLimit: vaultPoolConfig[VaultKey.CakeVault].gasLimit,
+        gasLimit: vaultPoolConfig[VaultKey.RebusVault].gasLimit,
       }
 
       const receipt = await fetchWithCatchTxError(() => {
@@ -71,7 +71,7 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
           </ToastDescriptionWithTx>,
         )
         onDismiss?.()
-        dispatch(fetchCakeVaultUserData({ account }))
+        dispatch(fetchRebusVaultUserData({ account }))
         mutate(['userCakeLockStatus', account])
       }
     },

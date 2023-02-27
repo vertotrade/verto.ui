@@ -54,8 +54,8 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
   };
 }
 
-export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedCakeVault;
-export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedCakeVault;
+export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedRebusVault;
+export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedRebusVault;
 
 export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   lastDepositedTime: string;
@@ -70,7 +70,7 @@ export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   currentOverdueFee: BigNumber;
 }
 
-export interface DeserializedLockedCakeVault extends Omit<DeserializedCakeVault, "userData"> {
+export interface DeserializedLockedRebusVault extends Omit<DeserializedRebusVault, "userData"> {
   totalLockedAmount?: BigNumber;
   userData?: DeserializedLockedVaultUser;
 }
@@ -98,7 +98,7 @@ export interface DeserializedVaultUser {
   };
 }
 
-export interface DeserializedCakeVault {
+export interface DeserializedRebusVault {
   totalShares?: BigNumber;
   totalLockedAmount?: BigNumber;
   pricePerFullShare: BigNumber;
@@ -108,9 +108,9 @@ export interface DeserializedCakeVault {
 }
 
 export enum VaultKey {
-  CakeVaultV1 = "cakeVaultV1",
-  CakeVault = "cakeVault",
-  CakeFlexibleSideVault = "cakeFlexibleSideVault",
+  RebusVaultV1 = "rebusVaultV1",
+  RebusVault = "rebusVault",
+  RebusFlexibleSideVault = "rebusFlexibleSideVault",
   IfoPool = "ifoPool",
 }
 

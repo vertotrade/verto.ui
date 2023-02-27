@@ -4,7 +4,7 @@ import { createSelector } from '@reduxjs/toolkit'
 import { State, VaultKey } from '../types'
 import { transformPool, transformVault } from './helpers'
 import { initialPoolVaultState } from './index'
-import { getVaultPosition, VaultPosition } from '../../utils/cakePool'
+// import { getVaultPosition, VaultPosition } from '../../utils/cakePool'
 
 const selectPoolsData = (state: State) => state.pools.data
 const selectPoolData = sousId => (state: State) => state.pools.data.find(p => p.sousId === sousId)
@@ -30,37 +30,38 @@ export const makeVaultPoolByKey = key => createSelector([selectVault(key)], vaul
 export const poolsWithVaultSelector = createSelector(
   [
     poolsWithUserDataLoadingSelector,
-    makeVaultPoolByKey(VaultKey.CakeVault),
-    makeVaultPoolByKey(VaultKey.CakeFlexibleSideVault),
+    makeVaultPoolByKey(VaultKey.RebusVault),
+    makeVaultPoolByKey(VaultKey.RebusFlexibleSideVault),
   ],
-  (poolsWithUserDataLoading, deserializedLockedCakeVault, deserializedFlexibleSideCakeVault) => {
+  (poolsWithUserDataLoading, _, __) => {
     const { pools, userDataLoaded } = poolsWithUserDataLoading
-    const cakePool = pools.find(pool => !pool.isFinished && pool.sousId === 0)
-    const withoutCakePool = pools.filter(pool => pool.sousId !== 0)
+    // const vaultPool = pools.find(pool => !pool.isFinished && pool.sousId === 0)
+    const withoutVaultPool = pools.filter(pool => pool.sousId !== 0)
 
-    const cakeAutoVault = {
-      ...cakePool,
-      ...deserializedLockedCakeVault,
-      vaultKey: VaultKey.CakeVault,
-      userData: { ...cakePool.userData, ...deserializedLockedCakeVault.userData },
-    }
+    // const cakeAutoVault = {
+    //   ...vaultPool,
+    //   ...deserializedLockedRebusVault,
+    //   vaultKey: VaultKey.RebusVault,
+    //   userData: { ...vaultPool?.userData, ...deserializedLockedRebusVault.userData },
+    // }
 
-    const lockedVaultPosition = getVaultPosition(deserializedLockedCakeVault.userData)
-    const hasFlexibleSideSharesStaked = deserializedFlexibleSideCakeVault.userData.userShares.gt(0)
+    // const lockedVaultPosition = getVaultPosition(deserializedLockedRebusVault.userData)
+    // const hasFlexibleSideSharesStaked = deserializedFlexibleSideRebusVault.userData.userShares.gt(0)
 
-    const cakeAutoFlexibleSideVault =
-      lockedVaultPosition > VaultPosition.Flexible || hasFlexibleSideSharesStaked
-        ? [
-            {
-              ...cakePool,
-              ...deserializedFlexibleSideCakeVault,
-              vaultKey: VaultKey.CakeFlexibleSideVault,
-              userData: { ...cakePool.userData, ...deserializedFlexibleSideCakeVault.userData },
-            },
-          ]
-        : []
+    // const cakeAutoFlexibleSideVault =
+    //   lockedVaultPosition > VaultPosition.Flexible || hasFlexibleSideSharesStaked
+    //     ? [
+    //         {
+    //           ...vaultPool,
+    //           ...deserializedFlexibleSideRebusVault,
+    //           vaultKey: VaultKey.RebusFlexibleSideVault,
+    //           userData: { ...vaultPool?.userData, ...deserializedFlexibleSideRebusVault.userData },
+    //         },
+    //       ]
+    //     : []
 
-    return { pools: [cakeAutoVault, ...cakeAutoFlexibleSideVault, ...withoutCakePool], userDataLoaded }
+    // return { pools: [cakeAutoVault, ...cakeAutoFlexibleSideVault, ...withoutVaultPool], userDataLoaded }
+    return { pools: [...withoutVaultPool], userDataLoaded }
   },
 )
 

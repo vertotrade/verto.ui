@@ -5,12 +5,13 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useTranslation } from '@verto/localization'
 import useAuth from 'hooks/useAuth'
 import useNativeCurrency from 'hooks/useNativeCurrency'
-import useTokenBalance, { useGetCakeBalance } from 'hooks/useTokenBalance'
+import useTokenBalance from 'hooks/useTokenBalance'
 import { ChainLogo } from 'components/Logo/ChainLogo'
 
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
 import { formatBigNumber, getFullDisplayBalance } from '@verto/utils/formatBalance'
 import { useBalance } from 'wagmi'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 const COLORS = {
   ETH: '#627EEA',
@@ -26,15 +27,14 @@ interface WalletInfoProps {
 const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss }) => {
   const { t } = useTranslation()
   const { account, chainId, chain } = useActiveWeb3React()
-  const isBSC = chainId === ChainId.BSC
-  const bnbBalance = useBalance({ address: account, chainId: ChainId.BSC })
-  const nativeBalance = useBalance({ address: account, enabled: !isBSC })
+  const isRebus = chainId === ChainId.REBUS || chainId === ChainId.REBUS_TESTNET
+  const rebusBalance = useBalance({ address: account, chainId: DEFAULT_CHAIN_ID })
+  const nativeBalance = useBalance({ address: account, enabled: !isRebus })
   const native = useNativeCurrency()
-  const wNativeToken = !isBSC ? WNATIVE[chainId] : null
-  const wBNBToken = WNATIVE[ChainId.BSC]
+  const wNativeToken = !isRebus ? WNATIVE[chainId] : null
+  const wRebusToken = WNATIVE[DEFAULT_CHAIN_ID]
   const { balance: wNativeBalance, fetchStatus: wNativeFetchStatus } = useTokenBalance(wNativeToken?.address)
-  const { balance: wBNBBalance, fetchStatus: wBNBFetchStatus } = useTokenBalance(wBNBToken?.address, true)
-  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useGetCakeBalance()
+  const { balance: wRebusBalance, fetchStatus: wRebusFetchStatus } = useTokenBalance(wRebusToken?.address, true)
   const { logout } = useAuth()
 
   const handleLogout = () => {
@@ -64,7 +64,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           </Box>
         </Message>
       )}
-      {!isBSC && chain && (
+      {!isRebus && chain && (
         <Box mb="12px">
           <Flex justifyContent="space-between" alignItems="center" mb="8px">
             <Flex bg={COLORS.ETH} borderRadius="16px" pl="4px" pr="8px" py="2px">
@@ -104,41 +104,33 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
       <Box mb="24px">
         <Flex justifyContent="space-between" alignItems="center" mb="8px">
           <Flex bg={COLORS.BNB} borderRadius="16px" pl="4px" pr="8px" py="2px">
-            <ChainLogo chainId={ChainId.BSC} />
+            <ChainLogo chainId={DEFAULT_CHAIN_ID} />
             <Text color="white" ml="4px">
               BNB Smart Chain
             </Text>
           </Flex>
-          <LinkExternal isBscScan href={getBlockExploreLink(account, 'address', ChainId.BSC)}>
-            {getBlockExploreName(ChainId.BSC)}
+          <LinkExternal isBscScan href={getBlockExploreLink(account, 'address', DEFAULT_CHAIN_ID)}>
+            {getBlockExploreName(DEFAULT_CHAIN_ID)}
           </LinkExternal>
         </Flex>
         <Flex alignItems="center" justifyContent="space-between">
           <Text color="textSubtle">BNB {t('Balance')}</Text>
-          {!bnbBalance.isFetched ? (
+          {!rebusBalance.isFetched ? (
             <Skeleton height="22px" width="60px" />
           ) : (
-            <Text>{formatBigNumber(bnbBalance.data.value, 6)}</Text>
+            <Text>{formatBigNumber(rebusBalance.data.value, 6)}</Text>
           )}
         </Flex>
-        {wBNBBalance.gt(0) && (
+        {wRebusBalance.gt(0) && (
           <Flex alignItems="center" justifyContent="space-between">
             <Text color="textSubtle">WBNB {t('Balance')}</Text>
-            {wBNBFetchStatus !== FetchStatus.Fetched ? (
+            {wRebusFetchStatus !== FetchStatus.Fetched ? (
               <Skeleton height="22px" width="60px" />
             ) : (
-              <Text>{getFullDisplayBalance(wBNBBalance, wBNBToken.decimals, 6)}</Text>
+              <Text>{getFullDisplayBalance(wRebusBalance, wRebusToken.decimals, 6)}</Text>
             )}
           </Flex>
         )}
-        <Flex alignItems="center" justifyContent="space-between">
-          <Text color="textSubtle">{t('CAKE Balance')}</Text>
-          {cakeFetchStatus !== FetchStatus.Fetched ? (
-            <Skeleton height="22px" width="60px" />
-          ) : (
-            <Text>{formatBigNumber(cakeBalance, 3)}</Text>
-          )}
-        </Flex>
       </Box>
       <Button variant="secondary" width="100%" minHeight={48} onClick={handleLogout}>
         {t('Disconnect Wallet')}
