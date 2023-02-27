@@ -1,5 +1,4 @@
 import BigNumber from 'bignumber.js'
-import { ChainId } from '@verto/sdk'
 import erc20ABI from 'config/abi/erc20.json'
 import masterchefABI from 'config/abi/masterchef.json'
 import nonBscVault from 'config/abi/nonBscVault.json'
@@ -8,7 +7,6 @@ import { getMasterChefAddress, getNonBscVaultAddress } from 'utils/addressHelper
 import { SerializedFarmConfig } from 'config/constants/types'
 import { verifyBscNetwork } from 'utils/verifyBscNetwork'
 import { getCrossFarmingReceiverContract } from 'utils/contractHelpers'
-import { farmFetcher } from 'state/farms'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 
 export const fetchFarmUserAllowances = async (

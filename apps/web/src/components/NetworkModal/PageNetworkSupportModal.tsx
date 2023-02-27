@@ -1,5 +1,4 @@
 import { Button, Modal, Text, Grid, Box, Message, MessageText } from '@verto/uikit'
-import { ChainId } from '@verto/sdk'
 import Image from 'next/image'
 import { useSwitchNetwork, useSwitchNetworkLocal } from 'hooks/useSwitchNetwork'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

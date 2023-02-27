@@ -74,7 +74,7 @@ function farmLpTransformer(farmResult, masterChefResult) {
 const fetchFarms = async (farmsToFetch: SerializedFarmConfig[], chainId: number): Promise<SerializedFarm[]> => {
   const [farmResult, masterChefResult] = await Promise.all([
     fetchPublicFarmsData(farmsToFetch, chainId),
-    fetchMasterChefData(farmsToFetch, chainId),
+    fetchMasterChefData(farmsToFetch),
   ])
 
   return farmsToFetch.map(farmLpTransformer(farmResult, masterChefResult))
