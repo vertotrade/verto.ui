@@ -1,7 +1,7 @@
 import { toDate, add, differenceInHours } from 'date-fns'
 import { BSC_BLOCK_TIME, DEFAULT_TOKEN_DECIMAL } from 'config'
 import { getBidderInfo } from 'config/constants/farmAuctions'
-import { bscRpcProvider } from 'utils/providers'
+import { rebusRpcProvider } from 'utils/providers'
 import { AuctionsResponse, FarmAuctionContractStatus, BidsPerAuction } from 'utils/types'
 import { Auction, AuctionStatus, Bidder, BidderAuction } from 'config/constants/types'
 import { ethersToBigNumber } from '@verto/utils/bigNumber'
@@ -83,7 +83,7 @@ const getDateForBlock = async (currentBlock: number, block: number) => {
   // if block already happened we can get timestamp via .getBlock(block)
   if (currentBlock > block) {
     try {
-      const { timestamp } = await bscRpcProvider.getBlock(block)
+      const { timestamp } = await rebusRpcProvider.getBlock(block)
       return toDate(timestamp * 1000)
     } finally {
       // Use logic below
@@ -110,7 +110,7 @@ export const processAuctionData = async (
   }
 
   // Get all required data and blocks
-  const currentBlock = currentBlockNumber || (await bscRpcProvider.getBlockNumber())
+  const currentBlock = currentBlockNumber || (await rebusRpcProvider.getBlockNumber())
   const [startDate, endDate] = await Promise.all([
     getDateForBlock(currentBlock, processedAuctionData.startBlock),
     getDateForBlock(currentBlock, processedAuctionData.endBlock),

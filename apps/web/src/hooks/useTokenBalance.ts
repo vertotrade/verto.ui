@@ -8,7 +8,7 @@ import { ChainId } from '@verto/sdk'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
-import { bscRpcProvider } from 'utils/providers'
+import { rebusRpcProvider } from 'utils/providers'
 import { useWeb3React } from '@verto/wagmi'
 import { useTokenContract } from './useContract'
 import { useSWRContract } from './useSWRContract'
@@ -22,7 +22,7 @@ const useTokenBalance = (tokenAddress: string, forceBSC?: boolean) => {
     () =>
       account
         ? {
-            contract: forceBSC ? contract.connect(bscRpcProvider) : contract,
+            contract: forceBSC ? contract.connect(rebusRpcProvider) : contract,
             methodName: 'balanceOf',
             params: [account],
           }
@@ -44,7 +44,7 @@ const useTokenBalance = (tokenAddress: string, forceBSC?: boolean) => {
 export const useGetBnbBalance = () => {
   const { address: account } = useAccount()
   const { status, data, mutate } = useSWR([account, 'bnbBalance'], async () => {
-    return bscRpcProvider.getBalance(account)
+    return rebusRpcProvider.getBalance(account)
   })
 
   return { balance: data || Zero, fetchStatus: status, refresh: mutate }
