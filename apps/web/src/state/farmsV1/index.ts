@@ -1,4 +1,3 @@
-import { ChainId } from '@verto/sdk'
 import { SerializedFarm, SerializedFarmsState } from '@verto/farms'
 import type {
   UnknownAsyncThunkFulfilledAction,

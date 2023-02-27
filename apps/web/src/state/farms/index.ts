@@ -1,6 +1,5 @@
 import { getFarmConfig } from '@verto/farms/constants'
 import { createFarmFetcher, SerializedFarm, SerializedFarmsState } from '@verto/farms'
-import { ChainId } from '@verto/sdk'
 import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import type {
   UnknownAsyncThunkFulfilledAction,

@@ -1,5 +1,4 @@
 import { useAccount } from 'wagmi'
-import { ChainId } from '@verto/sdk'
 import BigNumber from 'bignumber.js'
 import { getFarmConfig } from '@verto/farms/constants'
 import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'

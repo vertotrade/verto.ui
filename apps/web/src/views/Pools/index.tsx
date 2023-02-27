@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { useAccount } from 'wagmi'
-import { Heading, Flex, Text, Link, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@verto/uikit'
+import { Heading, Flex, Text, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { usePoolsPageFetch, usePoolsWithVault } from 'state/pools/hooks'
 import Page from 'components/Layout/Page'
@@ -18,20 +18,6 @@ import PoolRow, { VaultPoolRow } from './components/PoolsTable/PoolRow'
 
 const CardLayout = styled(FlexLayout)`
   justify-content: center;
-`
-
-const FinishedTextContainer = styled(Flex)`
-  padding-bottom: 32px;
-  flex-direction: column;
-  ${({ theme }) => theme.mediaQueries.md} {
-    flex-direction: row;
-  }
-`
-
-const FinishedTextLink = styled(Link)`
-  font-weight: 400;
-  white-space: nowrap;
-  text-decoration: underline;
 `
 
 const Pools: React.FC<React.PropsWithChildren> = () => {
