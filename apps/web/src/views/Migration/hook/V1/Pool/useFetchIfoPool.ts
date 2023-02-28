@@ -8,7 +8,7 @@ import { fetchVaultFees } from 'state/pools/fetchVaultPublic'
 import type { Signer } from '@ethersproject/abstract-signer'
 import type { Provider } from '@ethersproject/providers'
 import { Contract } from '@ethersproject/contracts'
-import { bscRpcProvider } from 'utils/providers'
+import { rebusRpcProvider } from 'utils/providers'
 import rebusVaultAbi from 'config/abi/rebusVault.json'
 import { FAST_INTERVAL } from 'config/constants'
 import { VaultKey } from 'state/types'
@@ -18,7 +18,7 @@ export const ifoPoolV1Contract = '0x1B2A2f6ed4A1401E8C73B4c2B6172455ce2f78E8'
 export const rebusVaultAddress = '0xa80240Eb5d7E05d3F250cF000eEc0891d00b51CC'
 
 const getRebusVaultContract = (signer?: Signer | Provider) => {
-  const signerOrProvider = signer ?? bscRpcProvider
+  const signerOrProvider = signer ?? rebusRpcProvider
   return new Contract(rebusVaultAddress, rebusVaultAbi, signerOrProvider) as any
 }
 

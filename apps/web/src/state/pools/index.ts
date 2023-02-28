@@ -20,7 +20,7 @@ import { multicallv2 } from 'utils/multicall'
 import { bscTokens } from '@verto/tokens'
 import { isAddress } from 'utils'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
-import { bscRpcProvider } from 'utils/providers'
+import { rebusRpcProvider } from 'utils/providers'
 import { getPoolsPriceHelperLpFiles } from 'config/constants/priceHelperLps/index'
 import fetchFarms from '../farms/fetchFarms'
 import getFarmsPrices from '../farms/getFarmsPrices'
@@ -140,7 +140,7 @@ export const fetchPoolsPublicDataAsync =
         fetchPoolsBlockLimits(),
         fetchPoolsTotalStaking(),
         fetchPoolsProfileRequirement(),
-        currentBlockNumber ? Promise.resolve(currentBlockNumber) : bscRpcProvider.getBlockNumber(),
+        currentBlockNumber ? Promise.resolve(currentBlockNumber) : rebusRpcProvider.getBlockNumber(),
       ])
 
       const blockLimitsSousIdMap = keyBy(blockLimits, 'sousId')
