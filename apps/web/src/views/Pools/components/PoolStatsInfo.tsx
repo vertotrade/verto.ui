@@ -1,8 +1,9 @@
 import { Flex, Link, LinkExternal, Skeleton, Text, TimerIcon, Balance, Pool } from '@verto/uikit'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import AddToWalletButton, { AddToWalletTextOptions } from 'components/AddToWallet/AddToWalletButton'
-import { bsc } from 'wagmi/chains'
+import { rebus, rebusTestnet } from 'utils/wagmi-chains'
 import { useTranslation } from '@verto/localization'
-import { Token } from '@verto/sdk'
+import { ChainId, Token } from '@verto/sdk'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { memo } from 'react'
 import { useCurrentBlock } from 'state/block/hooks'
@@ -13,6 +14,9 @@ import { getAddress, getVaultPoolAddress } from 'utils/addressHelpers'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
 import MaxStakeRow from './MaxStakeRow'
 import { AprInfo, DurationAvg, PerformanceFee, TotalLocked, TotalStaked } from './Stat'
+
+const blockExplorerUrl =
+  DEFAULT_CHAIN_ID === ChainId.REBUS ? rebus.blockExplorers.default.url : rebusTestnet.blockExplorers.default.url
 
 interface ExpandedFooterProps {
   pool: Pool.DeserializedPool<Token>
@@ -134,9 +138,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
           <LinkExternal
             isBscScan
-            href={`${bsc.blockExplorers.default.url}/address/${
-              vaultKey ? rebusVaultContractAddress : poolContractAddress
-            }`}
+            href={`${blockExplorerUrl}/address/${vaultKey ? rebusVaultContractAddress : poolContractAddress}`}
             bold={false}
             small>
             {t('View Contract')}
