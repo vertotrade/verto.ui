@@ -106,7 +106,7 @@ const PoolTabButtons = ({
     <ViewControls>
       {viewModeToggle}
       {liveOrFinishedSwitch}
-      <Flex pb="6px">{stakedOnlySwitch}</Flex>
+      <Flex style={{ paddingBottom: "6px" }}>{stakedOnlySwitch}</Flex>
     </ViewControls>
   );
 };
