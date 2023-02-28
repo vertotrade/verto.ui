@@ -285,7 +285,9 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                     decimals={5}
                     value={vaultKey ? cakeAsNumberBalance : stakedTokenBalance}
                   />
-                  <SkeletonV2
+                  <Box height="28px" />
+                  {/* TODO: Enable when farms is working and we're able to get token price */}
+                  {/* <SkeletonV2
                     isDataReady={Number.isFinite(vaultKey ? stakedAutoDollarValue : stakedTokenDollarBalance)}
                     width={120}
                     wrapperProps={{ height: '20px' }}
@@ -299,7 +301,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                       unit=" USD"
                       prefix="~"
                     />
-                  </SkeletonV2>
+                  </SkeletonV2> */}
                 </Box>
               </ActionContent>
               {vaultPosition === VaultPosition.Locked && (
