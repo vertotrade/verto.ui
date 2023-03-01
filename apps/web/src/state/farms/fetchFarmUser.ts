@@ -3,7 +3,7 @@ import erc20ABI from 'config/abi/erc20.json'
 import masterchefABI from 'config/abi/masterchef.json'
 import nonBscVault from 'config/abi/nonBscVault.json'
 import multicall, { multicallv2 } from 'utils/multicall'
-import { getMasterChefAddress, getNonBscVaultAddress } from 'utils/addressHelpers'
+import { getMasterChefAddress } from 'utils/addressHelpers'
 import { SerializedFarmConfig } from 'config/constants/types'
 import { verifyBscNetwork } from 'utils/verifyBscNetwork'
 import { getCrossFarmingReceiverContract } from 'utils/contractHelpers'
@@ -15,8 +15,7 @@ export const fetchFarmUserAllowances = async (
   chainId: number,
   proxyAddress?: string,
 ) => {
-  const isBscNetwork = verifyBscNetwork(chainId)
-  const masterChefAddress = isBscNetwork ? getMasterChefAddress(chainId) : getNonBscVaultAddress(chainId)
+  const masterChefAddress = getMasterChefAddress(chainId)
 
   const calls = farmsToFetch.map(farm => {
     const lpContractAddress = farm.lpAddress
@@ -58,7 +57,7 @@ export const fetchFarmUserStakedBalances = async (
   chainId: number,
 ) => {
   const isBscNetwork = verifyBscNetwork(chainId)
-  const masterChefAddress = isBscNetwork ? getMasterChefAddress(chainId) : getNonBscVaultAddress(chainId)
+  const masterChefAddress = getMasterChefAddress(chainId)
 
   const calls = farmsToFetch.map(farm => {
     return {
@@ -80,17 +79,15 @@ export const fetchFarmUserStakedBalances = async (
   return parsedStakedBalances
 }
 
-export const fetchFarmUserEarnings = async (account: string, farmsToFetch: SerializedFarmConfig[], chainId: number) => {
-  const isBscNetwork = verifyBscNetwork(chainId)
+export const fetchFarmUserEarnings = async (account: string, farmsToFetch: SerializedFarmConfig[]) => {
   const multiCallChainId = DEFAULT_CHAIN_ID
-  const userAddress = isBscNetwork ? account : await fetchCProxyAddress(account, multiCallChainId)
   const masterChefAddress = getMasterChefAddress(multiCallChainId)
 
   const calls = farmsToFetch.map(farm => {
     return {
       address: masterChefAddress,
       name: 'pendingCake',
-      params: [farm.pid, userAddress],
+      params: [farm.pid, account],
     }
   })
 

@@ -3,6 +3,8 @@ import { ChainId } from '@verto/sdk'
 import { BLOCKS_PER_YEAR } from 'config'
 import lpAprs56 from 'config/constants/lpAprs/56.json'
 import lpAprs1 from 'config/constants/lpAprs/1.json'
+import lpAprs1111 from 'config/constants/lpAprs/1111.json'
+import lpAprs3333 from 'config/constants/lpAprs/3333.json'
 
 const getLpApr = (chainId: number) => {
   switch (chainId) {
@@ -10,6 +12,10 @@ const getLpApr = (chainId: number) => {
       return lpAprs56
     case ChainId.ETHEREUM:
       return lpAprs1
+    case ChainId.REBUS:
+      return lpAprs1111
+    case ChainId.REBUS_TESTNET:
+      return lpAprs3333
     default:
       return {}
   }

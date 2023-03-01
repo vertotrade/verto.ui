@@ -160,6 +160,10 @@ export const getFarmsPrices = (
   },
   decimals: number,
 ): FarmWithPrices[] => {
+  if (!nativeStableLp) {
+    return farms as FarmWithPrices[]
+  }
+
   const nativeStableFarm = farms.find(farm => equalsIgnoreCase(farm.lpAddress, nativeStableLp.address))
 
   const isNativeFirst = nativeStableFarm?.token.symbol === nativeStableLp.wNative

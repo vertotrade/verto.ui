@@ -3,12 +3,10 @@ import BigNumber from 'bignumber.js'
 import { ChainId } from '@verto/sdk'
 import { useAccount } from 'wagmi'
 import {
-  Image,
   Heading,
   Toggle,
   Text,
   Flex,
-  Link,
   Box,
   Farm as FarmUI,
   Loading,
@@ -126,26 +124,6 @@ const ViewControls = styled.div`
   }
 `
 
-const StyledImage = styled(Image)`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 58px;
-`
-
-const FinishedTextContainer = styled(Flex)`
-  padding-bottom: 32px;
-  flex-direction: column;
-  ${({ theme }) => theme.mediaQueries.md} {
-    flex-direction: row;
-  }
-`
-
-const FinishedTextLink = styled(Link)`
-  font-weight: 400;
-  white-space: nowrap;
-  text-decoration: underline;
-`
-
 const NUMBER_OF_FARMS_VISIBLE = 12
 
 const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -187,7 +165,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
     farm =>
       farm.lpAddress !== '0x272c2CF847A49215A3A1D4bFf8760E503A06f880' &&
       farm.lpAddress !== '0xB6040A9F294477dDAdf5543a24E5463B8F2423Ae' &&
-      farm.pid !== 0 &&
       farm.multiplier !== '0X' &&
       (!poolLength || poolLength > farm.pid),
   )
@@ -196,7 +173,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
     farm =>
       farm.lpAddress === '0xB6040A9F294477dDAdf5543a24E5463B8F2423Ae' ||
       farm.lpAddress === '0x272c2CF847A49215A3A1D4bFf8760E503A06f880' ||
-      (farm.pid !== 0 && farm.multiplier === '0X'),
+      farm.multiplier === '0X',
   )
   const archivedFarms = farmsLP
 
@@ -444,28 +421,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             </LabelWrapper>
           </FilterContainer>
         </ControlContainer>
-        {isInactive && (
-          <FinishedTextContainer>
-            <Text fontSize={['16px', null, '20px']} color="failure" pr="4px">
-              {t("Don't see the farm you are staking?")}
-            </Text>
-            <Flex>
-              <FinishedTextLink href="/migration" fontSize={['16px', null, '20px']} color="failure">
-                {t('Go to migration page')}
-              </FinishedTextLink>
-              <Text fontSize={['16px', null, '20px']} color="failure" padding="0px 4px">
-                or
-              </Text>
-              <FinishedTextLink
-                external
-                color="failure"
-                fontSize={['16px', null, '20px']}
-                href="https://v1-farms.pancakeswap.finance/farms/history">
-                {t('check out v1 farms')}.
-              </FinishedTextLink>
-            </Flex>
-          </FinishedTextContainer>
-        )}
         {viewMode === ViewMode.TABLE ? (
           <Table farms={chosenFarmsMemoized} cakePrice={cakePrice} userDataReady={userDataReady} />
         ) : (
@@ -477,7 +432,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </Flex>
         )}
         {poolLength && <div ref={observerRef} />}
-        <StyledImage src="/images/verto-icon-gradient.svg" alt="verto logo" width={60} height={51} />
       </Page>
     </FarmsContext.Provider>
   )

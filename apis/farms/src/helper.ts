@@ -2,9 +2,9 @@ import { Obj } from 'itty-router'
 import { error } from 'itty-router-extras'
 import { createFarmFetcher } from '@verto/farms'
 import { createMulticall } from '@verto/multicall'
-import { bscProvider, bscTestnetProvider, goerliProvider } from './provider'
+import { bscProvider, bscTestnetProvider, goerliProvider, rebusProvider, rebusTestnetProvider } from './provider'
 
-export const getProvider = ({ chainId }: { chainId?: number }) => {
+export const getProvider = ({ chainId }: { chainId?: number }): any => {
   switch (chainId) {
     case 56:
       return bscProvider
@@ -12,6 +12,10 @@ export const getProvider = ({ chainId }: { chainId?: number }) => {
       return bscTestnetProvider
     case 5:
       return goerliProvider
+    case 1111:
+      return rebusProvider
+    case 3333:
+      return rebusTestnetProvider
     default:
       return null
   }
