@@ -23,3 +23,19 @@ export const goerliProvider = new StaticJsonRpcProvider(
   },
   5,
 )
+
+export const rebusProvider = new StaticJsonRpcProvider(
+  {
+    url: 'https://api.rebuschain.com:8545',
+    skipFetchSetup: true,
+  },
+  1111,
+)
+
+export const rebusTestnetProvider = new StaticJsonRpcProvider(
+  {
+    url: 'https://testnet.rebus.money:48545',
+    skipFetchSetup: true,
+  },
+  3333,
+)

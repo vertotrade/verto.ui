@@ -5,8 +5,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'VertoTrade',
   description:
-    'The most popular AMM on BSC by user count! Earn CAKE through yield farming or win it in the Lottery, then stake it in Res Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by VertoTrade), NFTs, and more, on a platform you can trust.',
-  image: 'https://pancakeswap.finance/images/hero.png',
+    'The most popular AMM on BSC by user count! Earn VERTO through yield farming or win it in the Lottery, then stake it in Res Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by VertoTrade), NFTs, and more, on a platform you can trust.',
 }
 
 interface PathList {
@@ -36,9 +35,9 @@ const getPathList = (t: ContextApi['t']): PathList => {
       '/voting': { basePath: true, title: t('Voting') },
       '/voting/proposal': { title: t('Proposals') },
       '/voting/proposal/create': { title: t('Make a Proposal') },
-      '/info': { title: t('Overview'), description: 'View statistics for Pancakeswap exchanges.' },
-      '/info/pairs': { title: t('Pairs'), description: 'View statistics for Pancakeswap exchanges.' },
-      '/info/tokens': { title: t('Tokens'), description: 'View statistics for Pancakeswap exchanges.' },
+      '/info': { title: t('Overview'), description: 'View statistics for Vertotrade exchanges.' },
+      '/info/pairs': { title: t('Pairs'), description: 'View statistics for Vertotrade exchanges.' },
+      '/info/tokens': { title: t('Tokens'), description: 'View statistics for Vertotrade exchanges.' },
       '/nfts/collections': { basePath: true, title: t('Collections') },
       '/nfts/activity': { title: t('Activity') },
       '/profile': { basePath: true, title: t('Profile') },

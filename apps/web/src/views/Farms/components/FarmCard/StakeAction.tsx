@@ -20,6 +20,7 @@ import { pickFarmTransactionTx } from 'state/global/actions'
 import { useTransactionAdder, useNonBscFarmPendingTransaction } from 'state/transactions/hooks'
 import { FarmTransactionStatus, NonBscFarmStepType } from 'state/transactions/actions'
 import WalletModal, { WalletView } from 'components/Menu/UserMenu/WalletModal'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { FarmWithStakedValue } from '@verto/farms'
 import { YieldBoosterStateContext } from '../YieldBooster/components/ProxyFarmContainer'
 import { YieldBoosterState } from '../YieldBooster/hooks/useYieldBoosterState'
@@ -141,7 +142,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
             {
               step: 2,
               tx: '',
-              chainId: ChainId.BSC,
+              chainId: DEFAULT_CHAIN_ID,
               status: FarmTransactionStatus.PENDING,
             },
           ],
@@ -197,7 +198,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
             },
             {
               step: 2,
-              chainId: ChainId.BSC,
+              chainId: DEFAULT_CHAIN_ID,
               tx: '',
               status: FarmTransactionStatus.PENDING,
             },
@@ -252,7 +253,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       cakePrice={cakePrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
       bCakeMultiplier={bCakeMultiplier}
-      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET}
+      showCrossChainFarmWarning={chainId !== ChainId.REBUS && chainId !== ChainId.REBUS_TESTNET}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
       allowance={allowance}
@@ -273,7 +274,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       onConfirm={handleUnstake}
       lpPrice={lpTokenPrice}
       tokenName={lpSymbol}
-      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET}
+      showCrossChainFarmWarning={chainId !== ChainId.REBUS && chainId !== ChainId.REBUS_TESTNET}
       decimals={18}
     />,
   )

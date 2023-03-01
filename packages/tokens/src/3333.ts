@@ -25,4 +25,12 @@ export const vertoTokensTestnet = {
     'Aureus',
     'https://www.rebuschain.com/',
   ),
+  verto: new ERC20Token(
+    ChainId.REBUS_TESTNET,
+    '0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5',
+    18,
+    'VERTO',
+    'Verto',
+    'https://www.rebuschain.com/',
+  ),
 }

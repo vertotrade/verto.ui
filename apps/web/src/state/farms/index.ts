@@ -187,11 +187,11 @@ async function getBoostedFarmsStakeValue(farms, account, chainId, proxyAddress) 
     fetchFarmUserAllowances(account, farms, chainId),
     fetchFarmUserTokenBalances(account, farms, chainId),
     fetchFarmUserStakedBalances(account, farms, chainId),
-    fetchFarmUserEarnings(account, farms, chainId),
+    fetchFarmUserEarnings(account, farms),
     // Proxy call
     fetchFarmUserAllowances(account, farms, chainId, proxyAddress),
     fetchFarmUserStakedBalances(proxyAddress, farms, chainId),
-    fetchFarmUserEarnings(proxyAddress, farms, chainId),
+    fetchFarmUserEarnings(proxyAddress, farms),
   ])
 
   const farmAllowances = userFarmAllowances.map((farmAllowance, index) => {
@@ -219,7 +219,7 @@ async function getNormalFarmsStakeValue(farms, account, chainId) {
     fetchFarmUserAllowances(account, farms, chainId),
     fetchFarmUserTokenBalances(account, farms, chainId),
     fetchFarmUserStakedBalances(account, farms, chainId),
-    fetchFarmUserEarnings(account, farms, chainId),
+    fetchFarmUserEarnings(account, farms),
   ])
 
   const normalFarmAllowances = userFarmAllowances.map((_, index) => {
@@ -243,7 +243,7 @@ export const fetchFarmUserDataAsync = createAsyncThunk<
   }
 >(
   'farms/fetchFarmUserDataAsync',
-  async ({ account, pids, proxyAddress, chainId }, { dispatch, getState }) => {
+  async ({ account, pids, chainId }, { dispatch, getState }) => {
     const state = getState()
     if (state.farms.chainId !== chainId) {
       await dispatch(fetchInitialFarmsData({ chainId }))
@@ -251,16 +251,6 @@ export const fetchFarmUserDataAsync = createAsyncThunk<
     const poolLength = state.farms.poolLength ?? (await fetchMasterChefFarmPoolLength(DEFAULT_CHAIN_ID))
     const farmsConfig = await getFarmConfig(chainId)
     const farmsCanFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.pid) && poolLength > farmConfig.pid)
-    if (proxyAddress && farmsCanFetch?.length && verifyBscNetwork(chainId)) {
-      const { normalFarms, farmsWithProxy } = splitProxyFarms(farmsCanFetch)
-
-      const [proxyAllowances, normalAllowances] = await Promise.all([
-        getBoostedFarmsStakeValue(farmsWithProxy, account, chainId, proxyAddress),
-        getNormalFarmsStakeValue(normalFarms, account, chainId),
-      ])
-
-      return [...proxyAllowances, ...normalAllowances]
-    }
 
     return getNormalFarmsStakeValue(farmsCanFetch, account, chainId)
   },
