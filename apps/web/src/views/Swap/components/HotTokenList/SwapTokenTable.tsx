@@ -158,7 +158,7 @@ const DataRow: React.FC<React.PropsWithChildren<{ tokenData: TokenData; index: n
           <ResponsiveLogo
             badSrcs={BAD_SRCS}
             sizes="24px"
-            srcs={[tokenLogoURL, `https://tokens.pancakeswap.finance/images/${address}.png`]}
+            srcs={[tokenLogoURL, `${window.origin}/images/${address}.png`]}
           />
           {(isXs || isSm) && <Text ml="8px">{tokenData.symbol}</Text>}
           {!isXs && !isSm && (
