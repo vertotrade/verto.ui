@@ -32,12 +32,12 @@ interface WalletModalProps extends InjectedModalProps {
 export const LOW_NATIVE_BALANCE = parseUnits('0.002', 'ether')
 
 const ModalHeader = styled(UIKitModalHeader)`
-  background: ${({ theme }) => theme.colors.gradientBubblegum};
+  background: ${({ theme }) => theme.colors.backgroundAlt};
+  border-bottom: none;
 `
 
 const Tabs = styled.div`
   background-color: ${({ theme }) => theme.colors.dropdown};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
   padding: 16px 24px;
 `
 

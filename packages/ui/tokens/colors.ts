@@ -32,7 +32,7 @@ export const lightColors = {
   vertoBg1: '#fdfdfd',
   backgroundDisabled: '#E9EAEB',
   backgroundAlt: '#f9f9f9',
-  backgroundAlt2: '#f9f9f9',
+  backgroundAlt2: '#eeeaf4D9',
   backgroundAlt2D9: '#eeeaf4D9',
   footerBg: '#f9f9f9',
   headerBackground1: '#fdfdfd',
