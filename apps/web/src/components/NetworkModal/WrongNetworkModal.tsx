@@ -4,7 +4,6 @@ import { ChainLogo } from 'components/Logo/ChainLogo'
 import useAuth from 'hooks/useAuth'
 import { useSessionChainId } from 'hooks/useSessionChainId'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
-import Image from 'next/image'
 import { Chain, useAccount, useNetwork } from 'wagmi'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import Dots from '../Loader/Dots'
@@ -22,15 +21,12 @@ export function WrongNetworkModal({ currentChain, onDismiss }: { currentChain: C
   const switchText = t('Switch to %network%', { network: currentChain.name })
 
   return (
-    <Modal title={t('You are in wrong network')} headerBackground="gradientCardHeader" onDismiss={onDismiss}>
+    <Modal title={t('You are in wrong network')} headerBackground="backgroundAlt" onDismiss={onDismiss}>
       <Grid style={{ gap: '16px' }} maxWidth="336px">
         <Text>{t('This page is located for %network%.', { network: currentChain.name })}</Text>
         <Text>
           {t('You are under %network% now, please switch the network to continue.', { network: chain?.name ?? '' })}
         </Text>
-        <div style={{ textAlign: 'center' }}>
-          <Image width={184} height={140} src="/images/decorations/3d-pan-bunny.png" alt="check your network" />
-        </div>
         <Message variant="warning" icon={false} p="8px 12px">
           <MessageText>
             <FlexGap gap="12px">

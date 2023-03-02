@@ -11,7 +11,6 @@ export const mobileFooterHeight = 73;
 export const ModalHeader = styled.div<{ background?: string }>`
   align-items: center;
   background: transparent;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
   display: flex;
   padding: 12px 24px;
 
