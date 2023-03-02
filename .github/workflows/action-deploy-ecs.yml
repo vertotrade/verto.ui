@@ -34,6 +34,12 @@ on:
       task_execution_role_arn:
         required: true
         type: string
+      container_definitions_image:
+        required: true
+        type: string
+      family:
+        required: true
+        type: string
     secrets:
       aws_access_key_id:
         required: true
@@ -45,7 +51,7 @@ jobs:
     steps:
       - name: Checkout 🛎️
         # Checkout the code repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Configure AWS credentials
         id: configure-aws-credentials
@@ -74,22 +80,23 @@ jobs:
           echo "${{needs.publish.outputs.image_name}}"
 
       - name: Replace task definition values
-        # Replace the values
-        id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: ${{ inputs.task_definition }}
-          container-name: ${{ inputs.container_name }}
-          # Retreive from step above(get-img)
-          image: ${{ steps.get-img.outputs.image }}
-          environment-variables: |
-            APP_ENV=${{ inputs.env }}
+        shell: bash
+        run: |
+            export APP_ENV=${{ inputs.env }}
+            export FAMILY=${{ inputs.family }}
+            export TASK_ROLE_ARN=${{ inputs.task_role_arn }}
+            export EXECUTION_ROLE_ARN=${{ inputs.task_execution_role_arn }}
+            export CONTAINER_DEFINITIONS_IMAGE=${{ inputs.container_definitions_image }}
+            export AWS_LOGS_GROUP=${{ inputs.aws_log_group }}
+            export AWS_LOGS_REGION=${{ inputs.aws_region }}
+            envsubst < ${{ inputs.task_definition }} > taskdefinition.json
+            cat taskdefinition.json
 
       - name: Deploy Amazon ECS task definition
         # Deploy to ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          task-definition: ${{ inputs.task_definition }}
+          task-definition: taskdefinition.json
           service: ${{ inputs.service }}
           cluster: ${{ inputs.cluster }}
           wait-for-service-stability: true

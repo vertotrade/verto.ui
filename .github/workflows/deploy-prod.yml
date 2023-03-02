@@ -7,7 +7,7 @@ concurrency:
 
 jobs:
   # Job to install dependencies and run lint checks
-  install-lint:
+  install-and-lint:
     uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
 
   # Job to build the UI/Next.js
@@ -34,8 +34,8 @@ jobs:
       build_number: ${{ github.run_id }}
       ecr_repo: verto-prod-ui-nginx
     secrets:
-      aws_access_key_id: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.VERTO_AWS_SECRET_ACCESS_KEY }}
 
   # This job deploys the backend using AWS ECS
   be-deploy-prod:
@@ -45,16 +45,19 @@ jobs:
     with:
       env: prod
       task_definition: ./apps/web/task-definition.json
+      family: verto-prod-ui-nginx
+      task_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role
+      task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
+      container_name: nginx
+      container_definitions_image: 073696056884.dkr.ecr.us-east-1.amazonaws.com/verto-prod-ui-nginx:latest
+      aws_log_group: /verto/ecs/prod/ui-nginx
       aws_region: us-east-1
       ecr_repo: verto-prod-ui-nginx
       service: verto-prod-ui-nginx
       cluster: verto-prod-ui-ecs-fargate
-      aws_log_group: /verto/ecs/prod/ui-nginx
-      task_role_arn: arn:aws:iam::517696922803:role/dropmint-prod-ecs-task-role
-      task_execution_role_arn: arn:aws:iam::517696922803:role/dropmint-prod-ecs-task-execution-role
     secrets:
-      aws_access_key_id: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.VERTO_AWS_SECRET_ACCESS_KEY }}
 
   # This job deploys to teh assets bucket of the project
   fe-deploy-prod:
@@ -68,7 +71,7 @@ jobs:
       type: main
       aws_region: us-east-1
     secrets:
-      aws_access_key_id: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.VERTO_AWS_SECRET_ACCESS_KEY }}
       asset_bucket: verto-prod-assets
-      cloudfront_id: ${{ secrets.PROD_CLOUDFRONT_ID }}
+      cloudfront_id: ${{ secrets.VERTO_CLOUDFRONT_ID }}

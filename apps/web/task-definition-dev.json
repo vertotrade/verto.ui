@@ -1,15 +1,15 @@
 {
-  "family": "${FAMILY}",
-  "taskRoleArn": "${TASK_ROLE_ARN}",
-  "executionRoleArn": "${EXECUTION_ROLE_ARN}",
+  "family": "verto-dev-ui-nginx",
+  "taskRoleArn": "arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role",
+  "executionRoleArn": "arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
   "memory": "1024",
   "containerDefinitions": [
     {
-      "name":  "nginx",
-      "image": "${CONTAINER_DEFINITIONS_IMAGE}",
+      "name": "nginx",
+      "image": "073696056884.dkr.ecr.us-east-1.amazonaws.com/verto-dev-ui-nginx:latest",
       "portMappings": [
         {
           "containerPort": 3000,
@@ -27,9 +27,9 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "${AWS_LOGS_GROUP}",
-          "awslogs-region": "${AWS_LOGS_REGION}",
-          "awslogs-stream-prefix": "${APP_ENV}"
+          "awslogs-group": "/verto/ecs/dev/ui-nginx",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "dev"
         }
       }
     }

@@ -1,0 +1,141 @@
+name: Deploys to Dev and Prod
+on:
+  # Trigger the workflow on push to the main branch
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types: [dev]
+  # Trigger the workflow on workflow dispatch
+  workflow_dispatch:
+# Environment variables required for deployment
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: verto-dev-ui-nginx
+  ECS_SERVICE: verto-dev-ui-nginx
+  ECS_CLUSTER: verto-dev-ui-ecs-fargate
+  ECS_TASK_DEFINITION: ./apps/web/task-definition.json
+  CONTAINER_NAME: nginx
+  ASSETS_BUCKET: verto-dev-assets
+  # Concurrency for the workflow
+concurrency:
+  group: dev
+  cancel-in-progress: true
+
+jobs:
+  # Job to install dependencies and run lint checks
+  install-and-lint:
+    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
+
+  # Job to build the UI/Next.js
+  build:
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
+    needs: [install-and-lint]
+    # Passes the environment variable "env" with value "dev" to the action
+    with:
+      env: dev
+
+  # Job to build the backend/Docker
+  be-build:
+    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@main
+    needs: [build]
+    with:
+      ecr_repo: verto-dev-ui-nginx
+
+  # Job to publish the built backend/Docker image to ECR
+  be-publish-dev:
+    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@main
+    needs: [be-build]
+    # Passes the environment variables "aws_region", "build_number", and "ecr_repo" to the action
+    with:
+      aws_region: us-east-1
+      build_number: ${{ github.run_id }}
+      ecr_repo: verto-dev-ui-nginx
+      # Secrets required
+    secrets:
+      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+
+  # This job deploys the backend using AWS ECS
+  be-deploy-dev:
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@main
+    needs: [be-publish-dev]
+    # The following inputs are passed to the AWS ECS deployment action
+    with:
+      env: dev
+      task_definition: ./apps/web/task-definition.json
+      family: verto-dev-ui-nginx
+      task_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role
+      task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
+      container_name: nginx
+      container_definitions_image: 073696056884.dkr.ecr.us-east-1.amazonaws.com/verto-dev-ui-nginx:latest
+      aws_log_group: /verto/ecs/dev/ui-nginx
+      aws_region: us-east-1
+      ecr_repo: verto-dev-ui-nginx
+      service: verto-dev-ui-nginx
+      cluster: verto-dev-ui-ecs-fargate
+    secrets:
+      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+
+  # This job deploys to teh assets bucket of the project
+  fe-deploy-dev:
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@main
+    # This job needs the frontend environment to be built
+    # Will run simunteniously with be-build
+    needs: [build]
+    with:
+      env: dev
+      type: main
+      aws_region: us-east-1
+    secrets:
+      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+      asset_bucket: verto-dev-assets
+
+  # Prod deployments
+  pre-prod-push-check:
+    runs-on: ubuntu-latest
+    needs: [be-deploy-dev, fe-deploy-dev]
+    environment: provision.prod
+    steps:
+      - name: Pre Prod push check
+        run: echo "Review to deploy to Prod"
+
+  # This job deploys the backend using AWS ECS
+  be-deploy-prod:
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@main
+    needs: [pre-prod-push-check]
+    # The following inputs are passed to the AWS ECS deployment action
+    with:
+      env: prod
+      task_definition: ./apps/web/task-definition.json
+      family: verto-prod-ui-nginx
+      task_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role
+      task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
+      container_name: nginx
+      container_definitions_image: 073696056884.dkr.ecr.us-east-1.amazonaws.com/verto-prod-ui-nginx:latest
+      aws_log_group: /verto/ecs/prod/ui-nginx
+      aws_region: us-east-1
+      ecr_repo: verto-prod-ui-nginx
+      service: verto-prod-ui-nginx
+      cluster: verto-prod-ui-ecs-fargate
+    secrets:
+      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+
+  # This job deploys to teh assets bucket of the project
+  fe-deploy-prod:
+    uses:
+      vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@main
+      # This job needs the frontend environment to be built
+      # Will run simunteniously with be-build
+    needs: [pre-prod-push-check]
+    with:
+      env: prod
+      type: main
+      aws_region: us-east-1
+    secrets:
+      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+      asset_bucket: verto-prod-assets

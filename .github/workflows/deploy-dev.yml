@@ -1,9 +1,5 @@
 name: Deploys to Dev
 on:
-  # Trigger the workflow on push to the main branch
-  push:
-    branches:
-      - main
   repository_dispatch:
     types:
       [dev]
@@ -15,7 +11,7 @@ env:
   ECR_REPOSITORY: verto-dev-ui-nginx
   ECS_SERVICE: verto-dev-ui-nginx
   ECS_CLUSTER: verto-dev-ui-ecs-fargate
-  ECS_TASK_DEFINITION: ./apps/web/task-definition.json
+  ECS_TASK_DEFINITION: ./apps/web/task-definition-dev.json
   CONTAINER_NAME: nginx
   ASSETS_BUCKET: verto-dev-assets
   # Concurrency for the workflow
@@ -54,8 +50,8 @@ jobs:
       ecr_repo: verto-dev-ui-nginx
       # Secrets required
     secrets:
-      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.VERTO_AWS_SECRET_ACCESS_KEY }}
 
   # This job deploys the backend using AWS ECS
   be-deploy-dev:
@@ -64,7 +60,7 @@ jobs:
     # The following inputs are passed to the AWS ECS deployment action
     with:
       env: dev
-      task_definition: ./apps/web/task-definition.json
+      task_definition: ./apps/web/task-definition-dev.json
       aws_region: us-east-1
       ecr_repo: verto-dev-ui-nginx
       service: verto-dev-ui-nginx
@@ -74,8 +70,8 @@ jobs:
       task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
       container_name: nginx
     secrets:
-      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.VERTO_AWS_SECRET_ACCESS_KEY }}
 
   # This job deploys to teh assets bucket of the project
   fe-deploy-dev:
@@ -88,6 +84,6 @@ jobs:
       type: main
       aws_region: us-east-1
     secrets:
-      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.VERTO_AWS_SECRET_ACCESS_KEY }}
       asset_bucket: verto-dev-assets
