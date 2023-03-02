@@ -7,7 +7,7 @@ concurrency:
 
 jobs:
   # Job to install dependencies and run lint checks
-  install-lint:
+  install-and-lint:
     uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
 
   # Job to build the UI/Next.js
