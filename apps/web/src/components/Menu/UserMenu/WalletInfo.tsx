@@ -106,7 +106,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           <Flex bg={COLORS.BNB} borderRadius="16px" pl="4px" pr="8px" py="2px">
             <ChainLogo chainId={DEFAULT_CHAIN_ID} />
             <Text color="white" ml="4px">
-              BNB Smart Chain
+              Rebus Chain
             </Text>
           </Flex>
           <LinkExternal isBscScan href={getBlockExploreLink(account, 'address', DEFAULT_CHAIN_ID)}>
@@ -114,7 +114,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           </LinkExternal>
         </Flex>
         <Flex alignItems="center" justifyContent="space-between">
-          <Text color="textSubtle">BNB {t('Balance')}</Text>
+          <Text color="textSubtle">Rebus {t('Balance')}</Text>
           {!rebusBalance.isFetched ? (
             <Skeleton height="22px" width="60px" />
           ) : (
@@ -123,7 +123,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
         </Flex>
         {wRebusBalance.gt(0) && (
           <Flex alignItems="center" justifyContent="space-between">
-            <Text color="textSubtle">WBNB {t('Balance')}</Text>
+            <Text color="textSubtle">WRebus {t('Balance')}</Text>
             {wRebusFetchStatus !== FetchStatus.Fetched ? (
               <Skeleton height="22px" width="60px" />
             ) : (
