@@ -1,9 +1,6 @@
 name: Deploys to Prod
 on:
   workflow_dispatch:
-    push:
-    branches:
-      - DEV-513 
 concurrency:
   group: prod_environment
   cancel-in-progress: false
