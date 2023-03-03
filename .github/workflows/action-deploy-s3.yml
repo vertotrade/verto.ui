@@ -87,5 +87,5 @@ jobs:
           aws_access_key_id: ${{ secrets.aws_access_key_id }}
           aws_secret_access_key: ${{ secrets.aws_secret_access_key }}
           source: ./build
-          dest: s3://${{ inputs.asset_bucket }}/${{ github.ref_name }}
+          dest: s3://${{ secrets.asset_bucket }}/${{ github.ref_name }}
           flags: --recursive
