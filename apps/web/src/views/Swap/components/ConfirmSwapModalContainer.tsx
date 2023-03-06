@@ -5,7 +5,7 @@ const ConfirmSwapModalContainer = ({ children, handleDismiss }) => {
   const { t } = useTranslation()
 
   return (
-    <Modal title={t('Confirm Swap')} headerBackground="gradientCardHeader" onDismiss={handleDismiss}>
+    <Modal title={t('Confirm Swap')} headerBackground="backgroundAlt" onDismiss={handleDismiss}>
       {children}
     </Modal>
   )
