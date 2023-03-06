@@ -9,7 +9,7 @@ export const light: CardTheme = {
   boxShadowSuccess: vars.shadows.success,
   boxShadowWarning: vars.shadows.warning,
   cardHeaderBackground: {
-    default: lightColors.gradientCardHeader,
+    default: lightColors.backgroundAlt,
     blue: lightColors.gradientBlue,
     bubblegum: lightColors.gradientBubblegum,
     violet: lightColors.gradientViolet,
@@ -24,7 +24,7 @@ export const dark: CardTheme = {
   boxShadowSuccess: vars.shadows.success,
   boxShadowWarning: vars.shadows.warning,
   cardHeaderBackground: {
-    default: darkColors.gradientCardHeader,
+    default: darkColors.backgroundAlt,
     blue: darkColors.gradientBlue,
     bubblegum: lightColors.gradientBubblegum,
     violet: darkColors.gradientViolet,

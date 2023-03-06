@@ -76,7 +76,7 @@ const SwapWarningModal: React.FC<React.PropsWithChildren<SwapWarningModalProps>>
 
   return (
     <StyledModalContainer $minWidth="280px">
-      <ModalHeader background={theme.colors.gradientCardHeader}>
+      <ModalHeader background={theme.colors.backgroundAlt}>
         <Heading p="12px 24px">{t('Notice for trading %symbol%', { symbol: SWAP_WARNING.symbol })}</Heading>
       </ModalHeader>
       <ModalBody p="24px">

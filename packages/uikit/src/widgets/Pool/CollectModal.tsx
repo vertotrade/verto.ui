@@ -38,7 +38,7 @@ export function CollectModal({
     <Modal
       title={`${earningTokenSymbol} ${t("Harvest")}`}
       onDismiss={onDismiss}
-      headerBackground={getThemeValue(theme, "colors.gradientCardHeader")}
+      headerBackground={getThemeValue(theme, "colors.backgroundAlt")}
     >
       <Flex justifyContent="space-between" alignItems="center" mb="8px">
         <Text>{t("Harvesting")}:</Text>

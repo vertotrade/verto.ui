@@ -175,7 +175,7 @@ export const DetailLimitOrderModal: React.FC<React.PropsWithChildren<DetailLimit
   return (
     <Modal
       title={t('Open Order Details')}
-      headerBackground={theme.colors.gradientCardHeader}
+      headerBackground={theme.colors.backgroundAlt}
       style={{ width: isMobile ? '100%' : '436px' }}
       onDismiss={onDismiss}>
       {attemptingTxn ? (

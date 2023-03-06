@@ -123,7 +123,7 @@ const AddAmountModal: React.FC<React.PropsWithChildren<AddAmountModalProps>> = (
 
   return (
     <RoiCalculatorModalProvider lockedAmount={lockedAmount}>
-      <Modal title={t('Add CAKE')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
+      <Modal title={t('Add CAKE')} onDismiss={onDismiss} headerBackground={theme.colors.backgroundAlt}>
         <Box mb="16px">
           <BalanceField
             stakingAddress={stakingToken.address}
