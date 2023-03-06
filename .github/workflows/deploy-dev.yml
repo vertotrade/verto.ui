@@ -1,9 +1,9 @@
 name: Deploys to Dev
 on:
   # Trigger the workflow on push to the main branch
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   repository_dispatch:
     types:
       [dev]
