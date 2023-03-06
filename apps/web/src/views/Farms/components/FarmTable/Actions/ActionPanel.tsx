@@ -15,12 +15,10 @@ import { getBlockExploreLink } from 'utils'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { FarmWithStakedValue } from '@verto/farms'
 
-import BoostedAction from '../../YieldBooster/components/BoostedAction'
 import { YieldBoosterStateContext } from '../../YieldBooster/components/ProxyFarmContainer'
 import Apr, { AprProps } from '../Apr'
 import { HarvestAction, HarvestActionContainer, ProxyHarvestActionContainer } from './HarvestAction'
 import StakedAction, { ProxyStakedContainer, StakedContainer } from './StakedAction'
-import { ActionContainer as ActionContainerSection, ActionContent, ActionTitles } from './styles'
 
 const { Multiplier, Liquidity } = FarmUI.FarmTable
 
@@ -144,7 +142,6 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
   })
   const { lpAddress } = farm
   const bsc = getBlockExploreLink(lpAddress, 'address', chainId)
-  const { stakedBalance, tokenBalance, proxy } = farm.userData
 
   const infoUrl = useMemo(() => {
     if (farm.isStable) {
@@ -207,30 +204,6 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
           <HarvestActionContainer {...farm} userDataReady={userDataReady}>
             {props => <HarvestAction {...props} />}
           </HarvestActionContainer>
-        )}
-        {farm?.boosted && (
-          <ActionContainerSection style={{ minHeight: 124.5 }}>
-            <BoostedAction
-              title={status => (
-                <ActionTitles>
-                  <Text mr="3px" bold textTransform="uppercase" color="textSubtle" fontSize="12px">
-                    {t('Yield Booster')}
-                  </Text>
-                  <Text bold textTransform="uppercase" color="secondary" fontSize="12px">
-                    {status}
-                  </Text>
-                </ActionTitles>
-              )}
-              desc={actionBtn => <ActionContent>{actionBtn}</ActionContent>}
-              farmPid={farm?.pid}
-              lpTotalSupply={farm?.lpTotalSupply}
-              userBalanceInFarm={
-                stakedBalance.plus(tokenBalance).gt(0)
-                  ? stakedBalance.plus(tokenBalance)
-                  : proxy.stakedBalance.plus(proxy.tokenBalance)
-              }
-            />
-          </ActionContainerSection>
         )}
         {shouldUseProxyFarm ? (
           <ProxyStakedContainer {...proxyFarm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
