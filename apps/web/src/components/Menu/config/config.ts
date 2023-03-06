@@ -3,12 +3,12 @@ import {
   DropdownMenuItemType,
   // TrophyIcon,
   // TrophyFillIcon,
-  // NftIcon,
-  // NftFillIcon,
+  NftIcon,
+  NftFillIcon,
   DropdownMenuItems,
 } from '@verto/uikit'
 import { ContextApi } from '@verto/localization'
-// import { nftsBaseUrl } from 'views/Nft/market/constants'
+import { nftsBaseUrl } from 'views/Nft/market/constants'
 // import { getPerpetualUrl } from 'utils/getPerpetualUrl'
 import { SUPPORT_REBUS } from 'config/constants/supportChains'
 import { lotteryFeatureFlagRequest } from 'components/Menu/utils'
@@ -119,28 +119,28 @@ const config: (
         // },
       ],
     },
-    // {
-    //   label: t('NFT'),
-    //   href: `${nftsBaseUrl}`,
-    //   icon: NftIcon,
-    //   fillIcon: NftFillIcon,
-    //   supportChainIds: SUPPORT_ONLY_BSC,
-    //   image: '/images/decorations/nft.png',
-    //   items: [
-    //     {
-    //       label: t('Overview'),
-    //       href: `${nftsBaseUrl}`,
-    //     },
-    //     {
-    //       label: t('Collections'),
-    //       href: `${nftsBaseUrl}/collections`,
-    //     },
-    //     {
-    //       label: t('Activity'),
-    //       href: `${nftsBaseUrl}/activity`,
-    //     },
-    //   ],
-    // },
+    {
+      label: t('NFT'),
+      href: `${nftsBaseUrl}`,
+      icon: NftIcon,
+      fillIcon: NftFillIcon,
+      supportChainIds: SUPPORT_REBUS,
+      image: '/images/decorations/nft.png',
+      items: [
+        {
+          label: t('Overview'),
+          href: `${nftsBaseUrl}`,
+        },
+        {
+          label: t('Collections'),
+          href: `${nftsBaseUrl}/collections`,
+        },
+        {
+          label: t('Activity'),
+          href: `${nftsBaseUrl}/activity`,
+        },
+      ],
+    },
     // {
     //   label: t('Info'),
     //   href: '/info',
