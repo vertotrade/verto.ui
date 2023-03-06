@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { isAddress } from 'utils'
 import { useAppDispatch } from 'state'
-import { Box, Button, Flex, Table, Text, Th, useMatchBreakpoints, PaginationButton } from '@verto/uikit'
+import { Box, Button, Card, Flex, Table, Text, Th, useMatchBreakpoints, PaginationButton } from '@verto/uikit'
 import { getCollectionActivity } from 'state/nftMarket/helpers'
 import Container from 'components/Layout/Container'
 import TableLoader from 'components/TableLoader'
@@ -11,11 +11,13 @@ import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
 import useTheme from 'hooks/useTheme'
 import { useLastUpdated } from '@verto/hooks'
 import { useGetNftActivityFilters } from 'state/nftMarket/hooks'
+import styled from 'styled-components'
 import NoNftsImage from '../components/Activity/NoNftsImage'
 import ActivityFilters from './ActivityFilters'
 import ActivityRow from '../components/Activity/ActivityRow'
 import { sortActivity } from './utils/sortActivity'
 import { fetchActivityNftMetadata } from './utils/fetchActivityNftMetadata'
+import { GradientContainer } from '../../../../components/shared/styled'
 
 const MAX_PER_PAGE = 8
 
@@ -24,6 +26,19 @@ const MAX_PER_QUERY = 100
 interface ActivityHistoryProps {
   collection?: Collection
 }
+
+const ScrollableContainer = styled(Container)`
+  overflow-x: auto;
+  padding-left: 0;
+  padding-right: 0;
+
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb {
+    height: 5px;
+    background: ${({ theme }) => theme.colors.tertiary};
+    border-radius: 50px;
+  }
+`
 
 const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> = ({ collection }) => {
   const dispatch = useAppDispatch()
@@ -117,7 +132,7 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
     activityData.length === 0 && nftMetadata.length === 0 && activitiesSlice.length === 0 && !isLoading
 
   const pagination = marketHistoryNotFound ? null : (
-    <Container>
+    <Container px="0">
       <Flex
         borderTop={`1px ${theme.colors.cardBorder} solid`}
         pt="24px"
@@ -130,79 +145,94 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
   )
 
   return (
-    <Box py="32px">
-      <Container px={[0, null, '24px']}>
-        <Flex
-          style={{ gap: '16px', padding: '0 16px' }}
-          alignItems={[null, null, 'center']}
-          flexDirection={['column', 'column', 'row']}
-          flexWrap={isMd ? 'wrap' : 'nowrap'}>
-          <ActivityFilters address={collection?.address || ''} nftActivityFilters={nftActivityFilters} />
-          <Button
-            scale="sm"
-            disabled={isLoading}
-            onClick={() => {
-              refresh()
-            }}
-            {...(isMd && { width: '100%' })}>
-            {t('Refresh')}
-          </Button>
-        </Flex>
-      </Container>
-      <Container style={{ overflowX: 'auto' }}>
-        {marketHistoryNotFound ? (
-          <Flex p="24px" flexDirection="column" alignItems="center">
-            <NoNftsImage />
-            <Text pt="8px" bold>
-              {t('No NFT market history found')}
-            </Text>
+    <>
+      <Box py="24px">
+        <Container px={[0, null, '24px']}>
+          <Flex
+            style={{ gap: '16px', padding: '0 16px' }}
+            alignItems={[null, null, 'center']}
+            flexDirection={['column', 'column', 'row']}
+            flexWrap={isMd ? 'wrap' : 'nowrap'}>
+            <ActivityFilters address={collection?.address || ''} nftActivityFilters={nftActivityFilters} />
+            <Button
+              scale="sm"
+              disabled={isLoading}
+              variant="vertoCustom"
+              onClick={() => {
+                refresh()
+              }}
+              {...(isMd && { width: '100%' })}>
+              {t('Refresh')}
+            </Button>
           </Flex>
-        ) : (
-          <>
-            <Table>
-              <thead>
-                <tr>
-                  <Th textAlign={['center', null, 'left']}> {t('Item')}</Th>
-                  <Th textAlign="right"> {t('Event')}</Th>
-                  {isXs || isSm ? null : (
-                    <>
-                      <Th textAlign="right"> {t('Price')}</Th>
-                      <Th textAlign="center"> {t('From')}</Th>
-                      <Th textAlign="center"> {t('To')}</Th>
-                    </>
-                  )}
-                  <Th textAlign="center"> {t('Date')}</Th>
-                  {isXs || isSm ? null : <Th />}
-                </tr>
-              </thead>
+        </Container>
+      </Box>
+      <GradientContainer>
+        <Card>
+          <Box py="16px" style={{ border: '1px solid var(--colors-cardBorder)', borderRadius: '30px' }}>
+            <ScrollableContainer>
+              {marketHistoryNotFound ? (
+                <Flex p="24px" flexDirection="column" alignItems="center">
+                  <NoNftsImage />
+                  <Text pt="8px" bold>
+                    {t('No NFT market history found')}
+                  </Text>
+                </Flex>
+              ) : (
+                <>
+                  <Table>
+                    <thead>
+                      <tr>
+                        <Th textAlign="center" style={{ paddingLeft: '32px' }}>
+                          {' '}
+                          {t('Item')}
+                        </Th>
+                        <Th textAlign="right"> {t('Event')}</Th>
+                        {isXs || isSm ? null : (
+                          <>
+                            <Th textAlign="right"> {t('Price')}</Th>
+                            <Th textAlign="center"> {t('From')}</Th>
+                            <Th textAlign="center"> {t('To')}</Th>
+                          </>
+                        )}
+                        <Th textAlign="center" style={{ paddingRight: isXs || isSm ? '16px' : '32px' }}>
+                          {' '}
+                          {t('Date')}
+                        </Th>
+                        {isXs || isSm ? null : <Th style={{ paddingRight: '32px' }} />}
+                      </tr>
+                    </thead>
 
-              <tbody>
-                {!isInitialized ? (
-                  <TableLoader />
-                ) : (
-                  activitiesSlice.map(activity => {
-                    const nftMeta = nftMetadata.find(
-                      metaNft =>
-                        metaNft.tokenId === activity.nft.tokenId &&
-                        isAddress(metaNft.collectionAddress) === isAddress(activity.nft?.collection.id),
-                    )
-                    return (
-                      <ActivityRow
-                        key={`${activity.marketEvent}#${activity.nft.tokenId}#${activity.timestamp}#${activity.tx}`}
-                        activity={activity}
-                        nft={nftMeta}
-                        bnbBusdPrice={bnbBusdPrice}
-                      />
-                    )
-                  })
-                )}
-              </tbody>
-            </Table>
-          </>
-        )}
-      </Container>
-      {pagination}
-    </Box>
+                    <tbody>
+                      {!isInitialized ? (
+                        <TableLoader />
+                      ) : (
+                        activitiesSlice.map(activity => {
+                          const nftMeta = nftMetadata.find(
+                            metaNft =>
+                              metaNft.tokenId === activity.nft.tokenId &&
+                              isAddress(metaNft.collectionAddress) === isAddress(activity.nft?.collection.id),
+                          )
+                          return (
+                            <ActivityRow
+                              key={`${activity.marketEvent}#${activity.nft.tokenId}#${activity.timestamp}#${activity.tx}`}
+                              activity={activity}
+                              nft={nftMeta}
+                              bnbBusdPrice={bnbBusdPrice}
+                            />
+                          )
+                        })
+                      )}
+                    </tbody>
+                  </Table>
+                </>
+              )}
+            </ScrollableContainer>
+            {pagination}
+          </Box>
+        </Card>
+      </GradientContainer>
+    </>
   )
 }
 

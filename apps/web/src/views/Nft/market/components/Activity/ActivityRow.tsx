@@ -79,7 +79,8 @@ const ActivityRow: React.FC<React.PropsWithChildren<ActivityRowProps>> = ({
             onClick: event => {
               event.stopPropagation()
             },
-          })}>
+          })}
+          style={{ paddingLeft: '32px' }}>
           <Flex justifyContent="flex-start" alignItems="center" flexDirection={['column', null, 'row']}>
             {!nft ? (
               <Skeleton height={[138, null, 64]} width={[80, null, 249]} />
@@ -145,7 +146,7 @@ const ActivityRow: React.FC<React.PropsWithChildren<ActivityRowProps>> = ({
           )}
         </>
       )}
-      <Td>
+      <Td style={{ paddingRight: isXs || isSm ? '32px' : '16px' }}>
         <Flex justifyContent="center">
           <Text textAlign="center" fontSize={isXs || isSm ? '12px' : '16px'}>
             {localeTimestamp}
@@ -153,7 +154,7 @@ const ActivityRow: React.FC<React.PropsWithChildren<ActivityRowProps>> = ({
         </Flex>
       </Td>
       {isXs || isSm ? null : (
-        <Td>
+        <Td style={{ paddingRight: '32px' }}>
           <IconButton as={Link} external href={getBlockExploreLink(activity.tx, 'transaction', chainId)}>
             <BscScanIcon color="textSubtle" width="18px" />
           </IconButton>

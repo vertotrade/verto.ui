@@ -114,7 +114,7 @@ export const ListCollectionFilter: React.FC<React.PropsWithChildren<ListCollecti
           component={
             <TriggerButton
               onClick={handleMenuClick}
-              variant={isAnyCollectionSelected ? 'subtle' : 'light'}
+              variant={isAnyCollectionSelected ? 'primary' : 'vertoCustom'}
               scale="sm"
               hasItem={isAnyCollectionSelected}>
               {t('Collection')}
@@ -174,7 +174,10 @@ export const ListCollectionFilter: React.FC<React.PropsWithChildren<ListCollecti
         </InlineMenu>
       </Box>
       {isAnyCollectionSelected && (
-        <CloseButton variant={isAnyCollectionSelected ? 'subtle' : 'light'} scale="sm" onClick={handleClearFilter}>
+        <CloseButton
+          variant={isAnyCollectionSelected ? 'primary' : 'vertoCustom'}
+          scale="sm"
+          onClick={handleClearFilter}>
           <CloseIcon color="currentColor" width="18px" />
         </CloseButton>
       )}
