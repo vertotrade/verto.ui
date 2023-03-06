@@ -34,7 +34,7 @@ const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> =
     isAddress(nft.collectionAddress) === pancakeBunniesAddress ? nft.attributes[0].value : nft.tokenId
 
   return (
-    <StyledModal title={t('Details')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
+    <StyledModal title={t('Details')} onDismiss={onDismiss} headerBackground={theme.colors.backgroundAlt}>
       <Flex flexDirection="column" maxWidth="420px">
         <Flex p="16px">
           <RoundedImage src={nft.image.thumbnail} height={68} width={68} mr="16px" />

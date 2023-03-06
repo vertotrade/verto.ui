@@ -23,7 +23,7 @@ const NotEnoughTokensModal: React.FC<React.PropsWithChildren<NotEnoughTokensModa
     <Modal
       title={t('%symbol% required', { symbol: tokenSymbol })}
       onDismiss={onDismiss}
-      headerBackground={theme.colors.gradientCardHeader}>
+      headerBackground={theme.colors.backgroundAlt}>
       <Text color="failure" bold>
         {t('Insufficient %symbol% balance', { symbol: tokenSymbol })}
       </Text>

@@ -95,10 +95,7 @@ const ExtendDurationModal: React.FC<ExtendDurationModal> = ({
 
   return (
     <RoiCalculatorModalProvider lockedAmount={currentLockedAmount}>
-      <Modal
-        title={modalTitle || t('Extend Lock')}
-        onDismiss={onDismiss}
-        headerBackground={theme.colors.gradientCardHeader}>
+      <Modal title={modalTitle || t('Extend Lock')} onDismiss={onDismiss} headerBackground={theme.colors.backgroundAlt}>
         <Box mb="16px">
           <StaticAmount
             stakingAddress={stakingToken.address}
