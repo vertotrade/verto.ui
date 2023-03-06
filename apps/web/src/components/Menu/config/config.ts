@@ -3,12 +3,12 @@ import {
   DropdownMenuItemType,
   // TrophyIcon,
   // TrophyFillIcon,
-  // NftIcon,
-  // NftFillIcon,
+  NftIcon,
+  NftFillIcon,
   DropdownMenuItems,
 } from '@verto/uikit'
 import { ContextApi } from '@verto/localization'
-// import { nftsBaseUrl } from 'views/Nft/market/constants'
+import { nftsBaseUrl } from 'views/Nft/market/constants'
 // import { getPerpetualUrl } from 'utils/getPerpetualUrl'
 import { SUPPORT_REBUS } from 'config/constants/supportChains'
 import { lotteryFeatureFlagRequest } from 'components/Menu/utils'
