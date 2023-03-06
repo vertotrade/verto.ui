@@ -27,6 +27,13 @@ const ScrollableFlexContainer = styled(Flex)`
     flex-wrap: wrap;
     overflow-x: revert;
   }
+
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb {
+    height: 5px;
+    background: ${({ theme }) => theme.colors.tertiary};
+    border-radius: 50px;
+  }
 `
 
 interface FiltersProps {
