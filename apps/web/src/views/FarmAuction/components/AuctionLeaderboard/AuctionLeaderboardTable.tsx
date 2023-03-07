@@ -157,7 +157,7 @@ const AuctionLeaderboardTable: React.FC<React.PropsWithChildren<{ bidders: Bidde
           textAlign="right"
           pr={[null, null, '24px']}
           py="16px">
-          {t('CAKE bid')}
+          {t('VERTO bid')}
         </Text>
         <Box />
         {/* Rows */}

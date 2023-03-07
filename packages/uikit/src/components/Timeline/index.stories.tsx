@@ -18,7 +18,7 @@ const eventsMock: Event[] = [
     status: "live",
     text: "Pre-Sale: Now Live",
     infoText:
-      "During this phase, any wallet holding a Minting Ticket can redeem their ticket to mint a Pancake Squad NFT.",
+      "During this phase, any wallet holding a Minting Ticket can redeem their ticket to mint a Verto Squad NFT.",
   },
   {
     status: "upcoming",

@@ -90,7 +90,7 @@ const AuctionDetails: React.FC<React.PropsWithChildren<AuctionDetailsProps>> = (
             {t('Place bid')}
           </Button>
           <Text color="textSubtle" small>
-            {t('If your bid is unsuccessful, you’ll be able to reclaim your CAKE after the auction.')}
+            {t('If your bid is unsuccessful, you’ll be able to reclaim your VERTO after the auction.')}
           </Text>
         </>
       )
