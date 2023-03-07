@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Container } from '@verto/uikit'
 
 export const GradientContainer = styled.div`
   display: flex;
@@ -14,5 +15,18 @@ export const GradientContainer = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
+  }
+`
+
+export const ScrollableContainer = styled(Container)`
+  overflow-x: auto;
+  padding-left: 0;
+  padding-right: 0;
+
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-thumb {
+    height: 5px;
+    background: ${({ theme }) => theme.colors.tertiary};
+    border-radius: 50px;
   }
 `
