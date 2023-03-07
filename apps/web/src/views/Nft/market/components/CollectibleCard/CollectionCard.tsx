@@ -15,16 +15,18 @@ export const CollectionAvatar = styled(ProfileAvatar)`
   left: 0;
   position: absolute;
   top: -32px;
-  border: 4px white solid;
+  border: 4px ${({ theme }) => theme.colors.backgroundAlt} solid;
 `
 
 const StyledCollectionCard = styled(Card)<{ disabled?: boolean }>`
-  border-radius: 8px;
+  border-radius: 20px;
   border-bottom-left-radius: 56px;
   transition: opacity 200ms;
+  height: 100%;
 
   & > div {
-    border-radius: 8px;
+    border: 1px solid ${({ theme }) => theme.colors.cardBorder};
+    border-radius: 20px;
     border-bottom-left-radius: 56px;
   }
 
@@ -42,7 +44,8 @@ const StyledCollectionCard = styled(Card)<{ disabled?: boolean }>`
 `
 
 const StyledImage = styled(Image)`
-  border-radius: 4px;
+  height: 115px;
+  width: 375px;
 `
 
 const CollectionCard: React.FC<React.PropsWithChildren<CollectionCardProps>> = ({
@@ -54,14 +57,16 @@ const CollectionCard: React.FC<React.PropsWithChildren<CollectionCardProps>> = (
   children,
 }) => {
   const renderBody = () => (
-    <CardBody p="8px">
+    <CardBody p="0">
       <StyledImage src={bgSrc} alt={`nft-collection-card-${collectionName}`} height={125} width={375} />
       <Flex
         position="relative"
         height="65px"
         justifyContent="center"
         alignItems="flex-end"
-        py="8px"
+        pt="8px"
+        mb="12px"
+        mx="12px"
         flexDirection="column">
         <CollectionAvatar src={avatarSrc} width={96} height={96} />
         <Heading color={disabled ? 'textDisabled' : 'body'} as="h3" mb={children ? '8px' : '0'}>
