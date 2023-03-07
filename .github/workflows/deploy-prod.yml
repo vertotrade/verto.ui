@@ -25,9 +25,6 @@ jobs:
     with:
       ecr_repo: verto-prod-ui-nginx
 
-
-
-
   # Job to publish the built backend/Docker image to ECR
   be-publish-prod:
     uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@main
