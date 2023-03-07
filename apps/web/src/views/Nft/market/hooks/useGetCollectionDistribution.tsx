@@ -31,21 +31,21 @@ export const useGetCollectionDistributionPB = () => {
 
   useEffect(() => {
     const fetchTokens = async () => {
-      setState((prevState) => ({ ...prevState, isFetching: true }))
+      setState(prevState => ({ ...prevState, isFetching: true }))
       let apiResponse: ApiResponseCollectionTokens
       try {
         apiResponse = await getNftsFromCollectionApi(pancakeBunniesAddress)
         if (!apiResponse) {
-          setState((prevState) => ({ ...prevState, isFetching: false }))
+          setState(prevState => ({ ...prevState, isFetching: false }))
           return
         }
       } catch (error) {
-        setState((prevState) => ({ ...prevState, isFetching: false }))
+        setState(prevState => ({ ...prevState, isFetching: false }))
         return
       }
       // Use on chain data to get most updated totalSupply and bunnyCount data. Nft Api Data not updated frequently.
       const tokenIds = Object.keys(apiResponse.attributesDistribution)
-      const bunnyCountCalls = tokenIds.map((tokenId) => ({
+      const bunnyCountCalls = tokenIds.map(tokenId => ({
         address: getPancakeBunniesAddress(),
         name: 'bunnyCount',
         params: [tokenId],
