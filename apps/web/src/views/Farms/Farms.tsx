@@ -33,7 +33,6 @@ import { useRouter } from 'next/router'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import Table from './components/FarmTable/FarmTable'
 import { BCakeBoosterCard } from './components/BCakeBoosterCard'
-import { FarmTypesFilter } from './components/FarmTypesFilter'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -357,14 +356,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             </Flex>
             <FarmUI.FarmTabButtons hasStakeInFinishedFarms={stakedInactiveFarms.length > 0} />
             <Flex mt="20px" ml="16px">
-              <FarmTypesFilter
-                boostedOnly={boostedOnly}
-                handleSetBoostedOnly={setBoostedOnly}
-                stableSwapOnly={stableSwapOnly}
-                handleSetStableSwapOnly={setStableSwapOnly}
-                farmTypesEnableCount={farmTypesEnableCount}
-                handleSetFarmTypesEnableCount={setFarmTypesEnableCount}
-              />
               <ToggleWrapper>
                 <Toggle
                   id="staked-only-farms"
