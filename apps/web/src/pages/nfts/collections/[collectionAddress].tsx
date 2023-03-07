@@ -9,8 +9,7 @@ const CollectionPage = ({ fallback = {} }: InferGetStaticPropsType<typeof getSta
     <SWRConfig
       value={{
         fallback,
-      }}
-    >
+      }}>
       <CollectionPageRouter />
     </SWRConfig>
   )
