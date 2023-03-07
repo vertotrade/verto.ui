@@ -30,9 +30,9 @@ interface ItemListingSettings {
 
 const fetchTokenIdsFromFilter = async (address: string, settings: ItemListingSettings) => {
   const filterObject: Record<string, NftAttribute> = settings.nftFilters
-  const attrParams = fromPairs(Object.values(filterObject).map((attr) => [attr.traitType, attr.value]))
+  const attrParams = fromPairs(Object.values(filterObject).map(attr => [attr.traitType, attr.value]))
   const attrFilters = !isEmpty(attrParams) ? await fetchNftsFiltered(address, attrParams) : null
-  return attrFilters ? Object.values(attrFilters.data).map((apiToken) => apiToken.tokenId) : null
+  return attrFilters ? Object.values(attrFilters.data).map(apiToken => apiToken.tokenId) : null
 }
 
 const fetchMarketDataNfts = async (
@@ -56,7 +56,7 @@ const fetchMarketDataNfts = async (
     page * REQUEST_SIZE,
   )
 
-  const apiRequestPromises = subgraphRes.map((marketNft) => getNftApi(collection.address, marketNft.tokenId))
+  const apiRequestPromises = subgraphRes.map(marketNft => getNftApi(collection.address, marketNft.tokenId))
   const apiResponses = await Promise.all(apiRequestPromises)
   const newNfts: NftToken[] = apiResponses.reduce((acc, apiNft) => {
     if (apiNft) {
@@ -64,7 +64,7 @@ const fetchMarketDataNfts = async (
         ...apiNft,
         collectionAddress: collection.address,
         collectionName: apiNft.collection.name,
-        marketData: subgraphRes.find((marketNft) => marketNft.tokenId === apiNft.tokenId),
+        marketData: subgraphRes.find(marketNft => marketNft.tokenId === apiNft.tokenId),
       })
     }
     return acc
@@ -83,7 +83,7 @@ const tokenIdsFromFallback = (
   const endIndex = (fallbackPage + 1) * REQUEST_SIZE
   if (tokenIdsFromFilter) {
     tokenIds = tokenIdsFromFilter
-      .filter((tokenId) => !fetchedNfts.some((fetchedNft) => fetchedNft.tokenId === tokenId))
+      .filter(tokenId => !fetchedNfts.some(fetchedNft => fetchedNft.tokenId === tokenId))
       .slice(startIndex, endIndex)
   } else {
     const totalSupply = parseInt(collection?.totalSupply)
@@ -94,7 +94,7 @@ const tokenIdsFromFallback = (
         break
       }
       // eslint-disable-next-line no-loop-func
-      if (!fetchedNfts.some((fetchedNft) => parseInt(fetchedNft.tokenId) === index)) {
+      if (!fetchedNfts.some(fetchedNft => parseInt(fetchedNft.tokenId) === index)) {
         tokenIds.push(index.toString())
         counter++
       }
@@ -141,19 +141,19 @@ const fetchAllNfts = async (
   } else {
     collectionNftsResponse = await getNftsFromCollectionApi(collection.address, REQUEST_SIZE, page + 1)
     if (collectionNftsResponse?.data) {
-      tokenIds = Object.values(collectionNftsResponse.data).map((nft) => nft.tokenId)
+      tokenIds = Object.values(collectionNftsResponse.data).map(nft => nft.tokenId)
     }
   }
 
   if (tokenIds.length) {
     const nftsMarket = await getMarketDataForTokenIds(collection.address, tokenIds)
 
-    const responsesPromises = tokenIds.map(async (id) => {
+    const responsesPromises = tokenIds.map(async id => {
       const apiMetadata: ApiSingleTokenData = collectionNftsResponse
         ? collectionNftsResponse.data[id]
         : await getNftApi(collection.address, id)
       if (apiMetadata) {
-        const marketData = nftsMarket.find((nft) => nft.tokenId === id)
+        const marketData = nftsMarket.find(nft => nft.tokenId === id)
 
         return {
           tokenId: id,
@@ -169,7 +169,7 @@ const fetchAllNfts = async (
       return null
     })
 
-    const responseNfts: NftToken[] = (await Promise.all(responsesPromises)).filter((x) => x)
+    const responseNfts: NftToken[] = (await Promise.all(responsesPromises)).filter(x => x)
     newNfts.push(...responseNfts)
     return { nfts: newNfts, fallbackMode, fallbackPage }
   }

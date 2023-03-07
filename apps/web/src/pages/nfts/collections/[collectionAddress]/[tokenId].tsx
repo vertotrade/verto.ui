@@ -10,8 +10,7 @@ const IndividualNFTPage = ({ fallback = {} }: InferGetStaticPropsType<typeof get
     <SWRConfig
       value={{
         fallback,
-      }}
-    >
+      }}>
       <IndividualNFT />
     </SWRConfig>
   )
