@@ -11,13 +11,12 @@ import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
 import useTheme from 'hooks/useTheme'
 import { useLastUpdated } from '@verto/hooks'
 import { useGetNftActivityFilters } from 'state/nftMarket/hooks'
-import styled from 'styled-components'
 import NoNftsImage from '../components/Activity/NoNftsImage'
 import ActivityFilters from './ActivityFilters'
 import ActivityRow from '../components/Activity/ActivityRow'
 import { sortActivity } from './utils/sortActivity'
 import { fetchActivityNftMetadata } from './utils/fetchActivityNftMetadata'
-import { GradientContainer } from '../../../../components/shared/styled'
+import { GradientContainer, ScrollableContainer } from '../../../../components/shared/styled'
 
 const MAX_PER_PAGE = 8
 
@@ -26,19 +25,6 @@ const MAX_PER_QUERY = 100
 interface ActivityHistoryProps {
   collection?: Collection
 }
-
-const ScrollableContainer = styled(Container)`
-  overflow-x: auto;
-  padding-left: 0;
-  padding-right: 0;
-
-  ::-webkit-scrollbar,
-  ::-webkit-scrollbar-thumb {
-    height: 5px;
-    background: ${({ theme }) => theme.colors.tertiary};
-    border-radius: 50px;
-  }
-`
 
 const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> = ({ collection }) => {
   const dispatch = useAppDispatch()
