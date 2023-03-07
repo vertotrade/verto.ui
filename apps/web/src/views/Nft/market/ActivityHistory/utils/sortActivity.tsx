@@ -22,7 +22,7 @@ export const sortActivity = ({
   }
 
   const transformTransactions = (transactionsHistory: Transaction[]): Activity[] => {
-    const transformedTransactions = transactionsHistory.map((transactionHistory) => {
+    const transformedTransactions = transactionsHistory.map(transactionHistory => {
       const marketEvent = MarketEvent.SELL
       const { timestamp, nft } = transactionHistory
       const price = transactionHistory.askPrice
@@ -36,7 +36,7 @@ export const sortActivity = ({
   }
 
   const transformAskOrders = (askOrdersHistory: AskOrder[]): Activity[] => {
-    const transformedAskOrders = askOrdersHistory.map((askOrderHistory) => {
+    const transformedAskOrders = askOrdersHistory.map(askOrderHistory => {
       const marketEvent = getAskOrderEvent(askOrderHistory.orderType)
       const price = askOrderHistory.askPrice
       const { timestamp, nft } = askOrderHistory
@@ -50,7 +50,7 @@ export const sortActivity = ({
 
   const allActivity = [...transformAskOrders(askOrders), ...transformTransactions(transactions)]
   if (allActivity.length > 0) {
-    const sortedByMostRecent = orderBy(allActivity, (activity) => parseInt(activity.timestamp, 10), 'desc')
+    const sortedByMostRecent = orderBy(allActivity, activity => parseInt(activity.timestamp, 10), 'desc')
 
     return sortedByMostRecent
   }
