@@ -25,7 +25,7 @@ const eventsMock: Event[] = [
     text: "Public-Sale:",
     altText: "1d 4h 34m",
     infoText:
-      "Public Sale: Any wallet with an active Pancake Profile can purchase up to 20 Minting Tickets, while stocks last.",
+      "Public Sale: Any wallet with an active Verto Profile can purchase up to 20 Minting Tickets, while stocks last.",
   },
   {
     status: "upcoming",
