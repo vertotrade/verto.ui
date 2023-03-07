@@ -78,7 +78,7 @@ const FAQs = () => {
               </Text>
               <Text color="textSubtle">
                 {t(
-                  'You can then commit CAKE to bid during the auction, competing against other project for one of the available farms.',
+                  'You can then Commit VERTO to bid during the auction, competing against other project for one of the available farms.',
                 )}
               </Text>
             </FoldableText>

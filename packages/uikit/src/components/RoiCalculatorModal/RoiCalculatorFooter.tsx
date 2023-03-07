@@ -84,7 +84,7 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
       </Text>
       <Text my="24px">
         {rewardCakePerSecond
-          ? t("For example, if a 1x farm received 1 CAKE per second, a 40x farm would receive 40 CAKE per second.")
+          ? t("For example, if a 1x farm received 1 VERTO per second, a 40x farm would receive 40 VERTO per second.")
           : t("For example, if a 1x farm received 1 VERTO per block, a 40x farm would receive 40 VERTO per block.")}
       </Text>
       <Text>{t("This amount is already included in all APR calculations for the farm.")}</Text>
