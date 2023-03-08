@@ -1,5 +1,5 @@
 {
-    "family": "verto-dev-ui-nginx",
+    "family": "verto-prod-ui-nginx",
     "taskRoleArn": "arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role",
     "executionRoleArn": "arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role",
     "networkMode": "awsvpc",
