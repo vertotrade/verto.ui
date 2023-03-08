@@ -123,12 +123,13 @@ export const SellingNftTag: React.FC<React.PropsWithChildren<NftTagProps>> = pro
 }
 
 export const StyledCollectibleCard = styled(Card)`
-  border-radius: 8px;
+  border-radius: 20px;
+  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   max-width: 320px;
   transition: opacity 200ms;
 
   & > div {
-    border-radius: 8px;
+    border-radius: 20px;
   }
 
   ${({ theme }) => theme.mediaQueries.lg} {

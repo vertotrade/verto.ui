@@ -23,6 +23,8 @@ const StyledCollectionCard = styled(Card)<{ disabled?: boolean }>`
   border-bottom-left-radius: 56px;
   transition: opacity 200ms;
   height: 100%;
+  max-width: 375px;
+  margin: 0 auto;
 
   & > div {
     border: 1px solid ${({ theme }) => theme.colors.cardBorder};
