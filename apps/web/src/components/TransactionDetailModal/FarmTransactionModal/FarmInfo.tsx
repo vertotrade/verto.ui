@@ -62,9 +62,9 @@ const FarmResult: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedDa
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <Flex flexDirection="column">
-      <ListStyle>{t('You have received 0.0005 BNB as a first-time BNB Smart Chain user')}</ListStyle>
+      <ListStyle>{t('You have received 0.0005 REBUS as a first-time Rebus Chain user')}</ListStyle>
       <ListStyle>
-        {t('You can swap more BNB on')}
+        {t('You can swap more REBUS on')}
         <LinkStyle href="/swap">{t('Swap.')}</LinkStyle>
       </ListStyle>
       <ListStyle>
@@ -133,7 +133,7 @@ const FarmError: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedDat
           <Text bold as="span" m="0 4px">
             {`${amount} ${lpSymbol}`}
           </Text>
-          <Text as="span">{t('did not succeed on the BNB Chain side. Please copy the')}</Text>
+          <Text as="span">{t('did not succeed on the Rebus Chain side. Please copy the')}</Text>
           <Text bold as="span" m="0 4px">
             {t('Transaction ID')}
           </Text>

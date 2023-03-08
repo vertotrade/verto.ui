@@ -39,7 +39,7 @@ const whitelist = [
   'Remove %amount% %symbol%',
   'Remove %amountA% %symbolA% and %amountB% %symbolB%',
   'Zap %amountA% %symbolA% and %amountB% %symbolB%',
-  'Zap in %amount% BNB for %symbol%',
+  'Zap in %amount% REBUS for %symbol%',
   'Zap in %amount% %symbol% for %lpSymbol%',
   'Order cancellation: %inputAmount% %inputTokenSymbol% for %outputAmount% %outputTokenSymbol%',
   'Order cancellation',
