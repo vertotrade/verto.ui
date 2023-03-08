@@ -112,7 +112,7 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
         <>
           <BCakeBlock style={{ marginTop: 24 }}>
             <Text color="secondary" bold fontSize="12px" textTransform="uppercase">
-              {t('Cake locked')}
+              {t('VERTO locked')}
             </Text>
             <BalanceInput
               inputProps={{

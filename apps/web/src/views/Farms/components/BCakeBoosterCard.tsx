@@ -160,7 +160,7 @@ const CardContent: React.FC = () => {
     return (
       <Box width="100%">
         <Text color="textSubtle" fontSize={12} bold>
-          {t('No CAKE locked')}
+          {t('No VERTO locked')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
           {t('An active fixed-term CAKE staking position is required for activating farm yield boosters.')}
