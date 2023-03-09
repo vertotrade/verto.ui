@@ -45,14 +45,16 @@ jobs:
     with:
       env: prod
       task_definition: ./apps/web/task-definition-prod.json
+      family: verto-prod-ui-nginx
+      task_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role
+      task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
+      container_name: nginx
+      container_definitions_image: 073696056884.dkr.ecr.us-east-1.amazonaws.com/verto-prod-ui-nginx:latest
+      aws_log_group: /verto/ecs/prod/ui-nginx
       aws_region: us-east-1
       ecr_repo: verto-prod-ui-nginx
       service: verto-prod-ui-nginx
       cluster: verto-prod-ui-ecs-fargate
-      aws_log_group: /verto/ecs/prod/ui-nginx
-      task_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-role
-      task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
-      container_name: nginx
     secrets:
       aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
