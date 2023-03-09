@@ -96,7 +96,6 @@ jobs:
             CONTAINER_DEFINITIONS_IMAGE=${{ inputs.container_definitions_image }}
             AWS_LOGS_GROUP=${{ inputs.aws_log_group }}
             AWS_LOGS_REGION=${{ inputs.aws_region }}
-            CONTAINER_NAME=${{ inputs.container_name }}
 
       - name: Deploy Amazon ECS task definition
         # Deploy to ECS

@@ -8,7 +8,7 @@
   "memory": "1024",
   "containerDefinitions": [
     {
-      "name": "${CONTAINER_NAME}",
+      "name":  "nginx",
       "image": "${CONTAINER_DEFINITIONS_IMAGE}",
       "portMappings": [
         {

@@ -2,7 +2,7 @@ import { TranslateFunction } from '@verto/localization'
 import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Trade anything (prd). No registration, no hassle.'),
+  headingText: t('Trade anything .. No registration, no hassle.'),
   bodyText: t('Trade any token on Rebuschain in seconds, just by connecting your wallet.'),
   reverse: false,
   primaryButton: {
