@@ -61,7 +61,7 @@ jobs:
   fe-deploy-prod:
     uses:
       vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@DEV-513
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^change^^|
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^change^^|
       # This job needs the frontend environment to be built
       # Will run simunteniously with be-build
     needs: [build]
