@@ -34,6 +34,12 @@ on:
       task_execution_role_arn:
         required: true
         type: string
+      container_definitions_image:
+        required: true
+        type: string
+      family:
+        required: true
+        type: string
     secrets:
       aws_access_key_id:
         required: true
