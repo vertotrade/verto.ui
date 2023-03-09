@@ -39,7 +39,7 @@ jobs:
 
   # This job deploys the backend using AWS ECS
   be-deploy-prod:
-    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@main
+    uses: vertotrade/verto.ui/.github/workflows/action-deploy-ecs.yml@DEV-513
     needs: [be-publish-prod]
     # The following inputs are passed to the AWS ECS deployment action
     with:
