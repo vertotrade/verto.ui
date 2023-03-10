@@ -72,3 +72,4 @@ jobs:
       aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
       asset_bucket: verto-prod-assets
+      cloudfront_id: ${{ secrets.VERTO_CLOUDFRONT_ID }}
