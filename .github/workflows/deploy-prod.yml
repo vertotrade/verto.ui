@@ -34,7 +34,7 @@ jobs:
       build_number: ${{ github.run_id }}
       ecr_repo: verto-prod-ui-nginx
     secrets:
-      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
 
   # This job deploys the backend using AWS ECS
@@ -54,14 +54,13 @@ jobs:
       task_execution_role_arn: arn:aws:iam::073696056884:role/rebus-mainnet-ecs-task-execution-role
       container_name: nginx
     secrets:
-      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
 
   # This job deploys to teh assets bucket of the project
   fe-deploy-prod:
     uses:
-      vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@DEV-513
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!^^change^^|
+      vertotrade/verto.ui/.github/workflows/action-deploy-s3.yml@main
       # This job needs the frontend environment to be built
       # Will run simunteniously with be-build
     needs: [build]
@@ -70,7 +69,6 @@ jobs:
       type: main
       aws_region: us-east-1
     secrets:
-      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_access_key_id: ${{ secrets.VERTO_AWS_ACCESS_KEY_ID }}
       aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
       asset_bucket: verto-prod-assets
-      # cloudfront_id: ${{ secrets.DEV_CLOUDFRONT_ID }}
