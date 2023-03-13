@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
-import { Text, Heading, Card, CardHeader, CardBody, Box, BoxProps } from '@verto/uikit'
+import { Text, Heading, Card, CardHeader, CardBody, Box, BoxProps, Container } from '@verto/uikit'
+import { GradientContainer } from 'components/shared/styled'
 import FoldableText from './FoldableText'
 
 interface Props extends BoxProps {
@@ -10,27 +11,31 @@ interface Props extends BoxProps {
 const SectionsWithFoldableText: React.FC<React.PropsWithChildren<Props>> = ({ header, config, ...props }) => {
   return (
     <Box maxWidth="888px" {...props}>
-      <Card>
-        <CardHeader>
-          <Heading scale="lg" color="secondary">
-            {header}
-          </Heading>
-        </CardHeader>
-        <CardBody>
-          {config.map(({ title, description }, i, { length }) => (
-            <FoldableText key={title} id={title} mb={i + 1 === length ? '' : '24px'} title={title}>
-              {description.map((desc, index) => {
-                return (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <Text key={index} color="textSubtle" as="p">
-                    {desc}
-                  </Text>
-                )
-              })}
-            </FoldableText>
-          ))}
-        </CardBody>
-      </Card>
+      <GradientContainer>
+        <Card>
+          <Container padding={['16px', '16px', '24px']}>
+            <CardHeader>
+              <Heading scale="lg" color="secondary">
+                {header}
+              </Heading>
+            </CardHeader>
+            <CardBody>
+              {config.map(({ title, description }, i, { length }) => (
+                <FoldableText key={title} id={title} mb={i + 1 === length ? '' : '16px'} title={title}>
+                  {description.map((desc, index) => {
+                    return (
+                      // eslint-disable-next-line react/no-array-index-key
+                      <Text key={index} color="textSubtle" as="p">
+                        {desc}
+                      </Text>
+                    )
+                  })}
+                </FoldableText>
+              ))}
+            </CardBody>
+          </Container>
+        </Card>
+      </GradientContainer>
     </Box>
   )
 }
