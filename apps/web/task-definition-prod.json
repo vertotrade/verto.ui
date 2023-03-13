@@ -1,7 +1,7 @@
 {
-  "family": "${FAMILY}",
-  "taskRoleArn": "${TASKROLEARN}",
-  "executionRoleArn": "${EXECUTIONROLEARN}",
+  "family": "verto-prod-ui-nginx",
+  "taskRoleArn": "${TASK_ROLE_ARN}",
+  "executionRoleArn": "${EXECUTION_ROLE_ARN}",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
@@ -9,7 +9,7 @@
   "containerDefinitions": [
     {
       "name":  "nginx",
-      "image": "${CONTAINERDEFINITIONSIMAGE}",
+      "image": "${CONTAINER_DEFINITIONS_IMAGE}",
       "portMappings": [
         {
           "containerPort": 3000,
@@ -20,16 +20,16 @@
       "environment": [
         {
           "name": "APP_ENV",
-          "value": "${APPENV}"
+          "value": "${APP_ENV}"
         }
       ],
       "essential": true,
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "${AWSLOGSGROUP}",
-          "awslogs-region": "${AWSLOGSREGION}",
-          "awslogs-stream-prefix": "${APPENV}"
+          "awslogs-group": "${AWS_LOGS_GROUP}",
+          "awslogs-region": "${AWS_LOGS_REGION}",
+          "awslogs-stream-prefix": "${APP_ENV}"
         }
       }
     }
