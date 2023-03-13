@@ -23,20 +23,20 @@ const CollectibleCardBody: React.FC<React.PropsWithChildren<CollectibleCardProps
   const { isFetching, lowestPrice } = useGetLowestPriceFromNft(nft)
 
   return (
-    <CardBody p="8px">
-      <NFTMedia as={PreviewImage} nft={nft} height={320} width={320} mb="8px" borderRadius="8px" />
-      <Flex alignItems="center" justifyContent="space-between">
+    <CardBody p="0" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <NFTMedia as={PreviewImage} nft={nft} height={320} width={320} mb="12px" />
+      <Flex alignItems="center" justifyContent="space-between" px="12px" mt="auto">
         {nft?.collectionName && (
-          <Text fontSize="12px" color="textSubtle" mb="8px">
+          <Text fontSize="12px" color="textSubtle">
             {nft?.collectionName}
           </Text>
         )}
         {nftLocation && <LocationTag nftLocation={nftLocation} />}
       </Flex>
-      <Text as="h4" fontWeight="600" mb="8px">
+      <Text as="h4" fontWeight="600" mb="12px" px="12px">
         {name}
       </Text>
-      <Box borderTop="1px solid" borderTopColor="cardBorder" pt="8px">
+      <Box borderTop="1px solid" borderTopColor="cardBorder" p="12px" mt="auto">
         {isPancakeBunny && (
           <LowestPriceMetaRow lowestPrice={lowestPrice} isFetching={isFetching} bnbBusdPrice={bnbBusdPrice} />
         )}
