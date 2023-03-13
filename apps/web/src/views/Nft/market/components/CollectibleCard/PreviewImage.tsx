@@ -8,15 +8,7 @@ interface PreviewImageProps extends BoxProps {
 }
 
 const PreviewImage: React.FC<React.PropsWithChildren<PreviewImageProps>> = ({ height = 64, width = 64, ...props }) => {
-  return (
-    <BackgroundImage
-      loadingPlaceholder={<PlaceholderImage />}
-      height={height}
-      width={width}
-      style={{ borderRadius: '8px' }}
-      {...props}
-    />
-  )
+  return <BackgroundImage loadingPlaceholder={<PlaceholderImage />} height={height} width={width} {...props} />
 }
 
 export default PreviewImage
