@@ -1,10 +1,11 @@
+import env from '@beam-australia/react-env'
 import { useContext, useCallback, useMemo } from 'react'
 import Cookie from 'js-cookie'
 import { ThemeContext as StyledThemeContext } from 'styled-components'
 import { useTheme as useNextTheme } from 'next-themes'
 
 export const COOKIE_THEME_KEY = 'theme'
-export const THEME_DOMAIN = '.pancakeswap.finance'
+export const THEME_DOMAIN = env('IS_MAINNET') === 'true' ? '.dev.vertotrade.com' : '.vertotrade.com'
 
 const useTheme = () => {
   const { resolvedTheme, setTheme } = useNextTheme()

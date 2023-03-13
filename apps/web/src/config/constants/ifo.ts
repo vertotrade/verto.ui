@@ -1,5 +1,6 @@
 import { ERC20Token, ChainId } from '@verto/sdk'
 import { bscTokens } from '@verto/tokens'
+import { BASE_URL } from 'config'
 import { CAKE_BNB_LP_MAINNET } from './lp'
 import { Ifo } from './types'
 
@@ -22,8 +23,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.squad,
     campaignId: '512000000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/0x0557149d1dc2f12f4c97b68f9d214fc52acd64aa67b29bde91e19caef30a3153',
+    articleUrl: `${BASE_URL}/voting/proposal/0x0557149d1dc2f12f4c97b68f9d214fc52acd64aa67b29bde91e19caef30a3153`,
     tokenOfferingPrice: 0.035,
     version: 3.2,
     twitterUrl: 'https://twitter.com/Superpow_Squad',
@@ -46,8 +46,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.mgp,
     campaignId: '511900000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/0x5bbaee587df5b7e9b52e2b35f35f30afa08e15ab7098c73cb2503319c8d8ce44',
+    articleUrl: `${BASE_URL}/voting/proposal/0x5bbaee587df5b7e9b52e2b35f35f30afa08e15ab7098c73cb2503319c8d8ce44`,
     tokenOfferingPrice: 0.025,
     version: 3.2,
     twitterUrl: 'https://twitter.com/magpiexyz_io',
@@ -70,8 +69,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.wmx,
     campaignId: '511800000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/0x8bef379b1f3e1f42e180d877edd3ef5b11476300f9de37196904ca4c2070b470',
+    articleUrl: `${BASE_URL}/voting/proposal/0x8bef379b1f3e1f42e180d877edd3ef5b11476300f9de37196904ca4c2070b470`,
     tokenOfferingPrice: 0.3,
     version: 3.2,
     twitterUrl: 'https://twitter.com/WombexFinance',
@@ -93,8 +91,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.krs,
     campaignId: '511700000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/bafkreicqqvgqpwtnhmlfdwz3ya3hnjm6nvgqbf3fpi4vbxmvqyv6yi3enu',
+    articleUrl: `${BASE_URL}/voting/proposal/bafkreicqqvgqpwtnhmlfdwz3ya3hnjm6nvgqbf3fpi4vbxmvqyv6yi3enu`,
     tokenOfferingPrice: 0.035,
     version: 3.2,
     twitterUrl: 'https://twitter.com/KingdomRaids',
@@ -115,8 +112,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.co,
     campaignId: '511600000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/bafkreiddual5o7vzfcwuazw3lgckis66hka4xytqkttqg2wjtea5pywohy',
+    articleUrl: `${BASE_URL}/voting/proposal/bafkreiddual5o7vzfcwuazw3lgckis66hka4xytqkttqg2wjtea5pywohy`,
     tokenOfferingPrice: 0.035,
     version: 3.2,
     twitterUrl: 'https://twitter.com/Coritecom',
@@ -139,8 +135,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.hoop,
     campaignId: '511500000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/bafkreicsc2nevwvyp7ot5ewkmujvor3bcafh372kuxzncojqbuabnpwupe',
+    articleUrl: `${BASE_URL}/voting/proposal/bafkreicsc2nevwvyp7ot5ewkmujvor3bcafh372kuxzncojqbuabnpwupe`,
     tokenOfferingPrice: 0.055,
     version: 3.2,
     twitterUrl: 'https://twitter.com/DinosChibi',
@@ -161,8 +156,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.wom,
     campaignId: '511400000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/bafkreieqv7mbzmumyftstt6l32x6okfzq4syrea7k5zbqgohhcekcvbduu',
+    articleUrl: `${BASE_URL}/voting/proposal/bafkreieqv7mbzmumyftstt6l32x6okfzq4syrea7k5zbqgohhcekcvbduu`,
     tokenOfferingPrice: 0.075,
     version: 3.2,
     twitterUrl: 'https://twitter.com/WombatExchange',
@@ -183,8 +177,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.peel,
     campaignId: '511300000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/bafkreibomj5nilvyckdro7ztmm62syt55dcfnonxs63ji6hm2ijq35lru4',
+    articleUrl: `${BASE_URL}/voting/proposal/bafkreibomj5nilvyckdro7ztmm62syt55dcfnonxs63ji6hm2ijq35lru4`,
     tokenOfferingPrice: 0.04,
     version: 3.2,
     twitterUrl: 'https://twitter.com/MetaApesGame',
@@ -206,8 +199,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.trivia,
     campaignId: '511200000',
-    articleUrl:
-      'https://pancakeswap.finance/voting/proposal/bafkreihrc2d55vrowbn2oajzs77ffv73g4hzch2e7wulnuccmbwl5u4hvq',
+    articleUrl: `${BASE_URL}/voting/proposal/bafkreihrc2d55vrowbn2oajzs77ffv73g4hzch2e7wulnuccmbwl5u4hvq`,
     tokenOfferingPrice: 0.035,
     version: 3.2,
     telegramUrl: 'https://t.me/TriviansGlobal',
@@ -230,7 +222,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.duet,
     campaignId: '511190000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmXwoYYd8rkahVbxiGKsTa4rYRRFWPxhRGAHy3hVwK3Q2z',
+    articleUrl: `${BASE_URL}/voting/proposal/QmXwoYYd8rkahVbxiGKsTa4rYRRFWPxhRGAHy3hVwK3Q2z`,
     tokenOfferingPrice: 0.3,
     version: 3.1,
     telegramUrl: 'https://t.me/duetprotocol',
@@ -252,7 +244,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.era,
     campaignId: '511180000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmTfN1SKnFidF6XCDcpga7zAf69mFfhb26Zy9b85dYskxW',
+    articleUrl: `${BASE_URL}/voting/proposal/QmTfN1SKnFidF6XCDcpga7zAf69mFfhb26Zy9b85dYskxW`,
     tokenOfferingPrice: 0.09,
     version: 3.1,
     telegramUrl: 'https://t.me/Era7_Official',
@@ -274,7 +266,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.froyo,
     campaignId: '511170000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmRhc4oC73jk4zxU4YkP1kudKHeq6qamgYA1sWoh6XJnks',
+    articleUrl: `${BASE_URL}/voting/proposal/QmRhc4oC73jk4zxU4YkP1kudKHeq6qamgYA1sWoh6XJnks`,
     tokenOfferingPrice: 0.06,
     version: 3,
     telegramUrl: 'https://t.me/froyogames',
@@ -295,7 +287,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.dpt,
     campaignId: '511160000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmQqpknHvuQwshVP259qFxfQsxiWbQ9SLMebohDeRwRzKg',
+    articleUrl: `${BASE_URL}/voting/proposal/QmQqpknHvuQwshVP259qFxfQsxiWbQ9SLMebohDeRwRzKg`,
     tokenOfferingPrice: 0.025,
     version: 3,
   },
@@ -317,7 +309,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.santos,
     campaignId: '511150000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmUqRxjwZCWeZWEdgV2vHJ6hex7jMW7i247NKFas73xc8j',
+    articleUrl: `${BASE_URL}/voting/proposal/QmUqRxjwZCWeZWEdgV2vHJ6hex7jMW7i247NKFas73xc8j`,
     tokenOfferingPrice: 2.5,
     version: 2,
   },
@@ -339,7 +331,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.porto,
     campaignId: '511140000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmaakXYpydAwCgTuSPe3R2ZNraRtkCbK6iBRqBCCdzqKEG',
+    articleUrl: `${BASE_URL}/voting/proposal/QmaakXYpydAwCgTuSPe3R2ZNraRtkCbK6iBRqBCCdzqKEG`,
     tokenOfferingPrice: 2,
     version: 2,
   },
@@ -361,7 +353,7 @@ const ifos: Ifo[] = [
     currency: bscTokens.cake,
     token: bscTokens.dar,
     campaignId: '511130000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmeJenHcbY45eQxLRebzvpNk5qSCrj2wM1t4EAMHotFoJL',
+    articleUrl: `${BASE_URL}/voting/proposal/QmeJenHcbY45eQxLRebzvpNk5qSCrj2wM1t4EAMHotFoJL`,
     tokenOfferingPrice: 0.075,
     version: 2,
   },
@@ -385,7 +377,7 @@ const ifos: Ifo[] = [
     currency: cakeBnbLpToken,
     token: bscTokens.dkt,
     campaignId: '511120000',
-    articleUrl: 'https://pancakeswap.finance/voting/proposal/QmTRWdW9a65fAkyJy1wrAJRU548fNMAZhRUDrSxzMDLmwk',
+    articleUrl: `${BASE_URL}/voting/proposal/QmTRWdW9a65fAkyJy1wrAJRU548fNMAZhRUDrSxzMDLmwk`,
     tokenOfferingPrice: 1.75,
     version: 2,
   },

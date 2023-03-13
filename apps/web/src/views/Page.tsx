@@ -21,7 +21,7 @@ const Page: React.FC<
 }) => {
   const { chainId } = useActiveChainId()
   const isBSC = chainId === ChainId.BSC
-  const externalLinkUrl = isBSC ? 'https://bridge.pancakeswap.finance/' : ''
+  const externalLinkUrl = isBSC ? 'https://bridge.vertotrade.com/' : ''
 
   return (
     <>

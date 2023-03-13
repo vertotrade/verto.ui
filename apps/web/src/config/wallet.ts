@@ -1,7 +1,7 @@
 import { WalletConfigV2 } from '@verto/ui-wallets'
-import { WalletFilledIcon } from '@verto/uikit'
-import type { ExtendEthereum } from 'global'
-import { isFirefox } from 'react-device-detect'
+// import { WalletFilledIcon } from '@verto/uikit'
+// import type { ExtendEthereum } from 'global'
+// import { isFirefox } from 'react-device-detect'
 import { metaMaskConnector, walletConnectNoQrCodeConnector } from '../utils/wagmi'
 
 export enum ConnectorNames {
@@ -41,9 +41,9 @@ const walletsConfig = ({
       icon: '/images/wallets/metamask.png',
       installed: typeof window !== 'undefined' && Boolean(window.ethereum?.isMetaMask) && metaMaskConnector.ready,
       connectorId: ConnectorNames.MetaMask,
-      deepLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
+      deepLink: `https://metamask.app.link/dapp/${window.location.host}/`,
       qrCode,
-      downloadLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
+      downloadLink: `https://metamask.app.link/dapp/${window.location.host}/`,
     },
     // {
     //   id: 'binance',
@@ -75,7 +75,7 @@ const walletsConfig = ({
     //     typeof window !== 'undefined' &&
     //     !(window.ethereum as ExtendEthereum)?.isSafePal && // SafePal has isTrust flag
     //     (Boolean(window.ethereum?.isTrust) || Boolean((window.ethereum as ExtendEthereum)?.isTrustWallet)),
-    //   deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://pancakeswap.finance/',
+    //   deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://dev.vertotrade.com/',
     //   downloadLink: {
     //     desktop: 'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph/related',
     //   },

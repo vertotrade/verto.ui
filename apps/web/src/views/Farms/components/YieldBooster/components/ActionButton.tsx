@@ -34,7 +34,7 @@ const BoosterTooltip = () => {
         `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term VERTO res pool and will be automatically updated upon user actions.`,
       )}
       <LinkExternal
-        href="https://docs.pancakeswap.finance/products/yield-farming/bcake/faq#how-are-the-bcake-multipliers-calculated"
+        href="https://docs.vertotrade.com/contact-us/business-partnerships/#can-i-get-a-larger-farm-multiplier-or-can-i-extend-my-res-pools-and-farm"
         external>
         {t('Learn More')}
       </LinkExternal>
