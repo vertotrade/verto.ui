@@ -1,7 +1,7 @@
 {
   "family": "${FAMILY}",
-  "taskRoleArn": "${TASK_ROLE_ARN}",
-  "executionRoleArn": "${EXECUTION_ROLE_ARN}",
+  "taskRoleArn": "${TASKROLEARN}",
+  "executionRoleArn": "${EXECUTIONROLEARN}",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
@@ -9,7 +9,7 @@
   "containerDefinitions": [
     {
       "name":  "nginx",
-      "image": "${CONTAINER_DEFINITIONS_IMAGE}",
+      "image": "${CONTAINERDEFINITIONSIMAGE}",
       "portMappings": [
         {
           "containerPort": 3000,
@@ -20,16 +20,16 @@
       "environment": [
         {
           "name": "APP_ENV",
-          "value": "${APP_ENV}"
+          "value": "${APPENV}"
         }
       ],
       "essential": true,
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "${AWS_LOGS_GROUP}",
-          "awslogs-region": "${AWS_LOGS_REGION}",
-          "awslogs-stream-prefix": "${APP_ENV}"
+          "awslogs-group": "${AWSLOGSGROUP}",
+          "awslogs-region": "${AWSLOGSREGION}",
+          "awslogs-stream-prefix": "${APPENV}"
         }
       }
     }
