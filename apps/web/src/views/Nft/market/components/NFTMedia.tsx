@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@verto/uikit'
+import { Box, BoxProps, Image } from '@verto/uikit'
 import { FC, useEffect, useRef } from 'react'
 import { useIntersectionObserver } from '@verto/hooks'
 import { NftToken } from 'state/nftMarket/types'
@@ -6,11 +6,18 @@ import styled from 'styled-components'
 import { useTryVideoNftMedia } from 'state/nftMarket/hooks'
 import { useAppDispatch } from 'state'
 import { useNftStorage } from 'state/nftMarket/storage'
-import { RoundedImage } from '../Collection/IndividualNFTPage/shared/styles'
 
 const StyledAspectRatio = styled(Box)`
   position: absolute;
   inset: 0;
+`
+
+export const NftMediaImage = styled(Image)`
+  height: max-content;
+  overflow: hidden;
+  & > img {
+    object-fit: contain;
+  }
 `
 
 export const AspectRatio = ({ ratio, children, ...props }) => (
@@ -62,7 +69,7 @@ const NFTMedia: FC<
   }
 
   return (
-    <RoundedImage
+    <NftMediaImage
       width={width}
       height={height}
       src={nft?.image.gif || nft?.image.thumbnail}

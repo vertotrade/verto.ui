@@ -50,7 +50,7 @@ const Newest: React.FC<React.PropsWithChildren> = () => {
         <Button
           as={NextLinkFromReactRouter}
           to={`${nftsBaseUrl}/activity/`}
-          variant="secondary"
+          variant="vertoCustom"
           scale="sm"
           endIcon={<ChevronRightIcon color="primary" />}>
           {t('View All')}
@@ -61,14 +61,15 @@ const Newest: React.FC<React.PropsWithChildren> = () => {
           gridRowGap="24px"
           gridColumnGap="16px"
           gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(4, 1fr)']}>
-          {nfts.map(nft => {
+          {nfts.map((nft, index) => {
             const isPBCollection = isAddress(nft.collectionAddress) === pancakeBunniesAddress
             const currentAskPrice =
               !isPBCollection && nft.marketData?.isTradable ? parseFloat(nft.marketData?.currentAskPrice) : undefined
             return (
               <CollectibleLinkCard
                 data-test="newest-nft-card"
-                key={nft.collectionAddress + nft.tokenId}
+                // eslint-disable-next-line react/no-array-index-key
+                key={nft.collectionAddress + nft.tokenId + index}
                 nft={nft}
                 currentAskPrice={currentAskPrice}
               />
