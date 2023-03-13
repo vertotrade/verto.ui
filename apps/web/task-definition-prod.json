@@ -1,5 +1,5 @@
 {
-  "family": "verto-prod-ui-nginx",
+  "family": "${FAMILY}",
   "taskRoleArn": "${TASK_ROLE_ARN}",
   "executionRoleArn": "${EXECUTION_ROLE_ARN}",
   "networkMode": "awsvpc",
