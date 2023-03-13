@@ -1,7 +1,9 @@
-export const PANCAKE_EXTENDED = 'https://tokens.pancakeswap.finance/pancakeswap-extended.json'
-export const COINGECKO = 'https://tokens.pancakeswap.finance/coingecko.json'
+import { BASE_URL } from 'config'
+
+export const PANCAKE_EXTENDED = `${BASE_URL}/pancakeswap-extended.json`
+export const COINGECKO = `${BASE_URL}/coingecko.json`
 export const COINGECKO_ETH = 'https://tokens.coingecko.com/uniswap/all.json'
-export const CMC = 'https://tokens.pancakeswap.finance/cmc.json'
+export const CMC = `${BASE_URL}/cmc.json`
 
 export const ETH_URLS = [COINGECKO_ETH]
 export const BSC_URLS = [PANCAKE_EXTENDED, CMC, COINGECKO]

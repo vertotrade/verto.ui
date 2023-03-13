@@ -67,7 +67,7 @@ const config: (
         // },
         // {
         //   label: t('Bridge'),
-        //   href: 'https://bridge.pancakeswap.finance/',
+        //   href: 'https://bridge.vertotrade.com/',
         //   type: DropdownMenuItemType.EXTERNAL_LINK,
         // },
       ].map(item => addMenuItemSupported(item, chainId)),
