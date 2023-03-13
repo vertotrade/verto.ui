@@ -404,7 +404,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
       const symbol = getLPSymbol(pair.token0.symbol, pair.token1.symbol, chainId)
       summary = `Zap in ${amount} BNB for ${symbol}`
       translatableSummary = {
-        text: 'Zap in %amount% BNB for %symbol%',
+        text: 'Zap in %amount% REBUS for %symbol%',
         data: { amount, symbol },
       }
       value = parsedAmounts[zapIn.swapTokenField].quotient.toString()

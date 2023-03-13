@@ -18,14 +18,14 @@ const eventsMock: Event[] = [
     status: "live",
     text: "Pre-Sale: Now Live",
     infoText:
-      "During this phase, any wallet holding a Minting Ticket can redeem their ticket to mint a Pancake Squad NFT.",
+      "During this phase, any wallet holding a Minting Ticket can redeem their ticket to mint a Verto Squad NFT.",
   },
   {
     status: "upcoming",
     text: "Public-Sale:",
     altText: "1d 4h 34m",
     infoText:
-      "Public Sale: Any wallet with an active Pancake Profile can purchase up to 20 Minting Tickets, while stocks last.",
+      "Public Sale: Any wallet with an active Verto Profile can purchase up to 20 Minting Tickets, while stocks last.",
   },
   {
     status: "upcoming",
