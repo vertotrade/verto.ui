@@ -21,7 +21,7 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
         <Button
           as={NextLinkFromReactRouter}
           to={`${nftsBaseUrl}/collections/`}
-          variant="secondary"
+          variant="vertoCustom"
           minWidth="132px"
           scale="sm"
           endIcon={<ChevronRightIcon color="primary" width="24px" />}>
