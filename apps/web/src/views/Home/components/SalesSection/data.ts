@@ -61,7 +61,7 @@ export const vertoSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
+    to: 'https://docs.vertotrade.com/tokenomics/verto/#verto',
     text: t('Learn'),
     external: true,
   },
