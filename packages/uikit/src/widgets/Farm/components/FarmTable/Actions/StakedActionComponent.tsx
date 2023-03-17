@@ -38,10 +38,10 @@ const StakedActionComponent: React.FunctionComponent<React.PropsWithChildren<Sta
         {children}
         <IconButtonWrapper>
           <IconButton mr="6px" variant="secondary" disabled={disabledMinusButton} onClick={onPresentWithdraw}>
-            <MinusIcon color="primary" width="14px" />
+            <MinusIcon color="white" width="14px" />
           </IconButton>
           <IconButton variant="secondary" disabled={disabledPlusButton} onClick={onPresentDeposit}>
-            <AddIcon color="primary" width="14px" />
+            <AddIcon color="white" width="14px" />
           </IconButton>
         </IconButtonWrapper>
       </ActionContent>

@@ -287,10 +287,10 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
     ) : (
       <IconButtonWrapper>
         <IconButton mr="6px" variant="tertiary" disabled={pendingFarm.length > 0} onClick={onPresentWithdraw}>
-          <MinusIcon color="primary" width="14px" />
+          <MinusIcon color="white" width="14px" />
         </IconButton>
         <IconButton variant="tertiary" onClick={onPresentDeposit} disabled={isStakeReady || isBloctoETH}>
-          <AddIcon color="primary" width="14px" />
+          <AddIcon color="white" width="14px" />
         </IconButton>
       </IconButtonWrapper>
     )
