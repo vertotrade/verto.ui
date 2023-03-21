@@ -354,7 +354,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             {(vaultPosition === VaultPosition.Flexible || !vaultKey) && (
               <IconButtonWrapper>
                 <IconButton variant="secondary" onClick={onUnstake} mr="6px">
-                  <MinusIcon color="primary" width="14px" />
+                  <MinusIcon color="white" width="14px" />
                 </IconButton>
                 {reachStakingLimit ? (
                   <span ref={targetRef}>
@@ -367,7 +367,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                     variant="secondary"
                     onClick={stakingTokenBalance.gt(0) ? onStake : onPresentTokenRequired}
                     disabled={isFinished}>
-                    <AddIcon color="primary" width="14px" />
+                    <AddIcon color="white" width="14px" />
                   </IconButton>
                 )}
               </IconButtonWrapper>

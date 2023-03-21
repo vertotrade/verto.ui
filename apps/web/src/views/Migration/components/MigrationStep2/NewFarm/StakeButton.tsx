@@ -167,10 +167,10 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
       return (
         <IconButtonWrapper>
           <IconButton variant="secondary" onClick={handleWithdraw} mr="6px">
-            <MinusIcon color="primary" width="14px" />
+            <MinusIcon color="white" width="14px" />
           </IconButton>
           <IconButton variant="secondary" onClick={handleDeposit}>
-            <AddIcon color="primary" width="14px" />
+            <AddIcon color="white" width="14px" />
           </IconButton>
         </IconButtonWrapper>
       )
