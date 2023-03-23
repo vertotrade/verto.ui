@@ -69,7 +69,7 @@ const FarmsPoolsRow = () => {
     <div ref={observerRef}>
       <Flex flexDirection="column" mt="24px">
         <Flex mb="24px">
-          <RowHeading text={showFarms ? t('Top Farms') : t('Top Res Pools')} />
+          <RowHeading text={showFarms ? t('Top Farms') : t('Top Minting Pools')} />
           {chainId === ChainId.BSC && (
             <IconButton
               variant="text"
