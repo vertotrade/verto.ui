@@ -5,7 +5,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'VertoTrade',
   description:
-    'The most popular AMM on BSC by user count! Earn VERTO through yield farming or win it in the Lottery, then stake it in Res Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by VertoTrade), NFTs, and more, on a platform you can trust.',
+    'The most popular AMM on BSC by user count! Earn VERTO through yield farming or win it in the Lottery, then stake it in Minting Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by VertoTrade), NFTs, and more, on a platform you can trust.',
 }
 
 interface PathList {

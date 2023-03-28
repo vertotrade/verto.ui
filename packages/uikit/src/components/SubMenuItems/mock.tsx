@@ -8,7 +8,7 @@ const SubMenuItemsMock = [
     href: "/",
   },
   {
-    label: "Res Pools",
+    label: "Minting Pools",
     href: "/",
   },
   {

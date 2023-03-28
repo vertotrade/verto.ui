@@ -1174,7 +1174,7 @@ exports[`renders correctly 1`] = `
                       class="c13 c14"
                       href="/pools"
                     >
-                      Res Pools
+                      Minting Pools
                     </a>
                   </div>
                 </div>
@@ -4585,7 +4585,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
               class="c16 c17"
               href="/pools"
             >
-              Res Pools
+              Minting Pools
             </a>
           </div>
         </div>
