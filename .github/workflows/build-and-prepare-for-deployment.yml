@@ -3,7 +3,7 @@ on:
   # Trigger the workflow on push to the main branch
   push:
     branches:
-      - DEV-553-seperate-deploy-logic
+      - main
   repository_dispatch:
     types: [dev]
   # Trigger the workflow on workflow dispatch
@@ -16,11 +16,11 @@ concurrency:
 jobs:
   # Job to install dependencies and run lint checks
   install-and-lint:
-    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@DEV-553-seperate-deploy-logic
+    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
 
   # Job to build the UI/Next.js
   build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@DEV-553-seperate-deploy-logic
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
     needs: [install-and-lint]
     # Passes the environment variable "env" with value "dev" to the action
     with:
@@ -28,14 +28,14 @@ jobs:
 
   # Job to build the backend/Docker
   be-build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@DEV-553-seperate-deploy-logic
+    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@main
     needs: [build]
     with:
       ecr_repo: verto-dev-ui-nginx
 
   # Job to publish the built backend/Docker image to ECR
   be-publish-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@DEV-553-seperate-deploy-logic
+    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@main
     needs: [be-build]
     # Passes the environment variables "aws_region", "build_number", and "ecr_repo" to the action
     with:
