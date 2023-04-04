@@ -1,0 +1,49 @@
+name: Builds and Prepares for Deployment
+on:
+  # Trigger the workflow on push to the main branch
+  push:
+    branches:
+      - DEV-553-seperate-deploy-logic
+  repository_dispatch:
+    types: [dev]
+  # Trigger the workflow on workflow dispatch
+  workflow_dispatch:
+# Concurrency for the workflow
+concurrency:
+  group: dev
+  cancel-in-progress: true
+
+jobs:
+  # Job to install dependencies and run lint checks
+  install-and-lint:
+    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@DEV-553-seperate-deploy-logic
+
+  # Job to build the UI/Next.js
+  build:
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@DEV-553-seperate-deploy-logic
+    needs: [install-and-lint]
+    # Passes the environment variable "env" with value "dev" to the action
+    with:
+      env: dev
+
+  # Job to build the backend/Docker
+  be-build:
+    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@DEV-553-seperate-deploy-logic
+    needs: [build]
+    with:
+      ecr_repo: verto-dev-ui-nginx
+
+  # Job to publish the built backend/Docker image to ECR
+  be-publish-dev:
+    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@DEV-553-seperate-deploy-logic
+    needs: [be-build]
+    # Passes the environment variables "aws_region", "build_number", and "ecr_repo" to the action
+    with:
+      aws_region: us-east-1
+      build_number: ${{ github.run_id }}
+      ecr_repo: verto-dev-ui-nginx
+      ecr_repo_second: verto-prod-ui-nginx
+    # Secrets required
+    secrets:
+      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}

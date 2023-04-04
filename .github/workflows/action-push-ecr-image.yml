@@ -11,6 +11,9 @@ on:
       ecr_repo:
         required: true
         type: string
+      ecr_repo_second:
+        required: true
+        type: string
       build_number:
         required: true
         type: string
@@ -29,7 +32,7 @@ jobs:
     steps:
       - name: Checkout 🛎️
         # Checkout the code repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
         # Set up Docker Buildx
@@ -78,3 +81,22 @@ jobs:
           docker push "${IMAGE_NAME}:${{ inputs.build_number }}"
           docker push "${IMAGE_NAME}:latest"
           echo "image_name=${IMAGE_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Tag and push to second ECR
+        env:
+          ECR_REPO: ${{ inputs.ecr_repo }}
+          ECR_REPO_SECOND: ${{ inputs.ecr_repo_second }}
+        run: |
+          export IMAGE_NAME_SECOND="${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_SECOND}:${{ inputs.build_number }}"
+          export IMAGE_NAME_LATEST_SECOND="${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_SECOND}:latest"
+          docker tag ${ECR_REPO}:latest ${IMAGE_NAME_SECOND}
+          docker tag ${IMAGE_NAME_SECOND} ${IMAGE_NAME_LATEST_SECOND}
+          docker image ls -a
+
+      - name: Push to second ECR
+        env:
+          ECR_REPO_SECOND: ${{ inputs.ecr_repo_second }}
+        run: |
+          export IMAGE_NAME_SECOND="${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_SECOND}:${{ inputs.build_number }}"
+          docker push "${IMAGE_NAME_SECOND}"
+          docker push "${{ steps.login-ecr.outputs.registry }}/${ECR_REPO_SECOND}:latest"
