@@ -40,12 +40,15 @@ jobs:
           tags: ${{ inputs.ecr_repo }}:latest
           outputs: type=docker,dest=/tmp/${{ inputs.ecr_repo }}.tar
 
-      - name: Cache build
-        # Caches the built image for future builds
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-${{ inputs.ecr_repo }}-${{ github.run_id }}
+      - name: Create a upload-docker-build
+        # Creates a folder to upload to artifact
+        shell: bash
+        run: |
+          cp -r /tmp/${{ inputs.ecr_repo }}.tar upload-docker-build
+
+      #  Uploads the upload-build to artifact
+      - name: Upload build
+        uses: actions/upload-artifact@v3
         with:
-          path: /tmp/${{ inputs.ecr_repo }}.tar
-          key: ${{ inputs.ecr_repo }}-${{ github.run_id }}
-          restore-keys: ${{ inputs.ecr_repo }}-${{ github.run_id }}
+          name: docker-build
+          path: upload-docker-build

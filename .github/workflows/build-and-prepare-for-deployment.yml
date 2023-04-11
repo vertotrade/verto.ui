@@ -32,18 +32,3 @@ jobs:
     needs: [build]
     with:
       ecr_repo: verto-dev-ui-nginx
-
-  # Job to publish the built backend/Docker image to ECR
-  be-publish-dev:
-    uses: vertotrade/verto.ui/.github/workflows/action-push-ecr-image.yml@main
-    needs: [be-build]
-    # Passes the environment variables "aws_region", "build_number", and "ecr_repo" to the action
-    with:
-      aws_region: us-east-1
-      build_number: ${{ github.run_id }}
-      ecr_repo: verto-dev-ui-nginx
-      ecr_repo_second: verto-prod-ui-nginx
-    # Secrets required
-    secrets:
-      aws_access_key_id: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-      aws_secret_access_key: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
