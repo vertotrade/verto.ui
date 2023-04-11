@@ -115,7 +115,8 @@ export default function Pool() {
         <AppHeader title={t('Your Liquidity')} subtitle={t('Remove liquidity to receive tokens back')} />
         <Body>
           {renderBody()}
-          {account && !v2IsLoading && (
+          {/* TODO: Renable once users can create custom pairs */}
+          {/* {account && !v2IsLoading && (
             <Flex flexDirection="column" alignItems="center" mt="24px">
               <Text color="textSubtle" mb="8px">
                 {t("Don't see a pair you joined?")}
@@ -126,7 +127,7 @@ export default function Pool() {
                 </Button>
               </Link>
             </Flex>
-          )}
+          )} */}
         </Body>
         <CardFooter style={{ textAlign: 'center' }}>
           <Link href="/add" passHref>
