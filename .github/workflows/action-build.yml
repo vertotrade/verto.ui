@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout 🛎️
         # Checkout code from repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
 
       - name: Cache node modules
         # Restores the build from cache to speed up build process
@@ -51,3 +51,23 @@ jobs:
           path: ./build
           key: build-${{ github.run_id }}
           restore-keys: build-${{ github.run_id }}
+
+      - name: Create a upload-build
+        # Creates a folder to upload to artifact
+        shell: bash
+        run: |
+          cp -r build upload-build
+
+      - name: Remove standalone from build
+        # Removes files not needed for the assets.
+        shell: bash
+        run: |
+          rm -rf upload-build/standalone
+          rm -rf upload-build/node_modules
+
+      #  Uploads the upload-build to artifact
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: upload-build

@@ -1,0 +1,27 @@
+name: Dispatch Prod Deployment
+on:
+  workflow_dispatch:
+    inputs:
+      build_number:
+        description: "Build number (Builds and Prepares for Deployment)"
+        required: true
+
+jobs:
+  pre-prod-push-check:
+    runs-on: ubuntu-latest
+    environment: provision.prod
+    steps:
+      - name: Pre Prod push check
+        run: echo "Review to deploy to Prod"
+
+  dispatch-dev-deployment:
+    runs-on: ubuntu-latest
+    needs: [pre-prod-push-check]
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.VERTO_APP_DEPLOY_PAT }}
+          repository: vertotrade/verto.deploy
+          event-type: deployProd
+          client-payload: '{"build_number": "${{ inputs.build_number }}" }'

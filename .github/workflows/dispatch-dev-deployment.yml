@@ -1,0 +1,19 @@
+name: Dispatch DEV Deployment
+on:
+  workflow_dispatch:
+    inputs:
+      build_number:
+        description: "Build number (Builds and Prepares for Deployment)"
+        required: true
+
+jobs:
+  dispatch-dev-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.VERTO_APP_DEPLOY_PAT }}
+          repository: vertotrade/verto.deploy
+          event-type: deployDev
+          client-payload: '{"build_number": "${{ inputs.build_number }}" }'
