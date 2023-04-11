@@ -34,7 +34,7 @@ jobs:
       - name: Move files to build folder
         # Moved files are used in Docker build
         run: |
-          mv apps/web/.env.${{ inputs.env == 'dev' ? 'development' : 'production' }} .env.production
+          mv apps/web/.env.${{ inputs.env === 'dev' ? 'development' : 'production' }} .env.production
           mkdir build
           mv apps/web/.next/standalone build/standalone
           mv apps/web/.next/static build/standalone/.next/static
