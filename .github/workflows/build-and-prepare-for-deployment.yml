@@ -20,7 +20,7 @@ jobs:
 
   # Job to build the UI/Next.js
   build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@Dev-494-ga-fix-v2
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
     needs: [install-and-lint]
     # Passes the environment variable "env" with value "dev" to the action
     with:
