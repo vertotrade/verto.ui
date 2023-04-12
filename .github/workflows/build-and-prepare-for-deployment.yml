@@ -20,7 +20,7 @@ jobs:
 
   # Job to build the UI/Next.js
   build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@DEV-560
     needs: [install-and-lint]
     # Passes the environment variable "env" with value "dev" to the action
     with:
@@ -28,7 +28,7 @@ jobs:
 
   # Job to build the backend/Docker
   be-build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@main
+    uses: vertotrade/verto.ui/.github/workflows/action-build-backend.yml@DEV-560
     needs: [build]
     with:
       ecr_repo: verto-dev-ui-nginx

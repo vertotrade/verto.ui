@@ -8,7 +8,7 @@ on:
         required: true
         type: string
   workflow_dispatch:
-jobs:
+jobs: 
   build-backend:
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +26,10 @@ jobs:
         env:
           cache-name: cache-build-${{ github.run_id }}
         with:
-          path: ./build
+          path: |
+            ./build
+            ./nginx.conf
+            ./.htpasswd
           key: build-${{ github.run_id }}
           restore-keys: build-${{ github.run_id }}
 

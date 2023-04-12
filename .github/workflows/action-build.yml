@@ -8,7 +8,7 @@ on:
         type: string
   workflow_dispatch:
 jobs:
-  build-frontend:
+  build-frontend: 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -46,13 +46,19 @@ jobs:
           mv node_modules build/node_modules
           mv .env.production build/.env.production
 
+          mv apps/web/.htpasswd .
+          mv apps/web/nginx.conf .
+
       - name: Cache build
         # Caches the built image for future builds
         uses: actions/cache@v3
         env:
           cache-name: cache-build-${{ github.run_id }}
         with:
-          path: ./build
+          path: |
+            ./build
+            ./nginx.conf
+            ./.htpasswd
           key: build-${{ github.run_id }}
           restore-keys: build-${{ github.run_id }}
 
@@ -66,7 +72,7 @@ jobs:
         # Removes files not needed for the assets.
         shell: bash
         run: |
-          rm -rf upload-build/standalone
+          echo "excmd rm -rf upload-build/standalone"
           rm -rf upload-build/node_modules
 
       #  Uploads the upload-build to artifact
