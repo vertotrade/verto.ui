@@ -26,17 +26,21 @@ export class Token extends BaseCurrency {
 
   public readonly projectLink?: string
 
+  public swapDisabled? = false
+
   public constructor(
     chainId: number,
     address: string,
     decimals: number,
     symbol: string,
     name?: string,
-    projectLink?: string
+    projectLink?: string,
+    swapDisabled?: boolean
   ) {
     super(chainId, decimals, symbol, name)
     this.address = address
     this.projectLink = projectLink
+    this.swapDisabled = swapDisabled
   }
 
   /**

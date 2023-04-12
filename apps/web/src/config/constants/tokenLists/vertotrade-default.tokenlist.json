@@ -22,7 +22,8 @@
       "address": "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
       "chainId": 3333,
       "decimals": 6,
-      "logoURI": "/images/tokens/ludus.png"
+      "logoURI": "/images/tokens/ludus.png",
+      "swapDisabled": true
     },
     {
       "name": "Aureus Token",
@@ -30,7 +31,8 @@
       "address": "0xE4b2549E64F2A040c66813b2bCA301A97d135a43",
       "chainId": 3333,
       "decimals": 18,
-      "logoURI": "/images/tokens/0xE4b2549E64F2A040c66813b2bCA301A97d135a43.png"
+      "logoURI": "/images/tokens/0xE4b2549E64F2A040c66813b2bCA301A97d135a43.png",
+      "swapDisabled": true
     },
     {
       "name": "Verto Token",
@@ -38,7 +40,8 @@
       "address": "0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5",
       "chainId": 3333,
       "decimals": 18,
-      "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png"
+      "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png",
+      "swapDisabled": true
     }
   ]
 }

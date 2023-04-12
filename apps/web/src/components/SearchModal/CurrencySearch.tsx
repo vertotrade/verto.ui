@@ -33,6 +33,7 @@ interface CurrencySearchProps {
   setImportToken: (token: Token) => void
   height?: number
   tokensToShow?: Token[]
+  isForSwap?: boolean
 }
 
 function useSearchInactiveTokenLists(search: string | undefined, minResults = 10): WrappedTokenInfo[] {
@@ -86,6 +87,7 @@ function CurrencySearch({
   setImportToken,
   height,
   tokensToShow,
+  isForSwap,
 }: CurrencySearchProps) {
   const { t } = useTranslation()
   // const { chainId } = useActiveChainId()
@@ -98,7 +100,7 @@ function CurrencySearch({
 
   const [invertSearchOrder] = useState<boolean>(false)
 
-  const allTokens = useAllTokens()
+  const allTokens = useAllTokens(isForSwap)
 
   // if they input an address, use it
   const searchToken = useToken(debouncedQuery)

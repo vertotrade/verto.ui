@@ -19,6 +19,7 @@ export interface TokenInfo {
         }
       | ExtensionValue
   }
+  readonly swapDisabled?: boolean
 }
 
 export interface Version {

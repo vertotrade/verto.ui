@@ -99,6 +99,7 @@ interface CurrencyInputPanelProps {
   error?: boolean
   showBUSD?: boolean
   tokensToShow?: Token[]
+  isForSwap?: boolean
 }
 export default function CurrencyInputPanel({
   value,
@@ -127,6 +128,7 @@ export default function CurrencyInputPanel({
   error,
   showBUSD,
   tokensToShow,
+  isForSwap,
 }: CurrencyInputPanelProps) {
   const { address: account } = useAccount()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
@@ -149,6 +151,7 @@ export default function CurrencyInputPanel({
       commonBasesType={commonBasesType}
       showSearchInput={showSearchInput}
       tokensToShow={tokensToShow}
+      isForSwap={isForSwap}
     />,
   )
 

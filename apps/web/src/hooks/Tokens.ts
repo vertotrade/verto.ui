@@ -22,11 +22,15 @@ import erc20ABI from '../config/abi/erc20.json'
 import { ERC20_BYTES32_ABI } from '../config/abi/erc20'
 import { FetchStatus } from '../config/constants/types'
 
-const mapWithoutUrls = (tokenMap: TokenAddressMap<ChainId>, chainId: number) =>
+const mapWithoutUrls = (tokenMap: TokenAddressMap<ChainId>, chainId: number, isForSwap = false) =>
   Object.keys(tokenMap[chainId] || {}).reduce<{ [address: string]: ERC20Token }>((newMap, address) => {
     const checksummedAddress = isAddress(address)
 
-    if (checksummedAddress && !newMap[checksummedAddress]) {
+    if (
+      checksummedAddress &&
+      !newMap[checksummedAddress] &&
+      (!isForSwap || !tokenMap[chainId][address].token.swapDisabled)
+    ) {
       newMap[checksummedAddress] = tokenMap[chainId][address].token
     }
 
@@ -36,7 +40,7 @@ const mapWithoutUrls = (tokenMap: TokenAddressMap<ChainId>, chainId: number) =>
 /**
  * Returns all tokens that are from active urls and user added tokens
  */
-export function useAllTokens(): { [address: string]: ERC20Token } {
+export function useAllTokens(isForSwap = false): { [address: string]: ERC20Token } {
   const { chainId } = useActiveChainId()
   const tokenMap = useAtomValue(combinedTokenMapFromActiveUrlsAtom)
   const userAddedTokens = useUserAddedTokens()
@@ -46,6 +50,10 @@ export function useAllTokens(): { [address: string]: ERC20Token } {
         // reduce into all ALL_TOKENS filtered by the current chain
         .reduce<{ [address: string]: ERC20Token }>(
           (tokenMap_, token) => {
+            if (isForSwap && token.swapDisabled) {
+              return tokenMap_
+            }
+
             const checksummedAddress = isAddress(token.address)
 
             if (checksummedAddress) {
@@ -56,10 +64,10 @@ export function useAllTokens(): { [address: string]: ERC20Token } {
           },
           // must make a copy because reduce modifies the map, and we do not
           // want to make a copy in every iteration
-          mapWithoutUrls(tokenMap, chainId),
+          mapWithoutUrls(tokenMap, chainId, isForSwap),
         )
     )
-  }, [userAddedTokens, tokenMap, chainId])
+  }, [userAddedTokens, tokenMap, chainId, isForSwap])
 }
 
 /**

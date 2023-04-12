@@ -18,7 +18,15 @@ export class WrappedTokenInfo extends Token {
   public readonly logoURI: string | undefined
 
   constructor(tokenInfo: TokenInfo) {
-    super(tokenInfo.chainId, tokenInfo.address, tokenInfo.decimals, tokenInfo.symbol, tokenInfo.name)
+    super(
+      tokenInfo.chainId,
+      tokenInfo.address,
+      tokenInfo.decimals,
+      tokenInfo.symbol,
+      tokenInfo.name,
+      undefined,
+      tokenInfo.swapDisabled,
+    )
     this.logoURI = tokenInfo.logoURI
   }
 

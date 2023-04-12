@@ -238,7 +238,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToSwapState(query, native.symbol, vertoTokensTestnet.ludus?.address)
+    const parsed = queryParametersToSwapState(query, native.symbol, vertoTokensTestnet.wrebus?.address)
 
     dispatch(
       replaceSwapState({

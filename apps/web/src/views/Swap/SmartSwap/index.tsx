@@ -212,7 +212,7 @@ export function SmartSwapForm() {
     [maxAmountInput, onUserInput],
   )
 
-  const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT)
+  const swapIsUnsupported = useIsTransactionUnsupported(currencies?.INPUT, currencies?.OUTPUT, true)
 
   const hasAmount = Boolean(parsedAmount)
 
@@ -266,6 +266,7 @@ export function SmartSwapForm() {
             showCommonBases
             showBUSD={!!tokenMap[chainId]?.[inputCurrencyId] || inputCurrencyId === NATIVE[chainId]?.symbol}
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
+            isForSwap
           />
 
           <AutoColumn justify="space-between">
@@ -298,6 +299,7 @@ export function SmartSwapForm() {
             disabled={smartRouterOn}
             showBUSD={!!tokenMap[chainId]?.[outputCurrencyId] || outputCurrencyId === NATIVE[chainId]?.symbol}
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
+            isForSwap
           />
 
           {isAccessTokenSupported && (
