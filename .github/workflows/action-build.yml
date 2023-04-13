@@ -40,8 +40,9 @@ jobs:
             mv apps/web/.env.production .env.production
           fi
           mkdir build
+          mkdir build/_next
           mv apps/web/.next/standalone build/standalone
-          mv apps/web/.next/static build/standalone/.next/static
+          mv apps/web/.next/static build/_next/static
           mv apps/web/public build/public
           mv node_modules build/node_modules
           mv .env.production build/.env.production

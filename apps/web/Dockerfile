@@ -19,8 +19,9 @@ RUN adduser -S nextjs -u 1001
 # Automatically leverage output traces to reduce image size 
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --chown=nextjs:nodejs build/standalone ./
-COPY --chown=nextjs:nodejs build/node_modules ./node_modules
+COPY --chown=nextjs:nodejs build/_next/static ./
 COPY --chown=nextjs:nodejs build/public ./public
+COPY --chown=nextjs:nodejs build/node_modules ./node_modules
 COPY --chown=nextjs:nodejs build/.env.production ./
 
 # Copy sharp module
