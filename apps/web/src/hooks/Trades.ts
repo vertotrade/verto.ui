@@ -2,8 +2,10 @@
 import { Currency, CurrencyAmount, isTradeBetter, Pair, Token, Trade, TradeType } from '@verto/sdk'
 import flatMap from 'lodash/flatMap'
 import { useMemo } from 'react'
+import { useAtomValue } from 'jotai'
 
 import { useUserSingleHopOnly } from 'state/user/hooks'
+import { combinedTokenMapFromActiveUrlsAtom } from 'state/lists/hooks'
 import {
   BASES_TO_CHECK_TRADES_AGAINST,
   CUSTOM_BASES,
@@ -164,12 +166,23 @@ export function useTradeExactOut(
   }, [currencyIn, currencyAmountOut, allowedPairs, singleHopOnly])
 }
 
-export function useIsTransactionUnsupported(currencyIn?: Currency, currencyOut?: Currency): boolean {
+export function useIsTransactionUnsupported(currencyIn?: Currency, currencyOut?: Currency, isForSwap = false): boolean {
+  const tokenMap = useAtomValue(combinedTokenMapFromActiveUrlsAtom)
   const unsupportedTokens: { [address: string]: Token } = useUnsupportedTokens()
   const { chainId } = useActiveChainId()
 
   const tokenIn = wrappedCurrency(currencyIn, chainId)
   const tokenOut = wrappedCurrency(currencyOut, chainId)
+
+  if (isForSwap) {
+    Object.values(tokenMap).forEach(tokenMapForChain => {
+      Object.entries(tokenMapForChain).forEach(([address, val]) => {
+        if (val.token.swapDisabled) {
+          unsupportedTokens[address] = val.token
+        }
+      })
+    })
+  }
 
   // if unsupported list loaded & either token on list, mark as unsupported
   if (unsupportedTokens) {

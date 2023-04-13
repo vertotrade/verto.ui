@@ -232,6 +232,7 @@ export default function SwapForm() {
             showCommonBases
             showBUSD={!!tokenMap[chainId]?.[inputCurrencyId] || inputCurrencyId === NATIVE[chainId]?.symbol}
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
+            isForSwap
           />
 
           <AutoColumn justify="space-between">
@@ -263,6 +264,7 @@ export default function SwapForm() {
             showCommonBases
             showBUSD={!!tokenMap[chainId]?.[outputCurrencyId] || outputCurrencyId === NATIVE[chainId]?.symbol}
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
+            isForSwap
           />
 
           {isAccessTokenSupported && (
