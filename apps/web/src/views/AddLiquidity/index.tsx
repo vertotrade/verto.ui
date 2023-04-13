@@ -583,7 +583,8 @@ export default function AddLiquidity({ currencyA, currencyB }) {
             />
             <CardBody>
               <AutoColumn gap="20px">
-                {noLiquidity && (
+                {/* TODO: Renable once users can create custom pairs */}
+                {/* {noLiquidity && (
                   <ColumnCenter>
                     <Message variant="warning">
                       <div>
@@ -595,7 +596,18 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                       </div>
                     </Message>
                   </ColumnCenter>
+                )} */}
+                {/* TODO: Remove this block below once users can create custom pairs */}
+                {noLiquidity && (
+                  <ColumnCenter>
+                    <Message variant="warning">
+                      <div>
+                        <Text bold>{t('No liquidity found for this token pair.')}</Text>
+                      </div>
+                    </Message>
+                  </ColumnCenter>
                 )}
+
                 <CurrencyInputPanel
                   disableCurrencySelect={canZap}
                   showBUSD
@@ -674,198 +686,203 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                   commonBasesType={CommonBasesType.LIQUIDITY}
                 />
 
-                {showZapWarning && (
-                  <Message variant={zapIn.priceSeverity > 3 ? 'danger' : 'warning'}>
-                    {zapIn.priceSeverity > 3 ? (
-                      <MessageText>
-                        {t('Price Impact Too High.')}{' '}
-                        <strong>
-                          {t('Reduce amount of %token% to maximum limit', {
-                            token: currencies[zapIn.swapTokenField]?.symbol,
-                          })}
-                        </strong>
-                      </MessageText>
-                    ) : (
-                      <MessageText>
-                        <strong>
-                          {t('No %token% input.', { token: currencies[zapIn.swapOutTokenField]?.symbol })}
-                        </strong>{' '}
-                        {t('Some of your %token0% will be converted to %token1%.', {
-                          token0: currencies[zapIn.swapTokenField]?.symbol,
-                          token1: currencies[zapIn.swapOutTokenField]?.symbol,
-                        })}
-                      </MessageText>
-                    )}
-                  </Message>
-                )}
-
-                {showReduceZapTokenButton && (
-                  <RowFixed style={{ margin: 'auto' }} onClick={() => zapIn.convertToMaxZappable()}>
-                    <Button variant="secondary" scale="sm">
-                      {t('Reduce %token%', { token: currencies[zapIn.swapTokenField]?.symbol })}
-                    </Button>
-                  </RowFixed>
-                )}
-
-                {showZapIsAvailable && (
-                  <Message variant="warning">
-                    <MessageText>
-                      {t('Zap allows you to add liquidity with only 1 single token. Click')}
-                      <Button p="0 4px" scale="sm" variant="text" height="auto" onClick={handleEnableZap}>
-                        {t('here')}
-                      </Button>
-                      {t('to try.')}
-                    </MessageText>
-                  </Message>
-                )}
-
-                {showRebalancingConvert && (
-                  <Message variant="warning">
-                    <AutoColumn>
-                      <MessageText>
-                        <strong>
-                          {t('Not enough %token%.', { token: currencies[zapIn.swapOutTokenField]?.symbol })}
-                        </strong>{' '}
-                        {zapIn.gasOverhead
-                          ? t(
-                              'Some of your %token0% will be converted to %token1% before adding liquidity, but this may cause higher gas fees.',
-                              {
-                                token0: currencies[zapIn.swapTokenField]?.symbol,
-                                token1: currencies[zapIn.swapOutTokenField]?.symbol,
-                              },
-                            )
-                          : t('Some of your %token0% will be converted to %token1%.', {
+                {/* TODO: Remove this condition once users can create custom pairs */}
+                {!noLiquidity && (
+                  <>
+                    {showZapWarning && (
+                      <Message variant={zapIn.priceSeverity > 3 ? 'danger' : 'warning'}>
+                        {zapIn.priceSeverity > 3 ? (
+                          <MessageText>
+                            {t('Price Impact Too High.')}{' '}
+                            <strong>
+                              {t('Reduce amount of %token% to maximum limit', {
+                                token: currencies[zapIn.swapTokenField]?.symbol,
+                              })}
+                            </strong>
+                          </MessageText>
+                        ) : (
+                          <MessageText>
+                            <strong>
+                              {t('No %token% input.', { token: currencies[zapIn.swapOutTokenField]?.symbol })}
+                            </strong>{' '}
+                            {t('Some of your %token0% will be converted to %token1%.', {
                               token0: currencies[zapIn.swapTokenField]?.symbol,
                               token1: currencies[zapIn.swapOutTokenField]?.symbol,
                             })}
-                      </MessageText>
-                    </AutoColumn>
-                  </Message>
-                )}
+                          </MessageText>
+                        )}
+                      </Message>
+                    )}
 
-                {showRebalancingConvert && (
-                  <RowFixed
-                    style={{ margin: 'auto' }}
-                    onClick={() => {
-                      if (dependentField === Field.CURRENCY_A) {
-                        onFieldAInput(maxAmounts[dependentField]?.toExact() ?? '')
-                      } else {
-                        onFieldBInput(maxAmounts[dependentField]?.toExact() ?? '')
-                      }
-                    }}>
-                    <Button variant="secondary" scale="sm">
-                      {t('Don’t convert')}
-                    </Button>
-                  </RowFixed>
-                )}
+                    {showReduceZapTokenButton && (
+                      <RowFixed style={{ margin: 'auto' }} onClick={() => zapIn.convertToMaxZappable()}>
+                        <Button variant="secondary" scale="sm">
+                          {t('Reduce %token%', { token: currencies[zapIn.swapTokenField]?.symbol })}
+                        </Button>
+                      </RowFixed>
+                    )}
 
-                {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
-                  <>
-                    <LightCard padding="0px" borderRadius="20px">
-                      <RowBetween padding="1rem">
-                        <Text fontSize="14px">
-                          {noLiquidity ? t('Initial prices and share in the pair') : t('Prices and Share')}
+                    {showZapIsAvailable && (
+                      <Message variant="warning">
+                        <MessageText>
+                          {t('Zap allows you to add liquidity with only 1 single token. Click')}
+                          <Button p="0 4px" scale="sm" variant="text" height="auto" onClick={handleEnableZap}>
+                            {t('here')}
+                          </Button>
+                          {t('to try.')}
+                        </MessageText>
+                      </Message>
+                    )}
+
+                    {showRebalancingConvert && (
+                      <Message variant="warning">
+                        <AutoColumn>
+                          <MessageText>
+                            <strong>
+                              {t('Not enough %token%.', { token: currencies[zapIn.swapOutTokenField]?.symbol })}
+                            </strong>{' '}
+                            {zapIn.gasOverhead
+                              ? t(
+                                  'Some of your %token0% will be converted to %token1% before adding liquidity, but this may cause higher gas fees.',
+                                  {
+                                    token0: currencies[zapIn.swapTokenField]?.symbol,
+                                    token1: currencies[zapIn.swapOutTokenField]?.symbol,
+                                  },
+                                )
+                              : t('Some of your %token0% will be converted to %token1%.', {
+                                  token0: currencies[zapIn.swapTokenField]?.symbol,
+                                  token1: currencies[zapIn.swapOutTokenField]?.symbol,
+                                })}
+                          </MessageText>
+                        </AutoColumn>
+                      </Message>
+                    )}
+
+                    {showRebalancingConvert && (
+                      <RowFixed
+                        style={{ margin: 'auto' }}
+                        onClick={() => {
+                          if (dependentField === Field.CURRENCY_A) {
+                            onFieldAInput(maxAmounts[dependentField]?.toExact() ?? '')
+                          } else {
+                            onFieldBInput(maxAmounts[dependentField]?.toExact() ?? '')
+                          }
+                        }}>
+                        <Button variant="secondary" scale="sm">
+                          {t('Don’t convert')}
+                        </Button>
+                      </RowFixed>
+                    )}
+
+                    {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
+                      <>
+                        <LightCard padding="0px" borderRadius="20px">
+                          <RowBetween padding="1rem">
+                            <Text fontSize="14px">
+                              {noLiquidity ? t('Initial prices and share in the pair') : t('Prices and Share')}
+                            </Text>
+                          </RowBetween>{' '}
+                          <LightCard padding="1rem" borderRadius="20px">
+                            <PoolPriceBar
+                              currencies={currencies}
+                              poolTokenPercentage={preferZapInstead ? zapIn.poolTokenPercentage : poolTokenPercentage}
+                              noLiquidity={noLiquidity}
+                              price={price}
+                            />
+                          </LightCard>
+                        </LightCard>
+                      </>
+                    )}
+
+                    <RowBetween>
+                      <Text bold fontSize="12px" color="secondary">
+                        {t('Slippage Tolerance')}
+                      </Text>
+                      <Text bold color="primary">
+                        {allowedSlippage / 100}%
+                      </Text>
+                    </RowBetween>
+
+                    {pair && poolData && (
+                      <RowBetween>
+                        <TooltipText ref={targetRef} bold fontSize="12px" color="secondary">
+                          {t('LP reward APR')}
+                        </TooltipText>
+                        {tooltipVisible && tooltip}
+                        <Text bold color="primary">
+                          {formatAmount(poolData.lpApr7d)}%
                         </Text>
-                      </RowBetween>{' '}
-                      <LightCard padding="1rem" borderRadius="20px">
-                        <PoolPriceBar
-                          currencies={currencies}
-                          poolTokenPercentage={preferZapInstead ? zapIn.poolTokenPercentage : poolTokenPercentage}
-                          noLiquidity={noLiquidity}
-                          price={price}
-                        />
-                      </LightCard>
-                    </LightCard>
-                  </>
-                )}
-
-                <RowBetween>
-                  <Text bold fontSize="12px" color="secondary">
-                    {t('Slippage Tolerance')}
-                  </Text>
-                  <Text bold color="primary">
-                    {allowedSlippage / 100}%
-                  </Text>
-                </RowBetween>
-
-                {pair && poolData && (
-                  <RowBetween>
-                    <TooltipText ref={targetRef} bold fontSize="12px" color="secondary">
-                      {t('LP reward APR')}
-                    </TooltipText>
-                    {tooltipVisible && tooltip}
-                    <Text bold color="primary">
-                      {formatAmount(poolData.lpApr7d)}%
-                    </Text>
-                  </RowBetween>
-                )}
-
-                {addIsUnsupported || addIsWarning ? (
-                  <Button disabled mb="4px">
-                    {t('Unsupported Asset')}
-                  </Button>
-                ) : !account ? (
-                  <ConnectWalletButton />
-                ) : isWrongNetwork ? (
-                  <CommitButton />
-                ) : (
-                  <AutoColumn gap="md">
-                    {shouldShowApprovalGroup && (
-                      <RowBetween style={{ gap: '8px' }}>
-                        {showFieldAApproval && (
-                          <Button
-                            onClick={approveACallback}
-                            disabled={approvalA === ApprovalState.PENDING}
-                            width="100%">
-                            {approvalA === ApprovalState.PENDING ? (
-                              <Dots>{t('Enabling %asset%', { asset: currencies[Field.CURRENCY_A]?.symbol })}</Dots>
-                            ) : (
-                              t('Enable %asset%', { asset: currencies[Field.CURRENCY_A]?.symbol })
-                            )}
-                          </Button>
-                        )}
-                        {showFieldBApproval && (
-                          <Button
-                            onClick={approveBCallback}
-                            disabled={approvalB === ApprovalState.PENDING}
-                            width="100%">
-                            {approvalB === ApprovalState.PENDING ? (
-                              <Dots>{t('Enabling %asset%', { asset: currencies[Field.CURRENCY_B]?.symbol })}</Dots>
-                            ) : (
-                              t('Enable %asset%', { asset: currencies[Field.CURRENCY_B]?.symbol })
-                            )}
-                          </Button>
-                        )}
                       </RowBetween>
                     )}
-                    <CommitButton
-                      isLoading={preferZapInstead && zapInEstimating}
-                      variant={!isValid || zapIn.priceSeverity > 2 ? 'danger' : 'primary'}
-                      onClick={() => {
-                        if (preferZapInstead) {
-                          setLiquidityState({
-                            attemptingTxn: false,
-                            liquidityErrorMessage: undefined,
-                            txHash: undefined,
-                          })
-                          onPresentZapInModal()
-                          return
-                        }
-                        if (expertMode) {
-                          onAdd()
-                        } else {
-                          setLiquidityState({
-                            attemptingTxn: false,
-                            liquidityErrorMessage: undefined,
-                            txHash: undefined,
-                          })
-                          onPresentAddLiquidityModal()
-                        }
-                      }}
-                      disabled={buttonDisabled}>
-                      {errorText || t('Supply')}
-                    </CommitButton>
-                  </AutoColumn>
+
+                    {addIsUnsupported || addIsWarning ? (
+                      <Button disabled mb="4px">
+                        {t('Unsupported Asset')}
+                      </Button>
+                    ) : !account ? (
+                      <ConnectWalletButton />
+                    ) : isWrongNetwork ? (
+                      <CommitButton />
+                    ) : (
+                      <AutoColumn gap="md">
+                        {shouldShowApprovalGroup && (
+                          <RowBetween style={{ gap: '8px' }}>
+                            {showFieldAApproval && (
+                              <Button
+                                onClick={approveACallback}
+                                disabled={approvalA === ApprovalState.PENDING}
+                                width="100%">
+                                {approvalA === ApprovalState.PENDING ? (
+                                  <Dots>{t('Enabling %asset%', { asset: currencies[Field.CURRENCY_A]?.symbol })}</Dots>
+                                ) : (
+                                  t('Enable %asset%', { asset: currencies[Field.CURRENCY_A]?.symbol })
+                                )}
+                              </Button>
+                            )}
+                            {showFieldBApproval && (
+                              <Button
+                                onClick={approveBCallback}
+                                disabled={approvalB === ApprovalState.PENDING}
+                                width="100%">
+                                {approvalB === ApprovalState.PENDING ? (
+                                  <Dots>{t('Enabling %asset%', { asset: currencies[Field.CURRENCY_B]?.symbol })}</Dots>
+                                ) : (
+                                  t('Enable %asset%', { asset: currencies[Field.CURRENCY_B]?.symbol })
+                                )}
+                              </Button>
+                            )}
+                          </RowBetween>
+                        )}
+                        <CommitButton
+                          isLoading={preferZapInstead && zapInEstimating}
+                          variant={!isValid || zapIn.priceSeverity > 2 ? 'danger' : 'primary'}
+                          onClick={() => {
+                            if (preferZapInstead) {
+                              setLiquidityState({
+                                attemptingTxn: false,
+                                liquidityErrorMessage: undefined,
+                                txHash: undefined,
+                              })
+                              onPresentZapInModal()
+                              return
+                            }
+                            if (expertMode) {
+                              onAdd()
+                            } else {
+                              setLiquidityState({
+                                attemptingTxn: false,
+                                liquidityErrorMessage: undefined,
+                                txHash: undefined,
+                              })
+                              onPresentAddLiquidityModal()
+                            }
+                          }}
+                          disabled={buttonDisabled}>
+                          {errorText || t('Supply')}
+                        </CommitButton>
+                      </AutoColumn>
+                    )}
+                  </>
                 )}
               </AutoColumn>
             </CardBody>
