@@ -39,7 +39,7 @@ jobs:
         run: yarn
 
       - name: Build application
-        run: yarn build
+        run: APP_ENV=production yarn build
 
       - name: Move files to build folder
         env:
