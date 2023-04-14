@@ -1,6 +1,7 @@
+import env from '@beam-australia/react-env'
 import { useTranslation } from '@verto/localization'
 import { Currency, CurrencyAmount, Trade, TradeType } from '@verto/sdk'
-import { vertoTokensTestnet } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
 import tryParseAmount from '@verto/utils/tryParseAmount'
 import IPancakePairABI from 'config/abi/IPancakePair.json'
 import { DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from 'config/constants/exchange'
@@ -33,6 +34,8 @@ import {
 import { SwapState } from './reducer'
 import { derivedPairByDataIdSelector, pairByDataIdSelector } from './selectors'
 import { PairDataTimeWindowEnum } from './types'
+
+const isMainnet = env('IS_MAINNET') === 'true'
 
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>(state => state.swap)
@@ -238,7 +241,11 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToSwapState(query, native.symbol, vertoTokensTestnet.wrebus?.address)
+    const parsed = queryParametersToSwapState(
+      query,
+      native.symbol,
+      isMainnet ? vertoTokens.wrebus?.address : vertoTokensTestnet.wrebus?.address,
+    )
 
     dispatch(
       replaceSwapState({

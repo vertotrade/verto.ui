@@ -1,3 +1,4 @@
+import env from '@beam-australia/react-env'
 import { ChainId } from '@verto/sdk'
 import { TokenAddressMap as TTokenAddressMap, WrappedTokenInfo, TokenList, TokenInfo } from '@verto/token-lists'
 import { ListsState } from '@verto/token-lists/react'
@@ -20,18 +21,13 @@ import { useMemo } from 'react'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import DEFAULT_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-default.tokenlist.json'
+import DEFAULT_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/vertotrade-default-mainnet.tokenlist.json'
 import UNSUPPORTED_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-unsupported.tokenlist.json'
 import WARNING_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-warning.tokenlist.json'
 import { listsAtom } from './lists'
 
 // Replace chainId for the tokens for whatever the current default chain id is, either rebus testnet or rebus mainnet
-const defaultTokenList = {
-  ...DEFAULT_TOKEN_LIST,
-  tokens: DEFAULT_TOKEN_LIST.tokens.map(token => ({
-    ...token,
-    chainId: DEFAULT_CHAIN_ID,
-  })),
-}
+const defaultTokenList = env('IS_MAINNET') === 'true' ? DEFAULT_TOKEN_LIST_MAINNET : DEFAULT_TOKEN_LIST
 
 const unsupportedTokenList = {
   ...UNSUPPORTED_TOKEN_LIST,
