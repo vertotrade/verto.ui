@@ -80,13 +80,13 @@ jobs:
           key: build-${{ github.run_id }}
           restore-keys: build-${{ github.run_id }}
 
-      - name: Create a upload-build
+      - name: Create al upload-build folder
         # Creates a folder to upload to artifact
         shell: bash
         run: |
           cp -r build upload-build
 
-      - name: Remove standalone from build
+      - name: Remove node_modules from the build
         # Removes files not needed for the assets.
         shell: bash
         run: |
