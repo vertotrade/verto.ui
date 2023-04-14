@@ -27,6 +27,7 @@ jobs:
           cache-name: cache-build-${{ github.run_id }}
         with:
           path: |
+            ./node_modules
             ./build
             ./nginx.conf
             ./.htpasswd

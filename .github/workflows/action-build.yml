@@ -6,6 +6,16 @@ on:
       env:
         required: true
         type: string
+      domain:
+        required: true
+        type: string
+      assets_domain:
+        required: true
+        type: string
+      is_protected:
+        required: false
+        type: boolean
+        default: false
   workflow_dispatch:
 jobs:
   build-frontend: 
@@ -32,6 +42,10 @@ jobs:
         run: yarn build
 
       - name: Move files to build folder
+        env:
+          DOMAIN: ${{ inputs.domain }}
+          ASSETS_DOMAIN: ${{ inputs.assets_domain }}
+          IS_PROTECTED: ${{ inputs.is_protected }}
         # Moved files are used in Docker build
         run: |
           if [ "${{ inputs.env }}" == "dev" ]; then
@@ -39,16 +53,18 @@ jobs:
           else
             mv apps/web/.env.production .env.production
           fi
+
           mkdir build
           mkdir build/_next
           mv apps/web/.next/standalone build/standalone
           mv apps/web/.next/static build/_next/static
           mv apps/web/public build/public
-          mv node_modules build/node_modules
-          mv .env.production build/.env.production
+          cp .env.production build/.env.production
 
+          if [[ "$IS_PROTECTED" == "true" ]]; then export IS_PROTECTED="auth_basic \"VertoTrade\"; auth_basic_user_file /app/.htpasswd;"; else export IS_PROTECTED=""; fi
+          envsubst '\$DOMAIN \$ASSETS_DOMAIN \$IS_PROTECTED' < apps/web/nginx.conf > nginx.conf
+          cat nginx.conf
           mv apps/web/.htpasswd .
-          mv apps/web/nginx.conf .
 
       - name: Cache build
         # Caches the built image for future builds
@@ -57,6 +73,7 @@ jobs:
           cache-name: cache-build-${{ github.run_id }}
         with:
           path: |
+            ./node_modules
             ./build
             ./nginx.conf
             ./.htpasswd

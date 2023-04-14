@@ -21,7 +21,7 @@ RUN adduser -S nextjs -u 1001
 COPY --chown=nextjs:nodejs build/standalone ./
 COPY --chown=nextjs:nodejs build/_next/static ./
 COPY --chown=nextjs:nodejs build/public ./public
-COPY --chown=nextjs:nodejs build/node_modules ./node_modules
+COPY --chown=nextjs:nodejs node_modules ./node_modules
 COPY --chown=nextjs:nodejs build/.env.production ./
 
 # Copy sharp module

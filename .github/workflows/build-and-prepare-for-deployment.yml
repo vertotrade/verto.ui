@@ -16,7 +16,7 @@ concurrency:
 jobs:
   # Job to install dependencies and run lint checks
   install-and-lint:
-    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
+    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@DEV-560
 
   # Job to build the UI/Next.js
   build:
@@ -25,6 +25,9 @@ jobs:
     # Passes the environment variable "env" with value "dev" to the action
     with:
       env: dev
+      domain: dev.vertotrade.com
+      assets_domain: assets.vertotrade.com
+      is_protected: true
 
   # Job to build the backend/Docker
   be-build:
