@@ -19,11 +19,11 @@ concurrency:
 jobs:
   # Job to install dependencies and run lint checks
   install-and-lint:
-    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@DEV-560
+    uses: vertotrade/verto.ui/.github/workflows/action-install-lint.yml@main
 
   # Job to build the UI/Next.js
   build:
-    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@DEV-560
+    uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
     needs: [install-and-lint]
     # Passes the environment variable "env" with value "dev" to the action
     with:

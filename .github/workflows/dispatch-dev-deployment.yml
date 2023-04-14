@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       build_number:
-        description: "Build number (Builds and Prepares for Deployment)"
+        description: "Needs a Run Number from 'Prepares deployment artifacts / Deploys to DEV' run."
         required: true
 
 jobs:
