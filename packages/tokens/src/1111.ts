@@ -33,4 +33,12 @@ export const vertoTokens = {
     'Verto',
     'https://www.rebuschain.com/',
   ),
+  dummy: new ERC20Token(
+    ChainId.REBUS,
+    '0xef9F669fAa5DE9A49cC338598Bb2B63C78E925df',
+    18,
+    'DUMMY',
+    'Dummy',
+    'https://www.rebuschain.com/',
+  ),
 }

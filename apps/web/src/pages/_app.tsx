@@ -91,6 +91,8 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
           <script src="https://public.bnbstatic.com/static/js/mp-webview-sdk/webview-v1.0.0.min.js" id="mp-webview" />
         )
         */}
+
+        <script src="/__ENV.js" />
       </Head>
 
       <Providers store={store}>
