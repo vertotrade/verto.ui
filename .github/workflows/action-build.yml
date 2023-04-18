@@ -39,7 +39,7 @@ jobs:
         run: yarn
 
       - name: Build application
-        run: APP_ENV=production yarn build
+        run: APP_ENV=development yarn build
 
       - name: Move files to build folder
         env:
@@ -57,6 +57,11 @@ jobs:
           mkdir build
           mkdir build/_next
           mv apps/web/.next/standalone build/standalone
+
+          if [ "${{ inputs.env }}" == "dev" ]; then
+            cp -f .env.production build/standalone/.env.production
+          fi
+
           mv apps/web/.next/static build/_next/static
           mv apps/web/public build/public
           cp .env.production build/.env.production
@@ -80,7 +85,7 @@ jobs:
           key: build-${{ github.run_id }}
           restore-keys: build-${{ github.run_id }}
 
-      - name: Create al upload-build folder
+      - name: Create an upload-build folder
         # Creates a folder to upload to artifact
         shell: bash
         run: |
