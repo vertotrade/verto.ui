@@ -145,3 +145,33 @@ export const fetchPoolsProfileRequirement = async (): Promise<{
     }),
   )
 }
+
+const withdrawFeePeriod = poolsConfig.map(poolConfig => {
+  return {
+    address: poolConfig.stakingToken.address, // update to contract address
+    name: 'withdrawFeePeriod',
+  }
+})
+
+export const fetchPoolsWithdrawFeePeriod = async () => {
+  const withdrawFeePeriods = await multicall(erc20ABI, withdrawFeePeriod)
+
+  return poolsConfig.map((p, index) => ({
+    withdrawFeePeriod: withdrawFeePeriods[index].toJSON(),
+  }))
+}
+
+const withdrawFee = poolsConfig.map(poolConfig => {
+  return {
+    address: poolConfig.stakingToken.address, // update to contract address
+    name: 'withdrawFee',
+  }
+})
+
+export const fetchPoolsWithdrawFee = async () => {
+  const withdrawFees = await multicall(erc20ABI, withdrawFee)
+
+  return poolsConfig.map((p, index) => ({
+    withdrawFee: withdrawFees[index].toJSON(),
+  }))
+}
