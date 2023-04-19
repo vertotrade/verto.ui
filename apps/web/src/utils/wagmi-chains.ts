@@ -11,7 +11,7 @@ export const rebus = {
     default: { http: ['https://api.rebuschain.com:8545'] },
   },
   blockExplorers: {
-    default: { name: 'Rebus', url: 'https://testnet.rebus.money:8040' },
+    default: { name: 'Rebus', url: 'https://evm.rebuschain.com' },
   },
   testnet: false,
 }

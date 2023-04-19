@@ -215,6 +215,15 @@ export const fetchMasterChefV2Data = async ({
   masterChefAddress: string
 }) => {
   try {
+    if (!masterChefAddress) {
+      return {
+        poolLength: BigNumber.from(0),
+        totalRegularAllocPoint: BigNumber.from(0),
+        totalSpecialAllocPoint: BigNumber.from(0),
+        cakePerBlock: BigNumber.from(0),
+      }
+    }
+
     const [[poolLength], [totalRegularAllocPoint], [totalSpecialAllocPoint], [cakePerBlock]] = await multicallv2<
       [[BigNumber], [BigNumber], [BigNumber], [BigNumber]]
     >({

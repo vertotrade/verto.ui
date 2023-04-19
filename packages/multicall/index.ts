@@ -15,7 +15,7 @@ export const multicallAddresses = {
   56: '0xcA11bde05977b3631167028862bE2a173976CA11',
   97: '0xcA11bde05977b3631167028862bE2a173976CA11',
   [ChainId.REBUS_TESTNET]: '0xAcD2b4E62663C9AEA56524f050F92F27Cfaa91b2',
-  [ChainId.REBUS]: '0xAcD2b4E62663C9AEA56524f050F92F27Cfaa91b2',
+  [ChainId.REBUS]: '0x9C2A43b674B01d8Be55004C7b01f4c88529CAF10',
 }
 
 export const getMulticallContract = (chainId: ChainId, provider: Provider) => {
