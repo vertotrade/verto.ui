@@ -4,9 +4,8 @@ import { bscTokens } from '@verto/tokens'
 import { useTranslation } from '@verto/localization'
 import { useIntersectionObserver } from '@verto/hooks'
 import { useEffect, useState } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
-import { formatBigNumber, formatLocalisedCompactNumber } from '@verto/utils/formatBalance'
+import { formatBigNumber } from '@verto/utils/formatBalance'
 import { multicallv3 } from 'utils/multicall'
 import { getRebusVaultAddress } from 'utils/addressHelpers'
 import useSWR from 'swr'
@@ -62,7 +61,7 @@ const Grid = styled.div`
   }
 `
 
-const emissionsPerBlock = 9.9
+const emissionsPerBlock = 4.2
 
 /**
  * User (Planet Finance) built a contract on top of our original Manual VERTO pool,
@@ -118,9 +117,9 @@ const VertoDataRow = () => {
       refreshInterval: SLOW_INTERVAL,
     },
   )
-  const cakePriceBusd = usePriceCakeBusd()
-  const mcap = cakePriceBusd.times(circulatingSupply)
-  const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
+  // const cakePriceBusd = usePriceCakeBusd()
+  // const mcap = cakePriceBusd.times(circulatingSupply)
+  // const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 
   useEffect(() => {
     if (isIntersecting) {
@@ -152,17 +151,17 @@ const VertoDataRow = () => {
       <StyledColumn noMobileBorder style={{ gridArea: 'c' }}>
         <Text color="textSubtle">{t('Max Supply')}</Text>
 
-        <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={750000000} />
+        <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={600000000} />
       </StyledColumn>
       <StyledColumn noDesktopBorder style={{ gridArea: 'd' }}>
         <Text color="textSubtle">{t('Market cap')}</Text>
-        {mcap?.gt(0) && mcapString ? (
+        {/* {mcap?.gt(0) && mcapString ? (
           <Heading scale="lg" color="textHome">
             {t('$%marketCap%', { marketCap: mcapString })}
           </Heading>
-        ) : (
-          <Skeleton height={24} width={126} my="4px" />
-        )}
+        ) : ( */}
+        <Skeleton height={24} width={126} my="4px" />
+        {/* )} */}
       </StyledColumn>
       <StyledColumn style={{ gridArea: 'e' }}>
         <Text color="textSubtle">{t('Burned to date')}</Text>
