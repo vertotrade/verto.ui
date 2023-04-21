@@ -8,7 +8,7 @@ export const rebus = {
     symbol: 'REBUS',
   },
   rpcUrls: {
-    default: { http: ['https://api.rebuschain.com:8545'] },
+    default: { http: ['https://api.mainnet.rebus.money:8545'] },
   },
   blockExplorers: {
     default: { name: 'Rebus', url: 'https://evm.rebuschain.com' },
