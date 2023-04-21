@@ -1,10 +1,9 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useAccount } from 'wagmi'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { batch, useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
-import { useWeb3React } from '@verto/wagmi'
 import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
 import { FAST_INTERVAL } from 'config/constants'
 import useSWRImmutable from 'swr/immutable'
@@ -66,22 +65,28 @@ const getCakePriceFarms = async (chainId: number) => {
     .map(farm => farm.pid)
 }
 
-export const useFetchPublicPoolsData = () => {
+export const useFetchPublicPoolsData = (account: string) => {
   const dispatch = useAppDispatch()
   const { chainId } = useActiveChainId()
   const farmFlag = useFeatureFlag(featureFarmApiAtom)
-  const { account } = useWeb3React()
+
+  // Make sure we don't continue fetching pools data if the hook below is called again before the other finished
+  const fetchingIndex = useRef(0)
 
   useSlowRefreshEffect(
     currentBlock => {
       const fetchPoolsDataWithFarms = async () => {
+        const index = ++fetchingIndex.current
+
         const activeFarms = await getActiveFarms(chainId)
         await dispatch(fetchFarmsPublicDataAsync({ pids: activeFarms, chainId, flag: farmFlag }))
 
-        batch(() => {
-          dispatch(fetchPoolsPublicDataAsync(currentBlock, chainId, account))
-          dispatch(fetchPoolsStakingLimitsAsync())
-        })
+        if (index === fetchingIndex.current) {
+          batch(() => {
+            dispatch(fetchPoolsPublicDataAsync(currentBlock, chainId, account))
+            dispatch(fetchPoolsStakingLimitsAsync())
+          })
+        }
       }
 
       fetchPoolsDataWithFarms()
@@ -108,7 +113,7 @@ export const useDeserializedPoolByVaultKey = vaultKey => {
 export const usePoolsPageFetch = () => {
   const { address: account } = useAccount()
   const dispatch = useAppDispatch()
-  useFetchPublicPoolsData()
+  useFetchPublicPoolsData(account)
 
   useFastRefreshEffect(() => {
     batch(() => {

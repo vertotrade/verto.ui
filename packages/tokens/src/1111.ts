@@ -17,14 +17,14 @@ export const vertoTokens = {
   //   'Ludus',
   //   'https://www.rebuschain.com/',
   // ),
-  // aureus: new ERC20Token(
-  //   ChainId.REBUS,
-  //   '0xE4b2549E64F2A040c66813b2bCA301A97d135a43',
-  //   18,
-  //   'AUREUS',
-  //   'Aureus',
-  //   'https://www.rebuschain.com/',
-  // ),
+  aureus: new ERC20Token(
+    ChainId.REBUS,
+    '0x03E72C6f3A01C6282FF6de1DD652db926A113cDf',
+    18,
+    'AUREUS',
+    'Aureus',
+    'https://www.rebuschain.com/',
+  ),
   verto: new ERC20Token(
     ChainId.REBUS,
     '0x088D38759c2D67eD0DA54d52AEf8d5Fb748Ef70E',
