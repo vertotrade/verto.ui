@@ -25,9 +25,3 @@ jobs:
   build:
     uses: vertotrade/verto.ui/.github/workflows/action-build.yml@main
     needs: [install-and-lint]
-    # Passes the environment variable "env" with value "dev" to the action
-    with:
-      env: dev
-      domain: dev.vertotrade.com
-      assets_domain: assets.vertotrade.com
-      is_protected: false
