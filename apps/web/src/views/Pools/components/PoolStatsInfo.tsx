@@ -1,6 +1,8 @@
 import { Flex, Link, LinkExternal, Skeleton, Text, TimerIcon, Balance, Pool } from '@verto/uikit'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import AddToWalletButton, { AddToWalletTextOptions } from 'components/AddToWallet/AddToWalletButton'
+import { formatDistance } from 'date-fns'
+import BigNumber from 'bignumber.js'
 import { rebus, rebusTestnet } from 'utils/wagmi-chains'
 import { useTranslation } from '@verto/localization'
 import { ChainId, Token } from '@verto/sdk'
@@ -65,6 +67,22 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
 
+  let { withdrawFeePeriod } = pool
+
+  if (pool.userInfo && withdrawFeePeriod) {
+    const endTimestamp = new BigNumber(withdrawFeePeriod)
+      .plus(new BigNumber((pool.userInfo.lastDepositedTime as any)._hex))
+      .toString()
+
+    if (new Date().getTime() / 1000 >= Number(`${endTimestamp}000`)) {
+      withdrawFeePeriod = 'None'
+    } else {
+      withdrawFeePeriod = formatDistance(new Date(), new Date(Number(`${endTimestamp}000`)))
+    }
+  } else {
+    withdrawFeePeriod = `${Number(withdrawFeePeriod || 0) / 60 / 60} hours`
+  }
+
   return (
     <>
       {profileRequirement && (profileRequirement.required || profileRequirement.thresholdPoints.gt(0)) && (
@@ -96,6 +114,18 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           stakingToken={stakingToken}
         />
       )}
+      <Flex mb="2px" justifyContent="space-between" alignItems="center">
+        <Text small>{t('Withdraw Fee')}:</Text>
+        <Flex alignItems="center">
+          <Text small>{((Number(pool.withdrawFee) || 0) / 100).toFixed(2)}%</Text>
+        </Flex>
+      </Flex>
+      <Flex mb="2px" justifyContent="space-between" alignItems="center">
+        <Text small>{t('Withdraw Fee Period')}:</Text>
+        <Flex alignItems="center">
+          <Text small>{withdrawFeePeriod}</Text>
+        </Flex>
+      </Flex>
       {shouldShowBlockCountdown && (
         <Flex mb="2px" justifyContent="space-between" alignItems="center">
           <Text small>{hasPoolStarted ? t('Ends in') : t('Starts in')}:</Text>
@@ -145,14 +175,6 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           </LinkExternal>
         </Flex>
       )}
-      {/* {poolContractAddress && (
-        <Flex mb="2px" justifyContent="space-between" alignItems="center">
-          <Text small>{t('WithdrawFeePeriod')}:</Text>
-          <Flex alignItems="center">
-            <Text small>{pool.withdrawPeriodFee}</Text>
-          </Flex>
-        </Flex>
-      )} */}
       {account && tokenAddress && (
         <Flex justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
           <AddToWalletButton

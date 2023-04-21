@@ -229,6 +229,13 @@ const recursivelyFormatData = data => {
 }
 
 export const fetchUserInfo = async (walletAddress: string) => {
+  if (!walletAddress) {
+    return poolsConfig.map(p => ({
+      sousId: p.sousId,
+      userInfo: null,
+    }))
+  }
+
   const userInfo = poolsConfig.map(poolConfig => {
     return {
       address: getAddress(poolConfig.contractAddress),

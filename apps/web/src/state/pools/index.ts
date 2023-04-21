@@ -156,7 +156,7 @@ export const fetchPoolsPublicDataAsync =
         fetchPoolsTotalStaking(),
         fetchPoolsProfileRequirement(),
         currentBlockNumber ? Promise.resolve(currentBlockNumber) : rebusRpcProvider.getBlockNumber(),
-        currentWalletAddress ? fetchUserInfo(currentWalletAddress) : Promise.resolve(null),
+        fetchUserInfo(currentWalletAddress),
         fetchPoolsWithdrawFeePeriod(),
         fetchPoolsWithdrawFee(),
         fetchPoolsDepositFee(),

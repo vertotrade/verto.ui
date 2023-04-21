@@ -52,6 +52,13 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
     stakedBalance: BigNumber;
     pendingReward: BigNumber;
   };
+  userInfo?: {
+    amount: BigNumber;
+    rewardDebt: BigNumber;
+    lastDepositedTime: BigNumber;
+  };
+  withdrawFee?: string;
+  withdrawFeePeriod?: string;
 }
 
 export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedRebusVault;
