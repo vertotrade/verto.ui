@@ -10,6 +10,7 @@ import { FetchStatus } from 'config/constants/types'
 import { Pool } from '@verto/uikit'
 import { Token } from '@verto/sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
+import { useWeb3React } from '@verto/wagmi'
 
 const useGetTopPoolsByApr = (isIntersecting: boolean) => {
   const dispatch = useAppDispatch()
@@ -18,6 +19,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle)
   const [topPools, setTopPools] = useState<Pool.DeserializedPool<Token>[]>([null, null, null, null, null])
   const initialBlock = useInitialBlock()
+  const { account } = useWeb3React()
 
   const { pools } = usePoolsWithVault()
 
@@ -30,7 +32,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
         await Promise.all([
           dispatch(fetchRebusVaultFees()),
           dispatch(fetchRebusVaultPublicData()),
-          dispatch(fetchPoolsPublicDataAsync(initialBlock, chainId)),
+          dispatch(fetchPoolsPublicDataAsync(initialBlock, chainId, account)),
         ])
         setFetchStatus(FetchStatus.Fetched)
       } catch (e) {
@@ -42,7 +44,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
     if (isIntersecting && fetchStatus === FetchStatus.Idle && initialBlock > 0) {
       fetchPoolsPublicData()
     }
-  }, [dispatch, setFetchStatus, fetchStatus, topPools, isIntersecting, initialBlock, chainId])
+  }, [dispatch, setFetchStatus, fetchStatus, topPools, isIntersecting, initialBlock, chainId, account])
 
   useEffect(() => {
     const [cakePools, otherPools] = partition(pools, pool => pool.sousId === 0)
