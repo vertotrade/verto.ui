@@ -145,6 +145,14 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           </LinkExternal>
         </Flex>
       )}
+      {/* {poolContractAddress && (
+        <Flex mb="2px" justifyContent="space-between" alignItems="center">
+          <Text small>{t('WithdrawFeePeriod')}:</Text>
+          <Flex alignItems="center">
+            <Text small>{pool.withdrawPeriodFee}</Text>
+          </Flex>
+        </Flex>
+      )} */}
       {account && tokenAddress && (
         <Flex justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
           <AddToWalletButton

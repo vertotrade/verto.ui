@@ -148,7 +148,7 @@ export const fetchPoolsProfileRequirement = async (): Promise<{
 
 const withdrawFeePeriod = poolsConfig.map(poolConfig => {
   return {
-    address: poolConfig.stakingToken.address, // update to contract address
+    address: getAddress(poolConfig.contractAddress),
     name: 'withdrawFeePeriod',
   }
 })
@@ -157,13 +157,14 @@ export const fetchPoolsWithdrawFeePeriod = async () => {
   const withdrawFeePeriods = await multicall(erc20ABI, withdrawFeePeriod)
 
   return poolsConfig.map((p, index) => ({
-    withdrawFeePeriod: withdrawFeePeriods[index].toJSON(),
+    sousId: p.sousId,
+    withdrawFeePeriod: new BigNumber(withdrawFeePeriods[index]).toJSON(),
   }))
 }
 
 const withdrawFee = poolsConfig.map(poolConfig => {
   return {
-    address: poolConfig.stakingToken.address, // update to contract address
+    address: getAddress(poolConfig.contractAddress),
     name: 'withdrawFee',
   }
 })
@@ -172,6 +173,76 @@ export const fetchPoolsWithdrawFee = async () => {
   const withdrawFees = await multicall(erc20ABI, withdrawFee)
 
   return poolsConfig.map((p, index) => ({
-    withdrawFee: withdrawFees[index].toJSON(),
+    sousId: p.sousId,
+    withdrawFee: new BigNumber(withdrawFees[index]).toJSON(),
   }))
+}
+const depositFee = poolsConfig.map(poolConfig => {
+  return {
+    address: getAddress(poolConfig.contractAddress),
+    name: 'depositFee',
+  }
+})
+
+export const fetchPoolsDepositFee = async () => {
+  const depositFees = await multicall(erc20ABI, depositFee)
+
+  return poolsConfig.map((p, index) => ({
+    sousId: p.sousId,
+    depositFee: new BigNumber(depositFees[index]).toJSON(),
+  }))
+}
+
+const isBoosted = poolsConfig.map(poolConfig => {
+  return {
+    address: getAddress(poolConfig.contractAddress),
+    name: 'isBoosted',
+  }
+})
+
+export const fetchPoolsIsBoosted = async () => {
+  const areBoosted = await multicall(erc20ABI, isBoosted)
+
+  return poolsConfig.map((p, index) => ({
+    sousId: p.sousId,
+    isBoosted: areBoosted[index][0],
+  }))
+}
+
+const formatData = value => {
+  if (value && value._hex) {
+    return new BigNumber(value).toJSON()
+  }
+  return value
+}
+
+const recursivelyFormatData = data => {
+  if (typeof data === 'object' && data !== null) {
+    return Object.entries(data).reduce((acc, [key, value]) => {
+      return {
+        ...acc,
+        [key]: recursivelyFormatData(value),
+      }
+    }, {})
+  }
+  return formatData(data)
+}
+
+export const fetchUserInfo = async (walletAddress: string) => {
+  const userInfo = poolsConfig.map(poolConfig => {
+    return {
+      address: getAddress(poolConfig.contractAddress),
+      name: 'userInfo',
+      params: [walletAddress],
+    }
+  })
+
+  const userInfoPerPool = await multicall(erc20ABI, userInfo)
+
+  return poolsConfig.map((p, index) => {
+    return {
+      sousId: p.sousId,
+      userInfo: recursivelyFormatData(userInfoPerPool[index]),
+    }
+  })
 }
