@@ -14,6 +14,7 @@ import { VaultKey } from 'state/types'
 import { getBlockExploreLink } from 'utils'
 import { getAddress, getVaultPoolAddress } from 'utils/addressHelpers'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
+import BoostedTag from 'views/Farms/components/YieldBooster/components/BoostedTag'
 import MaxStakeRow from './MaxStakeRow'
 import { AprInfo, DurationAvg, PerformanceFee, TotalLocked, TotalStaked } from './Stat'
 
@@ -126,6 +127,14 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           <Text small>{withdrawFeePeriod}</Text>
         </Flex>
       </Flex>
+      {poolContractAddress && (
+        <Flex mb="2px" justifyContent="space-between" alignItems="center">
+          <Text small>{t('Deposit Fee')}:</Text>
+          <Flex alignItems="center">
+            <Text small>{((Number(pool.depositFee) || 0) / 100).toFixed(2)}%</Text>
+          </Flex>
+        </Flex>
+      )}
       {shouldShowBlockCountdown && (
         <Flex mb="2px" justifyContent="space-between" alignItems="center">
           <Text small>{hasPoolStarted ? t('Ends in') : t('Starts in')}:</Text>
@@ -165,7 +174,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
         </Flex>
       )}
       {poolContractAddress && (
-        <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
+        <Flex mb="2px" justifyContent="space-between">
           <LinkExternal
             isBscScan
             href={`${blockExplorerUrl}/address/${vaultKey ? rebusVaultContractAddress : poolContractAddress}`}
@@ -173,6 +182,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             small>
             {t('View Contract')}
           </LinkExternal>
+          {pool.isBoosted && <BoostedTag scale="sm" ml="16px" />}
         </Flex>
       )}
       {account && tokenAddress && (
