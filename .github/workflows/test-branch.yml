@@ -28,3 +28,6 @@ jobs:
     # Passes the environment variable "env" with value "dev" to the action
     with:
       env: dev
+      domain: dev.vertotrade.com
+      assets_domain: assets.vertotrade.com
+      is_protected: false

@@ -1,10 +1,6 @@
 name: Dispatch Prod Deployment
 on:
   workflow_dispatch:
-    inputs:
-      build_number:
-        description: "Build number (Builds and Prepares for Deployment)"
-        required: true
 
 jobs:
   pre-prod-push-check:
@@ -24,4 +20,3 @@ jobs:
           token: ${{ secrets.VERTO_APP_DEPLOY_PAT }}
           repository: vertotrade/verto.deploy
           event-type: deployProd
-          client-payload: '{"build_number": "${{ inputs.build_number }}" }'
