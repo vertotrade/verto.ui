@@ -44,7 +44,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   },
   {
     sousId: 308,
-    stakingToken: tokens.wrebus,
+    stakingToken: tokens.verto,
     earningToken: tokens.aureus,
     contractAddress: {
       [ChainId.REBUS]: '0xae73f9fC95789156E0F87ba7706552c7b4F647Fb',
