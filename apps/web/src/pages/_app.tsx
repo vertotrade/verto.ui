@@ -84,6 +84,10 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
           content="Verto D.exchange. Where DeFi, Metaverse, P2E and TradFi meet to create the future of Fintech."
         />
 
+        <meta httpEquiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
+
         <title>VertoTrade - D.exchange</title>
         {/* removed since it is not needed for Rebuschain
         (Component as NextPageWithLayout).mp && (
