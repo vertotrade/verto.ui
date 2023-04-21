@@ -4,6 +4,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { batch, useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
+import { useWeb3React } from '@verto/wagmi'
 import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
 import { FAST_INTERVAL } from 'config/constants'
 import useSWRImmutable from 'swr/immutable'
@@ -69,6 +70,7 @@ export const useFetchPublicPoolsData = () => {
   const dispatch = useAppDispatch()
   const { chainId } = useActiveChainId()
   const farmFlag = useFeatureFlag(featureFarmApiAtom)
+  const { account } = useWeb3React()
 
   useSlowRefreshEffect(
     currentBlock => {
@@ -77,14 +79,14 @@ export const useFetchPublicPoolsData = () => {
         await dispatch(fetchFarmsPublicDataAsync({ pids: activeFarms, chainId, flag: farmFlag }))
 
         batch(() => {
-          dispatch(fetchPoolsPublicDataAsync(currentBlock, chainId))
+          dispatch(fetchPoolsPublicDataAsync(currentBlock, chainId, account))
           dispatch(fetchPoolsStakingLimitsAsync())
         })
       }
 
       fetchPoolsDataWithFarms()
     },
-    [dispatch, chainId, farmFlag],
+    [dispatch, chainId, farmFlag, account],
   )
 }
 

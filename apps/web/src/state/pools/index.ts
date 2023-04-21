@@ -29,6 +29,11 @@ import {
   fetchPoolsProfileRequirement,
   fetchPoolsStakingLimits,
   fetchPoolsTotalStaking,
+  fetchUserInfo,
+  fetchPoolsWithdrawFeePeriod,
+  fetchPoolsWithdrawFee,
+  fetchPoolsDepositFee,
+  fetchPoolsIsBoosted,
 } from './fetchPools'
 import {
   fetchPoolsAllowance,
@@ -134,17 +139,37 @@ export const fetchCakePoolUserDataAsync = (account: string) => async dispatch =>
 }
 
 export const fetchPoolsPublicDataAsync =
-  (currentBlockNumber: number, chainId: number) => async (dispatch, getState) => {
+  (currentBlockNumber: number, chainId: number, currentWalletAddress: string | null) => async (dispatch, getState) => {
     try {
-      const [blockLimits, totalStakings, profileRequirements, currentBlock] = await Promise.all([
+      const [
+        blockLimits,
+        totalStakings,
+        profileRequirements,
+        currentBlock,
+        userInfos,
+        withdrawFeePeriods,
+        withdrawFees,
+        depositFees,
+        areBoosted,
+      ] = await Promise.all([
         fetchPoolsBlockLimits(),
         fetchPoolsTotalStaking(),
         fetchPoolsProfileRequirement(),
         currentBlockNumber ? Promise.resolve(currentBlockNumber) : rebusRpcProvider.getBlockNumber(),
+        currentWalletAddress ? fetchUserInfo(currentWalletAddress) : Promise.resolve(null),
+        fetchPoolsWithdrawFeePeriod(),
+        fetchPoolsWithdrawFee(),
+        fetchPoolsDepositFee(),
+        fetchPoolsIsBoosted(),
       ])
 
       const blockLimitsSousIdMap = keyBy(blockLimits, 'sousId')
       const totalStakingsSousIdMap = keyBy(totalStakings, 'sousId')
+      const withdrawFeePeriodSousIdMap = keyBy(withdrawFeePeriods, 'sousId')
+      const withdrawFeesSousIdMap = keyBy(withdrawFees, 'sousId')
+      const depositFeesSousIdMap = keyBy(depositFees, 'sousId')
+      const areBoostedSousIdMap = keyBy(areBoosted, 'sousId')
+      const userInfosSousIdMap = keyBy(userInfos, 'sousId')
 
       const priceHelperLpsConfig = getPoolsPriceHelperLpFiles(chainId)
       const activePriceHelperLpsConfig = priceHelperLpsConfig.filter(priceHelperLpConfig => {
@@ -176,6 +201,11 @@ export const fetchPoolsPublicDataAsync =
       const liveData = poolsConfig.map(pool => {
         const blockLimit = blockLimitsSousIdMap[pool.sousId]
         const totalStaking = totalStakingsSousIdMap[pool.sousId]
+        const withdrawFeePeriod = withdrawFeePeriodSousIdMap[pool.sousId]
+        const withdrawFee = withdrawFeesSousIdMap[pool.sousId]
+        const depositFee = depositFeesSousIdMap[pool.sousId]
+        const isBoosted = areBoostedSousIdMap[pool.sousId]
+        const userInfo = userInfosSousIdMap[pool.sousId]
         const isPoolEndBlockExceeded =
           currentBlock > 0 && blockLimit ? currentBlock > Number(blockLimit.endBlock) : false
         const isPoolFinished = pool.isFinished || isPoolEndBlockExceeded
@@ -204,6 +234,11 @@ export const fetchPoolsPublicDataAsync =
           earningTokenPrice,
           apr,
           isFinished: isPoolFinished,
+          ...userInfo,
+          ...withdrawFeePeriod,
+          ...withdrawFee,
+          ...depositFee,
+          ...isBoosted,
         }
       })
 
