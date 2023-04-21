@@ -1,7 +1,7 @@
 import { useTranslation } from '@verto/localization'
 import { useTooltip, Farm as FarmUI } from '@verto/uikit'
 
-const { CompoundingPoolTag, ManualPoolTag, LockedPoolTag, LockedOrAutoPoolTag } = FarmUI.Tags
+const { CompoundingPoolTag, LockedPoolTag, LockedOrAutoPoolTag } = FarmUI.Tags
 
 const PoolTypeTag = ({ account, vaultKey, isLocked, children }) => {
   const { t } = useTranslation()
@@ -9,7 +9,7 @@ const PoolTypeTag = ({ account, vaultKey, isLocked, children }) => {
   let tooltipText
 
   if (!vaultKey) {
-    tooltipText = t('You must harvest and compound your earnings from this pool manually.')
+    // tooltipText = t('You must harvest and compound your earnings from this pool manually.')
   } else if (!account) {
     tooltipText = t(
       'In flexible staking, rewards are distributed and included in your total staking balance. In locked staking, Rewards are locked until the end of the staking position.',
@@ -36,11 +36,10 @@ const PoolTypeTag = ({ account, vaultKey, isLocked, children }) => {
         ) : (
           <LockedOrAutoPoolTag />
         )
-      ) : (
-        <ManualPoolTag />
-      )}
+      ) : // <ManualPoolTag />
+      null}
       {tooltipVisible && tooltip}
-      {children(targetRef)}
+      {tooltipText && children(targetRef)}
     </>
   )
 }

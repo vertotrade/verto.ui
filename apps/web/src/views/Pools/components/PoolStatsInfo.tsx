@@ -116,6 +116,12 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
         />
       )}
       <Flex mb="2px" justifyContent="space-between" alignItems="center">
+        <Text small>{t('Deposit Fee')}:</Text>
+        <Flex alignItems="center">
+          <Text small>{((Number(pool.depositFee) || 0) / 100).toFixed(2)}%</Text>
+        </Flex>
+      </Flex>
+      <Flex mb="2px" justifyContent="space-between" alignItems="center">
         <Text small>{t('Withdraw Fee')}:</Text>
         <Flex alignItems="center">
           <Text small>{((Number(pool.withdrawFee) || 0) / 100).toFixed(2)}%</Text>
@@ -127,14 +133,6 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           <Text small>{withdrawFeePeriod}</Text>
         </Flex>
       </Flex>
-      {poolContractAddress && (
-        <Flex mb="2px" justifyContent="space-between" alignItems="center">
-          <Text small>{t('Deposit Fee')}:</Text>
-          <Flex alignItems="center">
-            <Text small>{((Number(pool.depositFee) || 0) / 100).toFixed(2)}%</Text>
-          </Flex>
-        </Flex>
-      )}
       {shouldShowBlockCountdown && (
         <Flex mb="2px" justifyContent="space-between" alignItems="center">
           <Text small>{hasPoolStarted ? t('Ends in') : t('Starts in')}:</Text>
