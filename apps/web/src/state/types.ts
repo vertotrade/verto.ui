@@ -61,6 +61,13 @@ export interface SerializedPool extends Pool.SerializedPoolConfig<SerializedWrap
     stakedBalance: SerializedBigNumber
     pendingReward: SerializedBigNumber
   }
+  userInfo?: {
+    amount: BigNumber
+    rewardDebt: BigNumber
+    lastDepositedTime: BigNumber
+  }
+  withdrawFee?: string
+  withdrawFeePeriod?: string
 }
 
 export interface Profile {
