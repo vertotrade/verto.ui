@@ -57,8 +57,10 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
     rewardDebt: BigNumber;
     lastDepositedTime: BigNumber;
   };
-  withdrawFee?: string;
-  withdrawFeePeriod?: string;
+  withdrawFee: string;
+  withdrawFeePeriod: string;
+  depositFee: string;
+  isBoosted: boolean;
 }
 
 export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedRebusVault;
