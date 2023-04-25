@@ -23,7 +23,7 @@ export const vertoTokensTestnet = {
     18,
     'AUREUS',
     'Aureus',
-    'https://www.rebuschain.com/',
+    'https://farmingtales.io/',
   ),
   verto: new ERC20Token(
     ChainId.REBUS_TESTNET,
@@ -31,6 +31,6 @@ export const vertoTokensTestnet = {
     18,
     'VERTO',
     'Verto',
-    'https://www.rebuschain.com/',
+    'https://vertotrade.com/',
   ),
 }

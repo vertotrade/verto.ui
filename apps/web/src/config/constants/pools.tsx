@@ -33,10 +33,10 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   {
     sousId: 307,
     stakingToken: tokens.wrebus,
-    earningToken: (tokens as any).ludus,
+    earningToken: tokens.verto,
     contractAddress: {
-      [ChainId.REBUS]: '0x7C5F263Be7C17Ad8967e904E14F323c02a14430F',
-      [ChainId.REBUS_TESTNET]: '0x7C5F263Be7C17Ad8967e904E14F323c02a14430F',
+      [ChainId.REBUS]: '0x4b895F260A2F8c95cb08c17084fC064a8fcEF1A7',
+      [ChainId.REBUS_TESTNET]: '0x32a2D7abf94d2C5fcBDA3DC4EBcb8Fc3e524c71c',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
@@ -57,10 +57,10 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   {
     sousId: 309,
     stakingToken: tokens.wrebus,
-    earningToken: tokens.verto,
+    earningToken: (tokens as any).ludus,
     contractAddress: {
-      [ChainId.REBUS]: '0x4b895F260A2F8c95cb08c17084fC064a8fcEF1A7',
-      [ChainId.REBUS_TESTNET]: '0x32a2D7abf94d2C5fcBDA3DC4EBcb8Fc3e524c71c',
+      [ChainId.REBUS]: '0x7C5F263Be7C17Ad8967e904E14F323c02a14430F',
+      [ChainId.REBUS_TESTNET]: '0x7C5F263Be7C17Ad8967e904E14F323c02a14430F',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
