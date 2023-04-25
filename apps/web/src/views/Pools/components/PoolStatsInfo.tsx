@@ -75,7 +75,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       .plus(new BigNumber((pool.userInfo.lastDepositedTime as any)._hex))
       .toString()
 
-    if (new Date().getTime() / 1000 >= Number(`${endTimestamp}000`)) {
+    if (new Date().getTime() / 1000 >= Number(`${endTimestamp}`)) {
       withdrawFeePeriod = 'None'
     } else {
       withdrawFeePeriod = formatDistance(new Date(), new Date(Number(`${endTimestamp}000`)))
