@@ -9,14 +9,14 @@ export const vertoTokens = {
     'WRebus',
     'https://www.rebuschain.com/',
   ),
-  // ludus: new ERC20Token(
-  //   ChainId.REBUS,
-  //   '0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd',
-  //   6,
-  //   'LUDUS',
-  //   'Ludus',
-  //   'https://www.rebuschain.com/',
-  // ),
+  ludus: new ERC20Token(
+    ChainId.REBUS,
+    '0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd',
+    6,
+    'LUDUS',
+    'Ludus',
+    'https://www.rebuschain.com/',
+  ),
   aureus: new ERC20Token(
     ChainId.REBUS,
     '0x03E72C6f3A01C6282FF6de1DD652db926A113cDf',

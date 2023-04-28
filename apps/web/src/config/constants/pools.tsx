@@ -56,10 +56,10 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   },
   {
     sousId: 309,
-    stakingToken: tokens.wrebus,
-    earningToken: (tokens as any).ludus,
+    stakingToken: tokens.verto,
+    earningToken: tokens.ludus,
     contractAddress: {
-      [ChainId.REBUS]: '0x7C5F263Be7C17Ad8967e904E14F323c02a14430F',
+      [ChainId.REBUS]: '0xe8ABD9f20AAa9A4f3bE7Cbbea52ACb1b6cBC4444',
       [ChainId.REBUS_TESTNET]: '0x7C5F263Be7C17Ad8967e904E14F323c02a14430F',
     },
     poolCategory: PoolCategory.CORE,
