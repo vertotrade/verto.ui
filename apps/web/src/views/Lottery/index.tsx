@@ -5,13 +5,6 @@ import { LotteryStatus } from 'config/constants/types'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import { useFetchLottery, useLottery } from 'state/lottery/hooks'
-import {
-  TITLE_BG,
-  GET_TICKETS_BG,
-  FINISHED_ROUNDS_BG,
-  FINISHED_ROUNDS_BG_DARK,
-  CHECK_PRIZES_BG,
-} from './pageSectionStyles'
 import useGetNextLotteryEvent from './hooks/useGetNextLotteryEvent'
 import useStatusTransitions from './hooks/useStatusTransitions'
 import Hero from './components/Hero'
@@ -46,14 +39,17 @@ const Lottery = () => {
     <>
       <PageMeta />
       <LotteryPage>
-        <PageSection background={TITLE_BG} index={1} hasCurvedDivider={false}>
+        <PageSection
+          background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
+          index={1}
+          hasCurvedDivider={false}>
           <Hero />
         </PageSection>
         <PageSection
           containerProps={{ style: { marginTop: '-30px' } }}
-          background={GET_TICKETS_BG}
+          background={theme.colors.vertoBg1}
           concaveDivider
-          clipFill={{ light: '#7645D9' }}
+          clipFill={{ light: theme.colors.vertoBg1 }}
           dividerPosition="top"
           index={2}>
           <Flex alignItems="center" justifyContent="center" flexDirection="column" pt="24px">
@@ -76,12 +72,15 @@ const Lottery = () => {
             <NextDrawCard />
           </Flex>
         </PageSection>
-        <PageSection background={CHECK_PRIZES_BG} hasCurvedDivider={false} index={2}>
+        <PageSection
+          background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
+          hasCurvedDivider={false}
+          index={2}>
           <CheckPrizesSection />
         </PageSection>
         <PageSection
           innerProps={{ style: { margin: '0', width: '100%' } }}
-          background={isDark ? FINISHED_ROUNDS_BG_DARK : FINISHED_ROUNDS_BG}
+          background={isDark ? theme.colors.backgroundAlt : theme.colors.background}
           hasCurvedDivider={false}
           index={2}>
           <Flex width="100%" flexDirection="column" alignItems="center" justifyContent="center">
@@ -106,8 +105,8 @@ const Lottery = () => {
         </PageSection>
         <PageSection
           dividerPosition="top"
-          dividerFill={{ light: theme.colors.background }}
-          clipFill={{ light: '#9A9FD0', dark: '#66578D' }}
+          dividerFill={{ light: theme.colors.vertoBg1, dark: theme.colors.vertoBg1 }}
+          clipFill={{ light: theme.colors.backgroundAlt, dark: theme.colors.backgroundAlt }}
           index={2}>
           <HowToPlay />
         </PageSection>
