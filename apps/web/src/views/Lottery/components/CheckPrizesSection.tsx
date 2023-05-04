@@ -4,6 +4,7 @@ import { Button, Heading, Flex, useModal, AutoRenewIcon } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { FetchStatus, LotteryStatus } from 'config/constants/types'
 import { useTranslation } from '@verto/localization'
+import useTheme from 'hooks/useTheme'
 import { useGetUserLotteriesGraphData, useLottery } from 'state/lottery/hooks'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import ClaimPrizesModal from './ClaimPrizesModal'
@@ -26,6 +27,7 @@ const TornTicketImage = styled.img`
 const CheckPrizesSection = () => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
+  const { theme } = useTheme()
   const {
     isTransitioning,
     currentRound: { status },
@@ -65,17 +67,15 @@ const CheckPrizesSection = () => {
     if (!account) {
       return (
         <Flex alignItems="center" justifyContent="center">
-          <TicketImage src="/images/lottery/ticket-l.png" alt="lottery ticket" />
           <Flex mx={['4px', null, '16px']} flexDirection="column" alignItems="center">
-            <Heading textAlign="center" color="#F4EEFF">
+            <Heading textAlign="center" color={theme.colors.text}>
               {t('Connect your wallet')}
             </Heading>
-            <Heading textAlign="center" color="#F4EEFF" mb="24px">
+            <Heading textAlign="center" color={theme.colors.text} mb="24px">
               {t("to check if you've won!")}
             </Heading>
             <ConnectWalletButton width="190px" />
           </Flex>
-          <TicketImage src="/images/lottery/ticket-r.png" alt="lottery ticket" />
         </Flex>
       )
     }
@@ -84,10 +84,10 @@ const CheckPrizesSection = () => {
         <Flex alignItems="center" justifyContent="center">
           <TornTicketImage src="/images/lottery/torn-ticket-l.png" alt="torn lottery ticket" />
           <Flex mx={['4px', null, '16px']} flexDirection="column">
-            <Heading textAlign="center" color="#F4EEFF">
+            <Heading textAlign="center" color={theme.colors.text}>
               {t('No prizes to collect')}...
             </Heading>
-            <Heading textAlign="center" color="#F4EEFF">
+            <Heading textAlign="center" color={theme.colors.text}>
               {t('Better luck next time!')}
             </Heading>
           </Flex>
@@ -98,16 +98,14 @@ const CheckPrizesSection = () => {
     if (hasCheckedForRewards && hasRewardsToClaim) {
       return (
         <Flex alignItems="center" justifyContent="center">
-          <TicketImage src="/images/lottery/ticket-l.png" alt="lottery ticket" />
           <Flex mx={['4px', null, '16px']} flexDirection="column">
-            <Heading textAlign="center" color="#F4EEFF">
+            <Heading textAlign="center" color={theme.colors.text}>
               {t('Congratulations!')}
             </Heading>
-            <Heading textAlign="center" color="#F4EEFF">
+            <Heading textAlign="center" color={theme.colors.text}>
               {t('Why not play again')}
             </Heading>
           </Flex>
-          <TicketImage src="/images/lottery/ticket-r.png" alt="lottery ticket" />
         </Flex>
       )
     }
@@ -122,9 +120,8 @@ const CheckPrizesSection = () => {
     }
     return (
       <Flex alignItems="center" justifyContent="center">
-        <TicketImage src="/images/lottery/ticket-l.png" alt="lottery ticket" />
         <Flex mx={['4px', null, '16px']} flexDirection="column">
-          <Heading textAlign="center" color="#F4EEFF" mb="24px">
+          <Heading textAlign="center" color={theme.colors.text} mb="24px">
             {t('Are you a winner?')}
           </Heading>
           <Button
@@ -135,7 +132,6 @@ const CheckPrizesSection = () => {
             {checkNowText()}
           </Button>
         </Flex>
-        <TicketImage src="/images/lottery/ticket-r.png" alt="lottery ticket" />
       </Flex>
     )
   }
