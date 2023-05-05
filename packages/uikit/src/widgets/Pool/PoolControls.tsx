@@ -105,7 +105,10 @@ export function PoolControls<T>({
 
   const [finishedPools, openPools] = useMemo(() => partition(pools, (pool) => pool.isFinished), [pools]);
   const openPoolsWithStartBlockFilter = useMemo(
-    () => openPools.filter((pool) => (threshHold > 0 && pool.startBlock ? Number(pool.startBlock) < threshHold : true)),
+    () =>
+      openPools.filter((pool) =>
+        threshHold > 0 && pool.startBlock ? Number(pool.startBlock) < threshHold || pool.isBoosted : false
+      ),
     [threshHold, openPools]
   );
   const stakedOnlyFinishedPools = useMemo(
@@ -157,7 +160,10 @@ export function PoolControls<T>({
   }
 
   chosenPools = useMemo(() => {
-    const sortedPools = sortPools<T>(account, sortOption, chosenPools).slice(0, numberOfPoolsVisible);
+    // Only show pools after the basic info is loaded
+    const filteredPools = chosenPools.filter((pool) => pool.totalStaked && pool.totalStaked.gte(0));
+
+    const sortedPools = sortPools<T>(account, sortOption, filteredPools).slice(0, numberOfPoolsVisible);
 
     if (searchQuery) {
       const lowercaseQuery = latinise(searchQuery.toLowerCase());

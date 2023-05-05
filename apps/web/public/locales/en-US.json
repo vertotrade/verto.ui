@@ -234,6 +234,8 @@
   "Entered": "Entered",
   "Connect your wallet to view your prediction history": "Connect your wallet to view your prediction history",
   "You’ve already staked the maximum amount you can stake in this pool!": "You’ve already staked the maximum amount you can stake in this pool!",
+  "You cannot stake any more in this pool because it has started!": "You cannot stake any more in this pool because it has started!",
+  "You can only unstake from this pool after it finishes!": "You can only unstake from this pool after it finishes!",
   "Markets Paused": "Markets Paused",
   "Prediction markets have been paused due to an error.": "Prediction markets have been paused due to an error.",
   "All open positions have been cancelled.": "All open positions have been cancelled.",

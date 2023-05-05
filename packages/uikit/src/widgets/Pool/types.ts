@@ -61,6 +61,8 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
   withdrawFeePeriod?: string;
   depositFee?: string;
   isBoosted?: boolean;
+  hasWhitelist?: boolean;
+  whitelisted?: boolean;
 }
 
 export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedRebusVault;
