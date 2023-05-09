@@ -26,12 +26,17 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
   const title = useMemo(() => {
     const activeMenuItem = getActiveMenuItem({ menuConfig: menuItems, pathname })
     const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
+    const label = activeSubMenuItem?.label || activeMenuItem?.label
 
-    return activeSubMenuItem?.label || activeMenuItem?.label
-  }, [menuItems, pathname])
+    if (!label && pathname === '/tokens') {
+      return t('Tokens')
+    }
+
+    return label
+  }, [menuItems, pathname, t])
 
   const supportedMainnetChains = useMemo(
-    () => chains.filter(chain => !chain.testnet && pageSupportedChains?.includes(chain.id)),
+    () => chains.filter(chain => pageSupportedChains?.includes(chain.id)),
     [chains, pageSupportedChains],
   )
 
