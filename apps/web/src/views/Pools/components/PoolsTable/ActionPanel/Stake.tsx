@@ -15,6 +15,7 @@ import {
   Balance,
   Pool,
 } from '@verto/uikit'
+import { useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -32,6 +33,8 @@ import { useProfileRequirement } from 'views/Pools/hooks/useProfileRequirement'
 import isUndefinedOrNull from '@verto/utils/isUndefinedOrNull'
 import useUserDataInVaultPresenter from 'views/Pools/components/LockedPool/hooks/useUserDataInVaultPresenter'
 import { Token } from '@verto/sdk'
+import { BSC_BLOCK_TIME } from 'config'
+import { useInitialBlock } from 'state/block/hooks'
 
 import { useApprovePool, useCheckVaultApprovalStatus, useVaultApprove } from '../../../hooks/useApprove'
 import VaultStakeModal from '../../RebusVaultCard/VaultStakeModal'
@@ -55,7 +58,11 @@ interface StackedActionProps {
   pool: Pool.DeserializedPool<Token>
 }
 
+const POOL_START_BLOCK_THRESHOLD = (60 / BSC_BLOCK_TIME) * 4
+
 const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps>> = ({ pool }) => {
+  const initialBlock = useInitialBlock()
+  const threshHold = initialBlock > 0 ? initialBlock + POOL_START_BLOCK_THRESHOLD : 0
   const {
     sousId,
     stakingToken,
@@ -68,6 +75,9 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     vaultKey,
     profileRequirement,
     userDataLoaded,
+    isBoosted,
+    startBlock,
+    endBlock,
   } = pool
   const { t } = useTranslation()
   const { address: account } = useAccount()
@@ -175,10 +185,24 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     }
   }
 
+  const isStakeEnabled = useMemo(
+    () => !isBoosted || Number(startBlock) >= threshHold,
+    [isBoosted, startBlock, threshHold],
+  )
+  const isUnstakeEnabled = useMemo(() => !isBoosted || Number(endBlock) < threshHold, [isBoosted, endBlock, threshHold])
+
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
-    t("You've already staked the maximum amount you can stake in this pool!"),
+    !isStakeEnabled
+      ? t('You cannot stake any more in this pool because it has started!')
+      : t("You've already staked the maximum amount you can stake in this pool!"),
     { placement: 'bottom' },
   )
+
+  const {
+    targetRef: unstakeTargetRef,
+    tooltip: unstakeTooltip,
+    tooltipVisible: unstakeTooltipVisible,
+  } = useTooltip(t('You can only unstake from this pool after it finishes!'), { placement: 'bottom' })
 
   const tooltipContentOfBurn = t(
     'After Burning starts at %burnStartTime%. You need to renew your fix-term position, to initiate a new lock or convert your staking position to flexible before it starts. Otherwise all the rewards will be burned within the next 90 days.',
@@ -353,10 +377,18 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             )}
             {(vaultPosition === VaultPosition.Flexible || !vaultKey) && (
               <IconButtonWrapper>
-                <IconButton variant="secondary" onClick={onUnstake} mr="6px">
-                  <MinusIcon color="white" width="14px" />
-                </IconButton>
-                {reachStakingLimit ? (
+                {!isUnstakeEnabled ? (
+                  <span ref={unstakeTargetRef}>
+                    <IconButton variant="secondary" disabled mr="6px">
+                      <MinusIcon color="textDisabled" width="24px" height="24px" />
+                    </IconButton>
+                  </span>
+                ) : (
+                  <IconButton variant="secondary" onClick={onUnstake} mr="6px">
+                    <MinusIcon color="white" width="14px" />
+                  </IconButton>
+                )}
+                {reachStakingLimit || !isStakeEnabled ? (
                   <span ref={targetRef}>
                     <IconButton variant="secondary" disabled>
                       <AddIcon color="textDisabled" width="24px" height="24px" />
@@ -397,6 +429,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
               </Flex>
             )}
             {tooltipVisible && tooltip}
+            {unstakeTooltipVisible && unstakeTooltip}
           </ActionContent>
         </ActionContainer>
         {isMobile && vaultPosition >= VaultPosition.LockedEnd && (

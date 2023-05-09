@@ -15,7 +15,7 @@ const StyledCell = styled(Pool.BaseCell)`
 `
 
 const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }) => {
-  const { sousId, totalStaked, startBlock, endBlock, isFinished } = pool
+  const { sousId, startBlock, endBlock, isFinished } = pool
   const currentBlock = useCurrentBlock()
   const { t } = useTranslation()
 
@@ -49,7 +49,7 @@ const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }
   // Opted to go for this since we don't really need a separate publicDataLoaded flag
   // anywhere else
   const isLoadingBlockData = !currentBlock || (!blocksRemaining && !blocksUntilStart)
-  const isLoadingPublicData = hasPoolStarted ? !totalStaked.gt(0) || isLoadingBlockData : isLoadingBlockData
+  const isLoadingPublicData = isLoadingBlockData
   const showLoading = isLoadingPublicData && !isCakePool && !isFinished
   return (
     <StyledCell role="cell">

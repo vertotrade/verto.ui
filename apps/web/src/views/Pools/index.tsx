@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import { Heading, Flex, Text, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
@@ -25,6 +26,8 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
   const { address: account } = useAccount()
   const { pools, userDataLoaded } = usePoolsWithVault()
 
+  const filteredPools = useMemo(() => pools.filter(pool => !pool.hasWhitelist || pool.whitelisted), [pools])
+
   usePoolsPageFetch()
 
   return (
@@ -45,7 +48,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
         </Flex>
       </PageHeader>
       <Page>
-        <PoolControls pools={pools}>
+        <PoolControls pools={filteredPools}>
           {({ chosenPools, viewMode, stakedOnly, normalizedUrlSearch }) => (
             <>
               {account && !userDataLoaded && stakedOnly && (

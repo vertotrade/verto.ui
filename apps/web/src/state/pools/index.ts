@@ -34,6 +34,8 @@ import {
   fetchPoolsWithdrawFee,
   fetchPoolsDepositFee,
   fetchPoolsIsBoosted,
+  fetchPoolsIsWhitelisted,
+  fetchPoolsCheckWhitelist,
 } from './fetchPools'
 import {
   fetchPoolsAllowance,
@@ -141,6 +143,7 @@ export const fetchCakePoolUserDataAsync = (account: string) => async dispatch =>
 export const fetchPoolsPublicDataAsync =
   (currentBlockNumber: number, chainId: number, currentWalletAddress: string | null) => async (dispatch, getState) => {
     try {
+      let areWhitelisted = []
       const [
         blockLimits,
         totalStakings,
@@ -160,7 +163,23 @@ export const fetchPoolsPublicDataAsync =
         fetchPoolsWithdrawFeePeriod(),
         fetchPoolsWithdrawFee(),
         fetchPoolsDepositFee(),
-        fetchPoolsIsBoosted(),
+        fetchPoolsIsBoosted().then(async boostedRes => {
+          const boostedPoolIds = boostedRes.filter(({ isBoosted }) => isBoosted).map(({ sousId }) => sousId)
+
+          await fetchPoolsIsWhitelisted(boostedPoolIds).then(async res => {
+            const areWhitelistConfirmed = await fetchPoolsCheckWhitelist(
+              res.map(({ sousId }) => sousId),
+              currentWalletAddress,
+            )
+
+            areWhitelisted = res.map(pool => ({
+              ...pool,
+              ...(areWhitelistConfirmed.find(({ sousId }) => sousId === pool.sousId) || {}),
+            }))
+          })
+
+          return boostedRes
+        }),
       ])
 
       const blockLimitsSousIdMap = keyBy(blockLimits, 'sousId')
@@ -169,6 +188,7 @@ export const fetchPoolsPublicDataAsync =
       const withdrawFeesSousIdMap = keyBy(withdrawFees, 'sousId')
       const depositFeesSousIdMap = keyBy(depositFees, 'sousId')
       const areBoostedSousIdMap = keyBy(areBoosted, 'sousId')
+      const areWhitelistedSousIdMap = keyBy(areWhitelisted, 'sousId')
       const userInfosSousIdMap = keyBy(userInfos, 'sousId')
 
       const priceHelperLpsConfig = getPoolsPriceHelperLpFiles(chainId)
@@ -205,6 +225,7 @@ export const fetchPoolsPublicDataAsync =
         const withdrawFee = withdrawFeesSousIdMap[pool.sousId]
         const depositFee = depositFeesSousIdMap[pool.sousId]
         const isBoosted = areBoostedSousIdMap[pool.sousId]
+        const isWhitelisted = areWhitelistedSousIdMap[pool.sousId]
         const userInfo = userInfosSousIdMap[pool.sousId]
         const isPoolEndBlockExceeded =
           currentBlock > 0 && blockLimit ? currentBlock > Number(blockLimit.endBlock) : false
@@ -239,6 +260,7 @@ export const fetchPoolsPublicDataAsync =
           ...withdrawFee,
           ...depositFee,
           ...isBoosted,
+          ...isWhitelisted,
         }
       })
 
@@ -430,7 +452,7 @@ export const PoolsSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(resetUserState, state => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      state.data = state.data.map(({ userData, ...pool }) => {
+      state.data = state.data.map(({ userData, isBoosted, hasWhitelist, whitelisted, ...pool }) => {
         return { ...pool }
       })
       state.userDataLoaded = false

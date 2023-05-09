@@ -209,6 +209,51 @@ export const fetchPoolsIsBoosted = async () => {
   }))
 }
 
+export const fetchPoolsIsWhitelisted = async poolIdsToFetch => {
+  const filteredPoolsConfig = poolsConfig.filter(poolConfig => poolIdsToFetch.includes(poolConfig.sousId))
+
+  if (!filteredPoolsConfig.length) {
+    return []
+  }
+
+  const isWhitelisted = filteredPoolsConfig.map(poolConfig => {
+    return {
+      address: getAddress(poolConfig.contractAddress),
+      name: 'isWhiteListed',
+    }
+  })
+
+  const areWhitelisted = await multicall(erc20ABI, isWhitelisted)
+
+  return filteredPoolsConfig.map((p, index) => ({
+    sousId: p.sousId,
+    hasWhitelist: areWhitelisted[index][0],
+  }))
+}
+
+export const fetchPoolsCheckWhitelist = async (poolIdsToFetch, walletAddress) => {
+  if (!walletAddress || !poolIdsToFetch.length) {
+    return []
+  }
+
+  const filteredPoolsConfig = poolsConfig.filter(poolConfig => poolIdsToFetch.includes(poolConfig.sousId))
+
+  const checkWhitelist = filteredPoolsConfig.map(poolConfig => {
+    return {
+      address: getAddress(poolConfig.contractAddress),
+      name: 'whiteList',
+      params: [walletAddress],
+    }
+  })
+
+  const areWhitelistConfirmed = await multicall(erc20ABI, checkWhitelist)
+
+  return filteredPoolsConfig.map((p, index) => ({
+    sousId: p.sousId,
+    whitelisted: areWhitelistConfirmed[index][0],
+  }))
+}
+
 const formatData = value => {
   if (value && value._hex) {
     return new BigNumber(value).toJSON()

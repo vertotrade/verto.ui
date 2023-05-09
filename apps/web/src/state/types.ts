@@ -68,6 +68,9 @@ export interface SerializedPool extends Pool.SerializedPoolConfig<SerializedWrap
   }
   withdrawFee?: string
   withdrawFeePeriod?: string
+  isBoosted?: boolean
+  hasWhitelist?: boolean
+  whitelisted?: boolean
 }
 
 export interface Profile {
