@@ -4,15 +4,20 @@ import { useDelayedUnmount } from "@verto/hooks";
 import { ExpandActionCell } from "../Cells/ExpandActionCell";
 import useMatchBreakpoints from "../../../contexts/MatchBreakpoints/useMatchBreakpoints";
 
-const StyledRow = styled.div`
+const StyledRow = styled.div<{ hasAction?: boolean }>`
   background-color: transparent;
   display: flex;
-  cursor: pointer;
+  cursor: ${(props) => (props.hasAction ? "pointer" : "initial")};
 `;
 
 export const ExpandRow: React.FC<
-  React.PropsWithChildren<{ children: ReactNode; panel: ReactNode; initialActivity?: boolean }>
-> = memo(({ children, panel, initialActivity = false }) => {
+  React.PropsWithChildren<{
+    children: ReactNode;
+    panel?: ReactNode;
+    initialActivity?: boolean;
+    disableExpandActionCell?: boolean;
+  }>
+> = memo(({ children, panel, initialActivity = false, disableExpandActionCell = false }) => {
   const hasSetInitialValue = useRef(false);
   const { isTablet, isDesktop } = useMatchBreakpoints();
 
@@ -31,9 +36,9 @@ export const ExpandRow: React.FC<
 
   return (
     <>
-      <StyledRow role="row" onClick={toggleExpanded}>
+      <StyledRow role="row" onClick={toggleExpanded} hasAction={!!panel}>
         {children}
-        <ExpandActionCell expanded={expanded} isFullLayout={isTablet || isDesktop} />
+        {!disableExpandActionCell && <ExpandActionCell expanded={expanded} isFullLayout={isTablet || isDesktop} />}
       </StyledRow>
       {shouldRenderActionPanel && panel}
     </>

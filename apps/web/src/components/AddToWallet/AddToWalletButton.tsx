@@ -26,6 +26,7 @@ export interface AddToWalletButtonProps {
   tokenLogo: string
   textOptions?: AddToWalletTextOptions
   marginTextBetweenLogo?: string
+  iconWidth?: string
 }
 
 const Icons = {
@@ -47,9 +48,9 @@ const getWalletText = (textOptions: AddToWalletTextOptions, tokenSymbol: string,
   )
 }
 
-const getWalletIcon = (marginTextBetweenLogo: string, name?: string) => {
+const getWalletIcon = (marginTextBetweenLogo: string, name?: string, iconWidth?: string) => {
   const iconProps = {
-    width: '16px',
+    width: iconWidth || '16px',
     ...(marginTextBetweenLogo && { ml: marginTextBetweenLogo }),
   }
   if (name && Icons[name]) {
@@ -78,6 +79,7 @@ const AddToWalletButton: React.FC<AddToWalletButtonProps & ButtonProps> = ({
   tokenLogo,
   textOptions = AddToWalletTextOptions.NO_TEXT,
   marginTextBetweenLogo = '0px',
+  iconWidth,
   ...props
 }) => {
   const { t } = useTranslation()
@@ -110,7 +112,7 @@ const AddToWalletButton: React.FC<AddToWalletButtonProps & ButtonProps> = ({
         })
       }}>
       {getWalletText(textOptions, tokenSymbol, t)}
-      {getWalletIcon(marginTextBetweenLogo, connector?.name)}
+      {getWalletIcon(marginTextBetweenLogo, connector?.name, iconWidth)}
     </Button>
   )
 }

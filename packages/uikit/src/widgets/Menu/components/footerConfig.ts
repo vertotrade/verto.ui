@@ -18,6 +18,11 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
         label: t("Community"),
         href: "https://docs.vertotrade.com//contact-us/telegram",
       },
+      {
+        label: t("Tokens"),
+        href: "/tokens",
+        internal: true,
+      },
     ],
   },
   {

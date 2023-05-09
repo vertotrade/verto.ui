@@ -55,15 +55,16 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           {items?.map((item) => (
             <StyledList key={item.label}>
               <StyledListItem>{item.label}</StyledListItem>
-              {item.items?.map(({ label, href, isHighlighted = false }) => (
+              {item.items?.map(({ label, href, internal, isHighlighted = false }) => (
                 <StyledListItem key={label}>
                   {href ? (
                     <Link
                       href={href}
-                      target="_blank"
-                      rel="noreferrer noopener"
+                      target={href.includes("http") ? "_blank" : undefined}
+                      rel={href.includes("http") ? "noopener noreferrer" : undefined}
                       color={isHighlighted ? vars.colors.secondary : "text"}
                       bold={false}
+                      internal={internal}
                     >
                       {label}
                     </Link>
