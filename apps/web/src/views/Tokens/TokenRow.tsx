@@ -4,6 +4,7 @@ import { Currency, CurrencyAmount } from '@verto/sdk'
 
 import NameCell from './Cells/NameCell'
 import BalanceCell from './Cells/BalanceCell'
+import AddressCell from './Cells/AddressCell'
 import ActionCell from './Cells/ActionCell'
 
 const TokenRow: React.FC<React.PropsWithChildren<{ currencyAmount: CurrencyAmount<Currency> }>> = ({
@@ -13,6 +14,7 @@ const TokenRow: React.FC<React.PropsWithChildren<{ currencyAmount: CurrencyAmoun
     <Pool.ExpandRow disableExpandActionCell>
       <NameCell currency={currencyAmount.currency} />
       <BalanceCell currencyAmount={currencyAmount} />
+      <AddressCell currency={currencyAmount.currency} />
       <ActionCell currency={currencyAmount.currency} />
     </Pool.ExpandRow>
   )
