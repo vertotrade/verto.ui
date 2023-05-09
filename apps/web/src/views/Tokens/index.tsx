@@ -1,10 +1,11 @@
+import { useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import { Heading, Flex, PageHeader, Pool } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import Page from 'components/Layout/Page'
-import { ChainId } from '@verto/sdk'
+import { ChainId, CurrencyAmount } from '@verto/sdk'
 import { useCurrency } from 'hooks/Tokens'
 import { useCurrencyBalances } from 'state/wallet/hooks'
 import TokenRow from './TokenRow'
@@ -18,8 +19,19 @@ const Tokens: React.FC<React.PropsWithChildren> = () => {
   const { address: account } = useAccount()
 
   const rebusCurrency = useCurrency('rebus')
-  const relevantTokenBalances = useCurrencyBalances(account ?? undefined, [rebusCurrency].concat(allTokens))
-  const currencyAmounts = relevantTokenBalances.filter(Boolean)
+  const allCurrencies = [rebusCurrency].concat(allTokens)
+  const relevantTokenBalances = useCurrencyBalances(account ?? undefined, allCurrencies)
+  const currencyAmounts = useMemo(
+    () =>
+      relevantTokenBalances.map((tokenBalance, index) => {
+        if (typeof tokenBalance === 'undefined') {
+          return CurrencyAmount.fromRawAmount(allCurrencies[index], '0')
+        }
+
+        return tokenBalance
+      }),
+    [allCurrencies, relevantTokenBalances],
+  )
 
   return (
     <>

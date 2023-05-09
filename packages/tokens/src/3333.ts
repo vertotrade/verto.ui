@@ -33,4 +33,12 @@ export const vertoTokensTestnet = {
     'Verto',
     'https://vertotrade.com/',
   ),
+  xverto: new ERC20Token(
+    ChainId.REBUS_TESTNET,
+    '0x2AB41eE01Cc023263CA2dC1257aF608a2046844B',
+    18,
+    'XVERTO',
+    'xVerto',
+    'https://vertotrade.com/',
+  ),
 }

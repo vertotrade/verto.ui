@@ -1,13 +1,15 @@
-import { Text, Pool, useMatchBreakpoints } from '@verto/uikit'
+import { Text, Pool } from '@verto/uikit'
 import styled from 'styled-components'
 import CurrencyLogo from 'components/Logo/CurrencyLogo'
 import { Currency } from '@verto/sdk'
+import { useTranslation } from '@verto/localization'
 
 interface NameCellProps {
   currency: Currency
 }
 
 const StyledCell = styled(Pool.BaseCell)`
+  align-items: center;
   flex: 5;
   flex-direction: row;
   padding-left: 12px;
@@ -18,10 +20,10 @@ const StyledCell = styled(Pool.BaseCell)`
 `
 
 const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ currency }) => {
-  const { isMobile } = useMatchBreakpoints()
+  const { t } = useTranslation()
   let title = currency.name ?? currency.symbol
 
-  if (isMobile && title) {
+  if (title) {
     title = title.split(' ')[0]
   }
 
@@ -29,6 +31,9 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ currency }
     <StyledCell role="cell">
       <CurrencyLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
       <Pool.CellContent>
+        <Text fontSize="12px" color="textSubtle" textAlign="left" mb="4px">
+          {t('Name')}
+        </Text>
         <Text>{title}</Text>
       </Pool.CellContent>
     </StyledCell>
