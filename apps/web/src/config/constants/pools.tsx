@@ -96,7 +96,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     stakingToken: tokens.wrebus,
     earningToken: tokens.xverto,
     contractAddress: {
-      [ChainId.REBUS]: '',
+      [ChainId.REBUS]: '0x87c42Bf8fDAf021174463cF2782ecb252308fE82',
       [ChainId.REBUS_TESTNET]: '0xd4e4097C091f3205fA6fFEae875216B780d5f31D',
     },
     poolCategory: PoolCategory.CORE,
