@@ -209,6 +209,54 @@ export const fetchPoolsIsBoosted = async () => {
   }))
 }
 
+export const fetchPoolsBoostBlockStart = async poolIdsToFetch => {
+  const filteredPoolsConfig = poolsConfig.filter(
+    poolConfig => poolIdsToFetch.includes(poolConfig.sousId) && poolConfig.hasBoostBlockStart,
+  )
+
+  if (!filteredPoolsConfig.length) {
+    return []
+  }
+
+  const boostBlockStart = filteredPoolsConfig.map(poolConfig => {
+    return {
+      address: getAddress(poolConfig.contractAddress),
+      name: 'boostBlockStart',
+    }
+  })
+
+  const allBoostStartBlocks = await multicall(erc20ABI, boostBlockStart)
+
+  return filteredPoolsConfig.map((p, index) => ({
+    sousId: p.sousId,
+    boostBlockStart: parseInt(allBoostStartBlocks[index][0].toString(), 10),
+  }))
+}
+
+export const fetchPoolsMinPerUser = async poolIdsToFetch => {
+  const filteredPoolsConfig = poolsConfig.filter(
+    poolConfig => poolIdsToFetch.includes(poolConfig.sousId) && poolConfig.hasMinPerUser,
+  )
+
+  if (!filteredPoolsConfig.length) {
+    return []
+  }
+
+  const minPerUser = filteredPoolsConfig.map(poolConfig => {
+    return {
+      address: getAddress(poolConfig.contractAddress),
+      name: 'poolMinPerUser',
+    }
+  })
+
+  const allMinPerUser = await multicall(erc20ABI, minPerUser)
+
+  return filteredPoolsConfig.map((p, index) => ({
+    sousId: p.sousId,
+    minPerUser: allMinPerUser[index][0].toString(),
+  }))
+}
+
 export const fetchPoolsIsWhitelisted = async poolIdsToFetch => {
   const filteredPoolsConfig = poolsConfig.filter(poolConfig => poolIdsToFetch.includes(poolConfig.sousId))
 

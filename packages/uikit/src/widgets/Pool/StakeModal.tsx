@@ -67,6 +67,7 @@ interface StakeModalProps {
   handleConfirmClick: any;
   pendingTx: boolean;
   imageUrl?: string;
+  minPerUser?: string;
 }
 
 export const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
@@ -92,6 +93,7 @@ export const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
   pendingTx,
   handleConfirmClick,
   imageUrl = "/images/tokens/",
+  minPerUser,
 }) => {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -112,9 +114,25 @@ export const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
     return stakingTokenBalance;
   }, [userDataStakedBalance, stakingTokenBalance, stakingLimit, isRemovingStake]);
   const fullDecimalStakeAmount = getDecimalAmount(new BigNumber(stakeAmount), stakingTokenDecimals);
-  const userNotEnoughToken = isRemovingStake
+  const parsedMinPerUser = getDecimalAmount(
+    // eslint-disable-next-line no-restricted-properties
+    (((minPerUser || "0") as any) / Math.pow(10, stakingTokenDecimals)) as any,
+    stakingTokenDecimals
+  );
+  let isStakingMoreThanMinimum = true;
+  let userNotEnoughToken = isRemovingStake
     ? userDataStakedBalance.lt(fullDecimalStakeAmount)
     : userDataStakingTokenBalance.lt(fullDecimalStakeAmount);
+
+  if (minPerUser && !isRemovingStake) {
+    if (parsedMinPerUser.gt(userDataStakingTokenBalance)) {
+      userNotEnoughToken = true;
+    }
+
+    if (parsedMinPerUser.gt(fullDecimalStakeAmount)) {
+      isStakingMoreThanMinimum = false;
+    }
+  }
 
   const usdValueStaked = new BigNumber(stakeAmount).times(stakingTokenPrice);
   const formattedUsdValueStaked = !usdValueStaked.isNaN() && formatNumber(usdValueStaked.toNumber());
@@ -232,6 +250,14 @@ export const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
           })}
         </Text>
       )}
+      {!isStakingMoreThanMinimum && (
+        <Text color="failure" fontSize="12px" style={{ textAlign: "right" }} mt="4px">
+          {t("Minimum %balance% %symbol%", {
+            balance: getFullDisplayBalance(new BigNumber(minPerUser as any), stakingTokenDecimals, 0),
+            symbol: stakingTokenSymbol,
+          })}
+        </Text>
+      )}
       {userNotEnoughToken && (
         <Text color="failure" fontSize="12px" style={{ textAlign: "right" }} mt="4px">
           {t("Insufficient %symbol% balance", {
@@ -312,7 +338,13 @@ export const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
           isLoading={pendingTx}
           endIcon={pendingTx ? <AutoRenewIcon spin color="currentColor" /> : null}
           onClick={() => handleConfirmClick(stakeAmount)}
-          disabled={!stakeAmount || parseFloat(stakeAmount) === 0 || hasReachedStakeLimit || userNotEnoughToken}
+          disabled={
+            !stakeAmount ||
+            parseFloat(stakeAmount) === 0 ||
+            hasReachedStakeLimit ||
+            userNotEnoughToken ||
+            !isStakingMoreThanMinimum
+          }
           mt="24px"
         >
           {pendingTx ? t("Confirming") : t("Confirm")}

@@ -36,6 +36,8 @@ import {
   fetchPoolsIsBoosted,
   fetchPoolsIsWhitelisted,
   fetchPoolsCheckWhitelist,
+  fetchPoolsBoostBlockStart,
+  fetchPoolsMinPerUser,
 } from './fetchPools'
 import {
   fetchPoolsAllowance,
@@ -144,6 +146,8 @@ export const fetchPoolsPublicDataAsync =
   (currentBlockNumber: number, chainId: number, currentWalletAddress: string | null) => async (dispatch, getState) => {
     try {
       let areWhitelisted = []
+      let boostBlockStarts = []
+      let minPerUsers = []
       const [
         blockLimits,
         totalStakings,
@@ -166,17 +170,27 @@ export const fetchPoolsPublicDataAsync =
         fetchPoolsIsBoosted().then(async boostedRes => {
           const boostedPoolIds = boostedRes.filter(({ isBoosted }) => isBoosted).map(({ sousId }) => sousId)
 
-          await fetchPoolsIsWhitelisted(boostedPoolIds).then(async res => {
-            const areWhitelistConfirmed = await fetchPoolsCheckWhitelist(
-              res.map(({ sousId }) => sousId),
-              currentWalletAddress,
-            )
+          await Promise.all([
+            fetchPoolsBoostBlockStart(boostedPoolIds).then(async res => {
+              boostBlockStarts = res
+            }),
 
-            areWhitelisted = res.map(pool => ({
-              ...pool,
-              ...(areWhitelistConfirmed.find(({ sousId }) => sousId === pool.sousId) || {}),
-            }))
-          })
+            fetchPoolsMinPerUser(boostedPoolIds).then(async res => {
+              minPerUsers = res
+            }),
+
+            fetchPoolsIsWhitelisted(boostedPoolIds).then(async res => {
+              const areWhitelistConfirmed = await fetchPoolsCheckWhitelist(
+                res.map(({ sousId }) => sousId),
+                currentWalletAddress,
+              )
+
+              areWhitelisted = res.map(pool => ({
+                ...pool,
+                ...(areWhitelistConfirmed.find(({ sousId }) => sousId === pool.sousId) || {}),
+              }))
+            }),
+          ])
 
           return boostedRes
         }),
@@ -189,6 +203,8 @@ export const fetchPoolsPublicDataAsync =
       const depositFeesSousIdMap = keyBy(depositFees, 'sousId')
       const areBoostedSousIdMap = keyBy(areBoosted, 'sousId')
       const areWhitelistedSousIdMap = keyBy(areWhitelisted, 'sousId')
+      const boostBlockStartsMap = keyBy(boostBlockStarts, 'sousId')
+      const minPerUsersMap = keyBy(minPerUsers, 'sousId')
       const userInfosSousIdMap = keyBy(userInfos, 'sousId')
 
       const priceHelperLpsConfig = getPoolsPriceHelperLpFiles(chainId)
@@ -226,6 +242,8 @@ export const fetchPoolsPublicDataAsync =
         const depositFee = depositFeesSousIdMap[pool.sousId]
         const isBoosted = areBoostedSousIdMap[pool.sousId]
         const isWhitelisted = areWhitelistedSousIdMap[pool.sousId]
+        const boostBlockStart = boostBlockStartsMap[pool.sousId]
+        const minPerUser = minPerUsersMap[pool.sousId]
         const userInfo = userInfosSousIdMap[pool.sousId]
         const isPoolEndBlockExceeded =
           currentBlock > 0 && blockLimit ? currentBlock > Number(blockLimit.endBlock) : false
@@ -261,6 +279,8 @@ export const fetchPoolsPublicDataAsync =
           ...depositFee,
           ...isBoosted,
           ...isWhitelisted,
+          ...boostBlockStart,
+          ...minPerUser,
         }
       })
 
@@ -452,7 +472,7 @@ export const PoolsSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(resetUserState, state => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      state.data = state.data.map(({ userData, isBoosted, hasWhitelist, whitelisted, ...pool }) => {
+      state.data = state.data.map(({ userData, isBoosted, hasWhitelist, boostBlockStart, whitelisted, ...pool }) => {
         return { ...pool }
       })
       state.userDataLoaded = false

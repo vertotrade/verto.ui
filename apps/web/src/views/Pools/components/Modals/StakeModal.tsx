@@ -35,6 +35,7 @@ const StakeModalContainer = ({
     userData,
     stakingLimit,
     enableEmergencyWithdraw,
+    minPerUser,
   } = pool
   const { address: account } = useAccount()
   const { toastSuccess } = useToast()
@@ -144,6 +145,7 @@ const StakeModalContainer = ({
       setAmount={setAmount}
       handleConfirmClick={handleConfirmClick}
       isRemovingStake={isRemovingStake}
+      minPerUser={minPerUser}
     />
   )
 }
