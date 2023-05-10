@@ -16,19 +16,26 @@ const StyledCell = styled(Pool.BaseCell)`
 
 const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }) => {
   const { sousId, startBlock, endBlock, isFinished, boostBlockStart } = pool
-  const depositEndBlock = startBlock - boostBlockStart
   const currentBlock = useCurrentBlock()
   const { t } = useTranslation()
 
-  const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
-    getPoolBlockInfo(pool, currentBlock)
+  const {
+    shouldShowBlockCountdown,
+    blocksUntilStart,
+    blocksRemaining,
+    hasPoolStarted,
+    blocksToDisplay,
+    blocksUntilDepositEnd,
+    depositEndBlock,
+  } = getPoolBlockInfo(pool, currentBlock)
 
+  const blocks = boostBlockStart && currentBlock < depositEndBlock ? blocksUntilDepositEnd : blocksToDisplay
   const isCakePool = sousId === 0
 
   const renderBlocks = shouldShowBlockCountdown ? (
     <Flex alignItems="center">
       <Flex flex="1.3">
-        <Balance fontSize="16px" value={blocksToDisplay} decimals={0} />
+        <Balance fontSize="16px" value={blocks} decimals={0} />
         <Text ml="4px" textTransform="lowercase">
           {t('Blocks')}
         </Text>
