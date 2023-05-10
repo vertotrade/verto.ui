@@ -19,6 +19,8 @@ export interface PoolConfigBaseProps {
   isFinished?: boolean;
   enableEmergencyWithdraw?: boolean;
   version?: number;
+  hasBoostBlockStart?: boolean;
+  hasMinPerUser?: boolean;
 }
 
 interface GenericToken {
@@ -63,6 +65,8 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
   isBoosted?: boolean;
   hasWhitelist?: boolean;
   whitelisted?: boolean;
+  boostBlockStart?: number;
+  minPerUser?: string;
 }
 
 export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedRebusVault;

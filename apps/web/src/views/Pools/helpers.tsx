@@ -78,15 +78,22 @@ export const getRebusVaultEarnings = (
 
 export const getPoolBlockInfo = memoize(
   (pool: Pool.DeserializedPool<Token>, currentBlock: number) => {
-    const { startBlock, endBlock, isFinished } = pool
+    const { startBlock, endBlock, isFinished, boostBlockStart } = pool
+    const depositEndBlock = startBlock - boostBlockStart
     const shouldShowBlockCountdown = Boolean(!isFinished && startBlock && endBlock)
     const blocksUntilStart = Math.max(startBlock - currentBlock, 0)
     const blocksRemaining = Math.max(endBlock - currentBlock, 0)
     const hasPoolStarted = blocksUntilStart === 0 && blocksRemaining > 0
-    const blocksToDisplay = hasPoolStarted ? blocksRemaining : blocksUntilStart
+    let blocksToDisplay = hasPoolStarted ? blocksRemaining : blocksUntilStart
+
+    if (boostBlockStart && currentBlock < depositEndBlock) {
+      blocksToDisplay = Math.max(depositEndBlock - currentBlock, 0)
+    }
+
     return { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay }
   },
-  (pool, currentBlock) => `${pool.startBlock}#${pool.endBlock}#${pool.isFinished}#${currentBlock}`,
+  (pool, currentBlock) =>
+    `${pool.startBlock}#${pool.endBlock}#${pool.isFinished}#${currentBlock}#${pool.boostBlockStart}`,
 )
 
 export const getICakeWeekDisplay = (ceiling: BigNumber) => {

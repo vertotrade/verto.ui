@@ -71,6 +71,8 @@ export interface SerializedPool extends Pool.SerializedPoolConfig<SerializedWrap
   isBoosted?: boolean
   hasWhitelist?: boolean
   whitelisted?: boolean
+  boostBlockStart?: number
+  minPerUser?: string
 }
 
 export interface Profile {

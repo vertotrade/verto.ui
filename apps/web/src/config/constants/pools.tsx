@@ -78,7 +78,6 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,
-    version: 2,
   },
   {
     sousId: 311,
@@ -91,7 +90,20 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,
-    version: 2,
+  },
+  {
+    sousId: 312,
+    stakingToken: tokens.wrebus,
+    earningToken: tokens.xverto,
+    contractAddress: {
+      [ChainId.REBUS]: '',
+      [ChainId.REBUS_TESTNET]: '0xd4e4097C091f3205fA6fFEae875216B780d5f31D',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    hasBoostBlockStart: true,
+    hasMinPerUser: true,
   },
 ]
   .filter(p => p.contractAddress[DEFAULT_CHAIN_ID] && p.stakingToken && p.earningToken)

@@ -78,7 +78,9 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     isBoosted,
     startBlock,
     endBlock,
+    boostBlockStart,
   } = pool
+  const depositEndBlock = startBlock - boostBlockStart
   const { t } = useTranslation()
   const { address: account } = useAccount()
   const { isMobile } = useMatchBreakpoints()
@@ -186,8 +188,8 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   }
 
   const isStakeEnabled = useMemo(
-    () => !isBoosted || Number(startBlock) >= threshHold,
-    [isBoosted, startBlock, threshHold],
+    () => (!isBoosted || Number(startBlock) >= threshHold) && (!boostBlockStart || depositEndBlock < threshHold),
+    [isBoosted, startBlock, threshHold, boostBlockStart, depositEndBlock],
   )
   const isUnstakeEnabled = useMemo(() => !isBoosted || Number(endBlock) < threshHold, [isBoosted, endBlock, threshHold])
 
@@ -506,7 +508,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             width="100%"
             onClick={stakingTokenBalance.gt(0) ? onStake : onPresentTokenRequired}
             variant="secondary"
-            disabled={isFinished}>
+            disabled={isFinished || !isStakeEnabled}>
             {t('Stake')}
           </Button>
         )}
