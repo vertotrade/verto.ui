@@ -188,7 +188,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   }
 
   const isStakeEnabled = useMemo(
-    () => (!isBoosted || Number(startBlock) >= threshHold) && (!boostBlockStart || depositEndBlock < threshHold),
+    () => (!isBoosted || Number(startBlock) >= threshHold) && (!boostBlockStart || depositEndBlock > threshHold),
     [isBoosted, startBlock, threshHold, boostBlockStart, depositEndBlock],
   )
   const isUnstakeEnabled = useMemo(() => !isBoosted || Number(endBlock) < threshHold, [isBoosted, endBlock, threshHold])
