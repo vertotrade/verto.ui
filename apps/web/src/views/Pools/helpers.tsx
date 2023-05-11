@@ -84,13 +84,18 @@ export const getPoolBlockInfo = memoize(
     const blocksUntilStart = Math.max(startBlock - currentBlock, 0)
     const blocksRemaining = Math.max(endBlock - currentBlock, 0)
     const hasPoolStarted = blocksUntilStart === 0 && blocksRemaining > 0
-    let blocksToDisplay = hasPoolStarted ? blocksRemaining : blocksUntilStart
+    const blocksUntilDepositEnd = Math.max(depositEndBlock - currentBlock, 0)
+    const blocksToDisplay = hasPoolStarted ? blocksRemaining : blocksUntilStart
 
-    if (boostBlockStart && currentBlock < depositEndBlock) {
-      blocksToDisplay = Math.max(depositEndBlock - currentBlock, 0)
+    return {
+      shouldShowBlockCountdown,
+      blocksUntilStart,
+      blocksRemaining,
+      hasPoolStarted,
+      blocksToDisplay,
+      blocksUntilDepositEnd,
+      depositEndBlock,
     }
-
-    return { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay }
   },
   (pool, currentBlock) =>
     `${pool.startBlock}#${pool.endBlock}#${pool.isFinished}#${currentBlock}#${pool.boostBlockStart}`,
