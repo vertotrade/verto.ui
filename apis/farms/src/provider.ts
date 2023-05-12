@@ -26,7 +26,7 @@ export const goerliProvider = new StaticJsonRpcProvider(
 
 export const rebusProvider = new StaticJsonRpcProvider(
   {
-    url: 'https://api.mainnet.rebus.money:8545',
+    url: 'https://evm.rebuschain.com:8443/rpc',
     skipFetchSetup: true,
   },
   1111,

@@ -1,5 +1,6 @@
 import { BinanceWalletConnector } from '@verto/wagmi/connectors/binanceWallet'
 import { BloctoConnector } from '@verto/wagmi/connectors/blocto'
+import { ChainId } from '@verto/sdk'
 import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
@@ -29,6 +30,17 @@ const getNodeRealUrl = (networkName: string) => {
         host = `eth-goerli.nodereal.io/v1/${process.env.NEXT_PUBLIC_NODE_REAL_API_GOERLI}`
       }
       break
+    case 'Rebus':
+      if (DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET) {
+        return {
+          http: 'https://testnet.rebus.money:48545',
+        }
+      }
+
+      return {
+        http: 'https://evm.rebuschain.com:8443/rpc',
+        webSocket: 'https://evm.rebuschain.com:8443/ws',
+      }
     default:
       host = null
   }
