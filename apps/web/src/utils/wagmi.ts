@@ -39,7 +39,7 @@ const getNodeRealUrl = (networkName: string) => {
 
       return {
         http: 'https://api.vertotrade.com/rpc',
-        webSocket: 'https://api.vertotrade.com/ws',
+        webSocket: 'wss://api.vertotrade.com/ws',
       }
     default:
       host = null
@@ -56,7 +56,7 @@ const getNodeRealUrl = (networkName: string) => {
   }
 }
 
-export const { provider, chains } = configureChains(CHAINS, [
+export const { provider, chains, webSocketProvider } = configureChains(CHAINS, [
   jsonRpcProvider({
     rpc: chain => {
       if (!!process.env.NEXT_PUBLIC_NODE_PRODUCTION && chain.id === rebus.id) {
@@ -125,6 +125,7 @@ export const bscConnector = new BinanceWalletConnector({ chains })
 export const client = createClient({
   autoConnect: false,
   provider,
+  webSocketProvider,
   connectors: [
     new SafeConnector({ chains }),
     metaMaskConnector,
