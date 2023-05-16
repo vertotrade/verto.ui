@@ -26,7 +26,7 @@ export const goerliProvider = new StaticJsonRpcProvider(
 
 export const rebusProvider = new StaticJsonRpcProvider(
   {
-    url: 'https://evm.rebuschain.com:8443/rpc',
+    url: 'https://api.vertotrade.com/rpc',
     skipFetchSetup: true,
   },
   1111,

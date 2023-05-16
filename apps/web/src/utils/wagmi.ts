@@ -38,8 +38,8 @@ const getNodeRealUrl = (networkName: string) => {
       }
 
       return {
-        http: 'https://evm.rebuschain.com:8443/rpc',
-        webSocket: 'https://evm.rebuschain.com:8443/ws',
+        http: 'https://api.vertotrade.com/rpc',
+        webSocket: 'https://api.vertotrade.com/ws',
       }
     default:
       host = null
