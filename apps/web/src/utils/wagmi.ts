@@ -46,6 +46,7 @@ export const { provider, chains, webSocketProvider } = configureChains(CHAINS, [
 
       return getNodeRealUrl(chain.network) || { http: chain.rpcUrls.default.http[0] }
     },
+    stallTimeout: 1000,
   }),
 ])
 
