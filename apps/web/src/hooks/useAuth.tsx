@@ -13,6 +13,7 @@ import {
   useDisconnect,
   useNetwork,
 } from 'wagmi'
+import { rebus } from 'utils/wagmi-chains'
 import { clearUserStates } from '../utils/clearUserStates'
 import { useActiveChainId } from './useActiveChainId'
 import { useSessionChainId } from './useSessionChainId'
@@ -29,6 +30,14 @@ const useAuth = () => {
   const login = useCallback(
     async (connectorID: ConnectorNames) => {
       const findConnector = connectors.find(c => c.id === connectorID)
+
+      findConnector.chains.forEach(thisChain => {
+        if (thisChain.id === rebus.id && thisChain.rpcUrls.default?.http) {
+          // eslint-disable-next-line no-param-reassign
+          thisChain.rpcUrls = rebus.rpcUrls
+        }
+      })
+
       try {
         const connected = await connectAsync({ connector: findConnector, chainId })
         if (!connected.chain.unsupported && connected.chain.id !== chainId) {
