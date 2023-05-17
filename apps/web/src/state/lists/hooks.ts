@@ -19,31 +19,18 @@ import { EMPTY_LIST } from '@verto/tokens'
 import uniqBy from 'lodash/uniqBy'
 import { useMemo } from 'react'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { DEFAULT_CHAIN_ID } from 'config/chains'
-import DEFAULT_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-default.tokenlist.json'
-import DEFAULT_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/vertotrade-default-mainnet.tokenlist.json'
-import UNSUPPORTED_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-unsupported.tokenlist.json'
-import WARNING_TOKEN_LIST from '../../config/constants/tokenLists/vertotrade-warning.tokenlist.json'
+import DEFAULT_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/1111/vertotrade-default.tokenlist.json'
+import UNSUPPORTED_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/1111/vertotrade-unsupported.tokenlist.json'
+import WARNING_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/1111/vertotrade-warning.tokenlist.json'
+import DEFAULT_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3333/vertotrade-default.tokenlist.json'
+import UNSUPPORTED_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3333/vertotrade-unsupported.tokenlist.json'
+import WARNING_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3333/vertotrade-warning.tokenlist.json'
 import { listsAtom } from './lists'
 
-// Replace chainId for the tokens for whatever the current default chain id is, either rebus testnet or rebus mainnet
-const defaultTokenList = env('IS_MAINNET') === 'true' ? DEFAULT_TOKEN_LIST_MAINNET : DEFAULT_TOKEN_LIST
-
-const unsupportedTokenList = {
-  ...UNSUPPORTED_TOKEN_LIST,
-  tokens: UNSUPPORTED_TOKEN_LIST.tokens.map(token => ({
-    ...token,
-    chainId: DEFAULT_CHAIN_ID,
-  })),
-}
-
-const warningTokenList = {
-  ...WARNING_TOKEN_LIST,
-  tokens: WARNING_TOKEN_LIST.tokens.map(token => ({
-    ...token,
-    chainId: DEFAULT_CHAIN_ID,
-  })),
-}
+const DEFAULT_TOKEN_LIST = env('IS_MAINNET') === 'true' ? DEFAULT_TOKEN_LIST_MAINNET : DEFAULT_TOKEN_LIST_TESTNET
+const UNSUPPORTED_TOKEN_LIST =
+  env('IS_MAINNET') === 'true' ? UNSUPPORTED_TOKEN_LIST_MAINNET : UNSUPPORTED_TOKEN_LIST_TESTNET
+const WARNING_TOKEN_LIST = env('IS_MAINNET') === 'true' ? WARNING_TOKEN_LIST_MAINNET : WARNING_TOKEN_LIST_TESTNET
 
 type TokenAddressMap = TTokenAddressMap<ChainId>
 
@@ -74,7 +61,7 @@ const activeListUrlsAtom = atom(get => {
 })
 
 const combineTokenMapsWithDefault = (lists: ListsState['byUrl'], urls: string[]) => {
-  const defaultTokenMap = listToTokenMap(defaultTokenList)
+  const defaultTokenMap = listToTokenMap(DEFAULT_TOKEN_LIST)
 
   if (!urls) return defaultTokenMap
 
@@ -133,7 +120,7 @@ export const tokenListFromOfficialsUrlsAtom = atom(get => {
   }, [])
 
   const mergedList =
-    mergedTokenLists.length > 0 ? [...defaultTokenList.tokens, ...mergedTokenLists] : defaultTokenList.tokens
+    mergedTokenLists.length > 0 ? [...DEFAULT_TOKEN_LIST.tokens, ...mergedTokenLists] : DEFAULT_TOKEN_LIST.tokens
   return mapValues(
     groupBy(
       uniqBy(mergedList, tokenInfo => `${tokenInfo.chainId}#${tokenInfo.address}`),
@@ -146,7 +133,7 @@ export const tokenListFromOfficialsUrlsAtom = atom(get => {
 export const combinedTokenMapFromUnsupportedUrlsAtom = atom(get => {
   const lists = get(selectorByUrlsAtom)
   // get hard coded unsupported tokens
-  const localUnsupportedListMap = listToTokenMap(unsupportedTokenList)
+  const localUnsupportedListMap = listToTokenMap(UNSUPPORTED_TOKEN_LIST)
   // get any loaded unsupported tokens
   const loadedUnsupportedListMap = combineTokenMaps(lists, UNSUPPORTED_LIST_URLS)
 
@@ -156,7 +143,7 @@ export const combinedTokenMapFromUnsupportedUrlsAtom = atom(get => {
 export const combinedTokenMapFromWarningUrlsAtom = atom(get => {
   const lists = get(selectorByUrlsAtom)
   // get hard coded unsupported tokens
-  const localUnsupportedListMap = listToTokenMap(warningTokenList)
+  const localUnsupportedListMap = listToTokenMap(WARNING_TOKEN_LIST)
   // get any loaded unsupported tokens
   const loadedUnsupportedListMap = combineTokenMaps(lists, WARNING_LIST_URLS)
 
