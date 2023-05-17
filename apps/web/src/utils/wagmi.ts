@@ -1,7 +1,7 @@
 import { BinanceWalletConnector } from '@verto/wagmi/connectors/binanceWallet'
 import { BloctoConnector } from '@verto/wagmi/connectors/blocto'
 import { ChainId } from '@verto/sdk'
-import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
+import { mainnet } from 'wagmi/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -14,22 +14,10 @@ import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { SafeConnector } from './safeConnector'
 import { rebus, rebusTestnet } from './wagmi-chains'
 
-const CHAINS = [bsc, mainnet, bscTestnet, goerli, rebus, rebusTestnet]
+const CHAINS = [mainnet, rebus, rebusTestnet]
 
 const getNodeRealUrl = (networkName: string) => {
-  let host = null
-
   switch (networkName) {
-    case 'homestead':
-      if (process.env.NEXT_PUBLIC_NODE_REAL_API_ETH) {
-        host = `eth-mainnet.nodereal.io/v1/${process.env.NEXT_PUBLIC_NODE_REAL_API_ETH}`
-      }
-      break
-    case 'goerli':
-      if (process.env.NEXT_PUBLIC_NODE_REAL_API_GOERLI) {
-        host = `eth-goerli.nodereal.io/v1/${process.env.NEXT_PUBLIC_NODE_REAL_API_GOERLI}`
-      }
-      break
     case 'Rebus':
       if (DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET) {
         return {
@@ -39,24 +27,14 @@ const getNodeRealUrl = (networkName: string) => {
 
       return {
         http: 'https://api.vertotrade.com/rpc',
-        webSocket: 'https://api.vertotrade.com/ws',
+        webSocket: 'wss://api.vertotrade.com/ws',
       }
     default:
-      host = null
-  }
-
-  if (!host) {
-    return null
-  }
-
-  const url = `https://${host}`
-  return {
-    http: url,
-    webSocket: url.replace(/^http/i, 'wss').replace('.nodereal.io/v1', '.nodereal.io/ws/v1'),
+      return null
   }
 }
 
-export const { provider, chains } = configureChains(CHAINS, [
+export const { provider, chains, webSocketProvider } = configureChains(CHAINS, [
   jsonRpcProvider({
     rpc: chain => {
       if (!!process.env.NEXT_PUBLIC_NODE_PRODUCTION && chain.id === rebus.id) {
@@ -68,6 +46,7 @@ export const { provider, chains } = configureChains(CHAINS, [
 
       return getNodeRealUrl(chain.network) || { http: chain.rpcUrls.default.http[0] }
     },
+    stallTimeout: 1000,
   }),
 ])
 
@@ -125,6 +104,7 @@ export const bscConnector = new BinanceWalletConnector({ chains })
 export const client = createClient({
   autoConnect: false,
   provider,
+  webSocketProvider,
   connectors: [
     new SafeConnector({ chains }),
     metaMaskConnector,
