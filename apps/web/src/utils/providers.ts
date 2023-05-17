@@ -1,11 +1,10 @@
-import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { ChainId } from '@verto/sdk'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
+import { provider, webSocketProvider } from './wagmi'
 
-const REBUS_URL =
-  DEFAULT_CHAIN_ID === ChainId.REBUS ? 'https://api.vertotrade.com/rpc' : 'https://testnet.rebus.money:48545'
-export const REBUS_NODE = process.env.NEXT_PUBLIC_NODE_PRODUCTION || REBUS_URL
-
-export const rebusRpcProvider = new StaticJsonRpcProvider(REBUS_NODE)
+export const rebusRpcProvider =
+  DEFAULT_CHAIN_ID === ChainId.REBUS
+    ? webSocketProvider({ chainId: DEFAULT_CHAIN_ID })
+    : provider({ chainId: DEFAULT_CHAIN_ID })
 
 export default null
