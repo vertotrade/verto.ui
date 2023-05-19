@@ -21,6 +21,7 @@ export interface PoolConfigBaseProps {
   version?: number;
   hasBoostBlockStart?: boolean;
   hasMinPerUser?: boolean;
+  canShowAfterBlock?: number;
 }
 
 interface GenericToken {
