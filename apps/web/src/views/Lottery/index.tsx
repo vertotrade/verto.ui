@@ -42,10 +42,20 @@ const Lottery = () => {
         <PageSection
           background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
           index={1}
+          innerProps={{ style: { marginLeft: '0px', marginRight: '0px', width: '100%' } }}
           hasCurvedDivider={false}>
           <Hero />
         </PageSection>
         <PageSection
+          background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
+          innerProps={{
+            style: { marginLeft: '0px', marginRight: '0px', width: '100%', maxWidth: 'unset', padding: '48px 0px' },
+          }}
+          hasCurvedDivider={false}
+          index={2}>
+          <CheckPrizesSection />
+        </PageSection>
+        {/* <PageSection
           containerProps={{ style: { marginTop: '-30px' } }}
           background={theme.colors.vertoBg1}
           concaveDivider
@@ -71,20 +81,15 @@ const Lottery = () => {
             </Flex>
             <NextDrawCard />
           </Flex>
-        </PageSection>
-        <PageSection
-          background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
-          hasCurvedDivider={false}
-          index={2}>
-          <CheckPrizesSection />
-        </PageSection>
+        </PageSection> */}
+
         <PageSection
           innerProps={{ style: { margin: '0', width: '100%' } }}
-          background={isDark ? theme.colors.backgroundAlt : theme.colors.background}
+          background={theme.colors.gradientGreenOrange}
           hasCurvedDivider={false}
           index={2}>
           <Flex width="100%" flexDirection="column" alignItems="center" justifyContent="center">
-            <Heading mb="24px" scale="xl">
+            <Heading color={theme.colors.black} mb="24px" scale="xl">
               {t('Finished Rounds')}
             </Heading>
             <Box mb="24px">
