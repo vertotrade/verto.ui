@@ -27,7 +27,7 @@ export const styleVariants = {
     backgroundSize: "200%",
     borderColor: "transparent",
     boxShadow: "none",
-    color: "white",
+    color: "black",
     fontWeight: "500",
     transition: "background-position 0.3s",
     ":hover": {
@@ -44,8 +44,8 @@ export const styleVariants = {
     color: "primary",
   },
   [variants.SUBTLE]: {
-    backgroundColor: "backgroundAlt2",
-    color: "textSubtle",
+    backgroundColor: "newPrimary",
+    color: "white",
   },
   [variants.SUBTLE2]: {
     backgroundColor: "subtleButton2",
