@@ -31,6 +31,7 @@ export const lightColors = {
   secondary: '#ff8235',
   secondary80: '#7645D980',
   background: '#FFFFFF',
+  basicBackground: '#FFFFFF',
   vertoBg1: '#fdfdfd',
   backgroundDisabled: '#E9EAEB',
   backgroundAlt: '#F3F3F3',
@@ -73,6 +74,7 @@ export const lightColors = {
   gradientVioletAlt: 'linear-gradient(180deg, #CBD7EF 0%, #9A9FD0 100%)',
   gradientGold: 'linear-gradient(180deg, #FFD800 0%, #FDAB32 100%)',
   gradientBold: 'linear-gradient(#53DEE9, #7645D9)',
+  gradientBlack: 'linear-gradient(90deg, #231F20 60.42%, #565656 100%)',
 }
 
 export const darkColors = {
@@ -84,6 +86,7 @@ export const darkColors = {
   secondary: '#ff8235',
   secondary80: '#ff823580',
   background: '#08060B',
+  basicBackground: '#000000',
   vertoBg1: '#101013',
   backgroundDisabled: '#3c3742',
   backgroundAlt: '#2F2F2F',
@@ -127,4 +130,5 @@ export const darkColors = {
   gradientVioletAlt: 'linear-gradient(180deg, #434575 0%, #66578D 100%)',
   gradientGold: 'linear-gradient(180deg, #FFD800 0%, #FDAB32 100%)',
   gradientBold: 'linear-gradient(#30e8bf, #ff8235)',
+  gradientBlack: 'linear-gradient(90deg, #231F20 60.42%, #565656 100%)',
 }
