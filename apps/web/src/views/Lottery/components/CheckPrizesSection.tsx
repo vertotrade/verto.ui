@@ -94,26 +94,15 @@ const CheckPrizesSection = () => {
   const getBody = () => {
     if (!account) {
       return (
-        <ContentWrapper alignItems="center" justifyContent="space-between">
-          <FlexItem>
-            <CoinStackDiv>
-              <CoinStackCircleWrapper background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}>
-                <CoinStackImgWrapper>
-                  <CoinStack color={isDark ? theme.colors.text : theme.colors.black} />
-                </CoinStackImgWrapper>
-              </CoinStackCircleWrapper>
-            </CoinStackDiv>
-          </FlexItem>
-          <FlexItem mx={['4px', null, '16px']} flexDirection="column" alignItems="flex-start">
-            <Heading scale="xxl" color={theme.colors.text} mb="8px">
-              {t("Check if you've won!")}
-            </Heading>
-            <StyledHeading color={theme.colors.text} mb="24px">
-              {t('Connect your wallet')}
-            </StyledHeading>
-            <ConnectWalletButton width="190px" />
-          </FlexItem>
-        </ContentWrapper>
+        <Flex mx={['4px', null, '16px']} flexDirection="column" alignItems="flex-start">
+          <Heading scale="xxl" color={theme.colors.text} mb="8px">
+            {t("Check if you've won!")}
+          </Heading>
+          <StyledHeading color={theme.colors.text} mb="24px">
+            {t('Connect your wallet')}
+          </StyledHeading>
+          <ConnectWalletButton width="190px" />
+        </Flex>
       )
     }
     if (hasCheckedForRewards && !hasRewardsToClaim) {
@@ -173,7 +162,20 @@ const CheckPrizesSection = () => {
     )
   }
 
-  return <Flex>{getBody()}</Flex>
+  return (
+    <ContentWrapper alignItems="center" justifyContent="space-between">
+      <FlexItem>
+        <CoinStackDiv>
+          <CoinStackCircleWrapper background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}>
+            <CoinStackImgWrapper>
+              <CoinStack color={isDark ? theme.colors.text : theme.colors.black} />
+            </CoinStackImgWrapper>
+          </CoinStackCircleWrapper>
+        </CoinStackDiv>
+      </FlexItem>
+      <FlexItem>{getBody()}</FlexItem>
+    </ContentWrapper>
+  )
 }
 
 export default CheckPrizesSection
