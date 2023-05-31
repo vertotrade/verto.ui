@@ -10,7 +10,6 @@ import { makeLotteryGraphDataByIdSelector, lotterySelector } from './selectors'
 // Lottery
 export const useGetCurrentLotteryId = () => {
   return useSelector((state: State) => {
-    console.log('========\n', 'state', state, '\n========')
     return state.lottery.currentLotteryId
   })
 }

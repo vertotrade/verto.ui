@@ -1,29 +1,30 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Heading, PageSection, Text } from '@verto/uikit'
+import { Box, Flex, Heading, PageSection, Text, QuestionOutline } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import { useFetchLottery, useLottery } from 'state/lottery/hooks'
+import IconDivider from 'components/IconDivider'
 import useGetNextLotteryEvent from './hooks/useGetNextLotteryEvent'
 import useStatusTransitions from './hooks/useStatusTransitions'
 import Hero from './components/Hero'
 import HistoryTabMenu from './components/HistoryTabMenu'
 import YourHistoryCard from './components/YourHistoryCard'
-import AllHistoryCard from './components/AllHistoryCard'
 import CheckPrizesSection from './components/CheckPrizesSection'
 import HowToPlay from './components/HowToPlay'
 import useShowMoreUserHistory from './hooks/useShowMoreUserRounds'
 import { PageMeta } from '../../components/Layout/Page'
+import SliderComponent from './components/Slider'
 
 const LotteryPage = styled.div`
   min-height: calc(100vh - 64px);
 `
 
-const ButtonLink = styled.a`
+const ButtonLink = styled.a<{ background: string }>`
   display: inline-block;
   padding: 16px;
-  background-color: white;
-  color: black;
+  background-color: ${props => props.background};
+  color: ${({ theme }) => theme.colors.text};
   text-decoration: none;
   border-radius: 4px;
   border: none;
@@ -36,6 +37,19 @@ const ButtonLink = styled.a`
 
   &:hover {
     background-color: #f3f3f3;
+  }
+`
+
+const FlexItem = styled(Flex)`
+  width: 50%;
+`
+
+const ContentWrapper = styled(Flex)`
+  width: 100%;
+  gap: 100px;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column-reverse;
   }
 `
 
@@ -89,7 +103,15 @@ const Lottery = () => {
               />
             </Box>
             {historyTabMenuIndex === 0 ? (
-              <AllHistoryCard />
+              <Flex
+                width="100%"
+                height="auto"
+                margin="0 auto"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center">
+                <SliderComponent />
+              </Flex>
             ) : (
               <YourHistoryCard
                 handleShowMoreClick={handleShowMoreUserRounds}
@@ -108,21 +130,34 @@ const Lottery = () => {
           <HowToPlay />
         </PageSection>
         <PageSection
-          innerProps={{ style: { margin: '0', width: '100%' } }}
+          innerProps={{ style: { margin: '0', width: '100%', maxWidth: 'unset', padding: '48px 0px' } }}
           background={theme.colors.gradientGreenOrange}
           hasCurvedDivider={false}
           index={2}>
-          <Flex justifyContent="center" alignItems="center" flexDirection="column">
-            <Flex flexDirection="column" alignItems="center">
-              <Heading mb="16px" scale="xxl" color="black">
-                {t('Still got questions?')}
-              </Heading>
-              <Text color="black">{t('Check our in-depth guide on how to play the VERTO lottery')}</Text>
-              <ButtonLink target="_blank" href="https://docs.vertotrade.com/tokenomics/">
-                {t('Learn how to Play')}
-              </ButtonLink>
-            </Flex>
-          </Flex>
+          <ContentWrapper alignItems="center" justifyContent="space-between">
+            <FlexItem>
+              <IconDivider
+                background={theme.colors.gradientGreenOrange}
+                textColor={theme.colors.black}
+                divBackground={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.white}
+                Icon={QuestionOutline}
+              />
+            </FlexItem>
+            <FlexItem>
+              <Flex flexDirection="column" alignItems="flex-start">
+                <Heading mb="16px" scale="xxl" color="black">
+                  {t('Still got questions?')}
+                </Heading>
+                <Text color="black">{t('Check our in-depth guide on how to play the VERTO lottery')}</Text>
+                <ButtonLink
+                  background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.white}
+                  target="_blank"
+                  href="https://docs.vertotrade.com/tokenomics/">
+                  {t('Learn how to Play')}
+                </ButtonLink>
+              </Flex>
+            </FlexItem>
+          </ContentWrapper>
         </PageSection>
       </LotteryPage>
     </>

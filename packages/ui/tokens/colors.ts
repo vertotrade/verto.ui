@@ -87,7 +87,7 @@ export const darkColors = {
   secondary80: '#ff823580',
   background: '#08060B',
   basicBackground: '#000000',
-  vertoBg1: '#101013',
+  vertoBg1: '#231F20',
   backgroundDisabled: '#3c3742',
   backgroundAlt: '#2F2F2F',
   backgroundAlt2: '#303036',

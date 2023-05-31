@@ -6,11 +6,19 @@ import { FetchStatus, LotteryStatus } from 'config/constants/types'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import { useGetUserLotteriesGraphData, useLottery } from 'state/lottery/hooks'
-import IconDivider from 'components/IconDivider'
 import ConnectWalletButton from 'components/ConnectWalletButton'
+import IconDivider from 'components/IconDivider'
 import ClaimPrizesModal from './ClaimPrizesModal'
 import useGetUnclaimedRewards from '../hooks/useGetUnclaimedRewards'
 
+const CoinStackDiv = styled(Flex)`
+  min-width: 595px;
+  border-radius: 0px 120px 120px 0px;
+  background: ${({ theme }) => theme.colors.backgroundAlt};
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding: 32px;
+`
 const FlexItem = styled(Flex)`
   width: 50%;
 `
@@ -24,6 +32,18 @@ const ContentWrapper = styled(Flex)`
 `
 const StyledHeading = styled(Heading)`
   font-size: 16px;
+`
+const CoinStackCircleWrapper = styled(Flex)`
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  background: ${props => props.background};
+`
+
+const CoinStackImgWrapper = styled(Flex)`
+  max-width: 90px;
 `
 
 const TornTicketImage = styled.img`
@@ -146,12 +166,13 @@ const CheckPrizesSection = () => {
   return (
     <ContentWrapper alignItems="center" justifyContent="space-between">
       <FlexItem>
-        <IconDivider
-          background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
-          textColor={isDark ? theme.colors.text : theme.colors.black}
-          divBackground={theme.colors.backgroundAlt}
-          Icon={CoinStack}
-        />
+        <CoinStackDiv>
+          <CoinStackCircleWrapper background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}>
+            <CoinStackImgWrapper>
+              <CoinStack color={isDark ? theme.colors.text : theme.colors.black} />
+            </CoinStackImgWrapper>
+          </CoinStackCircleWrapper>
+        </CoinStackDiv>
       </FlexItem>
       <FlexItem>{getBody()}</FlexItem>
     </ContentWrapper>

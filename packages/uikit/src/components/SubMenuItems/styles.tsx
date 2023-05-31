@@ -5,9 +5,10 @@ export const SubMenuItemWrapper = styled(Flex)<{ $isMobileOnly: boolean }>`
   ${({ theme }) => theme.mediaQueries.sm} {
     ${({ $isMobileOnly }) => ($isMobileOnly ? "display:none" : "")};
   }
-  width: 100%;
+  width: 98%;
   overflow: hidden;
   position: relative;
+  border-radius: 50px;
 `;
 const StyledSubMenuItems = styled(Flex)`
   position: relative;
@@ -17,13 +18,14 @@ const StyledSubMenuItems = styled(Flex)`
   align-items: center;
   display: flex;
   white-space: nowrap;
+  padding: 4px 0px;
   scroll-behavior: smooth;
   ${({ theme }) => theme.mediaQueries.md} {
     width: auto;
     display: flex;
   }
   flex-grow: 1;
-  background-color: ${({ theme }) => `${theme.colors.backgroundAlt2}`};
+  background-color: ${({ theme }) => `${theme.colors.backgroundAlt}`};
   box-shadow: inset 0px -2px 0px -8px rgba(133, 133, 133, 0.1);
   overflow-x: scroll;
   scrollbar-width: none;
