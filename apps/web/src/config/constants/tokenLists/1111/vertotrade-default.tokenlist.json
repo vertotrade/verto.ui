@@ -17,13 +17,20 @@
       "logoURI": "/images/tokens/rebus.png"
     },
     {
+      "name": "Ludus Token",
+      "symbol": "LUDUS",
+      "address": "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
+      "chainId": 1111,
+      "decimals": 6,
+      "logoURI": "/images/tokens/ludus.png"
+    },
+    {
       "name": "Verto Token",
       "symbol": "VERTO",
       "address": "0x088D38759c2D67eD0DA54d52AEf8d5Fb748Ef70E",
       "chainId": 1111,
       "decimals": 18,
-      "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png",
-      "swapDisabled": true
+      "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png"
     }
   ]
 }
