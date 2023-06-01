@@ -24,6 +24,7 @@ const SubMenuItems: React.FC<React.PropsWithChildren<SubMenuItemsProps>> = ({
   isMobileOnly = false,
   ...props
 }) => {
+  console.log("========\n", "items", items, "\n========");
   const scrollLayerRef = useRef<HTMLDivElement>(null);
   const chevronLeftRef = useRef<HTMLDivElement>(null);
   const chevronRightRef = useRef<HTMLDivElement>(null);
@@ -94,6 +95,7 @@ const SubMenuItems: React.FC<React.PropsWithChildren<SubMenuItemsProps>> = ({
                     isActive={isActive}
                     isDisabled={disabled}
                     isDark={isDark}
+                    isGlobalSubMenu
                     variant="subMenu"
                     {...itemProps}
                     {...linkProps}

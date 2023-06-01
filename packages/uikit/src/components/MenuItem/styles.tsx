@@ -38,25 +38,54 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
     top: 0px;
     opacity: 1;
     padding-top: 13px;
-    background: linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border-image-source: linear-gradient(to right, #30e8bf, #ff8235);
+    border-image-source: ${theme.colors.gradientGreenOrange};
     color: ${theme.colors.text};
   `
       : ""};
 
   :hover,
   :focus {
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.gradientGreenOrange};
     opacity: 1;
 
-    background: linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%);
+    background: ${({ theme }) => theme.colors.gradientGreenOrange};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border-image-source: linear-gradient(to right, #30e8bf, #ff8235);
     color: ${({ theme }) => theme.colors.text};
   }
+
+  ${({ theme, $isGlobalSubMenu }) =>
+    $isGlobalSubMenu
+      ? `
+    border-radius: 0px;
+    border-bottom: none;
+    border-width: 0px;
+    top: 0px;
+    opacity: 1;
+    padding: 14px 18px;
+    border-image-source: none;
+    color: ${theme.colors.text};
+  `
+      : ""};
+
+  ${({ theme, $isGlobalSubMenu, $isActive }) =>
+    $isGlobalSubMenu && $isActive
+      ? `
+      background: ${theme.colors.vertoBg1};
+      border-radius: 46px;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+
+      :hover,
+      :focus {
+        background: ${theme.colors.vertoBg1};
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+      }
+    `
+      : ""};
 `;
 
 export default StyledMenuItem;

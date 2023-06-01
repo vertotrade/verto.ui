@@ -173,4 +173,7 @@ export { default as SortArrowIcon } from "./Icons/SortArrowIcon";
 export { default as YoutubeIcon } from "./Icons/YoutubeIcon";
 export { default as BridgeIcon } from "./Icons/BridgeIcon";
 export { default as QuestionOutline } from "./Icons/QuestionOutline";
+export { default as BasicLogo } from "./Icons/BasicLogo";
+export { default as ColoredLogo } from "./Icons/ColoredLogo";
+
 export type { SvgProps } from "./types";

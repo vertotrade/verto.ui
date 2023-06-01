@@ -18,7 +18,7 @@ const StyledSubMenuItems = styled(Flex)`
   align-items: center;
   display: flex;
   white-space: nowrap;
-  padding: 4px 0px;
+  padding: 8px 0px;
   scroll-behavior: smooth;
   ${({ theme }) => theme.mediaQueries.md} {
     width: auto;

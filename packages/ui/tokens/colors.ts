@@ -4,6 +4,7 @@ export const baseColors = {
   failure33: '#ef141433',
   primary3D: '#1FC7D43D',
   newPrimary: '#30E8BF',
+  naturalGray: '#656565',
   primaryBright: '#53DEE9',
   primaryDark: '#0098A1',
   success: '#31D0AA',
