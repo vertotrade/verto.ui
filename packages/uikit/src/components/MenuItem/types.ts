@@ -11,6 +11,7 @@ export interface MenuItemProps {
   scrollLayerRef?: React.RefObject<HTMLDivElement>;
   target?: string;
   isDark?: boolean;
+  isGlobalSubMenu?: boolean;
 }
 
 export type StyledMenuItemProps = {
@@ -19,4 +20,5 @@ export type StyledMenuItemProps = {
   $variant?: MenuItemVariant;
   $statusColor?: keyof Colors;
   $isDark?: boolean;
+  $isGlobalSubMenu?: boolean;
 };

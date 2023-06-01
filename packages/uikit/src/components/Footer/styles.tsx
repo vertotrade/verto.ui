@@ -25,9 +25,10 @@ export const StyledListItem = styled.li`
   font-size: 16px;
   margin-bottom: 8px;
   text-transform: capitalize;
+  color: ${({ theme }) => theme.colors.text};
 
   &:first-child {
-    color: ${darkColors.primary2};
+    color: ${darkColors.naturalGray};
     font-weight: 600;
     text-transform: uppercase;
   }

@@ -10,6 +10,7 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
   target = "_self",
   isActive = false,
   isDisabled = false,
+  isGlobalSubMenu = false,
   variant = "default",
   isDark,
   scrollLayerRef,
@@ -50,6 +51,7 @@ const MenuItem: React.FC<React.PropsWithChildren<MenuItemProps>> = ({
         $variant={variant}
         $statusColor={statusColor}
         $isDark={isDark}
+        $isGlobalSubMenu={isGlobalSubMenu}
         {...props}
       >
         {children}
