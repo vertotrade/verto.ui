@@ -3,13 +3,13 @@ import { ToggleProps, HandleProps, InputProps, ScaleKeys, scales, StyleTogglePro
 
 const scaleKeyValues = {
   sm: {
-    handleHeight: "16px",
-    handleWidth: "16px",
-    handleLeft: "2px",
-    handleTop: "0px",
-    checkedLeft: "calc(100% - 18px)",
+    handleHeight: "12px",
+    handleWidth: "12px",
+    handleLeft: "4px",
+    handleTop: "3px",
+    checkedLeft: "calc(100% - 16px)",
     toggleHeight: "20px",
-    toggleWidth: "36px",
+    toggleWidth: "40px",
   },
   md: {
     handleHeight: "26px",
@@ -33,12 +33,12 @@ const scaleKeyValues = {
 
 const getScale =
   (property: ScaleKeys) =>
-  ({ scale = scales.LG }: ToggleProps) => {
+  ({ scale = scales.SM }: ToggleProps) => {
     return scaleKeyValues[scale][property];
   };
 
 export const Handle = styled.div<HandleProps>`
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme, checked }) => (checked ? theme.toggle.activeHandleBg : theme.toggle.handleBg)};
   border-radius: 50%;
   cursor: pointer;
   height: ${getScale("handleHeight")};
@@ -55,8 +55,10 @@ export const Input = styled.input<InputProps>`
   opacity: 0;
   height: 100%;
   position: absolute;
+  inset: 0;
   width: 100%;
   z-index: 3;
+  margin: 0;
 
   &:checked + ${Handle} {
     left: ${getScale("checkedLeft")};
@@ -75,8 +77,8 @@ const StyledToggle = styled.div<StyleToggleProps>`
   align-items: center;
   background-color: ${({ theme, $checked, $checkedColor, $defaultColor }) =>
     theme.colors[$checked ? $checkedColor : $defaultColor]};
-  border-radius: 24px;
-  border: 2px solid ${({ theme }) => theme.colors.primary0f};
+  border-radius: 10px;
+  border: 1px solid ${({ $checked, theme }) => ($checked ? theme.colors.newPrimary : theme.colors.inputBorder)};
   cursor: pointer;
   display: inline-flex;
   height: ${getScale("toggleHeight")};

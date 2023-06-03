@@ -1,6 +1,16 @@
 import { useTranslation } from '@verto/localization'
 import { ChainId } from '@verto/sdk'
-import { Box, Flex, InjectedModalProps, Modal, QuestionHelper, Text, ThemeSwitcher, Toggle } from '@verto/uikit'
+import {
+  Box,
+  Flex,
+  ModalRow,
+  InjectedModalProps,
+  Modal,
+  QuestionHelper,
+  Text,
+  ThemeSwitcher,
+  Toggle,
+} from '@verto/uikit'
 import { SUPPORT_ZAP } from 'config/constants/supportChains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useTheme from 'hooks/useTheme'
@@ -92,21 +102,25 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
   }
 
   return (
-    <Modal title={t('Settings')} headerBackground="backgroundAlt" onDismiss={onDismiss}>
+    <Modal title={t(mode === SettingsMode.GLOBAL ? 'Global settings' : 'Swap settings')} onDismiss={onDismiss}>
       <ScrollableContainer>
         {mode === SettingsMode.GLOBAL && (
           <>
-            <Flex pb="24px" flexDirection="column">
-              <Text bold textTransform="uppercase" fontSize="18px" color="secondary" mb="24px">
-                {t('Global')}
-              </Text>
-              <Flex justifyContent="space-between" mb="24px">
-                <Text>{t('Dark mode')}</Text>
+            <Flex flexDirection="column">
+              {/* <Text bold textTransform="uppercase" fontSize="18px" color="secondary" mb="24px"> */}
+              {/*   {t('Global')} */}
+              {/* </Text> */}
+              <ModalRow justifyContent="space-between">
+                <Text bold small>
+                  {t('Dark mode')}
+                </Text>
                 <ThemeSwitcher isDark={isDark} toggleTheme={() => setTheme(isDark ? 'light' : 'dark')} />
-              </Flex>
-              <Flex justifyContent="space-between" alignItems="center" mb="24px">
+              </ModalRow>
+              <ModalRow justifyContent="space-between" alignItems="center">
                 <Flex alignItems="center">
-                  <Text>{t('Subgraph Health Indicator')}</Text>
+                  <Text bold small>
+                    {t('Subgraph Health Indicator')}
+                  </Text>
                   <QuestionHelper
                     text={t(
                       'Turn on subgraph health indicator all the time. Default is to show the indicator only when the network is delayed',
@@ -118,15 +132,16 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                 <Toggle
                   id="toggle-subgraph-health-button"
                   checked={subgraphHealth}
-                  scale="md"
                   onChange={() => {
                     setSubgraphHealth(!subgraphHealth)
                   }}
                 />
-              </Flex>
-              <Flex justifyContent="space-between" alignItems="center" mb="24px">
+              </ModalRow>
+              <ModalRow justifyContent="space-between" alignItems="center" last>
                 <Flex alignItems="center">
-                  <Text>{t('Show username')}</Text>
+                  <Text bold small>
+                    {t('Show username')}
+                  </Text>
                   <QuestionHelper
                     text={t('Shows username of wallet instead of bunnies')}
                     placement="top-start"
@@ -136,23 +151,22 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                 <Toggle
                   id="toggle-username-visibility"
                   checked={userUsernameVisibility}
-                  scale="md"
                   onChange={() => {
                     setUserUsernameVisibility(!userUsernameVisibility)
                   }}
                 />
-              </Flex>
+              </ModalRow>
               {chainId === ChainId.BSC && <GasSettings />}
             </Flex>
           </>
         )}
         {mode === SettingsMode.SWAP_LIQUIDITY && (
           <>
-            <Flex pt="3px" flexDirection="column">
-              <Text bold textTransform="uppercase" fontSize="18px" color="primary" mb="24px">
-                {t('Swaps & Liquidity')}
-              </Text>
-              <Flex justifyContent="space-between" alignItems="center" mb="24px">
+            <Flex flexDirection="column">
+              {/* <Text bold textTransform="uppercase" fontSize="18px" color="primary" mb="24px"> */}
+              {/*   {t('Swaps & Liquidity')} */}
+              {/* </Text> */}
+              <Flex justifyContent="space-between" alignItems="center" mb={chainId === ChainId.BSC ? '24px' : '0px'}>
                 {chainId === ChainId.BSC && <GasSettings />}
               </Flex>
               <TransactionSettings />
@@ -160,7 +174,9 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
             {SUPPORT_ZAP.includes(chainId) && (
               <Flex justifyContent="space-between" alignItems="center" mb="24px">
                 <Flex alignItems="center">
-                  <Text>{t('Zap (Beta)')}</Text>
+                  <Text bold small>
+                    {t('Zap (Beta)')}
+                  </Text>
                   <QuestionHelper
                     text={
                       <Box>
@@ -182,46 +198,45 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                 </Flex>
                 <Toggle
                   checked={zapMode}
-                  scale="md"
                   onChange={() => {
                     toggleZapMode(!zapMode)
                   }}
                 />
               </Flex>
             )}
-            <Flex justifyContent="space-between" alignItems="center" mb="24px">
+            <ModalRow justifyContent="space-between" alignItems="center">
               <Flex alignItems="center">
-                <Text>{t('Expert Mode')}</Text>
+                <Text bold small>
+                  {t('Expert Mode')}
+                </Text>
                 <QuestionHelper
                   text={t('Bypasses confirmation modals and allows high slippage trades. Use at your own risk.')}
                   placement="top-start"
                   ml="4px"
                 />
               </Flex>
-              <Toggle
-                id="toggle-expert-mode-button"
-                scale="md"
-                checked={expertMode}
-                onChange={handleExpertModeToggle}
-              />
-            </Flex>
-            <Flex justifyContent="space-between" alignItems="center" mb="24px">
+              <Toggle id="toggle-expert-mode-button" checked={expertMode} onChange={handleExpertModeToggle} />
+            </ModalRow>
+            <ModalRow justifyContent="space-between" alignItems="center">
               <Flex alignItems="center">
-                <Text>{t('Disable Multihops')}</Text>
+                <Text bold small>
+                  {t('Disable Multihops')}
+                </Text>
                 <QuestionHelper text={t('Restricts swaps to direct pairs only.')} placement="top-start" ml="4px" />
               </Flex>
               <Toggle
                 id="toggle-disable-multihop-button"
                 checked={singleHopOnly}
-                scale="md"
                 onChange={() => {
                   setSingleHopOnly(!singleHopOnly)
                 }}
               />
-            </Flex>
-            <Flex justifyContent="space-between" alignItems="center" mb="24px">
+            </ModalRow>
+            <ModalRow justifyContent="space-between" alignItems="center" last>
               <Flex alignItems="center">
-                <Text>{t('Use StableSwap by default')}</Text>
+                <Text bold small>
+                  {t('Use StableSwap by default')}
+                </Text>
                 <QuestionHelper
                   text={
                     <Flex>
@@ -240,9 +255,8 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                 id="toggle-disable-smartRouter-button"
                 checked={isStableSwapByDefault}
                 onChange={e => setIsStableSwapByDefault(e.target.checked)}
-                scale="md"
               />
-            </Flex>
+            </ModalRow>
           </>
         )}
       </ScrollableContainer>

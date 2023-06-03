@@ -8,7 +8,6 @@ export const switchButtonClass = style([
   atoms({}),
   style({
     backgroundColor: "primary",
-    boxShadow: "inset 0px -2px 0px rgba(0, 0, 0, 0.1)",
   }),
 ]);
 
@@ -17,7 +16,7 @@ export const iconDownClass = style({
   selectors: {
     [`${switchButtonClass}:hover &`]: {
       display: "none",
-      fill: "white",
+      fill: "black",
     },
   },
 });
@@ -28,7 +27,7 @@ export const iconUpDownClass = style({
   selectors: {
     [`${switchButtonClass}:hover &`]: {
       display: "block",
-      fill: "white",
+      fill: "black",
     },
   },
 });

@@ -12,11 +12,7 @@ export const ModalHeader = styled.div<{ background?: string }>`
   align-items: center;
   background: transparent;
   display: flex;
-  padding: 12px 24px;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    background: ${({ background }) => background || "transparent"};
-  }
+  margin-bottom: 14px;
 `;
 
 export const ModalTitle = styled(Flex)`
@@ -39,16 +35,16 @@ export const ModalCloseButton: React.FC<React.PropsWithChildren<{ onDismiss: Mod
   onDismiss,
 }) => {
   return (
-    <IconButton variant="text" onClick={onDismiss} aria-label="Close the dialog">
-      <CloseIcon color="primary" />
+    <IconButton variant="vertoIcon" scale="sm" onClick={onDismiss} aria-label="Close the dialog">
+      <CloseIcon width="24px" color="icon" />
     </IconButton>
   );
 };
 
 export const ModalBackButton: React.FC<React.PropsWithChildren<{ onBack: ModalProps["onBack"] }>> = ({ onBack }) => {
   return (
-    <IconButton variant="text" onClick={onBack} area-label="go back" mr="8px">
-      <ArrowBackIcon color="primary" />
+    <IconButton variant="vertoIcon" onClick={onBack} area-label="go back" mr="8px">
+      <ArrowBackIcon color="icon" />
     </IconButton>
   );
 };
@@ -57,37 +53,19 @@ export const ModalContainer = styled(MotionBox)<{ $minWidth: string }>`
   overflow: hidden;
   background: ${({ theme }) => theme.modal.background};
   box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  border-radius: 32px 32px 0px 0px;
+  border-radius: 16px 16px 0px 0px;
   width: 100%;
   max-height: calc(var(--vh, 1vh) * 100);
   z-index: ${({ theme }) => theme.zIndices.modal};
   position: absolute;
   min-width: ${({ $minWidth }) => $minWidth};
   bottom: 0;
-  max-width: none !important;
-  min-height: 300px;
-
+  max-width: 480px;
+  padding: 30px 24px 24px;
   ${({ theme }) => theme.mediaQueries.md} {
-    width: auto;
     position: auto;
     bottom: auto;
-    border-radius: 32px;
+    border-radius: 16px;
     max-height: 100vh;
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    inset: 0 -1px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    padding-top: 10px;
-    background: linear-gradient(90deg, #30e8bf 0%, #82f8c7 100%);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    height: 30px;
   }
 `;

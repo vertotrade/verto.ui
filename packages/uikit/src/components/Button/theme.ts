@@ -14,6 +14,14 @@ export const scaleVariants = {
     fontSize: "12px",
     padding: "0 8px",
   },
+  [scales.NEW_SM]: {
+    height: "48px",
+    padding: "12px 24px",
+  },
+  [scales.NEW_LG]: {
+    height: "56px",
+    padding: "16px 32px",
+  },
 };
 
 export const styleVariants = {
@@ -77,5 +85,69 @@ export const styleVariants = {
     borderStyle: "solid",
     borderWidth: "2px",
     height: "36px",
+  },
+  [variants.VERTO_PRIMARY]: {
+    borderRadius: "32px",
+    background: "var(--colors-newPrimary)",
+    color: "#231F20",
+    fontFamily: "Roboto, sans-serif",
+    fontSize: "16px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "500",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "var(--colors-newPrimaryDark)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
+  [variants.VERTO_SECONDARY]: {
+    borderRadius: "32px",
+    background: "var(--colors-secondaryButtonBg)",
+    color: "var(--colors-secondaryButtonText)",
+    fontFamily: "Inter, sans-serif",
+    fontSize: "16px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "500",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "var(--colors-secondaryButtonHoverBg)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
+  [variants.VERTO_GHOST]: {
+    background: "transparent",
+    color: "var(--colors--secondaryButtonText)",
+    fontFamily: "Inter, sans-serif",
+    fontSize: "16px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "500",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "var(--colors-ghostButtonHoverBg)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
+  [variants.VERTO_ICON]: {
+    backgroundColor: "transparent",
+    color: "icon",
+    boxShadow: "none",
   },
 };

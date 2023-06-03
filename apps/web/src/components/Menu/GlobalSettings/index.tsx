@@ -1,5 +1,5 @@
 import { useTheme } from '@verto/hooks'
-import { Flex, GradientIconButton, CogIcon, useModal } from '@verto/uikit'
+import { Flex, IconButton, CogIcon, useModal } from '@verto/uikit'
 import SettingsModal from './SettingsModal'
 
 type Props = {
@@ -9,25 +9,20 @@ type Props = {
   mode?: string
 }
 
-const GlobalSettings = ({ color, mr = '8px', mode, hasGradient }: Props) => {
+const GlobalSettings = ({ color, mr = '8px', mode }: Props) => {
   const [onPresentSettingsModal] = useModal(<SettingsModal mode={mode} />)
   const { theme } = useTheme()
 
   return (
     <Flex>
-      <GradientIconButton
+      <IconButton
         onClick={onPresentSettingsModal}
         variant="text"
         scale="sm"
         mr={mr}
         id={`open-settings-dialog-button-${mode}`}>
-        <CogIcon
-          height={24}
-          width={24}
-          color={theme.colors[color] || color || theme.colors.primary}
-          hasGradient={hasGradient}
-        />
-      </GradientIconButton>
+        <CogIcon height={24} width={24} color={theme.colors[color] || color || theme.colors.icon} />
+      </IconButton>
     </Flex>
   )
 }
