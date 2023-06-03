@@ -4,7 +4,7 @@ import { Box, BoxProps } from "../Box";
 
 const unmountAnimation = keyframes`
     0% {
-      opacity: 1;
+      opacity: 0.7;
     }
     100% {
       opacity: 0;
@@ -16,7 +16,7 @@ const mountAnimation = keyframes`
      opacity: 0;
     }
     100% {
-     opacity: 1;
+     opacity: 0.7;
     }
   `;
 
@@ -26,7 +26,7 @@ const StyledOverlay = styled(Box)<{ isUnmounting?: boolean }>`
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => `${theme.colors.backgroundAlt2D9}`};
+  background-color: ${({ theme }) => `${theme.colors.modalBackgroundOverlay}`};
   z-index: 20;
   will-change: opacity;
   animation: ${mountAnimation} 350ms ease forwards;

@@ -31,7 +31,7 @@ import { CurrencyModalView } from './types'
 const StyledModalContainer = styled(ModalContainer)`
   width: 100%;
   min-width: 320px;
-  max-width: 420px !important;
+  max-width: 480px !important;
   min-height: calc(var(--vh, 1vh) * 90);
   ${({ theme }) => theme.mediaQueries.md} {
     min-height: auto;
@@ -39,7 +39,6 @@ const StyledModalContainer = styled(ModalContainer)`
 `
 
 const StyledModalBody = styled(ModalBody)`
-  padding: 24px;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
