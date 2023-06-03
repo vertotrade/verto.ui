@@ -89,7 +89,7 @@ export const styleVariants = {
   [variants.VERTO_PRIMARY]: {
     borderRadius: "32px",
     background: "var(--colors-newPrimary)",
-    color: "var(--colors-buttonText)",
+    color: "#231F20",
     fontFamily: "Roboto, sans-serif",
     fontSize: "16px",
     display: "flex",
