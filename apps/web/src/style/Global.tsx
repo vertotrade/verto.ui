@@ -7,11 +7,25 @@ declare module 'styled-components' {
 }
 
 const GlobalStyle = createGlobalStyle`
-  * {
-    font-family: 'Poppins', sans-serif;
-  }
   body {
     background-color: ${({ theme }) => theme.colors.vertoBg1};
+
+    * {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .modal * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .modal :is(h1, h2, h3, h4, h5, h6) {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    input {
+      font-family: 'Inter', sans-serif;
+    }
 
     img {
       height: auto;

@@ -5,9 +5,9 @@ import { ToggleProps, scales } from "./types";
 
 const Toggle: React.FC<React.PropsWithChildren<ToggleProps>> = ({
   checked,
-  defaultColor = "backgroundAlt2",
-  checkedColor = "primary",
-  scale = scales.LG,
+  defaultColor = "inputBg",
+  checkedColor = "newPrimary",
+  scale = scales.SM,
   startIcon,
   endIcon,
   ...props
@@ -19,7 +19,7 @@ const Toggle: React.FC<React.PropsWithChildren<ToggleProps>> = ({
       <Input checked={checked} scale={scale} {...props} type="checkbox" />
       {startIcon && endIcon ? (
         <>
-          <Handle scale={scale}>
+          <Handle scale={scale} checked={isChecked}>
             <Flex height="100%" alignItems="center" justifyContent="center">
               {checked ? endIcon(checked) : startIcon(!checked)}
             </Flex>
@@ -30,7 +30,7 @@ const Toggle: React.FC<React.PropsWithChildren<ToggleProps>> = ({
           </Flex>
         </>
       ) : (
-        <Handle scale={scale} />
+        <Handle scale={scale} checked={isChecked} />
       )}
     </StyledToggle>
   );

@@ -37,7 +37,7 @@ export const CopyButton: React.FC<React.PropsWithChildren<CopyButtonProps>> = ({
         <IconButton
           onClick={() => copyText(text, displayTooltip)}
           scale="sm"
-          variant="text"
+          variant="vertoIcon"
           style={{ width: "auto", position: "relative" }}
         >
           <Icon color={buttonColor} width={width} {...props} />

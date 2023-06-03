@@ -33,6 +33,7 @@ export const ModalWrapper = ({
       }}
       ref={wrapperRef}
       $minWidth={minWidth}
+      className="modal"
       {...props}
     >
       {children}
@@ -61,7 +62,7 @@ const Modal: React.FC<React.PropsWithChildren<ModalProps>> = ({
         </ModalTitle>
         {!hideCloseButton && <ModalCloseButton onDismiss={onDismiss} />}
       </ModalHeader>
-      <ModalBody p={bodyPadding}>{children}</ModalBody>
+      <ModalBody>{children}</ModalBody>
     </ModalWrapper>
   );
 };

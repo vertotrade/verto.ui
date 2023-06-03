@@ -73,7 +73,7 @@ const Footer: React.FC<
           paddingBottom="4"
         >
           <BubbleWrapper>
-            <Button id="clickExchangeHelp" as="a" external href={helpUrl} variant="subtle">
+            <Button id="clickExchangeHelp" as="a" external href={helpUrl} variant="vertoPrimary">
               {t("Need help ?")}
             </Button>
           </BubbleWrapper>

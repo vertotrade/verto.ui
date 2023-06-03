@@ -38,7 +38,7 @@ export default function SwapModalHeader({
 
   const inputTextColor =
     showAcceptChanges && tradeType === TradeType.EXACT_OUTPUT && isEnoughInputBalance
-      ? 'primary'
+      ? 'newPrimary'
       : tradeType === TradeType.EXACT_OUTPUT && !isEnoughInputBalance
       ? 'failure'
       : 'text'
@@ -91,7 +91,7 @@ export default function SwapModalHeader({
               priceImpactSeverity > 2
                 ? 'failure'
                 : showAcceptChanges && tradeType === TradeType.EXACT_INPUT
-                ? 'primary'
+                ? 'newPrimary'
                 : 'text'
             }>
             {outputAmount.toSignificant(6)}
@@ -119,7 +119,7 @@ export default function SwapModalHeader({
           <Text color="secondary" bold textTransform="uppercase">
             {t('Slippage Tolerance')}
           </Text>
-          <Text bold color="primary" ml="auto" textAlign="end">
+          <Text bold color="newPrimary" ml="auto" textAlign="end">
             {`${allowedSlippage / 100}%`}
           </Text>
         </RowFixed>

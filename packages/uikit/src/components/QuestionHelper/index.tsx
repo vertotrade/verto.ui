@@ -1,4 +1,4 @@
-import { HelpIcon, useTooltip, Box, BoxProps, Placement } from "@verto/uikit";
+import { InfoIcon, useTooltip, Box, BoxProps, Placement } from "@verto/uikit";
 import styled from "styled-components";
 
 interface Props extends BoxProps {
@@ -26,7 +26,7 @@ export const QuestionHelper: React.FC<React.PropsWithChildren<Props>> = ({
     <Box {...props}>
       {tooltipVisible && tooltip}
       <QuestionWrapper ref={targetRef}>
-        <HelpIcon color="textSubtle" width={size} />
+        <InfoIcon color="textSubtle" width={size} />
       </QuestionWrapper>
     </Box>
   );

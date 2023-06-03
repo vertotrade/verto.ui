@@ -249,7 +249,7 @@ export function SmartSwapForm() {
         onRefreshPrice={onRefreshPrice}
       />
       <Wrapper id="swap-page" style={{ minHeight: '412px' }}>
-        <AutoColumn gap="sm">
+        <AutoColumn gap="sm" style={{ width: '350px', margin: '0 auto' }}>
           <CurrencyInputPanel
             label={independentField === Field.OUTPUT && !showWrap && tradeInfo ? t('From (estimated)') : t('From')}
             value={formattedAmounts[Field.INPUT]}
@@ -272,6 +272,7 @@ export function SmartSwapForm() {
           <AutoColumn justify="space-between">
             <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
               <SwapUI.SwitchButton
+                my="8px"
                 onClick={() => {
                   setApprovalSubmitted(false) // reset 2 step UI for approvals
                   onSwitchTokens()
