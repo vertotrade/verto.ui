@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import type { HTMLAttributes, DetailedHTMLProps, InputHTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
 import { Text } from "../Text";
 import Input from "./Input";
 import { Flex, FlexProps } from "../Box";
@@ -50,9 +50,7 @@ const Container = styled(Flex)<ContainerProps>`
   }
 `;
 
-type PercentageInputProps = InputProps & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-
-const UnstyledInput = styled(Input)<InputProps>`
+const UnstyledInput = styled(Input)<InputProps & HTMLAttributes<HTMLInputElement>>`
   border: none !important;
   border-radius: 0;
   background: transparent;
@@ -61,8 +59,8 @@ const UnstyledInput = styled(Input)<InputProps>`
   width: 100%;
 `;
 
-export const PercentageInput = (props: PercentageInputProps) => {
-  const { isSuccess, isWarning, disabled, inputMode, pattern, placeholder, value, onBlur, onChange } = props;
+export const PercentageInput = (props: InputProps & HTMLAttributes<HTMLInputElement>) => {
+  const { isSuccess, isWarning, disabled } = props;
   const [focused, setFocused] = useState(false);
 
   return (
@@ -76,21 +74,12 @@ export const PercentageInput = (props: PercentageInputProps) => {
       isDisabled={disabled}
     >
       <UnstyledInput
-        inputMode={inputMode}
-        pattern={pattern}
-        placeholder={placeholder}
-        value={value}
-        onBlur={(event) => {
-          setFocused(false);
-          if (onBlur) onBlur(event);
-        }}
-        onChange={(event) => {
-          if (onChange) onChange(event);
-        }}
-        isWarning={isWarning}
-        isSuccess={isSuccess}
+        {...props}
         onFocus={() => {
           setFocused(true);
+        }}
+        onBlur={() => {
+          setFocused(false);
         }}
       />
       <Text bold color="placeholder" ml="8px">
