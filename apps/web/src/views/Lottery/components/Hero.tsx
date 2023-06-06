@@ -8,7 +8,6 @@ import useTheme from 'hooks/useTheme'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { useEffect, useRef } from 'react'
 import { dateTimeOptions } from '../helpers'
-import { TicketPurchaseCard } from '../svgs'
 import BuyTicketsButton from './BuyTicketsButton'
 
 const Rotate = keyframes`
@@ -21,8 +20,6 @@ const Rotate = keyframes`
   }
 `
 
-const TicketContainer = styled(Flex)``
-
 const PrizeTotalBalance = styled(Balance)<{ background?: string }>`
   margin-bottom: 0px;
   background: ${props => props.background};
@@ -30,59 +27,15 @@ const PrizeTotalBalance = styled(Balance)<{ background?: string }>`
   -webkit-text-fill-color: transparent;
 `
 
-const StyledBuyTicketButton = styled(BuyTicketsButton)<{ disabled: boolean }>`
-  background: ${({ theme, disabled }) =>
-    disabled ? theme.colors.disabled : 'linear-gradient(180deg, #7645d9 0%, #452a7a 100%)'};
-  width: 200px;
-  ${({ theme }) => theme.mediaQueries.xs} {
-    width: 240px;
-  }
-`
-
 const HeroWrapper = styled(Flex)`
+  gap: 130px;
+
   @media screen and (max-width: 900px) {
     flex-direction: column;
     gap: 25px;
   }
 `
 
-const GreenWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background: linear-gradient(90deg, #30e8bf 0%, #82f8c7 100%);
-  border-radius: 0px 90px 90px 90px;
-  width: 100%;
-  height: 360px;
-  padding: 67px 40px 0px;
-  position: relative;
-  overflow: hidden;
-`
-
-const CircleDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${({ theme }) => theme.colors.backgroundAlt};
-  width: 180px;
-  height: 180px;
-  border: 4px solid ${({ theme }) => theme.colors.backgroundAlt};
-  border-radius: 50%;
-`
-const CurvedRectangle = styled.div`
-  background: ${({ theme }) => theme.colors.backgroundAlt};
-  width: 360px;
-  height: 180px;
-  border-radius: 90px 90px 0px 90px;
-`
-
-const TicketWrapper = styled(Flex)`
-  background: url('/images/lottery/ticket.svg');
-  width: 100%;
-  height: 100%;
-  max-width: 370px;
-  z-index: 1;
-`
 const PrizeInfoWrapper = styled(Flex)`
   margin: 24px 0px;
 `
@@ -92,14 +45,6 @@ const BuyTicketsWrapper = styled(Flex)`
     justify-content: center;
     align-items: center;
   }
-`
-
-const StripesVector = styled.img`
-  position: absolute;
-  top: -59px;
-  width: 575px;
-  z-index: 0;
-  animation: ${Rotate} 12s linear infinite;
 `
 
 const VideoBgWrapper = styled(Flex)`
@@ -141,7 +86,6 @@ const Hero = () => {
     currentLanguage: { locale },
   } = useTranslation()
   const { theme, isDark } = useTheme()
-  console.log('========\n', 'isDark', isDark, '\n========')
   const {
     currentRound: { endTime, amountCollectedInCake, status },
     isTransitioning,
@@ -199,8 +143,8 @@ const Hero = () => {
     // if (status === LotteryStatus.OPEN) {
     //   return `${t('Draw')}: ${endDate.toLocaleString(locale, dateTimeOptions)}`
     // }
-    // return 'Blah Blah'
     if (true) {
+      // todo: remove this for the above code
       console.log(
         '========\n',
         'date',
@@ -209,12 +153,10 @@ const Hero = () => {
       )
       return `${t('Draw')}: ${endDate.toLocaleString(locale, dateTimeOptions)}`
     }
-    return 'Blah Blah'
   }
 
   const handleClick = () => console.log('click')
   const videoSrc = isDark ? 'images/animations/lottery-01-dark.webm' : 'images/animations/lottery-01-light.webm'
-  console.log('========\n', 'videoSrc', videoSrc, '\n========')
 
   const getPrizeBalances = () => {
     if (status === LotteryStatus.CLOSE || status === LotteryStatus.CLAIMABLE) {
