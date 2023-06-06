@@ -20,10 +20,10 @@ export default {
     3333: '',
   },
   lotteryV2: {
-    97: '0x5790c3534F30437641541a0FA04C992799602998',
-    56: '0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c',
+    97: '0x1Ad6597e6eFD79e7F239AFeDdeB6c76e97b7aAee',
+    56: '0x1Ad6597e6eFD79e7F239AFeDdeB6c76e97b7aAee',
     1111: '',
-    3333: '',
+    3333: '0x1Ad6597e6eFD79e7F239AFeDdeB6c76e97b7aAee',
   },
   multiCall: multicallAddresses,
   pancakeProfile: {

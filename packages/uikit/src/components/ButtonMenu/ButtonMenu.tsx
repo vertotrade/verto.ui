@@ -9,7 +9,7 @@ interface StyledButtonMenuProps extends ButtonMenuProps {
 }
 
 const getBackgroundColor = ({ theme, variant }: StyledButtonMenuProps) => {
-  return theme.colors[variant === variants.SUBTLE ? "input" : "input"];
+  return theme.colors[variant === variants.SUBTLE ? "white" : "white"];
 };
 
 const getBorderColor = ({ theme, variant }: StyledButtonMenuProps) => {
