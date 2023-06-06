@@ -23,7 +23,7 @@ export default {
     97: '0x1Ad6597e6eFD79e7F239AFeDdeB6c76e97b7aAee',
     56: '0x1Ad6597e6eFD79e7F239AFeDdeB6c76e97b7aAee',
     1111: '',
-    3333: '',
+    3333: '0x1Ad6597e6eFD79e7F239AFeDdeB6c76e97b7aAee',
   },
   multiCall: multicallAddresses,
   pancakeProfile: {

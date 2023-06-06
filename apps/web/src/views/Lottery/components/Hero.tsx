@@ -10,16 +10,6 @@ import { useEffect, useRef } from 'react'
 import { dateTimeOptions } from '../helpers'
 import BuyTicketsButton from './BuyTicketsButton'
 
-const Rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`
-
 const PrizeTotalBalance = styled(Balance)<{ background?: string }>`
   margin-bottom: 0px;
   background: ${props => props.background};
@@ -37,7 +27,8 @@ const HeroWrapper = styled(Flex)`
 `
 
 const PrizeInfoWrapper = styled(Flex)`
-  margin: 24px 0px;
+  margin: 28px 0px;
+  width: 54%;
 `
 
 const BuyTicketsWrapper = styled(Flex)`
@@ -93,37 +84,38 @@ const Hero = () => {
   } = useLottery()
 
   const cakePriceBusd = usePriceCakeBusd()
-  const prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
+  const prizeInXVerto = amountCollectedInCake.times(cakePriceBusd)
   const endTimeMs = parseInt(endTime, 10) * 1000
   const endDate = new Date(endTimeMs)
-  const prizeTotal = getBalanceNumber(prizeInBusd)
+  const prizeTotal = getBalanceNumber(prizeInXVerto)
   const ticketBuyIsDisabled = status !== LotteryStatus.OPEN || isTransitioning
 
   const getHeroHeading = () => {
     if (status === LotteryStatus.OPEN) {
       return (
         <>
-          {prizeInBusd.isNaN() ? (
+          {prizeInXVerto.isNaN() ? (
             <Skeleton my="7px" height={60} width={190} />
           ) : (
             <PrizeTotalBalance
-              fontSize="64px"
+              fontSize="32px"
+              background={isDark ? 'white' : 'black'}
               bold
               prefix="$"
               value={prizeTotal}
               mb="8px"
               decimals={0}
-              color={isDark ? theme.colors.white : theme.colors.black}
             />
           )}
-          <Heading mb="32px" scale="lg" color="#ffffff">
+          &nbsp;
+          <Text fontSize="32px" color={isDark ? theme.colors.white : theme.colors.black}>
             {t('in prizes!')}
-          </Heading>
+          </Text>
         </>
       )
     }
     return (
-      <Heading mb="24px" scale="xl" color={theme.colors.text}>
+      <Heading mb="24px" scale="md" color={theme.colors.text}>
         {t('Tickets on sale soon')}
       </Heading>
     )
@@ -131,7 +123,7 @@ const Hero = () => {
 
   const getNextDrawId = () => {
     if (status === LotteryStatus.OPEN) {
-      return `${currentLotteryId} |`
+      return `${currentLotteryId}`
     }
     if (status === LotteryStatus.PENDING) {
       return ''
@@ -140,19 +132,23 @@ const Hero = () => {
   }
 
   const getNextDrawDateTime = () => {
-    // if (status === LotteryStatus.OPEN) {
-    //   return `${t('Draw')}: ${endDate.toLocaleString(locale, dateTimeOptions)}`
-    // }
-    if (true) {
-      // todo: remove this for the above code
-      console.log(
-        '========\n',
-        'date',
-        `${t('Draw')}: ${endDate.toLocaleString(locale, dateTimeOptions)}`,
-        '\n========',
+    if (status === LotteryStatus.OPEN) {
+      return (
+        <Flex flexDirection="column">
+          <Text fontSize="14px" color={isDark ? theme.colors.white : theme.colors.black}>
+            {t('Next Draw')}
+          </Text>
+          <Text fontSize="22px" color={isDark ? theme.colors.white : theme.colors.black}>
+            {endDate.toLocaleString(locale, {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })}
+          </Text>
+        </Flex>
       )
-      return `${t('Draw')}: ${endDate.toLocaleString(locale, dateTimeOptions)}`
     }
+    return ''
   }
 
   const handleClick = () => console.log('click')
@@ -168,28 +164,30 @@ const Hero = () => {
     }
     return (
       <>
-        {prizeInBusd.isNaN() ? (
+        {prizeInXVerto.isNaN() ? (
           <Skeleton my="7px" height={40} width={160} />
         ) : (
           <Balance
-            fontSize="40px"
-            color="secondary"
+            fontSize="22px"
+            color="text"
             textAlign={['center', null, null, 'left']}
             lineHeight="1"
             bold
+            my="3px"
             prefix="~$"
-            value={getBalanceNumber(prizeInBusd)}
+            value={getBalanceNumber(prizeInXVerto)}
             decimals={0}
           />
         )}
-        {prizeInBusd.isNaN() ? (
-          <Skeleton my="2px" height={14} width={90} />
+        {prizeInXVerto.isNaN() ? (
+          <Skeleton my="4px" height={14} width={90} />
         ) : (
           <Balance
             fontSize="14px"
+            my="4px"
             color="textSubtle"
             textAlign={['center', null, null, 'left']}
-            unit=" CAKE"
+            unit=" xVERTO"
             value={getBalanceNumber(amountCollectedInCake)}
             decimals={0}
           />
@@ -219,23 +217,11 @@ const Hero = () => {
         <VideoBgWrapper>
           <Clip url={videoSrc} />
           <HeroContentWrapper>
-            <Flex justifyContent="center" alignItems="center" mb="25px" mt="25px">
-              <PrizeTotalBalance
-                fontSize="32px"
-                background={isDark ? 'white' : 'black'}
-                bold
-                prefix="$"
-                value={prizeTotal}
-                mb="8px"
-                decimals={0}
-              />
-              &nbsp;
-              <Text fontSize="32px" color={isDark ? theme.colors.white : theme.colors.black}>
-                {t('in prizes!')}
-              </Text>
+            <Flex justifyContent="center" alignItems="center" mb="25px" mt="20px">
+              {getHeroHeading()}
             </Flex>
             <PrizeInfoWrapper justifyContent="space-between">
-              <Box>
+              <Flex flexDirection="column">
                 <Flex justifyContent={['center', null, null, 'flex-start']}>
                   <Text fontSize="14px" color={isDark ? theme.colors.white : theme.colors.black}>
                     {t('Prize Pot')}
@@ -244,11 +230,13 @@ const Hero = () => {
                 <Flex flexDirection="column" mb="18px">
                   {getPrizeBalances()}
                 </Flex>
-              </Box>
+              </Flex>
               <Box>
                 <Text color={isDark ? theme.colors.white : theme.colors.black} fontSize="16px">
-                  {`#${getNextDrawId()}`} {Boolean(endTime) && getNextDrawDateTime()}
-                  {/* {currentLotteryId && `#${getNextDrawId()}`} {Boolean(endTime) && getNextDrawDateTime()} real one */}
+                  {Boolean(endTime) && getNextDrawDateTime()}
+                </Text>
+                <Text color={isDark ? theme.colors.white : theme.colors.black} fontSize="14px">
+                  {currentLotteryId && `#${getNextDrawId()}`}
                 </Text>
               </Box>
             </PrizeInfoWrapper>
