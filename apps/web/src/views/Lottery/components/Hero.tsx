@@ -6,6 +6,7 @@ import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import useTheme from 'hooks/useTheme'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
+import { useEffect, useRef } from 'react'
 import { dateTimeOptions } from '../helpers'
 import { TicketPurchaseCard } from '../svgs'
 import BuyTicketsButton from './BuyTicketsButton'
@@ -101,12 +102,46 @@ const StripesVector = styled.img`
   animation: ${Rotate} 12s linear infinite;
 `
 
+const VideoBgWrapper = styled(Flex)`
+  position: relative;
+`
+const HeroContentWrapper = styled(Flex)`
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 15%;
+  margin: 0 auto;
+  width: 99%;
+`
+
+function Clip({ url }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+
+  useEffect(() => {
+    const { current } = videoRef
+    if (!current) {
+      return undefined
+    }
+
+    current.load()
+    return undefined
+  }, [url])
+
+  return (
+    <video width="100%" height="100%" autoPlay muted loop ref={videoRef}>
+      <source src={url} />
+    </video>
+  )
+}
+
 const Hero = () => {
   const {
     t,
     currentLanguage: { locale },
   } = useTranslation()
   const { theme, isDark } = useTheme()
+  console.log('========\n', 'isDark', isDark, '\n========')
   const {
     currentRound: { endTime, amountCollectedInCake, status },
     isTransitioning,
@@ -178,6 +213,8 @@ const Hero = () => {
   }
 
   const handleClick = () => console.log('click')
+  const videoSrc = isDark ? 'images/animations/lottery-01-dark.webm' : 'images/animations/lottery-01-light.webm'
+  console.log('========\n', 'videoSrc', videoSrc, '\n========')
 
   const getPrizeBalances = () => {
     if (status === LotteryStatus.CLOSE || status === LotteryStatus.CLAIMABLE) {
@@ -237,12 +274,9 @@ const Hero = () => {
         </BuyTicketsWrapper>
       </Box>
       <Flex flexDirection="column" alignItems="center">
-        <GreenWrapper>
-          <StripesVector src="/images/lottery/wheel.svg" />
-          <TicketWrapper
-            style={{ background: `url(/images/lottery/${isDark ? 'ticket-dark.svg' : 'ticket.svg'})` }}
-            flexDirection="column"
-            alignItems="center">
+        <VideoBgWrapper>
+          <Clip url={videoSrc} />
+          <HeroContentWrapper>
             <Flex justifyContent="center" alignItems="center" mb="25px" mt="25px">
               <PrizeTotalBalance
                 fontSize="32px"
@@ -276,14 +310,8 @@ const Hero = () => {
                 </Text>
               </Box>
             </PrizeInfoWrapper>
-          </TicketWrapper>
-        </GreenWrapper>
-        <Flex>
-          <CircleDiv>
-            <StarSmile color={isDark ? theme.colors.white : theme.colors.black} />
-          </CircleDiv>
-          <CurvedRectangle />
-        </Flex>
+          </HeroContentWrapper>
+        </VideoBgWrapper>
       </Flex>
     </HeroWrapper>
   )
