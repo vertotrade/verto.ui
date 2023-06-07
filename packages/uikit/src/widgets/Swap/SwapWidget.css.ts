@@ -7,12 +7,12 @@ import { recipe } from "@vanilla-extract/recipes";
 export const switchButtonClass = style([
   atoms({}),
   style({
-    backgroundColor: "primary",
+    backgroundColor: "newPrimary",
   }),
 ]);
 
 export const iconDownClass = style({
-  backgroundColor: "primary",
+  backgroundColor: "newPrimary",
   selectors: {
     [`${switchButtonClass}:hover &`]: {
       display: "none",
@@ -22,7 +22,7 @@ export const iconDownClass = style({
 });
 
 export const iconUpDownClass = style({
-  backgroundColor: "primary",
+  backgroundColor: "newPrimary",
   display: "none",
   selectors: {
     [`${switchButtonClass}:hover &`]: {
