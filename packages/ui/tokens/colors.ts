@@ -23,6 +23,7 @@ export const additionalColors = {
   silver: '#B2B2B2',
   bronze: '#E7974D',
   black: '#000000',
+  buttonText: '#231F20',
 }
 
 export const lightColors = {
@@ -40,8 +41,8 @@ export const lightColors = {
   backgroundDisabled: '#E9EAEB',
   backgroundAlt: '#F3F3F3',
   backgroundAlt2: '#D7D7D7',
-  buttonVariantBorder: '#D7D7D7',
   backgroundAlt2D9: '#eeeaf4D9',
+  buttonVariantBorder: '#D7D7D7',
   secondaryButtonText: '#231F20',
   secondaryButtonBg: '#F3F3F3',
   secondaryButtonHoverBg: '#EBEBEB',
