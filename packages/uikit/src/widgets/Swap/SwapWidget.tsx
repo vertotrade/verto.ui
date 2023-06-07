@@ -10,8 +10,8 @@ import { TradePrice } from "./TradePrice";
 
 const SwapSwitchButton = (props: ButtonProps) => (
   <IconButton className={switchButtonClass} variant="vertoPrimary" style={{ height: "32px", width: "32px" }} {...props}>
-    <ArrowDownIcon className={iconDownClass} />
-    <ArrowUpDownIcon className={iconUpDownClass} />
+    <ArrowDownIcon className={iconDownClass} color="buttonText" />
+    <ArrowUpDownIcon className={iconUpDownClass} color="buttonText" />
   </IconButton>
 );
 
