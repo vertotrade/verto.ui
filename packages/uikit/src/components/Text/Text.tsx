@@ -37,6 +37,7 @@ const Text = styled.div<TextProps>`
   ${typography}
   ${layout}
 
+  ${({ xSmall }) => xSmall && `font-size: 12px;`}
   ${({ small }) => small && `font-size: 14px;`}
 `;
 
