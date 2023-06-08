@@ -51,7 +51,7 @@ const Input = styled.input<InputProps>`
     }};
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.textSubtle};
+    color: ${({ theme }) => theme.colors.placeholder};
   }
 
   &:hover {

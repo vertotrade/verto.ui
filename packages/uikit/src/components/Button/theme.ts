@@ -14,12 +14,22 @@ export const scaleVariants = {
     fontSize: "12px",
     padding: "0 8px",
   },
+  [scales.NEW_XS]: {
+    height: "30px",
+    fontSize: "14px",
+    fontWeight: "400",
+    padding: "6px 8px",
+  },
   [scales.NEW_SM]: {
     height: "48px",
+    fontSize: "16px",
+    fontWeight: "500",
     padding: "12px 24px",
   },
   [scales.NEW_LG]: {
     height: "56px",
+    fontSize: "16px",
+    fontWeight: "500",
     padding: "16px 32px",
   },
 };
@@ -91,11 +101,9 @@ export const styleVariants = {
     background: "var(--colors-newPrimary)",
     color: "var(--colors-buttonText)",
     fontFamily: "Roboto, sans-serif",
-    fontSize: "16px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontWeight: "500",
     transition: "background-position 0.3s",
     ":hover": {
       background: "var(--colors-newPrimaryDark)",
@@ -111,11 +119,9 @@ export const styleVariants = {
     background: "var(--colors-secondaryButtonBg)",
     color: "var(--colors-secondaryButtonText)",
     fontFamily: "Inter, sans-serif",
-    fontSize: "16px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontWeight: "500",
     transition: "background-position 0.3s",
     ":hover": {
       background: "var(--colors-secondaryButtonHoverBg)",
@@ -130,11 +136,9 @@ export const styleVariants = {
     background: "transparent",
     color: "var(--colors--secondaryButtonText)",
     fontFamily: "Inter, sans-serif",
-    fontSize: "16px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontWeight: "500",
     transition: "background-position 0.3s",
     ":hover": {
       background: "var(--colors-ghostButtonHoverBg)",
