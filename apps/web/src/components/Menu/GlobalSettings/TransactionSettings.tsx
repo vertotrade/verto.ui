@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { escapeRegExp } from 'utils'
-import { Text, Button, Input, PercentageInput, Flex, ModalRow, Box, QuestionHelper } from '@verto/uikit'
+import { Text, Button, Input, InputWithSymbol, Flex, ModalRow, Box, QuestionHelper } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { useUserSlippageTolerance, useUserTransactionTTL } from 'state/user/hooks'
 
@@ -123,8 +123,11 @@ const SlippageTabs = () => {
             variant={userSlippageTolerance === 100 ? 'vertoPrimary' : 'vertoSecondary'}>
             1.0%
           </Button>
-          <PercentageInput
+          <InputWithSymbol
+            symbol="%"
+            symbolOnRight
             inputMode="decimal"
+            style={{ paddingLeft: '16px' }}
             pattern="^[0-9]*[.,]?[0-9]{0,2}$"
             placeholder={(userSlippageTolerance / 100).toFixed(2)}
             value={slippageInput}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import type { HTMLAttributes, DetailedHTMLProps, InputHTMLAttributes } from "react";
+import type { CSSProperties, ReactNode, DetailedHTMLProps, InputHTMLAttributes } from "react";
 import { Text } from "../Text";
 import Input from "./Input";
 import { Flex, FlexProps } from "../Box";
@@ -19,7 +19,7 @@ const Container = styled(Flex)<ContainerProps>`
   font-size: 16px;
   max-width: 94px;
   outline: 0;
-  padding: 12px 12px 12px 16px;
+  padding: 12px;
   height: 48px;
   border: 1px solid
     ${({ theme, isFocused, isDisabled, isWarning, isSuccess }) => {
@@ -50,7 +50,18 @@ const Container = styled(Flex)<ContainerProps>`
   }
 `;
 
-type PercentageInputProps = InputProps & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+const SymbolText = styled(Text)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+type InputWithSymbolProps = InputProps &
+  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+    symbol: ReactNode;
+    symbolOnRight?: boolean;
+    inputStyle?: CSSProperties;
+  };
 
 const UnstyledInput = styled(Input)<InputProps>`
   border: none !important;
@@ -61,13 +72,28 @@ const UnstyledInput = styled(Input)<InputProps>`
   width: 100%;
 `;
 
-export const PercentageInput = (props: PercentageInputProps) => {
-  const { isSuccess, isWarning, disabled, inputMode, pattern, placeholder, value, onBlur, onChange } = props;
+export const InputWithSymbol = (props: InputWithSymbolProps) => {
+  const {
+    symbol,
+    symbolOnRight = false,
+    isSuccess,
+    isWarning,
+    disabled,
+    inputMode,
+    pattern,
+    placeholder,
+    value,
+    onBlur,
+    onChange,
+    style,
+    inputStyle,
+  } = props;
   const [focused, setFocused] = useState(false);
 
   return (
     <Container
       alignItems="center"
+      style={style}
       flexDirection="row"
       ml="4px"
       isSuccess={isSuccess}
@@ -75,6 +101,11 @@ export const PercentageInput = (props: PercentageInputProps) => {
       isFocused={focused}
       isDisabled={disabled}
     >
+      {!symbolOnRight && symbol && (
+        <SymbolText bold color="placeholder" mr="8px">
+          {symbol}
+        </SymbolText>
+      )}
       <UnstyledInput
         inputMode={inputMode}
         pattern={pattern}
@@ -92,10 +123,13 @@ export const PercentageInput = (props: PercentageInputProps) => {
         onFocus={() => {
           setFocused(true);
         }}
+        style={inputStyle}
       />
-      <Text bold color="placeholder" ml="8px">
-        %
-      </Text>
+      {symbolOnRight && symbol && (
+        <SymbolText bold color="placeholder" ml="8px">
+          {symbol}
+        </SymbolText>
+      )}
     </Container>
   );
 };

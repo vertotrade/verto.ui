@@ -4,27 +4,29 @@ import { Box, BoxProps } from "../Box";
 import { ArrowDropDownIcon } from "../Svg";
 import { Text } from "../Text";
 
-const DropDownHeader = styled.div<{ hasPrimaryBorderColor: boolean }>`
+const DropDownHeader = styled.div`
   width: 100%;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0px 16px;
-  border: 2px solid
-    ${({ theme, hasPrimaryBorderColor }) =>
-      hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary};
+  border: 1px solid ${({ theme }) => theme.colors.inputBorder};
   border-radius: 7.5px;
-  background: ${({ theme }) => theme.colors.input};
+  background: ${({ theme }) => theme.colors.inputBg};
   transition: border-radius 0.15s;
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.inputBorderHover};
+  }
 `;
 
-const DropDownListContainer = styled.div<{ hasPrimaryBorderColor: boolean }>`
+const DropDownListContainer = styled.div`
   min-width: 136px;
   height: 0;
   position: absolute;
   overflow: hidden;
-  background: ${({ theme }) => theme.colors.input};
+  background: ${({ theme }) => theme.colors.inputBg};
   z-index: ${({ theme }) => theme.zIndices.dropdown};
   transition: transform 0.15s, opacity 0.15s;
   transform: scaleY(0);
@@ -37,11 +39,11 @@ const DropDownListContainer = styled.div<{ hasPrimaryBorderColor: boolean }>`
   }
 `;
 
-const DropDownContainer = styled(Box)<{ isOpen: boolean; hasPrimaryBorderColor: boolean }>`
+const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
   cursor: pointer;
   width: 100%;
   position: relative;
-  background: ${({ theme }) => theme.colors.input};
+  background: ${({ theme }) => theme.colors.inputBg};
   border-radius: 7.5px;
   height: 40px;
   min-width: 136px;
@@ -56,19 +58,15 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean; hasPrimaryBorderColor: 
     props.isOpen &&
     css`
       ${DropDownHeader} {
-        border-bottom: 2px solid
-          ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
         border-radius: 7.5px 7.5px 0 0;
-        border: 1px solid
-          ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
+        border: 1px solid ${({ theme }) => theme.colors.newPrimary};
       }
 
       ${DropDownListContainer} {
         height: auto;
         transform: scaleY(1);
         opacity: 1;
-        border: 2px solid
-          ${({ theme }) => (props.hasPrimaryBorderColor ? theme.colors.primary0f : theme.colors.inputSecondary)};
+        border: 1px solid ${({ theme }) => theme.colors.newPrimary};
         border-top-width: 0;
         border-radius: 0 0 7.5px 7.5px;
       }
@@ -103,7 +101,6 @@ export interface SelectProps extends BoxProps {
   placeHolderText?: string;
   defaultOptionIndex?: number;
   color?: string;
-  hasPrimaryBorderColor?: boolean;
 }
 
 export interface OptionProps {
@@ -117,7 +114,6 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   defaultOptionIndex = 0,
   placeHolderText,
   color = "textSubtle",
-  hasPrimaryBorderColor = false,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -158,19 +154,21 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   }, [defaultOptionIndex]);
 
   return (
-    <DropDownContainer isOpen={isOpen} {...props} hasPrimaryBorderColor={hasPrimaryBorderColor}>
-      <DropDownHeader hasPrimaryBorderColor={hasPrimaryBorderColor} onClick={toggling}>
-        <Text color={color}>
+    <DropDownContainer isOpen={isOpen} {...props}>
+      <DropDownHeader onClick={toggling}>
+        <Text color={color} small>
           {!optionSelected && placeHolderText ? placeHolderText : options[selectedOptionIndex].label}
         </Text>
       </DropDownHeader>
-      <ArrowDropDownIcon color={color} onClick={toggling} />
-      <DropDownListContainer hasPrimaryBorderColor={hasPrimaryBorderColor}>
+      <ArrowDropDownIcon color={color} onClick={toggling} width="24px" height="24px" />
+      <DropDownListContainer>
         <DropDownList>
           {options.map((option, index) =>
             placeHolderText || index !== selectedOptionIndex ? (
               <ListItem onClick={onOptionClicked(index)} key={option.label}>
-                <Text color={color}>{option.label}</Text>
+                <Text small color={color}>
+                  {option.label}
+                </Text>
               </ListItem>
             ) : null
           )}

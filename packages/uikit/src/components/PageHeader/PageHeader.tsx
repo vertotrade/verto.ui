@@ -5,11 +5,11 @@ import { PageHeaderProps } from "./types";
 
 const Outer = styled(Box)<{ background?: string }>`
   background: ${({ background }) => background};
+  margin-top: 40px;
+  margin-bottom: 16px;
 `;
 
 const Inner = styled(Container)`
-  padding-top: 32px;
-  padding-bottom: 32px;
   position: relative;
 `;
 

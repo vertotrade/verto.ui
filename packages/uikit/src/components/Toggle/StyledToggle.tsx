@@ -85,6 +85,10 @@ const StyledToggle = styled.div<StyleToggleProps>`
   position: relative;
   transition: background-color 200ms;
   width: ${getScale("toggleWidth")};
+
+  &:hover {
+    ${({ $checked, theme }) => ($checked ? "" : `border: 1px solid ${theme.colors.inputBorderHover}`)};
+  }
 `;
 
 export default StyledToggle;

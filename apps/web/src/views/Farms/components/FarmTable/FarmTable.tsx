@@ -188,27 +188,25 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
   const sortedRows = rowData.map(generateSortedRow)
 
   return (
-    <StyledGradientContainer>
-      <Container id="farms-table">
-        <TableContainer id="table-container">
-          <TableWrapper ref={tableWrapperEl}>
-            <StyledTable>
-              <TableBody>
-                {sortedRows.map(row => {
-                  return row?.details?.boosted ? (
-                    <ProxyFarmContainer key={`table-row-${row.farm.pid}`} farm={row.details}>
-                      <Row {...row} userDataReady={userDataReady} />
-                    </ProxyFarmContainer>
-                  ) : (
-                    <Row {...row} userDataReady={userDataReady} key={`table-row-${row.farm.pid}`} />
-                  )
-                })}
-              </TableBody>
-            </StyledTable>
-          </TableWrapper>
-        </TableContainer>
-      </Container>
-    </StyledGradientContainer>
+    <Container id="farms-table">
+      <TableContainer id="table-container">
+        <TableWrapper ref={tableWrapperEl}>
+          <StyledTable>
+            <TableBody>
+              {sortedRows.map(row => {
+                return row?.details?.boosted ? (
+                  <ProxyFarmContainer key={`table-row-${row.farm.pid}`} farm={row.details}>
+                    <Row {...row} userDataReady={userDataReady} />
+                  </ProxyFarmContainer>
+                ) : (
+                  <Row {...row} userDataReady={userDataReady} key={`table-row-${row.farm.pid}`} />
+                )
+              })}
+            </TableBody>
+          </StyledTable>
+        </TableWrapper>
+      </TableContainer>
+    </Container>
   )
 }
 
