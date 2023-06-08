@@ -6,6 +6,7 @@ export const scales = {
   MD: "md",
   SM: "sm",
   XS: "xs",
+  NEW_XS: "newXs",
   NEW_SM: "newSm",
   NEW_LG: "newLg",
 } as const;

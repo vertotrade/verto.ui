@@ -8,20 +8,19 @@ interface StyledButtonMenuProps extends ButtonMenuProps {
   theme: DefaultTheme;
 }
 
-const getBackgroundColor = ({ theme, variant }: StyledButtonMenuProps) => {
-  return theme.colors[variant === variants.SUBTLE ? "white" : "white"];
-};
-
-const getBorderColor = ({ theme, variant }: StyledButtonMenuProps) => {
-  return theme.colors[variant === variants.SUBTLE ? "backgroundAlt2" : "primary0f"];
-};
-
 const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
-  background-color: ${getBackgroundColor};
-  border-radius: 24px;
+  height: 40px;
+  background-color: ${({ theme }) => theme.colors.inputBg};
+  border-radius: 8px;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
-  border: 2px solid ${getBorderColor};
+  gap: 4px;
+  border: 1px solid ${({ theme }) => theme.colors.inputBorder};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+  padding: 4px;
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.inputBorderHover};
+  }
 
   & > button,
   & > a {
@@ -38,14 +37,14 @@ const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
     box-shadow: none;
   }
 
-  ${({ disabled, theme, variant }) => {
+  ${({ disabled, theme }) => {
     if (disabled) {
       return `
         opacity: 0.5;
 
         & > button:disabled {
           background-color: transparent;
-          color: ${variant === variants.PRIMARY ? theme.colors.primary : theme.colors.textSubtle};
+          color: ${theme.colors.textSubtle};
         }
     `;
     }
@@ -56,8 +55,8 @@ const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
 
 const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
   activeIndex = 0,
-  scale = scales.MD,
-  variant = variants.PRIMARY,
+  variant = variants.VERTO_GHOST,
+  scale = scales.NEW_XS,
   onItemClick,
   disabled,
   children,
@@ -65,13 +64,13 @@ const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
   ...props
 }) => {
   return (
-    <StyledButtonMenu disabled={disabled} variant={variant} fullWidth={fullWidth} {...props}>
+    <StyledButtonMenu disabled={disabled} fullWidth={fullWidth} {...props}>
       {Children.map(children, (child: ReactElement, index) => {
         return cloneElement(child, {
           isActive: activeIndex === index,
           onClick: onItemClick ? () => onItemClick(index) : undefined,
-          scale,
           variant,
+          scale,
           disabled,
         });
       })}

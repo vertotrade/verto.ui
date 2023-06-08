@@ -227,7 +227,6 @@ export function PoolControls<T>({
                 ]}
                 onOptionChange={handleSortOptionChange}
                 color="primary"
-                hasPrimaryBorderColor
               />
             </ControlStretch>
           </LabelWrapper>

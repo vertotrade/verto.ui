@@ -1,32 +1,32 @@
 import styled from "styled-components";
 import { PolymorphicComponent } from "../../util/polymorphic";
 import Button from "../Button/Button";
-import { BaseButtonProps, variants } from "../Button/types";
+import { BaseButtonProps } from "../Button/types";
 import { ButtonMenuItemProps } from "./types";
 
-interface InactiveButtonProps extends BaseButtonProps {
+interface MaybeActiveButtonProps extends BaseButtonProps {
   forwardedAs: BaseButtonProps["as"];
 }
 
-const InactiveButton: PolymorphicComponent<InactiveButtonProps, "button"> = styled(Button)<InactiveButtonProps>`
-  background-color: ${({ theme }) => theme.colors.basicBackground};
-  color: ${({ theme }) => theme.colors.text};
+const MaybeActiveButton: PolymorphicComponent<MaybeActiveButtonProps, "button"> = styled(
+  Button
+)<MaybeActiveButtonProps>`
+  background-color: ${({ theme, isActive }) => (isActive ? theme.colors.backgroundAlt : theme.colors.inputBg)};
+  color: ${({ theme, isActive }) => (isActive ? theme.colors.text : theme.colors.disabledTextDark)};
+  border-radius: 4px;
+
   &:hover:not(:disabled):not(:active) {
-    background-color: transparent;
+    background-color: ${({ theme, isActive }) => (isActive ? theme.colors.backgroundAlt : "transparent")};
+    color: ${({ theme }) => theme.colors.text};
+
+    & svg {
+      fill: ${({ theme }) => theme.colors.text};
+    }
   }
 `;
 
-const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
-  isActive = false,
-  variant = variants.PRIMARY,
-  as,
-  ...props
-}: ButtonMenuItemProps) => {
-  if (!isActive) {
-    return <InactiveButton forwardedAs={as} variant={variant} {...props} />;
-  }
-
-  return <Button as={as} variant={variant} {...props} />;
-};
+const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({ as, ...props }: ButtonMenuItemProps) => (
+  <MaybeActiveButton forwardedAs={as} {...props} />
+);
 
 export default ButtonMenuItem;
