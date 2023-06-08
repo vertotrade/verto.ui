@@ -27,6 +27,15 @@ export function useCallWithGasPrice() {
       methodArgs: any[] = [],
       overrides: CallOverrides = null,
     ): Promise<TransactionResponse> => {
+      console.log({
+        methodName,
+        methodArgs,
+        overrides,
+        gasPrice,
+        userGasPrice,
+        rpcDefault: GAS_PRICE_GWEI.rpcDefault,
+        contactAddress: contract.address,
+      })
       addBreadcrumb({
         type: 'Transaction',
         message:
@@ -47,6 +56,8 @@ export function useCallWithGasPrice() {
         ...methodArgs,
         hasManualGasPriceOverride ? { ...overrides } : { ...overrides, gasPrice },
       )
+
+      console.log({ tx })
 
       if (tx) {
         addBreadcrumb({

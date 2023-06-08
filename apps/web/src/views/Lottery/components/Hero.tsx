@@ -51,6 +51,10 @@ const HeroContentWrapper = styled(Flex)`
   width: 99%;
 `
 
+const StyledBuyTicketButton = styled(BuyTicketsButton)<{ disabled: boolean }>`
+  background: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.primary)};
+`
+
 function Clip({ url }) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
@@ -208,9 +212,9 @@ const Hero = () => {
           )}
         </Text>
         <BuyTicketsWrapper>
-          <Button onClick={handleClick} variant="secondary" paddingX="16px">
+          <StyledBuyTicketButton disabled={ticketBuyIsDisabled} variant="secondary" paddingX="16px">
             {t('Buy Tickets')}
-          </Button>
+          </StyledBuyTicketButton>
         </BuyTicketsWrapper>
       </Box>
       <Flex flexDirection="column" alignItems="center">

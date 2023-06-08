@@ -244,27 +244,39 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
+        console.log('onRequiresApproval being called')
         return requiresApproval(cakeContractReader, account, lotteryContract.address)
       },
       onApprove: () => {
+        console.log('onApprove being called')
         return callWithGasPrice(cakeContractApprover, 'approve', [lotteryContract.address, MaxUint256])
       },
       onApproveSuccess: async ({ receipt }) => {
+        console.log('onApproveSuccess being called')
         toastSuccess(
           t('Contract enabled - you can now purchase tickets'),
           <ToastDescriptionWithTx txHash={receipt.transactionHash} />,
         )
+
+        // New debug step: check the allowance after approval
+        const allowance = await cakeContractApprover.allowance(account, lotteryContract.address)
+        console.log(`Allowance after approval is ${allowance}`)
       },
       onConfirm: () => {
+        console.log('========\n', 'onConfirm being called', '\n========')
         const ticketsForPurchase = getTicketsForPurchase()
+        console.log('========\n', 'ticketsForPurchase', ticketsForPurchase, '\n========')
         return callWithGasPrice(lotteryContract, 'buyTickets', [currentLotteryId, ticketsForPurchase])
       },
       onSuccess: async ({ receipt }) => {
+        console.log('========\n', 'onSuccess being called', '\n========')
         onDismiss?.()
         dispatch(fetchUserTicketsAndLotteries({ account, currentLotteryId }))
         toastSuccess(t('Lottery tickets purchased!'), <ToastDescriptionWithTx txHash={receipt.transactionHash} />)
       },
     })
+
+  console.log({ isApproving, isApproved, isConfirmed, isConfirming })
 
   const getErrorMessage = () => {
     if (userNotEnoughCake) return t('Insufficient CAKE balance')

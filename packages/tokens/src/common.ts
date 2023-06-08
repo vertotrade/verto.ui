@@ -132,6 +132,25 @@ export const USDT = {
   [ChainId.ETHEREUM]: USDT_ETH,
 }
 
+export const REBUS = {
+  [ChainId.REBUS]: new ERC20Token(
+    ChainId.REBUS,
+    '0xD9d1b3814d3c5741C9939Ce232ac8075031D959C',
+    18,
+    'WREBUS',
+    'Wrapped Rebus',
+    'https://www.rebuschain.com/',
+  ),
+  [ChainId.REBUS_TESTNET]: new ERC20Token(
+    ChainId.REBUS_TESTNET,
+    '0xe21ee29B2E8A4cE8229b40Fc972A54501daD655B',
+    18,
+    'WREBUS',
+    'Wrapped Rebus',
+    'https://www.rebuschain.com/',
+  ),
+}
+
 export const WBTC_ETH = new ERC20Token(
   ChainId.ETHEREUM,
   '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
