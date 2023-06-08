@@ -26,7 +26,7 @@ export const additionalColors = {
 export const lightColors = {
   ...baseColors,
   ...additionalColors,
-  primary: '#83bf88',
+  primary: '#30E8BF',
   primary2: '#5BD2A2',
   primary0f: '#83bf8830',
   secondary: '#ff8235',
@@ -81,7 +81,7 @@ export const lightColors = {
 export const darkColors = {
   ...baseColors,
   ...additionalColors,
-  primary: '#f1f1f1',
+  primary: '#30E8BF',
   primary2: '#5BD2A2',
   primary0f: '#f1f1f130',
   secondary: '#ff8235',

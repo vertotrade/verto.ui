@@ -4,7 +4,7 @@ import { provider } from 'utils/wagmi'
 import { Contract } from '@ethersproject/contracts'
 import poolsConfig from 'config/constants/pools'
 import { PoolCategory } from 'config/constants/types'
-import { CAKE } from '@verto/tokens'
+import { REBUS, CAKE } from '@verto/tokens'
 
 // Addresses
 import {
@@ -197,9 +197,12 @@ export const getPointCenterIfoContract = (signer?: Signer | Provider) => {
   return getContract({ abi: pointCenterIfo, address: getPointCenterIfoAddress(), signer }) as PointCenterIfo
 }
 export const getCakeContract = (signer?: Signer | Provider, chainId?: number) => {
+  // console.log('========\n', 'CAKE[ChainId.BSC]', CAKE[ChainId.BSC], '\n========')
+  // console.log('========\n', 'REBUS[ChainId.BSC]', REBUS[ChainId.REBUS_TESTNET], '\n========')
   return getContract({
     abi: cakeAbi,
-    address: chainId ? CAKE[chainId].address : CAKE[ChainId.BSC].address,
+    address: chainId ? REBUS[chainId].address : REBUS[ChainId.REBUS_TESTNET].address,
+    // address: chainId ? REBUS[chainId].address : REBUS[ChainId.REBUS_TESTNET].address,
     signer,
   }) as Cake
 }
