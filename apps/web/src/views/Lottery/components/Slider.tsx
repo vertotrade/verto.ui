@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useMemo } from 'react'
 import Carousel from 'react-multi-carousel'
 import styled from 'styled-components'
-import { Flex } from '@verto/uikit'
-import 'react-multi-carousel/lib/styles.css'
+import { Flex, Skeleton, Modal, useModal } from '@verto/uikit'
 import { useTheme } from '@verto/hooks'
+import { useTranslation } from '@verto/localization'
+import { useAppDispatch } from 'state'
+import { useLottery } from 'state/lottery/hooks'
+import { fetchLottery } from 'state/lottery/helpers'
+import { LotteryStatus } from 'config/constants/types'
+import RoundSwitcher from './AllHistoryCard/RoundSwitcher'
+import { getDrawnDate, processLotteryResponse } from '../helpers'
+import PreviousRoundCardBody from './PreviousRoundCard/Body'
+import PreviousRoundCardFooter from './PreviousRoundCard/Footer'
+import LotteryDetailsModal from './LotteryDetailsModal'
+import 'react-multi-carousel/lib/styles.css'
+import WinningNumbers from './WinningNumbers'
 
 const StyledCarousel = styled(Carousel)`
   &.react-multi-carousel-list {
@@ -35,21 +46,42 @@ const SlideContentOuterWrapper = styled(Flex)`
   position: relative;
   height: 100%;
   padding-top: 10%;
+
+  @media screen and (max-width: 800px) {
+    padding-top: 15%;
+  }
 `
 const WinningNumbersWrapper = styled(Flex)`
-  margin-top: 30%;
+  margin-top: 60px;
 `
 const BoldText = styled.p`
   font-weight: 700;
 `
 
-const items = [
-  { title: 'Round 1', date: 'May 7, 2023. 2:00 AM' },
-  { title: 'Round 2', date: 'May 7, 2023. 2:00 AM' },
-  { title: 'Round 3', date: 'May 7, 2023. 2:00 AM' },
-  { title: 'Round 4', date: 'May 7, 2023. 2:00 AM' },
-  { title: 'Round 5', date: 'May 7, 2023. 2:00 AM' },
-]
+const WinningNumbersTitle = styled.p`
+  margin-bottom: 20px;
+`
+
+const WinningNumbersInnerWrapper = styled(Flex)`
+  width: 85%;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
+`
+
+const SeeDetailsButton = styled.button`
+  width: 100%;
+  height: 56px;
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.buttonVariantBorder};
+  color: ${({ theme }) => theme.colors.text};
+  margin-top: 20px;
+  border-radius: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 24px;
+`
 
 const responsive = {
   superLargeDesktop: {
@@ -74,7 +106,15 @@ interface ItemProps {
   index: number
 }
 
-const SlideContent = ({ title, date }) => {
+const SlideContent = ({ title, date, lotteryData, onClickHandler, openState = false, processedLotteryData }) => {
+  const [onPresentLotteryDetailsModal] = useModal(
+    <LotteryDetailsModal selectedLotteryNodeData={processedLotteryData} id={lotteryData.id} />,
+  )
+
+  const onClick = () => {
+    onClickHandler(lotteryData.id)
+    onPresentLotteryDetailsModal()
+  }
   return (
     <SlideContentOuterWrapper id="outer-wrap" flexDirection="column">
       <Flex id="inner-wrap" flexDirection="column" justifyContent="center" alignItems="center">
@@ -82,7 +122,22 @@ const SlideContent = ({ title, date }) => {
         <p>{`Drawn ${date}`}</p>
       </Flex>
       <WinningNumbersWrapper flexDirection="column" justifyContent="center" alignItems="center">
-        <p>Winning Numbers</p>
+        <WinningNumbersTitle>Winning Numbers</WinningNumbersTitle>
+        <WinningNumbersInnerWrapper flexDirection="column">
+          {lotteryData?.finalNumber ? (
+            <WinningNumbers
+              rotateText={false}
+              number={lotteryData?.finalNumber.toString()}
+              mr={[null, null, null, '32px']}
+              size="100%"
+              fontSize="16px"
+            />
+          ) : (
+            <Skeleton height={['34px', null, null, '71px']} mr={[null, null, null, '32px']} />
+          )}
+
+          <SeeDetailsButton onClick={onClick}>See Details</SeeDetailsButton>
+        </WinningNumbersInnerWrapper>
       </WinningNumbersWrapper>
     </SlideContentOuterWrapper>
   )
@@ -91,6 +146,89 @@ const SlideContent = ({ title, date }) => {
 const Slider = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const { isDark } = useTheme()
+  const {
+    t,
+    currentLanguage: { locale },
+  } = useTranslation()
+  const dispatch = useAppDispatch()
+  const {
+    currentLotteryId,
+    lotteriesData,
+    currentRound: { status, isLoading },
+  } = useLottery()
+  const [latestRoundId, setLatestRoundId] = useState(null)
+  const [selectedRoundId, setSelectedRoundId] = useState('')
+  const [selectedLotteryNodeData, setSelectedLotteryNodeData] = useState(null)
+  const timer = useRef(null)
+
+  const numRoundsFetched = lotteriesData?.length
+
+  const items = useMemo(() => {
+    return lotteriesData
+      ?.filter(lottery => lottery.status.toLowerCase() !== 'open')
+      .map(lottery => ({
+        title: `Round ${lottery.id}`,
+        date: getDrawnDate(locale, lottery.endTime),
+        lotteryData: { ...lottery },
+      }))
+  }, [lotteriesData, locale])
+
+  console.log({ currentLotteryId, lotteriesData, status, numRoundsFetched })
+
+  useEffect(() => {
+    if (currentLotteryId) {
+      const currentLotteryIdAsInt = currentLotteryId ? parseInt(currentLotteryId) : null
+      const mostRecentFinishedRoundId =
+        status === LotteryStatus.CLAIMABLE ? currentLotteryIdAsInt : currentLotteryIdAsInt - 1
+      setLatestRoundId(mostRecentFinishedRoundId)
+      setSelectedRoundId(mostRecentFinishedRoundId.toString())
+    }
+  }, [currentLotteryId, status])
+
+  useEffect(() => {
+    setSelectedLotteryNodeData(null)
+
+    const fetchLotteryData = async () => {
+      const lotteryData = await fetchLottery(selectedRoundId)
+      const processedLotteryData = processLotteryResponse(lotteryData)
+      setSelectedLotteryNodeData(processedLotteryData)
+    }
+
+    timer.current = setInterval(() => {
+      if (selectedRoundId) {
+        fetchLotteryData()
+      }
+      clearInterval(timer.current)
+    }, 1000)
+
+    return () => clearInterval(timer.current)
+  }, [selectedRoundId, currentLotteryId, numRoundsFetched, dispatch])
+
+  const handleInputChange = event => {
+    const {
+      target: { value },
+    } = event
+    if (value) {
+      setSelectedRoundId(value)
+      if (parseInt(value, 10) <= 0) {
+        setSelectedRoundId('')
+      }
+      if (parseInt(value, 10) >= latestRoundId) {
+        setSelectedRoundId(latestRoundId.toString())
+      }
+    } else {
+      setSelectedRoundId('')
+    }
+  }
+
+  const handleArrowButtonPress = targetRound => {
+    if (targetRound) {
+      setSelectedRoundId(targetRound.toString())
+    } else {
+      // targetRound is NaN when the input is empty, the only button press that will trigger this func is 'forward one'
+      setSelectedRoundId('1')
+    }
+  }
 
   const Item = styled(TicketSlide)<ItemProps>`
     opacity: ${props => (props.index === activeItemIndex ? '1' : '0.5')};
@@ -99,19 +237,37 @@ const Slider = () => {
   const handleBeforeChange = nextSlide => {
     setActiveItemIndex(nextSlide)
   }
+  const handleAfterChange = () => {
+    console.log('change a rooni')
+  }
+
+  const handleDetailsClick = async (id: string) => {
+    console.log('========\n', 'selectedRoundId', id, '\n========')
+    const lotteryData = await fetchLottery(id)
+    const processedLotteryData = processLotteryResponse(lotteryData)
+    console.log('========\n', 'processedLotteryData', processedLotteryData, '\n========')
+  }
 
   useEffect(() => {
     setActiveItemIndex(0)
   }, [])
 
-  return (
-    <StyledCarousel responsive={responsive} beforeChange={handleBeforeChange}>
-      {items.map((item, index) => (
+  return items?.length ? (
+    <StyledCarousel responsive={responsive} beforeChange={handleBeforeChange} afterChange={handleAfterChange}>
+      {items?.map((item, index) => (
         <Item justifyContent="center" isDark={isDark} index={index}>
-          <SlideContent title={item.title} date={item.date} />
+          <SlideContent
+            title={item.title}
+            date={item.date}
+            lotteryData={item.lotteryData}
+            onClickHandler={handleDetailsClick}
+            processedLotteryData={selectedLotteryNodeData}
+          />
         </Item>
       ))}
     </StyledCarousel>
+  ) : (
+    <h1>No lotteries have been drawn yet</h1>
   )
 }
 

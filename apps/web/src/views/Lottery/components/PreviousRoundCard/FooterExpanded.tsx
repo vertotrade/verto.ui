@@ -11,13 +11,17 @@ import { formatNumber, getBalanceNumber } from '@verto/utils/formatBalance'
 import RewardBrackets from '../RewardBrackets'
 
 const NextDrawWrapper = styled(Flex)`
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundAlt};
   padding: 24px;
   flex-direction: column;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
   }
+`
+
+const PrizePotSection = styled(Flex)`
+  min-width: 110px;
 `
 
 const PreviousRoundCardFooter: React.FC<
@@ -62,7 +66,7 @@ const PreviousRoundCardFooter: React.FC<
         {prizeInBusd.isNaN() ? (
           <Skeleton my="7px" height={40} width={200} />
         ) : (
-          <Heading scale="xl" lineHeight="1" color="secondary">
+          <Heading scale="xl" lineHeight="1" color="primary">
             ~${formatNumber(getBalanceNumber(prizeInBusd), 0, 0)}
           </Heading>
         )}
@@ -72,7 +76,7 @@ const PreviousRoundCardFooter: React.FC<
           <Balance
             fontSize="14px"
             color="textSubtle"
-            unit=" CAKE"
+            unit=" Verto"
             value={getBalanceNumber(lotteryNodeData?.amountCollectedInCake)}
             decimals={0}
           />
@@ -83,24 +87,12 @@ const PreviousRoundCardFooter: React.FC<
 
   return (
     <NextDrawWrapper>
-      <Flex mr="24px" flexDirection="column" justifyContent="space-between">
+      <PrizePotSection mr="24px" flexDirection="column" justifyContent="space-between">
         <Box>
           <Heading>{t('Prize pot')}</Heading>
           {getPrizeBalances()}
         </Box>
-        <Box mb="24px">
-          <Flex>
-            <Text fontSize="14px" display="inline">
-              {t('Total players this round')}:{' '}
-              {lotteryNodeData && (lotteryGraphDataFromState || fetchedLotteryGraphData) ? (
-                getTotalUsers()
-              ) : (
-                <Skeleton height={14} width={31} />
-              )}
-            </Text>
-          </Flex>
-        </Box>
-      </Flex>
+      </PrizePotSection>
       <RewardBrackets lotteryNodeData={lotteryNodeData} isHistoricRound />
     </NextDrawWrapper>
   )
