@@ -26,7 +26,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
 })
 
 export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Earn passive income with crypto.'),
+  headingText: t('Gain new tokens with crypto.'),
   bodyText: t('VertoTrade makes it easy to make your crypto work for you.'),
   reverse: true,
   primaryButton: {
