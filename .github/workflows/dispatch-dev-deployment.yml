@@ -15,14 +15,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: ${{ github.event.inputs.branch || github.ref_name }}
 
       - name: Check branch existence
         id: check_branch
         run: |
           BRANCH="${{ github.event.inputs.branch || github.ref_name }}"
+          git fetch --depth=1 origin $BRANCH
           if git rev-parse --verify --quiet "$BRANCH"; then
             echo "::set-output name=exists::true"
           else
