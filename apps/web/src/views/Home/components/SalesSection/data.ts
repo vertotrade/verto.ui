@@ -27,7 +27,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
 
 export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Gain new tokens with crypto.'),
-  bodyText: t('VertoTrade makes it easy to make your crypto work for you.'),
+  bodyText: t('VertoTrade makes it easy to interact with new Tokens in the Ecosystem.'),
   reverse: true,
   primaryButton: {
     to: '/farms',
