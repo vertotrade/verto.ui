@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Flex, FlexProps } from '@verto/uikit'
 import random from 'lodash/random'
 import uniqueId from 'lodash/uniqueId'
+import { useTheme } from '@verto/hooks'
 import { parseRetrievedNumber } from '../helpers'
 import { BallWithNumber } from '../svgs'
 import { BallColor } from '../svgs/Balls'
@@ -20,10 +21,10 @@ const WinningNumbers: React.FC<React.PropsWithChildren<WinningNumbersProps>> = (
   rotateText,
   ...containerProps
 }) => {
+  const { isDark } = useTheme()
   const [rotationValues, setRotationValues] = useState([])
   const reversedNumber = parseRetrievedNumber(number)
   const numAsArray = reversedNumber.split('')
-  const colors: BallColor[] = ['pink', 'lilac', 'teal', 'aqua', 'green', 'yellow']
 
   useEffect(() => {
     if (rotateText && numAsArray && rotationValues.length === 0) {
@@ -40,7 +41,7 @@ const WinningNumbers: React.FC<React.PropsWithChildren<WinningNumbersProps>> = (
             rotationTransform={rotateText && rotationValues[index]}
             size={size}
             fontSize={fontSize}
-            color={colors[index]}
+            isDark={isDark}
             number={num}
           />
         )

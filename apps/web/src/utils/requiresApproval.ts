@@ -5,7 +5,7 @@ export const requiresApproval = async (
   contract: Erc20 | Cake,
   account: string,
   spenderAddress: string,
-  minimumRequired: number | BigNumber = 0,
+  minimumRequired: number | BigNumber = 100, // 100 is the default value for the minimum required
 ) => {
   try {
     const response = await contract.allowance(account, spenderAddress)
