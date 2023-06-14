@@ -90,8 +90,11 @@ const BallDivComponent = styled.div<{ isDark: boolean }>`
   background: ${({ isDark }) =>
     isDark ? '#484848' : 'linear-gradient(180deg, #EBEBEB 0%, rgba(235, 235, 235, 0) 100%);'};
 
-  height: 48px;
-  width: 48px;
+  min-height: 36px;
+  width: 100%;
+  max-width: 48px;
+  flex-grow: 1;
+  min-width: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,6 +119,8 @@ export const BallText = styled(Text)<{ rotationTransform?: number }>`
   font-weight: 600;
   font-size: 22px;
   line-height: 28px;
+  position: relative;
+  top: 2px;
 
   @media screen and (max-width: 800px) {
     font-size: 18px;
@@ -140,8 +145,6 @@ export const BallWithNumber: React.FC<React.PropsWithChildren<BallWithNumberProp
   fontSize,
   rotationTransform,
 }) => {
-  debugger
-
   return (
     <Flex alignItems="center" justifyContent="center" position="relative" mx="2px">
       <BallDivComponent isDark={isDark} />

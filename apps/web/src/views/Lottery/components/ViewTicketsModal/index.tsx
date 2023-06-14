@@ -30,10 +30,7 @@ const ViewTicketsModal: React.FC<React.PropsWithChildren<ViewTicketsModalProps>>
   const isPreviousRound = roundStatus?.toLowerCase() === LotteryStatus.CLAIMABLE || roundId !== currentLotteryId
 
   return (
-    <StyledModal
-      title={`${t('Round')} ${roundId}`}
-      onDismiss={onDismiss}
-      headerBackground={theme.colors.gradientCardHeader}>
+    <StyledModal title={`${t('Round')} ${roundId}`} onDismiss={onDismiss}>
       {isPreviousRound ? <PreviousRoundTicketsInner roundId={roundId} /> : <CurrentRoundTicketsInner />}
     </StyledModal>
   )
