@@ -164,7 +164,7 @@ const PreviousRoundTicketsInner: React.FC<React.PropsWithChildren<{ roundId: str
     <>
       {tooltipVisible && tooltip}
       <TopBox>
-        <Text bold textTransform="uppercase" color="secondary" fontSize="12px" mb="4px">
+        <Text bold textTransform="uppercase" color="primary" fontSize="12px" mb="4px">
           {t('Winning number')}
         </Text>
         {lotteryInfo?.finalNumber ? (
@@ -174,12 +174,12 @@ const PreviousRoundTicketsInner: React.FC<React.PropsWithChildren<{ roundId: str
         )}
       </TopBox>
       <ScrollBox>
-        <Text bold textTransform="uppercase" color="secondary" fontSize="12px" my="16px">
+        <Text bold textTransform="uppercase" color="primary" fontSize="12px" my="16px">
           {t('Your tickets')}
         </Text>
         <Flex mb="8px" justifyContent="space-between">
           <Flex>
-            <Ticket width="24px" height="24px" mr="8px" />
+            {/* <Ticket width="24px" height="24px" mr="8px" /> */}
             <Text bold color="text">
               {t('Total tickets')}:
             </Text>
