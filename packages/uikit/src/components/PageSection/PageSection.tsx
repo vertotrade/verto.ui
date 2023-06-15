@@ -15,6 +15,7 @@ interface PageSectionProps extends BackgroundColorProps {
   innerProps?: BoxProps;
   clipFill?: ClipFill;
   dividerFill?: DividerFill;
+  noPadding?: boolean;
 }
 
 interface BackgroundColorProps extends FlexProps {
@@ -58,9 +59,14 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
   dividerFill,
   containerProps,
   innerProps,
+  noPadding = false,
   ...props
 }) => {
   const padding = useMemo(() => {
+    if (noPadding) {
+      return "0px";
+    }
+
     // No curved divider
     if (!hasCurvedDivider) {
       return "48px 0";
@@ -75,8 +81,9 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
     if (dividerPosition === "top") {
       return "14px 0 48px";
     }
+
     return "48px 0";
-  }, [dividerPosition, hasCurvedDivider]);
+  }, [dividerPosition, hasCurvedDivider, noPadding]);
 
   return (
     <Box {...containerProps}>

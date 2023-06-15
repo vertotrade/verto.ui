@@ -1,22 +1,56 @@
-import { PageSection } from '@verto/uikit'
+import { PageSection, Flex, Heading, BlastOffIcon, Text, LinkExternal } from '@verto/uikit'
+import styled from 'styled-components'
 import useTheme from 'hooks/useTheme'
 import { PageMeta } from 'components/Layout/Page'
 import { useTranslation } from '@verto/localization'
-// import { useActiveChainId } from 'hooks/useActiveChainId'
+import IconDivider from 'components/IconDivider'
+import { useAccount } from 'wagmi'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 import { swapSectionData, earnSectionData, vertoSectionData } from './components/SalesSection/data'
 import SalesSection from './components/SalesSection'
-// import FarmsPoolsRow from './components/FarmsPoolsRow'
-import Footer from './components/Footer'
 import VertoDataRow from './components/VertoDataRow'
 
+const FlexItem = styled(Flex)`
+  width: 50%;
+`
+
+const ContentWrapper = styled(Flex)`
+  width: 100%;
+  gap: 100px;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column-reverse;
+  }
+`
+
+const VertoRowWrapper = styled(Flex)`
+  max-width: 600px;
+  padding-bottom: 96px;
+  width: 100%;
+  max-width: 1200px;
+
+  @media screen and (max-width: 1000px) {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+`
+
 const Home: React.FC<React.PropsWithChildren> = () => {
-  const { theme } = useTheme()
+  const { theme, isDark } = useTheme()
+  const { address: account } = useAccount()
   // const { chainId } = useActiveChainId()
 
-  const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '968px' }
+  const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '1200px' }
+  const VertoSectionContainerStyles = {
+    marginLeft: '0px',
+    marginRight: '0px',
+    width: '100%',
+    maxWidth: 'unset',
+    padding: '48px 0px',
+  }
 
   const { t } = useTranslation()
-
   return (
     <>
       <PageMeta />
@@ -48,36 +82,75 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       `}</style>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background={theme.colors.vertoBg1}
         containerProps={{
           id: 'home-4',
         }}
         index={2}
         hasCurvedDivider={false}>
-        <SalesSection {...swapSectionData(t)} />
+        <SalesSection {...swapSectionData(t, isDark)} />
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(71.68deg,#f9f9f9,#e7cab7)"
+        background={theme.colors.vertoBg1}
         index={2}
         hasCurvedDivider={false}>
-        <SalesSection {...earnSectionData(t)} colorOverride />
-        {/* {chainId === ChainId.BSC && <FarmsPoolsRow />} */}
+        <SalesSection {...earnSectionData(t, isDark)} colorOverride />
       </PageSection>
       <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        innerProps={{ style: VertoSectionContainerStyles }}
+        background={theme.colors.vertoBg1}
         index={2}
         hasCurvedDivider={false}>
-        <SalesSection {...vertoSectionData(t)} />
-        <VertoDataRow />
+        <SalesSection {...vertoSectionData(t, isDark, theme)} addContainerStyles />
       </PageSection>
       <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(51.68deg, rgb(131, 191, 136), rgb(225, 225, 225))"
+        innerProps={{ style: { padding: '0px', ...HomeSectionContainerStyles } }}
+        background={theme.colors.vertoBg1}
+        hasCurvedDivider={false}
         index={2}
-        hasCurvedDivider={false}>
-        <Footer />
+        noPadding>
+        <VertoRowWrapper>
+          <VertoDataRow />
+        </VertoRowWrapper>
+      </PageSection>
+      <PageSection
+        innerProps={{ style: { margin: '0', width: '100%', maxWidth: 'unset', padding: '48px 0px' } }}
+        background={theme.colors.gradientGreenOrange}
+        hasCurvedDivider={false}
+        index={2}>
+        <ContentWrapper alignItems="center" justifyContent="space-between">
+          <FlexItem>
+            <IconDivider
+              background={theme.colors.gradientGreenOrange}
+              textColor={theme.colors.black}
+              divBackground={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.white}
+              Icon={BlastOffIcon}
+            />
+          </FlexItem>
+          <FlexItem>
+            <Flex flexDirection="column" alignItems="flex-start">
+              <Heading mb="16px" scale="xxl" color="black">
+                {t('Start in seconds.')}
+              </Heading>
+              <Text color="black">
+                {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
+              </Text>
+              <Flex justifyContent="center" align-items="center">
+                {!account && (
+                  <ConnectWalletButton
+                    mt="24px"
+                    mr="16px"
+                    style={{ background: theme.colors.background, color: theme.colors.text }}
+                  />
+                )}
+                <LinkExternal style={{ marginTop: '20px' }} color="black" external href="https://docs.vertotrade.com/">
+                  {t('Learn how to start')}
+                </LinkExternal>
+              </Flex>
+            </Flex>
+          </FlexItem>
+        </ContentWrapper>
       </PageSection>
     </>
   )
