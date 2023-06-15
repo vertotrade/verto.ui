@@ -33,7 +33,7 @@ export const lightColors = {
   secondary80: '#7645D980',
   background: '#FFFFFF',
   basicBackground: '#FFFFFF',
-  vertoBg1: '#fdfdfd',
+  vertoBg1: '#ffffff',
   backgroundDisabled: '#E9EAEB',
   backgroundAlt: '#F3F3F3',
   backgroundAlt2: '#eeeaf4D9',

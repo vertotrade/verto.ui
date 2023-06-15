@@ -43,6 +43,7 @@ const Grid = styled.div`
   grid-gap: 16px 8px;
   margin-top: 24px;
   grid-template-columns: repeat(2, auto);
+  padding: 0px 36px;
   grid-template-areas:
     'a d'
     'b e'

@@ -6,7 +6,7 @@ import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import useTheme from 'hooks/useTheme'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
-import { useEffect, useRef } from 'react'
+import { Clip } from 'components/clip'
 import BuyTicketsButton from './BuyTicketsButton'
 
 const PrizeTotalBalance = styled(Balance)<{ background?: string }>`
@@ -61,26 +61,6 @@ const StyledHeading = styled(Heading)`
 const StyledBuyTicketButton = styled(BuyTicketsButton)<{ disabled: boolean }>`
   background: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.primary)};
 `
-
-function Clip({ url }) {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-
-  useEffect(() => {
-    const { current } = videoRef
-    if (!current) {
-      return undefined
-    }
-
-    current.load()
-    return undefined
-  }, [url])
-
-  return (
-    <video width="100%" height="100%" autoPlay muted loop ref={videoRef}>
-      <source src={url} />
-    </video>
-  )
-}
 
 const Hero = () => {
   const {
