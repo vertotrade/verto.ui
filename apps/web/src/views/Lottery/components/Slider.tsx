@@ -199,32 +199,6 @@ const Slider = () => {
     return () => clearInterval(timer.current)
   }, [selectedRoundId, currentLotteryId, numRoundsFetched, dispatch])
 
-  const handleInputChange = event => {
-    const {
-      target: { value },
-    } = event
-    if (value) {
-      setSelectedRoundId(value)
-      if (parseInt(value, 10) <= 0) {
-        setSelectedRoundId('')
-      }
-      if (parseInt(value, 10) >= latestRoundId) {
-        setSelectedRoundId(latestRoundId.toString())
-      }
-    } else {
-      setSelectedRoundId('')
-    }
-  }
-
-  const handleArrowButtonPress = targetRound => {
-    if (targetRound) {
-      setSelectedRoundId(targetRound.toString())
-    } else {
-      // targetRound is NaN when the input is empty, the only button press that will trigger this func is 'forward one'
-      setSelectedRoundId('1')
-    }
-  }
-
   const Item = styled(TicketSlide)<ItemProps>`
     opacity: ${props => (props.index === activeItemIndex ? '1' : '0.5')};
   `

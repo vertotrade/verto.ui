@@ -48,6 +48,7 @@ const PreviousRoundCardFooter: React.FC<
     prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
   }
 
+  // todo: use this function to get total players when graph is fixed
   // const getTotalUsers = (): string => {
   //   if (!lotteryGraphDataFromState && fetchedLotteryGraphData) {
   //     return fetchedLotteryGraphData?.totalUsers?.toLocaleString()
