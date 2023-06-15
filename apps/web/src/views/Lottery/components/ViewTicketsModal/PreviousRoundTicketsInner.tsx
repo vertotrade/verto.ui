@@ -179,7 +179,6 @@ const PreviousRoundTicketsInner: React.FC<React.PropsWithChildren<{ roundId: str
         </Text>
         <Flex mb="8px" justifyContent="space-between">
           <Flex>
-            {/* <Ticket width="24px" height="24px" mr="8px" /> */}
             <Text bold color="text">
               {t('Total tickets')}:
             </Text>
