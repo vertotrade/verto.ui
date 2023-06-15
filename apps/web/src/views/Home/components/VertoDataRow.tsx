@@ -19,10 +19,10 @@ const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: 
     noMobileBorder
       ? `${theme.mediaQueries.md} {
            padding: 0 16px;
-           border-left: 1px ${theme.colors.inputSecondary} solid;
+           border-left: 1px ${theme.colors.greyO} solid;
          }
        `
-      : `border-left: 1px ${theme.colors.inputSecondary} solid;
+      : `border-left: 1px ${theme.colors.greyO} solid;
          padding: 0 8px;
          ${theme.mediaQueries.sm} {
            padding: 0 16px;
@@ -38,10 +38,16 @@ const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: 
        `}
 `
 
+const GridWrapper = styled(Flex)`
+  border: 1px solid ${({ theme }) => theme.colors.greyO};
+  border-radius: 24px;
+`
+
 const Grid = styled.div`
   display: grid;
   grid-gap: 16px 8px;
   margin-top: 24px;
+  padding: 0px 24px 24px;
   grid-template-columns: repeat(2, auto);
   grid-template-areas:
     'a d'
@@ -128,57 +134,62 @@ const VertoDataRow = () => {
   }, [isIntersecting])
 
   return (
-    <Grid>
-      <Flex flexDirection="column" style={{ gridArea: 'a' }}>
-        <Text color="textSubtle">{t('Circulating Supply')}</Text>
-        {circulatingSupply ? (
-          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={circulatingSupply} />
-        ) : (
-          <Skeleton height={24} width={126} my="4px" />
-        )}
-      </Flex>
-      <StyledColumn noMobileBorder style={{ gridArea: 'b' }}>
-        <Text color="textSubtle">{t('Total supply')}</Text>
-        {vertoSupply ? (
-          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={vertoSupply} />
-        ) : (
-          <>
-            <div ref={observerRef} />
+    <GridWrapper flexDirection="column">
+      <Heading as="h2" scale="md" mb="24px" p="24px">
+        {t('Token Details')}
+      </Heading>
+      <Grid>
+        <Flex flexDirection="column" style={{ gridArea: 'a' }}>
+          <Text color="textSubtle">{t('Circulating Supply')}</Text>
+          {circulatingSupply ? (
+            <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={circulatingSupply} />
+          ) : (
             <Skeleton height={24} width={126} my="4px" />
-          </>
-        )}
-      </StyledColumn>
-      <StyledColumn noMobileBorder style={{ gridArea: 'c' }}>
-        <Text color="textSubtle">{t('Max Supply')}</Text>
+          )}
+        </Flex>
+        <StyledColumn noMobileBorder style={{ gridArea: 'b' }}>
+          <Text color="textSubtle">{t('Total supply')}</Text>
+          {vertoSupply ? (
+            <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={vertoSupply} />
+          ) : (
+            <>
+              <div ref={observerRef} />
+              <Skeleton height={24} width={126} my="4px" />
+            </>
+          )}
+        </StyledColumn>
+        <StyledColumn noMobileBorder style={{ gridArea: 'c' }}>
+          <Text color="textSubtle">{t('Max Supply')}</Text>
 
-        <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={600000000} />
-      </StyledColumn>
-      <StyledColumn noDesktopBorder style={{ gridArea: 'd' }}>
-        <Text color="textSubtle">{t('Market cap')}</Text>
-        {/* {mcap?.gt(0) && mcapString ? (
+          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={600000000} />
+        </StyledColumn>
+        <StyledColumn noDesktopBorder style={{ gridArea: 'd' }}>
+          <Text color="textSubtle">{t('Market cap')}</Text>
+          {/* {mcap?.gt(0) && mcapString ? (
           <Heading scale="lg" color="textHome">
             {t('$%marketCap%', { marketCap: mcapString })}
           </Heading>
         ) : ( */}
-        <Skeleton height={24} width={126} my="4px" />
-        {/* )} */}
-      </StyledColumn>
-      <StyledColumn style={{ gridArea: 'e' }}>
-        <Text color="textSubtle">{t('Burned to date')}</Text>
-        {burnedBalance ? (
-          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={burnedBalance} />
-        ) : (
           <Skeleton height={24} width={126} my="4px" />
-        )}
-      </StyledColumn>
-      <StyledColumn style={{ gridArea: 'f' }}>
-        <Text color="textSubtle">{t('Current emissions')}</Text>
+          {/* )} */}
+        </StyledColumn>
+        <StyledColumn style={{ gridArea: 'e' }}>
+          <Text color="textSubtle">{t('Burned to date')}</Text>
+          {burnedBalance ? (
+            <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={burnedBalance} />
+          ) : (
+            <Skeleton height={24} width={126} my="4px" />
+          )}
+        </StyledColumn>
+        <StyledColumn style={{ gridArea: 'f' }}>
+          <Text color="textSubtle">{t('Current emissions')}</Text>
 
-        <Heading color="textHome" scale="lg">
-          {t('%cakeEmissions%/block', { cakeEmissions: emissionsPerBlock })}
-        </Heading>
-      </StyledColumn>
-    </Grid>
+          <Heading color="textHome" scale="lg">
+            {t('%cakeEmissions%/block', { cakeEmissions: emissionsPerBlock })}
+          </Heading>
+        </StyledColumn>
+      </Grid>
+    </GridWrapper>
   )
 }
 

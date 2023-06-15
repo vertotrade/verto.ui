@@ -1,8 +1,10 @@
 import { TranslateFunction } from '@verto/localization'
+import { Clip } from 'components/Clip'
+import IconDivider from 'components/IconDivider'
 import { SalesSectionProps } from '.'
 
-export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Trade anything. No registration, no hassle.'),
+export const swapSectionData = (t: TranslateFunction, isDark: boolean): SalesSectionProps => ({
+  headingText: t('Trade smarter, not harder.'),
   bodyText: t('Trade any token on Rebuschain in seconds, just by connecting your wallet.'),
   reverse: false,
   primaryButton: {
@@ -12,7 +14,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   },
   secondaryButton: {
     to: 'https://docs.vertotrade.com/',
-    text: t('Learn'),
+    text: t('Learn more'),
     external: true,
   },
   images: {
@@ -23,9 +25,12 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
       { src: 'VERTO', alt: t('VERTO token') },
     ],
   },
+  ClipComponent: () => (
+    <Clip url={isDark ? 'images/animations/home-01-dark.webm' : 'images/animations/home-01-light.webm'} />
+  ),
 })
 
-export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
+export const earnSectionData = (t: TranslateFunction, isDark: boolean): SalesSectionProps => ({
   headingText: t('Earn passive income with crypto.'),
   bodyText: t('VertoTrade makes it easy to make your crypto work for you.'),
   reverse: true,
@@ -36,7 +41,7 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
   },
   secondaryButton: {
     to: 'https://docs.vertotrade.com/products/yield-farming',
-    text: t('Learn'),
+    text: t('Learn more'),
     external: true,
   },
   images: {
@@ -47,9 +52,12 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
       { src: 'folder', alt: t('Folder with verto token') },
     ],
   },
+  ClipComponent: () => (
+    <Clip url={isDark ? 'images/animations/home-02-dark.webm' : 'images/animations/home-02-light.webm'} />
+  ),
 })
 
-export const vertoSectionData = (t: TranslateFunction): SalesSectionProps => ({
+export const vertoSectionData = (t: TranslateFunction, isDark: boolean, theme: any): SalesSectionProps => ({
   headingText: t('VERTO the future of DeFi is here.'),
   bodyText: t(
     'VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!',
@@ -62,7 +70,7 @@ export const vertoSectionData = (t: TranslateFunction): SalesSectionProps => ({
   },
   secondaryButton: {
     to: 'https://docs.vertotrade.com/tokenomics/verto/#verto',
-    text: t('Learn'),
+    text: t('Learn more'),
     external: true,
   },
 
@@ -75,4 +83,13 @@ export const vertoSectionData = (t: TranslateFunction): SalesSectionProps => ({
       { src: 'top-left', alt: t('Small 3d pancake') },
     ],
   },
+  ClipComponent: () => (
+    <IconDivider
+      background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
+      textColor={isDark ? theme.colors.text : theme.colors.black}
+      divBackground={theme.colors.backgroundAlt}
+      Clip={() => <Clip url="images/animations/token.webm" />}
+      reverse
+    />
+  ),
 })

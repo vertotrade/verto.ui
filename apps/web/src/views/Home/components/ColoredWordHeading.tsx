@@ -23,7 +23,7 @@ const ColoredWordHeading: React.FC<React.PropsWithChildren<HeadingProps>> = ({
   const displayedColor = (theme.colors[firstColor] as string) ?? theme.colors.textHome
 
   return (
-    <Heading scale="xl" mb={mb} style={{ fontWeight: 800 }} {...props}>
+    <Heading scale="xxl" mb={mb} style={{ fontWeight: 800, maxWidth: '503px' }} {...props}>
       <span style={{ color: displayedColor }}>{firstWord} </span>
       {remainingWords}
     </Heading>
