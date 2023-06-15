@@ -10,7 +10,6 @@ import {
   Modal,
   Skeleton,
   Text,
-  Ticket,
   useToast,
   useTooltip,
 } from '@verto/uikit'

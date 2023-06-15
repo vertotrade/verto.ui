@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { Box, Flex, Text, Heading, Link, Image, useMatchBreakpoints } from '@verto/uikit'
+import { Box, Flex, Text, Heading, Link, useMatchBreakpoints } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
-import { BallWithNumber, MatchExampleA, MatchExampleB } from '../svgs'
+import { BallWithNumber } from '../svgs'
 
 const Divider = styled.div`
   background-color: ${({ theme }) => theme.colors.cardBorder};
@@ -90,27 +90,6 @@ const BallsContainer = styled(Flex)`
 
 const InlineLink = styled(Link)`
   display: inline;
-`
-
-const ExampleBalls = () => {
-  const { isDesktop } = useMatchBreakpoints()
-  const ballSize = isDesktop ? '24px' : '32px'
-  const fontSize = isDesktop ? '14px' : '16px'
-  return (
-    <BallsContainer>
-      <BallWithNumber size={ballSize} fontSize={fontSize} color="yellow" number="9" />
-      <BallWithNumber size={ballSize} fontSize={fontSize} color="green" number="1" />
-      <BallWithNumber size={ballSize} fontSize={fontSize} color="aqua" number="3" />
-      <BallWithNumber size={ballSize} fontSize={fontSize} color="teal" number="6" />
-      <BallWithNumber size={ballSize} fontSize={fontSize} color="lilac" number="6" />
-      <BallWithNumber size={ballSize} fontSize={fontSize} color="pink" number="2" />
-    </BallsContainer>
-  )
-}
-
-const MatchExampleContainer = styled(Flex)`
-  height: 100%;
-  flex-direction: column;
 `
 
 const GappedFlex = styled(Flex)`

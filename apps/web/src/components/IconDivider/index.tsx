@@ -8,6 +8,10 @@ const IconDiv = styled(Flex)`
   justify-content: flex-end;
   flex-grow: 1;
   padding: 32px;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `
 
 const IconCircleWrapper = styled(Flex)`

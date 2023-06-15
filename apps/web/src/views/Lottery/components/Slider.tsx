@@ -1,17 +1,14 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import Carousel from 'react-multi-carousel'
 import styled from 'styled-components'
-import { Flex, Skeleton, Modal, useModal } from '@verto/uikit'
+import { Flex, Skeleton, useModal } from '@verto/uikit'
 import { useTheme } from '@verto/hooks'
 import { useTranslation } from '@verto/localization'
 import { useAppDispatch } from 'state'
 import { useLottery } from 'state/lottery/hooks'
 import { fetchLottery } from 'state/lottery/helpers'
 import { LotteryStatus } from 'config/constants/types'
-import RoundSwitcher from './AllHistoryCard/RoundSwitcher'
 import { getDrawnDate, processLotteryResponse } from '../helpers'
-import PreviousRoundCardBody from './PreviousRoundCard/Body'
-import PreviousRoundCardFooter from './PreviousRoundCard/Footer'
 import LotteryDetailsModal from './LotteryDetailsModal'
 import 'react-multi-carousel/lib/styles.css'
 import WinningNumbers from './WinningNumbers'
@@ -154,7 +151,7 @@ const Slider = () => {
   const {
     currentLotteryId,
     lotteriesData,
-    currentRound: { status, isLoading },
+    currentRound: { status },
   } = useLottery()
   const [latestRoundId, setLatestRoundId] = useState(null)
   const [selectedRoundId, setSelectedRoundId] = useState('')
@@ -172,8 +169,6 @@ const Slider = () => {
         lotteryData: { ...lottery },
       }))
   }, [lotteriesData, locale])
-
-  console.log({ currentLotteryId, lotteriesData, status, numRoundsFetched })
 
   useEffect(() => {
     if (currentLotteryId) {
@@ -237,15 +232,10 @@ const Slider = () => {
   const handleBeforeChange = nextSlide => {
     setActiveItemIndex(nextSlide)
   }
-  const handleAfterChange = () => {
-    console.log('change a rooni')
-  }
 
   const handleDetailsClick = async (id: string) => {
-    console.log('========\n', 'selectedRoundId', id, '\n========')
     const lotteryData = await fetchLottery(id)
     const processedLotteryData = processLotteryResponse(lotteryData)
-    console.log('========\n', 'processedLotteryData', processedLotteryData, '\n========')
   }
 
   useEffect(() => {
@@ -253,7 +243,7 @@ const Slider = () => {
   }, [])
 
   return items?.length ? (
-    <StyledCarousel responsive={responsive} beforeChange={handleBeforeChange} afterChange={handleAfterChange}>
+    <StyledCarousel responsive={responsive} beforeChange={handleBeforeChange}>
       {items?.map((item, index) => (
         <Item justifyContent="center" isDark={isDark} index={index}>
           <SlideContent

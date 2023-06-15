@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react'
+import React from 'react'
 import { useTranslation } from '@verto/localization'
 import styled from 'styled-components'
 import { Flex, Modal } from '@verto/uikit'
-import { useTheme } from '@verto/hooks'
 import FooterExpanded from './PreviousRoundCard/FooterExpanded'
 
 const StyledModal = styled(Modal)`
@@ -23,7 +22,6 @@ const LotteryDetailsModal: React.FC<React.PropsWithChildren<LotteryDetailsProps>
   selectedLotteryNodeData,
 }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
   const handleDismiss = () => {
     onDismiss?.()
   }
