@@ -1,5 +1,5 @@
 import { TranslateFunction } from '@verto/localization'
-import { Clip } from 'components/clip'
+import { Clip } from 'components/Clip'
 import IconDivider from 'components/IconDivider'
 import { SalesSectionProps } from '.'
 
