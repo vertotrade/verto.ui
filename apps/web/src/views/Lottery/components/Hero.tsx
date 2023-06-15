@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components'
-import { Box, Flex, Heading, Skeleton, Balance, Text, Button, StarSmile } from '@verto/uikit'
+import styled from 'styled-components'
+import { Box, Flex, Heading, Skeleton, Balance, Text } from '@verto/uikit'
 import { LotteryStatus } from 'config/constants/types'
 import { useTranslation } from '@verto/localization'
 import { usePriceCakeBusd } from 'state/farms/hooks'
@@ -7,7 +7,6 @@ import { useLottery } from 'state/lottery/hooks'
 import useTheme from 'hooks/useTheme'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { useEffect, useRef } from 'react'
-import { dateTimeOptions } from '../helpers'
 import BuyTicketsButton from './BuyTicketsButton'
 
 const PrizeTotalBalance = styled(Balance)<{ background?: string }>`
@@ -27,7 +26,7 @@ const HeroWrapper = styled(Flex)`
 `
 
 const PrizeInfoWrapper = styled(Flex)`
-  margin: 28px 0px;
+  margin: 8% 0px;
   width: 54%;
 `
 
@@ -49,6 +48,18 @@ const HeroContentWrapper = styled(Flex)`
   top: 15%;
   margin: 0 auto;
   width: 99%;
+`
+
+const StyledHeading = styled(Heading)`
+  margin-bottom: 24px;
+
+  @media screen and (max-width: 900px) {
+    margin-top: 24px;
+  }
+`
+
+const StyledBuyTicketButton = styled(BuyTicketsButton)<{ disabled: boolean }>`
+  background: ${({ theme, disabled }) => (disabled ? theme.colors.disabled : theme.colors.primary)};
 `
 
 function Clip({ url }) {
@@ -83,8 +94,8 @@ const Hero = () => {
     currentLotteryId,
   } = useLottery()
 
-  const cakePriceBusd = usePriceCakeBusd()
-  const prizeInXVerto = amountCollectedInCake.times(cakePriceBusd)
+  const vertoPriceBusd = usePriceCakeBusd()
+  const prizeInXVerto = amountCollectedInCake.times(vertoPriceBusd)
   const endTimeMs = parseInt(endTime, 10) * 1000
   const endDate = new Date(endTimeMs)
   const prizeTotal = getBalanceNumber(prizeInXVerto)
@@ -115,9 +126,9 @@ const Hero = () => {
       )
     }
     return (
-      <Heading mb="24px" scale="md" color={theme.colors.text}>
+      <StyledHeading scale="md" color={theme.colors.text}>
         {t('Tickets on sale soon')}
-      </Heading>
+      </StyledHeading>
     )
   }
 
@@ -151,13 +162,12 @@ const Hero = () => {
     return ''
   }
 
-  const handleClick = () => console.log('click')
   const videoSrc = isDark ? 'images/animations/lottery-01-dark.webm' : 'images/animations/lottery-01-light.webm'
 
   const getPrizeBalances = () => {
     if (status === LotteryStatus.CLOSE || status === LotteryStatus.CLAIMABLE) {
       return (
-        <Heading scale="xl" color="secondary" textAlign={['center', null, null, 'left']}>
+        <Heading scale="xl" color="primary" textAlign={['center', null, null, 'left']}>
           {t('Calculating')}...
         </Heading>
       )
@@ -208,9 +218,9 @@ const Hero = () => {
           )}
         </Text>
         <BuyTicketsWrapper>
-          <Button onClick={handleClick} variant="secondary" paddingX="16px">
+          <StyledBuyTicketButton disabled={ticketBuyIsDisabled} variant="secondary" paddingX="16px">
             {t('Buy Tickets')}
-          </Button>
+          </StyledBuyTicketButton>
         </BuyTicketsWrapper>
       </Box>
       <Flex flexDirection="column" alignItems="center">

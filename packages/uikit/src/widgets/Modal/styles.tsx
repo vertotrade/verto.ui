@@ -83,7 +83,7 @@ export const ModalContainer = styled(MotionBox)<{ $minWidth: string }>`
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     padding-top: 10px;
-    background: linear-gradient(92.9deg, #30e8bf -20.75%, #ff8235 99.44%);
+    background: linear-gradient(90deg, #30e8bf 0%, #82f8c7 100%);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;

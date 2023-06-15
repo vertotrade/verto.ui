@@ -105,6 +105,7 @@ const useApproveConfirmTransaction = ({
         dispatch({ type: 'confirm_sending' })
         return onConfirm(params)
       })
+
       if (receipt?.status) {
         dispatch({ type: 'confirm_receipt' })
         onSuccess({ state, receipt })

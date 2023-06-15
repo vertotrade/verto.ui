@@ -1,5 +1,5 @@
 import { useTranslation } from '@verto/localization'
-import { AutoRenewIcon, Button, Flex, PresentWonIcon, Text, useToast, Balance } from '@verto/uikit'
+import { AutoRenewIcon, Button, Flex, Text, useToast, Balance } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { LotteryTicket, LotteryTicketClaimData } from 'config/constants/types'
@@ -168,10 +168,9 @@ const ClaimInnerContainer: React.FC<React.PropsWithChildren<ClaimInnerProps>> = 
             value={rewardAsBalance}
             fontSize="44px"
             bold
-            color="secondary"
-            unit=" CAKE!"
+            color="primary"
+            unit=" Verto!"
           />
-          <PresentWonIcon ml={['0', null, '12px']} width="64px" />
         </Flex>
         <Balance
           mt={['12px', null, '0']}

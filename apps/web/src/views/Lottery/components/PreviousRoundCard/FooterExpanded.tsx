@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Flex, Skeleton, Heading, Box, Text, Balance } from '@verto/uikit'
+import { Flex, Skeleton, Heading, Box, Balance } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { LotteryRound, LotteryRoundGraphEntity } from 'state/types'
 import { usePriceCakeBusd } from 'state/farms/hooks'
@@ -11,13 +11,17 @@ import { formatNumber, getBalanceNumber } from '@verto/utils/formatBalance'
 import RewardBrackets from '../RewardBrackets'
 
 const NextDrawWrapper = styled(Flex)`
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.backgroundAlt};
   padding: 24px;
   flex-direction: column;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
   }
+`
+
+const PrizePotSection = styled(Flex)`
+  min-width: 110px;
 `
 
 const PreviousRoundCardFooter: React.FC<
@@ -44,17 +48,18 @@ const PreviousRoundCardFooter: React.FC<
     prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
   }
 
-  const getTotalUsers = (): string => {
-    if (!lotteryGraphDataFromState && fetchedLotteryGraphData) {
-      return fetchedLotteryGraphData?.totalUsers?.toLocaleString()
-    }
+  // todo: use this function to get total players when graph is fixed
+  // const getTotalUsers = (): string => {
+  //   if (!lotteryGraphDataFromState && fetchedLotteryGraphData) {
+  //     return fetchedLotteryGraphData?.totalUsers?.toLocaleString()
+  //   }
 
-    if (lotteryGraphDataFromState) {
-      return lotteryGraphDataFromState?.totalUsers?.toLocaleString()
-    }
+  //   if (lotteryGraphDataFromState) {
+  //     return lotteryGraphDataFromState?.totalUsers?.toLocaleString()
+  //   }
 
-    return null
-  }
+  //   return null
+  // }
 
   const getPrizeBalances = () => {
     return (
@@ -62,7 +67,7 @@ const PreviousRoundCardFooter: React.FC<
         {prizeInBusd.isNaN() ? (
           <Skeleton my="7px" height={40} width={200} />
         ) : (
-          <Heading scale="xl" lineHeight="1" color="secondary">
+          <Heading scale="xl" lineHeight="1" color="primary">
             ~${formatNumber(getBalanceNumber(prizeInBusd), 0, 0)}
           </Heading>
         )}
@@ -72,7 +77,7 @@ const PreviousRoundCardFooter: React.FC<
           <Balance
             fontSize="14px"
             color="textSubtle"
-            unit=" CAKE"
+            unit=" Verto"
             value={getBalanceNumber(lotteryNodeData?.amountCollectedInCake)}
             decimals={0}
           />
@@ -83,24 +88,12 @@ const PreviousRoundCardFooter: React.FC<
 
   return (
     <NextDrawWrapper>
-      <Flex mr="24px" flexDirection="column" justifyContent="space-between">
+      <PrizePotSection mr="24px" flexDirection="column" justifyContent="space-between">
         <Box>
           <Heading>{t('Prize pot')}</Heading>
           {getPrizeBalances()}
         </Box>
-        <Box mb="24px">
-          <Flex>
-            <Text fontSize="14px" display="inline">
-              {t('Total players this round')}:{' '}
-              {lotteryNodeData && (lotteryGraphDataFromState || fetchedLotteryGraphData) ? (
-                getTotalUsers()
-              ) : (
-                <Skeleton height={14} width={31} />
-              )}
-            </Text>
-          </Flex>
-        </Box>
-      </Flex>
+      </PrizePotSection>
       <RewardBrackets lotteryNodeData={lotteryNodeData} isHistoricRound />
     </NextDrawWrapper>
   )

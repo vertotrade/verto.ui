@@ -76,7 +76,7 @@ const NextDrawCard = () => {
   const getPrizeBalances = () => {
     if (status === LotteryStatus.CLOSE || status === LotteryStatus.CLAIMABLE) {
       return (
-        <Heading scale="xl" color="secondary" textAlign={['center', null, null, 'left']}>
+        <Heading scale="xl" color="primary" textAlign={['center', null, null, 'left']}>
           {t('Calculating')}...
         </Heading>
       )
@@ -88,7 +88,7 @@ const NextDrawCard = () => {
         ) : (
           <Balance
             fontSize="40px"
-            color="secondary"
+            color="primary"
             textAlign={['center', null, null, 'left']}
             lineHeight="1"
             bold
@@ -104,7 +104,7 @@ const NextDrawCard = () => {
             fontSize="14px"
             color="textSubtle"
             textAlign={['center', null, null, 'left']}
-            unit=" CAKE"
+            unit=" Verto"
             value={getBalanceNumber(amountCollectedInCake)}
             decimals={0}
           />

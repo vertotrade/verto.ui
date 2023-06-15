@@ -7,7 +7,6 @@ import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import { useGetUserLotteriesGraphData, useLottery } from 'state/lottery/hooks'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import IconDivider from 'components/IconDivider'
 import ClaimPrizesModal from './ClaimPrizesModal'
 import useGetUnclaimedRewards from '../hooks/useGetUnclaimedRewards'
 
