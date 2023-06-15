@@ -20,6 +20,14 @@ const LotteryPage = styled.div`
   min-height: calc(100vh - 64px);
 `
 
+const StyledFooterWrapper = styled(Flex)`
+  alignitems: flex-start;
+
+  @media screen and (max-width: 900px) {
+    alignitems: center;
+  }
+`
+
 const ButtonLink = styled.a<{ background: string }>`
   display: inline-block;
   padding: 16px;
@@ -58,12 +66,12 @@ const Lottery = () => {
   useStatusTransitions()
   const { t } = useTranslation()
   const { isDark, theme } = useTheme()
-  const {
-    currentRound: { status, endTime },
-  } = useLottery()
+  // const {
+  //   currentRound: { status, endTime },
+  // } = useLottery()
   const [historyTabMenuIndex, setHistoryTabMenuIndex] = useState(0)
-  const endTimeAsInt = parseInt(endTime, 10)
-  const { nextEventTime, postCountdownText, preCountdownText } = useGetNextLotteryEvent(endTimeAsInt, status)
+  // const endTimeAsInt = parseInt(endTime, 10)
+  // const { nextEventTime, postCountdownText, preCountdownText } = useGetNextLotteryEvent(endTimeAsInt, status)
   const { numUserRoundsRequested, handleShowMoreUserRounds } = useShowMoreUserHistory()
   const backgroundSectionColor = isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background
 
@@ -144,7 +152,7 @@ const Lottery = () => {
               />
             </FlexItem>
             <FlexItem>
-              <Flex flexDirection="column" alignItems="flex-start">
+              <StyledFooterWrapper flexDirection="column">
                 <Heading mb="16px" scale="xxl" color="black">
                   {t('Still got questions?')}
                 </Heading>
@@ -155,7 +163,7 @@ const Lottery = () => {
                   href="https://docs.vertotrade.com/tokenomics/">
                   {t('Learn how to Play')}
                 </ButtonLink>
-              </Flex>
+              </StyledFooterWrapper>
             </FlexItem>
           </ContentWrapper>
         </PageSection>

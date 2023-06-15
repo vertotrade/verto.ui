@@ -5,7 +5,6 @@ import uniqueId from 'lodash/uniqueId'
 import { useTheme } from '@verto/hooks'
 import { parseRetrievedNumber } from '../helpers'
 import { BallWithNumber } from '../svgs'
-import { BallColor } from '../svgs/Balls'
 
 interface WinningNumbersProps extends FlexProps {
   number: string

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Flex, Skeleton, Heading, Box, Text, Balance } from '@verto/uikit'
+import { Flex, Skeleton, Heading, Box, Balance } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { LotteryRound, LotteryRoundGraphEntity } from 'state/types'
 import { usePriceCakeBusd } from 'state/farms/hooks'
@@ -48,17 +48,17 @@ const PreviousRoundCardFooter: React.FC<
     prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
   }
 
-  const getTotalUsers = (): string => {
-    if (!lotteryGraphDataFromState && fetchedLotteryGraphData) {
-      return fetchedLotteryGraphData?.totalUsers?.toLocaleString()
-    }
+  // const getTotalUsers = (): string => {
+  //   if (!lotteryGraphDataFromState && fetchedLotteryGraphData) {
+  //     return fetchedLotteryGraphData?.totalUsers?.toLocaleString()
+  //   }
 
-    if (lotteryGraphDataFromState) {
-      return lotteryGraphDataFromState?.totalUsers?.toLocaleString()
-    }
+  //   if (lotteryGraphDataFromState) {
+  //     return lotteryGraphDataFromState?.totalUsers?.toLocaleString()
+  //   }
 
-    return null
-  }
+  //   return null
+  // }
 
   const getPrizeBalances = () => {
     return (
