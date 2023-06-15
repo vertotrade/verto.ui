@@ -6,7 +6,7 @@ import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import useTheme from 'hooks/useTheme'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
-import { Clip } from 'components/clip'
+import { Clip } from 'components/Clip'
 import BuyTicketsButton from './BuyTicketsButton'
 
 const PrizeTotalBalance = styled(Balance)<{ background?: string }>`

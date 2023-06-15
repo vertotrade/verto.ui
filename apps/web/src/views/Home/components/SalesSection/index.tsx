@@ -23,6 +23,8 @@ const ContentWrapper = styled(Flex)<{ addStyles?: boolean }>`
   `}
 `
 const ContentInnerWrapper = styled(Flex)<{ addStyles?: boolean }>`
+  padding: 30px;
+
   ${props =>
     props.addStyles &&
     `
@@ -65,7 +67,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
       <ContentWrapper
         addStyles={addContainerStyles}
         flexDirection={['column-reverse', null, null, reverse ? 'row-reverse' : 'row']}
-        alignItems={['flex-end', null, null, 'center']}
+        alignItems={['center', null, null, 'center']}
         justifyContent="center">
         <ContentInnerWrapper addStyles={addContainerStyles}>
           <Flex
@@ -73,7 +75,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
             flex="1"
             ml={[null, null, null, reverse && '64px']}
             mr={[null, null, null, !reverse && '64px']}
-            alignSelf={['flex-start', null, null, 'center']}>
+            alignSelf={['flex-start', null, null, 'flex-start']}>
             <ColoredWordHeading text={headingText} firstColor="text" color={theme.colors.text} />
             <Text color={theme.colors.text} mb="24px">
               {bodyText}
@@ -107,7 +109,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
           </Flex>
         </ContentInnerWrapper>
         <Flex
-          height={['192px', null, null, '100%']}
+          height={['null', null, null, '100%']}
           width={['192px', null, null, '100%']}
           flex={[null, null, null, '1']}
           mb={['24px', null, null, '0']}>
