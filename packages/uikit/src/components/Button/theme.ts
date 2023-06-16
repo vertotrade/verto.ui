@@ -22,7 +22,7 @@ export const styleVariants = {
     color: "invertedContrast",
   },
   [variants.SECONDARY]: {
-    backgroundImage: (theme: any) => theme.colors.gradientGreenOrangeButton,
+    backgroundImage: (theme: any) => theme.colors.gradientGreenOrange,
     backgroundPosition: "90% 100%",
     backgroundSize: "200%",
     borderColor: "transparent",
