@@ -11,12 +11,12 @@ const ThemeSwitcher: React.FC<React.PropsWithChildren<Props>> = ({ isDark, toggl
   return (
     <Toggle
       checked={isDark}
-      defaultColor="toggleBgColor"
-      checkedColor={isDark ? "textDisabled" : "warning"}
+      defaultColor="vertoBg1"
+      checkedColor="text"
       onChange={() => toggleTheme(!isDark)}
       scale="md"
-      startIcon={() => <SunIcon color={isDark ? "backgroundAlt" : "white"} />}
-      endIcon={() => <MoonIcon color={isDark ? "secondary" : "white"} />}
+      startIcon={() => <SunIcon color="black" />}
+      endIcon={() => <MoonIcon color="black" />}
     />
   );
 };
