@@ -23,6 +23,10 @@ const StyledCarousel = styled(Carousel)`
 
   & .react-multi-carousel-item {
     opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   & .react-multi-carousel-item--active {
@@ -201,6 +205,10 @@ const Slider = () => {
 
   const Item = styled(TicketSlide)<ItemProps>`
     opacity: ${props => (props.index === activeItemIndex ? '1' : '0.5')};
+
+    &:hover {
+      opacity: 1;
+    }
   `
 
   const handleBeforeChange = nextSlide => {

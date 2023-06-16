@@ -66,7 +66,7 @@ const StyledGradientButton = styled.button<BaseButtonProps>`
   }
 
   &:hover:first-child {
-    fill: currentColor;
+    fill: ${({ theme }) => theme.colors.primary};
   }
 
   &:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {

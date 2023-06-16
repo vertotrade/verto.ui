@@ -157,12 +157,14 @@ const Lottery = () => {
                   {t('Still got questions?')}
                 </Heading>
                 <Text color="black">{t('Check our in-depth guide on how to play the VERTO lottery')}</Text>
-                <ButtonLink
-                  background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.white}
-                  target="_blank"
-                  href="https://docs.vertotrade.com/tokenomics/">
-                  {t('Learn how to Play')}
-                </ButtonLink>
+                <Flex>
+                  <ButtonLink
+                    background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.white}
+                    target="_blank"
+                    href="https://docs.vertotrade.com/tokenomics/">
+                    {t('Learn how to Play')}
+                  </ButtonLink>
+                </Flex>
               </StyledFooterWrapper>
             </FlexItem>
           </ContentWrapper>
