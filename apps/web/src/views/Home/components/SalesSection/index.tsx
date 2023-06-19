@@ -19,6 +19,7 @@ const ContentWrapper = styled(Flex)<{ addStyles?: boolean }>`
 
       @media screen and (max-width: 1000px) {
         flex-direction: column-reverse;
+        gap: 0px;
       }}
   `}
 `
@@ -34,6 +35,15 @@ const ContentInnerWrapper = styled(Flex)<{ addStyles?: boolean }>`
       div:first-of-type {
         max-width: 503px;
       }
+
+      @media screen and (max-width: 900px) {
+        div:first-of-type {
+          max-width: 503px;
+        }
+
+        justify-content: center;
+        width: 100%;
+      }}
   `}
 `
 
@@ -110,7 +120,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
         </ContentInnerWrapper>
         <Flex
           height={['null', null, null, '100%']}
-          width={['192px', null, null, '100%']}
+          width={['320px', null, null, '100%']}
           flex={[null, null, null, '1']}
           mb={['24px', null, null, '0']}>
           {ClipComponent && <ClipComponent />}
