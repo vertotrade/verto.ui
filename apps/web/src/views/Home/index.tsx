@@ -12,6 +12,10 @@ import VertoDataRow from './components/VertoDataRow'
 
 const FlexItem = styled(Flex)`
   width: 50%;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
 `
 
 const ContentWrapper = styled(Flex)`
@@ -20,6 +24,7 @@ const ContentWrapper = styled(Flex)`
 
   @media screen and (max-width: 1000px) {
     flex-direction: column-reverse;
+    gap: 0px;
   }
 `
 
@@ -129,11 +134,11 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             />
           </FlexItem>
           <FlexItem>
-            <Flex flexDirection="column" alignItems="flex-start">
+            <Flex flexDirection="column" alignItems={['center', 'center', 'center', 'flex-start']} mb="20px" p="8px">
               <Heading mb="16px" scale="xxl" color="black">
                 {t('Start in seconds.')}
               </Heading>
-              <Text color="black">
+              <Text color="black" textAlign={['center', 'center', 'left', 'left']}>
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
               </Text>
               <Flex justifyContent="center" align-items="center">
