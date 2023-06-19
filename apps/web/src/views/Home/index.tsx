@@ -12,6 +12,12 @@ import VertoDataRow from './components/VertoDataRow'
 
 const FlexItem = styled(Flex)`
   width: 50%;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 const ContentWrapper = styled(Flex)`
@@ -20,6 +26,7 @@ const ContentWrapper = styled(Flex)`
 
   @media screen and (max-width: 1000px) {
     flex-direction: column-reverse;
+    gap: 0px;
   }
 `
 
@@ -33,6 +40,21 @@ const VertoRowWrapper = styled(Flex)`
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+  }
+`
+
+const StyledText = styled(Text)`
+  text-align: left;
+
+  @media screen and (max-width: 900px) {
+    text-align: center;
+  }
+`
+
+const FooterWrapper = styled(Flex)`
+  @media screen and (max-width: 900px) {
+    align-items: center;
+    justify-content: center;
   }
 `
 
@@ -129,13 +151,13 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             />
           </FlexItem>
           <FlexItem>
-            <Flex flexDirection="column" alignItems="flex-start">
+            <FooterWrapper flexDirection="column" mb="20px" p="8px">
               <Heading mb="16px" scale="xxl" color="black">
                 {t('Start in seconds.')}
               </Heading>
-              <Text color="black">
+              <StyledText color="black">
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
-              </Text>
+              </StyledText>
               <Flex justifyContent="center" align-items="center">
                 {!account && (
                   <ConnectWalletButton
@@ -148,7 +170,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   {t('Learn how to start')}
                 </LinkExternal>
               </Flex>
-            </Flex>
+            </FooterWrapper>
           </FlexItem>
         </ContentWrapper>
       </PageSection>
