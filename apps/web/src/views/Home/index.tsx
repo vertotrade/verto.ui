@@ -15,6 +15,8 @@ const FlexItem = styled(Flex)`
 
   @media screen and (max-width: 900px) {
     width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 `
 
@@ -38,6 +40,21 @@ const VertoRowWrapper = styled(Flex)`
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+  }
+`
+
+const StyledText = styled(Text)`
+  text-align: left;
+
+  @media screen and (max-width: 900px) {
+    text-align: center;
+  }
+`
+
+const FooterWrapper = styled(Flex)`
+  @media screen and (max-width: 900px) {
+    align-items: center;
+    justify-content: center;
   }
 `
 
@@ -134,13 +151,13 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             />
           </FlexItem>
           <FlexItem>
-            <Flex flexDirection="column" alignItems={['center', 'center', 'center', 'flex-start']} mb="20px" p="8px">
+            <FooterWrapper flexDirection="column" mb="20px" p="8px">
               <Heading mb="16px" scale="xxl" color="black">
                 {t('Start in seconds.')}
               </Heading>
-              <Text color="black" textAlign={['center', 'center', 'left', 'left']}>
+              <StyledText color="black">
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
-              </Text>
+              </StyledText>
               <Flex justifyContent="center" align-items="center">
                 {!account && (
                   <ConnectWalletButton
@@ -153,7 +170,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   {t('Learn how to start')}
                 </LinkExternal>
               </Flex>
-            </Flex>
+            </FooterWrapper>
           </FlexItem>
         </ContentWrapper>
       </PageSection>
