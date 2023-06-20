@@ -41,7 +41,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.usdc,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.REBUS]: [vertoTokens.wrebus, vertoTokens.ludus],
+  [ChainId.REBUS]: [vertoTokens.wrebus, vertoTokens.ludus, vertoTokens.axlusdc],
   [ChainId.REBUS_TESTNET]: [vertoTokensTestnet.wrebus, vertoTokensTestnet.ludus],
 }
 
@@ -75,7 +75,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.REBUS]: [vertoTokens.wrebus, vertoTokens.ludus],
+  [ChainId.REBUS]: [vertoTokens.wrebus, vertoTokens.ludus, vertoTokens.axlusdc],
   [ChainId.REBUS_TESTNET]: [vertoTokensTestnet.wrebus, vertoTokensTestnet.ludus],
 }
 
@@ -91,7 +91,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.REBUS]: [vertoTokens.wrebus, vertoTokens.ludus],
+  [ChainId.REBUS]: [vertoTokens.wrebus, vertoTokens.ludus, vertoTokens.axlusdc],
   [ChainId.REBUS_TESTNET]: [vertoTokensTestnet.wrebus, vertoTokensTestnet.ludus],
 }
 

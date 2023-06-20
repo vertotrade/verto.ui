@@ -31,6 +31,14 @@
       "chainId": 1111,
       "decimals": 18,
       "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png"
+    },
+    {
+      "name": "Axelar Wrapped USDC",
+      "symbol": "axlUSDC",
+      "address": "0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75",
+      "chainId": 1111,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75.svg"
     }
   ]
 }

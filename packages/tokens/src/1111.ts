@@ -41,4 +41,12 @@ export const vertoTokens = {
     'xVerto',
     'https://vertotrade.com/',
   ),
+  axlusdc: new ERC20Token(
+    ChainId.REBUS,
+    '0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75',
+    18,
+    'axlUSDC',
+    'Axelar Wrapped USDC',
+    'https://axelar.network/',
+  ),
 }
