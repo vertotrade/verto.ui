@@ -1,7 +1,7 @@
 import { useTranslation } from "@verto/localization";
 import styled from "styled-components";
 import { Text } from "../../../../components/Text";
-import { HelpIcon } from "../../../../components/Svg";
+import { InfoIcon } from "../../../../components/Svg";
 import { Skeleton } from "../../../../components/Skeleton";
 import { useTooltip } from "../../../../hooks/useTooltip";
 import { FarmTableMultiplierProps } from "../../types";
@@ -61,7 +61,7 @@ const Multiplier: React.FunctionComponent<React.PropsWithChildren<FarmTableMulti
     <Container>
       <MultiplierWrapper>{displayMultiplier}</MultiplierWrapper>
       <ReferenceElement ref={targetRef}>
-        <HelpIcon color="textSubtle" />
+        <InfoIcon color="icon" />
       </ReferenceElement>
       {tooltipVisible && tooltip}
     </Container>

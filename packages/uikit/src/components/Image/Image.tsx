@@ -7,9 +7,6 @@ import Placeholder from "./Placeholder";
 
 const StyledImage = styled.img`
   height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
   width: 100%;
 `;
 
