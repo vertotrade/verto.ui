@@ -13,6 +13,12 @@ import useGetUnclaimedRewards from '../hooks/useGetUnclaimedRewards'
 
 const FlexItem = styled(Flex)`
   width: 50%;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `
 const ContentWrapper = styled(Flex)`
   width: 100%;
@@ -68,7 +74,10 @@ const CheckPrizesSection = () => {
   const getBody = () => {
     if (!account) {
       return (
-        <Flex mx={['4px', null, '16px']} flexDirection="column" alignItems="flex-start">
+        <Flex
+          mx={['4px', null, '16px']}
+          flexDirection="column"
+          alignItems={['center', 'center', 'center', 'flex-start']}>
           <Heading scale="xxl" color={theme.colors.text} mb="8px">
             {t("Check if you've won!")}
           </Heading>
