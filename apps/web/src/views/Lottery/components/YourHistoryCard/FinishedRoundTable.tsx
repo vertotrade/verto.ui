@@ -35,13 +35,13 @@ const FinishedRoundTable: React.FC<React.PropsWithChildren<FinishedRoundTablePro
   return (
     <>
       <Grid px="24px" pt="24px" mb="8px">
-        <Text bold fontSize="12px" color="secondary">
+        <Text bold fontSize="12px" color="primary">
           #
         </Text>
-        <Text bold fontSize="12px" color="secondary" textTransform="uppercase">
+        <Text bold fontSize="12px" color="primary" textTransform="uppercase">
           {t('Date')}
         </Text>
-        <Text bold fontSize="12px" color="secondary" textTransform="uppercase">
+        <Text bold fontSize="12px" color="primary" textTransform="uppercase">
           {t('Your Tickets')}
         </Text>
         <Box width="20px" />

@@ -21,10 +21,10 @@ const LotteryPage = styled.div`
 `
 
 const StyledFooterWrapper = styled(Flex)`
-  alignitems: flex-start;
+  align-items: flex-start;
 
   @media screen and (max-width: 900px) {
-    alignitems: center;
+    align-items: center;
   }
 `
 
@@ -50,6 +50,12 @@ const ButtonLink = styled.a<{ background: string }>`
 
 const FlexItem = styled(Flex)`
   width: 50%;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 const ContentWrapper = styled(Flex)`
@@ -58,6 +64,11 @@ const ContentWrapper = styled(Flex)`
 
   @media screen and (max-width: 1000px) {
     flex-direction: column-reverse;
+  }
+
+  @media screen and (max-width: 900px) {
+    justify-content: center;
+    align-items: center;
   }
 `
 

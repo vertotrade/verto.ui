@@ -26,7 +26,7 @@ const HeroWrapper = styled(Flex)`
 `
 
 const PrizeInfoWrapper = styled(Flex)`
-  margin: 8% 0px;
+  margin: 6% 0px;
   width: 54%;
 `
 
@@ -48,6 +48,10 @@ const HeroContentWrapper = styled(Flex)`
   top: 15%;
   margin: 0 auto;
   width: 99%;
+
+  @media screen and (max-width: 780px) {
+    top: 8%;
+  }
 `
 
 const StyledHeading = styled(Heading)`
@@ -147,7 +151,7 @@ const Hero = () => {
   const getPrizeBalances = () => {
     if (status === LotteryStatus.CLOSE || status === LotteryStatus.CLAIMABLE) {
       return (
-        <Heading scale="xl" color="primary" textAlign={['center', null, null, 'left']}>
+        <Heading scale="lg" color="primary" textAlign={['center', null, null, 'left']}>
           {t('Calculating')}...
         </Heading>
       )
@@ -203,7 +207,7 @@ const Hero = () => {
           </StyledBuyTicketButton>
         </BuyTicketsWrapper>
       </Box>
-      <Flex flexDirection="column" alignItems="center">
+      <Flex flexDirection="column" alignItems="center" p="40px">
         <VideoBgWrapper>
           <Clip url={videoSrc} />
           <HeroContentWrapper>
