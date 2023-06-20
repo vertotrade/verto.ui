@@ -114,6 +114,24 @@ export const styleVariants = {
       color: "var(--colors-disabledText)",
     },
   },
+  [variants.VERTO_PRIMARY_GRADIENT]: {
+    borderRadius: "32px",
+    background: "linear-gradient(90deg, var(--colors-newPrimary) 0%, var(--colors-newPrimaryLight) 100%)",
+    color: "var(--colors-buttonText)",
+    fontFamily: "Roboto, sans-serif",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "linear-gradient(90deg, var(--colors-newPrimaryDark) 0%, var(--colors-newPrimary) 100%)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
   [variants.VERTO_SECONDARY]: {
     borderRadius: "32px",
     background: "var(--colors-secondaryButtonBg)",

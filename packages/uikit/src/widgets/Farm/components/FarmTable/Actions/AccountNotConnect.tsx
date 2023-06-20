@@ -1,14 +1,16 @@
 import { useTranslation } from "@verto/localization";
+import { useMatchBreakpoints } from "@verto/uikit";
 import { Text } from "../../../../../components/Text";
 import { ActionContent, ActionTitles, StyledActionContainer } from "./styles";
 
 const AccountNotConnect = ({ children }: { children: React.ReactNode }) => {
   const { t } = useTranslation();
+  const { isMobile } = useMatchBreakpoints();
 
   return (
-    <StyledActionContainer>
+    <StyledActionContainer isMobile={isMobile}>
       <ActionTitles>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text color="text" fontSize="14px">
           {t("Start Farming")}
         </Text>
       </ActionTitles>

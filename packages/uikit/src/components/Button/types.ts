@@ -23,6 +23,7 @@ export const variants = {
   LIGHT: "light",
   VERTOCUSTOM: "vertoCustom",
   VERTO_PRIMARY: "vertoPrimary",
+  VERTO_PRIMARY_GRADIENT: "vertoPrimaryGradient",
   VERTO_SECONDARY: "vertoSecondary",
   VERTO_GHOST: "vertoGhost",
   VERTO_ICON: "vertoIcon",
