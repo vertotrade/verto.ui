@@ -51,6 +51,10 @@ const SlideContentOuterWrapper = styled(Flex)`
   @media screen and (max-width: 800px) {
     padding-top: 15%;
   }
+
+  @media screen and (max-width: 465px) {
+    padding-top: 5%;
+  }
 `
 const WinningNumbersWrapper = styled(Flex)`
   margin-top: 60px;
