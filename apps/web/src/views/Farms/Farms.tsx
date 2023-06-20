@@ -16,6 +16,7 @@ import {
   FlexLayout,
   PageHeader,
   ToggleView,
+  useMatchBreakpoints,
 } from '@verto/uikit'
 import styled from 'styled-components'
 import Page from 'components/Layout/Page'
@@ -42,12 +43,14 @@ const ControlContainer = styled.div`
   position: relative;
 
   justify-content: space-between;
+  align-items: flex-start;
   flex-direction: column;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 32px;
   }
 `
 const FarmFlexWrapper = styled(Flex)`
@@ -71,7 +74,6 @@ const FarmH2 = styled(Heading)`
 const ToggleWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 10px;
 
   ${Text} {
     margin-left: 8px;
@@ -84,16 +86,19 @@ const LabelWrapper = styled.div`
   }
 `
 
-const FilterContainer = styled.div`
+const FilterContainer = styled.div<{ isMobile?: boolean }>`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
   padding: 8px 0px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    width: auto;
+    width: 75%;
     padding: 0;
   }
+
+  ${({ isMobile }) => (isMobile ? 'justify-content: space-between;' : '')}
 `
 
 const ViewControls = styled.div`
@@ -294,6 +299,8 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const { theme } = useTheme()
 
+  const { isMobile } = useMatchBreakpoints()
+
   return (
     <FarmsContext.Provider value={providerValue}>
       <PageHeader>
@@ -311,8 +318,8 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       </PageHeader>
       <Page>
         <ControlContainer>
-          <FilterContainer>
-            <SearchInput
+          <FilterContainer isMobile={isMobile}>
+            <SearchInput my="8px"
               initialValue={normalizedUrlSearch}
               onChange={handleChangeQuery}
               placeholder="Search Farms"
@@ -320,7 +327,9 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             />
             <FarmUI.FarmTabButtons hasStakeInFinishedFarms={stakedInactiveFarms.length > 0} />
             <Select
-              ml="10px"
+              my="8px"
+              mr="12px"
+              ml="4px"
               options={[
                 {
                   label: t('Hot'),
@@ -350,7 +359,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               onOptionChange={handleSortOptionChange}
               color="text"
             />
-            <Flex ml="16px" width="100%">
+            <Flex mt={isMobile ? '8px' : '0'} ml="4px">
               <ToggleWrapper>
                 <Toggle
                   id="staked-only-farms"

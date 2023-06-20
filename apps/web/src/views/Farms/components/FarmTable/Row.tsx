@@ -32,7 +32,7 @@ export interface RowProps {
   multiplier: FarmTableMultiplierProps
   liquidity: FarmTableLiquidityProps
   details: FarmWithStakedValue
-  type: 'core' | 'community'
+  type?: 'core' | 'community'
   initialActivity?: boolean
 }
 
@@ -63,8 +63,8 @@ const CellInner = styled.div`
 
 const StyledTr = styled.tr`
   cursor: pointer;
-  &:not(:last-child) {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.disabled};
+  &:not(:first-child) {
+    border-top: 1px solid ${({ theme }) => theme.colors.hr};
   }
 `
 
@@ -146,7 +146,7 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                 return (
                   <td key={key}>
                     <CellInner>
-                      <CellLayout label={t('APR')}>
+                      <CellLayout>
                         <Apr
                           {...props.apr}
                           hideButton={isSmallerScreen}
@@ -161,9 +161,7 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                 return (
                   <td key={key}>
                     <CellInner>
-                      <CellLayout label={t(tableSchema[columnIndex].label)}>
-                        {createElement(cells[key], { ...props[key], userDataReady })}
-                      </CellLayout>
+                      <CellLayout>{createElement(cells[key], { ...props[key], userDataReady })}</CellLayout>
                     </CellInner>
                   </td>
                 )
@@ -175,29 +173,22 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
 
     return (
       <>
-        <tr style={{ cursor: 'pointer' }} onClick={toggleActionPanel}>
-          <FarmMobileCell colSpan={3}>
+        <StyledTr style={{ cursor: 'pointer' }} onClick={toggleActionPanel}>
+          <FarmMobileCell colSpan={4}>
             <Flex justifyContent="space-between" alignItems="center">
               <Farm {...props.farm} />
-              {props.type === 'community' ? (
-                <FarmAuctionTag marginRight="16px" scale="sm" />
-              ) : (
-                <Box style={{ marginRight: '16px' }}>
-                  <CoreTag scale="sm" />
-                </Box>
-              )}
             </Flex>
           </FarmMobileCell>
-        </tr>
-        <StyledTr onClick={toggleActionPanel}>
-          <td width="33%">
+        </StyledTr>
+        <tr onClick={toggleActionPanel}>
+          <td width="45%" colSpan={2}>
             <EarnedMobileCell>
               <CellLayout label={t('Earned')}>
                 <Earned {...props.earned} userDataReady={userDataReady} />
               </CellLayout>
             </EarnedMobileCell>
           </td>
-          <td width="33%">
+          <td width="45%">
             <AprMobileCell>
               <CellLayout label={t('APR')}>
                 <Apr
@@ -209,12 +200,12 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
               </CellLayout>
             </AprMobileCell>
           </td>
-          <td width="33%">
+          <td width="10%">
             <CellInner style={{ justifyContent: 'flex-end' }}>
               <Details actionPanelToggled={actionPanelExpanded} />
             </CellInner>
           </td>
-        </StyledTr>
+        </tr>
       </>
     )
   }
@@ -222,13 +213,7 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
   return (
     <>
       {handleRenderRow()}
-      {shouldRenderChild && (
-        <tr>
-          <td colSpan={7}>
-            <ActionPanel {...props} expanded={actionPanelExpanded} />
-          </td>
-        </tr>
-      )}
+      {shouldRenderChild && <ActionPanel {...props} expanded={actionPanelExpanded} />}
     </>
   )
 }
