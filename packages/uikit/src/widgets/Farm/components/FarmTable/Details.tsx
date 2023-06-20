@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useTranslation } from "@verto/localization";
+// import { useTranslation } from "@verto/localization";
 import { ChevronDownIcon } from "../../../../components/Svg";
-import { useMatchBreakpoints } from "../../../../contexts";
+// import { useMatchBreakpoints } from "../../../../contexts";
 
 interface DetailsProps {
   actionPanelToggled: boolean;
@@ -21,17 +21,18 @@ const Container = styled.div`
 
 const ArrowIcon = styled((props) => <ChevronDownIcon {...props} />)`
   transform: ${({ toggled }) => (toggled ? "rotate(180deg)" : "rotate(0)")};
-  height: 20px;
+  height: 24px;
+  width: 24px;
 `;
 
 const Details: React.FC<React.PropsWithChildren<DetailsProps>> = ({ actionPanelToggled }) => {
-  const { t } = useTranslation();
-  const { isDesktop } = useMatchBreakpoints();
+  // const { t } = useTranslation();
+  // const { isDesktop } = useMatchBreakpoints();
 
   return (
     <Container>
-      {!isDesktop && t("Details")}
-      <ArrowIcon color="primary" toggled={actionPanelToggled} />
+      {/* {!isDesktop && t("Details")} */}
+      <ArrowIcon color="icon" toggled={actionPanelToggled} />
     </Container>
   );
 };

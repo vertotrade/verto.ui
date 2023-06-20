@@ -11,7 +11,13 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 4px;
+  margin-right: 6px;
+  margin-top: 8px;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    margin-top: 0px;
+  }
 `;
 
 interface FarmTabButtonsProps {

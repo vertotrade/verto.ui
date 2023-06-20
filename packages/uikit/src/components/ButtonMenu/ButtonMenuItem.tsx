@@ -11,13 +11,25 @@ interface MaybeActiveButtonProps extends BaseButtonProps {
 const MaybeActiveButton: PolymorphicComponent<MaybeActiveButtonProps, "button"> = styled(
   Button
 )<MaybeActiveButtonProps>`
-  background-color: ${({ theme, isActive }) => (isActive ? theme.colors.backgroundAlt : theme.colors.inputBg)};
-  color: ${({ theme, isActive }) => (isActive ? theme.colors.text : theme.colors.disabledTextDark)};
+  background-color: ${({ theme, isActive, isPrimary }) => {
+    if (isPrimary) return isActive ? theme.colors.newPrimary : theme.colors.inputBg;
+    return isActive ? theme.colors.backgroundAlt : theme.colors.inputBg;
+  }};
+  color: ${({ theme, isActive, isPrimary, isDark }) => {
+    if (isPrimary) return isActive ? (isDark ? "black" : "white") : theme.colors.disabledTextDark;
+    return isActive ? theme.colors.text : theme.colors.disabledTextDark;
+  }};
   border-radius: 4px;
 
   &:hover:not(:disabled):not(:active) {
-    background-color: ${({ theme, isActive }) => (isActive ? theme.colors.backgroundAlt : "transparent")};
-    color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ theme, isActive, isPrimary }) => {
+      if (isPrimary) return isActive ? theme.colors.newPrimaryDark : "transparent";
+      return isActive ? theme.colors.backgroundAlt : "transparent";
+    }};
+    color: ${({ theme, isActive, isPrimary, isDark }) => {
+      if (isPrimary) return isActive ? (isDark ? "black" : "white") : theme.colors.text;
+      return theme.colors.text;
+    }};
 
     & svg {
       fill: ${({ theme }) => theme.colors.text};

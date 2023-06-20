@@ -7,6 +7,7 @@ import { SearchIcon } from "../Svg";
 
 const InputWrapper = styled.div`
   position: relative;
+  margin-right: 6px;
   ${({ theme }) => theme.mediaQueries.sm} {
     display: block;
   }
