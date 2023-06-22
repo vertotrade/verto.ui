@@ -30,12 +30,13 @@ const StyledCard = styled(Card)`
 const FarmCardInnerContainer = styled(Flex)`
   flex-direction: column;
   justify-content: space-around;
-  padding: 24px;
+  padding-bottom: 24px;
 `
 
 const ExpandingWrapper = styled.div`
-  padding: 24px;
-  border-top: 2px solid ${({ theme }) => theme.colors.cardBorder};
+  padding: 0 8px;
+  padding-top: 24px;
+  border-top: 1px solid ${({ theme }) => theme.colors.hrBold};
   overflow: hidden;
 `
 
@@ -97,15 +98,18 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
       <FarmCardInnerContainer>
         <CardHeading
           lpLabel={lpLabel}
-          multiplier={farm.multiplier}
           isCommunityFarm={farm.isCommunity}
           token={farm.token}
           quoteToken={farm.quoteToken}
           boosted={farm.boosted}
           isStable={farm.isStable}
         />
+        <Flex justifyContent="space-between" mx="32px">
+          <Text>{t('Multiplier')}:</Text>
+          <Text bold>{farm.multiplier}</Text>
+        </Flex>
         {!removed && (
-          <Flex justifyContent="space-between" alignItems="center">
+          <Flex justifyContent="space-between" alignItems="center" px="32px">
             <Text>{t('APR')}:</Text>
             <Text bold style={{ display: 'flex', alignItems: 'center' }}>
               {farm.apr ? (
@@ -151,7 +155,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
             </Text>
           </Flex>
         )}
-        <Flex justifyContent="space-between">
+        <Flex justifyContent="space-between" mx="32px">
           <Text>{t('Earn')}:</Text>
           <Text bold>{earnLabel}</Text>
         </Flex>

@@ -10,10 +10,10 @@ const StyledWrapper = styled(Wrapper)`
   width: 76px;
 `;
 
-const TokenPairDivider = styled.hr`
+const TokenPairDivider = styled.hr<{ bold?: boolean }>`
   display: inline;
   height: 1px;
-  background: ${({ theme }) => theme.colors.hr};
+  background: ${({ theme, bold }) => (bold ? theme.colors.hrBold : theme.colors.hr)};
   border: none;
   width: 8px;
   margin: 19px 4px;
@@ -26,6 +26,7 @@ const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = (
   width,
   height,
   variant = variants.DEFAULT,
+  bold,
   primaryImageProps = {},
   secondaryImageProps = {},
   ...props
@@ -34,9 +35,17 @@ const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = (
 
   return (
     <StyledWrapper position="relative" width={width} height={height} {...props}>
-      <StyledPrimaryImage variant={variant} src={primarySrc} width={width} height={height} {...primaryImageProps} />
-      <TokenPairDivider />
+      <StyledPrimaryImage
+        bold={bold}
+        variant={variant}
+        src={primarySrc}
+        width={width}
+        height={height}
+        {...primaryImageProps}
+      />
+      <TokenPairDivider bold={bold} />
       <StyledSecondaryImage
+        bold={bold}
         variant={variant}
         src={secondarySrc}
         width={width}
