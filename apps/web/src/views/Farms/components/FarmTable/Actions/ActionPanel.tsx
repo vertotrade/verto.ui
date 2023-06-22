@@ -193,145 +193,109 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
     return `/info${multiChainPaths[chainId]}/pairs/${lpAddress}`
   }, [chainId, farm.isStable, lpAddress, stableSwapAddress])
 
+  const infoContainer = useMemo(
+    () => (
+      <InfoContainer isMobile={isMobile} isDesktop={isDesktop}>
+        <ValueContainer>
+          {farm.isCommunity && farm.auctionHostingEndDate && (
+            <ValueWrapper>
+              <Text>{t('Auction Hosting Ends')}</Text>
+              <Text paddingLeft="4px">
+                {new Date(farm.auctionHostingEndDate).toLocaleString(locale, {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </Text>
+            </ValueWrapper>
+          )}
+          <Text small mb="8px">
+            {t('About')}
+          </Text>
+        </ValueContainer>
+        {isActive && (
+          <StakeContainer>
+            <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
+              {t('Get %symbol%', { symbol: lpLabel })}
+            </StyledLinkExternal>
+          </StakeContainer>
+        )}
+        <StyledLinkExternal isBscScan href={bsc}>
+          {t('View Contract')}
+        </StyledLinkExternal>
+        <StyledLinkExternal href={infoUrl}>{t('See Pair Info')}</StyledLinkExternal>
+      </InfoContainer>
+    ),
+    [
+      bsc,
+      farm.auctionHostingEndDate,
+      farm.isCommunity,
+      infoUrl,
+      isActive,
+      isDesktop,
+      isMobile,
+      liquidityUrlPathParts,
+      locale,
+      lpLabel,
+      t,
+    ],
+  )
+
+  const stakedContainer = useMemo(
+    () => (
+      <ActionContainer isDesktop={isDesktop}>
+        {shouldUseProxyFarm ? (
+          <ProxyStakedContainer {...proxyFarm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
+            {props => <StakedAction {...props} />}
+          </ProxyStakedContainer>
+        ) : (
+          <StakedContainer {...farm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
+            {props => <StakedAction {...props} />}
+          </StakedContainer>
+        )}
+      </ActionContainer>
+    ),
+    [apr.value, farm, isDesktop, lpLabel, proxyFarm, shouldUseProxyFarm, userDataReady],
+  )
+
+  const harvestContainer = useMemo(
+    () => (
+      <ActionContainer isDesktop={isDesktop}>
+        {shouldUseProxyFarm ? (
+          <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
+            {props => <HarvestAction {...props} />}
+          </ProxyHarvestActionContainer>
+        ) : (
+          <HarvestActionContainer {...farm} userDataReady={userDataReady}>
+            {props => <HarvestAction {...props} />}
+          </HarvestActionContainer>
+        )}
+      </ActionContainer>
+    ),
+    [farm, isDesktop, proxyFarm, shouldUseProxyFarm, userDataReady],
+  )
+
   return (
     <>
       {isMobile && (
         <>
           <Tr expanded={expanded}>
-            <td colSpan={4}>
-              <InfoContainer isMobile={isMobile}>
-                <ValueContainer>
-                  {farm.isCommunity && farm.auctionHostingEndDate && (
-                    <ValueWrapper>
-                      <Text>{t('Auction Hosting Ends')}</Text>
-                      <Text paddingLeft="4px">
-                        {new Date(farm.auctionHostingEndDate).toLocaleString(locale, {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        })}
-                      </Text>
-                    </ValueWrapper>
-                  )}
-                  <Text small mb="8px">
-                    {t('About')}
-                  </Text>
-                </ValueContainer>
-                {isActive && (
-                  <StakeContainer>
-                    <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
-                      {t('Get %symbol%', { symbol: lpLabel })}
-                    </StyledLinkExternal>
-                  </StakeContainer>
-                )}
-                <StyledLinkExternal isBscScan href={bsc}>
-                  {t('View ConTract')}
-                </StyledLinkExternal>
-                <StyledLinkExternal href={infoUrl}>{t('See Pair Info')}</StyledLinkExternal>
-              </InfoContainer>
-            </td>
+            <td colSpan={4}>{infoContainer}</td>
           </Tr>
           <Tr expanded={expanded}>
-            <td colSpan={4}>
-              <ActionContainer isDesktop={isDesktop}>
-                {shouldUseProxyFarm ? (
-                  <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
-                    {props => <HarvestAction {...props} />}
-                  </ProxyHarvestActionContainer>
-                ) : (
-                  <HarvestActionContainer {...farm} userDataReady={userDataReady}>
-                    {props => <HarvestAction {...props} />}
-                  </HarvestActionContainer>
-                )}
-              </ActionContainer>
-            </td>
+            <td colSpan={4}>{harvestContainer}</td>
           </Tr>
           <Tr expanded={expanded}>
-            <td colSpan={4}>
-              <ActionContainer isDesktop={isDesktop}>
-                {shouldUseProxyFarm ? (
-                  <ProxyStakedContainer
-                    {...proxyFarm}
-                    userDataReady={userDataReady}
-                    lpLabel={lpLabel}
-                    displayApr={apr.value}>
-                    {props => <StakedAction {...props} />}
-                  </ProxyStakedContainer>
-                ) : (
-                  <StakedContainer {...farm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
-                    {props => <StakedAction {...props} />}
-                  </StakedContainer>
-                )}
-              </ActionContainer>
-            </td>
+            <td colSpan={4}>{stakedContainer}</td>
           </Tr>
         </>
       )}
       {!isMobile && (
         <Tr expanded={expanded}>
-          <td>
-            <InfoContainer isDesktop={isDesktop}>
-              <ValueContainer>
-                {farm.isCommunity && farm.auctionHostingEndDate && (
-                  <ValueWrapper>
-                    <Text>{t('Auction Hosting Ends')}</Text>
-                    <Text paddingLeft="4px">
-                      {new Date(farm.auctionHostingEndDate).toLocaleString(locale, {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                      })}
-                    </Text>
-                  </ValueWrapper>
-                )}
-                <Text small mb="8px">
-                  {t('About')}
-                </Text>
-              </ValueContainer>
-              {isActive && (
-                <StakeContainer>
-                  <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
-                    {t('Get %symbol%', { symbol: lpLabel })}
-                  </StyledLinkExternal>
-                </StakeContainer>
-              )}
-              <StyledLinkExternal isBscScan href={bsc}>
-                {t('View ConTract')}
-              </StyledLinkExternal>
-              <StyledLinkExternal href={infoUrl}>{t('See Pair Info')}</StyledLinkExternal>
-            </InfoContainer>
-          </td>
-          <td>
-            <ActionContainer isDesktop={isDesktop}>
-              {shouldUseProxyFarm ? (
-                <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
-                  {props => <HarvestAction {...props} />}
-                </ProxyHarvestActionContainer>
-              ) : (
-                <HarvestActionContainer {...farm} userDataReady={userDataReady}>
-                  {props => <HarvestAction {...props} />}
-                </HarvestActionContainer>
-              )}
-            </ActionContainer>
-          </td>
+          <td>{infoContainer}</td>
+          <td>{harvestContainer}</td>
           {isDesktop && <EmptyTd isDesktop={isDesktop} />}
-          <td>
-            <ActionContainer isDesktop={isDesktop}>
-              {shouldUseProxyFarm ? (
-                <ProxyStakedContainer
-                  {...proxyFarm}
-                  userDataReady={userDataReady}
-                  lpLabel={lpLabel}
-                  displayApr={apr.value}>
-                  {props => <StakedAction {...props} />}
-                </ProxyStakedContainer>
-              ) : (
-                <StakedContainer {...farm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
-                  {props => <StakedAction {...props} />}
-                </StakedContainer>
-              )}
-            </ActionContainer>
-          </td>
+          <td>{stakedContainer}</td>
           <EmptyTd isDesktop={isDesktop} />
           <EmptyTd isDesktop={isDesktop} />
         </Tr>

@@ -88,25 +88,23 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
   )
 
   return (
-    <Flex mb="8px" justifyContent="space-between" alignItems="center">
-      <Flex flexDirection="column" alignItems="flex-start">
-        {proxyCakeBalance ? (
-          <>
-            <TooltipText ref={targetRef} decorationColor="secondary">
-              <Heading color={rawEarningsBalance.eq(0) ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
-            </TooltipText>
-            {tooltipVisible && tooltip}
-          </>
-        ) : (
-          <Heading color={rawEarningsBalance.eq(0) ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
-        )}
-        {earningsBusd > 0 && (
-          <Balance fontSize="12px" color="textSubtle" decimals={2} value={earningsBusd} unit=" USD" prefix="~" />
-        )}
-      </Flex>
-      <Button disabled={rawEarningsBalance.eq(0) || pendingTx} onClick={onClickHarvestButton}>
-        {pendingTx ? t('Harvesting') : t('Harvest')}
-      </Button>
+    <Flex mb="24px" justifyContent="center" alignItems="center">
+      {proxyCakeBalance ? (
+        <>
+          <TooltipText ref={targetRef} decorationColor="secondary">
+            <Heading color={rawEarningsBalance.eq(0) ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
+          </TooltipText>
+          {tooltipVisible && tooltip}
+        </>
+      ) : (
+        <Heading color={rawEarningsBalance.eq(0) ? 'textDisabled' : 'text'}>{displayBalance}</Heading>
+      )}
+      {earningsBusd > 0 && (
+        <Balance fontSize="12px" color="textSubtle" decimals={2} value={earningsBusd} unit=" USD" prefix="~" />
+      )}
+      {/* <Button disabled={rawEarningsBalance.eq(0) || pendingTx} onClick={onClickHarvestButton}> */}
+      {/*   {pendingTx ? t('Harvesting') : t('Harvest')} */}
+      {/* </Button> */}
     </Flex>
   )
 }

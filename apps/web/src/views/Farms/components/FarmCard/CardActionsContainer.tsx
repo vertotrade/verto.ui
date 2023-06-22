@@ -11,7 +11,8 @@ import HarvestAction from './HarvestAction'
 import StakeAction from './StakeAction'
 
 const Action = styled.div`
-  padding-top: 16px;
+  padding: 0 8px;
+  padding-top: 24px;
 `
 
 interface FarmCardActionsProps {
@@ -37,11 +38,11 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
 
   return (
     <Action>
-      <Flex>
-        <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
+      <Flex justifyContent="center">
+        <Text bold textTransform="uppercase" color="text" fontSize="12px" pr="4px" mb="2px">
           VERTO
         </Text>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text bold textTransform="uppercase" color="text" fontSize="12px">
           {t('Earned')}
         </Text>
       </Flex>
@@ -69,10 +70,10 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       )}
       {isReady ? (
         <Flex>
-          <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
+          <Text bold textTransform="uppercase" color="text" fontSize="12px" pr="4px">
             {farm.lpSymbol}
           </Text>
-          <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+          <Text bold textTransform="uppercase" color="text" fontSize="12px">
             {t('Staked')}
           </Text>
         </Flex>
