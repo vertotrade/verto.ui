@@ -5,12 +5,17 @@ import TokenImage from "./TokenImage";
 
 interface StyledImageProps extends ImageProps {
   variant: Variant;
+  bold?: boolean;
 }
 
 export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
   width: 40px;
   height: 40px;
   padding: 7px;
+
+  &:before {
+    border: 1px solid ${({ theme, bold }) => (bold ? theme.colors.hrBold : theme.colors.hr)};
+  }
 
   ${StyledSystemVariant({
     variants: {

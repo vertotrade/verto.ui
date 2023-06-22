@@ -12,6 +12,7 @@ export const ActionContainer = styled.div<{ isMobile?: boolean }>`
 
 export const ActionTitles = styled.div<{ isMobile?: boolean }>`
   display: flex;
+  justify-content: center;
   margin-bottom: 8px;
 
   ${({ isMobile }) => (isMobile ? "justify-content: center;" : "")}
