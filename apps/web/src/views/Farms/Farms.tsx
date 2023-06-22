@@ -80,12 +80,6 @@ const ToggleWrapper = styled.div`
   }
 `
 
-const LabelWrapper = styled.div`
-  > ${Text} {
-    font-size: 12px;
-  }
-`
-
 const FilterContainer = styled.div<{ isMobile?: boolean }>`
   display: flex;
   flex-wrap: wrap;
@@ -319,7 +313,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       <Page>
         <ControlContainer>
           <FilterContainer isMobile={isMobile}>
-            <SearchInput my="8px"
+            <SearchInput
               initialValue={normalizedUrlSearch}
               onChange={handleChangeQuery}
               placeholder="Search Farms"
