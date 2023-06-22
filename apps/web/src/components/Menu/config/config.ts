@@ -7,6 +7,8 @@ import {
   // NftFillIcon,
   DropdownMenuItems,
 } from '@verto/uikit'
+import axios from 'axios'
+import { camelCase } from 'lodash/camelCase'
 import { ContextApi } from '@verto/localization'
 // import { nftsBaseUrl } from 'views/Nft/market/constants'
 // import { getPerpetualUrl } from 'utils/getPerpetualUrl'
@@ -35,8 +37,24 @@ const config: (
   isDark: boolean,
   languageCode?: string,
   chainId?: number,
-) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) =>
-  [
+) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) => {
+  axios
+    .get('https://api.raindrop.club/api/feature-flags/35')
+    .then(response => {
+      console.log(response.data)
+
+      return (
+        response?.data?.data?.reduce(
+          (acc, { attributes: { enabled, slug } }) => ({ ...acc, [camelCase(slug)]: enabled }),
+          {},
+        ) || {}
+      )
+    })
+    .catch(error => {
+      console.log('Error', error)
+    })
+
+  const navItems = [
     {
       label: t('Trade'),
       href: '/swap',
@@ -198,5 +216,8 @@ const config: (
     //   ].map(item => addMenuItemSupported(item, chainId)),
     // },
   ].map(item => addMenuItemSupported(item, chainId))
+
+  return navItems
+}
 
 export default config

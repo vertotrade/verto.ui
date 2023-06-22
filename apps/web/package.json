@@ -62,6 +62,7 @@
     "@verto/utils": "*",
     "@verto/wagmi": "*",
     "ajv": "^6.12.3",
+    "axios": "^1.4.0",
     "bignumber.js": "^9.0.0",
     "canvas-confetti": "^1.5.1",
     "cids": "^1.0.0",
