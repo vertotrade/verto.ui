@@ -80,12 +80,6 @@ const ToggleWrapper = styled.div`
   }
 `
 
-const LabelWrapper = styled.div`
-  > ${Text} {
-    font-size: 12px;
-  }
-`
-
 const FilterContainer = styled.div<{ isMobile?: boolean }>`
   display: flex;
   flex-wrap: wrap;
@@ -154,9 +148,8 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const userDataReady = !account || (!!account && userDataLoaded)
 
   const [stakedOnly, setStakedOnly] = useUserFarmStakedOnly(isActive)
-  const [boostedOnly, setBoostedOnly] = useState(false)
-  const [stableSwapOnly, setStableSwapOnly] = useState(false)
-  const [farmTypesEnableCount, setFarmTypesEnableCount] = useState(0)
+  const [boostedOnly] = useState(false)
+  const [stableSwapOnly] = useState(false)
 
   // NOTE: Temporarily inactive aBNBc-BNB LP on FE
   const activeFarms = farmsLP.filter(
@@ -350,7 +343,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       <Page>
         <ControlContainer>
           <FilterContainer isMobile={isMobile}>
-            <SearchInput my="8px"
+            <SearchInput
               initialValue={normalizedUrlSearch}
               onChange={handleChangeQuery}
               placeholder="Search Farms"
