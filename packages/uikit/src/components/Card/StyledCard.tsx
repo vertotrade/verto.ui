@@ -22,7 +22,7 @@ interface StyledCardProps extends CardProps {
 /**
  * Priority: Warning --> Success --> Active
  */
-const getBorderColor = ({ isSuccess, isWarning, borderBackground, theme }: StyledCardProps) => {
+const getBackgroundColor = ({ isSuccess, isWarning, borderBackground, theme }: StyledCardProps) => {
   if (borderBackground) {
     return borderBackground;
   }
@@ -34,12 +34,12 @@ const getBorderColor = ({ isSuccess, isWarning, borderBackground, theme }: Style
     return theme.colors.success;
   }
 
-  return theme.colors.cardBorder;
+  return theme.colors.backgroundAlt;
 };
 
 export const StyledCard = styled.div<StyledCardProps>`
-  background: ${getBorderColor};
-  border-radius: ${({ theme }) => theme.radii.card};
+  background: ${getBackgroundColor};
+  border-radius: ${({ theme }) => theme.radii.default};
   color: ${({ theme, isDisabled }) => theme.colors[isDisabled ? "textDisabled" : "text"]};
   overflow: hidden;
   position: relative;
@@ -59,6 +59,7 @@ export const StyledCardInner = styled(Box)<{ background?: string; hasCustomBorde
   height: 100%;
   overflow: ${({ hasCustomBorder }) => (hasCustomBorder ? "initial" : "inherit")};
   background: ${({ theme, background }) => background ?? theme.card.background};
+  padding: 24px;
 `;
 
 StyledCard.defaultProps = {

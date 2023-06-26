@@ -43,8 +43,10 @@ function Balance({ balance }: { balance: CurrencyAmount<Currency> }) {
 }
 
 const MenuItem = styled(RowBetween)<{ disabled: boolean; selected: boolean }>`
-  padding: 4px 20px;
-  height: 56px;
+  width: 100%;
+  height: 100%;
+  padding: 8px 0;
+  height: 64px;
   display: grid;
   grid-template-columns: auto minmax(auto, 1fr) minmax(0, 72px);
   grid-gap: 8px;
@@ -213,7 +215,7 @@ export default function CurrencyList({
       width="100%"
       itemData={itemData}
       itemCount={itemData.length}
-      itemSize={56}
+      itemSize={64}
       itemKey={itemKey}>
       {Row}
     </FixedSizeList>

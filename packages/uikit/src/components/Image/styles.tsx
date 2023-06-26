@@ -5,12 +5,17 @@ import TokenImage from "./TokenImage";
 
 interface StyledImageProps extends ImageProps {
   variant: Variant;
+  bold?: boolean;
 }
 
 export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
-  position: absolute;
-  width: ${({ variant }) =>
-    variant === variants.DEFAULT ? "92%" : "82%"}; // 92, 82 are arbitrary numbers to fit the variant
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+
+  &:before {
+    border: 1px solid ${({ theme, bold }) => (bold ? theme.colors.hrBold : theme.colors.hr)};
+  }
 
   ${StyledSystemVariant({
     variants: {
@@ -33,8 +38,9 @@ export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
 `;
 
 export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
-  position: absolute;
-  width: 50%;
+  width: 20px;
+  height: 20px;
+  margin: 10px 0;
 
   ${StyledSystemVariant({
     variants: {

@@ -24,7 +24,7 @@ const getColor = ({ color, theme }: ThemedProps) => {
 
 const Text = styled.div<TextProps>`
   ${getColor}
-  font-weight: ${({ bold }) => (bold ? 600 : 400)};
+  font-weight: ${({ bold }) => (bold ? 500 : 400)};
   line-height: 1.5;
   ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}
   ${({ ellipsis }) =>
@@ -37,6 +37,7 @@ const Text = styled.div<TextProps>`
   ${typography}
   ${layout}
 
+  ${({ xSmall }) => xSmall && `font-size: 12px;`}
   ${({ small }) => small && `font-size: 14px;`}
 `;
 

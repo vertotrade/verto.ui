@@ -14,6 +14,24 @@ export const scaleVariants = {
     fontSize: "12px",
     padding: "0 8px",
   },
+  [scales.NEW_XS]: {
+    height: "30px",
+    fontSize: "14px",
+    fontWeight: "400",
+    padding: "6px 8px",
+  },
+  [scales.NEW_SM]: {
+    height: "48px",
+    fontSize: "16px",
+    fontWeight: "500",
+    padding: "12px 24px",
+  },
+  [scales.NEW_LG]: {
+    height: "56px",
+    fontSize: "16px",
+    fontWeight: "500",
+    padding: "16px 32px",
+  },
 };
 
 export const styleVariants = {
@@ -77,5 +95,81 @@ export const styleVariants = {
     borderStyle: "solid",
     borderWidth: "2px",
     height: "36px",
+  },
+  [variants.VERTO_PRIMARY]: {
+    borderRadius: "32px",
+    background: "var(--colors-newPrimary)",
+    color: "var(--colors-buttonText)",
+    fontFamily: "Roboto, sans-serif",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "var(--colors-newPrimaryDark)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
+  [variants.VERTO_PRIMARY_GRADIENT]: {
+    borderRadius: "32px",
+    background: "linear-gradient(90deg, var(--colors-newPrimary) 0%, var(--colors-newPrimaryLight) 100%)",
+    color: "var(--colors-buttonText)",
+    fontFamily: "Roboto, sans-serif",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "linear-gradient(90deg, var(--colors-newPrimaryDark) 0%, var(--colors-newPrimary) 100%)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
+  [variants.VERTO_SECONDARY]: {
+    borderRadius: "32px",
+    background: "var(--colors-secondaryButtonBg)",
+    color: "var(--colors-secondaryButtonText)",
+    fontFamily: "Inter, sans-serif",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "var(--colors-secondaryButtonHoverBg)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
+  [variants.VERTO_GHOST]: {
+    background: "transparent",
+    color: "var(--colors--secondaryButtonText)",
+    fontFamily: "Inter, sans-serif",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background-position 0.3s",
+    ":hover": {
+      background: "var(--colors-ghostButtonHoverBg)",
+      opacity: "1 !important",
+    },
+    ":disabled": {
+      background: "var(--colors-disabledBg)",
+      color: "var(--colors-disabledText)",
+    },
+  },
+  [variants.VERTO_ICON]: {
+    backgroundColor: "transparent",
+    color: "icon",
+    boxShadow: "none",
   },
 };

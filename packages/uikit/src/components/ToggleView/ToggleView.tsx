@@ -1,7 +1,8 @@
 import { useCallback } from "react";
 import styled from "styled-components";
-import IconButton from "../Button/IconButton";
 import { CardViewIcon, ListViewIcon } from "../Svg";
+import { ButtonMenu, ButtonMenuItem } from "../ButtonMenu";
+import { IconButton } from "../Button";
 
 export enum ViewMode {
   TABLE = "TABLE",
@@ -15,10 +16,18 @@ interface ToggleViewProps {
 }
 
 const Container = styled.div`
-  margin-left: -8px;
+  margin-left: 4px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-left: 0;
+  }
+`;
+
+const StyledIconButton = styled(IconButton)`
+  padding: 0;
+
+  &:hover {
+    background: transparent;
   }
 `;
 
@@ -41,12 +50,18 @@ export const ToggleView: React.FunctionComponent<React.PropsWithChildren<ToggleV
 
   return (
     <Container>
-      <IconButton variant="text" scale="sm" id={`${idPrefix}CardView`} onClick={handleToggleCard}>
-        <CardViewIcon color={viewMode === ViewMode.CARD ? "primary" : "textDisabled"} />
-      </IconButton>
-      <IconButton variant="text" scale="sm" id={`${idPrefix}TableView`} onClick={handleToggleTable}>
-        <ListViewIcon color={viewMode === ViewMode.TABLE ? "primary" : "textDisabled"} />
-      </IconButton>
+      <ButtonMenu activeIndex={viewMode === ViewMode.CARD ? 0 : 1}>
+        <ButtonMenuItem>
+          <StyledIconButton variant="vertoGhost" scale="newXs" id={`${idPrefix}CardView`} onClick={handleToggleCard}>
+            <CardViewIcon color={viewMode === ViewMode.CARD ? "icon" : "disabledTextDark"} />
+          </StyledIconButton>
+        </ButtonMenuItem>
+        <ButtonMenuItem>
+          <StyledIconButton variant="vertoGhost" scale="newXs" id={`${idPrefix}TableView`} onClick={handleToggleTable}>
+            <ListViewIcon color={viewMode === ViewMode.TABLE ? "icon" : "disabledTextDark"} />
+          </StyledIconButton>
+        </ButtonMenuItem>
+      </ButtonMenu>
     </Container>
   );
 };

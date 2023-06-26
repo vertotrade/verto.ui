@@ -8,7 +8,7 @@ interface StyledInputProps extends InputProps {
 /**
  * Priority: Warning --> Success
  */
-const getBoxShadow = ({ isSuccess = false, isWarning = false, theme }: StyledInputProps) => {
+export const getBoxShadow = ({ isSuccess = false, isWarning = false, theme }: StyledInputProps) => {
   if (isWarning) {
     return theme.shadows.warning;
   }
@@ -20,22 +20,21 @@ const getBoxShadow = ({ isSuccess = false, isWarning = false, theme }: StyledInp
   return theme.shadows.inset;
 };
 
-const getHeight = ({ scale = scales.MD }: StyledInputProps) => {
+export const getHeight = ({ scale = scales.MD }: StyledInputProps) => {
   switch (scale) {
     case scales.SM:
       return "32px";
-    case scales.LG:
-      return "48px";
     case scales.MD:
-    default:
       return "40px";
+    case scales.LG:
+    default:
+      return "48px";
   }
 };
 
 const Input = styled.input<InputProps>`
-  background-color: ${({ theme }) => theme.colors.input};
-  border-radius: 16px;
-  box-shadow: ${getBoxShadow};
+  background-color: ${({ theme }) => theme.colors.inputBg};
+  border-radius: 8px;
   color: ${({ theme }) => theme.colors.text};
   display: block;
   font-size: 16px;
@@ -43,35 +42,41 @@ const Input = styled.input<InputProps>`
   outline: 0;
   padding: 0 16px;
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.inputSecondary};
+  border: 1px solid
+    ${({ theme, isSuccess, isWarning }) => {
+      if (isWarning) return theme.colors.error;
+      if (isSuccess) return theme.colors.newPrimary;
+
+      return theme.colors.inputBorder;
+    }};
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.textSubtle};
+    color: ${({ theme }) => theme.colors.placeholder};
+  }
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.inputBorderHover};
   }
 
   &:disabled {
     background-color: ${({ theme }) => theme.colors.backgroundDisabled};
-    box-shadow: none;
     color: ${({ theme }) => theme.colors.textDisabled};
     cursor: not-allowed;
+    border: 1px solid ${({ theme }) => theme.colors.disabledBg};
   }
 
   &:focus:not(:disabled) {
-    box-shadow: ${({ theme, isWarning, isSuccess }) => {
-      if (isWarning) {
-        return theme.shadows.warning;
-      }
+    border: 1px solid
+      ${({ theme, isWarning }) => {
+        if (isWarning) return theme.colors.error;
 
-      if (isSuccess) {
-        return theme.shadows.success;
-      }
-      return theme.shadows.focus;
-    }};
+        return theme.colors.newPrimary;
+      }};
   }
 `;
 
 Input.defaultProps = {
-  scale: scales.MD,
+  scale: scales.LG,
   isSuccess: false,
   isWarning: false,
 };

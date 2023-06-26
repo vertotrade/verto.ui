@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useTranslation } from "@verto/localization";
 import { Text } from "../../../../components/Text";
-import { HelpIcon } from "../../../../components/Svg";
+import { InfoIcon } from "../../../../components/Svg";
 import { Skeleton } from "../../../../components/Skeleton";
 import { useTooltip } from "../../../../hooks/useTooltip";
 import { FarmTableLiquidityProps } from "../../types";
@@ -46,7 +46,7 @@ const Liquidity: React.FunctionComponent<React.PropsWithChildren<FarmTableLiquid
         <Text>{displayLiquidity}</Text>
       </LiquidityWrapper>
       <ReferenceElement ref={targetRef}>
-        <HelpIcon color="textSubtle" />
+        <InfoIcon color="icon" />
       </ReferenceElement>
       {tooltipVisible && tooltip}
     </Container>

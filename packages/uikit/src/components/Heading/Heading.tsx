@@ -8,7 +8,7 @@ const style = {
     fontSizeLg: "20px",
   },
   [scales.LG]: {
-    fontSize: "24px",
+    fontSize: "22px",
     fontSizeLg: "24px",
   },
   [scales.XL]: {
@@ -22,13 +22,9 @@ const style = {
 };
 
 const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
-  font-size: ${({ scale }) => style[scale || scales.MD].fontSize};
+  font-size: ${({ scale }) => style[scale || scales.LG].fontSize};
   font-weight: 600;
   line-height: 1.1;
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    font-size: ${({ scale }) => style[scale || scales.MD].fontSizeLg};
-  }
 `;
 
 Heading.defaultProps = {

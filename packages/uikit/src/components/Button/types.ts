@@ -6,6 +6,9 @@ export const scales = {
   MD: "md",
   SM: "sm",
   XS: "xs",
+  NEW_XS: "newXs",
+  NEW_SM: "newSm",
+  NEW_LG: "newLg",
 } as const;
 
 export const variants = {
@@ -19,6 +22,11 @@ export const variants = {
   SUCCESS: "success",
   LIGHT: "light",
   VERTOCUSTOM: "vertoCustom",
+  VERTO_PRIMARY: "vertoPrimary",
+  VERTO_PRIMARY_GRADIENT: "vertoPrimaryGradient",
+  VERTO_SECONDARY: "vertoSecondary",
+  VERTO_GHOST: "vertoGhost",
+  VERTO_ICON: "vertoIcon",
 } as const;
 
 export type Scale = typeof scales[keyof typeof scales];

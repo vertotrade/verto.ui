@@ -2,24 +2,12 @@ import { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 import debounce from "lodash/debounce";
 import { useTranslation } from "@verto/localization";
-import { Input } from "../Input";
-
-const StyledInput = styled(Input)`
-  border-radius: 7.5px;
-  margin-left: auto;
-  border-color: ${({ theme }) => theme.colors.primary0f};
-  border-width: 2px;
-  color: ${({ theme }) => theme.colors.primary};
-
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.primary};
-    opacity: 0.5; 
-  }
-}
-`;
+import { InputWithSymbol } from "../Input";
+import { SearchIcon } from "../Svg";
 
 const InputWrapper = styled.div`
   position: relative;
+  margin-right: 6px;
   ${({ theme }) => theme.mediaQueries.sm} {
     display: block;
   }
@@ -29,12 +17,14 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   initialValue?: string;
+  iconColor?: string;
 }
 
 const SearchInput: React.FC<React.PropsWithChildren<Props>> = ({
   onChange: onChangeCallback,
   placeholder = "Search",
   initialValue,
+  iconColor = "black",
 }) => {
   const [searchText, setSearchText] = useState("");
   const { t } = useTranslation();
@@ -56,7 +46,14 @@ const SearchInput: React.FC<React.PropsWithChildren<Props>> = ({
 
   return (
     <InputWrapper>
-      <StyledInput value={searchText} onChange={onChange} placeholder={t(placeholder)} />
+      <InputWithSymbol
+        style={{ minWidth: "200px", paddingLeft: "10px", height: "40px" }}
+        inputStyle={{ fontSize: "14px" }}
+        symbol={<SearchIcon width="18px" height="18px" color={iconColor} />}
+        value={searchText}
+        onChange={onChange}
+        placeholder={t(placeholder)}
+      />
     </InputWrapper>
   );
 };

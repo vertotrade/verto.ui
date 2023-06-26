@@ -8,7 +8,7 @@ const StakeActionDataNotReady = () => {
   return (
     <StyledActionContainer>
       <ActionTitles>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text color="text" fontSize="14px">
           {t("Start Farming")}
         </Text>
       </ActionTitles>
