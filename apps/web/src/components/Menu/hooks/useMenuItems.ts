@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { useTheme } from '@verto/hooks'
 import { useTranslation } from '@verto/localization'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -12,8 +12,16 @@ export const useMenuItems = (): ConfigMenuItemsType[] => {
   const { chainId } = useActiveChainId()
   const { isDark } = useTheme()
 
-  const menuItems = useMemo(() => {
-    return config(t, isDark, languageCode, chainId)
+  const [menuItems, setMenuItems] = useState<ConfigMenuItemsType[]>([])
+
+  useEffect(() => {
+    config(t, isDark, languageCode, chainId)
+      .then(result => {
+        setMenuItems(result)
+      })
+      .catch(error => {
+        console.error('Error getting menu items:', error)
+      })
   }, [t, isDark, languageCode, chainId])
 
   return menuItems
