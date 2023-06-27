@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Menu as UikitMenu, NextLinkFromReactRouter, footerLinks } from '@verto/uikit'
 import { useTranslation, languageList } from '@verto/localization'
@@ -19,12 +19,17 @@ const Menu = props => {
   const { isDark, setTheme } = useTheme()
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
-  // const [showPhishingWarningBanner] = usePhishingBannerManager()
 
   const menuItems = useMenuItems()
 
-  const activeMenuItem = getActiveMenuItem({ menuConfig: menuItems, pathname })
-  const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
+  const [activeMenuItem, setActiveMenuItem] = useState(null)
+  const [activeSubMenuItem, setActiveSubMenuItem] = useState(null)
+
+  useEffect(() => {
+    const result = getActiveMenuItem({ menuConfig: menuItems, pathname })
+    setActiveMenuItem(result)
+    setActiveSubMenuItem(getActiveSubMenuItem({ menuItem: result, pathname }))
+  }, [menuItems, pathname])
 
   const toggleTheme = useMemo(() => {
     return () => setTheme(isDark ? 'light' : 'dark')

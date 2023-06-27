@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Heading, PageSection, Text, QuestionOutline } from '@verto/uikit'
+import { Box, Flex, Heading, PageSection, Text, QuestionOutline, NotFound } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
 import { useFetchLottery, useLottery } from 'state/lottery/hooks'
 import IconDivider from 'components/IconDivider'
+import { lotteryFeatureFlagRequest } from 'components/Menu/utils'
 import useGetNextLotteryEvent from './hooks/useGetNextLotteryEvent'
 import useStatusTransitions from './hooks/useStatusTransitions'
 import Hero from './components/Hero'
@@ -81,10 +82,24 @@ const Lottery = () => {
   //   currentRound: { status, endTime },
   // } = useLottery()
   const [historyTabMenuIndex, setHistoryTabMenuIndex] = useState(0)
+  const [pageEnabled, setPageEnabled] = useState(false)
   // const endTimeAsInt = parseInt(endTime, 10)
   // const { nextEventTime, postCountdownText, preCountdownText } = useGetNextLotteryEvent(endTimeAsInt, status)
   const { numUserRoundsRequested, handleShowMoreUserRounds } = useShowMoreUserHistory()
   const backgroundSectionColor = isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await lotteryFeatureFlagRequest()
+      setPageEnabled(response?.data?.attributes?.enabled)
+    }
+
+    fetchData()
+  }, [])
+
+  if (!pageEnabled) {
+    return <NotFound />
+  }
 
   return (
     <>
