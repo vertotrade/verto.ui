@@ -43,7 +43,7 @@ export const lotteryFeatureFlagRequest = () => {
   const url =
     process.env.NODE_ENV === 'production'
       ? 'https://api.raindrop.club/api/feature-flags/35'
-      : 'https://api.raindrop.club/api/dev-endpoint'
+      : 'https://api.dropmintdev.com/api/feature-flags/35'
 
   let request
 
@@ -54,7 +54,7 @@ export const lotteryFeatureFlagRequest = () => {
         data: {
           id: 35,
           attributes: {
-            enabled: true,
+            enabled: false,
             description: 'VertoTrade lottery page',
             slug: 'lottery-page',
             createdAt: '2023-06-22T14:37:33.903Z',
