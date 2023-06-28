@@ -11,6 +11,7 @@ import { ContextApi } from '@verto/localization'
 // import { nftsBaseUrl } from 'views/Nft/market/constants'
 // import { getPerpetualUrl } from 'utils/getPerpetualUrl'
 import { SUPPORT_REBUS } from 'config/constants/supportChains'
+import { lotteryFeatureFlagRequest } from 'components/Menu/utils'
 
 export type ConfigMenuDropDownItemsType = DropdownMenuItems & { hideSubNav?: boolean }
 export type ConfigMenuItemsType = Omit<MenuItemsType, 'items'> & { hideSubNav?: boolean; image?: string } & {
@@ -35,8 +36,9 @@ const config: (
   isDark: boolean,
   languageCode?: string,
   chainId?: number,
-) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) =>
-  [
+) => Promise<ConfigMenuItemsType[]> = async (t, isDark, languageCode, chainId) => {
+  let isLotteryPageEnabled
+  let navItems = [
     {
       label: t('Trade'),
       href: '/swap',
@@ -198,5 +200,30 @@ const config: (
     //   ].map(item => addMenuItemSupported(item, chainId)),
     // },
   ].map(item => addMenuItemSupported(item, chainId))
+
+  const filterNavItems = (items: any[], shouldDisplay: boolean) => {
+    return items.filter(item => {
+      if (!shouldDisplay && item.label === 'Win') {
+        return false
+      }
+      return true
+    })
+  }
+
+  async function configureNavItems() {
+    try {
+      const response = await lotteryFeatureFlagRequest()
+      isLotteryPageEnabled = response?.data?.attributes?.enabled
+      navItems = filterNavItems(navItems, isLotteryPageEnabled)
+    } catch (error) {
+      console.log('Error', error)
+    }
+
+    return navItems
+  }
+
+  await configureNavItems()
+  return navItems
+}
 
 export default config
