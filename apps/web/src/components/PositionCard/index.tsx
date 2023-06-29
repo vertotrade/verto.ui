@@ -177,7 +177,7 @@ function MinimalPositionCardView({
             <AutoColumn gap="16px">
               <FixedHeightRow>
                 <RowFixed>
-                  <Text color="secondary" bold>
+                  <Text color="text" bold>
                     {t('LP tokens in your wallet')}
                   </Text>
                 </RowFixed>

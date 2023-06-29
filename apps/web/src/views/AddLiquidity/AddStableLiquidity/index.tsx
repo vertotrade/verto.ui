@@ -394,7 +394,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
               </RowBetween>
 
               <RowBetween>
-                <Text bold fontSize="12px" color="secondary">
+                <Text bold fontSize="12px" color="text">
                   {t('Slippage Tolerance')}
                 </Text>
                 <Text bold color="primary">

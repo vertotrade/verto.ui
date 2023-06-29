@@ -129,7 +129,7 @@ export const darkColors = {
   cardHeaderBorder: '#3B4155',
   contrast: '#FFFFFF',
   dropdown: '#1E1D20',
-  dropdownDeep: '#100C18',
+  dropdownDeep: '#231F20',
   hr: '#484848',
   hrBold: '#5C5C5C',
   modalBackgroundOverlay: '#231F20',
