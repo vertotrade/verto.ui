@@ -54,7 +54,7 @@ export const lotteryFeatureFlagRequest = () => {
         data: {
           id: 35,
           attributes: {
-            enabled: false,
+            enabled: true,
             description: 'VertoTrade lottery page',
             slug: 'lottery-page',
             createdAt: '2023-06-22T14:37:33.903Z',
