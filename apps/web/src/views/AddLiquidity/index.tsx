@@ -795,7 +795,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
                     )}
 
                     <RowBetween>
-                      <Text bold fontSize="12px" color="secondary">
+                      <Text bold fontSize="12px" color="text">
                         {t('Slippage Tolerance')}
                       </Text>
                       <Text bold color="primary">
@@ -805,7 +805,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
 
                     {pair && poolData && (
                       <RowBetween>
-                        <TooltipText ref={targetRef} bold fontSize="12px" color="secondary">
+                        <TooltipText ref={targetRef} bold fontSize="12px" color="primary">
                           {t('LP reward APR')}
                         </TooltipText>
                         {tooltipVisible && tooltip}
