@@ -807,7 +807,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
             </AutoColumn>
           )}
           <RowBetween mt="16px">
-            <Text bold color="secondary" fontSize="12px">
+            <Text bold color="text" fontSize="12px">
               {t('Slippage Tolerance')}
             </Text>
             <Text bold color="primary">
