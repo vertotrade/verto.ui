@@ -37,14 +37,11 @@ export const ProxyHarvestActionContainer = ({ children, ...props }) => {
 }
 
 export const HarvestActionContainer = ({ children, ...props }) => {
-  const { onReward } = useHarvestFarm(props.pid)
+  const { onReward } = useHarvestFarm(props.poolAddress)
   const { account, chainId } = useActiveWeb3React()
   const dispatch = useAppDispatch()
 
-  const onDone = useCallback(
-    () => dispatch(fetchFarmUserDataAsync({ account, pids: [props.pid], chainId })),
-    [account, dispatch, chainId, props.pid],
-  )
+  const onDone = useCallback(() => dispatch(fetchFarmUserDataAsync({ account, chainId })), [account, dispatch, chainId])
 
   return children({ ...props, onDone, onReward })
 }
@@ -53,6 +50,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   pid,
   token,
   quoteToken,
+  rewardToken,
   vaultPid,
   userData,
   userDataReady,
@@ -72,7 +70,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
 
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
-    earnings = getBalanceAmount(earningsBigNumber)
+    earnings = getBalanceAmount(earningsBigNumber, rewardToken?.decimals ?? quoteToken?.decimals)
     earningsBusd = earnings.multipliedBy(cakePrice).toNumber()
     displayBalance = earnings.toFixed(5, BigNumber.ROUND_DOWN)
   }
@@ -120,6 +118,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
       userDataReady={userDataReady}
       proxyCakeBalance={proxyCakeBalance}
       handleHarvest={onClickHarvestButton}
+      tokenName={rewardToken?.name}
     />
   )
 }

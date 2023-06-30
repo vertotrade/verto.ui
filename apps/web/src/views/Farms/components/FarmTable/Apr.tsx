@@ -10,6 +10,7 @@ export interface AprProps {
   value: string
   multiplier: string
   pid: number
+  poolAddress: string
   lpLabel: string
   lpSymbol: string
   lpRewardsApr: number
@@ -51,6 +52,7 @@ const AprWrapper = styled.div`
 const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
   value,
   pid,
+  poolAddress,
   lpLabel,
   lpSymbol,
   lpTokenPrice,
@@ -76,6 +78,7 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
         <ApyButton
           variant={hideButton ? 'text' : 'text-and-button'}
           pid={pid}
+          poolAddress={poolAddress}
           lpSymbol={lpSymbol}
           lpLabel={lpLabel}
           lpTokenPrice={lpTokenPrice}

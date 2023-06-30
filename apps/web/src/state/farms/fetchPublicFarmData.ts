@@ -1,12 +1,11 @@
 import erc20 from 'config/abi/erc20.json'
 import chunk from 'lodash/chunk'
-import { getMasterChefAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
 import { SerializedFarm } from '@verto/farms'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { SerializedFarmConfig } from '../../config/constants/types'
 
-const fetchFarmCalls = (farm: SerializedFarm, chainId: number) => {
+const fetchFarmCalls = (farm: SerializedFarm) => {
   const { lpAddress, token, quoteToken } = farm
   return [
     // Balance of token in the LP contract
@@ -25,7 +24,7 @@ const fetchFarmCalls = (farm: SerializedFarm, chainId: number) => {
     {
       address: lpAddress,
       name: 'balanceOf',
-      params: [getMasterChefAddress(chainId)],
+      params: [farm.poolAddress],
     },
     // Total supply of LP tokens
     {
@@ -49,7 +48,7 @@ export const fetchPublicFarmsData = async (
   farms: SerializedFarmConfig[],
   chainId = DEFAULT_CHAIN_ID,
 ): Promise<any[]> => {
-  const farmCalls = farms.flatMap(farm => fetchFarmCalls(farm, chainId))
+  const farmCalls = farms.flatMap(farm => fetchFarmCalls(farm))
   const chunkSize = farmCalls.length / farms.length
   const farmMultiCallResult = await multicallv2({ abi: erc20, calls: farmCalls, chainId })
   return chunk(farmMultiCallResult, chunkSize)

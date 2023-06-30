@@ -5,18 +5,18 @@ import { useMasterchef, useNonBscVault } from 'hooks/useContract'
 import { useGasPrice } from 'state/user/hooks'
 import { useOraclePrice } from 'views/Farms/hooks/useFetchOraclePrice'
 
-const useUnstakeFarms = (pid: number, vaultPid?: number) => {
+const useUnstakeFarms = (poolAddress: string, vaultPid?: number) => {
   const { account, chainId } = useActiveWeb3React()
   const gasPrice = useGasPrice()
   const oraclePrice = useOraclePrice(chainId)
-  const masterChefContract = useMasterchef()
+  const masterChefContract = useMasterchef(poolAddress)
   const nonBscVaultContract = useNonBscVault()
 
   const handleUnstake = useCallback(
     async (amount: string) => {
-      return unstakeFarm(masterChefContract, pid, amount, gasPrice)
+      return unstakeFarm(masterChefContract, amount, gasPrice)
     },
-    [masterChefContract, pid, gasPrice],
+    [masterChefContract, gasPrice],
   )
 
   const handleUnstakeNonBsc = useCallback(

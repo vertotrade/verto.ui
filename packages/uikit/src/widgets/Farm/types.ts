@@ -5,6 +5,7 @@ import { Token } from "@verto/sdk";
 export interface FarmTableEarnedProps {
   earnings: number;
   pid: number;
+  poolAddress: string;
 }
 
 export interface FarmTableLiquidityProps {
@@ -19,8 +20,10 @@ export interface FarmTableMultiplierProps {
 export interface FarmTableFarmTokenInfoProps {
   label: string;
   pid: number;
+  poolAddress: string;
   token: Token;
   quoteToken: Token;
+  rewardToken?: Token;
   isReady: boolean;
   isStable?: boolean;
   stakedBalance?: BigNumber;
@@ -92,14 +95,14 @@ export const DesktopColumnSchema: ColumnsDefTypes[] = [
     sortable: true,
     label: "Liquidity",
   },
+  // {
+  //   id: 6,
+  //   name: "multiplier",
+  //   sortable: true,
+  //   label: "Multiplier",
+  // },
   {
     id: 6,
-    name: "multiplier",
-    sortable: true,
-    label: "Multiplier",
-  },
-  {
-    id: 7,
     name: "details",
     sortable: true,
     label: "",

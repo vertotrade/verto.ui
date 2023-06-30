@@ -19,6 +19,7 @@ export interface FarmConfigBaseProps {
   vaultPid?: number
   lpSymbol: string
   lpAddress: string
+  poolAddress?: string
   multiplier?: string
   isCommunity?: boolean
   auctionHostingStartSeconds?: number
@@ -38,6 +39,7 @@ export interface SerializedStableFarmConfig extends SerializedClassicFarmConfig 
 export interface SerializedClassicFarmConfig extends FarmConfigBaseProps {
   token: SerializedWrappedToken
   quoteToken: SerializedWrappedToken
+  rewardToken: SerializedWrappedToken
 }
 
 export type SerializedFarmConfig = SerializedStableFarmConfig | SerializedClassicFarmConfig
@@ -97,6 +99,7 @@ export interface SerializedFarmsState {
 export interface DeserializedFarmConfig extends FarmConfigBaseProps {
   token: Token
   quoteToken: Token
+  rewardToken: Token
 }
 
 export interface DeserializedFarmUserData {

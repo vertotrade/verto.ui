@@ -54,6 +54,7 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
             apr: {
               value: getDisplayApr(farm.apr, farm.lpRewardsApr),
               pid: farm.pid,
+              poolAddress: farm.poolAddress,
               multiplier: farm.multiplier,
               lpLabel,
               lpSymbol: farm.lpSymbol,

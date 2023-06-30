@@ -14,7 +14,6 @@ import {
   getBunnyFactoryAddress,
   getBunnySpecialAddress,
   getLotteryV2Address,
-  getMasterChefAddress,
   getMasterChefV1Address,
   getPointCenterIfoAddress,
   getClaimRefundAddress,
@@ -219,8 +218,8 @@ export const getBunnySpecialContract = (signer?: Signer | Provider) => {
 export const getLotteryV2Contract = (signer?: Signer | Provider) => {
   return getContract({ abi: lotteryV2Abi, address: getLotteryV2Address(), signer }) as LotteryV2
 }
-export const getMasterchefContract = (signer?: Signer | Provider, chainId?: number) => {
-  return getContract({ abi: masterChef, address: getMasterChefAddress(chainId), signer }) as Masterchef
+export const getMasterchefContract = (poolAddress: string, signer?: Signer | Provider) => {
+  return getContract({ abi: masterChef, address: poolAddress, signer }) as Masterchef
 }
 export const getMasterchefV1Contract = (signer?: Signer | Provider) => {
   return getContract({ abi: masterChefV1, address: getMasterChefV1Address(), signer }) as MasterchefV1

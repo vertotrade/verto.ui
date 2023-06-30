@@ -55,3 +55,11 @@ export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
     },
   })}
 `;
+
+export const StyledTertiaryImage = styled(TokenImage)<StyledImageProps>`
+  position: absolute;
+  right: -3px;
+  top: -4px;
+  width: 75%;
+  z-index: 7;
+`;

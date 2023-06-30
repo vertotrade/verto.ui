@@ -16,6 +16,7 @@ interface HarvestActionProps {
   userDataReady: boolean;
   proxyCakeBalance?: number;
   handleHarvest: () => void;
+  tokenName?: string;
 }
 
 const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActionProps>> = ({
@@ -26,6 +27,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
   userDataReady,
   proxyCakeBalance,
   handleHarvest,
+  tokenName = `VERTO`,
 }) => {
   const { t } = useTranslation();
 
@@ -39,7 +41,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     `${toolTipBalance} ${t(
-      `VERTO has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`
+      `${tokenName} has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`
     )}`,
     {
       placement: "bottom",
@@ -50,7 +52,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
     <ActionContainer style={{ minHeight: 124.5 }}>
       <ActionTitles>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          VERTO
+          {tokenName}
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t("Earned")}

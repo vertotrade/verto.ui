@@ -28,6 +28,7 @@ export type Variant = typeof variants[keyof typeof variants];
 export interface TokenPairImageProps extends BoxProps {
   primarySrc: string;
   secondarySrc: string;
+  tertiarySrc?: string;
   variant?: Variant;
   height: number;
   width: number;

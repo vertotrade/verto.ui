@@ -45,18 +45,15 @@ interface StackedActionProps extends FarmWithStakedValue {
   shouldUseProxyFarm?: boolean
 }
 
-export function useStakedActions(lpContract, pid, vaultPid) {
+export function useStakedActions(lpContract, poolAddress, vaultPid) {
   const { account, chainId } = useActiveWeb3React()
-  const { onStake } = useStakeFarms(pid, vaultPid)
-  const { onUnstake } = useUnstakeFarms(pid, vaultPid)
+  const { onStake } = useStakeFarms(poolAddress, vaultPid)
+  const { onUnstake } = useUnstakeFarms(poolAddress, vaultPid)
   const dispatch = useAppDispatch()
 
-  const { onApprove } = useApproveFarm(lpContract, chainId)
+  const { onApprove } = useApproveFarm(lpContract, poolAddress)
 
-  const onDone = useCallback(
-    () => dispatch(fetchFarmUserDataAsync({ account, pids: [pid], chainId })),
-    [account, pid, chainId, dispatch],
-  )
+  const onDone = useCallback(() => dispatch(fetchFarmUserDataAsync({ account, chainId })), [account, chainId, dispatch])
 
   return {
     onStake,
@@ -91,9 +88,9 @@ export const ProxyStakedContainer = ({ children, ...props }) => {
 export const StakedContainer = ({ children, ...props }) => {
   const { address: account } = useAccount()
 
-  const { lpAddress } = props
+  const { lpAddress, poolAddress } = props
   const lpContract = useERC20(lpAddress)
-  const { onStake, onUnstake, onApprove, onDone } = useStakedActions(lpContract, props.pid, props.vaultPid)
+  const { onStake, onUnstake, onApprove, onDone } = useStakedActions(lpContract, poolAddress, props.vaultPid)
 
   const { allowance } = props.userData || {}
 

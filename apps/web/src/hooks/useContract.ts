@@ -139,10 +139,12 @@ export const useLotteryV2Contract = () => {
   return useMemo(() => getLotteryV2Contract(providerOrSigner), [providerOrSigner])
 }
 
-export const useMasterchef = (withSignerIfPossible = true) => {
-  const { chainId } = useActiveChainId()
+export const useMasterchef = (poolAddress: string, withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
-  return useMemo(() => getMasterchefContract(providerOrSigner, chainId), [providerOrSigner, chainId])
+  return useMemo(
+    () => (poolAddress ? getMasterchefContract(poolAddress, providerOrSigner) : null),
+    [poolAddress, providerOrSigner],
+  )
 }
 
 export const useMasterchefV1 = () => {

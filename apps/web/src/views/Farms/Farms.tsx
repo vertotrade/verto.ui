@@ -155,25 +155,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const userDataReady = !account || (!!account && userDataLoaded)
 
   const [stakedOnly, setStakedOnly] = useUserFarmStakedOnly(isActive)
-  const [boostedOnly, setBoostedOnly] = useState(false)
-  const [stableSwapOnly, setStableSwapOnly] = useState(false)
-  const [farmTypesEnableCount, setFarmTypesEnableCount] = useState(0)
 
   // NOTE: Temporarily inactive aBNBc-BNB LP on FE
-  const activeFarms = farmsLP.filter(
-    farm =>
-      farm.lpAddress !== '0x272c2CF847A49215A3A1D4bFf8760E503A06f880' &&
-      farm.lpAddress !== '0xB6040A9F294477dDAdf5543a24E5463B8F2423Ae' &&
-      farm.multiplier !== '0X' &&
-      (!poolLength || poolLength > farm.pid),
-  )
+  const activeFarms = farmsLP.filter(farm => farm.multiplier !== '0X' && (!poolLength || poolLength > farm.pid))
 
-  const inactiveFarms = farmsLP.filter(
-    farm =>
-      farm.lpAddress === '0xB6040A9F294477dDAdf5543a24E5463B8F2423Ae' ||
-      farm.lpAddress === '0x272c2CF847A49215A3A1D4bFf8760E503A06f880' ||
-      farm.multiplier === '0X',
-  )
+  const inactiveFarms = farmsLP.filter(farm => farm.multiplier === '0X')
   const archivedFarms = farmsLP
 
   const stakedOnlyFarms = activeFarms.filter(
@@ -249,21 +235,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       chosenFs = stakedOnly ? farmsList(stakedArchivedFarms) : farmsList(archivedFarms)
     }
 
-    if (boostedOnly || stableSwapOnly) {
-      const boostedOrStableSwapFarms = chosenFs.filter(
-        farm => (boostedOnly && farm.boosted) || (stableSwapOnly && farm.isStable),
-      )
-
-      const stakedBoostedOrStableSwapFarms = chosenFs.filter(
-        farm =>
-          farm.userData &&
-          (new BigNumber(farm.userData.stakedBalance).isGreaterThan(0) ||
-            new BigNumber(farm.userData.proxy?.stakedBalance).isGreaterThan(0)),
-      )
-
-      chosenFs = stakedOnly ? farmsList(stakedBoostedOrStableSwapFarms) : farmsList(boostedOrStableSwapFarms)
-    }
-
     return chosenFs
   }, [
     activeFarms,
@@ -277,8 +248,6 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
     stakedInactiveFarms,
     stakedOnly,
     stakedOnlyFarms,
-    boostedOnly,
-    stableSwapOnly,
   ])
 
   const chosenFarmsMemoized = useMemo(() => {

@@ -4,15 +4,8 @@ import { multicallv2 } from 'utils/multicall'
 import { SerializedFarm } from '@verto/farms'
 import { SerializedFarmConfig } from '../../config/constants/types'
 import { getMasterChefV1Address } from '../../utils/addressHelpers'
-import { getMasterchefV1Contract } from '../../utils/contractHelpers'
 
 const masterChefAddress = getMasterChefV1Address()
-const masterChefContract = getMasterchefV1Contract()
-
-export const fetchMasterChefFarmPoolLength = async () => {
-  const poolLength = await masterChefContract.poolLength()
-  return poolLength
-}
 
 const masterChefFarmCalls = (farm: SerializedFarm) => {
   const { v1pid } = farm

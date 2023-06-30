@@ -116,6 +116,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
                       lpRewardsApr={farm.lpRewardsApr}
                       apr={farm.apr}
                       pid={farm?.pid}
+                      poolAddress={farm?.poolAddress}
                       lpTotalSupply={farm.lpTotalSupply}
                       userBalanceInFarm={
                         (stakedBalance.plus(tokenBalance).gt(0)
@@ -127,6 +128,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
                   <ApyButton
                     variant="text-and-button"
                     pid={farm.pid}
+                    poolAddress={farm.poolAddress}
                     lpTokenPrice={farm.lpTokenPrice}
                     lpSymbol={farm.lpSymbol}
                     multiplier={farm.multiplier}

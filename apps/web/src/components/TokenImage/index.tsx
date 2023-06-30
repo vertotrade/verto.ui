@@ -9,9 +9,14 @@ import { Token, ChainId } from '@verto/sdk'
 interface TokenPairImageProps extends Omit<UIKitTokenPairImageProps, 'primarySrc' | 'secondarySrc'> {
   primaryToken: Token
   secondaryToken: Token
+  tertiaryToken?: Token
 }
 
 const getImageUrlFromToken = (token: Token) => {
+  if (!token) {
+    return ``
+  }
+
   const address = token?.isNative ? token.wrapped.address : token.address
   if (token.chainId !== ChainId.BSC && token.chainId !== ChainId.REBUS && token.chainId !== ChainId.REBUS_TESTNET) {
     return `/images/${token.chainId}/tokens/${address}.png`
@@ -22,12 +27,14 @@ const getImageUrlFromToken = (token: Token) => {
 export const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = ({
   primaryToken,
   secondaryToken,
+  tertiaryToken,
   ...props
 }) => {
   return (
     <UIKitTokenPairImage
       primarySrc={getImageUrlFromToken(primaryToken)}
       secondarySrc={getImageUrlFromToken(secondaryToken)}
+      tertiarySrc={getImageUrlFromToken(tertiaryToken)}
       {...props}
     />
   )
