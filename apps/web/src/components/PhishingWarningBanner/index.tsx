@@ -48,7 +48,7 @@ const PhishingWarningBanner: React.FC<React.PropsWithChildren> = () => {
   const warningTextAsParts = useMemo(() => {
     const warningText = t("please make sure you're visiting %domain% - check the URL carefully.", { domain })
     return warningText.split(/(https:\/\/dev.vertotrade.com)/g)
-  }, [t])
+  }, [domain, t])
   const warningTextComponent = (
     <>
       <Text as="span" color="warning" small bold textTransform="uppercase">

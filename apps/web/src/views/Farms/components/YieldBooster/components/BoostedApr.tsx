@@ -14,19 +14,20 @@ interface BoostedAprPropsType {
   apr: number
   lpRewardsApr: number
   pid: number
+  poolAddress: string
   mr?: string
   userBalanceInFarm: BigNumber
   lpTotalSupply: BigNumber
 }
 
 function BoostedApr(props: BoostedAprPropsType) {
-  const { lpRewardsApr, apr, pid, userBalanceInFarm, lpTotalSupply, ...rest } = props
+  const { lpRewardsApr, apr, pid, poolAddress, userBalanceInFarm, lpTotalSupply, ...rest } = props
   const { boosterState, proxyAddress } = useContext(YieldBoosterStateContext)
   const { t } = useTranslation()
 
   const boostedAprFromFE = useGetBoostedAPR(userBalanceInFarm, lpTotalSupply, apr, lpRewardsApr)
 
-  const multiplier = useBoostMultiplier({ pid, boosterState, proxyAddress })
+  const multiplier = useBoostMultiplier({ pid, poolAddress, boosterState, proxyAddress })
 
   const boostedAprFromSC =
     (!isUndefinedOrNull(multiplier) &&

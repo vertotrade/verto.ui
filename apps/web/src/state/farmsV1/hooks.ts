@@ -37,6 +37,7 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
     tokenPriceBusd,
     token: deserializeToken(farm.token),
     quoteToken: deserializeToken(farm.quoteToken),
+    rewardToken: deserializeToken(farm.rewardToken),
     userData: deserializeFarmUserData(farm),
     tokenAmountTotal: farm.tokenAmountTotal ? new BigNumber(farm.tokenAmountTotal) : BIG_ZERO,
     lpTotalInQuoteToken: farm.lpTotalInQuoteToken ? new BigNumber(farm.lpTotalInQuoteToken) : BIG_ZERO,

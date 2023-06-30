@@ -58,7 +58,7 @@ const getCakePriceFarms = async (chainId: number) => {
   const farmsConfig = await getFarmConfig(chainId)
   return farmsConfig
     .filter(
-      ({ token, pid, quoteToken }) =>
+      ({ token, quoteToken }) =>
         (token.symbol === 'CAKE' && quoteToken.symbol === 'WBNB') ||
         (token.symbol === 'BUSD' && quoteToken.symbol === 'WBNB'),
     )

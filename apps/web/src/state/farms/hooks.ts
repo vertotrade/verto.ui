@@ -7,8 +7,6 @@ import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import useSWRImmutable from 'swr/immutable'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
-import { useBCakeProxyContractAddress } from 'views/Farms/hooks/useBCakeProxyContractAddress'
-import { getMasterchefContract } from 'utils/contractHelpers'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
 import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
 import { getFarmConfig } from '@verto/farms/constants'
@@ -24,14 +22,6 @@ import {
   makeLpTokenPriceFromLpSymbolSelector,
   makeUserFarmFromPidSelector,
 } from './selectors'
-
-export function useFarmsLength() {
-  const { chainId } = useActiveChainId()
-  return useSWRImmutable(chainId ? ['farmsLength', chainId] : null, async () => {
-    const mc = getMasterchefContract(undefined, chainId)
-    return (await mc.poolLength()).toNumber()
-  })
-}
 
 export const usePollFarmsWithUserData = () => {
   const dispatch = useAppDispatch()

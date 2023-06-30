@@ -1,11 +1,12 @@
 import React from "react";
 import { TokenPairImageProps, variants } from "./types";
-import { StyledPrimaryImage, StyledSecondaryImage } from "./styles";
+import { StyledPrimaryImage, StyledSecondaryImage, StyledTertiaryImage } from "./styles";
 import Wrapper from "./Wrapper";
 
 const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = ({
   primarySrc,
   secondarySrc,
+  tertiarySrc,
   width,
   height,
   variant = variants.DEFAULT,
@@ -25,6 +26,14 @@ const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = (
         height={secondaryImageSize}
         {...secondaryImageProps}
       />
+      {tertiarySrc && (
+        <StyledTertiaryImage
+          variant={variant}
+          src={tertiarySrc}
+          width={secondaryImageSize}
+          height={secondaryImageSize}
+        />
+      )}
     </Wrapper>
   );
 };

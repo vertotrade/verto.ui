@@ -13,6 +13,7 @@ import { useGetBoostedMultiplier } from '../YieldBooster/hooks/useGetBoostedAPR'
 export interface ApyButtonProps {
   variant: 'text' | 'text-and-button'
   pid: number
+  poolAddress: string
   lpSymbol: string
   lpTokenPrice: BigNumber
   lpLabel?: string
@@ -33,6 +34,7 @@ export interface ApyButtonProps {
 const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
   variant,
   pid,
+  poolAddress,
   lpLabel,
   lpTokenPrice,
   lpSymbol,
@@ -59,7 +61,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
     ? stakedBalance.plus(tokenBalance)
     : proxy.stakedBalance.plus(proxy.tokenBalance)
   const boosterMultiplierFromFE = useGetBoostedMultiplier(userBalanceInFarm, lpTotalSupply)
-  const boostMultiplierFromSC = useBoostMultiplier({ pid, boosterState, proxyAddress })
+  const boostMultiplierFromSC = useBoostMultiplier({ pid, poolAddress, boosterState, proxyAddress })
   const boostMultiplier = userBalanceInFarm.eq(0) ? boostMultiplierFromSC : boosterMultiplierFromFE
   const boostMultiplierDisplay = boostMultiplier.toLocaleString(undefined, { maximumFractionDigits: 3 })
   const [onPresentApyModal] = useModal(

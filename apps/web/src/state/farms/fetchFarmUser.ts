@@ -1,11 +1,8 @@
 import BigNumber from 'bignumber.js'
 import erc20ABI from 'config/abi/erc20.json'
 import masterchefABI from 'config/abi/masterchef.json'
-import nonBscVault from 'config/abi/nonBscVault.json'
 import multicall, { multicallv2 } from 'utils/multicall'
-import { getMasterChefAddress } from 'utils/addressHelpers'
 import { SerializedFarmConfig } from 'config/constants/types'
-import { verifyBscNetwork } from 'utils/verifyBscNetwork'
 import { getCrossFarmingReceiverContract } from 'utils/contractHelpers'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 
@@ -15,11 +12,9 @@ export const fetchFarmUserAllowances = async (
   chainId: number,
   proxyAddress?: string,
 ) => {
-  const masterChefAddress = getMasterChefAddress(chainId)
-
   const calls = farmsToFetch.map(farm => {
     const lpContractAddress = farm.lpAddress
-    return { address: lpContractAddress, name: 'allowance', params: [account, proxyAddress || masterChefAddress] }
+    return { address: lpContractAddress, name: 'allowance', params: [account, proxyAddress || farm.poolAddress] }
   })
 
   const rawLpAllowances = await multicall<BigNumber[]>(erc20ABI, calls, chainId)
@@ -56,23 +51,21 @@ export const fetchFarmUserStakedBalances = async (
   farmsToFetch: SerializedFarmConfig[],
   chainId: number,
 ) => {
-  const isBscNetwork = verifyBscNetwork(chainId)
-  const masterChefAddress = getMasterChefAddress(chainId)
-
   const calls = farmsToFetch.map(farm => {
     return {
-      address: masterChefAddress,
+      address: farm.poolAddress,
       name: 'userInfo',
-      params: [farm.vaultPid ?? farm.pid, account],
+      params: [account],
     }
   })
 
   const rawStakedBalances = await multicallv2({
-    abi: isBscNetwork ? masterchefABI : nonBscVault,
+    abi: masterchefABI,
     calls,
     chainId,
     options: { requireSuccess: false },
   })
+
   const parsedStakedBalances = rawStakedBalances.map(stakedBalance => {
     return new BigNumber(stakedBalance[0]._hex).toJSON()
   })
@@ -81,13 +74,12 @@ export const fetchFarmUserStakedBalances = async (
 
 export const fetchFarmUserEarnings = async (account: string, farmsToFetch: SerializedFarmConfig[]) => {
   const multiCallChainId = DEFAULT_CHAIN_ID
-  const masterChefAddress = getMasterChefAddress(multiCallChainId)
 
   const calls = farmsToFetch.map(farm => {
     return {
-      address: masterChefAddress,
-      name: 'pendingCake',
-      params: [farm.pid, account],
+      address: farm.poolAddress,
+      name: 'pendingReward',
+      params: [account],
     }
   })
 

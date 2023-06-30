@@ -1,48 +1,23 @@
 import masterchefABI from 'config/abi/masterchef.json'
 import chunk from 'lodash/chunk'
-import BigNumber from 'bignumber.js'
 import { multicallv2 } from 'utils/multicall'
-import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { SerializedFarm } from '@verto/farms'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { SerializedFarmConfig } from '../../config/constants/types'
-import { getMasterChefAddress } from '../../utils/addressHelpers'
-
-export const fetchMasterChefFarmPoolLength = async (chainId: number) => {
-  try {
-    const [poolLength] = await multicallv2({
-      abi: masterchefABI,
-      calls: [
-        {
-          name: 'poolLength',
-          address: getMasterChefAddress(chainId),
-        },
-      ],
-      chainId,
-    })
-
-    return new BigNumber(poolLength).toNumber()
-  } catch (error) {
-    console.error('Fetch MasterChef Farm Pool Length Error: ', error)
-    return BIG_ZERO.toNumber()
-  }
-}
 
 const masterChefFarmCalls = async (farm: SerializedFarm) => {
   const { pid } = farm
-  const multiCallChainId = DEFAULT_CHAIN_ID
-  const masterChefAddress = getMasterChefAddress(multiCallChainId)
   const masterChefPid = pid
 
   return masterChefPid || masterChefPid === 0
     ? [
         {
-          address: masterChefAddress,
+          address: farm.poolAddress,
           name: 'poolInfo',
           params: [masterChefPid],
         },
         {
-          address: masterChefAddress,
+          address: farm.poolAddress,
           name: 'totalRegularAllocPoint',
         },
       ]

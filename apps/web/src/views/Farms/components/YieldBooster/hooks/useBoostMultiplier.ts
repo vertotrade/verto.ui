@@ -89,9 +89,9 @@ async function getMultiplierFromMC({ pid, proxyAddress, masterChefContract }): P
   return _toNumber(FixedNumber.from(boostMultiplier).divUnsafe(PRECISION_FACTOR).round(3).toString())
 }
 
-export default function useBoostMultiplier({ pid, boosterState, proxyAddress }): number {
+export default function useBoostMultiplier({ pid, poolAddress, boosterState, proxyAddress }): number {
   const farmBoosterContract = useBCakeFarmBoosterContract()
-  const masterChefContract = useMasterchef()
+  const masterChefContract = useMasterchef(poolAddress)
 
   const { address: account } = useAccount()
 

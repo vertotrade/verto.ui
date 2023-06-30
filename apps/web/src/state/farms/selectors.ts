@@ -11,6 +11,7 @@ import { FARM_AUCTION_HOSTING_IN_SECONDS } from '../../config/constants'
 
 const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
   const {
+    poolAddress,
     lpAddress,
     lpSymbol,
     pid,
@@ -45,6 +46,7 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
     )
 
   return {
+    poolAddress,
     lpAddress,
     lpSymbol,
     pid,
@@ -57,6 +59,7 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
     tokenPriceBusd,
     token: deserializeToken(farm.token),
     quoteToken: deserializeToken(farm.quoteToken),
+    rewardToken: deserializeToken(farm.rewardToken),
     userData: deserializeFarmUserData(farm),
     tokenAmountTotal: farm.tokenAmountTotal ? new BigNumber(farm.tokenAmountTotal) : BIG_ZERO,
     quoteTokenAmountTotal: farm.quoteTokenAmountTotal ? new BigNumber(farm.quoteTokenAmountTotal) : BIG_ZERO,

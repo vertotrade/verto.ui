@@ -102,7 +102,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
     [],
   )
 
-  const getFarmEarnings = farm => {
+  const getFarmEarnings = (farm: FarmWithStakedValue) => {
     let earnings = BIG_ZERO
     const existingEarnings = new BigNumber(farm.userData.earnings)
 
@@ -114,10 +114,10 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
       earnings = existingEarnings
     }
 
-    return getBalanceNumber(earnings)
+    return getBalanceNumber(earnings, farm.rewardToken?.decimals ?? farm.quoteToken?.decimals)
   }
 
-  const generateRow = farm => {
+  const generateRow = (farm: FarmWithStakedValue) => {
     const { token, quoteToken } = farm
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
@@ -128,6 +128,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
       apr: {
         value: getDisplayApr(farm.apr, farm.lpRewardsApr),
         pid: farm.pid,
+        poolAddress: farm.poolAddress,
         multiplier: farm.multiplier,
         lpLabel,
         lpSymbol: farm.lpSymbol,
@@ -143,14 +144,17 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
       farm: {
         label: lpLabel,
         pid: farm.pid,
+        poolAddress: farm.poolAddress,
         token: farm.token,
         quoteToken: farm.quoteToken,
+        rewardToken: farm.rewardToken,
         isReady: farm.multiplier !== undefined,
         isStable: farm.isStable,
       },
       earned: {
         earnings: getFarmEarnings(farm),
         pid: farm.pid,
+        poolAddress: farm.poolAddress,
       },
       liquidity: {
         liquidity: farm?.liquidity,

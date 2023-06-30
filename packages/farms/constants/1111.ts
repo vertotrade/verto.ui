@@ -28,6 +28,6 @@ const farms: SerializedFarmConfig[] = [
   //   quoteToken: vertoTokens.aureus,
   // },
 ]
-// ].map(p => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
+// ].map(p => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize, rewardToken: p.rewardToken.serialize }))
 
 export default farms

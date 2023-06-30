@@ -96,6 +96,7 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         )
         */}
 
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src="/__ENV.js" />
       </Head>
 

@@ -38,6 +38,7 @@ interface StackedActionProps extends FarmWithStakedValue {
 const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
   pid,
   vaultPid,
+  poolAddress,
   apr,
   multiplier,
   lpSymbol,
@@ -54,10 +55,9 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
   const { isDesktop } = useMatchBreakpoints()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const stakedPid = vaultPid ?? pid
   const { allowance, tokenBalance, stakedBalance } = useFarmUser(pid)
-  const { onStake } = useStakeFarms(stakedPid)
-  const { onUnstake } = useUnstakeFarms(stakedPid)
+  const { onStake } = useStakeFarms(poolAddress, vaultPid)
+  const { onUnstake } = useUnstakeFarms(poolAddress, vaultPid)
   const cakePrice = usePriceCakeBusd()
   const [bCakeMultiplier, setBCakeMultiplier] = useState<number | null>(() => null)
 
@@ -81,7 +81,7 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
           {t('Your funds have been staked in the farm')}
         </ToastDescriptionWithTx>,
       )
-      dispatch(fetchFarmUserDataAsync({ account, pids: [pid], chainId }))
+      dispatch(fetchFarmUserDataAsync({ account, chainId }))
     }
   }
 
@@ -96,7 +96,7 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
           {t('Your earnings have also been harvested to your wallet')}
         </ToastDescriptionWithTx>,
       )
-      dispatch(fetchFarmUserDataAsync({ account, pids: [pid], chainId }))
+      dispatch(fetchFarmUserDataAsync({ account, chainId }))
     }
   }
 
@@ -135,7 +135,7 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
   )
   const lpContract = useERC20(lpAddress)
   const dispatch = useAppDispatch()
-  const { onApprove } = useApproveFarm(lpContract, chainId)
+  const { onApprove } = useApproveFarm(lpContract, poolAddress)
 
   const handleApprove = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
@@ -148,9 +148,9 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
     })
     if (receipt?.status) {
       toastSuccess(t('Contract Enabled'), <ToastDescriptionWithTx txHash={receipt.transactionHash} />)
-      dispatch(fetchFarmUserDataAsync({ account, pids: [pid], chainId }))
+      dispatch(fetchFarmUserDataAsync({ account, chainId }))
     }
-  }, [onApprove, dispatch, chainId, account, pid, t, toastSuccess, fetchWithCatchTxError])
+  }, [onApprove, dispatch, chainId, account, t, toastSuccess, fetchWithCatchTxError])
 
   const handleDeposit = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { Text, Flex, CardBody, CardFooter, Button, AddIcon } from '@verto/uikit'
+import { Text, CardBody, CardFooter, Button, AddIcon } from '@verto/uikit'
 import Link from 'next/link'
 import { useAccount } from 'wagmi'
 import { useTranslation } from '@verto/localization'

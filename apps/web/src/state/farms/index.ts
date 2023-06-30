@@ -17,8 +17,6 @@ import { getMasterChefAddress } from 'utils/addressHelpers'
 import { getBalanceAmount } from '@verto/utils/formatBalance'
 import multicall, { multicallv2 } from 'utils/multicall'
 import { chains } from 'utils/wagmi'
-import splitProxyFarms from 'views/Farms/components/YieldBooster/helpers/splitProxyFarms'
-import { verifyBscNetwork } from 'utils/verifyBscNetwork'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { resetUserState } from '../global/actions'
 import fetchFarms from './fetchFarms'
@@ -28,36 +26,29 @@ import {
   fetchFarmUserStakedBalances,
   fetchFarmUserTokenBalances,
 } from './fetchFarmUser'
-import { fetchMasterChefFarmPoolLength } from './fetchMasterChefData'
 import getFarmsPrices from './getFarmsPrices'
 
 /**
  * @deprecated
  */
 const fetchFetchPublicDataOld = async ({ pids, chainId }): Promise<[SerializedFarm[], number, number]> => {
-  const [poolLength, [cakePerBlockRaw]] = await Promise.all([
-    fetchMasterChefFarmPoolLength(chainId),
-    multicall(masterchefABI, [
-      {
-        // BSC only
-        address: getMasterChefAddress(DEFAULT_CHAIN_ID),
-        name: 'cakePerBlock',
-        params: [true],
-      },
-    ]),
+  const [cakePerBlockRaw] = await multicall(masterchefABI, [
+    {
+      // BSC only
+      address: getMasterChefAddress(DEFAULT_CHAIN_ID),
+      name: 'cakePerBlock',
+      params: [true],
+    },
   ])
 
-  const poolLengthAsBigNumber = new BigNumber(poolLength)
   const regularCakePerBlock = getBalanceAmount(new BigNumber(cakePerBlockRaw))
   const farmsConfig = await getFarmConfig(chainId)
-  const farmsCanFetch = farmsConfig.filter(
-    farmConfig => pids.includes(farmConfig.pid) && poolLengthAsBigNumber.gt(farmConfig.pid),
-  )
+  const farmsCanFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.pid))
   const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
 
   const farms = await fetchFarms(farmsCanFetch.concat(priceHelperLpsConfig), chainId)
   const farmsWithPrices = farms.length > 0 ? getFarmsPrices(farms, chainId) : []
-  return [farmsWithPrices, poolLengthAsBigNumber.toNumber(), regularCakePerBlock.toNumber()]
+  return [farmsWithPrices, farms.length, regularCakePerBlock.toNumber()]
 }
 
 const fetchFarmPublicDataPkg = async ({ pids, chainId, chain }): Promise<[SerializedFarm[], number, number]> => {
@@ -174,46 +165,6 @@ interface FarmUserDataResponse {
   }
 }
 
-async function getBoostedFarmsStakeValue(farms, account, chainId, proxyAddress) {
-  const [
-    userFarmAllowances,
-    userFarmTokenBalances,
-    userStakedBalances,
-    userFarmEarnings,
-    proxyUserFarmAllowances,
-    proxyUserStakedBalances,
-    proxyUserFarmEarnings,
-  ] = await Promise.all([
-    fetchFarmUserAllowances(account, farms, chainId),
-    fetchFarmUserTokenBalances(account, farms, chainId),
-    fetchFarmUserStakedBalances(account, farms, chainId),
-    fetchFarmUserEarnings(account, farms),
-    // Proxy call
-    fetchFarmUserAllowances(account, farms, chainId, proxyAddress),
-    fetchFarmUserStakedBalances(proxyAddress, farms, chainId),
-    fetchFarmUserEarnings(proxyAddress, farms),
-  ])
-
-  const farmAllowances = userFarmAllowances.map((farmAllowance, index) => {
-    return {
-      pid: farms[index].pid,
-      allowance: userFarmAllowances[index],
-      tokenBalance: userFarmTokenBalances[index],
-      stakedBalance: userStakedBalances[index],
-      earnings: userFarmEarnings[index],
-      proxy: {
-        allowance: proxyUserFarmAllowances[index],
-        // NOTE: Duplicate tokenBalance to maintain data structure consistence
-        tokenBalance: userFarmTokenBalances[index],
-        stakedBalance: proxyUserStakedBalances[index],
-        earnings: proxyUserFarmEarnings[index],
-      },
-    }
-  })
-
-  return farmAllowances
-}
-
 async function getNormalFarmsStakeValue(farms, account, chainId) {
   const [userFarmAllowances, userFarmTokenBalances, userStakedBalances, userFarmEarnings] = await Promise.all([
     fetchFarmUserAllowances(account, farms, chainId),
@@ -237,22 +188,20 @@ async function getNormalFarmsStakeValue(farms, account, chainId) {
 
 export const fetchFarmUserDataAsync = createAsyncThunk<
   FarmUserDataResponse[],
-  { account: string; pids: number[]; proxyAddress?: string; chainId: number },
+  { account: string; proxyAddress?: string; chainId: number },
   {
     state: AppState
   }
 >(
   'farms/fetchFarmUserDataAsync',
-  async ({ account, pids, chainId }, { dispatch, getState }) => {
+  async ({ account, chainId }, { dispatch, getState }) => {
     const state = getState()
     if (state.farms.chainId !== chainId) {
       await dispatch(fetchInitialFarmsData({ chainId }))
     }
-    const poolLength = state.farms.poolLength ?? (await fetchMasterChefFarmPoolLength(DEFAULT_CHAIN_ID))
     const farmsConfig = await getFarmConfig(chainId)
-    const farmsCanFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.pid) && poolLength > farmConfig.pid)
 
-    return getNormalFarmsStakeValue(farmsCanFetch, account, chainId)
+    return getNormalFarmsStakeValue(farmsConfig, account, chainId)
   },
   {
     condition: (arg, { getState }) => {

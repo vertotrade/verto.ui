@@ -21,8 +21,6 @@ import { useDelayedUnmount } from '@verto/hooks'
 import Apr, { AprProps } from './Apr'
 import Farm from './Farm'
 import ActionPanel from './Actions/ActionPanel'
-import BoostedApr from '../YieldBooster/components/BoostedApr'
-import BoostedTag from '../YieldBooster/components/BoostedTag'
 
 const { FarmAuctionTag, CoreTag } = FarmUI.Tags
 const { CellLayout, Details, Multiplier, Liquidity, Earned } = FarmUI.FarmTable
@@ -85,7 +83,6 @@ const FarmMobileCell = styled.td`
 
 const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>> = props => {
   const { details, initialActivity, userDataReady } = props
-  const { stakedBalance, proxy, tokenBalance } = props.details.userData
   const hasSetInitialValue = useRef(false)
   const hasStakedAmount = !!useFarmUser(details.pid).stakedBalance.toNumber()
   const [actionPanelExpanded, setActionPanelExpanded] = useState(hasStakedAmount)
