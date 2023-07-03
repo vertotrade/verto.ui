@@ -12,7 +12,7 @@ import { DesktopV2ColumnSchema } from '../../types'
 const NewFarmStep2: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
-  const { data: farmsLP, userDataLoaded, regularCakePerBlock } = useFarms()
+  const { data: farmsLP, userDataLoaded, regularRewardPerBlock } = useFarms()
   const { data: farmsV1LP } = useFarmsV1()
   const cakePrice = usePriceCakeBusd()
 
@@ -50,14 +50,14 @@ const NewFarmStep2: React.FC<React.PropsWithChildren> = () => {
           cakePrice,
           totalLiquidity,
           farm.lpAddress,
-          regularCakePerBlock,
+          regularRewardPerBlock,
         )
         return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
       return farmsToDisplayWithAPR
     },
-    [cakePrice, regularCakePerBlock],
+    [cakePrice, regularRewardPerBlock],
   )
 
   const chosenFarmsMemoized = useMemo(() => {

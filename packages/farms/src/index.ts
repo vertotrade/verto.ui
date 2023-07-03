@@ -22,12 +22,12 @@ export function createFarmFetcher(multicallv2: MultiCallV2) {
   ) => {
     const { isTestnet, farms, chainId } = params
     const masterChefAddress = masterChefAddresses[DEFAULT_CHAIN_ID]
-    const { poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, cakePerBlock } = await fetchMasterChefV2Data({
+    const { poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, rewardPerBlock } = await fetchMasterChefV2Data({
       isTestnet,
       multicallv2,
       masterChefAddress,
     })
-    const regularCakePerBlock = formatEther(cakePerBlock)
+    const regularRewardPerBlock = formatEther(rewardPerBlock)
     const farmsWithPrice = await farmV2FetchFarms({
       multicallv2,
       masterChefAddress,
@@ -41,7 +41,7 @@ export function createFarmFetcher(multicallv2: MultiCallV2) {
     return {
       farmsWithPrice,
       poolLength: poolLength.toNumber(),
-      regularCakePerBlock: +regularCakePerBlock,
+      regularRewardPerBlock: +regularRewardPerBlock,
     }
   }
   return {

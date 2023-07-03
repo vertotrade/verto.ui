@@ -82,7 +82,7 @@ export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEv
     if (!farmsConfig) {
       throw new Error(`Farms config not found ${chainId}`)
     }
-    const { farmsWithPrice, poolLength, regularCakePerBlock } = await farmFetcher.fetchFarms({
+    const { farmsWithPrice, poolLength, regularRewardPerBlock } = await farmFetcher.fetchFarms({
       chainId,
       isTestnet,
       farms: farmsConfig.filter(f => f.pid !== 0).concat(lpPriceHelpers),
@@ -95,14 +95,14 @@ export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEv
       return {
         ...f,
         lpApr: lpAprs?.[f.lpAddress.toLowerCase()] || 0,
-        cakeApr: getFarmCakeRewardApr(f, FixedNumber.from(cakeBusdPrice.toSignificant(3)), regularCakePerBlock),
+        cakeApr: getFarmCakeRewardApr(f, FixedNumber.from(cakeBusdPrice.toSignificant(3)), regularRewardPerBlock),
       }
     }) as FarmResult
 
     const savedFarms = {
       updatedAt: new Date().toISOString(),
       poolLength,
-      regularCakePerBlock,
+      regularRewardPerBlock,
       data: finalFarm,
     }
 

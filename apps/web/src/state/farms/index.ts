@@ -41,14 +41,14 @@ const fetchFetchPublicDataOld = async ({ pids, chainId }): Promise<[SerializedFa
     },
   ])
 
-  const regularCakePerBlock = getBalanceAmount(new BigNumber(cakePerBlockRaw))
+  const regularRewardPerBlock = getBalanceAmount(new BigNumber(cakePerBlockRaw))
   const farmsConfig = await getFarmConfig(chainId)
   const farmsCanFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.pid))
   const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
 
   const farms = await fetchFarms(farmsCanFetch.concat(priceHelperLpsConfig), chainId)
   const farmsWithPrices = farms.length > 0 ? getFarmsPrices(farms, chainId) : []
-  return [farmsWithPrices, farms.length, regularCakePerBlock.toNumber()]
+  return [farmsWithPrices, farms.length, regularRewardPerBlock.toNumber()]
 }
 
 const fetchFarmPublicDataPkg = async ({ pids, chainId, chain }): Promise<[SerializedFarm[], number, number]> => {
@@ -56,12 +56,12 @@ const fetchFarmPublicDataPkg = async ({ pids, chainId, chain }): Promise<[Serial
   const farmsCanFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.pid))
   const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
 
-  const { farmsWithPrice, poolLength, regularCakePerBlock } = await farmFetcher.fetchFarms({
+  const { farmsWithPrice, poolLength, regularRewardPerBlock } = await farmFetcher.fetchFarms({
     chainId,
     isTestnet: chain.testnet,
     farms: farmsCanFetch.concat(priceHelperLpsConfig),
   })
-  return [farmsWithPrice, poolLength, regularCakePerBlock]
+  return [farmsWithPrice, poolLength, regularRewardPerBlock]
 }
 
 export const farmFetcher = createFarmFetcher(multicallv2)
@@ -122,12 +122,12 @@ export const fetchFarmsPublicDataAsync = createAsyncThunk<
       }
       if (flag === 'api' && !fallback) {
         try {
-          const { updatedAt, data: farmsWithPrice, poolLength, regularCakePerBlock } = await farmApiFetch(chainId)
+          const { updatedAt, data: farmsWithPrice, poolLength, regularRewardPerBlock } = await farmApiFetch(chainId)
           if (Date.now() - new Date(updatedAt).getTime() > 3 * 60 * 1000) {
             fallback = true
             throw new Error('Farm Api out dated')
           }
-          return [farmsWithPrice, poolLength, regularCakePerBlock]
+          return [farmsWithPrice, poolLength, regularRewardPerBlock]
         } catch (error) {
           console.error(error)
           return fetchFarmPublicDataPkg({ pids, chainId, chain })
@@ -259,7 +259,7 @@ export const farmsSlice = createSlice({
 
     // Update farms with live data
     builder.addCase(fetchFarmsPublicDataAsync.fulfilled, (state, action) => {
-      const [farmPayload, poolLength, regularCakePerBlock] = action.payload
+      const [farmPayload, poolLength, regularRewardPerBlock] = action.payload
       const farmPayloadPidMap = keyBy(farmPayload, 'pid')
 
       state.data = state.data.map(farm => {
@@ -267,7 +267,7 @@ export const farmsSlice = createSlice({
         return { ...farm, ...liveFarmData }
       })
       state.poolLength = poolLength
-      state.regularCakePerBlock = regularCakePerBlock
+      state.regularRewardPerBlock = regularRewardPerBlock
     })
 
     // Update farms with user data

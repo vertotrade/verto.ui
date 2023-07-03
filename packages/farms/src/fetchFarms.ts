@@ -2,7 +2,8 @@ import { BigNumber, FixedNumber } from '@ethersproject/bignumber'
 import { formatUnits } from '@ethersproject/units'
 import { Call, MultiCallV2 } from '@verto/multicall'
 import { ChainId } from '@verto/sdk'
-import { FIXED_TWO, FIXED_ZERO } from './const'
+import masterchefABI from 'config/abi/masterchef.json'
+import { DEFAULT_CHAIN_ID, FIXED_TWO, FIXED_ZERO } from './const'
 import { getFarmsPrices } from './farmPrices'
 import { fetchPublicFarmsData } from './fetchPublicFarmData'
 import { fetchStableFarmData } from './fetchStableFarmData'
@@ -58,9 +59,9 @@ export async function farmV2FetchFarms({
 }: FetchFarmsParams) {
   const stableFarms = farms.filter(isStableFarm)
 
-  const [stableFarmsResults, poolInfos, lpDataResults] = await Promise.all([
+  const [stableFarmsResults, lpDataResults] = await Promise.all([
     fetchStableFarmData(stableFarms, chainId, multicallv2),
-    fetchMasterChefData(farms, isTestnet, multicallv2, masterChefAddress),
+    // fetchMasterChefData(farms, isTestnet, multicallv2, masterChefAddress),
     fetchPublicFarmsData(farms, chainId, multicallv2, masterChefAddress),
   ])
 
@@ -94,16 +95,16 @@ export async function farmV2FetchFarms({
               token1Decimals: farm.quoteToken.decimals,
             })),
         ...getFarmAllocation({
-          allocPoint: poolInfos[index]?.allocPoint,
-          isRegular: poolInfos[index]?.isRegular,
+          // allocPoint: poolInfos[index]?.allocPoint,
+          // isRegular: poolInfos[index]?.isRegular,
           totalRegularAllocPoint,
           totalSpecialAllocPoint,
         }),
       }
     } catch (error) {
       console.error(error, farm, index, {
-        allocPoint: poolInfos[index]?.allocPoint,
-        isRegular: poolInfos[index]?.isRegular,
+        // allocPoint: poolInfos[index]?.allocPoint,
+        // isRegular: poolInfos[index]?.isRegular,
         token0Decimals: farm.token.decimals,
         token1Decimals: farm.quoteToken.decimals,
         totalRegularAllocPoint,
@@ -224,37 +225,23 @@ export const fetchMasterChefV2Data = async ({
       }
     }
 
-    const [[poolLength], [totalRegularAllocPoint], [totalSpecialAllocPoint], [cakePerBlock]] = await multicallv2<
-      [[BigNumber], [BigNumber], [BigNumber], [BigNumber]]
-    >({
-      abi: masterChefV2Abi,
+    const [rewardPerBlock] = await multicallv2<[BigNumber]>({
+      abi: masterchefABI,
       calls: [
         {
           address: masterChefAddress,
-          name: 'poolLength',
-        },
-        {
-          address: masterChefAddress,
-          name: 'totalRegularAllocPoint',
-        },
-        {
-          address: masterChefAddress,
-          name: 'totalSpecialAllocPoint',
-        },
-        {
-          address: masterChefAddress,
-          name: 'cakePerBlock',
-          params: [true],
+          name: 'rewardPerBlock',
+          params: [],
         },
       ],
       chainId: isTestnet ? ChainId.REBUS_TESTNET : ChainId.REBUS,
     })
 
     return {
-      poolLength,
-      totalRegularAllocPoint,
-      totalSpecialAllocPoint,
-      cakePerBlock,
+      poolLength: BigNumber.from(0),
+      totalRegularAllocPoint: BigNumber.from(0),
+      totalSpecialAllocPoint: BigNumber.from(0),
+      rewardPerBlock,
     }
   } catch (error) {
     console.error('Get MasterChef data error', error)

@@ -129,7 +129,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { pathname, query: urlQuery } = useRouter()
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
-  const { data: farmsLP, userDataLoaded, poolLength, regularCakePerBlock } = useFarms()
+  const { data: farmsLP, userDataLoaded, poolLength, regularRewardPerBlock } = useFarms()
   const cakePrice = usePriceCakeBusd()
 
   const [_query, setQuery] = useState('')
@@ -198,7 +198,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               cakePrice,
               totalLiquidity,
               farm.lpAddress,
-              regularCakePerBlock,
+              regularRewardPerBlock,
             )
           : { cakeRewardsApr: 0, lpRewardsApr: 0 }
 
@@ -214,7 +214,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
       return farmsToDisplayWithAPR
     },
-    [query, isActive, chainId, cakePrice, regularCakePerBlock],
+    [query, isActive, chainId, cakePrice, regularRewardPerBlock],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
