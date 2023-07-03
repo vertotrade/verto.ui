@@ -82,9 +82,9 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
         </Flex>
         <SocialLinks order={[2]} display="flex" alignItems="center" />
         <StyledToolsContainer order={[3]} flexDirection={["column", null, "row"]} justifyContent="space-between">
-          <Flex order={[2, null, 1]} alignItems="center">
-            <SkeletonV2 variant="round" width="56px" height="32px" isDataReady={isMounted}>
-              <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
+          <Flex order={[2, null, 1]} alignItems="center" justifyContent="center">
+            <SkeletonV2 variant="round" width="auto" height="auto" isDataReady={isMounted}>
+              <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} showText />
             </SkeletonV2>
             <HiddenLangSelector
               currentLang={currentLang}
