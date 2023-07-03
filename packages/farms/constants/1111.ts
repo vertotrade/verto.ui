@@ -10,12 +10,13 @@ const farms: SerializedFarmConfig[] = [
     poolAddress: '0x2B9B68ada280356d16180d799E888E4734AB3b73',
     token: vertoTokens.axlusdc,
     quoteToken: vertoTokens.verto,
+    rewardToken: vertoTokens.axlusdc,
   },
 ].map(p => ({
   ...p,
   token: p.token.serialize,
   quoteToken: p.quoteToken.serialize,
-  // rewardToken: p.rewardToken.serialize,
+  rewardToken: p.rewardToken.serialize,
 }))
 
 export default farms
