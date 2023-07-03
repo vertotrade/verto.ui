@@ -118,7 +118,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
       userDataReady={userDataReady}
       proxyCakeBalance={proxyCakeBalance}
       handleHarvest={onClickHarvestButton}
-      tokenName={rewardToken?.name}
+      tokenName={rewardToken?.name ?? token?.name}
     />
   )
 }

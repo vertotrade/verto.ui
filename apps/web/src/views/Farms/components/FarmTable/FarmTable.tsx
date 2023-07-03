@@ -148,7 +148,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
         token: farm.token,
         quoteToken: farm.quoteToken,
         rewardToken: farm.rewardToken,
-        isReady: farm.multiplier !== undefined,
+        isReady: true,
         isStable: farm.isStable,
       },
       earned: {

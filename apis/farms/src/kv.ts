@@ -12,7 +12,7 @@ export type FarmResult = Array<FarmWithPrices & { cakeApr?: string; lpApr?: numb
 export type SavedFarmResult = {
   updatedAt: string
   poolLength: number
-  regularCakePerBlock: number
+  regularRewardPerBlock: number
   data: FarmResult
 }
 

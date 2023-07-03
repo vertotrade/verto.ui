@@ -12,7 +12,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 
 const useGetTopFarmsByApr = (isIntersecting: boolean) => {
   const dispatch = useAppDispatch()
-  const { data: farms, regularCakePerBlock } = useFarms()
+  const { data: farms, regularRewardPerBlock } = useFarms()
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle)
   const [fetched, setFetched] = useState(false)
   const [topFarms, setTopFarms] = useState<FarmWithStakedValue[]>([null, null, null, null, null])
@@ -52,7 +52,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
           cakePriceBusd,
           totalLiquidity,
           farm.lpAddress,
-          regularCakePerBlock,
+          regularRewardPerBlock,
         )
         return { ...farm, apr: cakeRewardsApr, lpRewardsApr }
       })
@@ -65,7 +65,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
     if (fetchStatus === FetchStatus.Fetched && !topFarms[0] && farms?.length > 0) {
       getTopFarmsByApr(farms)
     }
-  }, [setTopFarms, farms, fetchStatus, cakePriceBusd, topFarms, regularCakePerBlock, chainId])
+  }, [setTopFarms, farms, fetchStatus, cakePriceBusd, topFarms, regularRewardPerBlock, chainId])
 
   return { topFarms, fetched }
 }

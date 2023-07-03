@@ -39,7 +39,7 @@ export interface SerializedStableFarmConfig extends SerializedClassicFarmConfig 
 export interface SerializedClassicFarmConfig extends FarmConfigBaseProps {
   token: SerializedWrappedToken
   quoteToken: SerializedWrappedToken
-  rewardToken: SerializedWrappedToken
+  rewardToken?: SerializedWrappedToken
 }
 
 export type SerializedFarmConfig = SerializedStableFarmConfig | SerializedClassicFarmConfig
@@ -93,7 +93,7 @@ export interface SerializedFarmsState {
   userDataLoaded: boolean
   loadingKeys: Record<string, boolean>
   poolLength?: number
-  regularCakePerBlock?: number
+  regularRewardPerBlock?: number
 }
 
 export interface DeserializedFarmConfig extends FarmConfigBaseProps {
@@ -138,7 +138,7 @@ export interface DeserializedFarmsState {
   loadArchivedFarmsData: boolean
   userDataLoaded: boolean
   poolLength?: number
-  regularCakePerBlock?: number
+  regularRewardPerBlock?: number
 }
 
 export interface FarmWithStakedValue extends DeserializedFarm {

@@ -11,7 +11,7 @@ export const FIXED_TWO = FixedNumber.from(2)
 export const masterChefAddresses = {
   97: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
   56: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
-  1111: '',
+  1111: '0x2B9B68ada280356d16180d799E888E4734AB3b73',
   3333: '0xdfB5926eDFff1B13F11F65948adC3c2967CEd08d',
 }
 

@@ -136,14 +136,14 @@ export const farmSelector = (chainId: number) =>
     (state: State) => state.farms,
     farms => {
       const deserializedFarmsData = farms.data.map(deserializeFarm).filter(farm => farm.token.chainId === chainId)
-      const { loadArchivedFarmsData, userDataLoaded, poolLength, regularCakePerBlock } = farms
+      const { loadArchivedFarmsData, userDataLoaded, poolLength, regularRewardPerBlock } = farms
 
       return {
         loadArchivedFarmsData,
         userDataLoaded,
         data: deserializedFarmsData,
         poolLength,
-        regularCakePerBlock,
+        regularRewardPerBlock,
       }
     },
   )
