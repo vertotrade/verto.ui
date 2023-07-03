@@ -20,7 +20,7 @@ import Apr, { AprProps } from '../Apr'
 import { HarvestAction, HarvestActionContainer, ProxyHarvestActionContainer } from './HarvestAction'
 import StakedAction, { ProxyStakedContainer, StakedContainer } from './StakedAction'
 
-const { Multiplier, Liquidity } = FarmUI.FarmTable
+const { Liquidity } = FarmUI.FarmTable
 
 export interface ActionPanelProps {
   apr: AprProps
@@ -116,7 +116,7 @@ const ValueWrapper = styled.div`
 const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelProps>> = ({
   details,
   apr,
-  multiplier,
+  // multiplier,
   liquidity,
   userDataReady,
   expanded,
@@ -172,10 +172,10 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
                 <Text>{t('APR')}</Text>
                 <Apr {...apr} useTooltipText={false} boosted={farm.boosted} />
               </ValueWrapper>
-              <ValueWrapper>
+              {/* <ValueWrapper>
                 <Text>{t('Multiplier')}</Text>
                 <Multiplier {...multiplier} />
-              </ValueWrapper>
+              </ValueWrapper> */}
               <ValueWrapper>
                 <Text>{t('Liquidity')}</Text>
                 <Liquidity {...liquidity} />
