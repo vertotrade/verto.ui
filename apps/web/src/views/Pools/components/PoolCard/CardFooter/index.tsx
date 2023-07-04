@@ -17,12 +17,14 @@ interface FooterProps {
 
 const ExpandableButtonWrapper = styled(Flex)`
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   button {
     padding: 0;
   }
 `
 const ExpandedWrapper = styled(Flex)`
+  padding-top: 24px;
+
   svg {
     height: 14px;
     width: 14px;
@@ -47,7 +49,7 @@ const Footer: React.FC<React.PropsWithChildren<FooterProps>> = ({
           <PoolTypeTag vaultKey={vaultKey} isLocked={isLocked} account={account}>
             {targetRef => (
               <Flex ref={targetRef}>
-                <HelpIcon ml="8px" width="20px" height="20px" color="textSubtle" />
+                <HelpIcon ml="8px" width="20px" height="20px" color="icon" />
               </Flex>
             )}
           </PoolTypeTag>

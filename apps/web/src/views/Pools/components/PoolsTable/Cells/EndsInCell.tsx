@@ -67,12 +67,7 @@ const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }
 
   return (
     <StyledCell role="cell">
-      <Pool.CellContent>
-        <Text fontSize="12px" color="textSubtle" textAlign="left">
-          {text}
-        </Text>
-        {showLoading ? <Skeleton width="80px" height="16px" /> : renderBlocks}
-      </Pool.CellContent>
+      <Pool.CellContent>{showLoading ? <Skeleton width="80px" height="16px" /> : renderBlocks}</Pool.CellContent>
     </StyledCell>
   )
 }

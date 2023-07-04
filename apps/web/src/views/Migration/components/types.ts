@@ -23,7 +23,7 @@ export type ColumnsDefTypes = {
   sortable: boolean
 }
 
-export const DesktopColumnSchema: ColumnsDefTypes[] = [
+export const FarmDesktopColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
     name: 'farm',

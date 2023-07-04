@@ -11,8 +11,8 @@ import {
   FarmTableLiquidityProps,
   FarmTableMultiplierProps,
   FarmTableFarmTokenInfoProps,
-  MobileColumnSchema,
-  DesktopColumnSchema,
+  FarmMobileColumnSchema,
+  FarmDesktopColumnSchema,
 } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { useFarmUser } from 'state/farms/hooks'
@@ -106,7 +106,7 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
   const { isDesktop, isMobile } = useMatchBreakpoints()
 
   const isSmallerScreen = !isDesktop
-  const tableSchema = isSmallerScreen ? MobileColumnSchema : DesktopColumnSchema
+  const tableSchema = isSmallerScreen ? FarmMobileColumnSchema : FarmDesktopColumnSchema
   const columnNames = tableSchema.map(column => column.name)
 
   const handleRenderRow = () => {

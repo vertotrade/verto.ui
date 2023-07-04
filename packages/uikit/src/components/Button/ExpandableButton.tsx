@@ -12,7 +12,7 @@ export const ExpandableButton: React.FC<React.PropsWithChildren<Props>> = ({ onC
   return (
     <IconButton aria-label="Hide or show expandable content" onClick={onClick}>
       {children}
-      {expanded ? <ChevronUpIcon color="invertedContrast" /> : <ChevronDownIcon color="invertedContrast" />}
+      {expanded ? <ChevronUpIcon color="text" /> : <ChevronDownIcon color="text" />}
     </IconButton>
   );
 };
@@ -23,10 +23,12 @@ ExpandableButton.defaultProps = {
 export const ExpandableLabel: React.FC<React.PropsWithChildren<Props>> = ({ onClick, expanded, children }) => {
   return (
     <Button
-      variant="text"
+      variant="vertoText"
+      scale="newSm"
+      width="100%"
       aria-label="Hide or show expandable content"
       onClick={onClick}
-      endIcon={expanded ? <ChevronUpIcon color="primary" /> : <ChevronDownIcon color="primary" />}
+      endIcon={expanded ? <ChevronUpIcon color="text" /> : <ChevronDownIcon color="text" />}
     >
       {children}
     </Button>

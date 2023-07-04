@@ -18,9 +18,12 @@ interface NameCellProps {
 const StyledCell = styled(Pool.BaseCell)`
   flex: 5;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   padding-left: 12px;
+
   ${({ theme }) => theme.mediaQueries.sm} {
-    flex: 1 0 150px;
+    flex: 1 0 250px;
     padding-left: 32px;
   }
 `

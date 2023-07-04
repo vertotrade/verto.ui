@@ -32,7 +32,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
   pool,
   account,
   showTotalStaked = true,
-  alignLinksToRight = true,
+  alignLinksToRight = false,
 }) => {
   const { t } = useTranslation()
   const currentBlock = useCurrentBlock()
@@ -99,7 +99,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           </Text>
         </Flex>
       )}
-      {!vaultKey && <AprInfo pool={pool} stakedBalance={stakedBalance} />}
+      {/* {!vaultKey && <AprInfo pool={pool} stakedBalance={stakedBalance} />} */}
       {showTotalStaked && (
         <TotalStaked totalStaked={vaultKey ? totalCakeInVault : totalStaked} stakingToken={stakingToken} />
       )}
@@ -180,16 +180,15 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             small>
             {t('View Contract')}
           </LinkExternal>
-          {pool.isBoosted && <BoostedTag scale="sm" ml="16px" />}
         </Flex>
       )}
       {account && tokenAddress && (
         <Flex justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
           <AddToWalletButton
-            variant="text"
+            variant="vertoLink"
             p="0"
             height="auto"
-            style={{ fontSize: '14px', fontWeight: '400', lineHeight: 'normal' }}
+            style={{ fontSize: '14px', fontWeight: '400', lineHeight: '21px' }}
             marginTextBetweenLogo="4px"
             textOptions={AddToWalletTextOptions.TEXT}
             tokenAddress={tokenAddress}
