@@ -167,6 +167,27 @@ export const styleVariants = {
       color: "var(--colors-disabledText)",
     },
   },
+  [variants.VERTO_TEXT]: {
+    background: "transparent",
+    color: "var(--colors-text)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background-position 0.3s",
+    height: "initial",
+    ":hover": {
+      opacity: "1 !important",
+    },
+  },
+  [variants.VERTO_LINK]: {
+    backgroundColor: "transparent",
+    color: "link",
+    boxShadow: "none",
+    ":hover": {
+      opacity: "1 !important",
+      textDecoration: "underline",
+    },
+  },
   [variants.VERTO_ICON]: {
     backgroundColor: "transparent",
     color: "icon",

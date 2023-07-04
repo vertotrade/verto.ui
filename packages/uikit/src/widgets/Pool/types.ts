@@ -148,3 +148,76 @@ export interface HarvestActionsProps {
   earningTokenBalance: number;
   earningTokenDollarBalance: number;
 }
+
+export type ColumnsDefTypes = {
+  id: number;
+  label: string;
+  name: string;
+  sortable: boolean;
+};
+
+export const PoolMobileColumnSchema: ColumnsDefTypes[] = [
+  {
+    id: 1,
+    name: "farm",
+    sortable: true,
+    label: "Pools",
+  },
+  {
+    id: 2,
+    name: "earned",
+    sortable: true,
+    label: "Earned",
+  },
+  {
+    id: 3,
+    name: "apr",
+    sortable: true,
+    label: "APR",
+  },
+  {
+    id: 6,
+    name: "details",
+    sortable: true,
+    label: "",
+  },
+];
+
+export const PoolDesktopColumnSchema: ColumnsDefTypes[] = [
+  {
+    id: 1,
+    name: "pools",
+    sortable: true,
+    label: "Pools",
+  },
+  {
+    id: 3,
+    name: "earned",
+    sortable: true,
+    label: "Earned",
+  },
+  {
+    id: 4,
+    name: "staked",
+    sortable: true,
+    label: "Staked",
+  },
+  {
+    id: 5,
+    name: "apr",
+    sortable: true,
+    label: "APR",
+  },
+  {
+    id: 6,
+    name: "ends_in",
+    sortable: true,
+    label: "Ends in",
+  },
+  {
+    id: 7,
+    name: "details",
+    sortable: true,
+    label: "",
+  },
+];

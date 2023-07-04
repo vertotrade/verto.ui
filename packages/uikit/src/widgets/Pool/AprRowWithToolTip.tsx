@@ -15,7 +15,7 @@ export const AprRowWithToolTip: React.FC<React.PropsWithChildren<{ questionToolt
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: "bottom-start" });
 
   return (
-    <Flex alignItems="center" justifyContent="space-between">
+    <Flex alignItems="center" justifyContent="space-between" px="32px">
       {tooltipVisible && tooltip}
       <Flex>
         <TooltipText ref={targetRef}>{`${t("APR")}:`}</TooltipText>

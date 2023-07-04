@@ -40,10 +40,10 @@ const CardActions: React.FC<React.PropsWithChildren<CardActionsProps>> = ({ pool
       <Flex flexDirection="column">
         <>
           <Box display="inline">
-            <InlineText color="secondary" textTransform="uppercase" bold fontSize="12px">
+            <InlineText color="text" textTransform="uppercase" bold fontSize="12px">
               {`${earningToken.symbol} `}
             </InlineText>
-            <InlineText color="textSubtle" textTransform="uppercase" bold fontSize="12px">
+            <InlineText color="text" textTransform="uppercase" bold fontSize="12px">
               {t('Earned')}
             </InlineText>
           </Box>
@@ -57,11 +57,11 @@ const CardActions: React.FC<React.PropsWithChildren<CardActionsProps>> = ({ pool
             isLoading={isLoading}
           />
         </>
-        <Box display="inline">
-          <InlineText color={isStaked ? 'secondary' : 'textSubtle'} textTransform="uppercase" bold fontSize="12px">
+        <Box display="inline" mb="8px">
+          <InlineText color="text" textTransform="uppercase" bold fontSize="12px">
             {isStaked ? stakingToken.symbol : t('Stake')}{' '}
           </InlineText>
-          <InlineText color={isStaked ? 'textSubtle' : 'secondary'} textTransform="uppercase" bold fontSize="12px">
+          <InlineText color="text" textTransform="uppercase" bold fontSize="12px">
             {isStaked ? t('Staked') : `${stakingToken.symbol}`}
           </InlineText>
         </Box>

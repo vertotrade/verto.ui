@@ -5,7 +5,7 @@ import { CardHeader, Flex, Heading, Text } from "../../components";
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background: string }>`
   background: transparent;
   border-radius: ${({ theme }) => `${theme.radii.card} ${theme.radii.card} 0 0`};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.hrBold};
 `;
 
 export const PoolCardHeader: React.FC<
@@ -30,10 +30,10 @@ export const PoolCardHeaderTitle: React.FC<
 > = ({ isFinished, title, subTitle }) => {
   return (
     <Flex flexDirection="column">
-      <Heading color={isFinished ? "textDisabled" : "body"} scale="lg">
+      <Heading color={isFinished ? "disbaldText" : "body"} scale="lg">
         {title}
       </Heading>
-      <Text fontSize="14px" color={isFinished ? "textDisabled" : "textSubtle"}>
+      <Text fontSize="14px" color={isFinished ? "disbaldText" : "textSubtle"}>
         {subTitle}
       </Text>
     </Flex>

@@ -1,7 +1,7 @@
 import { useRef, useMemo, useCallback } from 'react'
 import { latinise } from 'utils/latinise'
 import styled from 'styled-components'
-import { RowType, DesktopColumnSchema } from '@verto/uikit'
+import { RowType, FarmDesktopColumnSchema } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
@@ -67,7 +67,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
 
   const columns = useMemo(
     () =>
-      DesktopColumnSchema.map(column => ({
+      FarmDesktopColumnSchema.map(column => ({
         id: column.id,
         name: column.name,
         label: column.label,

@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { useTranslation } from "@verto/localization";
 
-import { Text, ChevronDownIcon } from "../../../components";
+import { ChevronDownIcon } from "../../../components";
 import { BaseCell } from "./BaseCell";
 
 interface ExpandActionCellProps {
   expanded: boolean;
-  isFullLayout: boolean;
 }
 
 const StyledCell = styled(BaseCell)`
@@ -17,7 +15,7 @@ const StyledCell = styled(BaseCell)`
   padding-right: 12px;
   padding-left: 0px;
   ${({ theme }) => theme.mediaQueries.md} {
-    flex: 0 0 120px;
+    flex: 0 0 60px;
     padding-right: 32px;
     padding-left: 8px;
   }
@@ -26,21 +24,13 @@ const StyledCell = styled(BaseCell)`
 const ArrowIcon = styled((props) => <ChevronDownIcon {...props} />)`
   transform: ${({ toggled }) => (toggled ? "rotate(180deg)" : "rotate(0)")};
   height: 24px;
+  width: 24px;
 `;
 
-export const ExpandActionCell: React.FC<React.PropsWithChildren<ExpandActionCellProps>> = ({
-  expanded,
-  isFullLayout,
-}) => {
-  const { t } = useTranslation();
+export const ExpandActionCell: React.FC<React.PropsWithChildren<ExpandActionCellProps>> = ({ expanded }) => {
   return (
     <StyledCell role="cell">
-      {isFullLayout && (
-        <Text color="primary" bold>
-          {expanded ? t("Hide") : t("Details")}
-        </Text>
-      )}
-      <ArrowIcon color="primary" toggled={expanded} />
+      <ArrowIcon color="icon" toggled={expanded} />
     </StyledCell>
   );
 };

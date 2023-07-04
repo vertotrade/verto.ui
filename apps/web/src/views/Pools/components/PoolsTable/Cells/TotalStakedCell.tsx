@@ -1,6 +1,5 @@
-import { Flex, Skeleton, Text, Balance, Pool } from '@verto/uikit'
+import { Flex, Skeleton, Balance, Pool } from '@verto/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@verto/localization'
 import { Token } from '@verto/sdk'
 import BigNumber from 'bignumber.js'
 
@@ -19,14 +18,9 @@ const TotalStakedCell: React.FC<React.PropsWithChildren<TotalStakedCellProps>> =
   totalStaked,
   totalStakedBalance,
 }) => {
-  const { t } = useTranslation()
-
   return (
     <StyledCell role="cell">
       <Pool.CellContent>
-        <Text fontSize="12px" color="textSubtle" textAlign="left">
-          {t('Total staked')}
-        </Text>
         {totalStaked && totalStaked.gte(0) ? (
           <Flex height="20px" alignItems="center">
             <Balance fontSize="16px" value={totalStakedBalance} decimals={0} unit={` ${stakingToken.symbol}`} />

@@ -4,7 +4,6 @@ import BigNumber from 'bignumber.js'
 import { PoolCategory } from 'config/constants/types'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { formatNumber, getBalanceNumber, getFullDisplayBalance } from '@verto/utils/formatBalance'
-import { useTranslation } from '@verto/localization'
 import { Token } from '@verto/sdk'
 import CollectModal from '../../Modals/CollectModal'
 
@@ -21,7 +20,6 @@ const StyledCell = styled(Pool.BaseCell)`
 `
 
 const EarningsCell: React.FC<React.PropsWithChildren<EarningsCellProps>> = ({ pool, account }) => {
-  const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
   const { sousId, earningToken, poolCategory, userData, earningTokenPrice } = pool
 
@@ -32,8 +30,6 @@ const EarningsCell: React.FC<React.PropsWithChildren<EarningsCellProps>> = ({ po
   const fullBalance = getFullDisplayBalance(earnings, earningToken.decimals)
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
   const isBnbPool = poolCategory === PoolCategory.BINANCE
-
-  const labelText = t('%asset% Earned', { asset: earningToken.symbol })
 
   const [onPresentCollect] = useModal(
     <CollectModal
@@ -54,9 +50,6 @@ const EarningsCell: React.FC<React.PropsWithChildren<EarningsCellProps>> = ({ po
   return (
     <StyledCell role="cell">
       <Pool.CellContent>
-        <Text fontSize="12px" color="textSubtle" textAlign="left">
-          {labelText}
-        </Text>
         {!pool.userDataLoaded && account ? (
           <Skeleton width="80px" height="16px" />
         ) : (

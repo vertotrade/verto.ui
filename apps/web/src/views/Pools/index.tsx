@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import { useMemo } from 'react'
 import { useAccount } from 'wagmi'
-import { Heading, Flex, Text, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@verto/uikit'
+import { VertoHeading, Flex, Text, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { usePoolsPageFetch, usePoolsWithVault } from 'state/pools/hooks'
 import Page from 'components/Layout/Page'
@@ -16,6 +16,7 @@ import CardFooter from './components/PoolCard/CardFooter'
 import RebusVaultCard from './components/RebusVaultCard'
 import PoolControls from './components/PoolControls'
 import PoolRow, { VaultPoolRow } from './components/PoolsTable/PoolRow'
+import { PoolHeaderRow } from './components/PoolsTable/PoolHeaderRow'
 
 const CardLayout = styled(FlexLayout)`
   justify-content: center;
@@ -35,15 +36,11 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
       <PageHeader>
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
-            <Heading as="h1" scale="xxl" color="secondary" mb="24px">
+            <VertoHeading as="h1" scale="h2" mb="4px">
               {t('Minting Pools')}
-            </Heading>
-            <Heading scale="md" color="notSelectedNavColor">
-              {t('Just stake some tokens to earn.')}
-            </Heading>
-            <Heading scale="md" color="notSelectedNavColor">
-              {t('High APR, low risk.')}
-            </Heading>
+            </VertoHeading>
+            <Text fontSize="14px">{t('Just stake some tokens to earn.')}</Text>
+            <Text fontSize="14px">{t('High APR, low risk.')}</Text>
           </Flex>
         </Flex>
       </PageHeader>
@@ -71,7 +68,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                             <CardActions pool={pool} stakedBalance={pool?.userData?.stakedBalance} />
                           ) : (
                             <>
-                              <Text mb="10px" textTransform="uppercase" fontSize="12px" color="textSubtle" bold>
+                              <Text mb="10px" textTransform="uppercase" fontSize="12px" color="text" bold>
                                 {t('Start earning')}
                               </Text>
                               <ConnectWalletButton />
@@ -80,6 +77,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                         }
                         tokenPairImage={
                           <TokenPairImage
+                            bold
                             primaryToken={pool.earningToken}
                             secondaryToken={pool.stakingToken}
                             width={64}
@@ -95,6 +93,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
               ) : (
                 chosenPools.length > 0 && (
                   <Pool.PoolsTable>
+                    <PoolHeaderRow />
                     {chosenPools.map(pool =>
                       pool.vaultKey ? (
                         <VaultPoolRow

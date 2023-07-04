@@ -42,10 +42,10 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.Deseri
 
   const actionTitle = (
     <>
-      <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
+      <Text fontSize="12px" bold color="text" as="span" textTransform="uppercase">
         {earningToken.symbol}{' '}
       </Text>
-      <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
+      <Text fontSize="12px" bold color="text" as="span" textTransform="uppercase">
         {t('Earned')}
       </Text>
     </>
@@ -54,10 +54,10 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.Deseri
   if (!account) {
     return (
       <ActionContainer>
-        <ActionTitles>{actionTitle}</ActionTitles>
+        {/* <ActionTitles>{actionTitle}</ActionTitles> */}
         <ActionContent>
-          <Heading>0</Heading>
-          <Button disabled>{t('Harvest')}</Button>
+          {/* <Heading>0</Heading> */}
+          {/* <Button disabled>{t('Harvest')}</Button> */}
         </ActionContent>
       </ActionContainer>
     )
@@ -66,7 +66,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.Deseri
   if (!userDataLoaded) {
     return (
       <ActionContainer>
-        <ActionTitles>{actionTitle}</ActionTitles>
+        {/* <ActionTitles>{actionTitle}</ActionTitles> */}
         <ActionContent>
           <Skeleton width={180} height="32px" marginTop={14} />
         </ActionContent>
@@ -76,7 +76,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.Deseri
 
   return (
     <ActionContainer>
-      <ActionTitles>{actionTitle}</ActionTitles>
+      {/* <ActionTitles>{actionTitle}</ActionTitles> */}
       <ActionContent>
         <Flex flex="1" flexDirection="column" alignSelf="flex-center">
           <>
@@ -87,7 +87,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.Deseri
                   <Balance
                     display="inline"
                     fontSize="12px"
-                    color="textSubtle"
+                    color="text"
                     decimals={2}
                     prefix="~"
                     value={earningTokenDollarBalance}
