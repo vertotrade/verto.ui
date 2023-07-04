@@ -1,5 +1,5 @@
 export * from "./FarmWidget";
-export { MobileColumnSchema, DesktopColumnSchema } from "./types";
+export { FarmMobileColumnSchema, FarmDesktopColumnSchema } from "./types";
 export type {
   FarmTableEarnedProps,
   FarmTableLiquidityProps,

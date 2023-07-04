@@ -7,7 +7,7 @@ import { CAKE_PER_YEAR } from 'config'
 import { useFarmsV1, usePriceCakeBusd } from 'state/farmsV1/hooks'
 import { DeserializedFarm, FarmWithStakedValue } from '@verto/farms'
 import MigrationFarmTable from '../../MigrationFarmTable'
-import { DesktopColumnSchema } from '../../types'
+import { FarmDesktopColumnSchema } from '../../types'
 
 const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
@@ -58,7 +58,7 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
       noStakedFarmText={t('You are not currently staking in any v1 farms.')}
       account={account}
       cakePrice={cakePrice}
-      columnSchema={DesktopColumnSchema}
+      columnSchema={FarmDesktopColumnSchema}
       farms={chosenFarmsMemoized}
       userDataReady={userDataReady}
     />

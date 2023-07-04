@@ -17,7 +17,7 @@ import { useModal } from "../Modal";
 
 const AprLabelContainer = styled(Flex)`
   &:hover {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 `;
 
@@ -103,7 +103,7 @@ export function Apr<T>({
               />
               {!isFinished && showIcon && (
                 <Button onClick={openRoiModal} variant="text" width="20px" height="20px" padding="0px" marginLeft="4px">
-                  <CalculateIcon color="textSubtle" width="20px" />
+                  <CalculateIcon color="text" width="20px" />
                 </Button>
               )}
             </>

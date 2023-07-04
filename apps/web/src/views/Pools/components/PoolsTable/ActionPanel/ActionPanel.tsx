@@ -50,6 +50,8 @@ const StyledActionPanel = styled.div<{ expanded: boolean }>`
   flex-direction: column-reverse;
   justify-content: center;
   padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     flex-direction: row;
@@ -144,14 +146,14 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
     <StyledActionPanel expanded={expanded}>
       <InfoSection>
         {isMobile && vaultKey === VaultKey.RebusVault && isLocked && (
-          <Box mb="16px">
+          <Box>
             <YieldBoostDurationRow
               lockEndTime={(vaultData as DeserializedLockedRebusVault).userData.lockEndTime}
               lockStartTime={(vaultData as DeserializedLockedRebusVault).userData.lockStartTime}
             />
           </Box>
         )}
-        <Flex flexDirection="column" mb="8px">
+        <Flex flexDirection="column">
           <PoolStatsInfo pool={pool} account={account} showTotalStaked={isMobile} alignLinksToRight={isMobile} />
         </Flex>
         <Flex alignItems="center">
@@ -168,19 +170,15 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
         {isMobile && vaultKey === VaultKey.RebusVault && vaultPosition === VaultPosition.None && (
           <RebusVaultApr pool={pool} userData={vaultData.userData} vaultPosition={vaultPosition} />
         )}
-        <Box width="100%">
-          {pool.vaultKey === VaultKey.RebusVault && (
-            <VaultPositionTagWithLabel
-              userData={vaultData.userData as DeserializedLockedVaultUser}
-              width={['auto', , 'fit-content']}
-              ml={['12px', , , , , '32px']}
-            />
-          )}
-          <ActionContainer isAutoVault={!!pool.vaultKey} hasBalance={poolStakingTokenBalance.gt(0)}>
-            {pool.vaultKey ? <AutoHarvest {...pool} /> : <Harvest {...pool} />}
-            <Stake pool={pool} />
-          </ActionContainer>
-        </Box>
+        {pool.vaultKey === VaultKey.RebusVault && (
+          <VaultPositionTagWithLabel
+            userData={vaultData.userData as DeserializedLockedVaultUser}
+            width={['auto', , 'fit-content']}
+            ml={['12px', , , , , '32px']}
+          />
+        )}
+        {pool.vaultKey ? <AutoHarvest {...pool} /> : <Harvest {...pool} />}
+        <Stake pool={pool} />
       </ActionContainer>
     </StyledActionPanel>
   )

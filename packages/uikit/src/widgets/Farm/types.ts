@@ -37,7 +37,7 @@ export type ColumnsDefTypes = {
   sortable: boolean;
 };
 
-export const MobileColumnSchema: ColumnsDefTypes[] = [
+export const FarmMobileColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
     name: "farm",
@@ -64,7 +64,7 @@ export const MobileColumnSchema: ColumnsDefTypes[] = [
   },
 ];
 
-export const DesktopColumnSchema: ColumnsDefTypes[] = [
+export const FarmDesktopColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
     name: "farm",

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { MobileColumnSchema, DesktopColumnSchema, useMatchBreakpoints } from '@verto/uikit'
+import { FarmMobileColumnSchema, FarmDesktopColumnSchema, useMatchBreakpoints } from '@verto/uikit'
 import { ColumnsDefTypes } from '@verto/uikit/src/widgets/Farm/types'
 
 type FarmTableHead = {
@@ -30,7 +30,7 @@ const InnerCell = styled.div<{ isFirstChild: boolean }>`
 
 export function FarmTableHead() {
   const { isDesktop, isMobile } = useMatchBreakpoints()
-  const tableSchema = isDesktop ? DesktopColumnSchema : MobileColumnSchema
+  const tableSchema = isDesktop ? FarmDesktopColumnSchema : FarmMobileColumnSchema
 
   const headerCells = useMemo(
     () =>

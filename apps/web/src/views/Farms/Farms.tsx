@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import { ChainId } from '@verto/sdk'
 import { useAccount } from 'wagmi'
 import {
-  Heading,
+  VertoHeading,
   Toggle,
   Text,
   Flex,
@@ -39,11 +39,10 @@ import { BCakeBoosterCard } from './components/BCakeBoosterCard'
 const ControlContainer = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
 
   justify-content: space-between;
-  align-items: flex-start;
   flex-direction: column;
   margin-bottom: 16px;
 
@@ -52,23 +51,15 @@ const ControlContainer = styled.div`
     flex-wrap: wrap;
     margin-bottom: 32px;
   }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    align-items: center;
+  }
 `
 const FarmFlexWrapper = styled(Flex)`
   flex-wrap: wrap;
   ${({ theme }) => theme.mediaQueries.md} {
     flex-wrap: nowrap;
   }
-`
-const FarmH1 = styled(Heading)`
-  font-size: 34px;
-  line-height: 40px;
-  margin-bottom: 4px;
-`
-const FarmH2 = styled(Heading)`
-  font-size: 14px;
-  font-weight: 400;
-  font-family: 'Roboto', sans-serif;
-  line-height: 20px;
 `
 
 const ToggleWrapper = styled.div`
@@ -300,8 +291,10 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       <PageHeader>
         <FarmFlexWrapper justifyContent="space-between">
           <Box>
-            <FarmH1 as="h1">{t('Farms')}</FarmH1>
-            <FarmH2>{t('Stake LP tokens to earn.')}</FarmH2>
+            <VertoHeading as="h1" scale="h2" mb="4px">
+              {t('Farms')}
+            </VertoHeading>
+            <Text fontSize="14px">{t('Stake LP tokens to earn.')}</Text>
           </Box>
           {chainId === ChainId.BSC && (
             <Box>

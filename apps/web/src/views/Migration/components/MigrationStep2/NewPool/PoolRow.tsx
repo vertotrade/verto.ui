@@ -26,7 +26,7 @@ const StyledRow = styled.div`
 `
 
 const PoolRow: React.FC<React.PropsWithChildren<PoolRowProps>> = ({ pool, account }) => {
-  const { isXl, isXxl, isXs, isSm, isMd, isLg, isTablet, isDesktop } = useMatchBreakpoints()
+  const { isXl, isXxl, isXs, isSm, isMd, isLg } = useMatchBreakpoints()
   const isLargerScreen = isLg || isXl || isXxl
   const isXLargerScreen = isXl || isXxl
   const [expanded, setExpanded] = useState(false)
@@ -50,7 +50,7 @@ const PoolRow: React.FC<React.PropsWithChildren<PoolRowProps>> = ({ pool, accoun
         )}
         {pool.vaultKey ? <AutoAprCell pool={pool} /> : <AprCell pool={pool} />}
         {isLargerScreen && <TotalStakedCell pool={pool} totalCakeInVault={totalCakeInVault} cakeInVaults={BIG_ZERO} />}
-        <Pool.ExpandActionCell expanded={expanded} isFullLayout={isTablet || isDesktop} />
+        <Pool.ExpandActionCell expanded={expanded} />
       </StyledRow>
       {shouldRenderActionPanel && (
         <ActionPanel
