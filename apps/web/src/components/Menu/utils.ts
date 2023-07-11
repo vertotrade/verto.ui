@@ -61,7 +61,7 @@ export const lotteryFeatureFlagRequest = () => {
       })
     })
   } else {
-    request = axios.get(env('FEATURE_FLAG_API_URL'))
+    request = axios.get(`${env('FEATURE_FLAG_API_URL')}/35`)
   }
 
   return request
