@@ -49,4 +49,12 @@ export const vertoTokens = {
     'Axelar Wrapped USDC',
     'https://axelar.network/',
   ),
+  techne: new ERC20Token(
+    ChainId.REBUS,
+    '0x16B4975206628BCd6Fa0F1Abc87c4594439C58Cb',
+    18,
+    'TECHNE',
+    'Techne',
+    'https://digitaltechne.eu/',
+  ),
 }
