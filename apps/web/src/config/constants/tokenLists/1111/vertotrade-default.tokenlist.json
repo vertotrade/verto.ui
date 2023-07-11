@@ -39,6 +39,14 @@
       "chainId": 1111,
       "decimals": 6,
       "logoURI": "/images/tokens/0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75.svg"
+    },
+    {
+      "name": "Techne",
+      "symbol": "axlUSDC",
+      "address": "0x16B4975206628BCd6Fa0F1Abc87c4594439C58Cb",
+      "chainId": 1111,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0x16B4975206628BCd6Fa0F1Abc87c4594439C58Cb.png"
     }
   ]
 }
