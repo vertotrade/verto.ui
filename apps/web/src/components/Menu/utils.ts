@@ -1,3 +1,4 @@
+import env from '@beam-australia/react-env'
 import orderBy from 'lodash/orderBy'
 import axios from 'axios'
 import { ConfigMenuItemsType } from './config/config'
@@ -40,11 +41,6 @@ export const getActiveSubMenuItem = ({ pathname, menuItem }: { pathname: string;
 
 export const lotteryFeatureFlagRequest = () => {
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  const url =
-    process.env.NODE_ENV === 'production'
-      ? 'https://api.raindrop.club/api/feature-flags/35'
-      : 'https://api.dropmintdev.com/api/feature-flags/35'
-
   let request
 
   if (isLocal) {
@@ -65,7 +61,7 @@ export const lotteryFeatureFlagRequest = () => {
       })
     })
   } else {
-    request = axios.get(url)
+    request = axios.get(env('FEATURE_FLAG_API_URL'))
   }
 
   return request
