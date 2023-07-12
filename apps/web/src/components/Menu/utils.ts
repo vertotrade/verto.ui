@@ -48,13 +48,15 @@ export const lotteryFeatureFlagRequest = () => {
     request = new Promise(resolve => {
       resolve({
         data: {
-          id: 35,
-          attributes: {
-            enabled: true,
-            description: 'VertoTrade lottery page',
-            slug: 'lottery-page',
-            createdAt: '2023-06-22T14:37:33.903Z',
-            updatedAt: '2023-06-22T14:37:33.903Z',
+          data: {
+            id: 35,
+            attributes: {
+              enabled: true,
+              description: 'VertoTrade lottery page',
+              slug: 'lottery-page',
+              createdAt: '2023-06-22T14:37:33.903Z',
+              updatedAt: '2023-06-22T14:37:33.903Z',
+            },
           },
         },
         meta: {},

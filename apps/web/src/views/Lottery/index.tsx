@@ -82,7 +82,7 @@ const Lottery = () => {
   //   currentRound: { status, endTime },
   // } = useLottery()
   const [historyTabMenuIndex, setHistoryTabMenuIndex] = useState(0)
-  const [pageEnabled, setPageEnabled] = useState(false)
+  const [pageEnabled, setPageEnabled] = useState(true)
   // const endTimeAsInt = parseInt(endTime, 10)
   // const { nextEventTime, postCountdownText, preCountdownText } = useGetNextLotteryEvent(endTimeAsInt, status)
   const { numUserRoundsRequested, handleShowMoreUserRounds } = useShowMoreUserHistory()
