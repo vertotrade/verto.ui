@@ -92,7 +92,7 @@ const config: (
     },
     {
       label: t('Win'),
-      href: '/prediction',
+      href: '/lottery',
       icon: TrophyIcon,
       fillIcon: TrophyFillIcon,
       items: [
