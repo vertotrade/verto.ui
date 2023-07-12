@@ -213,7 +213,7 @@ const config: (
   async function configureNavItems() {
     try {
       const response = await lotteryFeatureFlagRequest()
-      isLotteryPageEnabled = response?.data?.attributes?.enabled
+      isLotteryPageEnabled = response?.data?.data?.attributes?.enabled
       navItems = filterNavItems(navItems, isLotteryPageEnabled)
     } catch (error) {
       console.log('Error', error)
