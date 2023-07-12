@@ -91,7 +91,7 @@ const Lottery = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await lotteryFeatureFlagRequest()
-      setPageEnabled(response?.data?.attributes?.enabled)
+      setPageEnabled(response?.data?.data?.attributes?.enabled)
     }
 
     fetchData()
