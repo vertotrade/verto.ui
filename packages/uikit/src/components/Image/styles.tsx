@@ -9,6 +9,7 @@ interface StyledImageProps extends ImageProps {
 }
 
 export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
+  flex-shrink: 0;
   width: 40px;
   height: 40px;
   padding: 7px;
@@ -38,6 +39,7 @@ export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
 `;
 
 export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
+  flex-shrink: 0;
   width: 20px;
   height: 20px;
   margin: 10px 0;
@@ -60,12 +62,4 @@ export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
       },
     },
   })}
-`;
-
-export const StyledTertiaryImage = styled(TokenImage)<StyledImageProps>`
-  position: absolute;
-  right: -3px;
-  top: -4px;
-  width: 75%;
-  z-index: 7;
 `;
