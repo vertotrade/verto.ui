@@ -28,7 +28,6 @@ storybook-static
 # local env files
 .env.local
 .env.test.local
-.env.production.local
 
 # debug
 npm-debug.log*
