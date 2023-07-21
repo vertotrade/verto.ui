@@ -159,14 +159,18 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       </Flex> */}
       {!vaultKey && (
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <LinkExternal href={earningToken.projectLink} bold={false} small>
+          <LinkExternal href={earningToken.projectLink} bold={false} small hoverBackgroundColor="transaprent">
             {t('View Project Site')}
           </LinkExternal>
         </Flex>
       )}
       {vaultKey && (
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <LinkExternal href="https://docs.vertotrade.com/products/res-pool/new-verto-pool" bold={false} small>
+          <LinkExternal
+            href="https://docs.vertotrade.com/products/res-pool/new-verto-pool"
+            bold={false}
+            small
+            hoverBackgroundColor="transaprent">
             {t('View Tutorial')}
           </LinkExternal>
         </Flex>
@@ -177,6 +181,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             isBscScan
             href={`${blockExplorerUrl}/address/${vaultKey ? rebusVaultContractAddress : poolContractAddress}`}
             bold={false}
+            hoverBackgroundColor="transaprent"
             small>
             {t('View Contract')}
           </LinkExternal>

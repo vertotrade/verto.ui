@@ -31,7 +31,7 @@ export const swapSectionData = (t: TranslateFunction, isDark: boolean): SalesSec
 })
 
 export const earnSectionData = (t: TranslateFunction, isDark: boolean): SalesSectionProps => ({
-  headingText: t('Earn passive income with crypto.'),
+  headingText: t('Gain passive income with crypto.'),
   bodyText: t('VertoTrade makes it easy to make your crypto work for you.'),
   reverse: true,
   primaryButton: {
@@ -85,7 +85,7 @@ export const vertoSectionData = (t: TranslateFunction, isDark: boolean, theme: a
   },
   ClipComponent: () => (
     <IconDivider
-      background={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.background}
+      background="transparent"
       textColor={isDark ? theme.colors.text : theme.colors.black}
       divBackground={theme.colors.backgroundAlt}
       Clip={() => <Clip url="images/animations/token.webm" />}

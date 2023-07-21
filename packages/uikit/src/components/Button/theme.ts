@@ -40,16 +40,17 @@ export const styleVariants = {
     color: "invertedContrast",
   },
   [variants.SECONDARY]: {
-    backgroundImage: (theme: any) => theme.colors.gradientGreenOrange,
-    backgroundPosition: "90% 100%",
-    backgroundSize: "200%",
+    backgroundColor: (theme: any) => theme.colors.newPrimary,
     borderColor: "transparent",
     boxShadow: "none",
     color: "black",
     fontWeight: "500",
-    transition: "background-position 0.3s",
     ":hover": {
-      backgroundPosition: "60% 100%",
+      backgroundColor: (theme: any) => theme.colors.newPrimaryDark,
+      opacity: "1 !important",
+    },
+    ":active": {
+      backgroundColor: (theme: any) => theme.colors.newPrimaryDark,
       opacity: "1 !important",
     },
     ":disabled": {
@@ -63,7 +64,7 @@ export const styleVariants = {
   },
   [variants.SUBTLE]: {
     backgroundColor: "newPrimary",
-    color: "white",
+    color: "black",
   },
   [variants.SUBTLE2]: {
     backgroundColor: "subtleButton2",
