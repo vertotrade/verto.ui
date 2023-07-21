@@ -75,7 +75,7 @@ const config: (
       ].map(item => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Earn'),
+      label: t('Gain'),
       href: '/farms',
       showItemsOnMobile: true,
       items: [

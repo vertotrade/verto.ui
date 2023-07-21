@@ -9,8 +9,14 @@ const StyledLink = styled(Text)<LinkProps>`
   display: flex;
   align-items: center;
   width: fit-content;
+  padding: ${(props) => props.padding || `0`};
+  border-radius: 25px;
   &:hover {
     text-decoration: underline;
+    background-color: ${(props) => props.hoverBackgroundColor || props.theme.colors.secondaryButtonHoverBg};
+  }
+  &:active {
+    transform: translateY(1px);
   }
 `;
 

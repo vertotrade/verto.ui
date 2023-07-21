@@ -51,7 +51,7 @@ const Menu = props => {
           </>
         }
         // banner={showPhishingWarningBanner && typeof window !== 'undefined' && <PhishingWarningBanner />}
-        defaultHomeLink="/swap"
+        defaultHomeLink="/"
         isDark={isDark}
         toggleTheme={toggleTheme}
         currentLang={currentLanguage.code}

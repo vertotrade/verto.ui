@@ -86,7 +86,6 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
       </AtomBox>
       <AtomBox
         display="flex"
-        background="vertoBg1"
         borderRadius="card"
         borderBottomRadius={{
           xs: '0',
@@ -349,7 +348,6 @@ function DesktopModal<T>({
         justifyContent="center"
         flexDirection="column"
         alignItems="center"
-        bg="backgroundAlt"
         mt="-2"
         borderBottomRightRadius="card">
         <AtomBox display="flex" flexDirection="column" alignItems="center" style={{ gap: '24px' }} textAlign="center">
@@ -441,7 +439,7 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
       <Heading as="h1" fontSize="20px" color="secondary">
         {t('Haven’t got a wallet yet?')}
       </Heading>
-      <Button as={LinkExternal} color="textSubtle" variant="subtle" href={docLink}>
+      <Button as={LinkExternal} color="textSubtle" variant="subtle" href={docLink} hoverBackgroundColor="#27C5A2">
         {docText}
       </Button>
     </>

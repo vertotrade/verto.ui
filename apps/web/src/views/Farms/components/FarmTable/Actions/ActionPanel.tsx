@@ -119,8 +119,7 @@ const InfoContainer = styled.div<{ isDesktop?: boolean; isMobile?: boolean }>`
   height: 100%;
   min-width: 200px;
   padding: 24px 0;
-
-  padding-left: ${({ isDesktop }) => (isDesktop ? '124px' : '32px')};
+  padding-left: 32px;
   min-height: ${({ isMobile }) => (isMobile ? '0' : '150px')};
 
   ${({ isDesktop }) => (isDesktop ? 'border-bottom-left-radius: 8px' : '')};
@@ -215,15 +214,17 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
         </ValueContainer>
         {isActive && (
           <StakeContainer>
-            <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
+            <StyledLinkExternal hoverBackgroundColor="transparent" href={`/add/${liquidityUrlPathParts}`}>
               {t('Get %symbol%', { symbol: lpLabel })}
             </StyledLinkExternal>
           </StakeContainer>
         )}
-        <StyledLinkExternal isBscScan href={bsc}>
+        <StyledLinkExternal hoverBackgroundColor="transparent" isBscScan href={bsc}>
           {t('View Contract')}
         </StyledLinkExternal>
-        <StyledLinkExternal href={infoUrl}>{t('See Pair Info')}</StyledLinkExternal>
+        <StyledLinkExternal hoverBackgroundColor="transparent" href={infoUrl}>
+          {t('See Pair Info')}
+        </StyledLinkExternal>
       </InfoContainer>
     ),
     [

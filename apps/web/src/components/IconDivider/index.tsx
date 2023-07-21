@@ -3,7 +3,7 @@ import { Flex, CoinStack } from '@verto/uikit'
 
 const IconDiv = styled(Flex)`
   min-width: 595px;
-  border-radius: 0px 120px 120px 0px;
+  border-radius: 0px 140px 140px 0px;
   background: ${props => props.background};
   justify-content: flex-end;
   flex-grow: 1;
@@ -15,11 +15,11 @@ const IconDiv = styled(Flex)`
 `
 const IconDivReverse = styled(Flex)`
   min-width: 595px;
-  border-radius: 120px 0px 0px 120px;
+  border-radius: 140px 0px 0px 140px;
   background: ${props => props.background};
   justify-content: flex-start;
   flex-grow: 1;
-  padding: 32px;
+  padding: 26px;
 
   @media screen and (max-width: 900px) {
     display: none;
@@ -27,8 +27,8 @@ const IconDivReverse = styled(Flex)`
 `
 
 const IconCircleWrapper = styled(Flex)`
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
