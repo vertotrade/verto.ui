@@ -19,7 +19,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     h1, h2, h3, h4, h5, h6,
-    .modal :is(h1, h2, h3, h4, h5, h6) {
+    .modal :is(h1, h2, h3, h4, h5, h6),
+    h1 span, h2 span, h3 span {
       font-family: 'Poppins', sans-serif;
     }
 

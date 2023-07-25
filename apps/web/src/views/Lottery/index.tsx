@@ -6,7 +6,7 @@ import useTheme from 'hooks/useTheme'
 import { useFetchLottery, useLottery } from 'state/lottery/hooks'
 import IconDivider from 'components/IconDivider'
 import { lotteryFeatureFlagRequest } from 'components/Menu/utils'
-import useGetNextLotteryEvent from './hooks/useGetNextLotteryEvent'
+// import useGetNextLotteryEvent from './hooks/useGetNextLotteryEvent'
 import useStatusTransitions from './hooks/useStatusTransitions'
 import Hero from './components/Hero'
 import HistoryTabMenu from './components/HistoryTabMenu'
@@ -23,6 +23,7 @@ const LotteryPage = styled.div`
 
 const StyledFooterWrapper = styled(Flex)`
   align-items: flex-start;
+  padding: 0px 20px;
 
   @media screen and (max-width: 900px) {
     align-items: center;
@@ -45,7 +46,7 @@ const ButtonLink = styled.a<{ background: string }>`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #f3f3f3;
+    opacity: 80%;
   }
 `
 
@@ -70,6 +71,7 @@ const ContentWrapper = styled(Flex)`
   @media screen and (max-width: 900px) {
     justify-content: center;
     align-items: center;
+    gap: 0px;
   }
 `
 
@@ -115,7 +117,7 @@ const Lottery = () => {
         <PageSection
           background={backgroundSectionColor}
           innerProps={{
-            style: { marginLeft: '0px', marginRight: '0px', width: '100%', maxWidth: 'unset', padding: '48px 0px' },
+            style: { marginLeft: '0px', marginRight: '0px', width: '100%', maxWidth: 'unset', padding: '0 0px' },
           }}
           hasCurvedDivider={false}
           index={2}>
@@ -125,7 +127,8 @@ const Lottery = () => {
           innerProps={{ style: { margin: '0', width: '100%' } }}
           background={theme.colors.gradientGreenOrange}
           hasCurvedDivider={false}
-          index={2}>
+          index={2}
+          overflow="hidden">
           <Flex width="100%" flexDirection="column" alignItems="center" justifyContent="center">
             <Heading color={theme.colors.black} mb="24px" scale="xl">
               {t('Finished Rounds')}

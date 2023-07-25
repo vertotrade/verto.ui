@@ -87,7 +87,7 @@ export default function Swap() {
 
         <Flex flexDirection="column">
           <StyledSwapContainer $isChartExpanded={isChartExpanded}>
-            <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>
+            <StyledInputCurrencyWrapper mt="0">
               <AppBody>
                 <SmartSwapForm />
               </AppBody>

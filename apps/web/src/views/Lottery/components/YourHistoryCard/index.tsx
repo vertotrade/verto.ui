@@ -9,7 +9,6 @@ import { fetchLottery } from 'state/lottery/helpers'
 import { LotteryRound } from 'state/types'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import FinishedRoundTable from './FinishedRoundTable'
-import { WhiteBunny } from '../../svgs'
 import BuyTicketsButton from '../BuyTicketsButton'
 import PreviousRoundCardBody from '../PreviousRoundCard/Body'
 import { processLotteryResponse, getDrawnDate } from '../../helpers'
@@ -118,7 +117,7 @@ const YourHistoryCard: React.FC<React.PropsWithChildren<YourHistoryCardProps>> =
         <StyledCardBody>
           <Box maxWidth="280px">
             <Flex alignItems="center" justifyContent="center" mb="16px">
-              <WhiteBunny height="24px" mr="8px" /> <Text textAlign="left">{t('No lottery history found')}</Text>
+              <Text textAlign="left">{t('No lottery history found')}</Text>
             </Flex>
             <Text textAlign="center" color="textSubtle" mb="16px">
               {t('Buy tickets for the next round!')}
@@ -145,7 +144,7 @@ const YourHistoryCard: React.FC<React.PropsWithChildren<YourHistoryCardProps>> =
       <CardFooter>
         <Flex flexDirection="column" justifyContent="center" alignItems="center">
           <Text fontSize="12px" color="textSubtle">
-            {t('Only showing data for Lottery V2')}
+            {t('Only showing data for Lottery')}
           </Text>
         </Flex>
       </CardFooter>
