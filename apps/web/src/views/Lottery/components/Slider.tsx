@@ -32,6 +32,18 @@ const StyledCarousel = styled(Carousel)`
   & .react-multi-carousel-item--active {
     opacity: 1;
   }
+
+  & .react-multiple-carousel__arrow--left {
+    @media screen and (max-width: 600px) {
+      left: calc(4% + 30px) !important;
+    }
+  }
+
+  & .react-multiple-carousel__arrow--right {
+    @media screen and (max-width: 600px) {
+      right: calc(4% + 30px) !important;
+    }
+  }
 `
 
 const TicketSlide = styled(Flex)<{ isDark: boolean }>`

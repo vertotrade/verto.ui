@@ -21,7 +21,7 @@ const StyledButtonMenu = styled(ButtonMenu)<{ borderColor: string; backgroundCol
   border-color: ${props => props.borderColor} !important;
   background: ${props => props.backgroundColor};
   border-radius: 64px;
-  padding: 8px;
+  padding: 7px 8px;
   height: auto;
 `
 

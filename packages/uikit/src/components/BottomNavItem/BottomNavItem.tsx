@@ -33,7 +33,7 @@ const BottomNavItem: React.FC<React.PropsWithChildren<BottomNavItemProps>> = ({
       <StyledBottomNavText
         color={isActive ? "gradientGreenOrange" : "textSubtle"}
         fontWeight={isActive ? "600" : "400"}
-        fontSize="10px"
+        fontSize="16px"
       >
         {label}
       </StyledBottomNavText>

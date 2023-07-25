@@ -52,6 +52,8 @@ const StyledText = styled(Text)`
 `
 
 const FooterWrapper = styled(Flex)`
+  padding: 0 20px;
+  margin-bottom: 10px;
   @media screen and (max-width: 900px) {
     align-items: center;
     justify-content: center;
@@ -151,7 +153,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             />
           </FlexItem>
           <FlexItem>
-            <FooterWrapper flexDirection="column" mb="20px" p="8px">
+            <FooterWrapper flexDirection="column">
               <Heading mb="16px" scale="xxl" color="black">
                 {t('Start in seconds.')}
               </Heading>
@@ -166,7 +168,13 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                     style={{ background: theme.colors.background, color: theme.colors.text }}
                   />
                 )}
-                <LinkExternal style={{ marginTop: '20px' }} color="black" external href="https://docs.vertotrade.com/">
+                <LinkExternal
+                  style={{ marginTop: '20px' }}
+                  color="black"
+                  padding="0 20px"
+                  hoverBackgroundColor={theme.isDark ? 'white' : theme.colors.secondaryButtonHoverBg}
+                  external
+                  href="https://docs.vertotrade.com/">
                   {t('Learn how to start')}
                 </LinkExternal>
               </Flex>
