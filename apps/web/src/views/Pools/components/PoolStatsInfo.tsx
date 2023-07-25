@@ -176,7 +176,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
         </Flex>
       )}
       {poolContractAddress && (
-        <Flex mb="2px" justifyContent="space-between">
+        <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'space-between'}>
           <LinkExternal
             isBscScan
             href={`${blockExplorerUrl}/address/${vaultKey ? rebusVaultContractAddress : poolContractAddress}`}

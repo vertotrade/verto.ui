@@ -1,8 +1,8 @@
 import {
   MenuItemsType,
   DropdownMenuItemType,
-  TrophyIcon,
-  TrophyFillIcon,
+  // TrophyIcon,
+  // TrophyFillIcon,
   // NftIcon,
   // NftFillIcon,
   DropdownMenuItems,
@@ -93,8 +93,8 @@ const config: (
     {
       label: t('Win'),
       href: '/lottery',
-      icon: TrophyIcon,
-      fillIcon: TrophyFillIcon,
+      // icon: TrophyIcon,
+      // fillIcon: TrophyFillIcon,
       items: [
         // {
         //   label: t('Trading Competition'),

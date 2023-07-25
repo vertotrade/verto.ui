@@ -207,7 +207,7 @@ const Hero = () => {
           </StyledBuyTicketButton>
         </BuyTicketsWrapper>
       </Box>
-      <Flex flexDirection="column" alignItems="center" p="40px">
+      <Flex flexDirection="column" alignItems="center" p={theme.mediaQueries.xs ? '0' : '40'}>
         <VideoBgWrapper>
           <Clip url={videoSrc} />
           <HeroContentWrapper>
