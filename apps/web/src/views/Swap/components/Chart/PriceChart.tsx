@@ -1,3 +1,4 @@
+// import { useCallback, useState } from 'react'
 import {
   // Button,
   ExpandIcon,
@@ -7,7 +8,6 @@ import {
   SyncAltIcon,
   Text,
   // TradingViewIcon,
-  // LineGraphIcon,
   // useMatchBreakpoints,
 } from '@verto/uikit'
 import { CurrencyLogo, DoubleCurrencyLogo } from 'components/Logo'
@@ -38,7 +38,6 @@ const PriceChart = ({
   isFullWidthContainer,
   token0Address,
   token1Address,
-  currentSwapPrice,
 }) => {
   // const { isDesktop } = useMatchBreakpoints()
   const toggleExpanded = () => setIsChartExpanded(currentIsExpanded => !currentIsExpanded)
@@ -47,7 +46,7 @@ const PriceChart = ({
   // const [twChartSymbol, setTwChartSymbol] = useState('')
   // const { t } = useTranslation()
 
-  // const handleTwChartSymbol = useCallback((symbol) => {
+  // const handleTwChartSymbol = useCallback(symbol => {
   //   setTwChartSymbol(symbol)
   // }, [])
 
@@ -75,31 +74,29 @@ const PriceChart = ({
               <SyncAltIcon ml="6px" color="primary" />
             </IconButton>
             {/* {isDesktop && (
-            <Flex>
-              <ChartButton
-                aria-label={t('Basic')}
-                title={t('Basic')}
-                $active={chartView === ChartViewMode.BASIC}
-                scale="sm"
-                variant="text"
-                color="primary"
-                mr="8px"
-                disabled
-              >
-                {t('Basic')}
-              </ChartButton>
-              <ChartButton
-                aria-label="TradingView"
-                title="TradingView"
-                $active={chartView === ChartViewMode.TRADING_VIEW}
-                scale="sm"
-                variant="text"
-                onClick={() => setChartView(ChartViewMode.TRADING_VIEW)}
-              >
-                {isDesktop ? 'TradingView' : <TradingViewIcon color="primary" />}
-              </ChartButton>
-            </Flex>
-          )} */}
+              <Flex>
+                <ChartButton
+                  aria-label={t('Basic')}
+                  title={t('Basic')}
+                  $active={chartView === ChartViewMode.BASIC}
+                  scale="sm"
+                  variant="text"
+                  color="primary"
+                  mr="8px"
+                  onClick={() => setChartView(ChartViewMode.BASIC)}>
+                  {t('Basic')}
+                </ChartButton>
+                <ChartButton
+                  aria-label="TradingView"
+                  title="TradingView"
+                  $active={chartView === ChartViewMode.TRADING_VIEW}
+                  scale="sm"
+                  variant="text"
+                  onClick={() => setChartView(ChartViewMode.TRADING_VIEW)}>
+                  {isDesktop ? 'TradingView' : <TradingViewIcon color="primary" />}
+                </ChartButton>
+              </Flex>
+            )} */}
           </Flex>
           {!isMobile && (
             <Flex>
@@ -117,35 +114,33 @@ const PriceChart = ({
             inputCurrency={inputCurrency}
             outputCurrency={outputCurrency}
             isMobile={isMobile}
-            currentSwapPrice={currentSwapPrice}
           />
         )}
         {/* {chartView === ChartViewMode.TRADING_VIEW && (
-        <Flex
-          flexDirection="column"
-          justifyContent="space-between"
-          height={isMobile ? '100%' : isChartExpanded ? 'calc(100% - 48px)' : '458px'}
-          pt="12px"
-        >
-          <Flex justifyContent="space-between" alignItems="baseline" flexWrap="wrap">
-            <PairPriceDisplay
-              value={currentSwapPrice?.[token0Address]}
+          <Flex
+            flexDirection="column"
+            justifyContent="space-between"
+            height={isMobile ? '100%' : isChartExpanded ? 'calc(100% - 48px)' : '458px'}
+            pt="12px">
+            <Flex justifyContent="space-between" alignItems="baseline" flexWrap="wrap">
+              <PairPriceDisplay
+                value={currentSwapPrice?.[token0Address]}
+                inputSymbol={inputCurrency?.symbol}
+                outputSymbol={outputCurrency?.symbol}
+                mx="24px"
+              />
+              {twChartSymbol && <TradingViewLabel symbol={twChartSymbol} />}
+            </Flex>
+            <TradingViewChart
+              // unmount the whole component when symbols is changed
+              key={`${inputCurrency?.symbol}-${outputCurrency?.symbol}`}
               inputSymbol={inputCurrency?.symbol}
               outputSymbol={outputCurrency?.symbol}
-              mx="24px"
+              isDark={isDark}
+              onTwChartSymbol={handleTwChartSymbol}
             />
-            {twChartSymbol && <TradingViewLabel symbol={twChartSymbol} />}
           </Flex>
-          <TradingViewChart
-            // unmount the whole component when symbols is changed
-            key={`${inputCurrency?.symbol}-${outputCurrency?.symbol}`}
-            inputSymbol={inputCurrency?.symbol}
-            outputSymbol={outputCurrency?.symbol}
-            isDark={isDark}
-            onTwChartSymbol={handleTwChartSymbol}
-          />
-        </Flex>
-      ) */}
+        )} */}
       </StyledPriceChart>
     </StyledPriceChartContainer>
   )

@@ -10,6 +10,7 @@ const formatOptions = {
 }
 
 interface TokenDisplayProps extends FlexGapProps {
+  isLoading?: boolean
   value?: number | string
   inputSymbol?: string
   outputSymbol?: string
@@ -26,6 +27,7 @@ const TextLabel = styled(Text)`
 `
 
 const PairPriceDisplay: FC<React.PropsWithChildren<TokenDisplayProps>> = ({
+  isLoading,
   value,
   inputSymbol,
   outputSymbol,
@@ -33,7 +35,7 @@ const PairPriceDisplay: FC<React.PropsWithChildren<TokenDisplayProps>> = ({
   format = true,
   ...props
 }) => {
-  return value ? (
+  return !isLoading ? (
     <FlexGap alignItems="baseline" {...props}>
       <Flex alignItems="inherit">
         <TextLabel mr="8px" bold>
