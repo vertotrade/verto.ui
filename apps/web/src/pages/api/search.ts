@@ -17,7 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json(await client.search(req.body))
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log('Error searching ES', (err as unknown as any)?.meta?.body?.error?.root_cause?.[0]?.reason)
-    return res.status(500).send('Error searching price data, please try again')
+    const error = (err as unknown as any)?.meta?.body?.error?.root_cause?.[0]?.reason
+    console.log('Error searching ES', error)
+    return res.status(error?.includes('no such index') ? 404 : 500).send('Error searching price data, please try again')
   }
 }
