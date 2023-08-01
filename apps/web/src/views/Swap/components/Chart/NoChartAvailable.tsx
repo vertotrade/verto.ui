@@ -25,7 +25,7 @@ const NoChartAvailable: React.FC<React.PropsWithChildren<NoChartAvailableProps>>
           color="textSubtle"
           small
           style={isMobile && { wordSpacing: '100vw' }}>
-          Token0: {token0Address ?? 'null'}
+          Token 0: {token0Address ?? 'null'}
         </Text>
         <Text
           textAlign={isMobile ? 'center' : 'left'}
@@ -33,7 +33,7 @@ const NoChartAvailable: React.FC<React.PropsWithChildren<NoChartAvailableProps>>
           color="textSubtle"
           small
           style={isMobile && { wordSpacing: '100vw' }}>
-          Token1: {token1Address ?? 'null'}
+          Token 1: {token1Address ?? 'null'}
         </Text>
         <Text
           textAlign={isMobile ? 'center' : 'left'}

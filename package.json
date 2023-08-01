@@ -20,7 +20,7 @@
     "format:check:staged": "lint-staged",
     "format:write": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
     "e2e:ci": "turbo run integration-test --filter=e2e...[HEAD^1]",
-    "updateLPsAPR": "yarn turbo run build --filter=@verto/sdk --filter=@verto/farm --filter=@verto/token-lists && NODE_PATH=./apps/web/src ts-node --project ./apps/web/tsconfig.json --compiler-options '{\"module\":\"commonjs\"}' scripts/updateLPsAPR.ts",
+    "create-es-transform-transactions": "NODE_PATH=./apps/web/src ts-node --project ./apps/web/tsconfig.json --compiler-options '{\"module\":\"commonjs\"}' scripts/create-es-transform-transactions.ts",
     "postinstall": "turbo run --filter=web postinstall",
     "clean": "turbo run clean && rm -rf node_modules",
     "changeset": "changeset",

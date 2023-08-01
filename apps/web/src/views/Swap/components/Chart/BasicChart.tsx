@@ -12,27 +12,23 @@ const SwapLineChart = dynamic(() => import('./SwapLineChart'), {
   ssr: false,
 })
 
-const BasicChart = ({
-  token0Address,
-  token1Address,
-  isChartExpanded,
-  inputCurrency,
-  outputCurrency,
-  isMobile,
-  currentSwapPrice,
-}) => {
+const BasicChart = ({ token0Address, token1Address, isChartExpanded, inputCurrency, outputCurrency, isMobile }) => {
   const [timeWindow, setTimeWindow] = useState<PairDataTimeWindowEnum>(0)
 
-  const { pairPrices = [], pairId } = useFetchPairPrices({
-    token0Address,
-    token1Address,
+  const {
+    pairPrices = [],
+    pairId,
+    hasError,
+  } = useFetchPairPrices({
+    inputCurrency,
+    outputCurrency,
     timeWindow,
-    currentSwapPrice,
   })
   const mountedRef = useRef(false)
   const [hoverValue, setHoverValue] = useState<number | undefined>()
   const [hoverDate, setHoverDate] = useState<string | undefined>()
   const valueToDisplay = hoverValue || pairPrices[pairPrices.length - 1]?.value
+
   const { changePercentage, changeValue } = getTimeWindowChange(pairPrices)
   const isChangePositive = changeValue >= 0
   const chartHeight = isChartExpanded ? 'calc(100vh - 220px)' : '378px'
@@ -51,11 +47,13 @@ const BasicChart = ({
   // Sometimes we might receive array full of zeros for obscure tokens while trying to derive data
   // In that case chart is not useful to users
   const isBadData =
-    pairPrices &&
-    pairPrices.length > 0 &&
-    pairPrices.every(
-      price => !price.value || price.value === 0 || price.value === Infinity || Number.isNaN(price.value),
-    )
+    hasError ||
+    !pairId ||
+    (pairPrices &&
+      pairPrices.length > 0 &&
+      pairPrices.every(
+        price => (!price.value && price.value !== 0) || price.value === Infinity || Number.isNaN(price.value),
+      ))
 
   useEffect(() => {
     mountedRef.current = true
@@ -97,12 +95,15 @@ const BasicChart = ({
         px="24px">
         <Flex flexDirection="column" pt="12px">
           <PairPriceDisplay
-            value={pairPrices?.length > 0 && valueToDisplay}
+            isLoading={!pairPrices?.length}
+            value={valueToDisplay}
             inputSymbol={inputCurrency?.symbol}
             outputSymbol={outputCurrency?.symbol}>
-            <Text color={isChangePositive ? 'success' : 'failure'} fontSize="20px" ml="4px" bold>
-              {`${isChangePositive ? '+' : ''}${changeValue.toFixed(3)} (${changePercentage}%)`}
-            </Text>
+            {!!valueToDisplay && (
+              <Text color={isChangePositive ? 'success' : 'failure'} fontSize="20px" ml="4px" bold>
+                {`${isChangePositive ? '+' : ''}${changeValue.toFixed(3)} (${changePercentage}%)`}
+              </Text>
+            )}
           </PairPriceDisplay>
           <Text small color="primary">
             {hoverDate || currentDate}
@@ -136,11 +137,6 @@ export default memo(BasicChart, (prev, next) => {
     prev.token1Address === next.token1Address &&
     prev.isChartExpanded === next.isChartExpanded &&
     prev.isMobile === next.isMobile &&
-    prev.isChartExpanded === next.isChartExpanded &&
-    ((prev.currentSwapPrice !== null &&
-      next.currentSwapPrice !== null &&
-      prev.currentSwapPrice[prev.token0Address] === next.currentSwapPrice[next.token0Address] &&
-      prev.currentSwapPrice[prev.token1Address] === next.currentSwapPrice[next.token1Address]) ||
-      (prev.currentSwapPrice === null && next.currentSwapPrice === null))
+    prev.isChartExpanded === next.isChartExpanded
   )
 })

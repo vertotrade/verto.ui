@@ -3,8 +3,8 @@ import {
   ChartIcon,
   Flex,
   HistoryIcon,
-  HotIcon,
-  HotDisableIcon,
+  // HotIcon,
+  // HotDisableIcon,
   IconButton,
   NotificationDot,
   Swap,
@@ -77,7 +77,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 )}
               </ColoredIconButton>
             )}
-            {isChartSupported && (
+            {/* {isChartSupported && (
               <ColoredIconButton
                 variant="text"
                 scale="sm"
@@ -93,7 +93,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                   <HotIcon color="textSubtle" width="24px" />
                 )}
               </ColoredIconButton>
-            )}
+            )} */}
             <NotificationDot show={expertMode}>
               <GlobalSettings mr="0" mode={SettingsMode.SWAP_LIQUIDITY} />
             </NotificationDot>
