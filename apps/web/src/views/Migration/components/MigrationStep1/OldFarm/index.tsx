@@ -1,9 +1,7 @@
 import React, { useMemo, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { useAccount } from 'wagmi'
-import { getFarmApr } from 'utils/apr'
 import { useTranslation } from '@verto/localization'
-import { CAKE_PER_YEAR } from 'config'
 import { useFarmsV1, usePriceCakeBusd } from 'state/farmsV1/hooks'
 import { DeserializedFarm, FarmWithStakedValue } from '@verto/farms'
 import MigrationFarmTable from '../../MigrationFarmTable'
@@ -25,28 +23,25 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
     )
   })
 
-  const farmsList = useCallback(
-    (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
-      const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
-        if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
-          return farm
-        }
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
-          56,
-          new BigNumber(farm.poolWeight),
-          cakePrice,
-          totalLiquidity,
-          farm.lpAddress,
-          CAKE_PER_YEAR,
-        )
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
-      })
+  const farmsList = useCallback((farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
+    const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
+      if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
+        return farm
+      }
+      const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
+      // const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
+      //   56,
+      //   new BigNumber(farm.poolWeight),
+      //   cakePrice,
+      //   totalLiquidity,
+      //   farm.lpAddress,
+      //   CAKE_PER_YEAR,
+      // )
+      return { ...farm, apr: 0, lpRewardsApr: 0, liquidity: totalLiquidity }
+    })
 
-      return farmsToDisplayWithAPR
-    },
-    [cakePrice],
-  )
+    return farmsToDisplayWithAPR
+  }, [])
 
   const chosenFarmsMemoized = useMemo(() => {
     return farmsList(stakedOrHasTokenBalance)
