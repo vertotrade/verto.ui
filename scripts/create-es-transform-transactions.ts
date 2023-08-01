@@ -25,21 +25,37 @@ async function execute(timeWindow) {
 
   const uppercasePair = `${token0.toUpperCase()}-${token1.toUpperCase()}`
   const lowercasePair = `${token0.toLowerCase()}-${token1.toLowerCase()}`
-  const transformId = `liquidity_${lowercasePair}_${timeWindow}_transform`
+  const destIndex = `liquidity_${lowercasePair}_${timeWindow}`
+  const alias = `liquidity_${token1.toLowerCase()}-${token0.toLowerCase()}_${timeWindow}`
+  const transformId = `${destIndex}_transform`
 
   let range = `now-1d/d`
-  let maxAge = '1d'
+  let maxAge = '2d'
   let calendarInterval = `hour`
 
   if (timeWindow === 'daily') {
     range = `now-1M/d`
-    maxAge = '31d'
+    maxAge = '62d'
     calendarInterval = `day`
   } else if (timeWindow === 'weekly') {
     range = `now-1y/w`
-    maxAge = '365d'
+    maxAge = '751d'
     calendarInterval = `week`
   }
+
+  if (!(await client.indices.exists({ index: destIndex }))) {
+    console.log(`Creating index ${destIndex}...`)
+    await client.indices.create({
+      index: destIndex,
+    })
+  }
+
+  console.log(`Setting index ${destIndex} alias as ${alias}...`)
+
+  await client.indices.putAlias({
+    index: destIndex,
+    name: alias,
+  })
 
   console.log(`Creating transform ${transformId}...`)
 
@@ -67,7 +83,7 @@ async function execute(timeWindow) {
         },
       },
       dest: {
-        index: `liquidity_${lowercasePair}_${timeWindow}`,
+        index: destIndex,
         pipeline: `add_ingest_timestamp_pipeline`,
       },
       source: {
