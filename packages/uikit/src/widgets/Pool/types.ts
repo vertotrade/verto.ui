@@ -135,6 +135,7 @@ interface CorePoolProps {
   endBlock?: number;
   apr?: number;
   rawApr?: number;
+  liquidity?: number;
   stakingTokenPrice?: number;
   earningTokenPrice?: number;
   vaultKey?: VaultKey;
@@ -159,7 +160,7 @@ export type ColumnsDefTypes = {
 export const PoolMobileColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
-    name: "farm",
+    name: "pools",
     sortable: true,
     label: "Pools",
   },
@@ -174,6 +175,39 @@ export const PoolMobileColumnSchema: ColumnsDefTypes[] = [
     name: "apr",
     sortable: true,
     label: "APR",
+  },
+  {
+    id: 6,
+    name: "details",
+    sortable: true,
+    label: "",
+  },
+];
+
+export const PoolTabletColumnSchema: ColumnsDefTypes[] = [
+  {
+    id: 1,
+    name: "pools",
+    sortable: true,
+    label: "Pools",
+  },
+  {
+    id: 2,
+    name: "earned",
+    sortable: true,
+    label: "Earned",
+  },
+  {
+    id: 3,
+    name: "apr",
+    sortable: true,
+    label: "APR",
+  },
+  {
+    id: 4,
+    name: "staked",
+    sortable: true,
+    label: "Staked",
   },
   {
     id: 6,
@@ -210,12 +244,18 @@ export const PoolDesktopColumnSchema: ColumnsDefTypes[] = [
   },
   {
     id: 6,
+    name: "liquidity",
+    sortable: true,
+    label: "Liquidity",
+  },
+  {
+    id: 7,
     name: "ends_in",
     sortable: true,
     label: "Ends in",
   },
   {
-    id: 7,
+    id: 8,
     name: "details",
     sortable: true,
     label: "",

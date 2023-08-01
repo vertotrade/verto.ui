@@ -36,7 +36,7 @@ import {
   fetchPoolsCheckWhitelist,
   fetchPoolsBoostBlockStart,
   fetchPoolsMinPerUser,
-  fetchPoolsApr,
+  fetchPoolAprLiquidityInfo,
 } from './fetchPools'
 import {
   fetchPoolsAllowance,
@@ -157,7 +157,7 @@ export const fetchPoolsPublicDataAsync =
         withdrawFees,
         depositFees,
         areBoosted,
-        aprs,
+        aprLiquidityInfos,
       ] = await Promise.all([
         fetchPoolsBlockLimits(),
         fetchPoolsTotalStaking(),
@@ -194,7 +194,7 @@ export const fetchPoolsPublicDataAsync =
 
           return boostedRes
         }),
-        fetchPoolsApr(),
+        fetchPoolAprLiquidityInfo(),
       ])
 
       const blockLimitsSousIdMap = keyBy(blockLimits, 'sousId')
@@ -207,7 +207,7 @@ export const fetchPoolsPublicDataAsync =
       const boostBlockStartsMap = keyBy(boostBlockStarts, 'sousId')
       const minPerUsersMap = keyBy(minPerUsers, 'sousId')
       const userInfosSousIdMap = keyBy(userInfos, 'sousId')
-      const aprsSousIdMap = keyBy(aprs, 'sousId')
+      const aprLiquidityInfosMap = keyBy(aprLiquidityInfos, 'sousId')
 
       const priceHelperLpsConfig = getPoolsPriceHelperLpFiles(chainId)
       const activePriceHelperLpsConfig = priceHelperLpsConfig.filter(priceHelperLpConfig => {
@@ -247,7 +247,7 @@ export const fetchPoolsPublicDataAsync =
         const boostBlockStart = boostBlockStartsMap[pool.sousId]
         const minPerUser = minPerUsersMap[pool.sousId]
         const userInfo = userInfosSousIdMap[pool.sousId]
-        const aprInfo = aprsSousIdMap[pool.sousId]
+        const aprLiquidityInfo = aprLiquidityInfosMap[pool.sousId]
         const isPoolEndBlockExceeded =
           currentBlock > 0 && blockLimit ? currentBlock > Number(blockLimit.endBlock) : false
         const isPoolFinished = pool.isFinished || isPoolEndBlockExceeded
@@ -266,7 +266,8 @@ export const fetchPoolsPublicDataAsync =
           profileRequirement,
           stakingTokenPrice,
           earningTokenPrice,
-          apr: isPoolFinished ? 0 : aprInfo?.apr || 0,
+          apr: isPoolFinished ? 0 : aprLiquidityInfo?.info?.apr || 0,
+          liquidity: aprLiquidityInfo?.info?.liquidity || 0,
           isFinished: isPoolFinished,
           ...userInfo,
           ...withdrawFeePeriod,
