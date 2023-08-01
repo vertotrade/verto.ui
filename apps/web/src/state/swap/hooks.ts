@@ -2,7 +2,7 @@ import env from '@beam-australia/react-env'
 import { useTranslation } from '@verto/localization'
 import { SearchRequest, SearchResponse } from '@elastic/elasticsearch/lib/api/types'
 import { WrappedTokenInfo } from '@verto/token-lists'
-import { getUnixTime, add, sub } from 'date-fns'
+import { getUnixTime, add, sub, isEqual } from 'date-fns'
 import { Currency, CurrencyAmount, Trade, TradeType } from '@verto/sdk'
 import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
 import tryParseAmount from '@verto/utils/tryParseAmount'
@@ -275,6 +275,20 @@ const getDurationFromTimeframe = (timeWindow: PairDataTimeWindowEnum) => {
   return duration
 }
 
+const getDurationFromTimeframeWithBuffer = (timeWindow: PairDataTimeWindowEnum) => {
+  let duration: Duration = { days: 2 }
+
+  if (timeWindow === PairDataTimeWindowEnum.WEEK) {
+    duration.days = 7
+  } else if (timeWindow === PairDataTimeWindowEnum.MONTH) {
+    duration = { months: 1, days: 1 }
+  } else if (timeWindow === PairDataTimeWindowEnum.YEAR) {
+    duration = { years: 1, weeks: 1 }
+  }
+
+  return duration
+}
+
 const getDurationIntervalFromTimeframe = (timeWindow: PairDataTimeWindowEnum, multiplier = 1) => {
   let duration: Duration = { hours: 1 * multiplier }
 
@@ -296,24 +310,20 @@ const populateEmptyDataPoints = (
   const startDate = new Date(fromDate)
   const now = new Date()
   const interval = getDurationIntervalFromTimeframe(timeWindow)
-  let lastPoint: any = null
+  let lastPoint: any = data.length && data[0].time < startDate ? data[0] : null
   let currentIndex = 0
 
   if (interval.hours) {
-    startDate.setMinutes(0, 0, 0)
+    startDate.setUTCMinutes(0, 0, 0)
   } else if (interval.days) {
-    startDate.setHours(0, 0, 0, 0)
+    startDate.setUTCHours(0, 0, 0, 0)
   } else if (interval.months) {
-    startDate.setHours(0, 0, 0, 0)
-    startDate.setDate(1)
+    startDate.setUTCHours(0, 0, 0, 0)
+    startDate.setUTCDate(1)
   }
 
-  if (data.length && data[0].time !== startDate) {
-    data.unshift({
-      time: sub(data[0].time, interval),
-      value: 0,
-    })
-  }
+  // eslint-disable-next-line no-param-reassign
+  data = data.filter(point => point.time >= startDate)
 
   for (let i = startDate; i < now; i = add(i, interval)) {
     const point = data[currentIndex]
@@ -324,7 +334,10 @@ const populateEmptyDataPoints = (
         value: lastPoint?.value ?? 0,
       })
     } else {
-      i = sub(i, interval)
+      if (!isEqual(point.time, i)) {
+        i = sub(i, interval)
+      }
+
       currentIndex++
       lastPoint = point
     }
@@ -362,7 +375,7 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
       setHasError(false)
 
       const now = new Date()
-      const fromDate = sub(now, getDurationFromTimeframe(timeWindow))
+      const fromDate = sub(now, getDurationFromTimeframeWithBuffer(timeWindow))
       const fromTimestamp = getUnixTime(fromDate) * 1000
       let indexSuffix = 'hourly'
       if (timeWindow === PairDataTimeWindowEnum.WEEK || timeWindow === PairDataTimeWindowEnum.MONTH) {
@@ -371,8 +384,9 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
         indexSuffix = 'weekly'
       }
 
+      const pair = `${inputCurrency.symbol.toLowerCase()}-${outputCurrency.symbol.toLowerCase()}`
       const body: SearchRequest = {
-        index: `liquidity_${inputCurrency.symbol.toLowerCase()}-${outputCurrency.symbol.toLowerCase()}_${indexSuffix}`,
+        index: `liquidity_${pair}_${indexSuffix}`,
         query: {
           bool: {
             must: [
@@ -387,7 +401,10 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
             should: [],
           },
         },
+        size: 10000,
       }
+
+      const actualFromDate = sub(now, getDurationFromTimeframe(timeWindow))
 
       try {
         const { data } = await search<SearchResponse<LiquidityAggregate>>(body)
@@ -398,15 +415,18 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
             populateEmptyDataPoints(
               data.hits.hits.map(hit => ({
                 time: new Date(hit._source.timestamp),
-                value: hit._source.token_0.price / hit._source.token_1.price,
+                value:
+                  pair === hit._source.pair.toLowerCase()
+                    ? hit._source.token_0.price / hit._source.token_1.price
+                    : hit._source.token_1.price / hit._source.token_0.price,
               })),
-              fromDate,
+              actualFromDate,
               timeWindow,
             ),
           )
         }
       } catch (err) {
-        setPairPrices(populateEmptyDataPoints([], fromDate, timeWindow))
+        setPairPrices(populateEmptyDataPoints([], actualFromDate, timeWindow))
 
         console.error(err)
         setHasError(true)
