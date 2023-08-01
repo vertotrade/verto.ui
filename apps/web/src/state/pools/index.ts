@@ -12,14 +12,12 @@ import {
   SerializedVaultUser,
   SerializedLockedRebusVault,
 } from 'state/types'
-import { getPoolApr } from 'utils/apr'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import cakeAbi from 'config/abi/cake.json'
 import { getRebusVaultAddress, getRebusFlexibleSideVaultAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
 import { bscTokens } from '@verto/tokens'
 import { isAddress } from 'utils'
-import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { rebusRpcProvider } from 'utils/providers'
 import { getPoolsPriceHelperLpFiles } from 'config/constants/priceHelperLps/index'
 import fetchFarms from '../farms/fetchFarms'
@@ -38,6 +36,7 @@ import {
   fetchPoolsCheckWhitelist,
   fetchPoolsBoostBlockStart,
   fetchPoolsMinPerUser,
+  fetchPoolsApr,
 } from './fetchPools'
 import {
   fetchPoolsAllowance,
@@ -158,6 +157,7 @@ export const fetchPoolsPublicDataAsync =
         withdrawFees,
         depositFees,
         areBoosted,
+        aprs,
       ] = await Promise.all([
         fetchPoolsBlockLimits(),
         fetchPoolsTotalStaking(),
@@ -194,6 +194,7 @@ export const fetchPoolsPublicDataAsync =
 
           return boostedRes
         }),
+        fetchPoolsApr(),
       ])
 
       const blockLimitsSousIdMap = keyBy(blockLimits, 'sousId')
@@ -206,6 +207,7 @@ export const fetchPoolsPublicDataAsync =
       const boostBlockStartsMap = keyBy(boostBlockStarts, 'sousId')
       const minPerUsersMap = keyBy(minPerUsers, 'sousId')
       const userInfosSousIdMap = keyBy(userInfos, 'sousId')
+      const aprsSousIdMap = keyBy(aprs, 'sousId')
 
       const priceHelperLpsConfig = getPoolsPriceHelperLpFiles(chainId)
       const activePriceHelperLpsConfig = priceHelperLpsConfig.filter(priceHelperLpConfig => {
@@ -245,6 +247,7 @@ export const fetchPoolsPublicDataAsync =
         const boostBlockStart = boostBlockStartsMap[pool.sousId]
         const minPerUser = minPerUsersMap[pool.sousId]
         const userInfo = userInfosSousIdMap[pool.sousId]
+        const aprInfo = aprsSousIdMap[pool.sousId]
         const isPoolEndBlockExceeded =
           currentBlock > 0 && blockLimit ? currentBlock > Number(blockLimit.endBlock) : false
         const isPoolFinished = pool.isFinished || isPoolEndBlockExceeded
@@ -254,14 +257,6 @@ export const fetchPoolsPublicDataAsync =
 
         const earningTokenAddress = isAddress(pool.earningToken.address)
         const earningTokenPrice = earningTokenAddress ? prices[earningTokenAddress] : 0
-        const apr = !isPoolFinished
-          ? getPoolApr(
-              stakingTokenPrice,
-              earningTokenPrice,
-              getBalanceNumber(new BigNumber(totalStaking.totalStaked), pool.stakingToken.decimals),
-              parseFloat(pool.tokenPerBlock),
-            )
-          : 0
 
         const profileRequirement = profileRequirements[pool.sousId] ? profileRequirements[pool.sousId] : undefined
 
@@ -271,7 +266,7 @@ export const fetchPoolsPublicDataAsync =
           profileRequirement,
           stakingTokenPrice,
           earningTokenPrice,
-          apr,
+          apr: isPoolFinished ? 0 : aprInfo?.apr || 0,
           isFinished: isPoolFinished,
           ...userInfo,
           ...withdrawFeePeriod,

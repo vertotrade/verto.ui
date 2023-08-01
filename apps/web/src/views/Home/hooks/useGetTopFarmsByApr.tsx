@@ -3,7 +3,6 @@ import { useFarms, usePriceCakeBusd } from 'state/farms/hooks'
 import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
 import { useAppDispatch } from 'state'
 import { fetchFarmsPublicDataAsync } from 'state/farms'
-import { getFarmApr } from 'utils/apr'
 import orderBy from 'lodash/orderBy'
 import { DeserializedFarm, FarmWithStakedValue } from '@verto/farms'
 import { FetchStatus } from 'config/constants/types'
@@ -45,16 +44,16 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
         farm => farm.lpTotalInQuoteToken && farm.quoteTokenPriceBusd && farm.multiplier && farm.multiplier !== '0X',
       )
       const farmsWithApr: FarmWithStakedValue[] = farmsWithPrices.map(farm => {
-        const totalLiquidity = farm.lpTotalInQuoteToken.times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
-          chainId,
-          farm.poolWeight,
-          cakePriceBusd,
-          totalLiquidity,
-          farm.lpAddress,
-          regularRewardPerBlock,
-        )
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr }
+        // const totalLiquidity = farm.lpTotalInQuoteToken.times(farm.quoteTokenPriceBusd)
+        // const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
+        //   chainId,
+        //   farm.poolWeight,
+        //   cakePriceBusd,
+        //   totalLiquidity,
+        //   farm.lpAddress,
+        //   regularRewardPerBlock,
+        // )
+        return { ...farm, apr: 0, lpRewardsApr: 0 }
       })
 
       const sortedByApr = orderBy(farmsWithApr, farm => farm.apr + farm.lpRewardsApr, 'desc')
