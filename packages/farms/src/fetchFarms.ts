@@ -3,7 +3,7 @@ import { formatUnits } from '@ethersproject/units'
 import { Call, MultiCallV2 } from '@verto/multicall'
 import { ChainId } from '@verto/sdk'
 import masterchefABI from 'config/abi/masterchef.json'
-import { DEFAULT_CHAIN_ID, FIXED_TWO, FIXED_ZERO } from './const'
+import { FIXED_TWO, FIXED_ZERO } from './const'
 import { getFarmsPrices } from './farmPrices'
 import { fetchPublicFarmsData } from './fetchPublicFarmData'
 import { fetchStableFarmData } from './fetchStableFarmData'
@@ -51,7 +51,6 @@ export type FetchFarmsParams = {
 export async function farmV2FetchFarms({
   farms,
   multicallv2,
-  isTestnet,
   masterChefAddress,
   chainId,
   totalRegularAllocPoint,
@@ -221,7 +220,7 @@ export const fetchMasterChefV2Data = async ({
         poolLength: BigNumber.from(0),
         totalRegularAllocPoint: BigNumber.from(0),
         totalSpecialAllocPoint: BigNumber.from(0),
-        cakePerBlock: BigNumber.from(0),
+        rewardPerBlock: BigNumber.from(0),
       }
     }
 
@@ -245,7 +244,12 @@ export const fetchMasterChefV2Data = async ({
     }
   } catch (error) {
     console.error('Get MasterChef data error', error)
-    throw error
+    return {
+      poolLength: BigNumber.from(0),
+      totalRegularAllocPoint: BigNumber.from(0),
+      totalSpecialAllocPoint: BigNumber.from(0),
+      rewardPerBlock: BigNumber.from(0),
+    }
   }
 }
 
