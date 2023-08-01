@@ -1,7 +1,6 @@
 import React, { useMemo, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { useAccount } from 'wagmi'
-import { getFarmApr } from 'utils/apr'
 import { useTranslation } from '@verto/localization'
 import { useFarms, usePriceCakeBusd, usePollFarmsWithUserData } from 'state/farms/hooks'
 import { useFarmsV1 } from 'state/farmsV1/hooks'
@@ -12,7 +11,7 @@ import { DesktopV2ColumnSchema } from '../../types'
 const NewFarmStep2: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
-  const { data: farmsLP, userDataLoaded, regularRewardPerBlock } = useFarms()
+  const { data: farmsLP, userDataLoaded } = useFarms()
   const { data: farmsV1LP } = useFarmsV1()
   const cakePrice = usePriceCakeBusd()
 
@@ -37,28 +36,25 @@ const NewFarmStep2: React.FC<React.PropsWithChildren> = () => {
     return farm.userData && (hasStakedBalance || hasTokenBalance || farms)
   })
 
-  const farmsList = useCallback(
-    (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
-      const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
-        if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
-          return farm
-        }
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
-          56,
-          new BigNumber(farm.poolWeight),
-          cakePrice,
-          totalLiquidity,
-          farm.lpAddress,
-          regularRewardPerBlock,
-        )
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
-      })
+  const farmsList = useCallback((farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
+    const farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
+      if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
+        return farm
+      }
+      const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
+      // const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
+      //   56,
+      //   new BigNumber(farm.poolWeight),
+      //   cakePrice,
+      //   totalLiquidity,
+      //   farm.lpAddress,
+      //   regularRewardPerBlock,
+      // )
+      return { ...farm, apr: 0, lpRewardsApr: 0, liquidity: totalLiquidity }
+    })
 
-      return farmsToDisplayWithAPR
-    },
-    [cakePrice, regularRewardPerBlock],
-  )
+    return farmsToDisplayWithAPR
+  }, [])
 
   const chosenFarmsMemoized = useMemo(() => {
     return farmsList(stakedOrHasTokenBalance)

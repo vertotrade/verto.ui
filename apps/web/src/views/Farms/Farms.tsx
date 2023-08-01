@@ -25,7 +25,7 @@ import { useRebusVaultUserData } from 'state/pools/hooks'
 import { useIntersectionObserver } from '@verto/hooks'
 import { DeserializedFarm, FarmWithStakedValue } from '@verto/farms'
 import { useTranslation } from '@verto/localization'
-import { getFarmApr } from 'utils/apr'
+import { PoolFarmInfo, getPoolFarmInfoMap } from 'utils/apr'
 import useTheme from 'hooks/useTheme'
 import orderBy from 'lodash/orderBy'
 import { latinise } from 'utils/latinise'
@@ -109,11 +109,13 @@ const ViewControls = styled.div`
 
 const NUMBER_OF_FARMS_VISIBLE = 12
 
+const isFarmInactive = (farm: DeserializedFarm) => farm.multiplier === '0X'
+
 const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { pathname, query: urlQuery } = useRouter()
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
-  const { data: farmsLP, userDataLoaded, poolLength, regularRewardPerBlock } = useFarms()
+  const { data: farmsLP, userDataLoaded, poolLength } = useFarms()
   const cakePrice = usePriceCakeBusd()
 
   const [_query, setQuery] = useState('')
@@ -130,6 +132,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isInactive = pathname.includes('history')
   const isActive = !isInactive && !isArchived
 
+  const [farmLiquidityAprInfo, setfarmLiquidityAprInfo] = useState<PoolFarmInfo>({})
+  useEffect(() => {
+    getPoolFarmInfoMap().then(res => setfarmLiquidityAprInfo(res))
+  }, [])
+
   useRebusVaultUserData()
 
   usePollFarmsWithUserData()
@@ -140,10 +147,9 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const [stakedOnly, setStakedOnly] = useUserFarmStakedOnly(isActive)
 
-  // NOTE: Temporarily inactive aBNBc-BNB LP on FE
-  const activeFarms = farmsLP.filter(farm => farm.multiplier !== '0X' && (!poolLength || poolLength > farm.pid))
+  const activeFarms = farmsLP.filter(farm => !isFarmInactive(farm) && (!poolLength || poolLength > farm.pid))
 
-  const inactiveFarms = farmsLP.filter(farm => farm.multiplier === '0X')
+  const inactiveFarms = farmsLP.filter(isFarmInactive)
   const archivedFarms = farmsLP
 
   const stakedOnlyFarms = activeFarms.filter(
@@ -170,23 +176,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const farmsList = useCallback(
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
       let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
-        if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
-          return farm
-        }
+        const info = farmLiquidityAprInfo?.[farm.poolAddress || farm.lpAddress]
+        const apr = isFarmInactive(farm) ? 0 : info?.apr || 0
+        const lpRewardsApr = isFarmInactive(farm) ? 0 : info?.lpRewardsApr || 0
 
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = isActive
-          ? getFarmApr(
-              chainId,
-              new BigNumber(farm.poolWeight),
-              cakePrice,
-              totalLiquidity,
-              farm.lpAddress,
-              regularRewardPerBlock,
-            )
-          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
-
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...farm, apr, lpRewardsApr, liquidity: new BigNumber(info?.liquidity || 0) }
       })
 
       if (query) {
@@ -198,7 +192,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
       return farmsToDisplayWithAPR
     },
-    [query, isActive, chainId, cakePrice, regularRewardPerBlock],
+    [query, farmLiquidityAprInfo],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -376,7 +370,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             <Loading />
           </Flex>
         )}
-        {poolLength && <div ref={observerRef} />}
+        {!!poolLength && <div ref={observerRef} />}
       </Page>
     </FarmsContext.Provider>
   )
