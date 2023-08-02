@@ -157,6 +157,19 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '10',
     isFinished: false,
   },
+
+  {
+    sousId: 317,
+    stakingToken: tokens.wrebus,
+    earningToken: (tokens as any).verto,
+    contractAddress: {
+      [ChainId.REBUS]: '',
+      [ChainId.REBUS_TESTNET]: '0xA6b258783CD3ddd9538aEB78D21C35831C077891',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+  },
 ]
   .filter(p => p.contractAddress[DEFAULT_CHAIN_ID] && p.stakingToken && p.earningToken)
   .map(p => ({
