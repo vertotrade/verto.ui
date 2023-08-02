@@ -1,6 +1,7 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { useTranslation } from '@verto/localization'
-import { bscTokens } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
+import env from '@beam-australia/react-env'
 import {
   ArrowForwardIcon,
   BalanceInput,
@@ -24,7 +25,7 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useCake, useLotteryV2Contract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import useTokenBalance from 'hooks/useTokenBalance'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useAppDispatch } from 'state'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { fetchUserTicketsAndLotteries } from 'state/lottery'
@@ -59,6 +60,8 @@ enum BuyingStage {
   EDIT = 'Edit',
 }
 
+const vertoToken = env('IS_MAINNET') === 'true' ? vertoTokens.verto : vertoTokensTestnet.verto
+
 const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> = ({ onDismiss }) => {
   const { address: account } = useAccount()
   const { t } = useTranslation()
@@ -76,23 +79,21 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const [ticketsToBuy, setTicketsToBuy] = useState('')
   const [discountValue, setDiscountValue] = useState('')
   const [totalCost, setTotalCost] = useState('')
+  const [rawTotalCost, setRawTotalCost] = useState(() => new BigNumber(0))
   const [ticketCostBeforeDiscount, setTicketCostBeforeDiscount] = useState('')
   const [buyingStage, setBuyingStage] = useState<BuyingStage>(BuyingStage.BUY)
   const [maxPossibleTicketPurchase, setMaxPossibleTicketPurchase] = useState(BIG_ZERO)
   const [maxTicketPurchaseExceeded, setMaxTicketPurchaseExceeded] = useState(false)
-  const [userNotEnoughCake, setUserNotEnoughCake] = useState(false)
+  const [userNotEnoughVerto, setUserNotEnoughVerto] = useState(false)
   const lotteryContract = useLotteryV2Contract()
   const { reader: cakeContractReader, signer: cakeContractApprover } = useCake()
   const { toastSuccess } = useToast()
-  const { balance: userCake, fetchStatus } = useTokenBalance(bscTokens.cake.address)
-  // balance from useTokenBalance causes rerenders in effects as a new BigNumber is instantiated on each render, hence memoising it using the stringified value below.
-  const stringifiedUserCake = userCake.toJSON()
-  const memoisedUserCake = useMemo(() => new BigNumber(stringifiedUserCake), [stringifiedUserCake])
+  const { balance: userVerto, fetchStatus } = useTokenBalance(vertoToken.address)
 
   const cakePriceBusd = usePriceCakeBusd()
   const dispatch = useAppDispatch()
   const hasFetchedBalance = fetchStatus === FetchStatus.Fetched
-  const userCakeDisplayBalance = getFullDisplayBalance(userCake, 18, 3)
+  const userVertoDisplayBalance = getFullDisplayBalance(userVerto, 18, 3)
 
   const TooltipComponent = () => (
     <>
@@ -146,21 +147,21 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
       const limitedNumberTickets = limitNumberByMaxTicketsPerBuy(inputNumber)
       const cakeCostAfterDiscount = getTicketCostAfterDiscount(limitedNumberTickets)
 
-      if (cakeCostAfterDiscount.gt(userCake)) {
-        setUserNotEnoughCake(true)
+      if (cakeCostAfterDiscount.gt(userVerto)) {
+        setUserNotEnoughVerto(true)
       } else if (limitedNumberTickets.eq(maxNumberTicketsPerBuyOrClaim)) {
         setMaxTicketPurchaseExceeded(true)
       } else {
-        setUserNotEnoughCake(false)
+        setUserNotEnoughVerto(false)
         setMaxTicketPurchaseExceeded(false)
       }
     },
-    [limitNumberByMaxTicketsPerBuy, getTicketCostAfterDiscount, maxNumberTicketsPerBuyOrClaim, userCake],
+    [limitNumberByMaxTicketsPerBuy, getTicketCostAfterDiscount, maxNumberTicketsPerBuyOrClaim, userVerto],
   )
 
   useEffect(() => {
     const getMaxPossiblePurchase = () => {
-      const maxBalancePurchase = memoisedUserCake.div(priceTicketInCake)
+      const maxBalancePurchase = userVerto.div(priceTicketInCake)
       const limitedMaxPurchase = limitNumberByMaxTicketsPerBuy(maxBalancePurchase)
       let maxPurchase
 
@@ -180,9 +181,9 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
       }
 
       if (hasFetchedBalance && maxPurchase.lt(1)) {
-        setUserNotEnoughCake(true)
+        setUserNotEnoughVerto(true)
       } else {
-        setUserNotEnoughCake(false)
+        setUserNotEnoughVerto(false)
       }
 
       setMaxPossibleTicketPurchase(maxPurchase)
@@ -191,7 +192,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   }, [
     maxNumberTicketsPerBuyOrClaim,
     priceTicketInCake,
-    memoisedUserCake,
+    userVerto,
     limitNumberByMaxTicketsPerBuy,
     getTicketCostAfterDiscount,
     getMaxTicketBuyWithDiscount,
@@ -203,8 +204,9 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
     const costAfterDiscount = getTicketCostAfterDiscount(numberOfTicketsToBuy)
     const costBeforeDiscount = priceTicketInCake.times(numberOfTicketsToBuy)
     const discountBeingApplied = costBeforeDiscount.minus(costAfterDiscount)
-    setTicketCostBeforeDiscount(costBeforeDiscount.gt(0) ? getFullDisplayBalance(costBeforeDiscount) : '0')
-    setTotalCost(costAfterDiscount.gt(0) ? getFullDisplayBalance(costAfterDiscount) : '0')
+    setTicketCostBeforeDiscount(costBeforeDiscount.gt(0) ? getFullDisplayBalance(costBeforeDiscount, 18, 5) : '0')
+    setRawTotalCost(costAfterDiscount)
+    setTotalCost(costAfterDiscount.gt(0) ? getFullDisplayBalance(costAfterDiscount, 18, 5) : '0')
     setDiscountValue(discountBeingApplied.gt(0) ? getFullDisplayBalance(discountBeingApplied, 18, 5) : '0')
   }, [ticketsToBuy, priceTicketInCake, discountDivisor, getTicketCostAfterDiscount])
 
@@ -231,7 +233,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
 
   const handleNumberButtonClick = (number: number) => {
     setTicketsToBuy(number.toFixed())
-    setUserNotEnoughCake(false)
+    setUserNotEnoughVerto(false)
     setMaxTicketPurchaseExceeded(false)
   }
 
@@ -242,8 +244,9 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
+      totalCost: rawTotalCost,
       onRequiresApproval: async () => {
-        return requiresApproval(cakeContractReader, account, lotteryContract.address, Math.ceil(parseFloat(totalCost)))
+        return requiresApproval(cakeContractReader, account, lotteryContract.address, rawTotalCost)
       },
       onApprove: () => {
         return callWithGasPrice(cakeContractApprover, 'approve', [lotteryContract.address, MaxUint256])
@@ -266,7 +269,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
     })
 
   const getErrorMessage = () => {
-    if (userNotEnoughCake) return t('Insufficient VERTO balance')
+    if (userNotEnoughVerto) return t('Insufficient VERTO balance')
     return t('The maximum number of tickets you can buy in one transaction is %maxTickets%', {
       maxTickets: maxNumberTicketsPerBuyOrClaim.toString(),
     })
@@ -283,7 +286,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const disableBuying =
     !isApproved ||
     isConfirmed ||
-    userNotEnoughCake ||
+    userNotEnoughVerto ||
     !ticketsToBuy ||
     new BigNumber(ticketsToBuy).lte(0) ||
     getTicketsForPurchase().length !== parseInt(ticketsToBuy, 10)
@@ -315,7 +318,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
         </Flex>
       </Flex>
       <BalanceInput
-        isWarning={account && (userNotEnoughCake || maxTicketPurchaseExceeded)}
+        isWarning={account && (userNotEnoughVerto || maxTicketPurchaseExceeded)}
         placeholder="0"
         value={ticketsToBuy}
         onUserInput={handleInputChange}
@@ -328,7 +331,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
       />
       <Flex alignItems="center" justifyContent="flex-end" mt="4px" mb="12px">
         <Flex justifyContent="flex-end" flexDirection="column">
-          {account && (userNotEnoughCake || maxTicketPurchaseExceeded) && (
+          {account && (userNotEnoughVerto || maxTicketPurchaseExceeded) && (
             <Text fontSize="12px" color="failure">
               {getErrorMessage()}
             </Text>
@@ -340,7 +343,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
               </Text>
               {hasFetchedBalance ? (
                 <Text fontSize="12px" color="textSubtle">
-                  {userCakeDisplayBalance}
+                  {userVertoDisplayBalance}
                 </Text>
               ) : (
                 <Skeleton width={50} height={12} />
@@ -432,7 +435,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
                 endIcon={
                   <ArrowForwardIcon
                     ml="2px"
-                    color={disableBuying || isConfirming ? 'disabled' : 'primary'}
+                    color={disableBuying || isConfirming ? 'disabled' : 'invertedContrast'}
                     height="24px"
                     width="24px"
                   />

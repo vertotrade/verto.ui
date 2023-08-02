@@ -1,12 +1,14 @@
 import { useEffect, useReducer, useRef, useCallback } from 'react'
 import noop from 'lodash/noop'
 import { useAccount } from 'wagmi'
+import BigNumber from 'bignumber.js'
 import { TransactionReceipt, TransactionResponse } from '@ethersproject/providers'
 import useCatchTxError from './useCatchTxError'
 
 type LoadingState = 'idle' | 'loading' | 'success' | 'fail'
 
 type Action =
+  | { type: 'reject_receipt' }
   | { type: 'approve_sending' }
   | { type: 'approve_receipt' }
   | { type: 'approve_error' }
@@ -26,6 +28,11 @@ const initialState: State = {
 
 const reducer = (state: State, actions: Action): State => {
   switch (actions.type) {
+    case 'reject_receipt':
+      return {
+        ...state,
+        approvalState: 'idle',
+      }
     case 'approve_sending':
       return {
         ...state,
@@ -67,6 +74,7 @@ interface OnSuccessProps {
 }
 
 interface ApproveConfirmTransaction {
+  totalCost?: BigNumber
   onApprove: () => Promise<TransactionResponse>
   onConfirm: (params?) => Promise<TransactionResponse>
   onRequiresApproval?: () => Promise<boolean>
@@ -75,6 +83,7 @@ interface ApproveConfirmTransaction {
 }
 
 const useApproveConfirmTransaction = ({
+  totalCost,
   onApprove,
   onConfirm,
   onRequiresApproval,
@@ -84,6 +93,7 @@ const useApproveConfirmTransaction = ({
   const { address: account } = useAccount()
   const [state, dispatch] = useReducer(reducer, initialState)
   const handlePreApprove = useRef(onRequiresApproval)
+  handlePreApprove.current = onRequiresApproval
   const { fetchWithCatchTxError } = useCatchTxError()
 
   const handleApprove = useCallback(async () => {
@@ -122,10 +132,12 @@ const useApproveConfirmTransaction = ({
       handlePreApprove.current().then(requiresApproval => {
         if (!requiresApproval) {
           dispatch({ type: 'approve_receipt' })
+        } else {
+          dispatch({ type: 'reject_receipt' })
         }
       })
     }
-  }, [account, handlePreApprove, dispatch])
+  }, [account, handlePreApprove, dispatch, totalCost])
 
   return {
     isApproving: state.approvalState === 'loading',

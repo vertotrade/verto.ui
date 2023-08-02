@@ -149,7 +149,7 @@ const Hero = () => {
   const videoSrc = isDark ? 'images/animations/lottery-01-dark.webm' : 'images/animations/lottery-01-light.webm'
 
   const getPrizeBalances = () => {
-    if (status === LotteryStatus.CLOSE || status === LotteryStatus.CLAIMABLE) {
+    if (status === LotteryStatus.CLOSE) {
       return (
         <Heading scale="lg" color="primary" textAlign={['center', null, null, 'left']}>
           {t('Calculating')}...

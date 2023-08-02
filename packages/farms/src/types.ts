@@ -8,8 +8,6 @@ export type FarmsDynamicDataResult = {
   lpTotalSupply: string
   lpTotalInQuoteToken: string
   tokenPriceVsQuote: string
-  poolWeight: string
-  multiplier: string
 }
 export type FarmData = SerializedFarmConfig & FarmsDynamicDataResult
 

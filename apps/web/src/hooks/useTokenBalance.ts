@@ -34,10 +34,12 @@ const useTokenBalance = (tokenAddress: string, forceBSC?: boolean) => {
     refreshInterval: FAST_INTERVAL,
   })
 
+  const balance = useMemo(() => (data ? new BigNumber(data.toString()) : BIG_ZERO), [data])
+
   return {
     ...rest,
     fetchStatus: status,
-    balance: data ? new BigNumber(data.toString()) : BIG_ZERO,
+    balance,
   }
 }
 
