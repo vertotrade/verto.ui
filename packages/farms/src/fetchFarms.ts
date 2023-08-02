@@ -44,18 +44,9 @@ export type FetchFarmsParams = {
   isTestnet: boolean
   masterChefAddress: string
   chainId: number
-  totalRegularAllocPoint: BigNumber
-  totalSpecialAllocPoint: BigNumber
 }
 
-export async function farmV2FetchFarms({
-  farms,
-  multicallv2,
-  masterChefAddress,
-  chainId,
-  totalRegularAllocPoint,
-  totalSpecialAllocPoint,
-}: FetchFarmsParams) {
+export async function farmV2FetchFarms({ farms, multicallv2, masterChefAddress, chainId }: FetchFarmsParams) {
   const stableFarms = farms.filter(isStableFarm)
 
   const [stableFarmsResults, lpDataResults] = await Promise.all([
@@ -93,12 +84,6 @@ export async function farmV2FetchFarms({
               token0Decimals: farm.token.decimals,
               token1Decimals: farm.quoteToken.decimals,
             })),
-        ...getFarmAllocation({
-          // allocPoint: poolInfos[index]?.allocPoint,
-          // isRegular: poolInfos[index]?.isRegular,
-          totalRegularAllocPoint,
-          totalSpecialAllocPoint,
-        }),
       }
     } catch (error) {
       console.error(error, farm, index, {
@@ -106,8 +91,6 @@ export async function farmV2FetchFarms({
         // isRegular: poolInfos[index]?.isRegular,
         token0Decimals: farm.token.decimals,
         token1Decimals: farm.quoteToken.decimals,
-        totalRegularAllocPoint,
-        totalSpecialAllocPoint,
       })
       throw error
     }
@@ -214,42 +197,32 @@ export const fetchMasterChefV2Data = async ({
   multicallv2: MultiCallV2
   masterChefAddress: string
 }) => {
-  try {
-    if (!masterChefAddress) {
-      return {
-        poolLength: BigNumber.from(0),
-        totalRegularAllocPoint: BigNumber.from(0),
-        totalSpecialAllocPoint: BigNumber.from(0),
-        rewardPerBlock: BigNumber.from(0),
-      }
-    }
-
-    const [rewardPerBlock] = await multicallv2<[BigNumber]>({
-      abi: masterchefABI,
-      calls: [
-        {
-          address: masterChefAddress,
-          name: 'rewardPerBlock',
-          params: [],
-        },
-      ],
-      chainId: isTestnet ? ChainId.REBUS_TESTNET : ChainId.REBUS,
-    })
-
-    return {
-      poolLength: BigNumber.from(0),
-      totalRegularAllocPoint: BigNumber.from(0),
-      totalSpecialAllocPoint: BigNumber.from(0),
-      rewardPerBlock,
-    }
-  } catch (error) {
-    console.error('Get MasterChef data error', error)
+  if (!masterChefAddress) {
     return {
       poolLength: BigNumber.from(0),
       totalRegularAllocPoint: BigNumber.from(0),
       totalSpecialAllocPoint: BigNumber.from(0),
       rewardPerBlock: BigNumber.from(0),
     }
+  }
+
+  const [rewardPerBlock] = await multicallv2<[BigNumber]>({
+    abi: masterchefABI,
+    calls: [
+      {
+        address: masterChefAddress,
+        name: 'rewardPerBlock',
+        params: [],
+      },
+    ],
+    chainId: isTestnet ? ChainId.REBUS_TESTNET : ChainId.REBUS,
+  })
+
+  return {
+    poolLength: BigNumber.from(0),
+    totalRegularAllocPoint: BigNumber.from(0),
+    totalSpecialAllocPoint: BigNumber.from(0),
+    rewardPerBlock,
   }
 }
 
@@ -338,30 +311,6 @@ const formatClassicFarmResponse = (farmData: ClassicLPData): FormatClassicFarmRe
     quoteTokenBalanceLP: FixedNumber.from(quoteTokenBalanceLP[0]),
     lpTokenBalanceMC: FixedNumber.from(lpTokenBalanceMC[0]),
     lpTotalSupply: FixedNumber.from(lpTotalSupply[0]),
-  }
-}
-
-interface FarmAllocationParams {
-  allocPoint?: BigNumber
-  isRegular?: boolean
-  totalRegularAllocPoint: BigNumber
-  totalSpecialAllocPoint: BigNumber
-}
-
-const getFarmAllocation = ({
-  allocPoint,
-  isRegular,
-  totalRegularAllocPoint,
-  totalSpecialAllocPoint,
-}: FarmAllocationParams) => {
-  const _allocPoint = allocPoint ? FixedNumber.from(allocPoint) : FIXED_ZERO
-  const totalAlloc = isRegular ? totalRegularAllocPoint : totalSpecialAllocPoint
-  const poolWeight =
-    !totalAlloc.isZero() && !_allocPoint.isZero() ? _allocPoint.divUnsafe(FixedNumber.from(totalAlloc)) : FIXED_ZERO
-
-  return {
-    poolWeight: poolWeight.toString(),
-    multiplier: !_allocPoint.isZero() ? `${+_allocPoint.divUnsafe(FixedNumber.from(100)).toString()}X` : `0X`,
   }
 }
 

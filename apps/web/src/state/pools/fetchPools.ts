@@ -8,7 +8,7 @@ import multicall, { multicallv2 } from 'utils/multicall'
 import { getAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import chunk from 'lodash/chunk'
-import { getApr, getPoolFarmInfo } from 'utils/apr'
+import { getPoolFarmInfo } from 'utils/apr'
 import sousChefV2 from '../../config/abi/sousChefV2.json'
 import sousChefV3 from '../../config/abi/sousChefV3.json'
 

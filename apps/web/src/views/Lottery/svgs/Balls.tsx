@@ -141,7 +141,6 @@ interface BallWithNumberProps {
 export const BallWithNumber: React.FC<React.PropsWithChildren<BallWithNumberProps>> = ({
   isDark,
   number,
-  size,
   fontSize,
   rotationTransform,
 }) => {
