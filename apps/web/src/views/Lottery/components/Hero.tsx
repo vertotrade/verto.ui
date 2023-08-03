@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import { Box, Flex, Heading, Skeleton, Balance, Text } from '@verto/uikit'
 import { LotteryStatus } from 'config/constants/types'
 import { useTranslation } from '@verto/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import useTheme from 'hooks/useTheme'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
+import { useTokenPrices } from 'utils/prices'
+import { vertoTokens } from '@verto/tokens'
 import { Clip } from 'components/Clip'
 import BuyTicketsButton from './BuyTicketsButton'
 
@@ -78,8 +79,8 @@ const Hero = () => {
     currentLotteryId,
   } = useLottery()
 
-  const vertoPriceBusd = usePriceCakeBusd()
-  const prizeInXVerto = amountCollectedInCake.times(vertoPriceBusd)
+  const vertoPrice = useTokenPrices(vertoTokens.verto.symbol)
+  const prizeInXVerto = amountCollectedInCake.times(vertoPrice)
   const endTimeMs = parseInt(endTime, 10) * 1000
   const endDate = new Date(endTimeMs)
   const prizeTotal = getBalanceNumber(prizeInXVerto)
