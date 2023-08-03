@@ -5,7 +5,6 @@ import {
   Flex,
   Button,
   Skeleton,
-  Ticket,
   PresentWonIcon,
   TooltipText,
   InfoIcon,

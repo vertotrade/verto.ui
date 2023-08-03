@@ -25,7 +25,6 @@ const ViewTicketsModal: React.FC<React.PropsWithChildren<ViewTicketsModalProps>>
   roundStatus,
 }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
   const { currentLotteryId } = useLottery()
   const isPreviousRound = roundStatus?.toLowerCase() === LotteryStatus.CLAIMABLE || roundId !== currentLotteryId
 

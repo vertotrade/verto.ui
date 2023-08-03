@@ -7,7 +7,7 @@ import { useTranslation } from '@verto/localization'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { Token } from '@verto/sdk'
 
-import { ActionContainer, ActionTitles, ActionContent } from './styles'
+import { ActionContainer, ActionContent } from './styles'
 import CollectModal from '../../Modals/CollectModal'
 
 const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.DeserializedPool<Token>>> = ({
@@ -38,17 +38,6 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.Deseri
       sousId={sousId}
       isBnbPool={isBnbPool}
     />,
-  )
-
-  const actionTitle = (
-    <>
-      <Text fontSize="12px" bold color="text" as="span" textTransform="uppercase">
-        {earningToken.symbol}{' '}
-      </Text>
-      <Text fontSize="12px" bold color="text" as="span" textTransform="uppercase">
-        {t('Earned')}
-      </Text>
-    </>
   )
 
   if (!account) {

@@ -2,9 +2,7 @@ import styled, { keyframes, css } from 'styled-components'
 import { Box, Flex, HelpIcon, Text, useMatchBreakpoints, Pool } from '@verto/uikit'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { getVaultPosition, VaultPosition } from 'utils/cakePool'
-import BigNumber from 'bignumber.js'
 import { VaultKey, DeserializedLockedRebusVault, DeserializedLockedVaultUser } from 'state/types'
-import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { Token } from '@verto/sdk'
 import Harvest from './Harvest'
 import Stake from './Stake'
@@ -121,26 +119,14 @@ const YieldBoostDurationRow = ({ lockEndTime, lockStartTime }) => {
 }
 
 const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ account, pool, expanded }) => {
-  const { userData, vaultKey } = pool
+  const { vaultKey } = pool
   const { isMobile } = useMatchBreakpoints()
 
   const vaultData = useVaultPoolByKey(vaultKey)
-  const {
-    userData: {
-      balance: { cakeAsBigNumber },
-    },
-  } = vaultData
 
   const vaultPosition = getVaultPosition(vaultData.userData)
 
   const isLocked = (vaultData as DeserializedLockedRebusVault).userData.locked
-
-  const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
-  const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
-
-  const poolStakingTokenBalance = vaultKey
-    ? cakeAsBigNumber.plus(stakingTokenBalance)
-    : stakedBalance.plus(stakingTokenBalance)
 
   return (
     <StyledActionPanel expanded={expanded}>

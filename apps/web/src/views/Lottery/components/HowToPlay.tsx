@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { Box, Flex, Text, Heading, Link, useMatchBreakpoints } from '@verto/uikit'
+import { Box, Flex, Text, Heading, Link } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
-import { BallWithNumber } from '../svgs'
 
 const Divider = styled.div`
   background-color: ${({ theme }) => theme.colors.cardBorder};
@@ -73,20 +72,6 @@ const StepCard: React.FC<React.PropsWithChildren<{ step: Step }>> = ({ step }) =
     </StyledStepCard>
   )
 }
-
-const BallsContainer = styled(Flex)`
-  padding-left: 28px;
-  align-items: center;
-  width: 100%;
-  ${({ theme }) => theme.mediaQueries.xs} {
-    gap: 7px;
-    padding-left: 36px;
-  }
-  ${({ theme }) => theme.mediaQueries.lg} {
-    gap: 15px;
-    padding-left: 40px;
-  }
-`
 
 const InlineLink = styled(Link)`
   display: inline;

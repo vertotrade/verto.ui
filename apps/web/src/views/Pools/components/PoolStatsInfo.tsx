@@ -6,7 +6,6 @@ import BigNumber from 'bignumber.js'
 import { rebus, rebusTestnet } from 'utils/wagmi-chains'
 import { useTranslation } from '@verto/localization'
 import { ChainId, Token } from '@verto/sdk'
-import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { memo } from 'react'
 import { useCurrentBlock } from 'state/block/hooks'
 import { useVaultPoolByKey } from 'state/pools/hooks'
@@ -14,9 +13,8 @@ import { VaultKey } from 'state/types'
 import { getBlockExploreLink } from 'utils'
 import { getAddress, getVaultPoolAddress } from 'utils/addressHelpers'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
-import BoostedTag from 'views/Farms/components/YieldBooster/components/BoostedTag'
 import MaxStakeRow from './MaxStakeRow'
-import { AprInfo, DurationAvg, PerformanceFee, TotalLocked, TotalStaked } from './Stat'
+import { DurationAvg, PerformanceFee, TotalLocked, TotalStaked } from './Stat'
 
 const blockExplorerUrl =
   DEFAULT_CHAIN_ID === ChainId.REBUS ? rebus.blockExplorers.default.url : rebusTestnet.blockExplorers.default.url
@@ -49,10 +47,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
     vaultKey,
     profileRequirement,
     isFinished,
-    userData: poolUserData,
   } = pool
-
-  const stakedBalance = poolUserData?.stakedBalance ? poolUserData.stakedBalance : BIG_ZERO
 
   const {
     totalCakeInVault,
