@@ -1,41 +1,17 @@
-import env from '@beam-australia/react-env'
-import axios from 'axios'
+import { fetchWithCache } from './fetchWithCache'
 
-export type PoolFarmInfo = Record<
-  string,
-  {
-    apr: number
-    lpRewardsApr: number
-    liquidity: number
-    liquidityStaked: number
-    [key: string]: number
-  }
->
+export type PoolFarmInfo = {
+  apr: number
+  lpRewardsApr: number
+  liquidity: number
+  liquidityStaked: number
+  [key: string]: number
+}
 
-const URL = env('APR_URL')
+export type PoolFarmInfoMap = Record<string, PoolFarmInfo>
 
-let fetchAprMapPromise: Promise<void> = null
-let aprMap: undefined | PoolFarmInfo = null
-
-export const getPoolFarmInfoMap = async () => {
-  if (!fetchAprMapPromise && !aprMap) {
-    fetchAprMapPromise = axios
-      .get(URL)
-      .then(response => {
-        aprMap = response?.data || {}
-        fetchAprMapPromise = null
-      })
-      .catch(err => {
-        console.error(`Error fetching APR data`, err)
-        fetchAprMapPromise = null
-      })
-  }
-
-  if (fetchAprMapPromise) {
-    await fetchAprMapPromise
-  }
-
-  return aprMap || {}
+export const getPoolFarmInfoMap = async (): Promise<PoolFarmInfoMap> => {
+  return fetchWithCache()
 }
 
 export const getPoolFarmInfo = async (address: string) => {

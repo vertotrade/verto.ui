@@ -25,7 +25,7 @@ import { useRebusVaultUserData } from 'state/pools/hooks'
 import { useIntersectionObserver } from '@verto/hooks'
 import { DeserializedFarm, FarmWithStakedValue } from '@verto/farms'
 import { useTranslation } from '@verto/localization'
-import { PoolFarmInfo, getPoolFarmInfoMap } from 'utils/apr'
+import { PoolFarmInfoMap, getPoolFarmInfoMap } from 'utils/apr'
 import useTheme from 'hooks/useTheme'
 import orderBy from 'lodash/orderBy'
 import { latinise } from 'utils/latinise'
@@ -132,7 +132,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isInactive = pathname.includes('history')
   const isActive = !isInactive && !isArchived
 
-  const [farmLiquidityAprInfo, setfarmLiquidityAprInfo] = useState<PoolFarmInfo>({})
+  const [farmLiquidityAprInfo, setfarmLiquidityAprInfo] = useState<PoolFarmInfoMap>({})
   useEffect(() => {
     getPoolFarmInfoMap().then(res => setfarmLiquidityAprInfo(res))
   }, [])
