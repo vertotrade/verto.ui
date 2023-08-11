@@ -3,7 +3,7 @@ import { Card } from '@verto/uikit'
 
 export const BodyWrapper = styled(Card)`
   border-radius: 16px;
-  max-width: 436px;
+  max-width: 600px;
   width: 100%;
   z-index: 1;
 `
