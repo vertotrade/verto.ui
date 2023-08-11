@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import styled from 'styled-components'
+import useTheme from 'hooks/useTheme'
 import { Text, CardBody, CardFooter, Button, AddIcon } from '@verto/uikit'
 import Link from 'next/link'
 import { useAccount } from 'wagmi'
@@ -13,13 +13,10 @@ import Dots from '../../components/Loader/Dots'
 import { AppHeader, AppBody } from '../../components/App'
 import Page from '../Page'
 
-const Body = styled(CardBody)`
-  background-color: ${({ theme }) => theme.colors.dropdownDeep};
-`
-
 export default function Pool() {
   const { address: account } = useAccount()
   const { t } = useTranslation()
+  const theme = useTheme()
 
   // fetch the user's balances of all tracked V2 LP tokens
   const trackedTokenPairs = useTrackedTokenPairs()
@@ -80,7 +77,12 @@ export default function Pool() {
         <FullPositionCard
           key={v2Pair.liquidityToken.address}
           pair={v2Pair}
-          mb={Boolean(stablePairs?.length) || index < allV2PairsWithLiquidity.length - 1 ? '16px' : 0}
+          mb={0}
+          style={{
+            borderBottom: `1px solid ${theme.theme.colors.hrBold}`,
+            borderBottomWidth: index < allV2PairsWithLiquidity.length - 1 ? '1px' : 0,
+            borderRadius: 0,
+          }}
         />
       ))
     }
@@ -113,7 +115,7 @@ export default function Pool() {
     <Page>
       <AppBody>
         <AppHeader title={t('Your Liquidity')} subtitle={t('Remove liquidity to receive tokens back')} />
-        <Body>
+        <CardBody>
           {renderBody()}
           {/* TODO: Renable once users can create custom pairs */}
           {/* {account && !v2IsLoading && (
@@ -128,7 +130,7 @@ export default function Pool() {
               </Link>
             </Flex>
           )} */}
-        </Body>
+        </CardBody>
         <CardFooter style={{ textAlign: 'center' }}>
           <Link href="/add" passHref>
             <Button id="join-pool-button" variant="secondary" width="100%" startIcon={<AddIcon color="black" />}>
