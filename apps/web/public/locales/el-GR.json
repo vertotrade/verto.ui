@@ -886,7 +886,7 @@
   "Market cap": "Κεφαλαιοποίηση",
   "Current emissions": "Ρυθμός δημιουργίας",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/μπλοκ",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/μπλοκ",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% για συλλογή από %count% farm",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% για συλλογή από %count% farms",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% για συλλογή από %count% farm και δεξαμενή VERTO",

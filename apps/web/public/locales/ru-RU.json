@@ -886,7 +886,7 @@
   "Market cap": "Рыночная капитализация",
   "Current emissions": "Текущие эмиссии",
   "$%marketCap%": "%marketCap% $",
-  "%cakeEmissions%/block": "%cakeEmissions%/блок",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/блок",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% готовы к сбору от %count% фарма",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% готовы к сбору от %count% фармов",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% готовы к сбору от %count% фарма и пула VERTO",

@@ -886,7 +886,7 @@
   "Market cap": "時価総額",
   "Current emissions": "現在の排出量",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/ブロック",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/ブロック",
   "%earningsBusd% to collect from %count% farm": "%count%ファームから%earningsBusd%を回収",
   "%earningsBusd% to collect from %count% farms": "%count%ファームから%earningsBusd%を回収",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%count%ファームとVERTOプールから%earningsBusd%を回収",

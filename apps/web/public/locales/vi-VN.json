@@ -886,7 +886,7 @@
   "Market cap": "Vốn hóa thị trường",
   "Current emissions": "Phát thải hiện tại",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/khối",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/khối",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% để thu thập từ %count% trang trại",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% để thu thập từ %count% trang trại",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% để thu thập từ %count% trang trại và quỹ VERTO",

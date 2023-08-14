@@ -886,7 +886,7 @@
   "Market cap": "Kap. pasar",
   "Current emissions": "Emisi saat ini",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/blok",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/blok",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% untuk diambil dari %count% farm",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% untuk diambil dari %count% farm",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% untuk diambil dari %count% farm dan pool VERTO",

@@ -886,7 +886,7 @@
   "Market cap": "Marknadsvärde",
   "Current emissions": "Aktuella emissioner",
   "$%marketCap%": "%marketCap% dollar",
-  "%cakeEmissions%/block": "%cakeEmissions%/block",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/block",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% att hämta ut från %count% farm",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% att hämta ut från %count% farmer",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% att hämta ut från %count% farm och VERTO-poolen",

@@ -886,7 +886,7 @@
   "Market cap": "மார்க்கெட் கேப்",
   "Current emissions": "நடப்பு எமிஷன்கள்",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/ப்ளாக்",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/ப்ளாக்",
   "%earningsBusd% to collect from %count% farm": "%count% ஃபார்மிலிருந்து சேகரிக்க %earningsBusd%",
   "%earningsBusd% to collect from %count% farms": "%count% ஃபார்ம்களிலிருந்து சேகரிக்க %earningsBusd%",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%count% ஃபார்ம் மற்றும் VERTO பூலிலிருந்து சேகரிக்க %earningsBusd%",
