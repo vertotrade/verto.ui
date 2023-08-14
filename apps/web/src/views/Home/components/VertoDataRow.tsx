@@ -116,9 +116,13 @@ const VertoDataRow = () => {
         <StyledColumn style={{ gridArea: 'f' }}>
           <Text color="textSubtle">{t('Current emissions')}</Text>
 
-          <Heading color="textHome" scale="lg">
-            {t('%cakeEmissions%/block', { cakeEmissions: emissionsPerBlock })}
-          </Heading>
+          {typeof emissionsPerBlock === 'number' ? (
+            <Heading color="textHome" scale="lg">
+              {t('%emissionsPerBlock%/block', { emissionsPerBlock })}
+            </Heading>
+          ) : (
+            <Skeleton height={24} width={126} my="4px" />
+          )}
         </StyledColumn>
       </Grid>
     </GridWrapper>

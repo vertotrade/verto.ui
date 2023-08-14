@@ -886,7 +886,7 @@
   "Market cap": "الحد السوقي",
   "Current emissions": "الانبعاثات الحالية",
   "$%marketCap%": "%marketCap% دولار",
-  "%cakeEmissions%/block": "كتلة %cakeEmissions%/",
+  "%emissionsPerBlock%/block": "كتلة %emissionsPerBlock%/",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% للتحصيل من %count% من المزارع",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% للتحصيل من %count% من المزارع",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% للتحصيل من %count% من المزارع ومن تجمع VERTO",

@@ -886,7 +886,7 @@
   "Market cap": "Capitalización",
   "Current emissions": "Emisiones actuales",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/bloque",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/bloque",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% por obtener %count% de la granja",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% por obtener %count% de las granjas",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% por obtener %count% de la granja y del pool de VERTO",

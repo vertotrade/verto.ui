@@ -886,7 +886,7 @@
   "Market cap": "市值",
   "Current emissions": "当前分发量",
   "$%marketCap%": "%marketCap%美元",
-  "%cakeEmissions%/block": "%cakeEmissions%/区块",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/区块",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% 待从 %count% 个农场中收集",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% 待从 %count% 个农场中收集",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% 待从 %count% 个农场和 VERTO 糖浆池中收获",

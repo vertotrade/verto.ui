@@ -886,7 +886,7 @@
   "Market cap": "Piyasa değeri",
   "Current emissions": "Mevcut emisyonlar",
   "$%marketCap%": "%marketCap% dolar",
-  "%cakeEmissions%/block": "%cakeEmissions%/blok",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/blok",
   "%earningsBusd% to collect from %count% farm": "%count% farm'dan %earningsBusd% tahsil edilecek",
   "%earningsBusd% to collect from %count% farms": "%count% farm'dan%earningsBusd% tahsil edilecek",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%count% farm'dan ve VERTO havuzundan %earningsBusd% tahsil edilecek",

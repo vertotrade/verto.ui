@@ -890,7 +890,7 @@
   "Market cap": "Market cap",
   "Current emissions": "Current emissions",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/block",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/block",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% to collect from %count% farm",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% to collect from %count% farms",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% to collect from %count% farm and VERTO pool",
