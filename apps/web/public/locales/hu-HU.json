@@ -886,7 +886,7 @@
   "Market cap": "Piaci kapitalizáció",
   "Current emissions": "Aktuális kibocsátások",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/blokk",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/blokk",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% begyűjtendő %count% hozamfarmból",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% begyűjtendő %count% hozamfarmból",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% begyűjtendő %count% hozamfarmból és VERTO összevont alapból",

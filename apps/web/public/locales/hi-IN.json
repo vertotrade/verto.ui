@@ -886,7 +886,7 @@
   "Market cap": "मार्केट कैप",
   "Current emissions": "वर्तमान उत्सर्जन",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/ब्लॉक",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/ब्लॉक",
   "%earningsBusd% to collect from %count% farm": "%count% फार्म से %earningsBusd% कलेक्ट करना है",
   "%earningsBusd% to collect from %count% farms": "%count% फार्म से %earningsBusd% कलेक्ट करना है",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%count% फार्म से %earningsBusd% और VERTO पूल कलेक्ट करना है",

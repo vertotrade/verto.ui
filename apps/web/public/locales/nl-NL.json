@@ -886,7 +886,7 @@
   "Market cap": "Marktkapitalisatie",
   "Current emissions": "Huidige emissies",
   "$%marketCap%": "$ %marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/blok",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/blok",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% te verzamelen van %count% farm",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% te verzamelen van %count% farms",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% te verzamelen van %count% farm en VERTO-pool",

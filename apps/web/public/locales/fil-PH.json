@@ -886,7 +886,7 @@
   "Market cap": "Market cap",
   "Current emissions": "Mga kasalukuyang emisyon",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/block",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/block",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% na kokolektahin mula sa %count% farm",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% na kokolektahin mula sa %count% na farms",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% na kokoletahin mula sa %count% farm at VERTO na pool",

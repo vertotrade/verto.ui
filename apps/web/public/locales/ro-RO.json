@@ -886,7 +886,7 @@
   "Market cap": "Capitalizare piață",
   "Current emissions": "Emisiuni curente",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/bloc",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/bloc",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% pentru colectare din %count% fermă",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% pentru colectare din %count% ferme",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% pentru colectare din %count% fermă și portofoliu VERTO",

@@ -886,7 +886,7 @@
   "Market cap": "시가총액",
   "Current emissions": "현재 생성",
   "$%marketCap%": "$%marketCap%",
-  "%cakeEmissions%/block": "%cakeEmissions%/블록",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/블록",
   "%earningsBusd% to collect from %count% farm": "%count%개 팜에서 수집할 %earningsBusd%",
   "%earningsBusd% to collect from %count% farms": "%count%개 팜에서 수집할 %earningsBusd%",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%count%개 팜 및 VERTO 풀에서 수집할 %earningsBusd%",

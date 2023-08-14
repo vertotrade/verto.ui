@@ -886,7 +886,7 @@
   "Market cap": "Markkina-arvo",
   "Current emissions": "Nykyiset liikkeellelaskut",
   "$%marketCap%": "%marketCap% $",
-  "%cakeEmissions%/block": "%cakeEmissions%/lohko",
+  "%emissionsPerBlock%/block": "%emissionsPerBlock%/lohko",
   "%earningsBusd% to collect from %count% farm": "%earningsBusd% kerättäväksi %count% viljelmästä",
   "%earningsBusd% to collect from %count% farms": "%earningsBusd% kerättäväksi %count% viljelmästä",
   "%earningsBusd% to collect from %count% farm and VERTO pool": "%earningsBusd% kerättäväksi %count% viljelmästä ja VERTO-poolista",
