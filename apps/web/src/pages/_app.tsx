@@ -71,14 +71,14 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         <meta name="theme-color" content="#FFFFFF" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="VertoTrade - the future of Defi and TradFi is here" />
-        <meta name="twitter:image" content="https://vertotrade.com/images/hero.png" />
+        <meta name="twitter:image" content="https://vertotrade.com/images/hero.png?v=1" />
         <meta
           name="twitter:description"
           content="Verto D.exchange. Where #DeFi, #Metaverse, #P2E and #TradFi meet to create the future of #Fintech."
         />
 
         <meta property="og:title" content="VertoTrade - the future of Defi and TradFi is here" />
-        <meta property="og:image" content="https://vertotrade.com/images/hero.png" />
+        <meta property="og:image" content="https://vertotrade.com/images/hero.png?v=1" />
         <meta
           property="og:description"
           content="Verto D.exchange. Where DeFi, Metaverse, P2E and TradFi meet to create the future of Fintech."
