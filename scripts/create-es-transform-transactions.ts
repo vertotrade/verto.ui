@@ -9,6 +9,8 @@ if (!process.env.ES_API_KEY) {
   throw new Error('ES_API_KEY must be set')
 }
 
+const allTime = process.env.ALL_TIME === 'true'
+
 const client = new Client({
   node: process.env.ES_NODE_URL,
   auth: {
@@ -30,17 +32,21 @@ async function execute(timeWindow) {
   const transformId = `${destIndex}_transform`
 
   let range = `now-1d/d`
-  let maxAge = '2d'
   let calendarInterval = `hour`
 
   if (timeWindow === 'daily') {
     range = `now-1M/d`
-    maxAge = '62d'
     calendarInterval = `day`
   } else if (timeWindow === 'weekly') {
     range = `now-1y/w`
-    maxAge = '751d'
     calendarInterval = `week`
+  }
+
+  if (allTime) {
+    console.log(`Deleting index ${destIndex}...`)
+    await client.indices.delete({
+      index: destIndex,
+    })
   }
 
   if (!(await client.indices.exists({ index: destIndex }))) {
@@ -76,12 +82,6 @@ async function execute(timeWindow) {
     transform_id: transformId,
     body: {
       description: `${timeWindow} aggregate of liquidity for ${uppercasePair}`,
-      retention_policy: {
-        time: {
-          field: `timestamp`,
-          max_age: maxAge,
-        },
-      },
       dest: {
         index: destIndex,
         pipeline: `add_ingest_timestamp_pipeline`,
@@ -99,14 +99,14 @@ async function execute(timeWindow) {
                   },
                 },
               },
-              {
+              (!allTime && {
                 range: {
                   timestamp: {
                     gte: range,
                   },
                 },
-              },
-            ],
+              }) as any,
+            ].filter(Boolean),
           },
         },
       },
