@@ -12,11 +12,13 @@ const SwapLineChart = dynamic(() => import('./SwapLineChart'), {
   ssr: false,
 })
 
+const EMPTY_ARRAY = []
+
 const BasicChart = ({ token0Address, token1Address, isChartExpanded, inputCurrency, outputCurrency, isMobile }) => {
   const [timeWindow, setTimeWindow] = useState<PairDataTimeWindowEnum>(0)
 
   const {
-    pairPrices = [],
+    pairPrices = EMPTY_ARRAY,
     pairId,
     hasError,
   } = useFetchPairPrices({
