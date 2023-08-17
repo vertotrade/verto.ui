@@ -394,7 +394,7 @@ function FullPositionCard({
                 to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}${isStableLP ? '?stable=1' : ''}`}
                 variant="primary"
                 width="100%"
-                mb="8px">
+                mb="0px">
                 {t('Remove')}
               </Button>
               <Button

@@ -133,12 +133,12 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           <Text small>{hasPoolStarted ? t('Ends in') : t('Starts in')}:</Text>
           {blocksRemaining || blocksUntilStart ? (
             <Flex alignItems="center">
-              <Link external href={getBlockExploreLink(hasPoolStarted ? endBlock : startBlock, 'countdown')}>
-                <Balance small value={blocksToDisplay} decimals={0} color="primary" />
-                <Text small ml="4px" color="primary" textTransform="lowercase">
+              <Link external href={getBlockExploreLink(hasPoolStarted ? endBlock : startBlock, 'countdown')} hoverBackgroundColor='transparent'>
+                <Balance small value={blocksToDisplay} decimals={0} color="text"/>
+                <Text small ml="4px" color="text" textTransform="lowercase">
                   {t('Blocks')}
                 </Text>
-                <TimerIcon ml="4px" color="primary" />
+                <TimerIcon ml="4px" color="text"/>
               </Link>
             </Flex>
           ) : (
