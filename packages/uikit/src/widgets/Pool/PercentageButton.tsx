@@ -11,7 +11,7 @@ const StyledButton = styled(Button)`
 
 const PercentageButton: React.FC<React.PropsWithChildren<PercentageButtonProps>> = ({ children, onClick }) => {
   return (
-    <StyledButton scale="xs" mx="2px" p="4px 16px" variant="tertiary" onClick={onClick}>
+    <StyledButton scale="xs" mx="2px" p="4px 16px" variant="secondary" onClick={onClick}>
       {children}
     </StyledButton>
   );
