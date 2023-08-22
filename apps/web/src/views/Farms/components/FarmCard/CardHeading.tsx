@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Tag, Flex, Heading, Box, Skeleton, Farm as FarmUI } from '@verto/uikit'
+import { Flex, Heading, Skeleton } from '@verto/uikit'
 import { Token } from '@verto/sdk'
 import { TokenPairImage } from 'components/TokenImage'
 // import BoostedTag from '../YieldBooster/components/BoostedTag'

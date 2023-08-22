@@ -3,7 +3,6 @@ import { Modal } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { LotteryStatus } from 'config/constants/types'
 import { useLottery } from 'state/lottery/hooks'
-import useTheme from 'hooks/useTheme'
 import PreviousRoundTicketsInner from './PreviousRoundTicketsInner'
 import CurrentRoundTicketsInner from './CurrentRoundTicketsInner'
 
