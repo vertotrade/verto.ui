@@ -197,7 +197,7 @@ export const getSouschefV2Contract = (id: number, signer?: Signer | Provider) =>
 export const getPointCenterIfoContract = (signer?: Signer | Provider) => {
   return getContract({ abi: pointCenterIfo, address: getPointCenterIfoAddress(), signer }) as PointCenterIfo
 }
-export const getCakeContract = (signer?: Signer | Provider, chainId?: number) => {
+export const getCakeContract = (signer?: Signer | Provider) => {
   return getContract({
     abi: cakeAbi,
     address: env('IS_MAINNET') === 'true' ? vertoTokens.verto.address : vertoTokensTestnet.verto.address,

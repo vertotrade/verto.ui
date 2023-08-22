@@ -164,7 +164,6 @@ const Slider = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0)
   const { isDark } = useTheme()
   const {
-    t,
     currentLanguage: { locale },
   } = useTranslation()
   const dispatch = useAppDispatch()

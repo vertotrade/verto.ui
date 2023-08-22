@@ -351,7 +351,7 @@ export const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
         </Button>
       )}
       {!isRemovingStake && (
-        <StyledLink external href={getTokenLink}>
+        <StyledLink external href={getTokenLink} hoverBackgroundColor="transparent">
           <Button width="100%" mt="8px" variant="secondary">
             {t("Get %symbol%", { symbol: stakingTokenSymbol })}
           </Button>

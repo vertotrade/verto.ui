@@ -393,8 +393,7 @@ function FullPositionCard({
                 as={NextLinkFromReactRouter}
                 to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}${isStableLP ? '?stable=1' : ''}`}
                 variant="primary"
-                width="100%"
-                mb="8px">
+                width="100%">
                 {t('Remove')}
               </Button>
               <Button
