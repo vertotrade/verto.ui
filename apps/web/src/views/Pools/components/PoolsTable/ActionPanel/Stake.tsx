@@ -53,6 +53,11 @@ import LockedStakedModal from '../../LockedPool/Modals/LockedStakeModal'
 const IconButtonWrapper = styled.div`
   display: flex;
 `
+const circularButtonStyle = {
+  width: '48px',
+  height: '48px',
+  borderRadius: '50%',
+}
 
 interface StackedActionProps {
   pool: Pool.DeserializedPool<Token>
@@ -381,18 +386,18 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
               <IconButtonWrapper>
                 {!isUnstakeEnabled ? (
                   <span ref={unstakeTargetRef}>
-                    <IconButton variant="secondary" disabled mr="6px">
+                    <IconButton variant="secondary" disabled mr="6px" style={circularButtonStyle}>
                       <MinusIcon color="textDisabled" width="24px" height="24px" />
                     </IconButton>
                   </span>
                 ) : (
-                  <IconButton variant="secondary" onClick={onUnstake} mr="6px">
-                    <MinusIcon color="white" width="14px" />
+                  <IconButton variant="secondary" onClick={onUnstake} mr="6px" style={circularButtonStyle}>
+                    <MinusIcon color="invertedContrast" width="14px" />
                   </IconButton>
                 )}
                 {reachStakingLimit || !isStakeEnabled ? (
                   <span ref={targetRef}>
-                    <IconButton variant="secondary" disabled>
+                    <IconButton variant="secondary" disabled style={circularButtonStyle}>
                       <AddIcon color="textDisabled" width="24px" height="24px" />
                     </IconButton>
                   </span>
@@ -400,8 +405,9 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
                   <IconButton
                     variant="secondary"
                     onClick={stakingTokenBalance.gt(0) ? onStake : onPresentTokenRequired}
-                    disabled={isFinished}>
-                    <AddIcon color="white" width="14px" />
+                    disabled={isFinished}
+                    style={circularButtonStyle}>
+                    <AddIcon color="invertedContrast" width="14px" />
                   </IconButton>
                 )}
               </IconButtonWrapper>

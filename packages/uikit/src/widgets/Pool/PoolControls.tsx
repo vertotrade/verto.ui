@@ -27,8 +27,6 @@ const PoolControlsView = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 16px 32px;
-    margin-bottom: 0;
   }
 `;
 
@@ -198,9 +196,6 @@ export function PoolControls<T>({
         />
         <FilterContainer>
           <LabelWrapper>
-            <Text fontSize="12px" bold color="primary" textTransform="uppercase">
-              {t("Sort by")}
-            </Text>
             <ControlStretch>
               <Select
                 options={[
@@ -226,15 +221,11 @@ export function PoolControls<T>({
                   },
                 ]}
                 onOptionChange={handleSortOptionChange}
-                color="primary"
-                hasPrimaryBorderColor
+                color="text"
               />
             </ControlStretch>
           </LabelWrapper>
           <LabelWrapper style={{ marginLeft: 16 }}>
-            <Text fontSize="12px" bold color="primary" textTransform="uppercase">
-              {t("Search")}
-            </Text>
             <SearchInput initialValue={searchQuery} onChange={handleChangeSearchQuery} placeholder="Search Pools" />
           </LabelWrapper>
         </FilterContainer>

@@ -1,38 +1,30 @@
 import env from '@beam-australia/react-env'
 import { useTranslation } from '@verto/localization'
+import { SearchRequest, SearchResponse } from '@elastic/elasticsearch/lib/api/types'
+import { WrappedTokenInfo } from '@verto/token-lists'
+import { add, sub, isEqual } from 'date-fns'
 import { Currency, CurrencyAmount, Trade, TradeType } from '@verto/sdk'
 import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
 import tryParseAmount from '@verto/utils/tryParseAmount'
-import IPancakePairABI from 'config/abi/IPancakePair.json'
 import { DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from 'config/constants/exchange'
 import { useTradeExactIn, useTradeExactOut } from 'hooks/Trades'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import { useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { isAddress } from 'utils'
 import { computeSlippageAdjustedAmounts } from 'utils/exchange'
 import getLpAddress from 'utils/getLpAddress'
-import { multicallv2 } from 'utils/multicall'
 import { getTokenAddress } from 'views/Swap/components/Chart/utils'
 import { useAccount } from 'wagmi'
+import { LiquidityAggregate, search } from 'utils/elastic-search'
 import { AppState, useAppDispatch } from '../index'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { useCurrencyBalances } from '../wallet/hooks'
-import { Field, replaceSwapState, updateDerivedPairData, updatePairData } from './actions'
-import fetchDerivedPriceData from './fetch/fetchDerivedPriceData'
-import fetchPairPriceData from './fetch/fetchPairPriceData'
-import { pairHasEnoughLiquidity } from './fetch/utils'
-import {
-  normalizeChartData,
-  normalizeDerivedChartData,
-  normalizeDerivedPairDataByActiveToken,
-  normalizePairDataByActiveToken,
-} from './normalizers'
+import { Field, replaceSwapState } from './actions'
 import { SwapState } from './reducer'
-import { derivedPairByDataIdSelector, pairByDataIdSelector } from './selectors'
 import { PairDataTimeWindowEnum } from './types'
 
 const isMainnet = env('IS_MAINNET') === 'true'
@@ -264,167 +256,166 @@ export function useDefaultsFromURLSearch():
 }
 
 type useFetchPairPricesParams = {
-  token0Address: string
-  token1Address: string
+  inputCurrency: WrappedTokenInfo
+  outputCurrency: WrappedTokenInfo
   timeWindow: PairDataTimeWindowEnum
-  currentSwapPrice: {
-    [key: string]: number
-  }
 }
 
-export const useFetchPairPrices = ({
-  token0Address,
-  token1Address,
-  timeWindow,
-  currentSwapPrice,
-}: useFetchPairPricesParams) => {
-  const [pairId, setPairId] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const pairData = useSelector(pairByDataIdSelector({ pairId, timeWindow }))
-  const derivedPairData = useSelector(derivedPairByDataIdSelector({ pairId, timeWindow }))
-  const dispatch = useDispatch()
+const getDurationFromTimeframe = (timeWindow: PairDataTimeWindowEnum) => {
+  let duration: Duration = { days: 1 }
 
-  useEffect(() => {
-    const fetchDerivedData = async () => {
-      console.info(
-        '[Price Chart]: Not possible to retrieve price data from single pool, trying to fetch derived prices',
-      )
-      try {
-        // Try to get at least derived data for chart
-        // This is used when there is no direct data for pool
-        // i.e. when multihops are necessary
-        const derivedData = await fetchDerivedPriceData(token0Address, token1Address, timeWindow)
-        if (derivedData) {
-          const normalizedDerivedData = normalizeDerivedChartData(derivedData)
-          dispatch(updateDerivedPairData({ pairData: normalizedDerivedData, pairId, timeWindow }))
-        } else {
-          dispatch(updateDerivedPairData({ pairData: [], pairId, timeWindow }))
-        }
-      } catch (error) {
-        console.error('Failed to fetch derived prices for chart', error)
-        dispatch(updateDerivedPairData({ pairData: [], pairId, timeWindow }))
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    const fetchAndUpdatePairPrice = async () => {
-      setIsLoading(true)
-      const { data } = await fetchPairPriceData({ pairId, timeWindow })
-      if (data) {
-        // Find out if Liquidity Pool has enough liquidity
-        // low liquidity pool might mean that the price is incorrect
-        // in that case try to get derived price
-        const hasEnoughLiquidity = pairHasEnoughLiquidity(data, timeWindow)
-        let pairTokenResults
-        try {
-          pairTokenResults = await multicallv2({
-            abi: IPancakePairABI,
-            calls: [
-              {
-                address: pairId,
-                name: 'token0',
-              },
-              {
-                address: pairId,
-                name: 'token1',
-              },
-            ],
-            options: { requireSuccess: false },
-          })
-        } catch (error) {
-          console.info('Error fetching tokenIds from pair')
-        }
-        const newPairData =
-          (pairTokenResults &&
-            pairTokenResults[0]?.[0] &&
-            pairTokenResults[1]?.[0] &&
-            normalizeChartData(
-              data,
-              pairTokenResults[0][0].toLowerCase(),
-              pairTokenResults[1][0].toLowerCase(),
-              timeWindow,
-            )) ||
-          []
-        if (newPairData.length > 0 && hasEnoughLiquidity) {
-          dispatch(updatePairData({ pairData: newPairData, pairId, timeWindow }))
-          setIsLoading(false)
-        } else {
-          console.info(`[Price Chart]: Liquidity too low for ${pairId}`)
-          dispatch(updatePairData({ pairData: [], pairId, timeWindow }))
-          fetchDerivedData()
-        }
-      } else {
-        dispatch(updatePairData({ pairData: [], pairId, timeWindow }))
-        fetchDerivedData()
-      }
-    }
-
-    if (!pairData && !derivedPairData && pairId && !isLoading) {
-      fetchAndUpdatePairPrice()
-    }
-  }, [
-    pairId,
-    timeWindow,
-    pairData,
-    currentSwapPrice,
-    token0Address,
-    token1Address,
-    derivedPairData,
-    dispatch,
-    isLoading,
-  ])
-
-  useEffect(() => {
-    const updatePairId = () => {
-      try {
-        const pairAddress = getLpAddress(token0Address, token1Address)?.toLowerCase()
-        if (pairAddress !== pairId) {
-          setPairId(pairAddress)
-        }
-      } catch (error) {
-        setPairId(null)
-      }
-    }
-
-    updatePairId()
-  }, [token0Address, token1Address, pairId])
-
-  const normalizedPairData = useMemo(
-    () => normalizePairDataByActiveToken({ activeToken: token0Address, pairData }),
-    [token0Address, pairData],
-  )
-
-  const normalizedDerivedPairData = useMemo(
-    () => normalizeDerivedPairDataByActiveToken({ activeToken: token0Address, pairData: derivedPairData }),
-    [token0Address, derivedPairData],
-  )
-
-  const hasSwapPrice = currentSwapPrice && currentSwapPrice[token0Address] > 0
-
-  const normalizedPairDataWithCurrentSwapPrice =
-    normalizedPairData?.length > 0 && hasSwapPrice
-      ? [...normalizedPairData, { time: new Date(), value: currentSwapPrice[token0Address] }]
-      : normalizedPairData
-
-  const normalizedDerivedPairDataWithCurrentSwapPrice =
-    normalizedDerivedPairData?.length > 0 && hasSwapPrice
-      ? [...normalizedDerivedPairData, { time: new Date(), value: currentSwapPrice[token0Address] }]
-      : normalizedDerivedPairData
-
-  const hasNoDirectData = normalizedPairDataWithCurrentSwapPrice && normalizedPairDataWithCurrentSwapPrice?.length === 0
-  const hasNoDerivedData =
-    normalizedDerivedPairDataWithCurrentSwapPrice && normalizedDerivedPairDataWithCurrentSwapPrice?.length === 0
-
-  // undefined is used for loading
-  let pairPrices = hasNoDirectData && hasNoDerivedData ? [] : undefined
-  if (normalizedPairDataWithCurrentSwapPrice && normalizedPairDataWithCurrentSwapPrice?.length > 0) {
-    pairPrices = normalizedPairDataWithCurrentSwapPrice
-  } else if (
-    normalizedDerivedPairDataWithCurrentSwapPrice &&
-    normalizedDerivedPairDataWithCurrentSwapPrice?.length > 0
-  ) {
-    pairPrices = normalizedDerivedPairDataWithCurrentSwapPrice
+  if (timeWindow === PairDataTimeWindowEnum.WEEK) {
+    duration.days = 7
+  } else if (timeWindow === PairDataTimeWindowEnum.MONTH) {
+    duration = { months: 1 }
+  } else if (timeWindow === PairDataTimeWindowEnum.YEAR) {
+    duration = { years: 1 }
   }
-  return { pairPrices, pairId }
+
+  return duration
+}
+
+const getDurationIntervalFromTimeframe = (timeWindow: PairDataTimeWindowEnum, multiplier = 1) => {
+  let duration: Duration = { hours: 1 * multiplier }
+
+  if (timeWindow === PairDataTimeWindowEnum.WEEK || timeWindow === PairDataTimeWindowEnum.MONTH) {
+    duration = { days: 1 * multiplier }
+  } else if (timeWindow === PairDataTimeWindowEnum.YEAR) {
+    duration = { months: 1 * multiplier }
+  }
+
+  return duration
+}
+
+// Populates missing data points in the array with the previous data point
+const populateEmptyDataPoints = (
+  data: { time: Date; value: number }[],
+  fromDate: Date,
+  timeWindow: PairDataTimeWindowEnum,
+): { time: Date; value: number }[] => {
+  const startDate = new Date(fromDate)
+  const now = new Date()
+  const interval = getDurationIntervalFromTimeframe(timeWindow)
+  const firstOldPointIndex = data.findIndex(point => point.time >= startDate) - 1
+  let lastPoint: any = firstOldPointIndex >= 0 ? data[firstOldPointIndex] : data[0]
+  let currentIndex = 0
+
+  if (interval.hours) {
+    startDate.setUTCMinutes(0, 0, 0)
+  } else if (interval.days) {
+    startDate.setUTCHours(0, 0, 0, 0)
+  } else if (interval.months) {
+    startDate.setUTCHours(0, 0, 0, 0)
+    startDate.setUTCDate(1)
+  }
+
+  // eslint-disable-next-line no-param-reassign
+  data = data.filter(point => point.time >= startDate)
+
+  for (let i = startDate; i < now; i = add(i, interval)) {
+    const point = data[currentIndex]
+
+    if (!point || point.time > i) {
+      data.splice(currentIndex, 0, {
+        time: i,
+        value: lastPoint && lastPoint.time <= i ? lastPoint.value : 0,
+      })
+    } else {
+      if (!isEqual(point.time, i)) {
+        i = sub(i, interval)
+      }
+
+      currentIndex++
+      lastPoint = point
+    }
+  }
+
+  return data
+}
+
+export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }: useFetchPairPricesParams) => {
+  const [pairId, setPairId] = useState(null)
+  const [pairPrices, setPairPrices] = useState([])
+  const [hasError, setHasError] = useState(false)
+  const currentFetchIndex = useRef(0)
+
+  useEffect(() => {
+    try {
+      const pairAddress = getLpAddress(inputCurrency.address, outputCurrency.address)?.toLowerCase()
+      if (pairAddress !== pairId) {
+        setPairId(pairAddress)
+      }
+    } catch (error) {
+      setPairId(null)
+    }
+  }, [inputCurrency?.address, outputCurrency?.address, pairId])
+
+  useEffect(() => {
+    const fetchIndex = ++currentFetchIndex.current
+
+    const fetchData = async () => {
+      if (!inputCurrency || !outputCurrency || !pairId) {
+        return
+      }
+
+      setPairPrices([])
+      setHasError(false)
+
+      const now = new Date()
+      let indexSuffix = 'hourly'
+      let size = 25
+      if (timeWindow === PairDataTimeWindowEnum.WEEK) {
+        indexSuffix = 'daily'
+        size = 8
+      } else if (timeWindow === PairDataTimeWindowEnum.MONTH) {
+        indexSuffix = 'daily'
+        size = 32
+      } else if (timeWindow === PairDataTimeWindowEnum.YEAR) {
+        indexSuffix = 'weekly'
+        size = 54
+      }
+
+      const pair = `${inputCurrency.symbol.toLowerCase()}-${outputCurrency.symbol.toLowerCase()}`
+      const body: SearchRequest = {
+        index: `liquidity_${pair}_${indexSuffix}`,
+        sort: [
+          {
+            timestamp: {
+              order: 'desc',
+            },
+          },
+        ],
+        size,
+      }
+
+      const actualFromDate = sub(now, getDurationFromTimeframe(timeWindow))
+
+      try {
+        const { data } = await search<SearchResponse<LiquidityAggregate>>(body)
+
+        // Make sure we only set the data of the latest fetch if multiple fetches are running
+        if (currentFetchIndex.current === fetchIndex) {
+          const points = data.hits.hits.map(hit => ({
+            time: new Date(hit._source.timestamp),
+            value:
+              pair === hit._source.pair.toLowerCase()
+                ? hit._source.token_0.price / hit._source.token_1.price
+                : hit._source.token_1.price / hit._source.token_0.price,
+          }))
+          points.reverse()
+
+          setPairPrices(populateEmptyDataPoints(points, actualFromDate, timeWindow))
+        }
+      } catch (err) {
+        setPairPrices(populateEmptyDataPoints([], actualFromDate, timeWindow))
+
+        console.error(err)
+        setHasError(true)
+      }
+    }
+
+    fetchData()
+  }, [inputCurrency, inputCurrency?.symbol, outputCurrency, outputCurrency?.symbol, pairId, timeWindow])
+
+  return { pairPrices, pairId, hasError }
 }

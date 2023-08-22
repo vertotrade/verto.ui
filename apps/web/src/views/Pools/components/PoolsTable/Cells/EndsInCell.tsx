@@ -59,20 +59,10 @@ const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }
   const isLoadingBlockData = !currentBlock || (!blocksRemaining && !blocksUntilStart)
   const isLoadingPublicData = isLoadingBlockData
   const showLoading = isLoadingPublicData && !isCakePool && !isFinished
-  let text = hasPoolStarted || !shouldShowBlockCountdown ? t('Ends in') : t('Starts in')
-
-  if (boostBlockStart && currentBlock < depositEndBlock) {
-    text = t('Deposit ends in')
-  }
 
   return (
     <StyledCell role="cell">
-      <Pool.CellContent>
-        <Text fontSize="12px" color="textSubtle" textAlign="left">
-          {text}
-        </Text>
-        {showLoading ? <Skeleton width="80px" height="16px" /> : renderBlocks}
-      </Pool.CellContent>
+      <Pool.CellContent>{showLoading ? <Skeleton width="80px" height="16px" /> : renderBlocks}</Pool.CellContent>
     </StyledCell>
   )
 }

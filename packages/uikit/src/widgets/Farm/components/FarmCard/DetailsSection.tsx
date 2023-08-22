@@ -53,19 +53,25 @@ export const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionP
           </Text>
         </Flex>
       )}
-      <Flex justifyContent="space-between">
+      <Flex justifyContent="space-between" mb="12px">
         <Text>{t("Total Liquidity")}:</Text>
         {totalValueFormatted ? <Text>{totalValueFormatted}</Text> : <Skeleton width={75} height={25} />}
       </Flex>
       {!removed && (
-        <StyledLinkExternal href={addLiquidityUrl}>{t("Get %symbol%", { symbol: lpLabel })}</StyledLinkExternal>
+        <StyledLinkExternal href={addLiquidityUrl} hoverBackgroundColor="transparent">
+          {t("Get %symbol%", { symbol: lpLabel })}
+        </StyledLinkExternal>
       )}
       {scanAddressLink && (
-        <StyledLinkExternal isBscScan href={scanAddressLink}>
+        <StyledLinkExternal isBscScan href={scanAddressLink} hoverBackgroundColor="transparent">
           {t("View Contract")}
         </StyledLinkExternal>
       )}
-      {infoAddress && <StyledLinkExternal href={infoAddress}>{t("See Pair Info")}</StyledLinkExternal>}
+      {infoAddress && (
+        <StyledLinkExternal href={infoAddress} hoverBackgroundColor="transparent">
+          {t("See Pair Info")}
+        </StyledLinkExternal>
+      )}
     </Wrapper>
   );
 };

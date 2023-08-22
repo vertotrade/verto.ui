@@ -8,7 +8,7 @@ const Icon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
       <defs>
         <linearGradient id="gradient" gradientTransform="rotate(0)">
           <stop offset="0%" stopColor="#30e8bf" />
-          <stop offset="100%" stopColor="#ff8235" />
+          <stop offset="100%" stopColor="#82F8C7" />
         </linearGradient>
       </defs>
       <path

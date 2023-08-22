@@ -56,12 +56,13 @@ const fetchFarmPublicDataPkg = async ({ pids, chainId, chain }): Promise<[Serial
   const farmsCanFetch = farmsConfig.filter(farmConfig => pids.includes(farmConfig.pid))
   const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
 
-  const { farmsWithPrice, poolLength, regularRewardPerBlock } = await farmFetcher.fetchFarms({
+  const { farmsWithPrice } = await farmFetcher.fetchFarms({
     chainId,
     isTestnet: chain.testnet,
     farms: farmsCanFetch.concat(priceHelperLpsConfig),
   })
-  return [farmsWithPrice, poolLength, regularRewardPerBlock]
+
+  return [farmsWithPrice, 0, 0]
 }
 
 export const farmFetcher = createFarmFetcher(multicallv2)

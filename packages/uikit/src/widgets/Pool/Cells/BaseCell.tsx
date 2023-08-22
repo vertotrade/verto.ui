@@ -7,7 +7,7 @@ export const BaseCell = styled(Flex)`
   padding: 24px 8px;
 
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 export const CellContent = styled(Flex)`

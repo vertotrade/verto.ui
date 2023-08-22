@@ -1,5 +1,6 @@
 import { useTranslation } from "@verto/localization";
 import BigNumber from "bignumber.js";
+import { useMatchBreakpoints } from "@verto/uikit";
 import { Button } from "../../../../../components/Button";
 import { Heading } from "../../../../../components/Heading";
 import { Text, TooltipText } from "../../../../../components/Text";
@@ -48,17 +49,19 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
     }
   );
 
+  const { isMobile } = useMatchBreakpoints();
+
   return (
-    <ActionContainer style={{ minHeight: 124.5 }}>
-      <ActionTitles>
-        <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
+    <ActionContainer isMobile={isMobile}>
+      <ActionTitles isMobile={isMobile}>
+        <Text color="text" fontSize="14px" pr="4px">
           {tokenName}
         </Text>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text color="text" fontSize="14px">
           {t("Earned")}
         </Text>
       </ActionTitles>
-      <ActionContent>
+      <ActionContent isMobile={isMobile}>
         <div>
           {proxyCakeBalance ? (
             <>
@@ -74,9 +77,9 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
             <Balance fontSize="12px" color="textSubtle" decimals={2} value={earningsBusd} unit=" USD" prefix="~" />
           )}
         </div>
-        <Button ml="4px" disabled={earnings.eq(0) || pendingTx || !userDataReady} onClick={handleHarvest}>
-          {pendingTx ? t("Harvesting") : t("Harvest")}
-        </Button>
+        {/* <Button ml="4px" disabled={earnings.eq(0) || pendingTx || !userDataReady} onClick={handleHarvest}> */}
+        {/*   {pendingTx ? t("Harvesting") : t("Harvest")} */}
+        {/* </Button> */}
       </ActionContent>
     </ActionContainer>
   );

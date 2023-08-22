@@ -94,6 +94,7 @@ const SubMenuItems: React.FC<React.PropsWithChildren<SubMenuItemsProps>> = ({
                     isActive={isActive}
                     isDisabled={disabled}
                     isDark={isDark}
+                    isGlobalSubMenu
                     variant="subMenu"
                     {...itemProps}
                     {...linkProps}

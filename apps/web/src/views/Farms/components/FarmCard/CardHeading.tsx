@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { Tag, Flex, Heading, Box, Skeleton, Farm as FarmUI } from '@verto/uikit'
+import { Flex, Heading, Skeleton } from '@verto/uikit'
 import { Token } from '@verto/sdk'
 import { TokenPairImage } from 'components/TokenImage'
-import BoostedTag from '../YieldBooster/components/BoostedTag'
+// import BoostedTag from '../YieldBooster/components/BoostedTag'
 
-const { FarmAuctionTag, CoreTag, StableFarmTag } = FarmUI.Tags
+// const { FarmAuctionTag, CoreTag, StableFarmTag } = FarmUI.Tags
 
 export interface ExpandableSectionProps {
   lpLabel?: string
@@ -22,40 +22,47 @@ const Wrapper = styled(Flex)`
   }
 `
 
-const MultiplierTag = styled(Tag)`
-  margin-left: 4px;
-`
+// const MultiplierTag = styled(Tag)`
+//   margin-left: 4px;
+// `
 
 const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = ({
   lpLabel,
   multiplier,
-  isCommunityFarm,
+  // isCommunityFarm,
   token,
   quoteToken,
-  boosted,
-  isStable,
+  // boosted,
+  // isStable,
 }) => {
   const isReady = multiplier !== undefined
 
   return (
-    <Wrapper justifyContent="space-between" alignItems="center" mb="12px">
+    <Wrapper justifyContent="space-between" alignItems="center" mb="24px">
       {isReady ? (
-        <TokenPairImage variant="inverted" primaryToken={token} secondaryToken={quoteToken} width={64} height={64} />
+        <TokenPairImage
+          bold
+          variant="inverted"
+          primaryToken={token}
+          secondaryToken={quoteToken}
+          width={76}
+          height={40}
+        />
       ) : (
         <Skeleton mr="8px" width={63} height={63} variant="circle" />
       )}
-      <Flex flexDirection="column" alignItems="flex-end">
-        {isReady ? <Heading mb="4px">{lpLabel.split(' ')[0]}</Heading> : <Skeleton mb="4px" width={60} height={18} />}
-        <Flex justifyContent="center">
-          {isStable ? <StableFarmTag mr="4px" /> : null}
-          {isReady ? <Box>{isCommunityFarm ? <FarmAuctionTag /> : <CoreTag />}</Box> : null}
-          {isReady && boosted && <BoostedTag ml="4px" />}
-          {isReady ? (
-            <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>
-          ) : (
-            <Skeleton ml="4px" width={42} height={28} />
-          )}
-        </Flex>
+      <Flex alignItems="center">
+        {isReady ? <Heading>{lpLabel.split(' ')[0]}</Heading> : <Skeleton mb="4px" width={60} height={18} />}
+        {/* <Flex justifyContent="center"> */}
+        {/*   {isStable ? <StableFarmTag mr="4px" /> : null} */}
+        {/*   {isReady ? <Box>{isCommunityFarm ? <FarmAuctionTag /> : <CoreTag />}</Box> : null} */}
+        {/*   {isReady && boosted && <BoostedTag ml="4px" />} */}
+        {/*   {isReady ? ( */}
+        {/*     <MultiplierTag variant="secondary">{multiplier}</MultiplierTag> */}
+        {/*   ) : ( */}
+        {/*     <Skeleton ml="4px" width={42} height={28} /> */}
+        {/*   )} */}
+        {/* </Flex> */}
       </Flex>
     </Wrapper>
   )

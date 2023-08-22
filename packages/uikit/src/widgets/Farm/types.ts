@@ -37,12 +37,12 @@ export type ColumnsDefTypes = {
   sortable: boolean;
 };
 
-export const MobileColumnSchema: ColumnsDefTypes[] = [
+export const FarmMobileColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
     name: "farm",
     sortable: true,
-    label: "",
+    label: "Pools",
   },
   {
     id: 2,
@@ -64,19 +64,19 @@ export const MobileColumnSchema: ColumnsDefTypes[] = [
   },
 ];
 
-export const DesktopColumnSchema: ColumnsDefTypes[] = [
+export const FarmDesktopColumnSchema: ColumnsDefTypes[] = [
   {
     id: 1,
     name: "farm",
     sortable: true,
-    label: "",
+    label: "Pools",
   },
-  {
-    id: 2,
-    name: "type",
-    sortable: false,
-    label: "",
-  },
+  // {
+  //   id: 2,
+  //   name: "type",
+  //   sortable: false,
+  //   label: "",
+  // },
   {
     id: 3,
     name: "earned",

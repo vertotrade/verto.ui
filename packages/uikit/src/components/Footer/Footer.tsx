@@ -1,8 +1,8 @@
-import { useIsMounted } from "@verto/hooks";
+import { useIsMounted, useTheme } from "@verto/hooks";
 import React from "react";
 import { vars } from "@verto/ui/css/vars.css";
 import { Box, Flex } from "../Box";
-import { LogoWithTextIcon } from "../Svg";
+import { BasicLogo } from "../Svg";
 import SocialLinks from "./Components/SocialLinks";
 
 import { Link } from "../Link";
@@ -32,6 +32,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
 }) => {
   const isMounted = useIsMounted();
   const { isMobile } = useMatchBreakpoints();
+  const { theme } = useTheme();
 
   return (
     <StyledFooter p={["40px 16px", null, "56px 40px 62px 40px"]} position="relative" {...props} justifyContent="center">
@@ -42,7 +43,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
         width={["100%", null, "968px;"]}
       >
         <StyledIconMobileContainer display={["block", null, "none"]}>
-          <LogoWithTextIcon width="130px" />
+          <BasicLogo width="130px" />
         </StyledIconMobileContainer>
         <Flex
           order={[1]}
@@ -52,6 +53,9 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           mb={isMobile ? "0" : "42px"}
           width="100%"
         >
+          <Box display={["none", null, "block"]}>
+            <BasicLogo color={theme.colors.text} width="160px" />
+          </Box>
           {items?.map((item) => (
             <StyledList key={item.label}>
               <StyledListItem>{item.label}</StyledListItem>
@@ -62,7 +66,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
                       href={href}
                       target={href.includes("http") ? "_blank" : undefined}
                       rel={href.includes("http") ? "noopener noreferrer" : undefined}
-                      color={isHighlighted ? vars.colors.secondary : "text"}
+                      color="text"
                       bold={false}
                       internal={internal}
                     >
@@ -75,15 +79,12 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
               ))}
             </StyledList>
           ))}
-          <Box display={["none", null, "block"]}>
-            <LogoWithTextIcon width="160px" />
-          </Box>
         </Flex>
         <SocialLinks order={[2]} display="flex" alignItems="center" />
         <StyledToolsContainer order={[3]} flexDirection={["column", null, "row"]} justifyContent="space-between">
-          <Flex order={[2, null, 1]} alignItems="center">
-            <SkeletonV2 variant="round" width="56px" height="32px" isDataReady={isMounted}>
-              <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
+          <Flex order={[2, null, 1]} alignItems="center" justifyContent="center">
+            <SkeletonV2 variant="round" width="auto" height="auto" isDataReady={isMounted}>
+              <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} showText />
             </SkeletonV2>
             <HiddenLangSelector
               currentLang={currentLang}

@@ -1,6 +1,6 @@
 import React from "react";
-import { Flex, Text } from "@verto/uikit";
-import styled, { useTheme } from "styled-components";
+import { Flex } from "@verto/uikit";
+import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useTranslation } from "@verto/localization";
 import { NextLinkFromReactRouter } from "../../../components/NextLink";
@@ -11,9 +11,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 4px;
+  margin-right: 6px;
+  margin-top: 8px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    margin-left: 16px;
+    margin-top: 0px;
   }
 `;
 
@@ -24,7 +27,6 @@ interface FarmTabButtonsProps {
 export const FarmTabButtons: React.FC<React.PropsWithChildren<FarmTabButtonsProps>> = ({ hasStakeInFinishedFarms }) => {
   const router = useRouter();
   const { t } = useTranslation();
-  const { isDark } = useTheme();
 
   let activeIndex;
   switch (router.pathname) {
@@ -48,10 +50,7 @@ export const FarmTabButtons: React.FC<React.PropsWithChildren<FarmTabButtonsProp
   return (
     <Wrapper>
       <Flex width="max-content" flexDirection="column">
-        <Text textTransform="uppercase" color={isDark ? "textSubtle" : "primary"} fontSize="12px" bold>
-          {t("Filter by")}
-        </Text>
-        <ButtonMenu activeIndex={activeIndex} scale="sm" variant="primary">
+        <ButtonMenu activeIndex={activeIndex}>
           <ButtonMenuItem as={NextLinkFromReactRouter} to="/farms">
             {t("Live")}
           </ButtonMenuItem>

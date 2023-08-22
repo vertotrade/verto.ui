@@ -1,35 +1,25 @@
 import styled from "styled-components";
 
-export const ActionContainer = styled.div`
-  padding: 16px;
-  border: 2px solid ${({ theme }) => theme.colors.input};
+export const ActionContainer = styled.div<{ isMobile?: boolean }>`
   border-radius: 16px;
   flex-grow: 1;
   flex-basis: 0;
-  margin-bottom: 16px;
 
-  ${({ theme }) => theme.mediaQueries.sm} {
-    margin-left: 12px;
-    margin-right: 12px;
-    margin-bottom: 12px;
-    /* max-height: 130px; */
-  }
-
-  ${({ theme }) => theme.mediaQueries.xl} {
-    margin-right: 0;
-    margin-bottom: 0;
-    /* max-height: 130px; */
-  }
+  padding: ${({ isMobile }) => (isMobile ? "8px 16px" : "24px;")};
+  ${({ isMobile }) => (isMobile ? "" : "min-height: 150px;")}
 `;
 
-export const ActionTitles = styled.div`
+export const ActionTitles = styled.div<{ isMobile?: boolean }>`
   display: flex;
+  justify-content: flex-start;
   margin-bottom: 8px;
+
+  ${({ isMobile }) => (isMobile ? "justify-content: center;" : "")}
 `;
 
-export const ActionContent = styled.div`
+export const ActionContent = styled.div<{ isMobile?: boolean }>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ isMobile }) => (isMobile ? "center" : "space-between")};
   align-items: center;
 `;
 
@@ -41,7 +31,7 @@ export const StyledActionContainer = styled(ActionContainer)`
   &:nth-child(3) {
     flex-basis: 100%;
   }
-  min-height: 124.5px;
+
   ${({ theme }) => theme.mediaQueries.sm} {
     &:nth-child(3) {
       margin-top: 16px;

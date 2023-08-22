@@ -77,9 +77,9 @@ const LineChart = ({ data, setHoverValue, setHoverDate, isChangePositive, timeWi
           axisLine={false}
           tickLine={false}
           tickFormatter={time => time.toLocaleString(locale, dateFormatting)}
-          minTickGap={8}
+          minTickGap={16}
         />
-        <YAxis dataKey="value" axisLine={false} tickLine={false} domain={['auto', 'auto']} hide />
+        <YAxis dataKey="value" axisLine={false} tickLine={false} domain={[0, 'auto']} hide />
         <Tooltip
           cursor={{ stroke: theme.colors.textDisabled }}
           contentStyle={{ display: 'none' }}

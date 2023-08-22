@@ -1,5 +1,6 @@
 import { useTranslation } from '@verto/localization'
 import {
+  Flex,
   Farm as FarmUI,
   FarmTableLiquidityProps,
   FarmTableMultiplierProps,
@@ -16,7 +17,7 @@ import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { FarmWithStakedValue } from '@verto/farms'
 
 import { YieldBoosterStateContext } from '../../YieldBooster/components/ProxyFarmContainer'
-import Apr, { AprProps } from '../Apr'
+import { AprProps } from '../Apr'
 import { HarvestAction, HarvestActionContainer, ProxyHarvestActionContainer } from './HarvestAction'
 import StakedAction, { ProxyStakedContainer, StakedContainer } from './StakedAction'
 
@@ -49,7 +50,7 @@ const collapseAnimation = keyframes`
   }
 `
 
-const Container = styled.div<{ expanded }>`
+const Tr = styled.tr<{ expanded: boolean }>`
   animation: ${({ expanded }) =>
     expanded
       ? css`
@@ -59,11 +60,9 @@ const Container = styled.div<{ expanded }>`
           ${collapseAnimation} 300ms linear forwards
         `};
   overflow: hidden;
-  background: ${({ theme }) => theme.colors.dropdown};
-  display: flex;
-  width: 100%;
-  flex-direction: column-reverse;
+  background: transparent;
   padding: 24px;
+  border-radius: 8px;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     flex-direction: row;
@@ -87,10 +86,24 @@ const StakeContainer = styled.div`
   }
 `
 
-const ActionContainer = styled.div`
+const StyledFlex = styled(Flex)<{ isMobile?: boolean }>`
+  margin-bottom: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.dropdown};
+
+  padding-bottom: ${({ isMobile }) => (isMobile ? '16px' : '24px')};
+
+  ${({ isMobile }) => (isMobile ? 'padding-top: 8px;' : '')};
+`
+
+const ActionContainer = styled.div<{ isDesktop?: boolean }>`
+  background-color: ${({ theme }) => theme.colors.dropdown};
+  height: 100%;
   display: flex;
   flex-direction: column;
 
+  ${({ isDesktop }) => (isDesktop ? 'margin-bottom: 8px' : '')};
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
     align-items: center;
@@ -100,8 +113,20 @@ const ActionContainer = styled.div`
   }
 `
 
-const InfoContainer = styled.div`
+const InfoContainer = styled.div<{ isDesktop?: boolean; isMobile?: boolean }>`
+  background-color: ${({ theme }) => theme.colors.dropdown};
+  border-top-left-radius: 8px;
+  height: 100%;
   min-width: 200px;
+  padding: 24px 0;
+  padding-left: 32px;
+  min-height: ${({ isMobile }) => (isMobile ? '0' : '150px')};
+
+  ${({ isDesktop }) => (isDesktop ? 'border-bottom-left-radius: 8px' : '')};
+  ${({ isDesktop }) => (isDesktop ? 'margin-bottom: 8px' : '')};
+
+  ${({ isMobile }) => (isMobile ? 'border-top-right-radius: 8px' : '')};
+  ${({ isMobile }) => (isMobile ? 'padding: 16px 16px 8px' : '')};
 `
 
 const ValueContainer = styled.div``
@@ -112,6 +137,23 @@ const ValueWrapper = styled.div`
   justify-content: space-between;
   margin: 4px 0px;
 `
+
+const EmptyDiv = styled.div<{ isDesktop: boolean }>`
+  min-height: 150px;
+  background-color: ${({ theme }) => theme.colors.dropdown};
+  ${({ isDesktop }) => (isDesktop ? 'margin-bottom: 8px' : '')};
+
+  &:last-child {
+    border-top-right-radius: 8px;
+    ${({ isDesktop }) => (isDesktop ? 'border-bottom-right-radius: 8px' : '')};
+  }
+`
+
+const EmptyTd = ({ isDesktop }: { isDesktop?: boolean }) => (
+  <td>
+    <EmptyDiv isDesktop={isDesktop} />
+  </td>
+)
 
 const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelProps>> = ({
   details,
@@ -126,7 +168,7 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
 
   const farm = details
 
-  const { isDesktop } = useMatchBreakpoints()
+  const { isDesktop, isMobile } = useMatchBreakpoints()
 
   const {
     t,
@@ -150,9 +192,9 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
     return `/info${multiChainPaths[chainId]}/pairs/${lpAddress}`
   }, [chainId, farm.isStable, lpAddress, stableSwapAddress])
 
-  return (
-    <Container expanded={expanded}>
-      <InfoContainer>
+  const infoContainer = useMemo(
+    () => (
+      <InfoContainer isMobile={isMobile} isDesktop={isDesktop}>
         <ValueContainer>
           {farm.isCommunity && farm.auctionHostingEndDate && (
             <ValueWrapper>
@@ -166,45 +208,43 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
               </Text>
             </ValueWrapper>
           )}
-          {!isDesktop && (
-            <>
-              <ValueWrapper>
-                <Text>{t('APR')}</Text>
-                <Apr {...apr} useTooltipText={false} boosted={farm.boosted} />
-              </ValueWrapper>
-              {/* <ValueWrapper>
-                <Text>{t('Multiplier')}</Text>
-                <Multiplier {...multiplier} />
-              </ValueWrapper> */}
-              <ValueWrapper>
-                <Text>{t('Liquidity')}</Text>
-                <Liquidity {...liquidity} />
-              </ValueWrapper>
-            </>
-          )}
+          <Text small mb="8px">
+            {t('About')}
+          </Text>
         </ValueContainer>
         {isActive && (
           <StakeContainer>
-            <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
+            <StyledLinkExternal hoverBackgroundColor="transparent" href={`/add/${liquidityUrlPathParts}`}>
               {t('Get %symbol%', { symbol: lpLabel })}
             </StyledLinkExternal>
           </StakeContainer>
         )}
-        <StyledLinkExternal isBscScan href={bsc}>
+        <StyledLinkExternal hoverBackgroundColor="transparent" isBscScan href={bsc}>
           {t('View Contract')}
         </StyledLinkExternal>
-        <StyledLinkExternal href={infoUrl}>{t('See Pair Info')}</StyledLinkExternal>
+        <StyledLinkExternal hoverBackgroundColor="transparent" href={infoUrl}>
+          {t('See Pair Info')}
+        </StyledLinkExternal>
       </InfoContainer>
-      <ActionContainer>
-        {shouldUseProxyFarm ? (
-          <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
-            {props => <HarvestAction {...props} />}
-          </ProxyHarvestActionContainer>
-        ) : (
-          <HarvestActionContainer {...farm} userDataReady={userDataReady}>
-            {props => <HarvestAction {...props} />}
-          </HarvestActionContainer>
-        )}
+    ),
+    [
+      bsc,
+      farm.auctionHostingEndDate,
+      farm.isCommunity,
+      infoUrl,
+      isActive,
+      isDesktop,
+      isMobile,
+      liquidityUrlPathParts,
+      locale,
+      lpLabel,
+      t,
+    ],
+  )
+
+  const stakedContainer = useMemo(
+    () => (
+      <ActionContainer isDesktop={isDesktop}>
         {shouldUseProxyFarm ? (
           <ProxyStakedContainer {...proxyFarm} userDataReady={userDataReady} lpLabel={lpLabel} displayApr={apr.value}>
             {props => <StakedAction {...props} />}
@@ -215,7 +255,73 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
           </StakedContainer>
         )}
       </ActionContainer>
-    </Container>
+    ),
+    [apr.value, farm, isDesktop, lpLabel, proxyFarm, shouldUseProxyFarm, userDataReady],
+  )
+
+  const harvestContainer = useMemo(
+    () => (
+      <ActionContainer isDesktop={isDesktop}>
+        {shouldUseProxyFarm ? (
+          <ProxyHarvestActionContainer {...proxyFarm} userDataReady={userDataReady}>
+            {props => <HarvestAction {...props} />}
+          </ProxyHarvestActionContainer>
+        ) : (
+          <HarvestActionContainer {...farm} userDataReady={userDataReady}>
+            {props => <HarvestAction {...props} />}
+          </HarvestActionContainer>
+        )}
+      </ActionContainer>
+    ),
+    [farm, isDesktop, proxyFarm, shouldUseProxyFarm, userDataReady],
+  )
+
+  return (
+    <>
+      {isMobile && (
+        <>
+          <Tr expanded={expanded}>
+            <td colSpan={4}>{infoContainer}</td>
+          </Tr>
+          <Tr expanded={expanded}>
+            <td colSpan={4}>{harvestContainer}</td>
+          </Tr>
+          <Tr expanded={expanded}>
+            <td colSpan={4}>{stakedContainer}</td>
+          </Tr>
+        </>
+      )}
+      {!isMobile && (
+        <Tr expanded={expanded}>
+          <td>{infoContainer}</td>
+          <td>{harvestContainer}</td>
+          {isDesktop && <EmptyTd isDesktop={isDesktop} />}
+          <td>{stakedContainer}</td>
+          <EmptyTd isDesktop={isDesktop} />
+          <EmptyTd isDesktop={isDesktop} />
+        </Tr>
+      )}
+      <Tr expanded={expanded}>
+        {!isDesktop && (
+          <td colSpan={4}>
+            <StyledFlex isMobile={isMobile} alignItems="center" justifyContent="space-evenly" flexWrap="wrap-reverse">
+              {/* <ValueWrapper> */}
+              {/*   <Text>{t('APR')}</Text> */}
+              {/*   <Apr {...apr} useTooltipText={false} boosted={farm.boosted} /> */}
+              {/* </ValueWrapper> */}
+              {/* <ValueWrapper>
+                <Text mr="8px">{t('Multiplier')}</Text>
+                <Multiplier {...multiplier} />
+              </ValueWrapper> */}
+              <ValueWrapper>
+                <Text mr="8px">{t('Liquidity')}</Text>
+                <Liquidity {...liquidity} />
+              </ValueWrapper>
+            </StyledFlex>
+          </td>
+        )}
+      </Tr>
+    </>
   )
 }
 

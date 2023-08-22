@@ -2,9 +2,7 @@ import styled, { keyframes, css } from 'styled-components'
 import { Box, Flex, HelpIcon, Text, useMatchBreakpoints, Pool } from '@verto/uikit'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { getVaultPosition, VaultPosition } from 'utils/cakePool'
-import BigNumber from 'bignumber.js'
 import { VaultKey, DeserializedLockedRebusVault, DeserializedLockedVaultUser } from 'state/types'
-import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { Token } from '@verto/sdk'
 import Harvest from './Harvest'
 import Stake from './Stake'
@@ -50,6 +48,8 @@ const StyledActionPanel = styled.div<{ expanded: boolean }>`
   flex-direction: column-reverse;
   justify-content: center;
   padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     flex-direction: row;
@@ -119,39 +119,27 @@ const YieldBoostDurationRow = ({ lockEndTime, lockStartTime }) => {
 }
 
 const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ account, pool, expanded }) => {
-  const { userData, vaultKey } = pool
+  const { vaultKey } = pool
   const { isMobile } = useMatchBreakpoints()
 
   const vaultData = useVaultPoolByKey(vaultKey)
-  const {
-    userData: {
-      balance: { cakeAsBigNumber },
-    },
-  } = vaultData
 
   const vaultPosition = getVaultPosition(vaultData.userData)
 
   const isLocked = (vaultData as DeserializedLockedRebusVault).userData.locked
 
-  const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
-  const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
-
-  const poolStakingTokenBalance = vaultKey
-    ? cakeAsBigNumber.plus(stakingTokenBalance)
-    : stakedBalance.plus(stakingTokenBalance)
-
   return (
     <StyledActionPanel expanded={expanded}>
       <InfoSection>
         {isMobile && vaultKey === VaultKey.RebusVault && isLocked && (
-          <Box mb="16px">
+          <Box>
             <YieldBoostDurationRow
               lockEndTime={(vaultData as DeserializedLockedRebusVault).userData.lockEndTime}
               lockStartTime={(vaultData as DeserializedLockedRebusVault).userData.lockStartTime}
             />
           </Box>
         )}
-        <Flex flexDirection="column" mb="8px">
+        <Flex flexDirection="column">
           <PoolStatsInfo pool={pool} account={account} showTotalStaked={isMobile} alignLinksToRight={isMobile} />
         </Flex>
         <Flex alignItems="center">
@@ -168,19 +156,15 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
         {isMobile && vaultKey === VaultKey.RebusVault && vaultPosition === VaultPosition.None && (
           <RebusVaultApr pool={pool} userData={vaultData.userData} vaultPosition={vaultPosition} />
         )}
-        <Box width="100%">
-          {pool.vaultKey === VaultKey.RebusVault && (
-            <VaultPositionTagWithLabel
-              userData={vaultData.userData as DeserializedLockedVaultUser}
-              width={['auto', , 'fit-content']}
-              ml={['12px', , , , , '32px']}
-            />
-          )}
-          <ActionContainer isAutoVault={!!pool.vaultKey} hasBalance={poolStakingTokenBalance.gt(0)}>
-            {pool.vaultKey ? <AutoHarvest {...pool} /> : <Harvest {...pool} />}
-            <Stake pool={pool} />
-          </ActionContainer>
-        </Box>
+        {pool.vaultKey === VaultKey.RebusVault && (
+          <VaultPositionTagWithLabel
+            userData={vaultData.userData as DeserializedLockedVaultUser}
+            width={['auto', , 'fit-content']}
+            ml={['12px', , , , , '32px']}
+          />
+        )}
+        {pool.vaultKey ? <AutoHarvest {...pool} /> : <Harvest {...pool} />}
+        <Stake pool={pool} />
       </ActionContainer>
     </StyledActionPanel>
   )

@@ -3,8 +3,8 @@ import {
   ChartIcon,
   Flex,
   HistoryIcon,
-  HotIcon,
-  HotDisableIcon,
+  // HotIcon,
+  // HotDisableIcon,
   IconButton,
   NotificationDot,
   Swap,
@@ -56,7 +56,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
           <Flex flexDirection="column" alignItems="flex-start" width="100%" marginBottom={15}>
             <Swap.CurrencyInputHeaderTitle>{title}</Swap.CurrencyInputHeaderTitle>
           </Flex>
-          <Flex justifyContent="start" width="100%" height="17px" alignItems="center" mb="14px">
+          <Flex justifyContent="start" width="100%" height="17px" alignItems="center" mb="24px">
             <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
           </Flex>
           <Flex width="100%" justifyContent="end">
@@ -77,7 +77,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 )}
               </ColoredIconButton>
             )}
-            {isChartSupported && (
+            {/* {isChartSupported && (
               <ColoredIconButton
                 variant="text"
                 scale="sm"
@@ -93,15 +93,15 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                   <HotIcon color="textSubtle" width="24px" />
                 )}
               </ColoredIconButton>
-            )}
+            )} */}
             <NotificationDot show={expertMode}>
               <GlobalSettings mr="0" mode={SettingsMode.SWAP_LIQUIDITY} />
             </NotificationDot>
-            <IconButton onClick={onPresentTransactionsModal} variant="text" scale="sm">
-              <HistoryIcon color="textSubtle" width="24px" />
+            <IconButton onClick={onPresentTransactionsModal} variant="vertoIcon" scale="sm">
+              <HistoryIcon width="24px" />
             </IconButton>
-            <IconButton variant="text" scale="sm" onClick={handleOnClick}>
-              <RefreshIcon disabled={!hasAmount} color="textSubtle" width="27px" />
+            <IconButton variant="vertoIcon" scale="sm" onClick={handleOnClick}>
+              <RefreshIcon disabled={!hasAmount} width="27px" />
             </IconButton>
           </Flex>
         </Flex>

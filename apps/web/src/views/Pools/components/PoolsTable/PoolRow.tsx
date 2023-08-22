@@ -13,6 +13,7 @@ import ActionPanel from './ActionPanel/ActionPanel'
 import AutoEarningsCell from './Cells/AutoEarningsCell'
 import AutoAprCell from './Cells/AutoAprCell'
 import StakedCell from './Cells/StakedCell'
+import LiquidityCell from './Cells/LiquidityCell'
 
 export const VaultPoolRow: React.FC<
   React.PropsWithChildren<{ vaultKey: VaultKey; account: string; initialActivity?: boolean }>
@@ -80,7 +81,12 @@ const PoolRow: React.FC<React.PropsWithChildren<{ sousId: number; account: strin
         />
       )}
       <AprCell pool={pool} />
-      {isDesktop && <EndsInCell pool={pool} />}
+      {isDesktop && (
+        <>
+          <LiquidityCell pool={pool} />
+          <EndsInCell pool={pool} />
+        </>
+      )}
     </Pool.ExpandRow>
   )
 }

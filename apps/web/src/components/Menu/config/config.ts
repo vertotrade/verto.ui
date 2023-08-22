@@ -11,6 +11,7 @@ import { ContextApi } from '@verto/localization'
 // import { nftsBaseUrl } from 'views/Nft/market/constants'
 // import { getPerpetualUrl } from 'utils/getPerpetualUrl'
 import { SUPPORT_REBUS } from 'config/constants/supportChains'
+import { lotteryFeatureFlagRequest } from 'components/Menu/utils'
 
 export type ConfigMenuDropDownItemsType = DropdownMenuItems & { hideSubNav?: boolean }
 export type ConfigMenuItemsType = Omit<MenuItemsType, 'items'> & { hideSubNav?: boolean; image?: string } & {
@@ -35,8 +36,9 @@ const config: (
   isDark: boolean,
   languageCode?: string,
   chainId?: number,
-) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) =>
-  [
+) => Promise<ConfigMenuItemsType[]> = async (t, isDark, languageCode, chainId) => {
+  let isLotteryPageEnabled
+  let navItems = [
     {
       label: t('Trade'),
       href: '/swap',
@@ -73,7 +75,7 @@ const config: (
       ].map(item => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Earn'),
+      label: t('Gain'),
       href: '/farms',
       showItemsOnMobile: true,
       items: [
@@ -88,36 +90,35 @@ const config: (
         },
       ].map(item => addMenuItemSupported(item, chainId)),
     },
-    // {
-    //   label: t('Win'),
-    //   href: '/prediction',
-    //   icon: TrophyIcon,
-    //   fillIcon: TrophyFillIcon,
-    //   supportChainIds: SUPPORT_ONLY_BSC,
-    //   items: [
-    //     {
-    //       label: t('Trading Competition'),
-    //       href: '/competition',
-    //       image: '/images/decorations/tc.png',
-    //       hideSubNav: true,
-    //     },
-    //     {
-    //       label: t('Prediction (BETA)'),
-    //       href: '/prediction',
-    //       image: '/images/decorations/prediction.png',
-    //     },
-    //     {
-    //       label: t('Lottery'),
-    //       href: '/lottery',
-    //       image: '/images/decorations/lottery.png',
-    //     },
-    //     {
-    //       label: t('Pottery (BETA)'),
-    //       href: '/pottery',
-    //       image: '/images/decorations/lottery.png',
-    //     },
-    //   ],
-    // },
+    {
+      label: t('Win'),
+      href: '/lottery',
+      // icon: TrophyIcon,
+      // fillIcon: TrophyFillIcon,
+      items: [
+        // {
+        //   label: t('Trading Competition'),
+        //   href: '/competition',
+        //   image: '/images/decorations/tc.png',
+        //   hideSubNav: true,
+        // },
+        // {
+        //   label: t('Prediction (BETA)'),
+        //   href: '/prediction',
+        //   image: '/images/decorations/prediction.png',
+        // },
+        {
+          label: t('Lottery'),
+          href: '/lottery',
+          image: '/images/decorations/lottery.png',
+        },
+        // {
+        //   label: t('Pottery (BETA)'),
+        //   href: '/pottery',
+        //   image: '/images/decorations/lottery.png',
+        // },
+      ],
+    },
     // {
     //   label: t('NFT'),
     //   href: `${nftsBaseUrl}`,
@@ -199,5 +200,30 @@ const config: (
     //   ].map(item => addMenuItemSupported(item, chainId)),
     // },
   ].map(item => addMenuItemSupported(item, chainId))
+
+  const filterNavItems = (items: any[], shouldDisplay: boolean) => {
+    return items.filter(item => {
+      if (!shouldDisplay && item.label === 'Win') {
+        return false
+      }
+      return true
+    })
+  }
+
+  async function configureNavItems() {
+    try {
+      const response = await lotteryFeatureFlagRequest()
+      isLotteryPageEnabled = response?.data?.data?.attributes?.enabled
+      navItems = filterNavItems(navItems, isLotteryPageEnabled)
+    } catch (error) {
+      console.log('Error', error)
+    }
+
+    return navItems
+  }
+
+  await configureNavItems()
+  return navItems
+}
 
 export default config

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { Flex } from "@verto/uikit";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { useTranslation } from "@verto/localization";
 import { ButtonMenu, ButtonMenuItem, Toggle, Text, NotificationDot, NextLinkFromReactRouter } from "../../components";
 import { ToggleView, ViewMode } from "../../components/ToggleView";
@@ -65,7 +65,6 @@ const PoolTabButtons = ({
   hideViewMode = false,
 }: PoolTableButtonsPropsType) => {
   const router = useRouter();
-  const { isDark } = useTheme();
 
   const { t } = useTranslation();
 
@@ -78,10 +77,7 @@ const PoolTabButtons = ({
   const liveOrFinishedSwitch = (
     <Wrapper>
       <Flex width="max-content" flexDirection="column">
-        <Text textTransform="uppercase" color={isDark ? "textSubtle" : "primary"} fontSize="12px" bold>
-          {t("Filter by")}
-        </Text>
-        <ButtonMenu activeIndex={isExact ? 0 : 1} scale="sm" variant="primary">
+        <ButtonMenu activeIndex={isExact ? 0 : 1}>
           <ButtonMenuItem as={NextLinkFromReactRouter} to="/pools" replace>
             {t("Live")}
           </ButtonMenuItem>
@@ -98,7 +94,7 @@ const PoolTabButtons = ({
   const stakedOnlySwitch = (
     <ToggleWrapper>
       <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} scale="sm" />
-      <Text color="primary"> {t("Staked only")}</Text>
+      <Text color="text"> {t("Staked only")}</Text>
     </ToggleWrapper>
   );
 

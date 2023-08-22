@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import { ChainId } from '@verto/sdk'
 import { useAccount } from 'wagmi'
 import {
-  Heading,
+  VertoHeading,
   Toggle,
   Text,
   Flex,
@@ -16,6 +16,7 @@ import {
   FlexLayout,
   PageHeader,
   ToggleView,
+  useMatchBreakpoints,
 } from '@verto/uikit'
 import styled from 'styled-components'
 import Page from 'components/Layout/Page'
@@ -24,7 +25,8 @@ import { useRebusVaultUserData } from 'state/pools/hooks'
 import { useIntersectionObserver } from '@verto/hooks'
 import { DeserializedFarm, FarmWithStakedValue } from '@verto/farms'
 import { useTranslation } from '@verto/localization'
-import { getFarmApr } from 'utils/apr'
+import { PoolFarmInfoMap, getPoolFarmInfoMap } from 'utils/apr'
+import useTheme from 'hooks/useTheme'
 import orderBy from 'lodash/orderBy'
 import { latinise } from 'utils/latinise'
 import { useUserFarmStakedOnly, useUserFarmsViewMode } from 'state/user/hooks'
@@ -37,18 +39,20 @@ import { BCakeBoosterCard } from './components/BCakeBoosterCard'
 const ControlContainer = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
 
   justify-content: space-between;
   flex-direction: column;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 16px 32px;
-    margin-bottom: 0;
+    margin-bottom: 32px;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    align-items: center;
   }
 `
 const FarmFlexWrapper = styled(Flex)`
@@ -57,49 +61,29 @@ const FarmFlexWrapper = styled(Flex)`
     flex-wrap: nowrap;
   }
 `
-const FarmH1 = styled(Heading)`
-  font-size: 32px;
-  margin-bottom: 8px;
-  ${({ theme }) => theme.mediaQueries.sm} {
-    font-size: 64px;
-    margin-bottom: 24px;
-  }
-`
-const FarmH2 = styled(Heading)`
-  font-size: 16px;
-  margin-bottom: 8px;
-  ${({ theme }) => theme.mediaQueries.sm} {
-    font-size: 24px;
-    margin-bottom: 18px;
-  }
-`
 
 const ToggleWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 10px;
 
   ${Text} {
     margin-left: 8px;
   }
 `
 
-const LabelWrapper = styled.div`
-  > ${Text} {
-    font-size: 12px;
-  }
-`
-
-const FilterContainer = styled.div`
+const FilterContainer = styled.div<{ isMobile?: boolean }>`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
   padding: 8px 0px;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    width: auto;
+    width: 75%;
     padding: 0;
   }
+
+  ${({ isMobile }) => (isMobile ? 'justify-content: space-between;' : '')}
 `
 
 const ViewControls = styled.div`
@@ -125,11 +109,13 @@ const ViewControls = styled.div`
 
 const NUMBER_OF_FARMS_VISIBLE = 12
 
+const isFarmInactive = (farm: DeserializedFarm) => farm.multiplier === '0X'
+
 const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { pathname, query: urlQuery } = useRouter()
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
-  const { data: farmsLP, userDataLoaded, poolLength, regularRewardPerBlock } = useFarms()
+  const { data: farmsLP, userDataLoaded, poolLength } = useFarms()
   const cakePrice = usePriceCakeBusd()
 
   const [_query, setQuery] = useState('')
@@ -146,6 +132,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isInactive = pathname.includes('history')
   const isActive = !isInactive && !isArchived
 
+  const [farmLiquidityAprInfo, setfarmLiquidityAprInfo] = useState<PoolFarmInfoMap>({})
+  useEffect(() => {
+    getPoolFarmInfoMap().then(res => setfarmLiquidityAprInfo(res))
+  }, [])
+
   useRebusVaultUserData()
 
   usePollFarmsWithUserData()
@@ -156,10 +147,9 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const [stakedOnly, setStakedOnly] = useUserFarmStakedOnly(isActive)
 
-  // NOTE: Temporarily inactive aBNBc-BNB LP on FE
-  const activeFarms = farmsLP.filter(farm => farm.multiplier !== '0X' && (!poolLength || poolLength > farm.pid))
+  const activeFarms = farmsLP.filter(farm => !isFarmInactive(farm) && (!poolLength || poolLength > farm.pid))
 
-  const inactiveFarms = farmsLP.filter(farm => farm.multiplier === '0X')
+  const inactiveFarms = farmsLP.filter(isFarmInactive)
   const archivedFarms = farmsLP
 
   const stakedOnlyFarms = activeFarms.filter(
@@ -186,23 +176,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const farmsList = useCallback(
     (farmsToDisplay: DeserializedFarm[]): FarmWithStakedValue[] => {
       let farmsToDisplayWithAPR: FarmWithStakedValue[] = farmsToDisplay.map(farm => {
-        if (!farm.lpTotalInQuoteToken || !farm.quoteTokenPriceBusd) {
-          return farm
-        }
+        const info = farmLiquidityAprInfo?.[farm.poolAddress || farm.lpAddress]
+        const apr = isFarmInactive(farm) ? 0 : info?.apr || 0
+        const lpRewardsApr = isFarmInactive(farm) ? 0 : info?.lpRewardsApr || 0
 
-        const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = isActive
-          ? getFarmApr(
-              chainId,
-              new BigNumber(farm.poolWeight),
-              cakePrice,
-              totalLiquidity,
-              farm.lpAddress,
-              regularRewardPerBlock,
-            )
-          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
-
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...farm, apr, lpRewardsApr, liquidity: new BigNumber(info?.liquidity || 0) }
       })
 
       if (query) {
@@ -214,7 +192,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
       return farmsToDisplayWithAPR
     },
-    [query, isActive, chainId, cakePrice, regularRewardPerBlock],
+    [query, farmLiquidityAprInfo],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -298,17 +276,19 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const providerValue = useMemo(() => ({ chosenFarmsMemoized }), [chosenFarmsMemoized])
 
+  const { theme } = useTheme()
+
+  const { isMobile } = useMatchBreakpoints()
+
   return (
     <FarmsContext.Provider value={providerValue}>
       <PageHeader>
         <FarmFlexWrapper justifyContent="space-between">
           <Box>
-            <FarmH1 as="h1" scale="xxl" color="secondary" mb="24px">
+            <VertoHeading as="h1" scale="h2" mb="4px">
               {t('Farms')}
-            </FarmH1>
-            <FarmH2 scale="lg" color="notSelectedNavColor">
-              {t('Stake LP tokens to earn.')}
-            </FarmH2>
+            </VertoHeading>
+            <Text fontSize="14px">{t('Stake LP tokens to earn.')}</Text>
           </Box>
           {chainId === ChainId.BSC && (
             <Box>
@@ -319,12 +299,48 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       </PageHeader>
       <Page>
         <ControlContainer>
-          <ViewControls>
-            <Flex mt="20px">
-              <ToggleView idPrefix="clickFarm" viewMode={viewMode} onToggle={setViewMode} />
-            </Flex>
+          <FilterContainer isMobile={isMobile}>
+            <SearchInput
+              initialValue={normalizedUrlSearch}
+              onChange={handleChangeQuery}
+              placeholder="Search Farms"
+              iconColor={theme.colors.placeholder}
+            />
             <FarmUI.FarmTabButtons hasStakeInFinishedFarms={stakedInactiveFarms.length > 0} />
-            <Flex mt="20px" ml="16px">
+            <Select
+              my="8px"
+              mr="12px"
+              ml="4px"
+              options={[
+                {
+                  label: t('Hot'),
+                  value: 'hot',
+                },
+                {
+                  label: t('APR'),
+                  value: 'apr',
+                },
+                {
+                  label: t('Multiplier'),
+                  value: 'multiplier',
+                },
+                {
+                  label: t('Earned'),
+                  value: 'earned',
+                },
+                {
+                  label: t('Liquidity'),
+                  value: 'liquidity',
+                },
+                {
+                  label: t('Latest'),
+                  value: 'latest',
+                },
+              ]}
+              onOptionChange={handleSortOptionChange}
+              color="text"
+            />
+            <Flex mt={isMobile ? '8px' : '0'} ml="4px">
               <ToggleWrapper>
                 <Toggle
                   id="staked-only-farms"
@@ -332,54 +348,17 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                   onChange={() => setStakedOnly(!stakedOnly)}
                   scale="sm"
                 />
-                <Text color="primary"> {t('Staked only')}</Text>
+                <Text small ml="8px" color="text">
+                  {t('Staked only')}
+                </Text>
               </ToggleWrapper>
             </Flex>
-          </ViewControls>
-          <FilterContainer>
-            <LabelWrapper>
-              <Text textTransform="uppercase" color="primary" fontSize="12px" bold>
-                {t('Sort by')}
-              </Text>
-              <Select
-                options={[
-                  {
-                    label: t('Hot'),
-                    value: 'hot',
-                  },
-                  {
-                    label: t('APR'),
-                    value: 'apr',
-                  },
-                  {
-                    label: t('Multiplier'),
-                    value: 'multiplier',
-                  },
-                  {
-                    label: t('Earned'),
-                    value: 'earned',
-                  },
-                  {
-                    label: t('Liquidity'),
-                    value: 'liquidity',
-                  },
-                  {
-                    label: t('Latest'),
-                    value: 'latest',
-                  },
-                ]}
-                onOptionChange={handleSortOptionChange}
-                color="primary"
-                hasPrimaryBorderColor
-              />
-            </LabelWrapper>
-            <LabelWrapper style={{ marginLeft: 16 }}>
-              <Text textTransform="uppercase" color="primary" fontSize="12px" bold>
-                {t('Search')}
-              </Text>
-              <SearchInput initialValue={normalizedUrlSearch} onChange={handleChangeQuery} placeholder="Search Farms" />
-            </LabelWrapper>
           </FilterContainer>
+          <ViewControls>
+            <Flex>
+              <ToggleView idPrefix="clickFarm" viewMode={viewMode} onToggle={setViewMode} />
+            </Flex>
+          </ViewControls>
         </ControlContainer>
         {viewMode === ViewMode.TABLE ? (
           <Table farms={chosenFarmsMemoized} cakePrice={cakePrice} userDataReady={userDataReady} />
@@ -391,7 +370,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             <Loading />
           </Flex>
         )}
-        {poolLength && <div ref={observerRef} />}
+        {!!poolLength && <div ref={observerRef} />}
       </Page>
     </FarmsContext.Provider>
   )

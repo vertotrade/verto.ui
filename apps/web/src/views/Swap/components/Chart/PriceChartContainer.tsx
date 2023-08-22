@@ -1,8 +1,6 @@
 import { Currency } from '@verto/sdk'
 import useTheme from 'hooks/useTheme'
 import { useCallback, useState } from 'react'
-import BnbWbnbNotice from './BnbWbnbNotice'
-import { BNB_ADDRESS } from './constants'
 import PriceChart from './PriceChart'
 import { getTokenAddress } from './utils'
 
@@ -31,7 +29,6 @@ const PriceChartContainer: React.FC<React.PropsWithChildren<PriceChartContainerP
   isChartDisplayed,
   isMobile,
   isFullWidthContainer = false,
-  currentSwapPrice,
 }) => {
   const token0Address = getTokenAddress(inputCurrencyId)
   const token1Address = getTokenAddress(outputCurrencyId)
@@ -40,14 +37,8 @@ const PriceChartContainer: React.FC<React.PropsWithChildren<PriceChartContainerP
 
   const { isDark } = useTheme()
 
-  if (!isChartDisplayed) {
+  if (!isChartDisplayed || !inputCurrencyId?.startsWith('0x') || !outputCurrencyId?.startsWith('0x')) {
     return null
-  }
-
-  const isBnbWbnb = token0Address === BNB_ADDRESS && token1Address === BNB_ADDRESS
-
-  if (isBnbWbnb) {
-    return <BnbWbnbNotice isDark={isDark} isChartExpanded={isChartExpanded} />
   }
 
   return (
@@ -62,7 +53,6 @@ const PriceChartContainer: React.FC<React.PropsWithChildren<PriceChartContainerP
       setIsChartExpanded={setIsChartExpanded}
       isMobile={isMobile}
       isFullWidthContainer={isFullWidthContainer}
-      currentSwapPrice={currentSwapPrice}
     />
   )
 }

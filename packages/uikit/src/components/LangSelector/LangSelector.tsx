@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTheme } from "@verto/hooks";
 import Text from "../Text/Text";
 import Dropdown from "../Dropdown/Dropdown";
@@ -32,6 +32,9 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
   hideLanguage = false,
 }) => {
   const { theme } = useTheme();
+  const formattedLangText = useMemo(() => {
+    return langs.find((lang) => lang.code === currentLang.toLowerCase())?.language;
+  }, [currentLang, langs]);
 
   return (
     <Dropdown
@@ -44,7 +47,7 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
         >
           {!hideLanguage && (
             <Text className="hover-gradient" color={color}>
-              {currentLang?.toUpperCase()}
+              {formattedLangText}
             </Text>
           )}
         </Button>

@@ -1,23 +1,26 @@
 import { memo } from "react";
-import { SunIcon, MoonIcon } from "../Svg";
+import { Flex, Text } from "@verto/uikit";
+// import { SunIcon, MoonIcon } from "../Svg";
 import { Toggle } from "../Toggle";
 
 export interface Props {
   isDark: boolean;
   toggleTheme: (isDark: boolean) => void;
+  showText?: boolean;
 }
 
-const ThemeSwitcher: React.FC<React.PropsWithChildren<Props>> = ({ isDark, toggleTheme }) => {
+const ThemeSwitcher: React.FC<React.PropsWithChildren<Props>> = ({ isDark, toggleTheme, showText }) => {
   return (
-    <Toggle
-      checked={isDark}
-      defaultColor="toggleBgColor"
-      checkedColor={isDark ? "textDisabled" : "warning"}
-      onChange={() => toggleTheme(!isDark)}
-      scale="md"
-      startIcon={() => <SunIcon color={isDark ? "backgroundAlt" : "white"} />}
-      endIcon={() => <MoonIcon color={isDark ? "secondary" : "white"} />}
-    />
+    <Flex>
+      <Toggle
+        checked={isDark}
+        onChange={() => toggleTheme(!isDark)}
+        // startIcon={() => <SunIcon color={isDark ? "backgroundAlt" : "white"} />}
+        // endIcon={() => <MoonIcon color={isDark ? "secondary" : "white"} />}
+      />
+
+      {showText && <Text mx="4px">{isDark ? "Dark Mode" : "Light Mode"}</Text>}
+    </Flex>
   );
 };
 
