@@ -21,6 +21,7 @@ import { SettingsMode } from '../../../components/Menu/GlobalSettings/types'
 import { SwapFeaturesContext } from '../SwapFeaturesContext'
 
 interface Props {
+  isWrappingSwap?: boolean
   title: string | ReactElement
   subtitle: string
   noConfig?: boolean
@@ -35,6 +36,7 @@ const ColoredIconButton = styled(IconButton)`
 `
 
 const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
+  isWrappingSwap,
   subtitle,
   hasAmount,
   onRefreshPrice,
@@ -60,7 +62,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
             <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
           </Flex>
           <Flex width="100%" justifyContent="end">
-            {isChartSupported && setIsChartDisplayed && (
+            {isChartSupported && !isWrappingSwap && setIsChartDisplayed && (
               <ColoredIconButton
                 onClick={() => {
                   if (!isChartDisplayed && isSwapHotTokenDisplay) {

@@ -25,7 +25,7 @@ async function execute(timeWindow) {
     throw new Error('TIME_WINDOW, TOKEN_0 and TOKEN_1 must be set')
   }
 
-  const uppercasePair = `${token0.toUpperCase()}-${token1.toUpperCase()}`
+  const pair = `${token0}-${token1}`
   const lowercasePair = `${token0.toLowerCase()}-${token1.toLowerCase()}`
   const destIndex = `liquidity_${lowercasePair}_${timeWindow}`
   const alias = `liquidity_${token1.toLowerCase()}-${token0.toLowerCase()}_${timeWindow}`
@@ -81,7 +81,7 @@ async function execute(timeWindow) {
   await client.transform.putTransform({
     transform_id: transformId,
     body: {
-      description: `${timeWindow} aggregate of liquidity for ${uppercasePair}`,
+      description: `${timeWindow} aggregate of liquidity for ${pair}`,
       dest: {
         index: destIndex,
         pipeline: `add_ingest_timestamp_pipeline`,
@@ -95,7 +95,7 @@ async function execute(timeWindow) {
               {
                 term: {
                   pair: {
-                    value: uppercasePair,
+                    value: pair,
                   },
                 },
               },

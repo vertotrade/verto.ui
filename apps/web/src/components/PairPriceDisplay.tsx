@@ -6,7 +6,7 @@ import { formatAmount, formatAmountNotation } from 'utils/formatInfoNumbers'
 const formatOptions = {
   notation: 'standard' as formatAmountNotation,
   displayThreshold: 0.001,
-  tokenPrecision: true,
+  tokenPrecision: false,
 }
 
 interface TokenDisplayProps extends FlexGapProps {
