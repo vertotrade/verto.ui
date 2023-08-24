@@ -34,6 +34,7 @@ export default function Swap() {
     [Field.INPUT]: inputCurrency ?? undefined,
     [Field.OUTPUT]: outputCurrency ?? undefined,
   }
+  const isWrappingSwap = [inputCurrency?.symbol, outputCurrency?.symbol].includes('REBUS')
 
   const singleTokenPrice = useSingleTokenSwapInfo(inputCurrencyId, inputCurrency, outputCurrencyId, outputCurrency)
 
@@ -52,7 +53,7 @@ export default function Swap() {
             currentSwapPrice={singleTokenPrice}
           />
         )}
-        {isChartSupported && (
+        {isMobile && isChartSupported && !isWrappingSwap && (
           <BottomDrawer
             content={
               <PriceChartContainer
@@ -65,6 +66,7 @@ export default function Swap() {
                 isChartDisplayed={isChartDisplayed}
                 currentSwapPrice={singleTokenPrice}
                 isMobile
+                isFullWidthContainer
               />
             }
             isOpen={isChartDisplayed}

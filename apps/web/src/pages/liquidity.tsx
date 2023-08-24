@@ -1,8 +1,8 @@
-import { CHAIN_IDS } from 'utils/wagmi'
+import { SUPPORT_REBUS } from 'config/constants/supportChains'
 import Liquidity from '../views/Pool'
 
 const LiquidityPage = () => <Liquidity />
 
-LiquidityPage.chains = CHAIN_IDS
+LiquidityPage.chains = SUPPORT_REBUS
 
 export default LiquidityPage

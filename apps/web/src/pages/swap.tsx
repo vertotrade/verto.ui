@@ -1,4 +1,4 @@
-import { CHAIN_IDS } from 'utils/wagmi'
+import { SUPPORT_REBUS } from 'config/constants/supportChains'
 import Swap from '../views/Swap'
 import { SwapFeaturesProvider } from '../views/Swap/SwapFeaturesContext'
 
@@ -10,6 +10,6 @@ const SwapPage = () => {
   )
 }
 
-SwapPage.chains = CHAIN_IDS
+SwapPage.chains = SUPPORT_REBUS
 
 export default SwapPage
