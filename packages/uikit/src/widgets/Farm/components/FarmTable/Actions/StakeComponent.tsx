@@ -1,4 +1,5 @@
 import { useTranslation } from "@verto/localization";
+import { useMatchBreakpoints } from "@verto/uikit";
 import { StyledActionContainer, ActionContent, ActionTitles } from "./styles";
 import { Text } from "../../../../../components/Text";
 import { Button } from "../../../../../components/Button";
@@ -15,9 +16,10 @@ const StakeComponent: React.FunctionComponent<React.PropsWithChildren<StakeCompo
   onPresentDeposit,
 }) => {
   const { t } = useTranslation();
+  const { isMobile } = useMatchBreakpoints();
 
   return (
-    <StyledActionContainer>
+    <StyledActionContainer isMobile={isMobile}>
       <ActionTitles>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px" pr="4px">
           {t("Stake")}

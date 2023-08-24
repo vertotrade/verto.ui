@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { useTranslation } from "@verto/localization";
+import { useMatchBreakpoints } from "@verto/uikit";
 import { Text } from "../../../../../components/Text";
 import { IconButton } from "../../../../../components/Button";
 import { MinusIcon, AddIcon } from "../../../../../components/Svg";
@@ -23,9 +24,10 @@ const StakedActionComponent: React.FunctionComponent<React.PropsWithChildren<Sta
   onPresentDeposit,
 }) => {
   const { t } = useTranslation();
+  const { isMobile } = useMatchBreakpoints();
 
   return (
-    <StyledActionContainer>
+    <StyledActionContainer isMobile={isMobile}>
       <ActionTitles>
         <Text bold color="secondary" fontSize="12px" pr="4px">
           {lpSymbol}
