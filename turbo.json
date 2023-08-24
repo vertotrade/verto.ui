@@ -16,6 +16,10 @@
       "cache": false,
       "dependsOn": ["^build"]
     },
+    "dev:prod": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
     "start": {
       "cache": false
     },
