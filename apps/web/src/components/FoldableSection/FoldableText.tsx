@@ -7,6 +7,12 @@ interface FoldableTextProps extends Omit<FlexProps, 'title'> {
   title?: ReactNode
 }
 
+const StyledFlex = styled(Flex)`
+  &:not(:last-child) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.inputSecondary};
+  }
+`
+
 const Wrapper = styled(Flex)`
   cursor: pointer;
 `
@@ -22,7 +28,6 @@ const StyledChildrenFlex = styled(Flex)<{ isExpanded?: boolean }>`
   overflow: hidden;
   height: ${({ isExpanded }) => (isExpanded ? '100%' : '0px')};
   padding-bottom: ${({ isExpanded }) => (isExpanded ? '16px' : '0px')};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.inputSecondary};
 `
 
 const FoldableText: React.FC<React.PropsWithChildren<FoldableTextProps>> = ({ title, children, ...props }) => {
@@ -30,7 +35,7 @@ const FoldableText: React.FC<React.PropsWithChildren<FoldableTextProps>> = ({ ti
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
-    <Flex {...props} flexDirection="column">
+    <StyledFlex {...props} flexDirection="column">
       <Wrapper justifyContent="space-between" alignItems="center" pb="16px" onClick={() => setIsExpanded(s => !s)}>
         <Text fontWeight="bold">{title}</Text>
         <StyledExpandableLabelWrapper>
@@ -40,7 +45,7 @@ const FoldableText: React.FC<React.PropsWithChildren<FoldableTextProps>> = ({ ti
       <StyledChildrenFlex isExpanded={isExpanded} flexDirection="column">
         {children}
       </StyledChildrenFlex>
-    </Flex>
+    </StyledFlex>
   )
 }
 
