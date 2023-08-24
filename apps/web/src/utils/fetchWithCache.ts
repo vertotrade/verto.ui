@@ -66,6 +66,7 @@ export const useFetchWithCache = (path = '', key = '') => {
       })
 
     const interval = setInterval(fetch, FETCH_INTERVAL)
+    fetch()
 
     return () => clearInterval(interval)
   }, [key, path])

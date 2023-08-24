@@ -140,7 +140,7 @@ async function execute(timeWindow) {
               init_script: 'state.values = []',
               map_script: `
                 HashMap info = new HashMap();
-                if (params._source.token_in.symbol == '${token0?.toUpperCase()}') {
+                if (params._source.token_in.symbol == '${token0}') {
                   info.token = params._source.token_in;
                   info.in = true;
                 } else {
@@ -201,7 +201,7 @@ async function execute(timeWindow) {
               init_script: 'state.values = []',
               map_script: `
                 HashMap info = new HashMap();
-                if (params._source.token_in.symbol == '${token1?.toUpperCase()}') {
+                if (params._source.token_in.symbol == '${token1}') {
                   info.token = params._source.token_in;
                   info.in = true;
                 } else {

@@ -19,6 +19,7 @@ const BasicChart = ({ token0Address, token1Address, isChartExpanded, inputCurren
 
   const {
     pairPrices = EMPTY_ARRAY,
+    lastPrice,
     pairId,
     hasError,
   } = useFetchPairPrices({
@@ -29,7 +30,7 @@ const BasicChart = ({ token0Address, token1Address, isChartExpanded, inputCurren
   const mountedRef = useRef(false)
   const [hoverValue, setHoverValue] = useState<number | undefined>()
   const [hoverDate, setHoverDate] = useState<string | undefined>()
-  const valueToDisplay = hoverValue || pairPrices[pairPrices.length - 1]?.value
+  const valueToDisplay = hoverValue || lastPrice || pairPrices[pairPrices.length - 1]?.value
 
   const { changePercentage, changeValue } = getTimeWindowChange(pairPrices)
   const isChangePositive = changeValue >= 0
