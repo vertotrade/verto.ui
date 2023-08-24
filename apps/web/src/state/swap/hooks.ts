@@ -449,8 +449,8 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
 
           const lastPriceRes = lastPriceData.hits.hits.map(hit =>
             pair === hit._source.pair.toLowerCase()
-              ? hit._source.token_in.price / hit._source.token_out.price
-              : hit._source.token_out.price / hit._source.token_in.price,
+              ? hit._source.token_out.price / hit._source.token_in.price
+              : hit._source.token_in.price / hit._source.token_out.price,
           )[0]
           const pairPricesRes = populateEmptyDataPoints(points, actualFromDate, timeWindow)
 
