@@ -19,7 +19,7 @@ import { computeSlippageAdjustedAmounts } from 'utils/exchange'
 import getLpAddress from 'utils/getLpAddress'
 import { getTokenAddress } from 'views/Swap/components/Chart/utils'
 import { useAccount } from 'wagmi'
-import { LiquidityAggregate, search } from 'utils/elastic-search'
+import { LiquidityAggregate, Transaction, search } from 'utils/elastic-search'
 import { AppState, useAppDispatch } from '../index'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { useCurrencyBalances } from '../wallet/hooks'
@@ -336,6 +336,7 @@ const populateEmptyDataPoints = (
 export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }: useFetchPairPricesParams) => {
   const [pairId, setPairId] = useState(null)
   const [pairPrices, setPairPrices] = useState([])
+  const [lastPrice, setLastPrice] = useState<number | undefined>()
   const [hasError, setHasError] = useState(false)
   const currentFetchIndex = useRef(0)
 
@@ -359,6 +360,7 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
       }
 
       setPairPrices([])
+      setLastPrice(undefined)
       setHasError(false)
 
       const now = new Date()
@@ -376,22 +378,63 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
       }
 
       const pair = `${inputCurrency.symbol.toLowerCase()}-${outputCurrency.symbol.toLowerCase()}`
+      const originalPair = `${inputCurrency.symbol}-${outputCurrency.symbol}`
+      const inverseOriginalPair = `${outputCurrency.symbol}-${inputCurrency.symbol}`
+      const sort = [
+        {
+          timestamp: {
+            order: 'desc',
+          },
+        },
+      ] as any
       const body: SearchRequest = {
         index: `liquidity_${pair}_${indexSuffix}`,
-        sort: [
-          {
-            timestamp: {
-              order: 'desc',
-            },
-          },
-        ],
+        sort,
         size,
+      }
+      const lastPriceBody: SearchRequest = {
+        index: 'transactions',
+        sort,
+        size: 1,
+        query: {
+          bool: {
+            must: [
+              {
+                term: {
+                  type: {
+                    value: 'SWAP',
+                  },
+                },
+              },
+            ],
+            should: [
+              {
+                term: {
+                  pair: {
+                    value: originalPair,
+                  },
+                },
+              },
+              {
+                term: {
+                  pair: {
+                    value: inverseOriginalPair,
+                  },
+                },
+              },
+            ],
+            minimum_should_match: 1,
+          },
+        },
       }
 
       const actualFromDate = sub(now, getDurationFromTimeframe(timeWindow))
 
       try {
-        const { data } = await search<SearchResponse<LiquidityAggregate>>(body)
+        const [{ data }, { data: lastPriceData }] = await Promise.all([
+          search<SearchResponse<LiquidityAggregate>>(body),
+          search<SearchResponse<Transaction>>(lastPriceBody),
+        ])
 
         // Make sure we only set the data of the latest fetch if multiple fetches are running
         if (currentFetchIndex.current === fetchIndex) {
@@ -404,10 +447,19 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
           }))
           points.reverse()
 
-          setPairPrices(populateEmptyDataPoints(points, actualFromDate, timeWindow))
+          const lastPriceRes = lastPriceData.hits.hits.map(hit =>
+            pair === hit._source.pair.toLowerCase()
+              ? hit._source.token_in.price / hit._source.token_out.price
+              : hit._source.token_out.price / hit._source.token_in.price,
+          )[0]
+          const pairPricesRes = populateEmptyDataPoints(points, actualFromDate, timeWindow)
+
+          setPairPrices(pairPricesRes)
+          setLastPrice(lastPriceRes)
         }
       } catch (err) {
         setPairPrices(populateEmptyDataPoints([], actualFromDate, timeWindow))
+        setLastPrice(undefined)
 
         console.error(err)
         setHasError(true)
@@ -417,5 +469,5 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
     fetchData()
   }, [inputCurrency, inputCurrency?.symbol, outputCurrency, outputCurrency?.symbol, pairId, timeWindow])
 
-  return { pairPrices, pairId, hasError }
+  return { pairPrices, lastPrice, pairId, hasError }
 }
