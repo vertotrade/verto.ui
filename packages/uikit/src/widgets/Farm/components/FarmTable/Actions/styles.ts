@@ -5,7 +5,8 @@ export const ActionContainer = styled.div<{ isMobile?: boolean }>`
   flex-grow: 1;
   flex-basis: 0;
 
-  padding: ${({ isMobile }) => (isMobile ? "8px 16px" : "24px;")};
+  padding: ${({ isMobile }) => (isMobile ? "8px 16px" : "24px")};
+  padding-left: ${({ isMobile }) => (isMobile ? "8px 16px" : "0")};
   ${({ isMobile }) => (isMobile ? "" : "min-height: 150px;")}
 `;
 

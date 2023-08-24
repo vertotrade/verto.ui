@@ -77,9 +77,9 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
             <Balance fontSize="12px" color="textSubtle" decimals={2} value={earningsBusd} unit=" USD" prefix="~" />
           )}
         </div>
-        {/* <Button ml="4px" disabled={earnings.eq(0) || pendingTx || !userDataReady} onClick={handleHarvest}> */}
-        {/*   {pendingTx ? t("Harvesting") : t("Harvest")} */}
-        {/* </Button> */}
+        <Button ml="4px" disabled={earnings.eq(0) || pendingTx || !userDataReady} onClick={handleHarvest}>
+          {pendingTx ? t("Harvesting") : t("Harvest")}
+        </Button>
       </ActionContent>
     </ActionContainer>
   );

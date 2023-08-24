@@ -142,17 +142,19 @@ const EmptyDiv = styled.div<{ isDesktop: boolean }>`
   min-height: 150px;
   background-color: ${({ theme }) => theme.colors.dropdown};
   ${({ isDesktop }) => (isDesktop ? 'margin-bottom: 8px' : '')};
+`
 
-  &:last-child {
+const TdStyled = styled.td<{ isDesktop: boolean }>`
+  &:last-child ${EmptyDiv} {
     border-top-right-radius: 8px;
     ${({ isDesktop }) => (isDesktop ? 'border-bottom-right-radius: 8px' : '')};
   }
 `
 
 const EmptyTd = ({ isDesktop }: { isDesktop?: boolean }) => (
-  <td>
+  <TdStyled isDesktop={isDesktop}>
     <EmptyDiv isDesktop={isDesktop} />
-  </td>
+  </TdStyled>
 )
 
 const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelProps>> = ({
@@ -297,7 +299,6 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
           <td>{harvestContainer}</td>
           {isDesktop && <EmptyTd isDesktop={isDesktop} />}
           <td>{stakedContainer}</td>
-          <EmptyTd isDesktop={isDesktop} />
           <EmptyTd isDesktop={isDesktop} />
         </Tr>
       )}
