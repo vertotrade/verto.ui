@@ -24,6 +24,7 @@ export const StyledPriceChartContainer = styled.div<{
   $isExpanded: boolean
   $isFullWidthContainer?: boolean
 }>`
+  height: 100%;
   width: ${({ $isExpanded, $isFullWidthContainer }) => ($isFullWidthContainer || $isExpanded ? '100%' : '50%')};
   display: flex;
   flex-direction: column;

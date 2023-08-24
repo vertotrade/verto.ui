@@ -21,7 +21,6 @@ import { useStableSwapByDefault } from 'state/user/smartRouter'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import AccessRisk from 'views/Swap/components/AccessRisk'
 
-import { vertoTokens } from '@verto/tokens'
 import replaceBrowserHistory from '@verto/utils/replaceBrowserHistory'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { AutoColumn } from 'components/Layout/Column'
@@ -242,12 +241,7 @@ export function SmartSwapForm() {
   const allowRecipient = isExpertMode && !showWrap && !smartRouterOn
 
   // If swapping between wrebus/rebus then it is just a wrap
-  const isWrappingSwap =
-    currencies[Field.INPUT] &&
-    currencies[Field.OUTPUT] &&
-    ![currencies[Field.INPUT].symbol, currencies[Field.OUTPUT].symbol].some(
-      x => ![vertoTokens.wrebus.symbol, 'REBUS'].includes(x),
-    )
+  const isWrappingSwap = [currencies[Field.INPUT]?.symbol, currencies[Field.OUTPUT]?.symbol].includes('REBUS')
 
   return (
     <>

@@ -5,6 +5,7 @@ import CurrencyLogo from './CurrencyLogo'
 const Wrapper = styled.div<{ margin: boolean }>`
   display: flex;
   flex-direction: row;
+  flex-shrink: 0;
   margin-right: ${({ margin }) => margin && '4px'};
 `
 
