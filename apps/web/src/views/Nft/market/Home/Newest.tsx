@@ -50,9 +50,9 @@ const Newest: React.FC<React.PropsWithChildren> = () => {
         <Button
           as={NextLinkFromReactRouter}
           to={`${nftsBaseUrl}/activity/`}
-          variant="vertoCustom"
+          variant="vertoText"
           scale="sm"
-          endIcon={<ChevronRightIcon color="primary" />}>
+          endIcon={<ChevronRightIcon color="text" />}>
           {t('View All')}
         </Button>
       </Flex>

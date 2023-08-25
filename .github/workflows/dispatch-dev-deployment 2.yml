@@ -1,0 +1,42 @@
+name: Dispatch DEV Deployment
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: false
+        default: 'main'
+  push:
+    branches:
+      - main
+
+jobs:
+  dispatch-dev-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.branch || github.ref_name }}
+
+      - name: Check branch existence
+        id: check_branch
+        run: |
+          BRANCH="${{ github.event.inputs.branch || github.ref_name }}"
+          git fetch --depth=1 origin $BRANCH
+          if git rev-parse --verify --quiet "$BRANCH"; then
+            echo "::set-output name=exists::true"
+          else
+            echo "::set-output name=exists::false"
+            exit 1
+          fi
+
+      - name: Repository Dispatch
+        if: steps.check_branch.outputs.exists == 'true'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.VERTO_APP_DEPLOY_PAT }}
+          repository: vertotrade/verto.deploy
+          event-type: deployDev
+          client-payload: '{"branch": "${{ github.event.inputs.branch || github.ref_name }}"}'

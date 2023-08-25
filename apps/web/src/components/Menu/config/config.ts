@@ -10,7 +10,7 @@ import {
 import { ContextApi } from '@verto/localization'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 // import { getPerpetualUrl } from 'utils/getPerpetualUrl'
-import { SUPPORT_REBUS } from 'config/constants/supportChains'
+import { SUPPORT_REBUS, SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
 import { lotteryFeatureFlagRequest } from 'components/Menu/utils'
 
 export type ConfigMenuDropDownItemsType = DropdownMenuItems & { hideSubNav?: boolean }
@@ -95,57 +95,57 @@ const config: (
       href: '/lottery',
       // icon: TrophyIcon,
       // fillIcon: TrophyFillIcon,
-      items: [
-        // {
-        //   label: t('Trading Competition'),
-        //   href: '/competition',
-        //   image: '/images/decorations/tc.png',
-        //   hideSubNav: true,
-        // },
-        // {
-        //   label: t('Prediction (BETA)'),
-        //   href: '/prediction',
-        //   image: '/images/decorations/prediction.png',
-        // },
-        {
-          label: t('Lottery'),
-          href: '/lottery',
-          image: '/images/decorations/lottery.png',
-        },
-        // {
-        //   label: t('Pottery (BETA)'),
-        //   href: '/pottery',
-        //   image: '/images/decorations/lottery.png',
-        // },
-      ],
+      // items: [
+      // {
+      //   label: t('Trading Competition'),
+      //   href: '/competition',
+      //   image: '/images/decorations/tc.png',
+      //   hideSubNav: true,
+      // },
+      // {
+      //   label: t('Prediction (BETA)'),
+      //   href: '/prediction',
+      //   image: '/images/decorations/prediction.png',
+      // },
+      // {
+      //  label: t('Lottery'),
+      //  href: '/lottery',
+      //  image: '/images/decorations/lottery.png',
+      // },
+      // {s
+      //   label: t('Pottery (BETA)'),
+      //   href: '/pottery',
+      //   image: '/images/decorations/lottery.png',
+      // },
+      // ],
     },
-    // {
-    //   label: t('NFT'),
-    //   href: `${nftsBaseUrl}`,
-    //   icon: NftIcon,
-    //   fillIcon: NftFillIcon,
-    //   supportChainIds: SUPPORT_ONLY_BSC,
-    //   image: '/images/decorations/nft.png',
-    //   items: [
-    //     {
-    //       label: t('Overview'),
-    //       href: `${nftsBaseUrl}`,
-    //     },
-    //     {
-    //       label: t('Collections'),
-    //       href: `${nftsBaseUrl}/collections`,
-    //     },
-    //     {
-    //       label: t('Activity'),
-    //       href: `${nftsBaseUrl}/activity`,
-    //     },
-    //   ],
-    // },
-    // {
-    //   label: t('Info'),
-    //   href: '/info',
-    //   showItemsOnMobile: false,
-    // },
+    {
+      label: t('NFT'),
+      href: `${nftsBaseUrl}`,
+      icon: NftIcon,
+      fillIcon: NftFillIcon,
+      supportChainIds: SUPPORT_ONLY_BSC,
+      image: '/images/decorations/nft.png',
+      items: [
+        {
+          label: t('Overview'),
+          href: `${nftsBaseUrl}`,
+        },
+        {
+          label: t('Collections'),
+          href: `${nftsBaseUrl}/collections`,
+        },
+        {
+          label: t('Activity'),
+          href: `${nftsBaseUrl}/activity`,
+        },
+      ].map(item => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: t('Info'),
+      href: '/info',
+      showItemsOnMobile: false,
+    },
     {
       label: t('Docs'),
       href: 'https://docs.vertotrade.com',
@@ -199,7 +199,8 @@ const config: (
     //     },
     //   ].map(item => addMenuItemSupported(item, chainId)),
     // },
-  ].map(item => addMenuItemSupported(item, chainId))
+  ]
+  // .map(item => addMenuItemSupported(item, chainId)) Unnecessary over all items?
 
   const filterNavItems = (items: any[], shouldDisplay: boolean) => {
     return items.filter(item => {

@@ -5,7 +5,7 @@ import {
   Box,
   Flex,
   Grid,
-  Heading,
+  VertoHeading,
   Text,
   Td,
   ProfileAvatar,
@@ -234,9 +234,9 @@ const Collectible = () => {
   return (
     <>
       <PageHeader>
-        <Heading as="h1" scale="xxl" color="secondary" data-test="nft-collections-title">
+        <VertoHeading scale="xxl" mb="4px">
           {t('Collections')}
-        </Heading>
+        </VertoHeading>
       </PageHeader>
       <Page>
         {status !== FetchStatus.Fetched ? (
@@ -251,8 +251,7 @@ const Collectible = () => {
                 </Text>
                 <Select
                   options={options}
-                  color="primary"
-                  hasPrimaryBorderColor
+                  color="text"
                   placeHolderText={t('Select')}
                   defaultOptionIndex={SORT_FIELD_INDEX_MAP.get(sortField)}
                   onOptionChange={(option: OptionProps) => handleSort(option.value)}
