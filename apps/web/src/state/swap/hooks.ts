@@ -333,6 +333,14 @@ const populateEmptyDataPoints = (
   return data
 }
 
+const getToken = (symbol, token0, token1) => {
+  if (symbol === token0.symbol) {
+    return token0
+  }
+
+  return token1
+}
+
 export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }: useFetchPairPricesParams) => {
   const [pairId, setPairId] = useState(null)
   const [pairPrices, setPairPrices] = useState([])
@@ -441,16 +449,15 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
           const points = data.hits.hits.map(hit => ({
             time: new Date(hit._source.timestamp),
             value:
-              pair === hit._source.pair.toLowerCase()
-                ? hit._source.token_0.price / hit._source.token_1.price
-                : hit._source.token_1.price / hit._source.token_0.price,
+              getToken(inputCurrency.symbol, hit._source.token_0, hit._source.token_1).price /
+              getToken(outputCurrency.symbol, hit._source.token_0, hit._source.token_1).price,
           }))
           points.reverse()
 
-          const lastPriceRes = lastPriceData.hits.hits.map(hit =>
-            pair === hit._source.pair.toLowerCase()
-              ? hit._source.token_out.price / hit._source.token_in.price
-              : hit._source.token_in.price / hit._source.token_out.price,
+          const lastPriceRes = lastPriceData.hits.hits.map(
+            hit =>
+              getToken(inputCurrency.symbol, hit._source.token_out, hit._source.token_in).price /
+              getToken(outputCurrency.symbol, hit._source.token_out, hit._source.token_in),
           )[0]
           const pairPricesRes = populateEmptyDataPoints(points, actualFromDate, timeWindow)
 
