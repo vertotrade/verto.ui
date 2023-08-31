@@ -3,7 +3,7 @@ import { Svg, SvgProps } from '@verto/uikit'
 const CandleChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = props => {
   return (
     <Svg width="100%" height="100%" viewBox="0 0 100 50" opacity="0.1" {...props}>
-      <rect width="5%" fill="#31D0AA">
+      <rect width="5%" fill="#57F1C6">
         <animate
           attributeName="height"
           dur="2s"
@@ -42,7 +42,7 @@ const CandleChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = props 
           repeatCount="indefinite"
         />
       </rect>
-      <rect width="5%" fill="#31D0AA">
+      <rect width="5%" fill="#57F1C6">
         <animate
           attributeName="height"
           dur="2s"
@@ -79,7 +79,7 @@ const CandleChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = props 
           repeatCount="indefinite"
         />
       </rect>
-      <rect width="5%" fill="#ED4B9E">
+      <rect width="5%" fill="#FF8235">
         <animate
           attributeName="height"
           dur="2s"
@@ -116,7 +116,7 @@ const CandleChartLoaderSVG: React.FC<React.PropsWithChildren<SvgProps>> = props 
           repeatCount="indefinite"
         />
       </rect>
-      <rect width="5%" fill="#31D0AA">
+      <rect width="5%" fill="#57F1C6">
         <animate
           attributeName="height"
           dur="2s"
