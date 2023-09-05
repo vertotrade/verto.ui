@@ -99,7 +99,7 @@ const SubMenuItems: React.FC<React.PropsWithChildren<SubMenuItemsProps>> = ({
                     {...itemProps}
                     {...linkProps}
                   >
-                    {Icon && <Icon color={isActive ? "secondary" : "textSubtle"} mr="4px" />}
+                    {Icon && <Icon color={isActive ? "tertiary" : "textSubtle"} mr="4px" />}
                     {label}
                     {isExternalLink && (
                       <Box display={["none", null, "flex"]} style={{ alignItems: "center" }} ml="4px">

@@ -12,7 +12,7 @@ const ActivityEventText: React.FC<React.PropsWithChildren<ActivityEventTextProps
   const events = {
     [MarketEvent.NEW]: {
       text: t('Listed'),
-      color: 'textSubtle',
+      color: 'text',
     },
     [MarketEvent.CANCEL]: {
       text: t('Delisted'),

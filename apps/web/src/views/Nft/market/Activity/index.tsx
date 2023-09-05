@@ -1,4 +1,4 @@
-import { Heading, PageHeader } from '@verto/uikit'
+import { VertoHeading, PageHeader } from '@verto/uikit'
 import Page from 'components/Layout/Page'
 import { useTranslation } from '@verto/localization'
 import ActivityHistory from '../ActivityHistory/ActivityHistory'
@@ -9,9 +9,9 @@ const Activity = () => {
   return (
     <>
       <PageHeader>
-        <Heading as="h1" scale="xxl" color="secondary" data-test="nft-activity-title">
+        <VertoHeading scale="xxl" mb="4px">
           {t('Activity')}
-        </Heading>
+        </VertoHeading>
       </PageHeader>
       <Page>
         <ActivityHistory />
