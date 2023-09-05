@@ -143,7 +143,7 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
             <Button
               scale="sm"
               disabled={isLoading}
-              variant="vertoCustom"
+              variant="vertoPrimary"
               onClick={() => {
                 refresh()
               }}

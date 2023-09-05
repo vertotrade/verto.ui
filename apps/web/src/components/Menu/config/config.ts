@@ -95,29 +95,29 @@ const config: (
       href: '/lottery',
       // icon: TrophyIcon,
       // fillIcon: TrophyFillIcon,
-      items: [
-        // {
-        //   label: t('Trading Competition'),
-        //   href: '/competition',
-        //   image: '/images/decorations/tc.png',
-        //   hideSubNav: true,
-        // },
-        // {
-        //   label: t('Prediction (BETA)'),
-        //   href: '/prediction',
-        //   image: '/images/decorations/prediction.png',
-        // },
-        {
-          label: t('Lottery'),
-          href: '/lottery',
-          image: '/images/decorations/lottery.png',
-        },
-        // {
-        //   label: t('Pottery (BETA)'),
-        //   href: '/pottery',
-        //   image: '/images/decorations/lottery.png',
-        // },
-      ],
+      // items: [
+      // {
+      //   label: t('Trading Competition'),
+      //   href: '/competition',
+      //   image: '/images/decorations/tc.png',
+      //   hideSubNav: true,
+      // },
+      // {
+      //   label: t('Prediction (BETA)'),
+      //   href: '/prediction',
+      //   image: '/images/decorations/prediction.png',
+      // },
+      // {
+      //  label: t('Lottery'),
+      //  href: '/lottery',
+      //  image: '/images/decorations/lottery.png',
+      // },
+      // {s
+      //   label: t('Pottery (BETA)'),
+      //   href: '/pottery',
+      //   image: '/images/decorations/lottery.png',
+      // },
+      // ],
     },
     {
       label: t('NFT'),
@@ -140,6 +140,11 @@ const config: (
           href: `${nftsBaseUrl}/activity`,
         },
       ],
+    },
+    {
+      label: t('Info'),
+      href: '/info',
+      showItemsOnMobile: false,
     },
     // {
     //   label: t('Info'),
@@ -199,7 +204,8 @@ const config: (
     //     },
     //   ].map(item => addMenuItemSupported(item, chainId)),
     // },
-  ].map(item => addMenuItemSupported(item, chainId))
+  ]
+  // .map(item => addMenuItemSupported(item, chainId)) Unnecessary over all items?
 
   const filterNavItems = (items: any[], shouldDisplay: boolean) => {
     return items.filter(item => {

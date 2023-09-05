@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import {
   Container,
   Button,
-  Heading,
   LinkExternal,
   PageHeader,
   NextLinkFromReactRouter,
   PageSection,
+  VertoHeading,
+  Text,
 } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { useTranslation } from '@verto/localization'
@@ -44,17 +45,15 @@ const Home = () => {
     collection => (collection.createdAt ? Date.parse(collection.createdAt) : 0),
     'desc',
   )
-
+  // HERE: DO we need Newest Collection and Newest Arrivals? Arrivals come from Newest.tsk
   return (
     <>
       <PageMeta />
       <PageHeader>
-        <Heading as="h1" scale="xxl" color="secondary" mb="24px">
+        <VertoHeading scale="xxl" mb="4px">
           {t('NFT Marketplace')}
-        </Heading>
-        <Heading scale="lg" color="text" mb="24px">
-          {t('Buy and Sell NFTs on Rebuschain')}
-        </Heading>
+        </VertoHeading>
+        <Text fontSize="16px">{t('Buy and Sell NFTs on Rebuschain')}</Text>
         {account && (
           <Button as={NextLinkFromReactRouter} to={`/profile/${account.toLowerCase()}`} mt="32px">
             {t('Manage/Sell')}

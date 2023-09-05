@@ -32,7 +32,7 @@ export const InfoPageLayout = ({ children }) => {
 
   return (
     <>
-      {chainName === 'BSC' && (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <SubMenuItems
           items={[
             {
@@ -46,8 +46,7 @@ export const InfoPageLayout = ({ children }) => {
           ]}
           activeItem={isStableSwap ? '/info?type=stableSwap' : '/info'}
         />
-      )}
-
+      </div>
       <InfoNav isStableSwap={isStableSwap} />
       {children}
     </>

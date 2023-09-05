@@ -114,7 +114,7 @@ export const ListCollectionFilter: React.FC<React.PropsWithChildren<ListCollecti
           component={
             <TriggerButton
               onClick={handleMenuClick}
-              variant={isAnyCollectionSelected ? 'primary' : 'vertoCustom'}
+              variant={isAnyCollectionSelected ? 'vertoPrimary' : 'vertoSecondary'}
               scale="sm"
               hasItem={isAnyCollectionSelected}>
               {t('Collection')}
