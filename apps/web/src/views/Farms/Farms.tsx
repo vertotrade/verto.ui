@@ -285,10 +285,10 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       <PageHeader>
         <FarmFlexWrapper justifyContent="space-between">
           <Box>
-            <VertoHeading as="h1" scale="h2" mb="4px">
+            <VertoHeading as="h1" scale="xxl" mb="4px">
               {t('Farms')}
             </VertoHeading>
-            <Text fontSize="14px">{t('Stake LP tokens to earn.')}</Text>
+            <Text fontSize="16px">{t('Stake LP tokens to earn.')}</Text>
           </Box>
           {chainId === ChainId.BSC && (
             <Box>

@@ -66,7 +66,7 @@ export const ActivityFilter: React.FC<React.PropsWithChildren<ActivityFilterProp
       <Box>
         <TriggerButton
           onClick={handleMenuClick}
-          variant={isEventSelected ? 'primary' : 'vertoCustom'}
+          variant={isEventSelected ? 'vertoPrimary' : 'vertoSecondary'}
           scale="sm"
           hasItem={isEventSelected}>
           {eventName(t, eventType)}
