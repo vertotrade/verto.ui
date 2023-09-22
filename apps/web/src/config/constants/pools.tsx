@@ -148,7 +148,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   {
     sousId: 316,
     stakingToken: tokens.verto,
-    earningToken: (tokens as any).techne,
+    earningToken: vertoTokens.techne,
     contractAddress: {
       [ChainId.REBUS]: '0x39Fd397acB214ec7C6DaA15Ad1D40b05987A9050',
       [ChainId.REBUS_TESTNET]: '',
@@ -161,7 +161,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   {
     sousId: 317,
     stakingToken: tokens.wrebus,
-    earningToken: (tokens as any).verto,
+    earningToken: tokens.verto,
     contractAddress: {
       [ChainId.REBUS]: '',
       [ChainId.REBUS_TESTNET]: '0xA6b258783CD3ddd9538aEB78D21C35831C077891',
@@ -169,6 +169,20 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,
+  },
+
+  {
+    sousId: 318,
+    stakingToken: tokens.xverto,
+    earningToken: vertoTokens.techne,
+    contractAddress: {
+      [ChainId.REBUS]: '0x7a34F1865ACAF55332cdf7D8338Ccc4569370a91',
+      [ChainId.REBUS_TESTNET]: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    hasBoostBlockStart: true,
   },
 ]
   .filter(p => p.contractAddress[DEFAULT_CHAIN_ID] && p.stakingToken && p.earningToken)
