@@ -1,8 +1,5 @@
-import { MaxUint256, Zero } from '@ethersproject/constants'
-import { formatEther, parseUnits } from '@ethersproject/units'
+import { parseUnits } from '@ethersproject/units'
 import { TranslateFunction, useTranslation } from '@verto/localization'
-import { ChainId } from '@verto/sdk'
-import { bscTokens } from '@verto/tokens'
 import { InjectedModalProps, useToast } from '@verto/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -10,18 +7,23 @@ import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useERC20, useNftMarketContract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
-import useTokenBalance, { useGetBnbBalance } from 'hooks/useTokenBalance'
-import { useEffect, useState } from 'react'
+import useTokenBalance from 'hooks/useTokenBalance'
+import useSWR from 'swr'
+import { useState } from 'react'
 import { NftToken } from 'state/nftMarket/types'
+import { useTokenAndPriceByAddress } from 'utils/prices'
 import { ethersToBigNumber } from '@verto/utils/bigNumber'
 import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { requiresApproval } from 'utils/requiresApproval'
+import { DEFAULT_CHAIN_ID } from 'config/chains'
+import { ChainId } from '@verto/sdk'
+import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
 import ApproveAndConfirmStage from '../shared/ApproveAndConfirmStage'
 import ConfirmStage from '../shared/ConfirmStage'
 import TransactionConfirmed from '../shared/TransactionConfirmed'
 import ReviewStage from './ReviewStage'
 import { StyledModal } from './styles'
-import { BuyingStage, PaymentCurrency } from './types'
+import { BuyingStage } from './types'
 
 const modalTitles = (t: TranslateFunction) => ({
   [BuyingStage.REVIEW]: t('Review'),
@@ -34,75 +36,80 @@ interface BuyModalProps extends InjectedModalProps {
   nftToBuy: NftToken
 }
 
-// NFT WBNB in testnet contract is different
-const TESTNET_WBNB_NFT_ADDRESS = '0x094616f0bdfb0b526bd735bf66eca0ad254ca81f'
+const vertoToken = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet.verto : vertoTokens.verto
 
 const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, onDismiss }) => {
+  const collectionContract = useNftMarketContract()
+  const { data: contractCollection } = useSWR(
+    collectionContract ? ['nft', 'viewCollection', nftToBuy?.collectionAddress] : null,
+    async () => collectionContract.viewCollection(nftToBuy?.collectionAddress),
+  )
+  const { burnVerto } = contractCollection
+
   const [stage, setStage] = useState(BuyingStage.REVIEW)
   const [confirmedTxHash, setConfirmedTxHash] = useState('')
-  const [paymentCurrency, setPaymentCurrency] = useState<PaymentCurrency>(PaymentCurrency.BNB)
-  const [isPaymentCurrentInitialized, setIsPaymentCurrentInitialized] = useState(false)
   const { theme } = useTheme()
   const { t } = useTranslation()
   const { callWithGasPrice } = useCallWithGasPrice()
 
-  const { account, chainId } = useActiveWeb3React()
-  const wbnbAddress = chainId === ChainId.BSC_TESTNET ? TESTNET_WBNB_NFT_ADDRESS : bscTokens.wbnb.address
-  const wbnbContractReader = useERC20(wbnbAddress, false)
-  const wbnbContractApprover = useERC20(wbnbAddress)
+  const { account } = useActiveWeb3React()
+  const [token] = useTokenAndPriceByAddress(nftToBuy.marketData?.currency)
+  const contractReader = useERC20(token?.address, false)
+  const contractApprover = useERC20(token?.address)
+  const vertoContractReader = useERC20(vertoToken.address, false)
+  const vertoContractApprover = useERC20(vertoToken.address)
   const nftMarketContract = useNftMarketContract()
 
   const { toastSuccess } = useToast()
 
-  const nftPriceWei = parseUnits(nftToBuy?.marketData?.currentAskPrice, 'ether')
+  const nftPriceWei = parseUnits(nftToBuy?.marketData?.currentAskPrice, token.decimals)
   const nftPrice = parseFloat(nftToBuy?.marketData?.currentAskPrice)
 
-  // BNB - returns ethers.BigNumber
-  const { balance: bnbBalance, fetchStatus: bnbFetchStatus } = useGetBnbBalance()
-  const formattedBnbBalance = parseFloat(formatEther(bnbBalance))
-  // WBNB - returns BigNumber
-  const { balance: wbnbBalance, fetchStatus: wbnbFetchStatus } = useTokenBalance(wbnbAddress)
-  const formattedWbnbBalance = getBalanceNumber(wbnbBalance)
+  const { balance, fetchStatus: walletFetchStatus } = useTokenBalance(token?.address)
+  const walletBalance = getBalanceNumber(balance, token?.decimals)
 
-  const walletBalance = paymentCurrency === PaymentCurrency.BNB ? formattedBnbBalance : formattedWbnbBalance
-  const walletFetchStatus = paymentCurrency === PaymentCurrency.BNB ? bnbFetchStatus : wbnbFetchStatus
+  const notEnoughForPurchase = balance.lt(ethersToBigNumber(nftPriceWei))
 
-  const notEnoughBnbForPurchase =
-    paymentCurrency === PaymentCurrency.BNB
-      ? bnbBalance.lt(nftPriceWei)
-      : wbnbBalance.lt(ethersToBigNumber(nftPriceWei))
-
-  useEffect(() => {
-    if (bnbBalance.lt(nftPriceWei) && wbnbBalance.gte(ethersToBigNumber(nftPriceWei)) && !isPaymentCurrentInitialized) {
-      setPaymentCurrency(PaymentCurrency.WBNB)
-      setIsPaymentCurrentInitialized(true)
-    }
-  }, [bnbBalance, wbnbBalance, nftPriceWei, isPaymentCurrentInitialized])
-
-  const { isApproving, isApproved, isConfirming, handleApprove, handleConfirm } = useApproveConfirmTransaction({
+  const {
+    isApproving: vertoIsApproving,
+    isApproved: vertoIsApproved,
+    handleApprove: vertoHandleApprove,
+  } = useApproveConfirmTransaction({
     onRequiresApproval: async () => {
-      return requiresApproval(wbnbContractReader, account, nftMarketContract.address)
+      return requiresApproval(vertoContractReader, account, nftMarketContract.address, burnVerto)
     },
     onApprove: () => {
-      return callWithGasPrice(wbnbContractApprover, 'approve', [nftMarketContract.address, MaxUint256])
+      return callWithGasPrice(vertoContractApprover, 'approve', [nftMarketContract.address, burnVerto])
     },
     onApproveSuccess: async ({ receipt }) => {
       toastSuccess(
-        t('Contract approved - you can now buy NFT with WBNB!'),
+        t('Contract approved - you can now spend Verto for transaction gas!', { symbol: token.symbol }),
+        <ToastDescriptionWithTx txHash={receipt.transactionHash} />,
+      )
+    },
+    onConfirm: () => null,
+    onSuccess: () => null,
+  })
+
+  const { isApproving, isApproved, isConfirming, handleApprove, handleConfirm } = useApproveConfirmTransaction({
+    onRequiresApproval: async () => {
+      return requiresApproval(contractReader, account, nftMarketContract.address, nftPriceWei)
+    },
+    onApprove: () => {
+      return callWithGasPrice(contractApprover, 'approve', [nftMarketContract.address, nftPriceWei])
+    },
+    onApproveSuccess: async ({ receipt }) => {
+      toastSuccess(
+        t('Contract approved - you can now buy NFT with %symbol%!', { symbol: token.symbol }),
         <ToastDescriptionWithTx txHash={receipt.transactionHash} />,
       )
     },
     onConfirm: () => {
-      const payAmount = Number.isNaN(nftPrice) ? Zero : parseUnits(nftToBuy?.marketData?.currentAskPrice)
-      if (paymentCurrency === PaymentCurrency.BNB) {
-        return callWithGasPrice(nftMarketContract, 'buyTokenUsingBNB', [nftToBuy.collectionAddress, nftToBuy.tokenId], {
-          value: payAmount,
-        })
-      }
-      return callWithGasPrice(nftMarketContract, 'buyTokenUsingWBNB', [
+      return callWithGasPrice(nftMarketContract, 'buyToken', [
         nftToBuy.collectionAddress,
         nftToBuy.tokenId,
-        payAmount,
+        nftPriceWei,
+        token.address,
       ])
     },
     onSuccess: async ({ receipt }) => {
@@ -116,7 +123,7 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
   })
 
   const continueToNextStage = () => {
-    if (paymentCurrency === PaymentCurrency.WBNB && !isApproved) {
+    if (!isApproved || !vertoIsApproved) {
       setStage(BuyingStage.APPROVE_AND_CONFIRM)
     } else {
       setStage(BuyingStage.CONFIRM)
@@ -138,24 +145,27 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
       headerBackground={theme.colors.gradientCardHeader}>
       {stage === BuyingStage.REVIEW && (
         <ReviewStage
+          token={token}
           nftToBuy={nftToBuy}
-          paymentCurrency={paymentCurrency}
-          setPaymentCurrency={setPaymentCurrency}
           nftPrice={nftPrice}
           walletBalance={walletBalance}
           walletFetchStatus={walletFetchStatus}
-          notEnoughBnbForPurchase={notEnoughBnbForPurchase}
+          notEnoughForPurchase={notEnoughForPurchase}
           continueToNextStage={continueToNextStage}
         />
       )}
       {stage === BuyingStage.APPROVE_AND_CONFIRM && (
         <ApproveAndConfirmStage
+          token={token}
           variant="buy"
           handleApprove={handleApprove}
           isApproved={isApproved}
           isApproving={isApproving}
           isConfirming={isConfirming}
           handleConfirm={handleConfirm}
+          vertoHandleApprove={vertoHandleApprove}
+          vertoIsApproved={vertoIsApproved}
+          vertoIsApproving={vertoIsApproving}
         />
       )}
       {stage === BuyingStage.CONFIRM && <ConfirmStage isConfirming={isConfirming} handleConfirm={handleConfirm} />}

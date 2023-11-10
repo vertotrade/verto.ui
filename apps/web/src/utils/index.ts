@@ -8,8 +8,14 @@ import { ChainId, Currency } from '@verto/sdk'
 import { bsc } from 'wagmi/chains'
 import memoize from 'lodash/memoize'
 import { TokenAddressMap } from '@verto/token-lists'
+import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { chains } from './wagmi'
+import { rebus, rebusTestnet } from './wagmi-chains'
+
+export const defaultVertoTokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : vertoTokens
+
+export const defaultChain = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? rebusTestnet : rebus
 
 // returns the checksummed address if the address is valid, otherwise returns false
 export const isAddress = memoize((value: any): string | false => {
@@ -54,8 +60,8 @@ export function getBlockExploreName(chainIdOverride?: number) {
   return chain?.blockExplorers?.default.name || bsc.blockExplorers.default.name
 }
 
-export function getBscScanLinkForNft(collectionAddress: string, tokenId: string): string {
-  return `${bsc.blockExplorers.default.url}/token/${collectionAddress}?a=${tokenId}`
+export function getExplorerScanLinkForNft(collectionAddress: string, tokenId: string): string {
+  return `${defaultChain.blockExplorers.default.url}/token/${collectionAddress}?a=${tokenId}`
 }
 
 // add 10%

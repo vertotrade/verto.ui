@@ -1,9 +1,9 @@
-import { Button, ChevronRightIcon, Flex, Grid, Heading, Text, NextLinkFromReactRouter } from '@verto/uikit'
+import { Button, ChevronRightIcon, Flex, Grid, Heading, NextLinkFromReactRouter } from '@verto/uikit'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 import { Collection } from 'state/nftMarket/types'
 import { useTranslation } from '@verto/localization'
 import { CollectionCard } from '../components/CollectibleCard'
-import { BNBAmountLabel } from '../components/CollectibleCard/styles'
+// import { AmountLabel } from '../components/CollectibleCard/styles'
 
 const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: string; collections: Collection[] }>> = ({
   title,
@@ -38,10 +38,10 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
               collectionName={collection.name}
               url={`${nftsBaseUrl}/collections/${collection.address}`}>
               <Flex alignItems="center">
-                <Text fontSize="12px" color="textSubtle">
+                {/* <Text fontSize="12px" color="textSubtle">
                   {t('Volume')}
-                </Text>
-                <BNBAmountLabel amount={collection.totalVolumeBNB ? parseFloat(collection.totalVolumeBNB) : 0} />
+                </Text> */}
+                {/* <AmountLabel amount={collection.totalVolumeBNB ? parseFloat(collection.totalVolumeBNB) : 0} /> */}
               </Flex>
             </CollectionCard>
           )

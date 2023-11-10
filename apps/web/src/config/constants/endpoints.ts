@@ -23,7 +23,7 @@ export const INFO_CLIENT_ETH = 'https://api.thegraph.com/subgraphs/name/pancakes
 export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks'
 export const BLOCKS_CLIENT_ETH = 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks'
 export const STABLESWAP_SUBGRAPH_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap'
-export const GRAPH_API_NFTMARKET = 'https://api.thegraph.com/subgraphs/name/pancakeswap/nft-market'
+export const API_NFTMARKET = 'https://testnet.rebus.money/nftapi/dev'
 export const GRAPH_HEALTH = 'https://api.thegraph.com/index-node/graphql'
 
 export const TC_MOBOX_SUBGRAPH = 'https://api.thegraph.com/subgraphs/name/pancakeswap/trading-competition-v3'

@@ -11,7 +11,7 @@ import { useNftStorage } from 'state/nftMarket/storage'
 import groupBy from 'lodash/groupBy'
 import useGetCollectionDistribution from '../../hooks/useGetCollectionDistribution'
 import ClearAllButton from './ClearAllButton'
-import SortSelect from './SortSelect'
+// import SortSelect from './SortSelect'
 
 interface FiltersProps {
   address: string
@@ -63,13 +63,13 @@ const FilterByControls = styled(Box)`
   grid-area: filterByControls;
 `
 
-const SortByTitle = styled(Text)`
-  grid-area: sortByTitle;
-`
+// const SortByTitle = styled(Text)`
+//   grid-area: sortByTitle;
+// `
 
-const SortByControls = styled(Box)`
-  grid-area: sortByControls;
-`
+// const SortByControls = styled(Box)`
+//   grid-area: sortByControls;
+// `
 
 const ScrollableFlexContainer = styled(Flex)`
   grid-area: attributeFilters;
@@ -116,12 +116,12 @@ const Filters: React.FC<React.PropsWithChildren<FiltersProps>> = ({ address, att
           <ButtonMenuItem>{t('On Sale')}</ButtonMenuItem>
         </ButtonMenu>
       </FilterByControls>
-      <SortByTitle fontSize="12px" textTransform="uppercase" color="textSubtle" fontWeight={600} mb="4px">
+      {/* <SortByTitle fontSize="12px" textTransform="uppercase" color="textSubtle" fontWeight={600} mb="4px">
         {t('Sort By')}
       </SortByTitle>
       <SortByControls>
         <SortSelect collectionAddress={address} />
-      </SortByControls>
+      </SortByControls> */}
       <ScrollableFlexContainer>
         {uniqueTraitTypes.map(traitType => {
           const attrs = attrsByType[traitType]

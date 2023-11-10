@@ -1,8 +1,8 @@
-import { Flex, Grid, Text, Button, Link, BinanceIcon, LinkExternal, useModal } from '@verto/uikit'
+import { Flex, Grid, Text, Button, Link, BinanceIcon, LinkExternal } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { nftsBaseUrl, pancakeBunniesAddress } from 'views/Nft/market/constants'
 import { NftToken } from 'state/nftMarket/types'
-import { getBscScanLinkForNft, isAddress } from 'utils'
+import { getExplorerScanLinkForNft, isAddress } from 'utils'
 // import EditProfileModal from 'views/Profile/components/EditProfileModal'
 import { useProfile } from 'state/profile/hooks'
 import { Divider, HorizontalDivider, RoundedImage } from '../shared/styles'
@@ -77,11 +77,10 @@ const SellStage: React.FC<React.PropsWithChildren<SellStageProps>> = ({
           </Button>
           <HorizontalDivider />
           <LinkExternal
-            isBscScan
             p="0px"
             height="16px"
-            href={getBscScanLinkForNft(nftToSell.collectionAddress, nftToSell.tokenId)}>
-            BscScan
+            href={getExplorerScanLinkForNft(nftToSell.collectionAddress, nftToSell.tokenId)}>
+            Explorer
           </LinkExternal>
         </Flex>
       </Flex>
