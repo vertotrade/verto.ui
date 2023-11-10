@@ -9,12 +9,11 @@ import SwiperCore from 'swiper'
 import { ArrowBackIcon, ArrowForwardIcon, Box, IconButton, Text, Flex, useMatchBreakpoints } from '@verto/uikit'
 import { isAddress } from 'utils'
 import useSWRImmutable from 'swr/immutable'
-import { getNftsFromCollectionApi, getMarketDataForTokenIds } from 'state/nftMarket/helpers'
+import { getNftsFromCollectionApi } from 'state/nftMarket/helpers'
 import { NftToken } from 'state/nftMarket/types'
 import Trans from 'components/Trans'
 import { pancakeBunniesAddress } from '../../../constants'
 import { CollectibleLinkCard } from '../../../components/CollectibleCard'
-import useAllPancakeBunnyNfts from '../../../hooks/useAllPancakeBunnyNfts'
 
 const INITIAL_SLIDE = 4
 
@@ -49,7 +48,6 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
   const [swiperRef, setSwiperRef] = useState<SwiperCore>(null)
   const [activeIndex, setActiveIndex] = useState(1)
   const { isMobile, isMd, isLg } = useMatchBreakpoints()
-  const allPancakeBunnyNfts = useAllPancakeBunnyNfts(collectionAddress)
 
   const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
   const checkSummedCollectionAddress = isAddress(collectionAddress) || collectionAddress
@@ -60,18 +58,16 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
       : null,
     async () => {
       try {
-        const nfts = await getNftsFromCollectionApi(collectionAddress, 100, 1)
+        const nfts = await getNftsFromCollectionApi(collectionAddress)
 
         if (!nfts?.data) {
           return []
         }
 
         const tokenIds = Object.values(nfts.data).map(nft => nft.tokenId)
-        const nftsMarket = await getMarketDataForTokenIds(collectionAddress, tokenIds)
 
         return tokenIds.map(id => {
           const apiMetadata = nfts.data[id]
-          const marketData = nftsMarket.find(nft => nft.tokenId === id)
 
           return {
             tokenId: id,
@@ -81,7 +77,7 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
             collectionAddress,
             image: apiMetadata.image,
             attributes: apiMetadata.attributes,
-            marketData,
+            // marketData,
           }
         })
       } catch (error) {
@@ -92,12 +88,8 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
   )
 
   let nftsToShow = useMemo(() => {
-    return shuffle(
-      allPancakeBunnyNfts
-        ? allPancakeBunnyNfts.filter(nft => nft.name !== currentTokenName)
-        : collectionNfts?.filter(nft => nft.name !== currentTokenName && nft.marketData?.isTradable),
-    )
-  }, [allPancakeBunnyNfts, collectionNfts, currentTokenName])
+    return shuffle(collectionNfts?.filter(nft => nft.name !== currentTokenName && nft.marketData?.isTradable))
+  }, [collectionNfts, currentTokenName])
 
   if (!nftsToShow || nftsToShow.length === 0) {
     return null

@@ -3,7 +3,6 @@ import { ResetCSS, ScrollToTopButtonV2, ToastListener } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
 import GlobalCheckClaimStatus from 'components/GlobalCheckClaimStatus'
 import { NetworkModal } from 'components/NetworkModal'
-import { FixedSubgraphHealthIndicator } from 'components/SubgraphHealthIndicator/FixedSubgraphHealthIndicator'
 import TransactionsDetailModal from 'components/TransactionDetailModal'
 import { useAccountEventListener } from 'hooks/useAccountEventListener'
 import useEagerConnect from 'hooks/useEagerConnect'
@@ -167,7 +166,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         </Layout>
       </ShowMenu>
       <ToastListener />
-      <FixedSubgraphHealthIndicator />
       <NetworkModal pageSupportedChains={Component.chains} />
       <TransactionsDetailModal />
       {isShowScrollToTopButton && <ScrollToTopButtonV2 />}

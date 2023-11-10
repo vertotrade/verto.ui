@@ -1,21 +1,9 @@
 import { ReactElement } from 'react'
-import {
-  Card,
-  BinanceIcon,
-  Box,
-  BoxProps,
-  CameraIcon,
-  Flex,
-  FlexProps,
-  SellIcon,
-  Text,
-  WalletFilledIcon,
-  Skeleton,
-} from '@verto/uikit'
-import { Currency, Price } from '@verto/sdk'
+import { Card, Box, BoxProps, CameraIcon, Flex, FlexProps, SellIcon, Text, WalletFilledIcon } from '@verto/uikit'
+import { ERC20Token } from '@verto/sdk'
 import { useTranslation } from '@verto/localization'
-import { multiplyPriceByAmount } from 'utils/prices'
 import styled from 'styled-components'
+import { CurrencyLogo } from 'components/Logo'
 
 export const Footer: React.FC<React.PropsWithChildren<BoxProps>> = ({ children, ...props }) => (
   <Box borderTop={[null, null, null, '1px solid']} borderColor="cardBorder" pt="8px" {...props}>
@@ -23,13 +11,14 @@ export const Footer: React.FC<React.PropsWithChildren<BoxProps>> = ({ children, 
   </Box>
 )
 
-interface BNBAmountLabelProps extends FlexProps {
+interface AmountLabelProps extends FlexProps {
   amount: number
+  token: ERC20Token
 }
 
-export const BNBAmountLabel: React.FC<React.PropsWithChildren<BNBAmountLabelProps>> = ({ amount, ...props }) => (
+export const AmountLabel: React.FC<React.PropsWithChildren<AmountLabelProps>> = ({ amount, token, ...props }) => (
   <Flex alignItems="center" {...props}>
-    <BinanceIcon width="16px" mx="4px" />
+    <CurrencyLogo currency={token} size="16px" style={{ marginLeft: '4px', marginRight: '4px' }} />
     <Text fontWeight="600">
       {amount.toLocaleString(undefined, {
         minimumFractionDigits: 0,
@@ -41,11 +30,12 @@ export const BNBAmountLabel: React.FC<React.PropsWithChildren<BNBAmountLabelProp
 
 interface CostLabelProps extends FlexProps {
   cost: number
-  bnbBusdPrice: Price<Currency, Currency>
+  usdPrice: number
+  token: ERC20Token
 }
 
-export const CostLabel: React.FC<React.PropsWithChildren<CostLabelProps>> = ({ cost, bnbBusdPrice, ...props }) => {
-  const priceInUsd = multiplyPriceByAmount(bnbBusdPrice, cost)
+export const CostLabel: React.FC<React.PropsWithChildren<CostLabelProps>> = ({ cost, usdPrice, token, ...props }) => {
+  const priceInUsd = usdPrice * cost
 
   return (
     <Flex alignItems="center" {...props}>
@@ -55,7 +45,7 @@ export const CostLabel: React.FC<React.PropsWithChildren<CostLabelProps>> = ({ c
           maximumFractionDigits: 2,
         })})`}</Text>
       )}
-      <BNBAmountLabel amount={cost} />
+      <AmountLabel amount={cost} token={token} />
     </Flex>
   )
 }
@@ -139,26 +129,3 @@ export const StyledCollectibleCard = styled(Card)`
     }
   }
 `
-interface LowestPriceMetaRowProps {
-  lowestPrice: number
-  isFetching: boolean
-  bnbBusdPrice: Price<Currency, Currency>
-}
-
-export const LowestPriceMetaRow = ({ lowestPrice, isFetching, bnbBusdPrice }: LowestPriceMetaRowProps) => {
-  const { t } = useTranslation()
-
-  if (!isFetching && !lowestPrice) {
-    return null
-  }
-
-  return (
-    <MetaRow title={t('Lowest price')}>
-      {isFetching ? (
-        <Skeleton height="24px" width="30px" />
-      ) : (
-        <CostLabel cost={lowestPrice} bnbBusdPrice={bnbBusdPrice} />
-      )}
-    </MetaRow>
-  )
-}

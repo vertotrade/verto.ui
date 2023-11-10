@@ -29,7 +29,7 @@ export const rebusTestnet = {
     default: { http: ['https://testnet.rebus.money/rpc'] },
   },
   blockExplorers: {
-    default: { name: 'Rebus', url: 'https://testnet.rebus.money:8040' },
+    default: { name: 'Rebus', url: 'https://evm.testnet.rebus.money' },
   },
   testnet: true,
 }

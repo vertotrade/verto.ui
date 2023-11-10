@@ -1,5 +1,9 @@
-import { Currency, Price } from '@verto/sdk'
+import { ChainId, Currency, ERC20Token, Price } from '@verto/sdk'
+import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
+import { DEFAULT_CHAIN_ID } from '@verto/farms/src/const'
 import { fetchWithCache, useFetchWithCache } from './fetchWithCache'
+
+const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : vertoTokens
 
 /**
  * Helper to multiply a Price object by an arbitrary amount
@@ -22,4 +26,11 @@ export const useTokenPrices = (symbol: string) => {
 
 export const fetchAllTokenPrices = () => {
   return fetchWithCache('prices')
+}
+
+export const useTokenAndPriceByAddress = (currencyAddress: string): [ERC20Token, number] => {
+  const token = Object.values(tokens).find(x => x.address === currencyAddress)
+  const tokenPrice = useTokenPrices(token?.symbol)
+
+  return [token, tokenPrice]
 }

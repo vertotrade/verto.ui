@@ -1,13 +1,10 @@
 import { Box, CardBody, Flex, Text } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
-import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
-import { isAddress } from 'utils'
+import { useTokenAndPriceByAddress } from 'utils/prices'
 import PreviewImage from './PreviewImage'
-import { CostLabel, LowestPriceMetaRow, MetaRow } from './styles'
+import { CostLabel, MetaRow } from './styles'
 import LocationTag from './LocationTag'
 import { CollectibleCardProps } from './types'
-import { useGetLowestPriceFromNft } from '../../hooks/useGetLowestPrice'
-import { pancakeBunniesAddress } from '../../constants'
 import NFTMedia from '../NFTMedia'
 
 const CollectibleCardBody: React.FC<React.PropsWithChildren<CollectibleCardProps>> = ({
@@ -18,9 +15,7 @@ const CollectibleCardBody: React.FC<React.PropsWithChildren<CollectibleCardProps
 }) => {
   const { t } = useTranslation()
   const { name } = nft
-  const bnbBusdPrice = useBNBBusdPrice()
-  const isPancakeBunny = isAddress(nft.collectionAddress) === pancakeBunniesAddress
-  const { isFetching, lowestPrice } = useGetLowestPriceFromNft(nft)
+  const [token, tokenPrice] = useTokenAndPriceByAddress(nft.marketData?.currency)
 
   return (
     <CardBody p="0" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -37,12 +32,9 @@ const CollectibleCardBody: React.FC<React.PropsWithChildren<CollectibleCardProps
         {name}
       </Text>
       <Box borderTop="1px solid" borderTopColor="cardBorder" p="12px" mt="auto">
-        {isPancakeBunny && (
-          <LowestPriceMetaRow lowestPrice={lowestPrice} isFetching={isFetching} bnbBusdPrice={bnbBusdPrice} />
-        )}
         {currentAskPrice && (
           <MetaRow title={isUserNft ? t('Your price') : t('Asking price')}>
-            <CostLabel cost={currentAskPrice} bnbBusdPrice={bnbBusdPrice} />
+            <CostLabel cost={currentAskPrice} usdPrice={tokenPrice} token={token} />
           </MetaRow>
         )}
       </Box>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useMemo } from 'react'
 import {
   Container,
   Button,
@@ -18,7 +19,6 @@ import PageLoader from 'components/Loader/PageLoader'
 import orderBy from 'lodash/orderBy'
 import SearchBar from '../components/SearchBar'
 import Collections from './Collections'
-import Newest from './Newest'
 import config from './config'
 
 const StyledSearchBar = styled(SearchBar)`
@@ -33,16 +33,9 @@ const Home = () => {
   const { address: account } = useAccount()
   const { data: collections, status } = useGetCollections()
 
-  const hotCollections = orderBy(
-    collections,
-    collection => (collection.totalVolumeBNB ? parseFloat(collection.totalVolumeBNB) : 0),
-    'desc',
-  )
-
-  const newestCollections = orderBy(
-    collections,
-    collection => (collection.createdAt ? Date.parse(collection.createdAt) : 0),
-    'desc',
+  const newestCollections = useMemo(
+    () => orderBy(collections, collection => (collection.createdAt ? Date.parse(collection.createdAt) : 0), 'desc'),
+    [collections],
   )
 
   return (
@@ -75,13 +68,7 @@ const Home = () => {
             testId="nfts-newest-collections"
             collections={newestCollections}
           />
-          <Collections
-            key="hot-collections"
-            title={t('Hot Collections')}
-            testId="nfts-hot-collections"
-            collections={hotCollections}
-          />
-          <Newest />
+          {/* <Newest /> */}
         </PageSection>
       )}
       <Container p="64px 0">

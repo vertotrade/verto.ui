@@ -1,4 +1,4 @@
-import BigNumber from 'bignumber.js'
+import { BigNumber } from '@ethersproject/bignumber'
 import { Cake, Erc20 } from 'config/abi/types'
 
 export const requiresApproval = async (
@@ -8,11 +8,11 @@ export const requiresApproval = async (
   minimumRequired?: BigNumber,
 ) => {
   try {
-    const response = new BigNumber((await contract.allowance(account, spenderAddress)).toString())
+    const response = await contract.allowance(account, spenderAddress)
     if (minimumRequired?.gt(0)) {
       return response.lt(minimumRequired)
     }
-    return response.lte(new BigNumber(0))
+    return response.lte(BigNumber.from(0))
   } catch (error) {
     return true
   }

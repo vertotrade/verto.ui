@@ -1,8 +1,8 @@
 import { useAccount } from 'wagmi'
 import { FetchStatus } from 'config/constants/types'
 import { useCallback } from 'react'
-import { useErc721CollectionContract } from 'hooks/useContract'
-import { getNftApi, getNftsMarketData, getNftsOnChainMarketData } from 'state/nftMarket/helpers'
+import { useErc721CollectionContract, useNftMarketContract } from 'hooks/useContract'
+import { getNftApi, getNftsOnChainMarketData } from 'state/nftMarket/helpers'
 import { NftLocation, NftToken, TokenMarketData } from 'state/nftMarket/types'
 import { useProfile } from 'state/profile/hooks'
 import useSWR from 'swr'
@@ -51,6 +51,13 @@ const useNftOwn = (collectionAddress: string, tokenId: string, marketData?: Toke
 }
 
 export const useCompleteNft = (collectionAddress: string, tokenId: string) => {
+  const collectionContract = useNftMarketContract()
+
+  const { data: collection } = useSWR(
+    collectionContract ? ['nft', 'viewCollection', collectionAddress] : null,
+    async () => collectionContract.viewCollection(collectionAddress),
+  )
+
   const { data: nft, mutate } = useSWR(
     collectionAddress && tokenId ? ['nft', collectionAddress, tokenId] : null,
     async () => {
@@ -74,17 +81,12 @@ export const useCompleteNft = (collectionAddress: string, tokenId: string) => {
   const { data: marketData, mutate: refetchNftMarketData } = useSWR(
     collectionAddress && tokenId ? ['nft', 'marketData', collectionAddress, tokenId] : null,
     async () => {
-      const [onChainMarketDatas, marketDatas] = await Promise.all([
-        getNftsOnChainMarketData(collectionAddress.toLowerCase(), [tokenId]),
-        getNftsMarketData({ collection: collectionAddress.toLowerCase(), tokenId }, 1),
-      ])
+      const onChainMarketDatas = await getNftsOnChainMarketData(collectionAddress.toLowerCase(), [tokenId])
       const onChainMarketData = onChainMarketDatas[0]
 
-      if (!marketDatas[0] && !onChainMarketData) return null
+      if (!onChainMarketData) return null
 
-      if (!onChainMarketData) return marketDatas[0]
-
-      return { ...marketDatas[0], ...onChainMarketData }
+      return { ...onChainMarketData }
     },
   )
 
@@ -97,6 +99,7 @@ export const useCompleteNft = (collectionAddress: string, tokenId: string) => {
   }, [mutate, refetchNftMarketData, refetchNftOwn])
 
   return {
+    collection,
     combinedNft: nft ? { ...nft, marketData, location: nftOwn?.location ?? NftLocation.WALLET } : undefined,
     isOwn: nftOwn?.isOwn || false,
     isProfilePic: nftOwn?.nftIsProfilePic || false,

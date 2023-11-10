@@ -1,6 +1,8 @@
 import styled from 'styled-components'
-import { Modal, Box, Flex, Text, BinanceIcon, Input } from '@verto/uikit'
+import { Modal, Box, Flex, Text, Input } from '@verto/uikit'
+import { ERC20Token } from '@verto/sdk'
 import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
+import { CurrencyLogo } from 'components/Logo'
 import { multiplyPriceByAmount } from 'utils/prices'
 import { SellingStage } from './types'
 
@@ -16,7 +18,8 @@ export const stagesWithBackButton = [
 ]
 
 export const StyledModal = styled(Modal)<{ stage: SellingStage }>`
-  width: 360px;
+  max-width: 95%;
+  width: 440px;
   & > div:last-child {
     padding: 0;
   }
@@ -37,27 +40,28 @@ export const RightAlignedInput = styled(Input)`
   text-align: right;
 `
 
-interface BnbAmountCellProps {
-  bnbAmount: number
+interface AmountCellProps {
+  amount: number
+  token: ERC20Token
 }
 
-export const BnbAmountCell: React.FC<React.PropsWithChildren<BnbAmountCellProps>> = ({ bnbAmount }) => {
+export const AmountCell: React.FC<React.PropsWithChildren<AmountCellProps>> = ({ amount, token }) => {
   const bnbBusdPrice = useBNBBusdPrice()
-  if (!bnbAmount || bnbAmount === 0) {
+  if (!amount || amount === 0) {
     return (
       <Flex alignItems="center" justifyContent="flex-end">
-        <BinanceIcon width={16} height={16} mr="4px" />
-        <Text bold mr="4px">
+        <CurrencyLogo currency={token} size="16px" />
+        <Text bold mx="4px">
           -
         </Text>
       </Flex>
     )
   }
-  const usdAmount = multiplyPriceByAmount(bnbBusdPrice, bnbAmount)
+  const usdAmount = multiplyPriceByAmount(bnbBusdPrice, amount)
   return (
     <Flex alignItems="center" justifyContent="flex-end">
-      <BinanceIcon width={16} height={16} mr="4px" />
-      <Text bold mr="4px">{`${bnbAmount.toLocaleString(undefined, {
+      <CurrencyLogo currency={token} size="16px" />
+      <Text bold mx="4px">{`${amount.toLocaleString(undefined, {
         minimumFractionDigits: 3,
         maximumFractionDigits: 3,
       })}`}</Text>
@@ -72,21 +76,23 @@ export const BnbAmountCell: React.FC<React.PropsWithChildren<BnbAmountCellProps>
 }
 
 interface FeeAmountCellProps {
-  bnbAmount: number
+  amount: number
   creatorFee: number
   tradingFee: number
+  token: ERC20Token
 }
 
 export const FeeAmountCell: React.FC<React.PropsWithChildren<FeeAmountCellProps>> = ({
-  bnbAmount,
+  amount,
   creatorFee,
   tradingFee,
+  token,
 }) => {
-  if (!bnbAmount || bnbAmount === 0) {
+  if (!amount || amount === 0) {
     return (
       <Flex alignItems="center" justifyContent="flex-end">
-        <BinanceIcon width={16} height={16} mr="4px" />
-        <Text bold mr="4px">
+        <CurrencyLogo size="16px" currency={token} />
+        <Text bold mx="4px">
           -
         </Text>
       </Flex>
@@ -95,11 +101,11 @@ export const FeeAmountCell: React.FC<React.PropsWithChildren<FeeAmountCellProps>
 
   const totalFee = creatorFee + tradingFee
   const totalFeeAsDecimal = totalFee / 100
-  const feeAmount = bnbAmount * totalFeeAsDecimal
+  const feeAmount = amount * totalFeeAsDecimal
   return (
     <Flex alignItems="center" justifyContent="flex-end">
-      <BinanceIcon width={16} height={16} mr="4px" />
-      <Text bold mr="4px">{`${feeAmount.toLocaleString(undefined, {
+      <CurrencyLogo size="16px" currency={token} />
+      <Text bold mx="4px">{`${feeAmount.toLocaleString(undefined, {
         minimumFractionDigits: 3,
         maximumFractionDigits: 6,
       })}`}</Text>

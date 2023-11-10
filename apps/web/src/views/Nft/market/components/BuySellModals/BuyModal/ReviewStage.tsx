@@ -1,33 +1,35 @@
 import { useAccount } from 'wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { Flex, Text, Button, ButtonMenu, ButtonMenuItem, Message, Link } from '@verto/uikit'
+import { Flex, Text, Button, Message, Link } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
+import { ChainId, ERC20Token } from '@verto/sdk'
+import { DEFAULT_CHAIN_ID } from '@verto/farms/src/const'
+import { vertoTokensTestnet, vertoTokens } from '@verto/tokens'
 import { NftToken } from 'state/nftMarket/types'
-import { getBscScanLinkForNft } from 'utils'
+import { getExplorerScanLinkForNft } from 'utils'
 import { FetchStatus } from 'config/constants/types'
 import { Divider, RoundedImage } from '../shared/styles'
-import { BorderedBox, BnbAmountCell } from './styles'
-import { PaymentCurrency } from './types'
+import { BorderedBox, AmountCell } from './styles'
 
 interface ReviewStageProps {
   nftToBuy: NftToken
-  paymentCurrency: PaymentCurrency
-  setPaymentCurrency: (index: number) => void
+  token: ERC20Token
   nftPrice: number
   walletBalance: number
   walletFetchStatus: FetchStatus
-  notEnoughBnbForPurchase: boolean
+  notEnoughForPurchase: boolean
   continueToNextStage: () => void
 }
 
+const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : vertoTokens
+
 const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
   nftToBuy,
-  paymentCurrency,
-  setPaymentCurrency,
+  token,
   nftPrice,
   walletBalance,
   walletFetchStatus,
-  notEnoughBnbForPurchase,
+  notEnoughForPurchase,
   continueToNextStage,
 }) => {
   const { t } = useTranslation()
@@ -53,7 +55,7 @@ const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
                 pt="2px"
                 external
                 variant="text"
-                href={getBscScanLinkForNft(nftToBuy.collectionAddress, nftToBuy.tokenId)}>
+                href={getExplorerScanLinkForNft(nftToBuy.collectionAddress, nftToBuy.tokenId)}>
                 {nftToBuy.tokenId}
               </Button>
             </Flex>
@@ -61,69 +63,68 @@ const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
         </Flex>
         <BorderedBox>
           <Text small color="textSubtle">
-            {t('Pay with')}
-          </Text>
-          <ButtonMenu
-            activeIndex={paymentCurrency}
-            onItemClick={index => setPaymentCurrency(index)}
-            scale="sm"
-            variant="subtle">
-            <ButtonMenuItem>BNB</ButtonMenuItem>
-            <ButtonMenuItem>WBNB</ButtonMenuItem>
-          </ButtonMenu>
-          <Text small color="textSubtle">
             {t('Total payment')}
           </Text>
-          <BnbAmountCell bnbAmount={nftPrice} />
+          <AmountCell amount={nftPrice} token={token} />
           <Text small color="textSubtle">
-            {t('%symbol% in wallet', { symbol: paymentCurrency === PaymentCurrency.BNB ? 'BNB' : 'WBNB' })}
+            {t('%symbol% in wallet', { symbol: token?.symbol })}
           </Text>
           {!account ? (
             <Flex justifySelf="flex-end">
               <ConnectWalletButton scale="sm" />
             </Flex>
           ) : (
-            <BnbAmountCell
-              bnbAmount={walletBalance}
+            <AmountCell
+              amount={walletBalance}
               isLoading={walletFetchStatus !== FetchStatus.Fetched}
-              isInsufficient={walletFetchStatus === FetchStatus.Fetched && notEnoughBnbForPurchase}
+              isInsufficient={walletFetchStatus === FetchStatus.Fetched && notEnoughForPurchase}
+              token={token}
             />
           )}
         </BorderedBox>
-        {walletFetchStatus === FetchStatus.Fetched && notEnoughBnbForPurchase && (
+        {walletFetchStatus === FetchStatus.Fetched && notEnoughForPurchase && (
           <Message p="8px" variant="danger">
             <Text>
               {t('Not enough %symbol% to purchase this NFT', {
-                symbol: paymentCurrency === PaymentCurrency.BNB ? 'BNB' : 'WBNB',
+                symbol: token?.symbol,
               })}
             </Text>
           </Message>
         )}
-        <Flex alignItems="center">
-          <Text my="16px" mr="4px">
-            {t('Convert between BNB and WBNB for free')}:
-          </Text>
-          <Button
-            as={Link}
-            p="0px"
-            height="16px"
-            external
-            variant="text"
-            href="/swap?inputCurrency=BNB&outputCurrency=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c">
-            {t('Convert')}
-          </Button>
-        </Flex>
+        {token?.symbol === tokens.wrebus.symbol && (
+          <>
+            <Flex alignItems="center">
+              <Text my="16px" mr="4px">
+                {t('Convert between REBUS and WREBUS for free')}:
+              </Text>
+              <Button
+                as={Link}
+                p="0px"
+                height="16px"
+                external
+                variant="text"
+                href={`/swap?inputCurrency=REBUS&outputCurrency=${tokens.wrebus.address}`}>
+                {t('Convert')}
+              </Button>
+            </Flex>
+          </>
+        )}
       </Flex>
       <Divider />
       <Flex px="24px" pb="24px" flexDirection="column">
         <Button
           onClick={continueToNextStage}
-          disabled={walletFetchStatus !== FetchStatus.Fetched || notEnoughBnbForPurchase}
+          disabled={walletFetchStatus !== FetchStatus.Fetched || notEnoughForPurchase}
           mb="8px">
           {t('Checkout')}
         </Button>
-        <Button as={Link} external style={{ width: '100%' }} href="/swap?outputCurrency=BNB" variant="secondary">
-          {t('Get %symbol1% or %symbol2%', { symbol1: 'BNB', symbol2: 'WBNB' })}
+        <Button
+          as={Link}
+          external
+          style={{ width: '100%' }}
+          href={`/swap?outputCurrency=${token?.address}`}
+          variant="secondary">
+          {t('Get %symbol%', { symbol: token?.symbol })}
         </Button>
       </Flex>
     </>

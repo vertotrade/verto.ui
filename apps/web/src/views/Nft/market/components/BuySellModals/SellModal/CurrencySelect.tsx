@@ -6,8 +6,8 @@ import { formatNumber } from '@verto/utils/formatBalance'
 import { useCurrencyBalance } from 'state/wallet/hooks'
 import useBUSDPrice from 'hooks/useBUSDPrice'
 import { useAccount } from 'wagmi'
-import { CurrencyLogo } from '../Logo'
-import { RowBetween, AutoRow } from '../Layout/Row'
+import { CurrencyLogo } from 'components/Logo'
+import { RowBetween, AutoRow } from 'components/Layout/Row'
 
 const DropDownHeader = styled.div`
   width: 100%;

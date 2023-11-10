@@ -10,9 +10,9 @@ import Items from './Items'
 const Traits = dynamic(() => import('./Traits'), {
   loading: () => <PageLoader />,
 })
-const Activity = dynamic(() => import('./Activity'), {
-  loading: () => <PageLoader />,
-})
+// const Activity = dynamic(() => import('./Activity'), {
+//   loading: () => <PageLoader />,
+// })
 
 const getHashFromRouter = (router: NextRouter) => router.asPath.match(/#([a-z0-9]+)/gi)
 
@@ -33,9 +33,9 @@ const Collection = () => {
     content = <Traits />
   }
 
-  if (hash === '#activity') {
-    content = <Activity />
-  }
+  // if (hash === '#activity') {
+  //   content = <Activity />
+  // }
 
   return (
     <>

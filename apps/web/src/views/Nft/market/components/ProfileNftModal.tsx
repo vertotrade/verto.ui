@@ -4,7 +4,7 @@ import useTheme from 'hooks/useTheme'
 import styled from 'styled-components'
 import { NftToken } from 'state/nftMarket/types'
 import { useTranslation } from '@verto/localization'
-import { getBscScanLinkForNft, isAddress } from 'utils'
+import { getExplorerScanLinkForNft, isAddress } from 'utils'
 import { HorizontalDivider, RoundedImage } from './BuySellModals/shared/styles'
 // import EditProfileModal from '../../../Profile/components/EditProfileModal'
 import { nftsBaseUrl, pancakeBunniesAddress } from '../constants'
@@ -67,7 +67,7 @@ const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> =
               isBscScan
               p="0px"
               height="16px"
-              href={getBscScanLinkForNft(nft.collectionAddress, nft.tokenId)}>
+              href={getExplorerScanLinkForNft(nft.collectionAddress, nft.tokenId)}>
               BscScan
             </LinkExternal>
           </Flex>

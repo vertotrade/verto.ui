@@ -1,14 +1,13 @@
-import { BinanceIcon, Box, Button, Card, CardBody, Flex, Skeleton, Text, useModal } from '@verto/uikit'
+import { Box, Button, Card, CardBody, Flex, Skeleton, Text, useModal } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
-import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
-
+import { useTokenAndPriceByAddress } from 'utils/prices'
 import { NftToken } from 'state/nftMarket/types'
-import { multiplyPriceByAmount } from 'utils/prices'
+import { CurrencyLogo } from 'components/Logo'
 import { formatNumber } from '@verto/utils/formatBalance'
 import NFTMedia from 'views/Nft/market/components/NFTMedia'
 // import EditProfileModal from 'views/Profile/components/EditProfileModal' //uncomment if profile code is added back
 import BuyModal from '../../../components/BuySellModals/BuyModal'
-import SellModal from '../../../components/BuySellModals/SellModal'
+// import SellModal from '../../../components/BuySellModals/SellModal'
 import { nftsBaseUrl } from '../../../constants'
 import { CollectionLink, Container } from '../shared/styles'
 
@@ -27,10 +26,10 @@ const MainNFTCard: React.FC<React.PropsWithChildren<MainNFTCardProps>> = ({
   onSuccess,
 }) => {
   const { t } = useTranslation()
-  const bnbBusdPrice = useBNBBusdPrice()
 
   const currentAskPriceAsNumber = nft?.marketData?.currentAskPrice ? parseFloat(nft.marketData?.currentAskPrice) : 0
-  const priceInUsd = multiplyPriceByAmount(bnbBusdPrice, currentAskPriceAsNumber)
+  const [token, tokenPrice] = useTokenAndPriceByAddress(nft.marketData?.currency)
+  const priceInUsd = tokenPrice * currentAskPriceAsNumber
   const [onPresentBuyModal] = useModal(<BuyModal nftToBuy={nft} />)
   // const [onPresentSellModal] = useModal(
   //   <SellModal variant={nft.marketData?.isTradable ? 'edit' : 'sell'} nftToSell={nft} onSuccessSale={onSuccess} />,
@@ -79,11 +78,11 @@ const MainNFTCard: React.FC<React.PropsWithChildren<MainNFTCardProps>> = ({
               </Text>
               {currentAskPriceAsNumber > 0 ? (
                 <Flex alignItems="center" mt="8px">
-                  <BinanceIcon width={18} height={18} mr="4px" />
-                  <Text fontSize="24px" bold mr="4px">
+                  <CurrencyLogo currency={token} size="18px" />
+                  <Text fontSize="24px" bold mx="4px">
                     {formatNumber(currentAskPriceAsNumber, 0, 5)}
                   </Text>
-                  {bnbBusdPrice ? (
+                  {tokenPrice && priceInUsd ? (
                     <Text color="textSubtle">{`(~${priceInUsd.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,

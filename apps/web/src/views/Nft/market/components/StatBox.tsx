@@ -27,7 +27,8 @@ const StatBox = styled(Flex)`
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   border-radius: ${({ theme }) => theme.radii.card};
   justify-content: space-around;
-  padding: 8px;
+  margin-left: auto;
+  padding: 8px 24px;
   width: 100%;
 `
 
