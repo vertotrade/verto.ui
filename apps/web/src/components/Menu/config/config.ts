@@ -216,6 +216,7 @@ const config: (
       isLotteryPageEnabled = response?.data?.data?.attributes?.enabled
       navItems = filterNavItems(navItems, isLotteryPageEnabled)
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('Error', error)
     }
 
