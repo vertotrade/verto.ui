@@ -28,7 +28,7 @@ const PreviousRoundCardFooter: React.FC<
   React.PropsWithChildren<{ lotteryNodeData: LotteryRound; lotteryId: string }>
 > = ({ lotteryNodeData, lotteryId }) => {
   const { t } = useTranslation()
-  const [fetchedLotteryGraphData, setFetchedLotteryGraphData] = useState<LotteryRoundGraphEntity>()
+  const [, setFetchedLotteryGraphData] = useState<LotteryRoundGraphEntity>()
   const lotteryGraphDataFromState = useGetLotteryGraphDataById(lotteryId)
   const cakePriceBusd = usePriceCakeBusd()
 

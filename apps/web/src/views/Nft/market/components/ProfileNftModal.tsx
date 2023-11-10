@@ -25,7 +25,7 @@ interface ProfileNftModalProps extends InjectedModalProps {
   onSuccess?: () => void
 }
 
-const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> = ({ nft, onDismiss, onSuccess }) => {
+const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> = ({ nft, onDismiss }) => {
   // const [onEditProfileModal] = useModal(<EditProfileModal onSuccess={onSuccess} />, false)
   const { t } = useTranslation()
   const { theme } = useTheme()
