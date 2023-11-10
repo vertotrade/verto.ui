@@ -18,6 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (err) {
     // eslint-disable-next-line no-console
     const error = (err as unknown as any)?.meta?.body?.error?.root_cause?.[0]?.reason
+    // eslint-disable-next-line no-console
     console.log('Error searching ES', error)
     return res.status(error?.includes('no such index') ? 404 : 500).send('Error searching price data, please try again')
   }
