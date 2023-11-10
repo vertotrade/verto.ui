@@ -26,7 +26,6 @@ import useTheme from 'hooks/useTheme'
 
 import useSWRImmutable from 'swr/immutable'
 import orderBy from 'lodash/orderBy'
-import { getLeastMostPriceInCollection } from 'state/nftMarket/helpers'
 import { ViewMode } from 'state/user/actions'
 import { Collection } from 'state/nftMarket/types'
 import styled from 'styled-components'
@@ -37,6 +36,7 @@ import Page from 'components/Layout/Page'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 import PageLoader from 'components/Loader/PageLoader'
 import DELIST_COLLECTIONS from 'config/constants/nftsCollections/delist'
+import { defaultVertoTokens } from 'utils'
 import CollectionCardWithVolume from '../components/CollectibleCard/CollectionCardWithVolume'
 import { GradientContainer, ScrollableContainer } from '../../../../components/shared/styled'
 
@@ -131,14 +131,14 @@ const Collectible = () => {
         return shuffledCollections
       return Promise.all(
         shuffledCollections.map(async collection => {
-          const [lowestPrice, highestPrice] = await Promise.all([
-            getLeastMostPriceInCollection(collection.address, 'asc'),
-            getLeastMostPriceInCollection(collection.address, 'desc'),
-          ])
+          // const [lowestPrice, highestPrice] = await Promise.all([
+          //   getLeastMostPriceInCollection(collection.address, 'asc'),
+          //   getLeastMostPriceInCollection(collection.address, 'desc'),
+          // ])
           return {
             ...collection,
-            lowestPrice,
-            highestPrice,
+            // lowestPrice,
+            // highestPrice,
           }
         }),
       )
@@ -379,6 +379,7 @@ const Collectible = () => {
                         collectionName={collection.name}
                         url={`${nftsBaseUrl}/collections/${collection.address}`}
                         volume={collection.totalVolumeBNB ? parseFloat(collection.totalVolumeBNB) : 0}
+                        token={defaultVertoTokens.verto}
                       />
                     )
                   })}

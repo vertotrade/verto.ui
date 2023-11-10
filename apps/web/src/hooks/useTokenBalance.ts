@@ -43,9 +43,9 @@ const useTokenBalance = (tokenAddress: string, forceBSC?: boolean) => {
   }
 }
 
-export const useGetBnbBalance = () => {
+export const useGetRebusBalance = () => {
   const { address: account } = useAccount()
-  const { status, data, mutate } = useSWR([account, 'bnbBalance'], async () => {
+  const { status, data, mutate } = useSWR([account, 'rebusBalance'], async () => {
     return rebusRpcProvider.getBalance(account)
   })
 

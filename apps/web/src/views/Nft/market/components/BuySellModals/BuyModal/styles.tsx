@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { Modal, Grid, Flex, Text, BinanceIcon, Skeleton } from '@verto/uikit'
-import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
-import { multiplyPriceByAmount } from 'utils/prices'
+import { Modal, Grid, Flex, Text, Skeleton } from '@verto/uikit'
+import { ERC20Token } from '@verto/sdk'
+import { useTokenPrices } from 'utils/prices'
+import { CurrencyLogo } from 'components/Logo'
 import { BuyingStage } from './types'
 
 export const StyledModal = styled(Modal)<{ stage: BuyingStage }>`
@@ -32,18 +33,20 @@ export const BorderedBox = styled(Grid)`
   grid-row-gap: 8px;
 `
 
-interface BnbAmountCellProps {
-  bnbAmount: number
+interface AmountCellProps {
+  amount: number
+  token: ERC20Token
   isLoading?: boolean
   isInsufficient?: boolean
 }
 
-export const BnbAmountCell: React.FC<React.PropsWithChildren<BnbAmountCellProps>> = ({
-  bnbAmount,
+export const AmountCell: React.FC<React.PropsWithChildren<AmountCellProps>> = ({
+  amount,
+  token,
   isLoading,
   isInsufficient,
 }) => {
-  const bnbBusdPrice = useBNBBusdPrice()
+  const tokenPrice = useTokenPrices(token?.symbol)
   if (isLoading) {
     return (
       <Flex flexDirection="column" justifySelf="flex-end">
@@ -52,12 +55,12 @@ export const BnbAmountCell: React.FC<React.PropsWithChildren<BnbAmountCellProps>
       </Flex>
     )
   }
-  const usdAmount = multiplyPriceByAmount(bnbBusdPrice, bnbAmount)
+  const usdAmount = tokenPrice * amount
   return (
     <Flex justifySelf="flex-end" flexDirection="column">
-      <Flex justifyContent="flex-end">
-        <BinanceIcon height={16} width={16} mr="4px" />
-        <Text bold color={isInsufficient ? 'failure' : 'text'}>{`${bnbAmount.toLocaleString(undefined, {
+      <Flex alignItems="center" justifyContent="flex-end">
+        <CurrencyLogo currency={token} size="16px" style={{ marginRight: '4px' }} />
+        <Text bold color={isInsufficient ? 'failure' : 'text'}>{`${amount.toLocaleString(undefined, {
           minimumFractionDigits: 3,
           maximumFractionDigits: 5,
         })}`}</Text>

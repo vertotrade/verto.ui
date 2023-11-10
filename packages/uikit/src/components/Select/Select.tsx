@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { Box, BoxProps } from "../Box";
+import { Box, BoxProps, Flex } from "../Box";
 import { ArrowDropDownIcon } from "../Svg";
 import { Text } from "../Text";
 
@@ -102,11 +102,13 @@ export interface SelectProps extends BoxProps {
   placeHolderText?: string;
   defaultOptionIndex?: number;
   color?: string;
+  hasPrimaryBorderColor?: boolean;
 }
 
 export interface OptionProps {
   label: string;
   value: any;
+  prefix?: React.ReactElement;
 }
 
 const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
@@ -118,7 +120,7 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [optionSelected, setOptionSelected] = useState(false);
+  const [optionSelected, setOptionSelected] = useState(typeof defaultOptionIndex === "number");
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(defaultOptionIndex);
 
   const toggling = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -157,9 +159,12 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   return (
     <DropDownContainer isOpen={isOpen} {...props}>
       <DropDownHeader onClick={toggling}>
-        <Text color={color} small>
-          {!optionSelected && placeHolderText ? placeHolderText : options[selectedOptionIndex].label}
-        </Text>
+        <Flex alignItems="center">
+          {!optionSelected ? null : options[selectedOptionIndex].prefix}
+          <Text color={color} small>
+            {!optionSelected && placeHolderText ? placeHolderText : options[selectedOptionIndex].label}
+          </Text>
+        </Flex>
       </DropDownHeader>
       <ArrowDropDownIcon color={color} onClick={toggling} width="24px" height="24px" />
       <DropDownListContainer>
@@ -167,9 +172,12 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
           {options.map((option, index) =>
             placeHolderText || index !== selectedOptionIndex ? (
               <ListItem onClick={onOptionClicked(index)} key={option.label}>
-                <Text small color={color}>
-                  {option.label}
-                </Text>
+                <Flex alignItems="center">
+                  {option.prefix}
+                  <Text small color={color}>
+                    {option.label}
+                  </Text>
+                </Flex>
               </ListItem>
             ) : null
           )}

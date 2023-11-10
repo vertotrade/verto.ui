@@ -1,9 +1,11 @@
-import { Flex, Grid, Text, Button, Link, LinkExternal, BinanceIcon } from '@verto/uikit'
+import { Flex, Grid, Text, Button, Link, LinkExternal } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { nftsBaseUrl, pancakeBunniesAddress } from 'views/Nft/market/constants'
 import { NftToken } from 'state/nftMarket/types'
-import { getBscScanLinkForNft, isAddress } from 'utils'
+import { getExplorerScanLinkForNft, isAddress } from 'utils'
 import DELIST_COLLECTIONS from 'config/constants/nftsCollections/delist'
+import { CurrencyLogo } from 'components/Logo'
+import { useTokenAndPriceByAddress } from 'utils/prices'
 import { Divider, HorizontalDivider, RoundedImage } from '../shared/styles'
 
 interface EditStageProps {
@@ -25,6 +27,7 @@ const EditStage: React.FC<React.PropsWithChildren<EditStageProps>> = ({
   const { t } = useTranslation()
   const itemPageUrlId =
     isAddress(nftToSell.collectionAddress) === pancakeBunniesAddress ? nftToSell.attributes[0].value : nftToSell.tokenId
+  const [token] = useTokenAndPriceByAddress(nftToSell.marketData?.currency)
 
   return (
     <>
@@ -42,8 +45,10 @@ const EditStage: React.FC<React.PropsWithChildren<EditStageProps>> = ({
               </Text>
 
               <Flex alignItems="center" justifyContent="flex-end">
-                <BinanceIcon width={16} height={16} mr="4px" />
-                <Text small>{lowestPrice}</Text>
+                <CurrencyLogo currency={token} size="16px" />
+                <Text small ml="4px">
+                  {lowestPrice}
+                </Text>
               </Flex>
             </>
           )}
@@ -51,8 +56,10 @@ const EditStage: React.FC<React.PropsWithChildren<EditStageProps>> = ({
             {t('Your price')}
           </Text>
           <Flex alignItems="center" justifyContent="flex-end">
-            <BinanceIcon width={16} height={16} mr="4px" />
-            <Text small>{nftToSell?.marketData?.currentAskPrice}</Text>
+            <CurrencyLogo currency={token} size="16px" />
+            <Text small ml="4px">
+              {nftToSell?.marketData?.currentAskPrice}
+            </Text>
           </Flex>
         </Grid>
       </Flex>
@@ -74,11 +81,10 @@ const EditStage: React.FC<React.PropsWithChildren<EditStageProps>> = ({
           </Button>
           <HorizontalDivider />
           <LinkExternal
-            isBscScan
             p="0px"
             height="16px"
-            href={getBscScanLinkForNft(nftToSell.collectionAddress, nftToSell.tokenId)}>
-            BscScan
+            href={getExplorerScanLinkForNft(nftToSell.collectionAddress, nftToSell.tokenId)}>
+            Explorer
           </LinkExternal>
         </Flex>
       </Flex>

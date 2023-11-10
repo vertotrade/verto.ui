@@ -1,12 +1,13 @@
 import styled from 'styled-components'
-import { Flex, Card, Grid, SellIcon, Text, useModal, Box, BinanceIcon, Skeleton, Button } from '@verto/uikit'
+import { Flex, Card, Grid, SellIcon, Text, useModal, Box, Skeleton, Button } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
+import { CurrencyLogo } from 'components/Logo'
 import { NftToken } from 'state/nftMarket/types'
-import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
 import { formatNumber } from '@verto/utils/formatBalance'
-import { multiplyPriceByAmount } from 'utils/prices'
+import { useTokenAndPriceByAddress } from 'utils/prices'
 import useNftOwner from 'views/Nft/market/hooks/useNftOwner'
+import { CollectionStructOutput } from 'config/abi/types/NftMarket'
 import BuyModal from '../../../components/BuySellModals/BuyModal'
 import SellModal from '../../../components/BuySellModals/SellModal'
 import ProfileCell from '../../../components/ProfileCell'
@@ -29,6 +30,7 @@ const OwnerRow = styled(Grid)`
 `
 
 interface OwnerCardProps {
+  contractCollection: CollectionStructOutput
   nft: NftToken
   isOwnNft: boolean
   nftIsProfilePic: boolean
@@ -43,11 +45,11 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
 }) => {
   const { t } = useTranslation()
   const { theme } = useTheme()
-  const bnbBusdPrice = useBNBBusdPrice()
 
   const { owner, isLoadingOwner } = useNftOwner(nft, isOwnNft)
 
-  const priceInUsd = multiplyPriceByAmount(bnbBusdPrice, parseFloat(nft?.marketData?.currentAskPrice))
+  const [token, tokenPrice] = useTokenAndPriceByAddress(nft.marketData?.currency)
+  const priceInUsd = parseFloat(nft?.marketData?.currentAskPrice) * tokenPrice
 
   const [onPresentBuyModal] = useModal(<BuyModal nftToBuy={nft} />)
   const [onPresentAdjustPriceModal] = useModal(
@@ -83,10 +85,12 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
               {nft.marketData?.isTradable ? (
                 <>
                   <Flex justifySelf="flex-start" alignItems="center" width="max-content">
-                    <BinanceIcon width="24px" height="24px" mr="8px" />
-                    <Text bold>{formatNumber(parseFloat(nft?.marketData?.currentAskPrice), 0, 5)}</Text>
+                    <CurrencyLogo currency={token} size="24px" />
+                    <Text bold ml="8px">
+                      {formatNumber(parseFloat(nft?.marketData?.currentAskPrice), 0, 5)}
+                    </Text>
                   </Flex>
-                  {bnbBusdPrice ? (
+                  {priceInUsd ? (
                     <Text fontSize="12px" color="textSubtle">
                       {`(~${formatNumber(priceInUsd, 2, 2)} USD)`}
                     </Text>

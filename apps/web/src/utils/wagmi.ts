@@ -21,7 +21,7 @@ const getNodeRealUrl = (networkName: string) => {
     case 'Rebus':
       if (DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET) {
         return {
-          http: 'https://testnet.rebus.money:48545',
+          http: 'https://testnet.rebus.money/rpc',
         }
       }
 

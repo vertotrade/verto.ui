@@ -26,10 +26,10 @@ export const rebusTestnet = {
     symbol: 'REBUS',
   },
   rpcUrls: {
-    default: { http: ['https://testnet.rebus.money:48545'] },
+    default: { http: ['https://testnet.rebus.money/rpc'] },
   },
   blockExplorers: {
-    default: { name: 'Rebus', url: 'https://testnet.rebus.money:8040' },
+    default: { name: 'Rebus', url: 'https://evm.testnet.rebus.money' },
   },
   testnet: true,
 }

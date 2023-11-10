@@ -8,7 +8,6 @@ import {
   SellIcon,
   WalletFilledIcon,
   CameraIcon,
-  BinanceIcon,
   Skeleton,
   useModal,
 } from '@verto/uikit'
@@ -19,6 +18,8 @@ import { formatNumber } from '@verto/utils/formatBalance'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@verto/localization'
 import { isAddress } from 'utils'
+import { CurrencyLogo } from 'components/Logo'
+import { useTokenAndPriceByAddress } from 'utils/prices'
 import { CollectibleRowContainer, SmallRoundedImage } from './styles'
 import ProfileNftModal from '../../../components/ProfileNftModal'
 import SellModal from '../../../components/BuySellModals/SellModal'
@@ -62,6 +63,8 @@ const CollectibleRow: React.FC<React.PropsWithChildren<CollectibleRowProps>> = (
   const modalVariant = nft.location === NftLocation.WALLET ? 'sell' : 'edit'
   const [onPresentProfileNftModal] = useModal(<ProfileNftModal nft={nft} />)
   const [onPresentModal] = useModal(<SellModal variant={modalVariant} nftToSell={nft} onSuccessSale={onSuccessSale} />)
+  const [token] = useTokenAndPriceByAddress(nft.marketData?.currency)
+
   return (
     <CollectibleRowContainer
       gridTemplateColumns="96px 1fr"
@@ -81,8 +84,10 @@ const CollectibleRow: React.FC<React.PropsWithChildren<CollectibleRowProps>> = (
               {t('Lowest price')}
             </Text>
             <Flex justifySelf="flex-end" width="max-content">
-              <BinanceIcon width="16px" height="16px" mr="4px" />
-              <Text small>{formatNumber(parseFloat(lowestPrice), 0, 5)}</Text>
+              <CurrencyLogo currency={token} size="16px" />
+              <Text small ml="4px">
+                {formatNumber(parseFloat(lowestPrice), 0, 5)}
+              </Text>
             </Flex>
           </>
         )}
@@ -92,8 +97,10 @@ const CollectibleRow: React.FC<React.PropsWithChildren<CollectibleRowProps>> = (
               {t('Your price')}
             </Text>
             <Flex justifySelf="flex-end" width="max-content">
-              <BinanceIcon width="16px" height="16px" mr="4px" />
-              <Text small>{nft?.marketData?.currentAskPrice}</Text>
+              <CurrencyLogo currency={token} size="16px" />
+              <Text small ml="4px">
+                {nft?.marketData?.currentAskPrice}
+              </Text>
             </Flex>
           </>
         ) : (

@@ -17,9 +17,7 @@ const TransactionConfirmed: React.FC<React.PropsWithChildren<TransactionConfirme
       <Flex p="16px" flexDirection="column" alignItems="center" justifyContent="space-between" height="150px">
         <ArrowUpIcon width="64px" height="64px" color="primary" />
         <Text bold>{t('Transaction Confirmed')}</Text>
-        <LinkExternal isBscScan href={getBlockExploreLink(txHash, 'transaction', chainId)}>
-          {t('View on BscScan')}
-        </LinkExternal>
+        <LinkExternal href={getBlockExploreLink(txHash, 'transaction', chainId)}>{t('View on Explorer')}</LinkExternal>
       </Flex>
       <Divider />
       <Flex px="16px" pb="16px" justifyContent="center">
