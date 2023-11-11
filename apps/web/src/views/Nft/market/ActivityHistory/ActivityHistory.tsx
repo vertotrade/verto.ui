@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { isAddress } from 'utils'
 import { useAppDispatch } from 'state'
 import { Box, Button, Card, Flex, Table, Text, Th, useMatchBreakpoints, PaginationButton } from '@verto/uikit'
-import { getCollectionActivity } from 'state/nftMarket/helpers'
+// import { getCollectionActivity } from 'state/nftMarket/helpers'
 import Container from 'components/Layout/Container'
 import TableLoader from 'components/TableLoader'
 import { Activity, Collection, NftToken } from 'state/nftMarket/types'
@@ -14,7 +14,7 @@ import { useGetNftActivityFilters } from 'state/nftMarket/hooks'
 import NoNftsImage from '../components/Activity/NoNftsImage'
 import ActivityFilters from './ActivityFilters'
 import ActivityRow from '../components/Activity/ActivityRow'
-import { sortActivity } from './utils/sortActivity'
+// import { sortActivity } from './utils/sortActivity'
 import { fetchActivityNftMetadata } from './utils/fetchActivityNftMetadata'
 import { GradientContainer, ScrollableContainer } from '../../../../components/shared/styled'
 
@@ -33,13 +33,13 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
   const { theme } = useTheme()
   const { t } = useTranslation()
   const [currentPage, setCurrentPage] = useState(1)
-  const [maxPage, setMaxPages] = useState(1)
-  const [activityData, setActivityData] = useState<Activity[]>([])
+  const [maxPage] = useState(1)
+  const [activityData] = useState<Activity[]>([])
   const [activitiesSlice, setActivitiesSlice] = useState<Activity[]>([])
   const [nftMetadata, setNftMetadata] = useState<NftToken[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [isInitialized, setIsInitialized] = useState(false)
-  const [queryPage, setQueryPage] = useState(1)
+  const [isLoading] = useState(true)
+  const [isInitialized] = useState(false)
+  const [queryPage] = useState(1)
   const { lastUpdated, setLastUpdated: refresh } = useLastUpdated()
   const bnbBusdPrice = useBNBBusdPrice()
   const { isXs, isSm, isMd } = useMatchBreakpoints()
@@ -49,19 +49,19 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
   useEffect(() => {
     const fetchCollectionActivity = async () => {
       try {
-        setIsLoading(true)
-        const nftActivityFiltersParsed = JSON.parse(nftActivityFiltersString)
-        const collectionActivity = await getCollectionActivity(
-          collectionAddress.toLowerCase(),
-          nftActivityFiltersParsed,
-          MAX_PER_QUERY,
-        )
-        const activity = sortActivity(collectionActivity)
-        setCurrentPage(1)
-        setActivityData(activity)
-        setMaxPages(Math.ceil(activity.length / MAX_PER_PAGE) || 1)
-        setIsLoading(false)
-        setIsInitialized(true)
+        // setIsLoading(true)
+        // const nftActivityFiltersParsed = JSON.parse(nftActivityFiltersString)
+        // const collectionActivity = await getCollectionActivity(
+        //   collectionAddress.toLowerCase(),
+        //   nftActivityFiltersParsed,
+        //   MAX_PER_QUERY,
+        // )
+        // const activity = sortActivity(collectionActivity)
+        // setCurrentPage(1)
+        // setActivityData(activity)
+        // setMaxPages(Math.ceil(activity.length / MAX_PER_PAGE) || 1)
+        // setIsLoading(false)
+        // setIsInitialized(true)
       } catch (error) {
         console.error('Failed to fetch collection activity', error)
       }
@@ -91,19 +91,18 @@ const ActivityHistory: React.FC<React.PropsWithChildren<ActivityHistoryProps>> =
   useEffect(() => {
     const fetchCollectionActivity = async () => {
       try {
-        setIsLoading(true)
-        const nftActivityFiltersParsed = JSON.parse(nftActivityFiltersString)
-        const collectionActivity = await getCollectionActivity(
-          collectionAddress.toLowerCase(),
-          nftActivityFiltersParsed,
-          MAX_PER_QUERY * (queryPage + 1),
-        )
-        const activity = sortActivity(collectionActivity)
-
-        setIsLoading(false)
-        setActivityData(activity)
-        setMaxPages(Math.ceil(activity.length / MAX_PER_PAGE) || 1)
-        setQueryPage(prevState => prevState + 1)
+        // setIsLoading(true)
+        // const nftActivityFiltersParsed = JSON.parse(nftActivityFiltersString)
+        // const collectionActivity = await getCollectionActivity(
+        //   collectionAddress.toLowerCase(),
+        //   nftActivityFiltersParsed,
+        //   MAX_PER_QUERY * (queryPage + 1),
+        // )
+        // const activity = sortActivity(collectionActivity)
+        // setIsLoading(false)
+        // setActivityData(activity)
+        // setMaxPages(Math.ceil(activity.length / MAX_PER_PAGE) || 1)
+        // setQueryPage(prevState => prevState + 1)
       } catch (error) {
         console.error('Failed to fetch collection activity', error)
       }
