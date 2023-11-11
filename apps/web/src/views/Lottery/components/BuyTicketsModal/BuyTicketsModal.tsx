@@ -31,7 +31,7 @@ import { usePriceCakeBusd } from 'state/farms/hooks'
 import { fetchUserTicketsAndLotteries } from 'state/lottery'
 import { useLottery } from 'state/lottery/hooks'
 import styled from 'styled-components'
-import { BIG_ZERO } from '@verto/utils/bigNumber'
+import { BIG_ZERO, bigNumberToEthers } from '@verto/utils/bigNumber'
 import { getFullDisplayBalance } from '@verto/utils/formatBalance'
 import { requiresApproval } from 'utils/requiresApproval'
 import EditNumbersModal from './EditNumbersModal'
@@ -246,7 +246,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
     useApproveConfirmTransaction({
       totalCost: rawTotalCost,
       onRequiresApproval: async () => {
-        return requiresApproval(cakeContractReader, account, lotteryContract.address, rawTotalCost)
+        return requiresApproval(cakeContractReader, account, lotteryContract.address, bigNumberToEthers(rawTotalCost))
       },
       onApprove: () => {
         return callWithGasPrice(cakeContractApprover, 'approve', [lotteryContract.address, MaxUint256])
