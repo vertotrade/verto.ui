@@ -51,6 +51,7 @@ export interface TokenMarketData {
   collection: {
     id: string
   }
+  currency: string
   currentAskPrice: string
   currentSeller: string
   isTradable: boolean

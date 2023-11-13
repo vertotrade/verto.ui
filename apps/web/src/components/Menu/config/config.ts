@@ -135,10 +135,10 @@ const config: (
           label: t('Collections'),
           href: `${nftsBaseUrl}/collections`,
         },
-        {
-          label: t('Activity'),
-          href: `${nftsBaseUrl}/activity`,
-        },
+        // {
+        //   label: t('Activity'),
+        //   href: `${nftsBaseUrl}/activity`,
+        // },
       ],
     },
     // {
@@ -216,6 +216,7 @@ const config: (
       isLotteryPageEnabled = response?.data?.data?.attributes?.enabled
       navItems = filterNavItems(navItems, isLotteryPageEnabled)
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('Error', error)
     }
 

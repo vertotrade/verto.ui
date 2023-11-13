@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Heading, Flex, Button, Grid, ChevronRightIcon, NextLinkFromReactRouter } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { NftToken } from 'state/nftMarket/types'
-import { getLatestListedNfts, getNftsFromDifferentCollectionsApi } from 'state/nftMarket/helpers'
+import { getNftsFromDifferentCollectionsApi } from 'state/nftMarket/helpers'
 import { nftsBaseUrl, pancakeBunniesAddress } from 'views/Nft/market/constants'
 import { isAddress } from 'utils'
 import { CollectibleLinkCard } from '../components/CollectibleCard'
@@ -17,7 +17,8 @@ const useNewestNfts = () => {
 
   useEffect(() => {
     const fetchNewestNfts = async () => {
-      const nftsFromSg = await getLatestListedNfts(16)
+      // const nftsFromSg = await getLatestListedNfts(16)
+      const nftsFromSg = []
       const nftsFromApi = await getNftsFromDifferentCollectionsApi(
         nftsFromSg.map(nft => ({ collectionAddress: nft.collection.id, tokenId: nft.tokenId })),
       )

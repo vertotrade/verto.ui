@@ -62,7 +62,7 @@ const config = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'static-nft.pancakeswap.com',
+        hostname: 'nftvertodata.s3.amazonaws.com',
       },
     ],
   },

@@ -123,7 +123,7 @@ interface ItemProps {
   index: number
 }
 
-const SlideContent = ({ title, date, lotteryData, onClickHandler, openState = false, processedLotteryData }) => {
+const SlideContent = ({ title, date, lotteryData, onClickHandler, processedLotteryData }) => {
   const [onPresentLotteryDetailsModal] = useModal(
     <LotteryDetailsModal selectedLotteryNodeData={processedLotteryData} id={lotteryData.id} />,
   )
@@ -172,7 +172,7 @@ const Slider = () => {
     lotteriesData,
     currentRound: { status },
   } = useLottery()
-  const [latestRoundId, setLatestRoundId] = useState(null)
+  const [, setLatestRoundId] = useState(null)
   const [selectedRoundId, setSelectedRoundId] = useState('')
   const [selectedLotteryNodeData, setSelectedLotteryNodeData] = useState(null)
   const timer = useRef(null)
@@ -230,9 +230,9 @@ const Slider = () => {
     setActiveItemIndex(nextSlide)
   }
 
-  const handleDetailsClick = async (id: string) => {
-    const lotteryData = await fetchLottery(id)
-    const processedLotteryData = processLotteryResponse(lotteryData)
+  const handleDetailsClick = async () => {
+    // const lotteryData = await fetchLottery(id)
+    // const processedLotteryData = processLotteryResponse(lotteryData)
   }
 
   useEffect(() => {

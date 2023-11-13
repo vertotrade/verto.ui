@@ -67,7 +67,7 @@ const TransferStage: React.FC<React.PropsWithChildren<TransferStageProps>> = ({
         <Input
           scale="sm"
           isWarning={isInvalidTransferAddress || transferAddressEqualsConnectedAddress}
-          placeholder={t('Paste BSC address')}
+          placeholder={t('Paste Rebus address')}
           value={transferAddress}
           onChange={e => setTransferAddress(e.target.value)}
         />

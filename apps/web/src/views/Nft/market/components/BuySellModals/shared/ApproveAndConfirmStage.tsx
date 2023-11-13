@@ -1,29 +1,39 @@
 import { Flex, Text, Button, Spinner } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
+import { ERC20Token } from '@verto/sdk'
 import { StepIndicator } from './styles'
 
 interface ApproveAndConfirmStageProps {
+  token: ERC20Token
   variant: 'buy' | 'sell'
   isApproved: boolean
   isApproving: boolean
   isConfirming: boolean
   handleApprove: () => void
   handleConfirm: () => void
+  vertoIsApproved: boolean
+  vertoIsApproving: boolean
+  vertoHandleApprove: () => void
 }
 
 // Buy Flow:
-// Shown if user wants to pay with WBNB and contract isn't approved yet
+// Shown if user wants to pay and contract isn't approved yet
 // Sell Flow:
 // Shown the first time user puts NFT for sale
 const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirmStageProps>> = ({
+  token,
   variant,
   isApproved,
   isApproving,
   isConfirming,
   handleApprove,
   handleConfirm,
+  vertoIsApproved,
+  vertoIsApproving,
+  vertoHandleApprove,
 }) => {
   const { t } = useTranslation()
+  const secondStepApproved = variant === 'buy' ? vertoIsApproved : true
 
   return (
     <Flex p="16px" flexDirection="column">
@@ -42,7 +52,7 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
           {!isApproved && (
             <Text mt="8px" maxWidth="275px" small color="textSubtle">
               {variant === 'buy'
-                ? t('Please enable WBNB spending in your wallet')
+                ? t('Please enable %symbol% spending in your wallet', { symbol: token?.symbol })
                 : t('Please enable your NFT to be sent to the market')}
             </Text>
           )}
@@ -56,19 +66,62 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
           {isApproving ? `${t('Enabling')}...` : t('Enable')}
         </Button>
       )}
+
+      {variant === 'buy' && (
+        <>
+          <Flex alignItems="center" mt="8px">
+            <Flex flexDirection="column">
+              <Flex alignItems="center" mt="16px">
+                <StepIndicator success={vertoIsApproved} disabled={!isApproved && !vertoIsApproved}>
+                  <Text fontSize="20px" bold color={!isApproved ? 'textDisabled' : 'invertedContrast'}>
+                    2
+                  </Text>
+                </StepIndicator>
+                <Text
+                  fontSize="20px"
+                  bold
+                  color={vertoIsApproved ? 'success' : isApproved ? 'secondary' : 'textDisabled'}>
+                  {vertoIsApproved ? t('Approved Gas') : t('Approve Gas')}
+                </Text>
+              </Flex>
+              {!vertoIsApproved && (
+                <Text small color={isApproved ? 'textSubtle' : 'textDisabled'}>
+                  {t('Please approve VERTO spending for transaction gas')}
+                </Text>
+              )}
+            </Flex>
+            <Flex flex="0 0 64px" width="64px">
+              {vertoIsApproving && <Spinner size={64} />}
+            </Flex>
+          </Flex>
+          {!vertoIsApproved && (
+            <Button
+              mt="16px"
+              disabled={!isApproved || vertoIsApproving}
+              onClick={vertoHandleApprove}
+              variant="secondary">
+              {vertoIsApproving ? t('Approving') : t('Approve')}
+            </Button>
+          )}
+        </>
+      )}
+
       <Flex alignItems="center" mt="8px">
         <Flex flexDirection="column">
           <Flex alignItems="center" mt="16px">
-            <StepIndicator success={!!0} disabled={!isApproved}>
-              <Text fontSize="20px" bold color={!isApproved ? 'textDisabled' : 'invertedContrast'}>
-                2
+            <StepIndicator success={!!0} disabled={!isApproved || !secondStepApproved}>
+              <Text
+                fontSize="20px"
+                bold
+                color={!isApproved || !secondStepApproved ? 'textDisabled' : 'invertedContrast'}>
+                {variant === 'buy' ? 3 : 2}
               </Text>
             </StepIndicator>
-            <Text fontSize="20px" bold color={isApproved ? 'secondary' : 'textDisabled'}>
+            <Text fontSize="20px" bold color={isApproved && secondStepApproved ? 'secondary' : 'textDisabled'}>
               {t('Confirm')}
             </Text>
           </Flex>
-          <Text small color={isApproved ? 'textSubtle' : 'textDisabled'}>
+          <Text small color={isApproved && secondStepApproved ? 'textSubtle' : 'textDisabled'}>
             {t('Please confirm the transaction in your wallet')}
           </Text>
         </Flex>
@@ -76,7 +129,11 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
           {isConfirming && <Spinner size={64} />}
         </Flex>
       </Flex>
-      <Button mt="16px" disabled={!isApproved || isConfirming} onClick={handleConfirm} variant="secondary">
+      <Button
+        mt="16px"
+        disabled={!isApproved || !secondStepApproved || isConfirming}
+        onClick={handleConfirm}
+        variant="secondary">
         {isConfirming ? t('Confirming') : t('Confirm')}
       </Button>
     </Flex>
