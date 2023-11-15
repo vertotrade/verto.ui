@@ -8,6 +8,15 @@ const FixedContainer = styled.div`
   position: fixed;
   right: 5%;
   bottom: calc(110px + env(safe-area-inset-bottom));
+
+  button {
+    background-color: ${({ theme }) => theme.colors.newPrimary};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.newPrimaryDark};
+      opacity: 1 !important;
+    }
+  }
 `;
 
 const ScrollToTopButtonV2 = () => {
