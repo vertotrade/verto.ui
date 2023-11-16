@@ -27,6 +27,14 @@ const IconDivReverse = styled(Flex)`
 `
 
 const IconCircleWrapper = styled(Flex)`
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  background: ${props => props.background};
+`
+const IconCircleWrapperVCoinAnim = styled(Flex)`
   width: 256px;
   height: 256px;
   border-radius: 50%;
@@ -41,15 +49,19 @@ const IconImgWrapper = styled(Flex)`
 
 const IconDivider = ({ background, textColor, divBackground, Icon = CoinStack, reverse = false, Clip = null }) => {
   const InnerContent = (
-    <IconCircleWrapper background={background}>
+    <>
       {Clip ? (
-        <Clip />
+        <IconCircleWrapperVCoinAnim>
+          <Clip />
+        </IconCircleWrapperVCoinAnim>
       ) : (
-        <IconImgWrapper>
-          <Icon color={textColor} />
-        </IconImgWrapper>
+        <IconCircleWrapper background={background}>
+          <IconImgWrapper>
+            <Icon color={textColor} />
+          </IconImgWrapper>
+        </IconCircleWrapper>
       )}
-    </IconCircleWrapper>
+    </>
   )
   return (
     <>
