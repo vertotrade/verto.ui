@@ -4,10 +4,17 @@ import { useTheme } from '@verto/hooks'
 import { CompositeImageProps } from '../CompositeImage'
 import ColoredWordHeading from '../ColoredWordHeading'
 
-interface SalesSectionButton {
+interface SalesSectionButtonPrimary {
   to: string
   text: string
   external: boolean
+}
+
+interface SalesSectionButtonSecondary {
+  to: string
+  text: string
+  external: boolean
+  isIcon: boolean
 }
 
 const ContentWrapper = styled(Flex)<{ addStyles?: boolean }>`
@@ -61,8 +68,8 @@ export interface SalesSectionProps {
   headingText: string
   bodyText: string
   reverse: boolean
-  primaryButton: SalesSectionButton
-  secondaryButton: SalesSectionButton
+  primaryButton: SalesSectionButtonPrimary
+  secondaryButton: SalesSectionButtonSecondary
   images: CompositeImageProps
   colorOverride?: boolean
   ClipComponent?: React.ComponentType
@@ -117,7 +124,11 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
                 )}
               </Button>
               {secondaryButton.external ? (
-                <LinkExternal color={theme.colors.text} href={secondaryButton.to} padding="0 20px">
+                <LinkExternal
+                  isIcon={secondaryButton.isIcon}
+                  color={theme.colors.text}
+                  href={secondaryButton.to}
+                  padding="0 20px">
                   {secondaryButton.text}
                 </LinkExternal>
               ) : (

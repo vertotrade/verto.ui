@@ -173,6 +173,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   color="black"
                   padding="0 20px"
                   hoverBackgroundColor={theme.isDark ? 'white' : theme.colors.secondaryButtonHoverBg}
+                  isIcon={false}
                   external
                   href="https://docs.vertotrade.com/">
                   {t('Learn how to start')}
