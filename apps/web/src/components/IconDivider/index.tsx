@@ -15,7 +15,7 @@ const IconDiv = styled(Flex)`
 `
 const IconDivReverse = styled(Flex)`
   min-width: 595px;
-  border-radius: 140px 0px 0px 140px;
+  border-radius: 176px 0px 0px 176px;
   background: ${props => props.background};
   justify-content: flex-start;
   flex-grow: 1;
@@ -27,8 +27,8 @@ const IconDivReverse = styled(Flex)`
 `
 
 const IconCircleWrapper = styled(Flex)`
-  width: 220px;
-  height: 220px;
+  width: 256px;
+  height: 256px;
   border-radius: 50%;
   justify-content: center;
   align-items: center;

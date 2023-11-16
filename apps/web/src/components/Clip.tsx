@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export function Clip({ url }) {
+export function Clip({ url, width = '100%', height = '100%' }) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export function Clip({ url }) {
   }, [url])
 
   return (
-    <video width="100%" height="100%" autoPlay muted loop ref={videoRef}>
+    <video width={width} height={height} autoPlay muted loop ref={videoRef}>
       <source src={url} />
     </video>
   )
