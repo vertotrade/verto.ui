@@ -123,7 +123,7 @@ const VertoDataRow = () => {
         <StyledColumn noMobileBorder noDesktopBorder style={{ gridArea: 'd' }}>
           <Text color="textSubtle">{t('Market cap')}</Text>
           {typeof marketCap === 'number' ? (
-            <Heading scale="lg" color="textHome">
+            <Heading fontFamily={`'Poppins',sans-serif`} scale="lg" color="text">
               {t('$%marketCap%', { marketCap: formatNumber(marketCap, 2) })}
             </Heading>
           ) : (
