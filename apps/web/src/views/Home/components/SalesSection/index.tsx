@@ -117,7 +117,11 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
                 )}
               </Button>
               {secondaryButton.external ? (
-                <LinkExternal color={theme.colors.text} href={secondaryButton.to} padding="0 20px">
+                <LinkExternal
+                  color={theme.colors.text}
+                  textDecoration="none"
+                  href={secondaryButton.to}
+                  padding="0 20px">
                   {secondaryButton.text}
                 </LinkExternal>
               ) : (
