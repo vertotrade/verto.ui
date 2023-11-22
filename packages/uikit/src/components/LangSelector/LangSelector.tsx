@@ -41,6 +41,7 @@ const LangSelector: React.FC<React.PropsWithChildren<Props>> = ({
       position={dropdownPosition}
       target={
         <Button
+          pl={[0, null, "24px"]}
           scale={buttonScale}
           variant="text"
           startIcon={<LanguageIcon color={theme.colors[color] || color} width="24px" hasGradient />}
