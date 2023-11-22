@@ -23,7 +23,6 @@ const ThemeSwitcher: React.FC<React.PropsWithChildren<Props>> = ({ isDark, toggl
       ) : (
         <SunIcon mt="2px" onClick={() => toggleTheme(!isDark)} />
       )}
-
       {showText && <Text mx="4px">{isDark ? "Dark Mode" : "Light Mode"}</Text>}
     </Flex>
   );
