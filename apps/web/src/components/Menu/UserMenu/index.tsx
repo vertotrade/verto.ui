@@ -9,6 +9,7 @@ import {
   UserMenuDivider,
   UserMenuItem,
   UserMenuVariant,
+  ListViewIcon,
 } from '@verto/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Trans from 'components/Trans'
@@ -42,15 +43,16 @@ const UserMenuItems = () => {
     <>
       <WalletUserMenuItem isWrongNetwork={isWrongNetwork} onPresentWalletModal={onClickWalletMenu} />
       <UserMenuItem as="button" disabled={isWrongNetwork} onClick={onPresentTransactionModal}>
-        {t('Recent Transactions')}
-        {hasPendingTransactions && <RefreshIcon spin />}
+        <Flex alignItems="center" width="100%">
+          {hasPendingTransactions ? <RefreshIcon mr="10px" spin /> : <ListViewIcon mr="10px" />}
+          {t('Recent Transactions')}
+        </Flex>
       </UserMenuItem>
       <UserMenuDivider />
-      <UserMenuDivider />
       <UserMenuItem as="button" onClick={logout}>
-        <Flex alignItems="center" justifyContent="space-between" width="100%">
+        <Flex alignItems="center" width="100%">
+          <LogoutIcon mr="8px" />
           {t('Disconnect')}
-          <LogoutIcon />
         </Flex>
       </UserMenuItem>
     </>
@@ -77,7 +79,7 @@ const UserMenu = () => {
     }
   }, [hasPendingTransactions, pendingNumber, t])
 
-  if (account) {
+  if (!account) {
     return (
       <UIKitUserMenu account={account} avatarSrc={avatarSrc} text={userMenuText} variant={userMenuVariable}>
         {({ isOpen }) => (isOpen ? <UserMenuItems /> : null)}
