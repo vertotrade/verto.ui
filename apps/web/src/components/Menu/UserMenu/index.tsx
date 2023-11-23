@@ -79,7 +79,7 @@ const UserMenu = () => {
     }
   }, [hasPendingTransactions, pendingNumber, t])
 
-  if (account) {
+  if (!account) {
     return (
       <UIKitUserMenu account={account} avatarSrc={avatarSrc} text={userMenuText} variant={userMenuVariable}>
         {({ isOpen }) => (isOpen ? <UserMenuItems /> : null)}
