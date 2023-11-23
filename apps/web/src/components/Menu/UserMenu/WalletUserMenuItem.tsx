@@ -23,8 +23,6 @@ const WalletUserMenuItem: React.FC<React.PropsWithChildren<WalletUserMenuItemPro
         {hasLowNativeBalance && !isWrongNetwork && <WarningIcon mr="8px" color="warning" width="24px" />}
         {isWrongNetwork && <WarningIcon mr="8px" color="failure" width="24px" />}
         {t('Wallet')}
-        {hasLowNativeBalance && !isWrongNetwork && <WarningIcon color="warning" width="24px" />}
-        {isWrongNetwork && <WarningIcon color="failure" width="24px" />}
       </Flex>
     </UserMenuItem>
   )
