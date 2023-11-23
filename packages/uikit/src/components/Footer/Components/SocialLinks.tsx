@@ -31,7 +31,7 @@ const SocialLinks: React.FC<React.PropsWithChildren<FlexProps>> = ({ ...props })
       const mr = index < socials.length - 1 ? "24px" : 0;
 
       return (
-        <SocialLink external key={social.label} href={social.href} aria-label={social.label} mr={mr}>
+        <SocialLink external key={social.label} href={social.href} aria-label={social.label} mr={mr} hoverBackgroundColor="inherit">
           <Icon {...iconProps} />
         </SocialLink>
       );
