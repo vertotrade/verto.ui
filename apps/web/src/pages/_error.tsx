@@ -12,10 +12,10 @@
  */
 
 import { captureUnderscoreErrorException } from '@sentry/nextjs'
-import NextErrorComponent, { ErrorProps } from 'next/error'
+import NextErrorComponent from 'next/error'
 import { NotFound } from '@verto/uikit'
 
-const CustomErrorComponent = (props: ErrorProps) => <NotFound statusCode={props.statusCode} />
+const CustomErrorComponent = () => <NotFound />
 
 CustomErrorComponent.getInitialProps = async contextData => {
   // In case this is running in a serverless function, await this in order to give Sentry
