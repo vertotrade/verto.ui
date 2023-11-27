@@ -7,7 +7,7 @@ import IconDivider from 'components/IconDivider'
 import { useAccount } from 'wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { swapSectionData, earnSectionData, vertoSectionData } from './components/SalesSection/data'
-import SalesSection from './components/SalesSection'
+import SalesSection, { ButtonsWrapper } from './components/SalesSection'
 import VertoDataRow from './components/VertoDataRow'
 
 const FlexItem = styled(Flex)`
@@ -156,11 +156,15 @@ const Home: React.FC<React.PropsWithChildren> = () => {
               <StyledText color="black">
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
               </StyledText>
+<<<<<<< HEAD
               <Flex
                 justifyContent="flex-start"
                 align-items="center"
                 flexDirection={['column', null, 'row']}
                 mr={['auto', null, 'unset']}>
+=======
+              <ButtonsWrapper justifyContent="center" align-items="center">
+>>>>>>> c8f488b90 (DEV-743 Fix "start in seconds" section)
                 {!account && (
                   <ConnectWalletButton
                     mt="24px"
@@ -179,7 +183,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   href="https://docs.vertotrade.com/">
                   {t('Learn how to start')}
                 </LinkExternal>
-              </Flex>
+              </ButtonsWrapper>
             </FooterWrapper>
           </FlexItem>
         </ContentWrapper>
