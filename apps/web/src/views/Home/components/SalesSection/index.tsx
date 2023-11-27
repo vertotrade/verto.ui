@@ -10,6 +10,11 @@ interface SalesSectionButton {
   external: boolean
 }
 
+const ButtonsWrapper = styled(Flex)`
+  flex-wrap: wrap;
+  gap: 30px;
+`
+
 const ContentWrapper = styled(Flex)<{ addStyles?: boolean }>`
   ${props =>
     props.addStyles &&
@@ -100,7 +105,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
             <Text color={theme.colors.text} mb="24px">
               {bodyText}
             </Text>
-            <Flex>
+            <ButtonsWrapper>
               <Button mr="16px" variant="secondary">
                 {primaryButton.external ? (
                   <Link external href={primaryButton.to}>
@@ -125,7 +130,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
                   {secondaryButton.text}
                 </RouterLink>
               )}
-            </Flex>
+            </ButtonsWrapper>
           </Flex>
         </ContentInnerWrapper>
         <Flex
