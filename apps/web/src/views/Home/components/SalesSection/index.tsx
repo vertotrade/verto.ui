@@ -10,7 +10,7 @@ interface SalesSectionButton {
   external: boolean
 }
 
-const ButtonsWrapper = styled(Flex)`
+export const ButtonsWrapper = styled(Flex)`
   flex-wrap: wrap;
   gap: 30px;
 `
