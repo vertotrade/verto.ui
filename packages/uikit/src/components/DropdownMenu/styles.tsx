@@ -36,7 +36,8 @@ export const DropdownMenuItem = styled.button<StyledDropdownMenuItemProps & { $i
   }
 
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: ${({ theme }) => theme.colors.vertoBg1};
+    border-radius: 5px;
   }
 
   &:active:not(:disabled) {
@@ -46,15 +47,8 @@ export const DropdownMenuItem = styled.button<StyledDropdownMenuItemProps & { $i
 `;
 
 export const StyledDropdownMenuItemContainer = styled.div`
-  &:first-child ${DropdownMenuItem} {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-
-  &:last-child ${DropdownMenuItem} {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
+  margin: 8px 12px;
+  border-radius: 5px;
 `;
 
 export const DropdownMenuDivider = styled.hr`
