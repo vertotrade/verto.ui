@@ -161,7 +161,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
               </StyledText>
               <Flex
-                justifyContent="center"
+                justifyContent="flex-start"
                 align-items="center"
                 flexDirection={['column', null, 'row']}
                 mr={['auto', null, 'unset']}>
@@ -178,6 +178,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   padding="0 20px"
                   textDecoration="none"
                   hoverBackgroundColor={theme.isDark ? 'white' : theme.colors.secondaryButtonHoverBg}
+                  isIcon={false}
                   external
                   href="https://docs.vertotrade.com/">
                   {t('Learn how to start')}
