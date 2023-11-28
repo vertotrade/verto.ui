@@ -22,9 +22,13 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
   padding: 8px 12px;
   height: 100%;
   align-items: center;
-  background: ${({ theme }) => (theme.isDark ? theme.colors.textSubtle : theme.colors.text)};
+  ${({ theme, $isGlobalSubMenu }) =>
+    !$isGlobalSubMenu
+      ? `background: ${theme.isDark ? theme.colors.textSubtle : theme.colors.text};
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;`
+      : ""}
+
   opacity: 1;
   margin-bottom: -1px;
 
@@ -85,6 +89,21 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
         -webkit-text-fill-color: unset;
       }
     `
+      : ""};
+
+  ${({ theme, $isGlobalSubMenu, $isActive }) =>
+    $isGlobalSubMenu && !$isActive
+      ? `
+        border-radius: 46px;
+        transition: 0.2s background-color;
+  
+        :hover,
+        :focus {
+          background: ${theme.colors.headerMenuHover};
+          -webkit-background-clip: unset;
+          -webkit-text-fill-color: unset;
+        }
+      `
       : ""};
 `;
 
