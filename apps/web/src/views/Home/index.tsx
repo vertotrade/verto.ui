@@ -45,10 +45,6 @@ const VertoRowWrapper = styled(Flex)`
 
 const StyledText = styled(Text)`
   text-align: left;
-
-  @media screen and (max-width: 900px) {
-    text-align: center;
-  }
 `
 
 const FooterWrapper = styled(Flex)`
