@@ -160,7 +160,11 @@ const Home: React.FC<React.PropsWithChildren> = () => {
               <StyledText color="black">
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
               </StyledText>
-              <Flex justifyContent="center" align-items="center">
+              <Flex
+                justifyContent="center"
+                align-items="center"
+                flexDirection={['column', null, 'row']}
+                mr={['auto', null, 'unset']}>
                 {!account && (
                   <ConnectWalletButton
                     mt="24px"
