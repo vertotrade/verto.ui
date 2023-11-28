@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import { Button, Heading, Text, LogoIcon } from "@verto/uikit";
 import { useTranslation } from "@verto/localization";
 import Link from "next/link";
+import { ReactElement } from "react";
 
 const StyledNotFound = styled.div`
   align-items: center;
@@ -12,19 +13,23 @@ const StyledNotFound = styled.div`
   justify-content: center;
 `;
 
-const NotFound = ({ statusCode = 404 }: { statusCode?: number }) => {
+const NotFound = ({ image, statusCode }: { image?: ReactElement; statusCode?: number }) => {
   const { t } = useTranslation();
 
   return (
     <>
       <NextSeo title="404" />
       <StyledNotFound>
+        {image}
+        {statusCode && <Heading scale="xxl">{statusCode}</Heading>}
         <LogoIcon width="64px" mb="8px" />
-        <Heading scale="xxl">{statusCode}</Heading>
-        <Text mb="16px">{t("Oops, page not found.")}</Text>
+        <Heading scale="lg" mb="8px">
+          {t("Page Not Found")}
+        </Heading>
+        <Text mb="16px">{t("Sorry, but the page you were looking for could not be found.")}</Text>
         <Link href="/" passHref>
-          <Button as="a" scale="sm">
-            {t("Back Home")}
+          <Button mr="16px" variant="secondary">
+            <Text fontWeight={600}>{t("Back to Home Page")}</Text>
           </Button>
         </Link>
       </StyledNotFound>
