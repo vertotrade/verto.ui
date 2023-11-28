@@ -36,11 +36,11 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
       <PageHeader>
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
-            <VertoHeading as="h1" scale="h2" mb="4px">
+            <VertoHeading as="h1" scale="xxl" mb="4px">
               {t('Minting Pools')}
             </VertoHeading>
-            <Text fontSize="14px">{t('Just stake some tokens to earn.')}</Text>
-            <Text fontSize="14px">{t('High APR, low risk.')}</Text>
+            <Text fontSize="16px">{t('Just stake some tokens to earn.')}</Text>
+            <Text fontSize="16px">{t('High APR, low risk.')}</Text>
           </Flex>
         </Flex>
       </PageHeader>

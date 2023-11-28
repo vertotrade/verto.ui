@@ -21,10 +21,10 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
         <Button
           as={NextLinkFromReactRouter}
           to={`${nftsBaseUrl}/collections/`}
-          variant="vertoCustom"
+          variant="vertoText"
           minWidth="132px"
           scale="sm"
-          endIcon={<ChevronRightIcon color="primary" width="24px" />}>
+          endIcon={<ChevronRightIcon color="text" width="24px" />}>
           {t('View All')}
         </Button>
       </Flex>
