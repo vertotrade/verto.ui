@@ -89,7 +89,7 @@ export const vertoSectionData = (t: TranslateFunction, isDark: boolean, theme: a
       background="transparent"
       textColor={isDark ? theme.colors.text : theme.colors.black}
       divBackground={theme.colors.backgroundAlt}
-      Clip={() => <Clip url="images/animations/token.webm" />}
+      Clip={() => <Clip url="images/animations/token.webm" width="256px" height="256px" />}
       reverse
     />
   ),
