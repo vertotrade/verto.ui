@@ -17,6 +17,7 @@ export const swapSectionData = (t: TranslateFunction, isDark: boolean): SalesSec
     to: 'https://docs.vertotrade.com/',
     text: t('Learn more'),
     external: true,
+    isIcon: false,
   },
   images: {
     path: '/images/home/trade/',
@@ -44,6 +45,7 @@ export const earnSectionData = (t: TranslateFunction, isDark: boolean): SalesSec
     to: 'https://docs.vertotrade.com/products/yield-farming',
     text: t('Learn more'),
     external: true,
+    isIcon: false,
   },
   images: {
     path: '/images/home/earn/',
@@ -73,6 +75,7 @@ export const vertoSectionData = (t: TranslateFunction, isDark: boolean, theme: a
     to: 'https://docs.vertotrade.com/tokenomics/verto/#verto',
     text: t('Learn more'),
     external: true,
+    isIcon: false,
   },
 
   images: {
