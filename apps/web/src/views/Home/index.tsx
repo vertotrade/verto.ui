@@ -173,7 +173,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   />
                 )}
                 <LinkExternal
-                  style={{ marginTop: '20px' }}
+                  style={{ marginTop: '24px', height: '48px' }}
                   color="black"
                   padding="0 20px"
                   textDecoration="none"
