@@ -5,11 +5,13 @@ import useTheme from 'hooks/useTheme'
 interface HeadingProps extends TextProps {
   text: string
   firstColor?: keyof Colors
+  style?: React.CSSProperties
 }
 
 const ColoredWordHeading: React.FC<React.PropsWithChildren<HeadingProps>> = ({
   text,
   firstColor,
+  style,
   mb = '24px',
   ...props
 }) => {
@@ -23,7 +25,7 @@ const ColoredWordHeading: React.FC<React.PropsWithChildren<HeadingProps>> = ({
   const displayedColor = (theme.colors[firstColor] as string) ?? theme.colors.textHome
 
   return (
-    <Heading scale="xxl" mb={mb} style={{ fontWeight: 800, maxWidth: '503px' }} {...props}>
+    <Heading scale="xxl" mb={mb} style={{ fontWeight: 800, maxWidth: '503px', ...(style || {}) }} {...props}>
       <span style={{ color: displayedColor }}>{firstWord} </span>
       {remainingWords}
     </Heading>

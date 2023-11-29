@@ -5,6 +5,7 @@ import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction, isDark: boolean): SalesSectionProps => ({
   headingText: t('Trade smarter, not harder.'),
+  headingStyle: { fontSize: '64px', lineHeight: '72px' },
   bodyText: t('Trade any token on Rebuschain in seconds, just by connecting your wallet.'),
   reverse: false,
   primaryButton: {
