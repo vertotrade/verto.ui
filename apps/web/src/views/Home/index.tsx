@@ -176,6 +176,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   style={{ marginTop: '20px' }}
                   color="black"
                   padding="0 20px"
+                  textDecoration="none"
                   hoverBackgroundColor={theme.isDark ? 'white' : theme.colors.secondaryButtonHoverBg}
                   external
                   href="https://docs.vertotrade.com/">
