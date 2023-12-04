@@ -15,7 +15,7 @@ import { ApiCollections, NftToken, Collection, NftAttribute, MarketEvent } from 
 import { getCollection, getCollections } from './helpers'
 import { nftMarketActivityFiltersAtom, tryVideoNftMediaAtom, nftMarketFiltersAtom } from './atoms'
 
-const DEFAULT_NFT_ORDERING = { field: 'currentAskPrice', direction: 'asc' as 'asc' | 'desc' }
+const DEFAULT_NFT_ORDERING = { field: 'updated_at', direction: 'desc' as 'asc' | 'desc' }
 const DEFAULT_NFT_ACTIVITY_FILTER = { typeFilters: [], collectionFilters: [] }
 const EMPTY_OBJECT = {}
 
