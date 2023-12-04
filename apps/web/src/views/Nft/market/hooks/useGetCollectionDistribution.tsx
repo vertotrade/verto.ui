@@ -8,6 +8,7 @@ import useSWRImmutable from 'swr/immutable'
 import { FetchStatus } from 'config/constants/types'
 import mapValues from 'lodash/mapValues'
 import { pancakeBunniesAddress } from '../constants'
+import { REQUEST_SIZE } from '../Collection/config'
 
 const useGetCollectionDistribution = (collectionAddress: string) => {
   const { data, status } = useSWRImmutable(
@@ -34,7 +35,7 @@ export const useGetCollectionDistributionPB = () => {
       setState(prevState => ({ ...prevState, isFetching: true }))
       let apiResponse: ApiResponseCollectionTokens
       try {
-        apiResponse = await getNftsFromCollectionApi(pancakeBunniesAddress)
+        apiResponse = await getNftsFromCollectionApi(pancakeBunniesAddress, REQUEST_SIZE, 1, '', '')
         if (!apiResponse) {
           setState(prevState => ({ ...prevState, isFetching: false }))
           return

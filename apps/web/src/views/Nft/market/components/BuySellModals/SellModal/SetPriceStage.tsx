@@ -12,6 +12,7 @@ interface SetPriceStageProps {
   variant: 'set' | 'adjust'
   currentPrice?: string
   lowestPrice?: number
+  nftTokenAddress?: string
   price: string
   setPrice: React.Dispatch<React.SetStateAction<string>>
   continueToNextStage: () => void
@@ -33,6 +34,7 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
   variant,
   lowestPrice,
   currentPrice,
+  nftTokenAddress,
   price,
   setPrice,
   continueToNextStage,
@@ -43,7 +45,8 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
 }) => {
   const { t } = useTranslation()
   const inputRef = useRef<HTMLInputElement>()
-  const adjustedPriceIsTheSame = variant === 'adjust' && parseFloat(currentPrice) === parseFloat(price)
+  const adjustedPriceIsTheSame =
+    variant === 'adjust' && parseFloat(currentPrice) === parseFloat(price) && nftTokenAddress === token.address
   const priceIsValid = !price || Number.isNaN(parseFloat(price)) || parseFloat(price) <= 0
 
   const creatorFee = contractCollection.creatorFee.div(100).toString()
