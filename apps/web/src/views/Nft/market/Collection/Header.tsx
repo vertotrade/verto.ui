@@ -12,7 +12,6 @@ import AvatarImage from '../components/BannerHeader/AvatarImage'
 import BaseSubMenu from '../components/BaseSubMenu'
 import { nftsBaseUrl } from '../constants'
 import TopBar from './TopBar'
-// import LowestPriceStatBoxItem from './LowestPriceStatBoxItem'
 
 interface HeaderProps {
   collection: Collection
@@ -21,15 +20,15 @@ interface HeaderProps {
 const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ collection }) => {
   const router = useRouter()
   const collectionAddress = router.query.collectionAddress as string
-  const { totalSupply, banner, avatar } = collection
+  const { totalSupply, banner, avatar, listedItems, lowestPrice, volume: totalVolume } = collection as any
   const { t } = useTranslation()
 
-  // const volume = totalVolumeBNB
-  //   ? parseFloat(totalVolumeBNB).toLocaleString(undefined, {
-  //       minimumFractionDigits: 3,
-  //       maximumFractionDigits: 3,
-  //     })
-  //   : '0'
+  const volume = totalVolume
+    ? parseFloat(totalVolume).toLocaleString(undefined, {
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3,
+      })
+    : '0'
 
   const itemsConfig = collectionAddress
     ? [
@@ -59,12 +58,9 @@ const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ collection }) 
           description={collection.description ? <Text color="textSubtle">{t(collection.description)}</Text> : null}>
           <StatBox>
             <StatBoxItem title={t('Items')} stat={formatNumber(Number(totalSupply), 0, 0)} />
-            {/* <StatBoxItem
-              title={t('Items listed')}
-              stat={numberTokensListed ? formatNumber(Number(numberTokensListed), 0, 0) : '0'}
-            /> */}
-            {/* <LowestPriceStatBoxItem collectionAddress={collection.address} /> */}
-            {/* <StatBoxItem title={t('Vol. (%symbol%)', { symbol: 'BNB' })} stat={volume} /> */}
+            <StatBoxItem title={t('Items listed')} stat={listedItems ? formatNumber(Number(listedItems), 0, 0) : '0'} />
+            <StatBoxItem title="Lowest" stat={`$${formatNumber(lowestPrice, 0, 0)}`} />
+            <StatBoxItem title="Vol. $" stat={`$${volume}`} />
           </StatBox>
         </MarketPageTitle>
       </MarketPageHeader>

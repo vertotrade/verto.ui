@@ -151,7 +151,7 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
 
   useEffect(() => {
     if (defaultOptionIndex) {
-      setSelectedOptionIndex(defaultOptionIndex - 1);
+      setSelectedOptionIndex(defaultOptionIndex);
       setOptionSelected(true);
     }
   }, [defaultOptionIndex]);

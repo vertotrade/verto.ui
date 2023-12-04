@@ -14,6 +14,7 @@ import { NftToken } from 'state/nftMarket/types'
 import Trans from 'components/Trans'
 import { pancakeBunniesAddress } from '../../../constants'
 import { CollectibleLinkCard } from '../../../components/CollectibleCard'
+import { REQUEST_SIZE } from '../../config'
 
 const INITIAL_SLIDE = 4
 
@@ -58,7 +59,7 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
       : null,
     async () => {
       try {
-        const nfts = await getNftsFromCollectionApi(collectionAddress)
+        const nfts = await getNftsFromCollectionApi(collectionAddress, REQUEST_SIZE, 0, '', '')
 
         if (!nfts?.data) {
           return []

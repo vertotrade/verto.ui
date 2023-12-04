@@ -25,13 +25,13 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
 
   return (
     <>
-      {resultSize && (
+      {resultSize ? (
         <Flex p="16px">
           <Text bold>
             {resultSize} {t('Results')}
           </Text>
         </Flex>
-      )}
+      ) : null}
       {nfts.length > 0 ? (
         <>
           <Grid

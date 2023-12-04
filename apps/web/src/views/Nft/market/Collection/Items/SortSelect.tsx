@@ -13,10 +13,10 @@ const SortSelect: React.FC<React.PropsWithChildren<{ collectionAddress: string }
   }
 
   const sortByItems = [
-    { label: t('Recently listed'), value: { field: 'updatedAt', direction: 'desc' } },
-    { label: t('Lowest price'), value: { field: 'currentAskPrice', direction: 'asc' } },
-    { label: t('Highest price'), value: { field: 'currentAskPrice', direction: 'desc' } },
-    { label: t('Token ID'), value: { field: 'tokenId', direction: 'asc' } },
+    { label: t('Recently listed'), value: { field: 'updated_at', direction: 'desc' } },
+    { label: t('Lowest price'), value: { field: 'asking_price', direction: 'asc' } },
+    { label: t('Highest price'), value: { field: 'asking_price', direction: 'desc' } },
+    { label: t('Token ID'), value: { field: 'token_id', direction: 'asc' } },
   ]
 
   const defaultOptionIndex = sortByItems.findIndex(
