@@ -35,19 +35,26 @@ const applySaleData = async (collection: Collection, tokens: NftToken[], setting
 
   return tokens.map(t => ({
     ...t,
+    collectionAddress: t.collectionAddress || collection.address,
     marketData: tokenMarketDataMap[t.tokenId],
   }))
 }
 
-const fetchTokensFromFilter = async (address: string, settings: ItemListingSettings) => {
+const fetchTokensFromFilter = async (address: string, settings: ItemListingSettings, page: number) => {
   const filterObject: Record<string, NftAttribute> = settings.nftFilters
   const attrParams = fromPairs(Object.values(filterObject).map(attr => [attr.traitType, attr.value]))
-  const attrFilters = !isEmpty(attrParams) ? await fetchNftsFiltered(address, attrParams) : null
+  const attrFilters = !isEmpty(attrParams)
+    ? await fetchNftsFiltered(address, attrParams, page, REQUEST_SIZE, settings.field, settings.direction)
+    : null
   return attrFilters ? Object.values(attrFilters.data) : null
 }
 
-const fetchMarketDataNfts = async (collection: Collection): Promise<NftToken[]> => {
-  const res = await getNftsFromCollectionApi(collection.address)
+const fetchMarketDataNfts = async (
+  collection: Collection,
+  settings: ItemListingSettings,
+  page: number,
+): Promise<NftToken[]> => {
+  const res = await getNftsFromCollectionApi(collection.address, REQUEST_SIZE, page, settings.field, settings.direction)
   const nfts = Object.values(res.data)
   const newNfts: NftToken[] = nfts.map(apiNft => {
     return {
@@ -80,7 +87,7 @@ export const useCollectionNfts = (collectionAddress: string) => {
   const resultSize =
     !Object.keys(nftFilters).length && collection
       ? showOnlyNftsOnSale
-        ? collection.numberTokensListed
+        ? collection.listedItems
         : collection?.totalSupply
       : null
 
@@ -106,19 +113,18 @@ export const useCollectionNfts = (collectionAddress: string) => {
     size,
     setSize,
   } = useSWRInfinite(
-    pageIndex => {
-      // Only return first page since we don't support pagination
-      if (pageIndex !== 0) return null
+    (pageIndex, previousPageData) => {
+      if (pageIndex !== 0 && previousPageData && !previousPageData.length) return null
       return [collectionAddress, itemListingSettingsJson, pageIndex, 'collectionNfts']
     },
-    async ([, settingsJson]) => {
+    async ([, settingsJson, page]) => {
       const settings: ItemListingSettings = JSON.parse(settingsJson as string)
-      const tokensFromFilter = await fetchTokensFromFilter(collection?.address, settings)
+      const tokensFromFilter = await fetchTokensFromFilter(collection?.address, settings, page as any)
       let newNfts: NftToken[] = []
       if (tokensFromFilter) {
         newNfts = tokensFromFilter as any
       } else {
-        newNfts = await fetchMarketDataNfts(collection)
+        newNfts = await fetchMarketDataNfts(collection, settings, page as any)
       }
       newNfts = await applySaleData(collection, newNfts, settings)
       if (newNfts.length < REQUEST_SIZE) {
@@ -126,7 +132,7 @@ export const useCollectionNfts = (collectionAddress: string) => {
       }
       return newNfts
     },
-    { revalidateAll: true },
+    { revalidateAll: false },
   )
 
   const uniqueNftList: NftToken[] = useMemo(() => (nfts ? uniqBy(nfts.flat(), 'tokenId') : []), [nfts])

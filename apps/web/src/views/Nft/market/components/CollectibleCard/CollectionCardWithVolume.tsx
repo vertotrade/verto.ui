@@ -1,5 +1,5 @@
-import { Flex } from '@verto/uikit'
-// import { useTranslation } from '@verto/localization'
+import { Flex, Text } from '@verto/uikit'
+import { useTranslation } from '@verto/localization'
 import { ERC20Token } from '@verto/sdk'
 // import { AmountLabel } from './styles'
 import { CollectionCard } from './index'
@@ -19,17 +19,25 @@ const CollectionCardWithVolume: React.FC<CollectionCardWithVolumeProps> = ({
   avatarSrc,
   collectionName,
   url,
-  // volume,
+  volume,
   // token,
 }) => {
-  // const { t } = useTranslation()
+  const { t } = useTranslation()
+
   return (
     <CollectionCard bgSrc={bgSrc} avatarSrc={avatarSrc} collectionName={collectionName} url={url}>
       <Flex alignItems="center">
-        {/* <Text fontSize="12px" color="textSubtle">
+        <Text fontSize="12px" color="textSubtle">
           {t('Volume')}
         </Text>
-        <AmountLabel token={token} amount={volume} /> */}
+        {/* <AmountLabel token={token} amount={volume} /> */}
+        <Text fontWeight="600">
+          &nbsp;$
+          {(volume || 0).toLocaleString(undefined, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 5,
+          })}
+        </Text>
       </Flex>
     </CollectionCard>
   )

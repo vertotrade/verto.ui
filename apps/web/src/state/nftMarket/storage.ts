@@ -8,8 +8,8 @@ const initialNftFilterState: NftFilter = {
   activeFilters: {},
   showOnlyOnSale: true,
   ordering: {
-    field: 'currentAskPrice',
-    direction: 'asc',
+    field: 'updated_at',
+    direction: 'desc',
   },
 }
 
