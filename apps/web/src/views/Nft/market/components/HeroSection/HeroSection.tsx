@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { useTranslation } from '@verto/localization'
 import { Heading, Text, Flex, HeadingProps } from '@verto/uikit'
-import SearchBar from '../SearchBar'
 import useTheme from 'hooks/useTheme'
+import SearchBar from '../SearchBar'
 import { HeroSVG } from './HeroSVG'
 
 const HeroWrapper = styled(Flex)`
@@ -30,17 +30,18 @@ const StyledSearchBar = styled(SearchBar)`
 `
 
 interface HeroTitleProps extends HeadingProps {
-  textGradient?: boolean;
+  textGradient?: boolean
 }
 
 const HeroTitle = styled(Heading)<HeroTitleProps>`
-  ${({ textGradient }) => textGradient ? 
-    `background: linear-gradient(90deg, #231F20 60.42%, #565656 100%);
+  ${({ textGradient }) =>
+    textGradient
+      ? `background: linear-gradient(90deg, #231F20 60.42%, #565656 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;` 
-  : ""}
+    color: transparent;`
+      : ''}
 `
 
 export const HeroSection = () => {
@@ -50,18 +51,20 @@ export const HeroSection = () => {
   return (
     <HeroWrapper>
       <div>
-        <HeroTitle scale="xxl" mb="16px" as="h1" textGradient={!isDark} >
-          {t('NFT')}<br/>
+        <HeroTitle scale="xxl" mb="16px" as="h1" textGradient={!isDark}>
+          {t('NFT')}
+          <br />
           {t('Marketplace')}
         </HeroTitle>
-        <Text fontSize="16px" mb="40px" >{t('Buy and Sell NFTs on Rebuschain')}</Text>
+        <Text fontSize="16px" mb="40px">
+          {t('Buy and Sell NFTs on Rebuschain')}
+        </Text>
         <StyledSearchBar />
       </div>
 
       <ImageWrapper>
         <HeroSVG />
       </ImageWrapper>
-
     </HeroWrapper>
   )
 }

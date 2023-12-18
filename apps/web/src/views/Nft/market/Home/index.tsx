@@ -1,11 +1,5 @@
 import { useMemo } from 'react'
-import {
-  Container,
-  LinkExternal,
-  PageHeader,
-  PageSection,
-} from '@verto/uikit'
-import { useAccount } from 'wagmi'
+import { Container, LinkExternal, PageHeader, PageSection } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import SectionsWithFoldableText from 'components/FoldableSection/SectionsWithFoldableText'
 import { PageMeta } from 'components/Layout/Page'
@@ -19,7 +13,7 @@ import { HeroSection } from '../components/HeroSection/HeroSection'
 
 const Home = () => {
   const { t } = useTranslation()
-  const { address: account } = useAccount()
+  // const { address: account } = useAccount()
   const { data: collections, status } = useGetCollections()
 
   const newestCollections = useMemo(
@@ -32,11 +26,6 @@ const Home = () => {
       <PageMeta />
       <PageHeader>
         <HeroSection />
-        {/* {account && (
-          <Button as={NextLinkFromReactRouter} to={`/profile/${account.toLowerCase()}`} mt="32px">
-            {t('Manage/Sell')}
-          </Button>
-        )} */}
       </PageHeader>
       {status !== FetchStatus.Fetched ? (
         <PageLoader />
