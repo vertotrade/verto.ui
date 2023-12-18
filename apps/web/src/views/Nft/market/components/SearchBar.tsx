@@ -9,8 +9,8 @@ const SearchInputWrapper = styled.div`
 `
 
 interface InputIconProps {
-  isDark: boolean;
-  hidden: boolean;
+  isDark: boolean
+  hidden: boolean
 }
 const InputIcon = styled(SearchIcon)<InputIconProps>`
   position: absolute;
@@ -18,8 +18,8 @@ const InputIcon = styled(SearchIcon)<InputIconProps>`
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  color: ${({ isDark }) => isDark ? "var(--colors-light-backgroundAlt2)" : "#818181"};
-  display: ${ ({ hidden }) => hidden ? "none" : "block"};
+  color: ${({ isDark }) => (isDark ? 'var(--colors-light-backgroundAlt2)' : '#818181')};
+  display: ${({ hidden }) => (hidden ? 'none' : 'block')};
 
   path {
     fill: currentColor;
@@ -30,7 +30,7 @@ const SearchBar: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
   const { isDark } = useTheme()
 
-  const [searchValue,setSearchValue] = useState("")
+  const [searchValue, setSearchValue] = useState('')
 
   return (
     <Box>
@@ -40,9 +40,15 @@ const SearchBar: React.FC<React.PropsWithChildren> = () => {
           id="searchNft"
           name="searchNft"
           value={searchValue}
-          onChange={ e => setSearchValue(e.target.value) }
+          onChange={e => setSearchValue(e.target.value)}
           placeholder={t('Search %subject%', { subject: t('Address').toLowerCase() })}
-          style={{ background: "transparent", position: 'relative', zIndex: 16, paddingLeft: searchValue.length > 0 ? '16px' : '44px' }}></Input>
+          style={{
+            background: 'transparent',
+            position: 'relative',
+            zIndex: 16,
+            paddingLeft: searchValue.length > 0 ? '16px' : '44px',
+          }}
+        />
       </SearchInputWrapper>
     </Box>
   )
