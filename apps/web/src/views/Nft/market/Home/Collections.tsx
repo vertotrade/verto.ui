@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button, Flex, Grid, Heading, HeadingProps, NextLinkFromReactRouter, Text } from '@verto/uikit'
+import { Button, Flex, Grid, Heading, HeadingProps, NextLinkFromReactRouter } from '@verto/uikit'
 import useTheme from 'hooks/useTheme'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 import { Collection } from 'state/nftMarket/types'
@@ -29,8 +29,6 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
   const { t } = useTranslation()
   const { isDark } = useTheme()
 
-  console.log('Collcetions:', collections)
-
   return (
     <>
       <Flex alignItems="center" justifyContent="space-between" mb="32px">
@@ -40,7 +38,7 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
         <Button
           as={NextLinkFromReactRouter}
           to={`${nftsBaseUrl}/collections/`}
-          variant="vertoSecondary"
+          variant={ isDark ? "vertoPrimary" : "vertoSecondary"}
           style={{ fontWeight: 500 }}
           scale="md">
           {t('View All')}
