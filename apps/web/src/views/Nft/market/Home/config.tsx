@@ -4,7 +4,8 @@ import { ContextApi } from '@verto/localization'
 const config = (t: ContextApi['t']) => {
   return {
     header: 'FAQs',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     questions: [
       {
         title: t('I sold an NFT, where’s my REBUS?'),
@@ -42,7 +43,7 @@ const config = (t: ContextApi['t']) => {
           ),
         ],
       },
-    ]
+    ],
   }
 }
 
