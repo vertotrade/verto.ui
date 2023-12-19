@@ -38,7 +38,7 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
         <Button
           as={NextLinkFromReactRouter}
           to={`${nftsBaseUrl}/collections/`}
-          variant={ isDark ? "vertoPrimary" : "vertoSecondary"}
+          variant={isDark ? 'vertoPrimary' : 'vertoSecondary'}
           style={{ fontWeight: 500 }}
           scale="md">
           {t('View All')}
@@ -53,7 +53,7 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
               collectionName={collection.name}
               url={`${nftsBaseUrl}/collections/${collection.address}`}
               collectionVolume={`${collection.volume} ${collection.symbol}`}
-              collectionSupply={collection.totalSupply}></CollectionCard>
+              collectionSupply={collection.totalSupply}/>
           )
         })}
       </Grid>
