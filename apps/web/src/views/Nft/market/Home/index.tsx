@@ -12,13 +12,13 @@ import {
 } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { useTranslation } from '@verto/localization'
-import SectionsWithFoldableText from 'components/FoldableSection/SectionsWithFoldableText'
 import { PageMeta } from 'components/Layout/Page'
 import { useGetCollections } from 'state/nftMarket/hooks'
 import { FetchStatus } from 'config/constants/types'
 import PageLoader from 'components/Loader/PageLoader'
 import orderBy from 'lodash/orderBy'
 import SearchBar from '../components/SearchBar'
+import FAQs from '../components/FAQs/FAQs'
 import Collections from './Collections'
 import config from './config'
 
@@ -71,7 +71,7 @@ const Home = () => {
         </PageSection>
       )}
       <Container p="64px 0">
-        <SectionsWithFoldableText header={t('FAQs')} config={config(t)} m="auto" />
+        <FAQs config={config(t)} m="auto" />
         <LinkExternal href="https://docs.pancakeswap.finance/contact-us/nft-market-applications" mx="auto" mt="32px">
           {t('Apply to NFT Marketplace!')}
         </LinkExternal>
