@@ -53,7 +53,8 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
               collectionName={collection.name}
               url={`${nftsBaseUrl}/collections/${collection.address}`}
               collectionVolume={`${collection.volume} ${collection.symbol}`}
-              collectionSupply={collection.totalSupply}/>
+              collectionSupply={collection.totalSupply}
+            />
           )
         })}
       </Grid>
