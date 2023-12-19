@@ -1,9 +1,25 @@
-import { Button, ChevronRightIcon, Flex, Grid, Heading, NextLinkFromReactRouter } from '@verto/uikit'
+import styled from 'styled-components'
+import { Button, Flex, Grid, Heading, HeadingProps, NextLinkFromReactRouter, Text } from '@verto/uikit'
+import useTheme from 'hooks/useTheme'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 import { Collection } from 'state/nftMarket/types'
 import { useTranslation } from '@verto/localization'
 import { CollectionCard } from '../components/CollectibleCard'
-// import { AmountLabel } from '../components/CollectibleCard/styles'
+
+interface HeroTitleProps extends HeadingProps {
+  textGradient?: boolean
+}
+
+const CollectionsTitle = styled(Heading)<HeroTitleProps>`
+  ${({ textGradient }) =>
+    textGradient
+      ? `background: linear-gradient(90deg, #231F20 60.42%, #565656 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;`
+      : ''}
+`
 
 const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: string; collections: Collection[] }>> = ({
   title,
@@ -11,20 +27,22 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
   collections,
 }) => {
   const { t } = useTranslation()
+  const { isDark } = useTheme()
+
+  console.log('Collcetions:', collections)
 
   return (
     <>
       <Flex alignItems="center" justifyContent="space-between" mb="32px">
-        <Heading as="h3" scale="lg" data-test={testId}>
+        <CollectionsTitle as="h3" scale="xl" data-test={testId} textGradient={!isDark}>
           {title}
-        </Heading>
+        </CollectionsTitle>
         <Button
           as={NextLinkFromReactRouter}
           to={`${nftsBaseUrl}/collections/`}
-          variant="vertoText"
-          minWidth="132px"
-          scale="sm"
-          endIcon={<ChevronRightIcon color="text" width="24px" />}>
+          variant="vertoSecondary"
+          style={{ fontWeight: 500 }}
+          scale="md">
           {t('View All')}
         </Button>
       </Flex>
@@ -34,16 +52,10 @@ const Collections: React.FC<React.PropsWithChildren<{ title: string; testId: str
             <CollectionCard
               key={collection.address}
               bgSrc={collection.banner.small}
-              avatarSrc={collection.avatar}
               collectionName={collection.name}
-              url={`${nftsBaseUrl}/collections/${collection.address}`}>
-              <Flex alignItems="center">
-                {/* <Text fontSize="12px" color="textSubtle">
-                  {t('Volume')}
-                </Text> */}
-                {/* <AmountLabel amount={collection.totalVolumeBNB ? parseFloat(collection.totalVolumeBNB) : 0} /> */}
-              </Flex>
-            </CollectionCard>
+              url={`${nftsBaseUrl}/collections/${collection.address}`}
+              collectionVolume={`${collection.volume} ${collection.symbol}`}
+              collectionSupply={collection.totalSupply}></CollectionCard>
           )
         })}
       </Grid>
