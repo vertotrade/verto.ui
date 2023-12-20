@@ -14,9 +14,9 @@ const AvatarImage = styled.div.attrs<AvatarImageProps>(({ alt }) => ({
   background-size: cover;
   border-radius: 50%;
   position: relative;
-  width: 96px;
-  height: 96px;
-  border: 4px ${({ borderColor }) => borderColor || '#f2ecf2'} solid;
+  width: 128px;
+  height: 128px;
+  border: 6px solid ${({ theme }) => theme.colors.vertoBg1};
 
   & > img {
     border-radius: 50%;

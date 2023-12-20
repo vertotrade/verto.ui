@@ -20,13 +20,13 @@ const BannerHeader: React.FC<React.PropsWithChildren<BannerHeaderProps>> = ({
     <Flex flexDirection="column" mb="24px" {...props}>
       <Box position="relative" pb="56px">
         <StyledBannerImageWrapper>
-          <Image src={bannerImage} alt={bannerAlt} layout="fill" objectFit="cover" priority />
+          <Image src={bannerImage} alt={bannerAlt} fill priority style={{objectFit: 'cover'}} />
         </StyledBannerImageWrapper>
-        <Box position="absolute" bottom={0} left={-4}>
-          <Flex alignItems="flex-end">
+        <Box position="absolute" bottom={0} left='26px'>
+          <Box>
             {avatar}
             {children}
-          </Flex>
+          </Box>
         </Box>
       </Box>
     </Flex>
