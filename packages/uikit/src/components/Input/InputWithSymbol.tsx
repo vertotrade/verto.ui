@@ -9,7 +9,7 @@ import { InputProps } from "./types";
 type ContainerProps = FlexProps &
   InputProps & {
     isFocused: boolean;
-    isDisabled: boolean;
+    isDisabled?: boolean;
   };
 
 const Container = styled(Flex)<ContainerProps>`

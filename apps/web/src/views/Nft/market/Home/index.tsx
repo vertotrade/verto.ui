@@ -1,37 +1,19 @@
-import styled from 'styled-components'
 import { useMemo } from 'react'
-import {
-  Container,
-  Button,
-  LinkExternal,
-  PageHeader,
-  NextLinkFromReactRouter,
-  PageSection,
-  VertoHeading,
-  Text,
-} from '@verto/uikit'
-import { useAccount } from 'wagmi'
+import { Container, LinkExternal, PageHeader, PageSection } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { PageMeta } from 'components/Layout/Page'
 import { useGetCollections } from 'state/nftMarket/hooks'
 import { FetchStatus } from 'config/constants/types'
 import PageLoader from 'components/Loader/PageLoader'
 import orderBy from 'lodash/orderBy'
-import SearchBar from '../components/SearchBar'
 import FAQs from '../components/FAQs/FAQs'
 import Collections from './Collections'
 import config from './config'
-
-const StyledSearchBar = styled(SearchBar)`
-  width: 100%;
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 0 24px;
-`
+import { HeroSection } from '../components/HeroSection/HeroSection'
 
 const Home = () => {
   const { t } = useTranslation()
-  const { address: account } = useAccount()
+  // const { address: account } = useAccount()
   const { data: collections, status } = useGetCollections()
 
   const newestCollections = useMemo(
@@ -43,17 +25,8 @@ const Home = () => {
     <>
       <PageMeta />
       <PageHeader>
-        <VertoHeading scale="xxl" mb="4px">
-          {t('NFT Marketplace')}
-        </VertoHeading>
-        <Text fontSize="16px">{t('Buy and Sell NFTs on Rebuschain')}</Text>
-        {account && (
-          <Button as={NextLinkFromReactRouter} to={`/profile/${account.toLowerCase()}`} mt="32px">
-            {t('Manage/Sell')}
-          </Button>
-        )}
+        <HeroSection />
       </PageHeader>
-      <StyledSearchBar />
       {status !== FetchStatus.Fetched ? (
         <PageLoader />
       ) : (
