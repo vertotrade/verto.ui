@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { Container, LinkExternal, PageHeader, PageSection } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
-import SectionsWithFoldableText from 'components/FoldableSection/SectionsWithFoldableText'
 import { PageMeta } from 'components/Layout/Page'
 import { useGetCollections } from 'state/nftMarket/hooks'
 import { FetchStatus } from 'config/constants/types'
 import PageLoader from 'components/Loader/PageLoader'
 import orderBy from 'lodash/orderBy'
+import FAQs from '../components/FAQs/FAQs'
 import Collections from './Collections'
 import config from './config'
 import { HeroSection } from '../components/HeroSection/HeroSection'
@@ -44,7 +44,7 @@ const Home = () => {
         </PageSection>
       )}
       <Container p="64px 0">
-        <SectionsWithFoldableText header={t('FAQs')} config={config(t)} m="auto" />
+        <FAQs config={config(t)} m="auto" />
         <LinkExternal href="https://docs.pancakeswap.finance/contact-us/nft-market-applications" mx="auto" mt="32px">
           {t('Apply to NFT Marketplace!')}
         </LinkExternal>
