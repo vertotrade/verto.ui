@@ -101,8 +101,17 @@ export const getCollectionApi = async (collectionAddress: string): Promise<ApiCo
  * @param page
  * @returns
  */
-export const getNftsFromCollectionApi = async (collectionAddress: string): Promise<ApiResponseCollectionTokens> => {
-  const requestPath = `${API_NFTMARKET}/tokens/${collectionAddress}`
+export const getNftsFromCollectionApi = async (
+  collectionAddress: string,
+  size: number,
+  page: number,
+  field: string,
+  direction: string,
+): Promise<ApiResponseCollectionTokens> => {
+  let requestPath = `${API_NFTMARKET}/tokens/${collectionAddress}?size=${size}&page=${page + 1}`
+  if (field && direction) {
+    requestPath = `${requestPath}&${field}=${direction}`
+  }
 
   try {
     const res = await fetch(requestPath)
@@ -318,8 +327,19 @@ export const getAccountNftsOnChainMarketData = async (
 export const fetchNftsFiltered = async (
   collectionAddress: string,
   filters: Record<string, string | number>,
+  page: number,
+  size: number,
+  field: string,
+  direction: string,
 ): Promise<ApiTokenFilterResponse> => {
-  const res = await fetch(`${API_NFTMARKET}/tokens/filtered/${collectionAddress}?${stringify(filters)}`)
+  let requestPath = `${API_NFTMARKET}/tokens/filtered/${collectionAddress}?page=${page + 1}&size=${size}&${stringify(
+    filters,
+  )}`
+  if (field && direction) {
+    requestPath = `${requestPath}&${field}=${direction}`
+  }
+
+  const res = await fetch(requestPath)
 
   if (res.ok) {
     const data = await res.json()
@@ -591,7 +611,7 @@ export const getCompleteAccountNftData = async (
   profileNftWithCollectionAddress?: TokenIdWithCollectionAddress,
 ): Promise<NftToken[]> => {
   // Add delist collections to allow user reclaim their NFTs
-  const collectionsWithDelist = { ...collections, ...DELIST_COLLECTIONS }
+  const collectionsWithDelist = { ...collections, ...DELIST_COLLECTIONS } as any
 
   const [walletNftIdsWithCollectionAddress, onChainForSaleNfts] = await Promise.all([
     fetchWalletTokenIdsForCollections(account, collectionsWithDelist),

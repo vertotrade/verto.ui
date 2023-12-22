@@ -118,6 +118,7 @@ const SellModal: React.FC<React.PropsWithChildren<SellModalProps>> = ({
     }
 
     const currencies = [
+      defaultVertoTokens.verto.address,
       contractCollection.currency1,
       contractCollection.currency2,
       contractCollection.currency3,
@@ -275,6 +276,7 @@ const SellModal: React.FC<React.PropsWithChildren<SellModalProps>> = ({
           variant="set"
           continueToNextStage={continueToNextStage}
           lowestPrice={null}
+          nftTokenAddress={nftToSell.marketData?.currency}
           price={price}
           setPrice={setPrice}
           token={token}
