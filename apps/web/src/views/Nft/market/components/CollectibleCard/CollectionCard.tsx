@@ -71,7 +71,7 @@ const CollectionCard: React.FC<React.PropsWithChildren<CollectionCardProps>> = (
     <CardBody p="0">
       <StyledImage src={bgSrc} alt={`nft-collection-card-${collectionName}`} height={125} width={375} />
       <Flex position="relative" justifyContent="center" pt="8px" mb="8px" mx="12px" flexDirection="column">
-        {avatarSrc ? <CollectionAvatar src={avatarSrc} width={96} height={96} /> : ''}
+        {/* avatarSrc ? <CollectionAvatar src={avatarSrc} width={96} height={96} /> : '' */}
         <Heading
           color={disabled ? 'textDisabled' : 'body'}
           scale="h4"
