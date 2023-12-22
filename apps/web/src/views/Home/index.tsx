@@ -1,11 +1,10 @@
-import { PageSection, Flex, Heading, BlastOffIcon, Text, LinkExternal } from '@verto/uikit'
+import { useRouter } from 'next/router'
+import { PageSection, Flex, Heading, Text, Button, EmptyImg } from '@verto/uikit'
 import styled from 'styled-components'
 import useTheme from 'hooks/useTheme'
 import { PageMeta } from 'components/Layout/Page'
-import { useTranslation } from '@verto/localization'
+import { Trans, useTranslation } from '@verto/localization'
 import IconDivider from 'components/IconDivider'
-import { useAccount } from 'wagmi'
-import ConnectWalletButton from 'components/ConnectWalletButton'
 import { swapSectionData, earnSectionData, vertoSectionData } from './components/SalesSection/data'
 import SalesSection from './components/SalesSection'
 import VertoDataRow from './components/VertoDataRow'
@@ -23,6 +22,7 @@ const FlexItem = styled(Flex)`
 const ContentWrapper = styled(Flex)`
   width: 100%;
   gap: 100px;
+  align-items: start;
 
   @media screen and (max-width: 1000px) {
     flex-direction: column-reverse;
@@ -45,13 +45,14 @@ const VertoRowWrapper = styled(Flex)`
 
 const StyledText = styled(Text)`
   text-align: left;
+  max-width: 559px;
 
   @media screen and (max-width: 900px) {
     text-align: center;
   }
 `
 
-const FooterWrapper = styled(Flex)`
+const ApplyToNFT = styled(Flex)`
   padding: 0 20px;
   margin-bottom: 10px;
   @media screen and (max-width: 900px) {
@@ -62,8 +63,9 @@ const FooterWrapper = styled(Flex)`
 
 const Home: React.FC<React.PropsWithChildren> = () => {
   const { theme, isDark } = useTheme()
-  const { address: account } = useAccount()
   // const { chainId } = useActiveChainId()
+
+  const router = useRouter()
 
   const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '1200px' }
   const VertoSectionContainerStyles = {
@@ -139,51 +141,46 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         </VertoRowWrapper>
       </PageSection>
       <PageSection
-        innerProps={{ style: { margin: '0', width: '100%', maxWidth: 'unset', padding: '48px 0px' } }}
+        innerProps={{ style: { margin: '0', width: '100%', maxWidth: 'unset', padding: '80px 0px' } }}
         background={theme.colors.gradientGreenOrange}
         hasCurvedDivider={false}
+        style={{ padding: '40px 0' }}
         index={2}>
         <ContentWrapper alignItems="center" justifyContent="space-between">
           <FlexItem>
             <IconDivider
+              small
               background={theme.colors.gradientGreenOrange}
               textColor={theme.colors.black}
               divBackground={isDark ? theme.colors.backgroundAlt2D9 : theme.colors.white}
-              Icon={BlastOffIcon}
+              Icon={EmptyImg}
             />
           </FlexItem>
           <FlexItem>
-            <FooterWrapper flexDirection="column">
-              <Heading mb="16px" scale="xxl" color="black">
-                {t('Start in seconds.')}
+            <ApplyToNFT flexDirection="column">
+              <Heading maxWidth="559px" mb="16px" scale="xxl" color="black">
+                {t('Apply to NFT Marketplace!')}
               </Heading>
               <StyledText color="black">
-                {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
+                {t(
+                  'Het is al geruime tijd een bekend gegeven dat een lezer, tijdens het bekijken van de layout van een pagina, afgeleid wordt door de tekstuele inhoud. Het belangrijke punt van het gebruik van Lorem Ipsum is dat het uit een min of meer normale verdeling van letters bestaat, in tegenstelling tot',
+                )}
               </StyledText>
               <Flex
-                justifyContent="center"
+                justifyContent="flex-start"
                 align-items="center"
                 flexDirection={['column', null, 'row']}
-                mr={['auto', null, 'unset']}>
-                {!account && (
-                  <ConnectWalletButton
-                    mt="24px"
-                    mr="16px"
-                    style={{ background: theme.colors.background, color: theme.colors.text }}
-                  />
-                )}
-                <LinkExternal
-                  style={{ marginTop: '20px' }}
-                  color="black"
-                  padding="0 20px"
-                  textDecoration="none"
-                  hoverBackgroundColor={theme.isDark ? 'white' : theme.colors.secondaryButtonHoverBg}
-                  external
-                  href="https://docs.vertotrade.com/">
-                  {t('Learn how to start')}
-                </LinkExternal>
+                mr={['auto', null, 'unset']}
+                mt="24px">
+                <Button
+                  variant="light"
+                  scale="newSm"
+                  style={{ background: theme.colors.background, color: theme.colors.text }}
+                  onClick={() => router.push('/collections')}>
+                  <Trans>Apply</Trans>
+                </Button>
               </Flex>
-            </FooterWrapper>
+            </ApplyToNFT>
           </FlexItem>
         </ContentWrapper>
       </PageSection>

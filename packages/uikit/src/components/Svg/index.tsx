@@ -176,5 +176,6 @@ export { default as BridgeIcon } from "./Icons/BridgeIcon";
 export { default as QuestionOutline } from "./Icons/QuestionOutline";
 export { default as BasicLogo } from "./Icons/BasicLogo";
 export { default as ColoredLogo } from "./Icons/ColoredLogo";
+export { default as EmptyImg } from "./Icons/EmptyImg";
 
 export type { SvgProps } from "./types";

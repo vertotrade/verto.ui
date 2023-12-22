@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { Flex, CoinStack } from '@verto/uikit'
 
-const IconDiv = styled(Flex)`
+const IconDiv = styled(Flex)<{ small: boolean }>`
   min-width: 595px;
   border-radius: 0px 140px 140px 0px;
   background: ${props => props.background};
   justify-content: flex-end;
   flex-grow: 1;
-  padding: 32px;
+  padding: ${({ small }) => (small ? '15px' : '32px')};
 
   @media screen and (max-width: 900px) {
     display: none;
@@ -15,7 +15,7 @@ const IconDiv = styled(Flex)`
 `
 const IconDivReverse = styled(Flex)`
   min-width: 595px;
-  border-radius: 140px 0px 0px 140px;
+  border-radius: 176px 0px 0px 176px;
   background: ${props => props.background};
   justify-content: flex-start;
   flex-grow: 1;
@@ -26,9 +26,18 @@ const IconDivReverse = styled(Flex)`
   }
 `
 
-const IconCircleWrapper = styled(Flex)`
-  width: 220px;
-  height: 220px;
+const IconCircleWrapper = styled(Flex)<{ small: boolean }>`
+  width: ${({ small }) => (small ? '150px' : '220px')};
+  height: ${({ small }) => (small ? '150px' : '220px')};
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  background: ${props => props.background};
+`
+
+const IconCircleWrapperVCoinAnim = styled(Flex)`
+  width: 256px;
+  height: 256px;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -39,24 +48,38 @@ const IconImgWrapper = styled(Flex)`
   max-width: 90px;
 `
 
-const IconDivider = ({ background, textColor, divBackground, Icon = CoinStack, reverse = false, Clip = null }) => {
+const IconDivider = ({
+  background,
+  textColor,
+  divBackground,
+  Icon = CoinStack,
+  reverse = false,
+  Clip = null,
+  small = false,
+}) => {
   const InnerContent = (
-    <IconCircleWrapper background={background}>
+    <>
       {Clip ? (
-        <Clip />
+        <IconCircleWrapperVCoinAnim>
+          <Clip />
+        </IconCircleWrapperVCoinAnim>
       ) : (
-        <IconImgWrapper>
-          <Icon color={textColor} />
-        </IconImgWrapper>
+        <IconCircleWrapper background={background} small={small}>
+          <IconImgWrapper>
+            <Icon color={textColor} />
+          </IconImgWrapper>
+        </IconCircleWrapper>
       )}
-    </IconCircleWrapper>
+    </>
   )
   return (
     <>
       {reverse ? (
         <IconDivReverse background={divBackground}>{InnerContent}</IconDivReverse>
       ) : (
-        <IconDiv background={divBackground}>{InnerContent}</IconDiv>
+        <IconDiv small={small} background={divBackground}>
+          {InnerContent}
+        </IconDiv>
       )}
     </>
   )
