@@ -20,4 +20,5 @@ export interface MenuItemsProps extends BoxProps {
   activeItem?: string;
   activeSubItem?: string;
   isDark?: boolean;
+  isSecondaryMenu?: boolean;
 }
