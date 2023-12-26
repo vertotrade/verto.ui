@@ -14,7 +14,7 @@ import { nftsBaseUrl } from '../constants'
 const StyledMenu = styled(MenuItems)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.hr};
   margin: 0 32px;
-  gap: 22px;
+  gap: 34px;
 `
 
 interface HeaderProps {
