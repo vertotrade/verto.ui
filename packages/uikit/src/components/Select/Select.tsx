@@ -13,7 +13,6 @@ const DropDownHeader = styled.div`
   padding: 0px 16px;
   border: 1px solid ${({ theme }) => theme.colors.inputBorder};
   border-radius: 7.5px;
-  background: ${({ theme }) => theme.colors.inputBg};
   transition: border-radius 0.15s;
 
   &:hover {
@@ -26,7 +25,6 @@ const DropDownListContainer = styled.div`
   height: 0;
   position: absolute;
   overflow: hidden;
-  background: ${({ theme }) => theme.colors.inputBg};
   z-index: ${({ theme }) => theme.zIndices.dropdown};
   transition: transform 0.15s, opacity 0.15s;
   transform: scaleY(0);
@@ -44,7 +42,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
   width: 100%;
   max-width: 200px;
   position: relative;
-  background: ${({ theme }) => theme.colors.inputBg};
+  background: ${({ theme, isOpen }) => isOpen ? theme.colors.inputBg : "transparent"};
   border-radius: 7.5px;
   height: 40px;
   min-width: 136px;
@@ -67,6 +65,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
         height: auto;
         transform: scaleY(1);
         opacity: 1;
+        background: ${({ theme }) => props.isOpen ? theme.colors.inputBg : "transparent"};
         border: 1px solid ${({ theme }) => theme.colors.newPrimary};
         border-top-width: 0;
         border-radius: 0 0 7.5px 7.5px;
@@ -78,6 +77,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
+    pointer-events: none;
   }
 `;
 
