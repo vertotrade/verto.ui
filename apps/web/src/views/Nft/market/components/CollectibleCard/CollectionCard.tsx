@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Card, CardBody, Flex, Heading, Text, NextLinkFromReactRouter, ProfileAvatar } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import useTheme from 'hooks/useTheme'
@@ -67,6 +68,11 @@ const CollectionCard: React.FC<React.PropsWithChildren<CollectionCardProps>> = (
   const { t } = useTranslation()
   const { isDark } = useTheme()
 
+  const shortenedCollectionName = useMemo(() => {
+    if ( collectionName.length > 30 ) return collectionName.slice(0,34) + " ..."
+    return collectionName
+  },[collectionName])
+
   const renderBody = () => (
     <CardBody p="0">
       <StyledImage src={bgSrc} alt={`nft-collection-card-${collectionName}`} height={125} width={375} />
@@ -77,7 +83,7 @@ const CollectionCard: React.FC<React.PropsWithChildren<CollectionCardProps>> = (
           scale="h4"
           as="h3"
           mb={collectionSupply || collectionVolume ? '16px' : '0'}>
-          {collectionName}
+          {shortenedCollectionName}
         </Heading>
 
         {collectionSupply || collectionVolume ? (
