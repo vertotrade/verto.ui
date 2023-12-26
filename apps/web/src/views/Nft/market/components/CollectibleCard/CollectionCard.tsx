@@ -69,9 +69,9 @@ const CollectionCard: React.FC<React.PropsWithChildren<CollectionCardProps>> = (
   const { isDark } = useTheme()
 
   const shortenedCollectionName = useMemo(() => {
-    if ( collectionName.length > 30 ) return collectionName.slice(0,34) + " ..."
+    if (collectionName.length > 30) return `${collectionName.slice(0, 34)} ...`
     return collectionName
-  },[collectionName])
+  }, [collectionName])
 
   const renderBody = () => (
     <CardBody p="0">
