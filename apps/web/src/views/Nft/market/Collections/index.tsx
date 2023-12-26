@@ -71,8 +71,9 @@ export const Arrow = styled.div`
 `
 
 const CollectionsHeading = styled(VertoHeading)`
-font-size: 34px;
-font-weight: 600;`
+  font-size: 34px;
+  font-weight: 600;
+`
 
 const CollectionViewOptions = styled(Flex)`
   flex-direction: column;
@@ -242,7 +243,7 @@ const Collectible = () => {
     <>
       <Page>
         <CollectionViewOptions justifyContent="space-between" alignItems="center" mb="40px" py="16px">
-          <CollectionsHeading scale="xl" mb="4px" as="h1" >
+          <CollectionsHeading scale="xl" mb="4px" as="h1">
             {t('Collections')}
           </CollectionsHeading>
 
@@ -341,7 +342,7 @@ const Collectible = () => {
                               })
                             : '0'
                           const collectionName =
-                            collection.name.length > 30 ? collection.name.slice(0, 34) + ' ...' : collection.name
+                            collection.name.length > 30 ? `${collection.name.slice(0, 34)} ...` : collection.name
                           return (
                             <tr style={{ fontWeight: 400 }} key={collection.address} data-test="nft-collection-row">
                               <Td style={{ cursor: 'pointer', minWidth: '200px', paddingLeft: '20px' }}>
