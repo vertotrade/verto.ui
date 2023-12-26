@@ -12,6 +12,7 @@ export interface MenuItemProps {
   target?: string;
   isDark?: boolean;
   isGlobalSubMenu?: boolean;
+  isSecondaryMenu?: boolean;
 }
 
 export type StyledMenuItemProps = {
@@ -21,4 +22,5 @@ export type StyledMenuItemProps = {
   $statusColor?: keyof Colors;
   $isDark?: boolean;
   $isGlobalSubMenu?: boolean;
+  $isSecondaryMenu?: boolean;
 };
