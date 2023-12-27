@@ -18,7 +18,7 @@ interface AmountLabelProps extends FlexProps {
 
 export const AmountLabel: React.FC<React.PropsWithChildren<AmountLabelProps>> = ({ amount, token, ...props }) => (
   <Flex alignItems="center" {...props}>
-    <CurrencyLogo currency={token} size="16px" style={{ marginLeft: '4px', marginRight: '4px' }} />
+    <CurrencyLogo currency={token} size="16px" />
     <Text fontWeight="600">
       {amount.toLocaleString(undefined, {
         minimumFractionDigits: 0,
@@ -55,8 +55,8 @@ interface MetaRowProps extends FlexProps {
 }
 
 export const MetaRow: React.FC<React.PropsWithChildren<MetaRowProps>> = ({ title, children, ...props }) => (
-  <Flex alignItems="center" justifyContent="space-between" {...props}>
-    <Text fontSize="12px" color="textSubtle" maxWidth="120px" ellipsis title={title}>
+  <Flex flexDirection="column" alignItems="start" justifyContent="space-between" {...props}>
+    <Text fontSize="14px" color="placeholder" maxWidth="120px" ellipsis title={title}>
       {title}
     </Text>
     <Box>{children}</Box>
@@ -113,13 +113,17 @@ export const SellingNftTag: React.FC<React.PropsWithChildren<NftTagProps>> = pro
 }
 
 export const StyledCollectibleCard = styled(Card)`
-  border-radius: 20px;
-  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   max-width: 320px;
+  min-height: 377px;
+  border-radius: 16px;
+  border: 1px solid ${({ theme }) => theme.colors.greyO};
   transition: opacity 200ms;
 
   & > div {
-    border-radius: 20px;
+    min-height: 377px;
+    border-radius: 16px;
+    background-color: ${({ theme }) => theme.colors.vertoBg1};
+    padding: 8px 8px 16px 8px;
   }
 
   ${({ theme }) => theme.mediaQueries.lg} {
