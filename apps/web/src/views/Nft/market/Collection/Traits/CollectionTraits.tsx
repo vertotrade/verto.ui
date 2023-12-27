@@ -3,12 +3,12 @@ import times from 'lodash/times'
 import capitalize from 'lodash/capitalize'
 import sum from 'lodash/sum'
 import orderBy from 'lodash/orderBy'
-import { ArrowDownIcon, ArrowUpIcon, Flex, Skeleton, Table, Td, Th } from '@verto/uikit'
+import { Skeleton, Table, Td } from '@verto/uikit'
 import { formatNumber } from '@verto/utils/formatBalance'
 import CollapsibleCard from 'components/CollapsibleCard'
 import { useTranslation } from '@verto/localization'
 import { SortType } from '../../types'
-import { StyledSortButton, TableWrapper } from './styles'
+import { TableWrapper, StyledCollapsibleCard, StyledTh } from './styles'
 import useGetCollectionDistribution from '../../hooks/useGetCollectionDistribution'
 
 interface CollectionTraitsProps {
@@ -26,9 +26,9 @@ const CollectionTraits: React.FC<React.PropsWithChildren<CollectionTraitsProps>>
         <Table>
           <thead>
             <tr>
-              <Th textAlign="left">{t('Name')}</Th>
-              <Th width="100px">{t('Count')}</Th>
-              <Th width="160px">{t('Rarity')}</Th>
+              <StyledTh textAlign="left">{t('Name')}</StyledTh>
+              <StyledTh width="100px">{t('Count')}</StyledTh>
+              <StyledTh width="160px">{t('Rarity')}</StyledTh>
             </tr>
           </thead>
           <tbody>
@@ -85,32 +85,25 @@ const CollectionTraits: React.FC<React.PropsWithChildren<CollectionTraitsProps>>
           }
 
           return (
-            <CollapsibleCard key={traitType} title={capitalize(traitType)} initialOpenState={index <= 1} mb="32px">
+            <StyledCollapsibleCard key={traitType} title={capitalize(traitType)} initialOpenState={index <= 1}>
               <TableWrapper>
                 <Table>
                   <thead>
                     <tr>
-                      <Th textAlign="left">{t('Name')}</Th>
-                      <Th width="100px">{t('Count')}</Th>
-                      <Th width="160px">
-                        <StyledSortButton type="button" onClick={toggleRaritySort}>
-                          <Flex alignItems="center">
-                            {t('Rarity')}
-                            {raritySort[traitType] === 'asc' ? (
-                              <ArrowUpIcon color="secondary" />
-                            ) : (
-                              <ArrowDownIcon color="secondary" />
-                            )}
-                          </Flex>
-                        </StyledSortButton>
-                      </Th>
+                      <StyledTh textAlign="left">{t('Name')}</StyledTh>
+                      <StyledTh width="100px">{t('Count')}</StyledTh>
+                      <StyledTh width="160px" onClick={toggleRaritySort}>
+                        {t('Rarity')}
+                      </StyledTh>
                     </tr>
                   </thead>
                   <tbody>
                     {orderBy(traitValues, 'rarity', sortType).map(({ value, count, rarity }) => {
                       return (
                         <tr key={value}>
-                          <Td>{capitalize(value)}</Td>
+                          <Td fontWeight="600" lineHeight="24px">
+                            {capitalize(value)}
+                          </Td>
                           <Td textAlign="center">{formatNumber(count, 0, 0)}</Td>
                           <Td textAlign="center">{`${formatNumber(rarity, 0, 2)}%`}</Td>
                         </tr>
@@ -119,7 +112,7 @@ const CollectionTraits: React.FC<React.PropsWithChildren<CollectionTraitsProps>>
                   </tbody>
                 </Table>
               </TableWrapper>
-            </CollapsibleCard>
+            </StyledCollapsibleCard>
           )
         })}
     </>
