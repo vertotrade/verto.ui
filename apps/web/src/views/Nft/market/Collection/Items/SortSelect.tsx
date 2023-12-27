@@ -1,7 +1,14 @@
+import styled from 'styled-components'
 import { Select, OptionProps } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { useNftStorage } from 'state/nftMarket/storage'
 import { useGetNftOrdering } from 'state/nftMarket/hooks'
+
+const StyledSelect = styled(Select)`
+  > div {
+    background: ${({ theme }) => theme.colors.vertoBg1};
+  }
+`
 
 const SortSelect: React.FC<React.PropsWithChildren<{ collectionAddress: string }>> = ({ collectionAddress }) => {
   const { t } = useTranslation()
@@ -24,7 +31,7 @@ const SortSelect: React.FC<React.PropsWithChildren<{ collectionAddress: string }
   )
 
   return (
-    <Select
+    <StyledSelect
       options={sortByItems}
       onOptionChange={handleChange}
       key={defaultOptionIndex !== -1 ? defaultOptionIndex : undefined}

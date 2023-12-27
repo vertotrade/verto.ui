@@ -33,6 +33,7 @@ const TriggerButton = styled(Button)<{ hasItem: boolean }>`
   ${({ hasItem }) =>
     hasItem &&
     `
+    font-weight: 700;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     padding-right: 8px;
@@ -137,7 +138,7 @@ export const ListTraitFilter: React.FC<React.PropsWithChildren<ListTraitFilterPr
           component={
             <TriggerButton
               onClick={handleMenuClick}
-              variant={isTraitSelected ? 'subtle' : 'light'}
+              variant={isTraitSelected ? 'vertoPrimary' : 'vertoSecondary'}
               scale="sm"
               hasItem={isTraitSelected}>
               {title}
