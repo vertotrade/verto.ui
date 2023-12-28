@@ -15,8 +15,10 @@ const StyledAspectRatio = styled(Box)`
 export const NftMediaImage = styled(Image)`
   height: max-content;
   overflow: hidden;
+
   & > img {
     object-fit: contain;
+    border-radius: 8px;
   }
 `
 
