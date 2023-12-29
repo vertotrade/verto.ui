@@ -56,7 +56,6 @@ const StyledCardDetailsContainer = styled.div`
 
 const CollectionCard: React.FC<React.PropsWithChildren<CollectionCardProps>> = ({
   bgSrc,
-  avatarSrc,
   collectionName,
   collectionVolume,
   collectionSupply,
