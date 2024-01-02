@@ -19,6 +19,7 @@ export const NftMediaImage = styled(Image)`
 
   & > img {
     object-fit: contain;
+    border-radius: 8px;
   }
 `
 
