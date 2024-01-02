@@ -6,6 +6,7 @@ import { ButtonMenuProps } from "./types";
 
 interface StyledButtonMenuProps extends ButtonMenuProps {
   theme: DefaultTheme;
+  isLight?: boolean;
   noBg: boolean;
 }
 
@@ -52,6 +53,15 @@ const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
     return "";
   }}
   ${space}
+
+  ${({ isLight, theme }) => {
+    if (isLight) {
+      return `
+        background-color: ${theme.colors.buttonMenuBg};
+    `;
+    }
+    return "";
+  }}
 `;
 
 const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
@@ -65,15 +75,17 @@ const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
   fullWidth = false,
   ...props
 }) => {
+  const isLight = variant == variants.LIGHT;
+
   return (
-    <StyledButtonMenu disabled={disabled} fullWidth={fullWidth} {...props} noBg={noBg ? noBg : false}>
+    <StyledButtonMenu disabled={disabled} fullWidth={fullWidth} isLight={isLight} noBg={noBg ? noBg : false} {...props}>
       {Children.map(children, (child: ReactElement, index) => {
         return cloneElement(child, {
           isActive: activeIndex === index,
           onClick: onItemClick ? () => onItemClick(index) : undefined,
           variant,
           scale,
-          disabled,
+          disabled
         });
       })}
     </StyledButtonMenu>
