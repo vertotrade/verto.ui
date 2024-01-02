@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { Flex, Card, Grid, SellIcon, Text, useModal, Box, Skeleton, Button } from '@verto/uikit'
+import { Flex, Grid, Text, useModal, Box, Skeleton, Button } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
-import useTheme from 'hooks/useTheme'
 import { CurrencyLogo } from 'components/Logo'
 import { NftToken } from 'state/nftMarket/types'
 import { formatNumber } from '@verto/utils/formatBalance'
@@ -12,14 +11,7 @@ import BuyModal from '../../../components/BuySellModals/BuyModal'
 import SellModal from '../../../components/BuySellModals/SellModal'
 import ProfileCell from '../../../components/ProfileCell'
 import { ButtonContainer, TableHeading } from '../shared/styles'
-
-const StyledCard = styled(Card)`
-  width: 100%;
-  & > div:first-child {
-    display: flex;
-    flex-direction: column;
-  }
-`
+import ExpandableCard from '../shared/ExpandableCard'
 
 const OwnerRow = styled(Grid)`
   grid-template-columns: 2fr 2fr 1fr;
@@ -27,6 +19,11 @@ const OwnerRow = styled(Grid)`
   margin-top: 16px;
   margin-bottom: 8px;
   align-items: center;
+`
+
+const StyledText = styled(Text)`
+  color: ${({ theme }) => `${theme.colors.tableHeader}`};
+  font-size: 14px;
 `
 
 interface OwnerCardProps {
@@ -44,7 +41,6 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
   onSuccess,
 }) => {
   const { t } = useTranslation()
-  const { theme } = useTheme()
 
   const { owner, isLoadingOwner } = useNftOwner(nft, isOwnNft)
 
@@ -56,29 +52,15 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
     <SellModal variant={nft.marketData?.isTradable ? 'edit' : 'sell'} nftToSell={nft} onSuccessSale={onSuccess} />,
   )
 
-  return (
-    <StyledCard>
-      <Grid
-        flex="0 1 auto"
-        gridTemplateColumns="34px 1fr"
-        alignItems="center"
-        height="72px"
-        px="24px"
-        borderBottom={`1px solid ${theme.colors.cardBorder}`}>
-        <SellIcon width="24px" height="24px" />
-        <Text bold>{t('Owner')}</Text>
-      </Grid>
+  const content = (
+    <Box background="transparent" pt="10px">
       {owner && (
         <>
           <TableHeading flex="0 1 auto" gridTemplateColumns="2fr 2fr 1fr" py="12px">
             <Flex alignItems="center">
-              <Text textTransform="uppercase" color="textSubtle" bold fontSize="12px" px="24px">
-                {t('Price')}
-              </Text>
+              <StyledText pl="24px">{t('Price')}</StyledText>
             </Flex>
-            <Text textTransform="uppercase" color="textSubtle" bold fontSize="12px">
-              {t('Owner')}
-            </Text>
+            <StyledText>{t('Owner')}</StyledText>
           </TableHeading>
           <OwnerRow>
             <Box pl="24px">
@@ -95,7 +77,7 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
                       {`(~${formatNumber(priceInUsd, 2, 2)} USD)`}
                     </Text>
                   ) : (
-                    <Skeleton width="86px" height="12px" mt="4px" />
+                    ''
                   )}
                 </>
               ) : (
@@ -122,10 +104,11 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
               ) : (
                 <Button
                   disabled={!nft.marketData?.isTradable}
-                  scale="sm"
+                  scale="md"
                   variant="secondary"
                   maxWidth="128px"
-                  onClick={onPresentBuyModal}>
+                  onClick={onPresentBuyModal}
+                  style={{ fontSize: '16px' }}>
                   {t('Buy')}
                 </Button>
               )}
@@ -139,8 +122,9 @@ const OwnerCard: React.FC<React.PropsWithChildren<OwnerCardProps>> = ({
           <Text>{t('Owner information is not available for this item')}</Text>
         </Flex>
       )}
-    </StyledCard>
+    </Box>
   )
+  return <ExpandableCard title={t('Owner')} content={content} />
 }
 
 export default OwnerCard

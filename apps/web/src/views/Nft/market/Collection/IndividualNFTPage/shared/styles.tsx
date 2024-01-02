@@ -1,18 +1,6 @@
 import styled from 'styled-components'
 import { Box, Flex, Grid, Image, NextLinkFromReactRouter } from '@verto/uikit'
 
-export const TwoColumnsContainer = styled(Flex)`
-  gap: 22px;
-  align-items: flex-start;
-  & > div:first-child {
-    flex: 1;
-    gap: 20px;
-  }
-  & > div:last-child {
-    flex: 2;
-  }
-`
-
 export const RoundedImage = styled(Image)`
   height: max-content;
   border-radius: ${({ theme }) => theme.radii.default};

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Box, Flex, Text, SearchIcon, Link } from '@verto/uikit'
+import { Flex, Text, Link } from '@verto/uikit'
 import { getBlockExploreLink } from 'utils'
 import { formatNumber } from '@verto/utils/formatBalance'
 import uriToHttp from '@verto/utils/uriToHttp'
@@ -21,6 +21,11 @@ const LongTextContainer = styled(Text)`
   text-overflow: ellipsis;
 `
 
+const StyledText = styled(Text)`
+  color: ${({ theme }) => `${theme.colors.placeholder}`};
+  font-size: 14px;
+`
+
 const DetailsCard: React.FC<React.PropsWithChildren<DetailsCardProps>> = ({
   contractAddress,
   ipfsJson,
@@ -31,44 +36,36 @@ const DetailsCard: React.FC<React.PropsWithChildren<DetailsCardProps>> = ({
   const { chainId } = useActiveChainId()
   const ipfsLink = ipfsJson ? uriToHttp(ipfsJson)[0] : null
   const content = (
-    <Box p="24px">
-      <Flex justifyContent="space-between" alignItems="center" mb="16px">
-        <Text fontSize="12px" color="textSubtle" bold textTransform="uppercase">
-          {t('Contract address')}
-        </Text>
+    <Flex justifyContent="space-between" pt="24px">
+      <Flex justifyContent="space-between" alignItems="start" flexDirection="column">
+        <StyledText>{t('Contract address')}</StyledText>
         <Link external href={getBlockExploreLink(contractAddress, 'address', chainId)}>
           <LongTextContainer bold>{contractAddress}</LongTextContainer>
         </Link>
       </Flex>
       {ipfsLink && (
-        <Flex justifyContent="space-between" alignItems="center" mb="16px">
-          <Text fontSize="12px" color="textSubtle" bold textTransform="uppercase">
-            IPFS JSON
-          </Text>
+        <Flex justifyContent="space-between" alignItems="center">
+          <StyledText>IPFS JSON</StyledText>
           <Link external href={ipfsLink}>
             <LongTextContainer bold>{ipfsLink}</LongTextContainer>
           </Link>
         </Flex>
       )}
       {count && (
-        <Flex justifyContent="space-between" alignItems="center" mb="16px" mr="4px">
-          <Text fontSize="12px" color="textSubtle" bold textTransform="uppercase">
-            {t('Supply Count')}
-          </Text>
+        <Flex justifyContent="space-between" alignItems="center" mr="4px">
+          <StyledText>{t('Supply Count')}</StyledText>
           <LongTextContainer bold>{formatNumber(count, 0, 0)}</LongTextContainer>
         </Flex>
       )}
       {rarity && (
         <Flex justifyContent="space-between" alignItems="center" mr="4px">
-          <Text fontSize="12px" color="textSubtle" bold textTransform="uppercase">
-            {t('Rarity')}
-          </Text>
+          <StyledText>{t('Rarity')}</StyledText>
           <LongTextContainer bold>{`${formatNumber(rarity, 0, 2)}%`}</LongTextContainer>
         </Flex>
       )}
-    </Box>
+    </Flex>
   )
-  return <ExpandableCard title={t('Details')} icon={<SearchIcon width="24px" height="24px" />} content={content} />
+  return <ExpandableCard title={t('Details')} content={content} />
 }
 
 export default DetailsCard

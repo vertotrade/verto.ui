@@ -1,16 +1,5 @@
 import styled from 'styled-components'
-import {
-  Box,
-  Flex,
-  Grid,
-  Text,
-  CogIcon,
-  SellIcon,
-  WalletFilledIcon,
-  CameraIcon,
-  Skeleton,
-  useModal,
-} from '@verto/uikit'
+import { Box, Flex, Grid, Text, SellIcon, WalletFilledIcon, CameraIcon, Skeleton, useModal } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { useProfile } from 'state/profile/hooks'
 import { NftLocation, NftToken, Collection } from 'state/nftMarket/types'
@@ -192,7 +181,7 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
   const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
 
   const content = (
-    <Box pt="16px">
+    <Box pt="24px">
       {!account && (
         <Flex mb="16px" justifyContent="center">
           <ConnectWalletButton />
@@ -254,7 +243,6 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
   return (
     <ExpandableCard
       title={`${tokenId ? t('Manage Yours') : t('Manage Yours in Collection')}${totalNftsText}`}
-      icon={<CogIcon width="24px" height="24px" />}
       content={content}
     />
   )

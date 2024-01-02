@@ -4,6 +4,7 @@ import { BaseButtonProps, Scale, variants } from "../Button/types";
 
 export interface ButtonMenuItemProps extends BaseButtonProps {
   isActive?: boolean;
+  noBg?: boolean;
 }
 
 export interface ButtonMenuProps extends SpaceProps {
@@ -14,4 +15,5 @@ export interface ButtonMenuProps extends SpaceProps {
   disabled?: boolean;
   children: ReactElement[];
   fullWidth?: boolean;
+  noBg?: boolean;
 }
