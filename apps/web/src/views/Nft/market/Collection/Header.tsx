@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
-import { Text, PageHeader } from '@verto/uikit'
+import styled from 'styled-components'
+import { Text, PageHeader, MenuItems } from '@verto/uikit'
 import { Collection } from 'state/nftMarket/types'
 import { formatNumber } from '@verto/utils/formatBalance'
 import { useTranslation } from '@verto/localization'
@@ -8,8 +9,13 @@ import MarketPageTitle from '../components/MarketPageTitle'
 import StatBox, { StatBoxItem } from '../components/StatBox'
 import BannerHeader from '../components/BannerHeader'
 import AvatarImage from '../components/BannerHeader/AvatarImage'
-import BaseSubMenu from '../components/BaseSubMenu'
 import { nftsBaseUrl } from '../constants'
+
+const StyledMenu = styled(MenuItems)`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.hr};
+  margin: 0 32px;
+  gap: 34px;
+`
 
 interface HeaderProps {
   collection: Collection
@@ -62,7 +68,7 @@ const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ collection }) 
         </MarketPageTitle>
       </PageHeader>
       <Container>
-        <BaseSubMenu items={itemsConfig} activeItem={router.asPath} mt="24px" mb="8px" />
+        <StyledMenu items={itemsConfig} activeItem={router.asPath} isSecondaryMenu />
       </Container>
     </>
   )
