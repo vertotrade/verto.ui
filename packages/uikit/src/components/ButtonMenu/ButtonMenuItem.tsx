@@ -12,7 +12,7 @@ interface MaybeActiveButtonProps extends BaseButtonProps {
 const MaybeActiveButton: PolymorphicComponent<MaybeActiveButtonProps, "button"> = styled(
   Button
 )<MaybeActiveButtonProps>`
-  background-color: ${({ theme, isActive, isPrimary, variant }) => {
+  background-color: ${({ theme, isActive, isPrimary, variant, noBg }) => {
     if ( !isActive && noBg ) return "transparent"
     if (variant === variants.LIGHT) return isActive ? theme.colors.buttonMenuActiveBg : theme.colors.buttonMenuBg;
     else if (isPrimary) return isActive ? theme.colors.newPrimary : theme.colors.inputBg;
