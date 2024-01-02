@@ -6,14 +6,16 @@ import { ButtonMenuItemProps } from "./types";
 
 interface MaybeActiveButtonProps extends BaseButtonProps {
   forwardedAs: BaseButtonProps["as"];
+  noBg?: boolean;
 }
 
 const MaybeActiveButton: PolymorphicComponent<MaybeActiveButtonProps, "button"> = styled(
   Button
 )<MaybeActiveButtonProps>`
   background-color: ${({ theme, isActive, isPrimary, variant }) => {
-    if (isPrimary) return isActive ? theme.colors.newPrimary : theme.colors.inputBg;
+    if ( !isActive && noBg ) return "transparent"
     if (variant === variants.LIGHT) return isActive ? theme.colors.buttonMenuActiveBg : theme.colors.buttonMenuBg;
+    else if (isPrimary) return isActive ? theme.colors.newPrimary : theme.colors.inputBg;
     return isActive ? theme.colors.backgroundAlt : theme.colors.inputBg;
   }};
   color: ${({ theme, isActive, isPrimary, isDark, variant }) => {

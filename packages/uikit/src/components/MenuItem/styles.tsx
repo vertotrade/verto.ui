@@ -105,6 +105,40 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
         }
       `
       : ""};
+
+  ${({ theme, $isSecondaryMenu }) =>
+    $isSecondaryMenu
+      ? `
+      font-weight: 400;
+      color: #818181;
+      opacity: 1;
+      background: #818181;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      :hover,
+      :focus {
+        color: ${theme.colors.secondaryButtonText};
+        opacity: 1;
+        background: ${theme.colors.secondaryButtonText};
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+          }
+      `
+      : ""};
+
+  ${({ theme, $isSecondaryMenu, $isActive }) =>
+    $isSecondaryMenu && $isActive
+      ? `
+      font-weight: 400;
+      color: ${theme.colors.secondaryButtonText};
+      opacity: 1;
+      background: ${theme.colors.secondaryButtonText};
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      `
+      : ""};
+
 `;
 
 export default StyledMenuItem;

@@ -27,6 +27,7 @@ export * from "./Spinner";
 export * from "./Stepper";
 export * from "./BaseMenu";
 export * from "./SubMenuItems";
+export * from "./MenuItems";
 export * from "./Svg";
 export * from "./Table";
 export * from "./ThemeSwitcher";
