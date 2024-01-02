@@ -6,7 +6,8 @@ import Page from 'components/Layout/Page'
 import { useGetCollection } from 'state/nftMarket/hooks'
 import PageLoader from 'components/Loader/PageLoader'
 import fromPairs from 'lodash/fromPairs'
-import MainNFTCard from './MainNFTCard'
+import NFTMedia from 'views/Nft/market/components/NFTMedia'
+import NFTHeaderDetails from './NFTHeaderDetails'
 import PropertiesCard from '../shared/PropertiesCard'
 import DetailsCard from '../shared/DetailsCard'
 import useGetCollectionDistribution from '../../../hooks/useGetCollectionDistribution'
@@ -61,19 +62,27 @@ const IndividualNFTPage: React.FC<React.PropsWithChildren<IndividualNFTPageProps
 
   return (
     <Page>
-      <MainNFTCard nft={nft} isOwnNft={isOwnNft} nftIsProfilePic={isProfilePic} onSuccess={refetch} />
-      <Flex flexDirection="column" maxWidth="656px" width="100%" style={{ gap: '16px' }}>
-        <ManageNFTsCard collection={collection} tokenId={tokenId} onSuccess={isOwnNft ? refetch : noop} />
-        <PropertiesCard properties={properties} rarity={attributesRarity} />
-        <DetailsCard contractAddress={collectionAddress} ipfsJson={nft?.marketData?.metadataUrl} />
-        <OwnerCard
-          contractCollection={contractCollection}
-          nft={nft}
-          isOwnNft={isOwnNft}
-          nftIsProfilePic={isProfilePic}
-          onSuccess={refetch}
-        />
-        {/* <ActivityCard nft={nft} /> */}
+      <Flex
+        flexDirection={['column', 'column', 'row-reverse']}
+        alignItems="top"
+        width="100%"
+        style={{ gap: '16px' }}
+        paddingTop={[null, null, '88px']}>
+        <NFTHeaderDetails nft={nft} isOwnNft={isOwnNft} nftIsProfilePic={isProfilePic} onSuccess={refetch} />
+        <Flex flexDirection="column" alignItems="center" maxWidth="656px" width="100%" style={{ gap: '16px' }}>
+          <NFTMedia key={nft.tokenId} nft={nft} width={464} height={464} />
+          <ManageNFTsCard collection={collection} tokenId={tokenId} onSuccess={isOwnNft ? refetch : noop} />
+          <PropertiesCard properties={properties} rarity={attributesRarity} />
+          <DetailsCard contractAddress={collectionAddress} ipfsJson={nft?.marketData?.metadataUrl} />
+          <OwnerCard
+            contractCollection={contractCollection}
+            nft={nft}
+            isOwnNft={isOwnNft}
+            nftIsProfilePic={isProfilePic}
+            onSuccess={refetch}
+          />
+          {/* <ActivityCard nft={nft} /> */}
+        </Flex>
       </Flex>
       <MoreFromThisCollection collectionAddress={collectionAddress} currentTokenName={nft.name} />
     </Page>
