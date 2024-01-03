@@ -44,6 +44,11 @@ const config = (t: ContextApi['t']) => {
         ],
       },
     ],
+    applyHeader: t('Apply to NFT Marketplace!'),
+    applyDescription: t(
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    ),
+    applyButton: t('Apply'),
   }
 }
 
