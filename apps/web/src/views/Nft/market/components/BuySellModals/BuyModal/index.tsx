@@ -9,6 +9,7 @@ import { useERC20, useNftMarketContract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import useTokenBalance from 'hooks/useTokenBalance'
 import useSWR from 'swr'
+import { useGasPrice } from 'state/user/hooks'
 import { useState } from 'react'
 import { NftToken } from 'state/nftMarket/types'
 import { useTokenAndPriceByAddress } from 'utils/prices'
@@ -69,6 +70,8 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
   const walletBalance = getBalanceNumber(balance, token?.decimals)
 
   const notEnoughForPurchase = balance.lt(ethersToBigNumber(nftPriceWei))
+
+  const gasPrice = useGasPrice()
 
   const {
     isApproving: vertoIsApproving,
@@ -158,6 +161,7 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
         <ApproveAndConfirmStage
           token={token}
           variant="buy"
+          gasPrice={gasPrice}
           handleApprove={handleApprove}
           isApproved={isApproved}
           isApproving={isApproving}
