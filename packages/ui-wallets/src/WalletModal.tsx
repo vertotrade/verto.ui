@@ -164,7 +164,7 @@ function MobileModal<T>({
             {t('Haven’t got a crypto wallet yet?')}
           </Text>
         </AtomBox>
-        <Button as="a" href={docLink} variant="subtle" width="100%" external>
+        <Button as="a" href={docLink} variant="subtle" width="100%" external padding="0 15px">
           {docText}
         </Button>
       </AtomBox>
@@ -439,7 +439,7 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
       <Heading as="h1" fontSize="20px" color="secondary">
         {t('Haven’t got a wallet yet?')}
       </Heading>
-      <Button as={LinkExternal} color="textSubtle" variant="subtle" href={docLink} hoverBackgroundColor="#27C5A2">
+      <Button as={LinkExternal} color="textSubtle" variant="subtle" href={docLink} hoverBackgroundColor="#27C5A2" padding="0 15px">
         {docText}
       </Button>
     </>
