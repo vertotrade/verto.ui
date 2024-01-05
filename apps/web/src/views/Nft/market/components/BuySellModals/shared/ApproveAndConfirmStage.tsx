@@ -7,6 +7,7 @@ import { StepIndicator } from './styles'
 interface ApproveAndConfirmStageProps {
   token: ERC20Token
   variant: 'buy' | 'sell'
+  gasPrice?: string
   isApproved: boolean
   isApproving: boolean
   isConfirming: boolean
@@ -32,6 +33,7 @@ const SpinnerWrapper = styled(Flex)`
 const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirmStageProps>> = ({
   token,
   variant,
+  gasPrice,
   isApproved,
   isApproving,
   isConfirming,
@@ -95,7 +97,7 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
               </Flex>
               {!vertoIsApproved && (
                 <Text small color={isApproved ? 'textSubtle' : 'textDisabled'}>
-                  {t('Please approve VERTO spending for transaction gas')}
+                  {t('Please approve %symbol% VERTO spending for transaction gas', { symbol: gasPrice })}
                 </Text>
               )}
             </Flex>
