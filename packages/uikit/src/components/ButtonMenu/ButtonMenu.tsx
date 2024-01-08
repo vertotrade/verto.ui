@@ -12,7 +12,7 @@ interface StyledButtonMenuProps extends ButtonMenuProps {
 
 const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
   height: 40px;
-  background-color: ${({ theme, noBg }) => !noBg ? theme.colors.inputBg : "transparent"};
+  background-color: ${({ theme, noBg }) => (!noBg ? theme.colors.inputBg : "transparent")};
   border-radius: 8px;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   gap: 4px;
@@ -85,7 +85,7 @@ const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
           onClick: onItemClick ? () => onItemClick(index) : undefined,
           variant,
           scale,
-          disabled
+          disabled,
         });
       })}
     </StyledButtonMenu>

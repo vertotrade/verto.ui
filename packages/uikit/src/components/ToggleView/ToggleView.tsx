@@ -37,7 +37,7 @@ export const ToggleView: React.FunctionComponent<React.PropsWithChildren<ToggleV
   idPrefix,
   viewMode,
   onToggle,
-  noBg
+  noBg,
 }) => {
   const handleToggleCard = useCallback(() => {
     if (viewMode !== ViewMode.CARD) {
@@ -53,7 +53,7 @@ export const ToggleView: React.FunctionComponent<React.PropsWithChildren<ToggleV
 
   return (
     <Container>
-      <ButtonMenu activeIndex={viewMode === ViewMode.CARD ? 0 : 1} noBg={noBg ? noBg : false} >
+      <ButtonMenu activeIndex={viewMode === ViewMode.CARD ? 0 : 1} noBg={noBg ? noBg : false}>
         <ButtonMenuItem noBg={noBg ? noBg : false}>
           <StyledIconButton variant="vertoGhost" scale="newXs" id={`${idPrefix}CardView`} onClick={handleToggleCard}>
             <CardViewIcon color={viewMode === ViewMode.CARD ? "icon" : "disabledTextDark"} />

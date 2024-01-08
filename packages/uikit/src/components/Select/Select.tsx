@@ -42,7 +42,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
   width: 100%;
   max-width: 200px;
   position: relative;
-  background: ${({ theme, isOpen }) => isOpen ? theme.colors.inputBg : "transparent"};
+  background: ${({ theme, isOpen }) => (isOpen ? theme.colors.inputBg : "transparent")};
   border-radius: 7.5px;
   height: 40px;
   min-width: 136px;
@@ -65,7 +65,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
         height: auto;
         transform: scaleY(1);
         opacity: 1;
-        background: ${({ theme }) => props.isOpen ? theme.colors.inputBg : "transparent"};
+        background: ${({ theme }) => (props.isOpen ? theme.colors.inputBg : "transparent")};
         border: 1px solid ${({ theme }) => theme.colors.newPrimary};
         border-top-width: 0;
         border-radius: 0 0 7.5px 7.5px;
