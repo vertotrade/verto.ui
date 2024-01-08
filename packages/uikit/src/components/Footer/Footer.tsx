@@ -69,7 +69,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
                       color="text"
                       bold={false}
                       internal={internal}
-                      hoverBackgroundColor = "inherit"
+                      hoverBackgroundColor="inherit"
                     >
                       {label}
                     </Link>

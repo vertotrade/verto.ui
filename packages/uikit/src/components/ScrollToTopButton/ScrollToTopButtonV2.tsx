@@ -49,12 +49,7 @@ const ScrollToTopButtonV2 = () => {
 
   return (
     <FixedContainer style={{ display: visible && !isMobile ? "inline" : "none" }}>
-      <Button
-        width={48}
-        height={48}
-        endIcon={<ArrowUpIcon style={{ marginLeft: 0 }} />}
-        onClick={scrollToTop}
-      />
+      <Button width={48} height={48} endIcon={<ArrowUpIcon style={{ marginLeft: 0 }} />} onClick={scrollToTop} />
     </FixedContainer>
   );
 };
