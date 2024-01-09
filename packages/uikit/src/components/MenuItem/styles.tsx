@@ -138,7 +138,6 @@ const StyledMenuItem = styled.a<StyledMenuItemProps>`
       -webkit-text-fill-color: transparent;
       `
       : ""};
-
 `;
 
 export default StyledMenuItem;
