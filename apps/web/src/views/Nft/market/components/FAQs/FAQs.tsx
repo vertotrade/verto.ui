@@ -11,7 +11,7 @@ interface Props extends BoxProps {
   }
 }
 
-const FAQs: React.FC<React.PropsWithChildren<Props>> = ({ config, ...props }) => {
+const FAQs: React.FC<Props> = ({ config, ...props }) => {
   return (
     <Flex flexWrap="wrap" {...props}>
       <Box maxWidth="370px" m="40px auto 0 auto">
