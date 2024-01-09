@@ -1,13 +1,13 @@
 import { useMemo } from 'react'
-import { Container, LinkExternal, PageHeader, PageSection } from '@verto/uikit'
+import { Container, PageHeader, PageSection } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
-import { useTheme } from '@verto/hooks'
 import { PageMeta } from 'components/Layout/Page'
 import { useGetCollections } from 'state/nftMarket/hooks'
 import { FetchStatus } from 'config/constants/types'
 import PageLoader from 'components/Loader/PageLoader'
 import orderBy from 'lodash/orderBy'
 import FAQs from '../components/FAQs/FAQs'
+import ApplyToMarketplace from '../components/ApplyToMarketplace'
 import Collections from './Collections'
 import config from './config'
 import { HeroSection } from '../components/HeroSection/HeroSection'
@@ -21,7 +21,6 @@ const Home = () => {
     () => orderBy(collections, collection => (collection.createdAt ? Date.parse(collection.createdAt) : 0), 'desc'),
     [collections],
   )
-  const { theme } = useTheme()
   // HERE: DO we need Newest Collection and Newest Arrivals? Arrivals come from Newest.tsk
   return (
     <>
@@ -47,16 +46,8 @@ const Home = () => {
       )}
       <Container p="64px 0">
         <FAQs config={config(t)} m="auto" />
-        <LinkExternal
-          color={theme.colors.text}
-          textDecoration="none"
-          href="https://docs.vertotrade.com/contact-us/business-partnerships/"
-          padding="10px 20px"
-          mx="auto"
-          mt="32px">
-          {t('Apply to NFT Marketplace!')}
-        </LinkExternal>
       </Container>
+      <ApplyToMarketplace config={config(t)} m="auto" />
     </>
   )
 }

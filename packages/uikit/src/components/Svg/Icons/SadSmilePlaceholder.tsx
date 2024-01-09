@@ -23,9 +23,9 @@ const Icon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
         />
       </g>
       <defs>
-      <clipPath id="clip0_5110_5434">
-        <rect width="42.6667" height="42.6667" fill="white" transform="translate(38.666 38.6667)"/>
-      </clipPath>
+        <clipPath id="clip0_5110_5434">
+          <rect width="42.6667" height="42.6667" fill="white" transform="translate(38.666 38.6667)" />
+        </clipPath>
       </defs>
     </Svg>
   );
