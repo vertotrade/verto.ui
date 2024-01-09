@@ -1,7 +1,14 @@
+import styled from 'styled-components'
 import { Select, OptionProps } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { useNftStorage } from 'state/nftMarket/storage'
 import { useGetNftOrdering } from 'state/nftMarket/hooks'
+
+const StyledSelect = styled(Select)`
+  > div {
+    background: ${({ theme }) => theme.colors.vertoBg1};
+  }
+`
 
 const SortSelect: React.FC<React.PropsWithChildren<{ collectionAddress: string }>> = ({ collectionAddress }) => {
   const { t } = useTranslation()
@@ -13,10 +20,10 @@ const SortSelect: React.FC<React.PropsWithChildren<{ collectionAddress: string }
   }
 
   const sortByItems = [
-    { label: t('Recently listed'), value: { field: 'updatedAt', direction: 'desc' } },
-    { label: t('Lowest price'), value: { field: 'currentAskPrice', direction: 'asc' } },
-    { label: t('Highest price'), value: { field: 'currentAskPrice', direction: 'desc' } },
-    { label: t('Token ID'), value: { field: 'tokenId', direction: 'asc' } },
+    { label: t('Recently listed'), value: { field: 'updated_at', direction: 'desc' } },
+    { label: t('Lowest price'), value: { field: 'asking_price', direction: 'asc' } },
+    { label: t('Highest price'), value: { field: 'asking_price', direction: 'desc' } },
+    { label: t('Token ID'), value: { field: 'token_id', direction: 'asc' } },
   ]
 
   const defaultOptionIndex = sortByItems.findIndex(
@@ -24,7 +31,7 @@ const SortSelect: React.FC<React.PropsWithChildren<{ collectionAddress: string }
   )
 
   return (
-    <Select
+    <StyledSelect
       options={sortByItems}
       onOptionChange={handleChange}
       key={defaultOptionIndex !== -1 ? defaultOptionIndex : undefined}

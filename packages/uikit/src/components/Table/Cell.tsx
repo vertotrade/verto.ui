@@ -11,7 +11,6 @@ export const Td = styled.td<TypographyProps>`
 `;
 
 export const Th = styled(Td).attrs({ as: "th" })`
-  color: ${({ theme }) => theme.colors.secondary};
-  font-size: 12px;
-  text-transform: uppercase;
+  color: ${({ theme, color }) => (color ? color : theme.colors.secondary)};
+  font-size: 14px;
 `;

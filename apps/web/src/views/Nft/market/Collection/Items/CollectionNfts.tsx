@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { BunnyPlaceholderIcon, AutoRenewIcon, Button, Flex, Grid, Text } from '@verto/uikit'
+import { SadSmilePlaceholder, AutoRenewIcon, Button, Flex, Grid, Text } from '@verto/uikit'
 import { Collection } from 'state/nftMarket/types'
 import { useTranslation } from '@verto/localization'
 import GridPlaceholder from '../../components/GridPlaceholder'
@@ -25,13 +25,13 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
 
   return (
     <>
-      {resultSize && (
+      {resultSize ? (
         <Flex p="16px">
           <Text bold>
             {resultSize} {t('Results')}
           </Text>
         </Flex>
-      )}
+      ) : null}
       {nfts.length > 0 ? (
         <>
           <Grid
@@ -64,9 +64,11 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
           </Flex>
         </>
       ) : (
-        <Flex alignItems="center" py="48px" flexDirection="column">
-          <BunnyPlaceholderIcon width="96px" mb="24px" />
-          <Text fontWeight={600}>{t('No NFTs found')}</Text>
+        <Flex alignItems="center" py="120px" flexDirection="column">
+          <SadSmilePlaceholder width="120px" mb="24px" />
+          <Text fontSize="22px" fontWeight={600} fontFamily="Poppins">
+            {t('No NFTs found')}
+          </Text>
         </Flex>
       )}
     </>

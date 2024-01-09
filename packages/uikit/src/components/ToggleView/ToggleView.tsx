@@ -13,10 +13,12 @@ interface ToggleViewProps {
   idPrefix: string;
   viewMode: ViewMode;
   onToggle: (mode: ViewMode) => void;
+  noBg?: boolean;
 }
 
 const Container = styled.div`
   margin-left: 4px;
+  display: flex;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-left: 0;
@@ -35,6 +37,7 @@ export const ToggleView: React.FunctionComponent<React.PropsWithChildren<ToggleV
   idPrefix,
   viewMode,
   onToggle,
+  noBg,
 }) => {
   const handleToggleCard = useCallback(() => {
     if (viewMode !== ViewMode.CARD) {
@@ -50,13 +53,13 @@ export const ToggleView: React.FunctionComponent<React.PropsWithChildren<ToggleV
 
   return (
     <Container>
-      <ButtonMenu activeIndex={viewMode === ViewMode.CARD ? 0 : 1}>
-        <ButtonMenuItem>
+      <ButtonMenu activeIndex={viewMode === ViewMode.CARD ? 0 : 1} noBg={noBg ? noBg : false}>
+        <ButtonMenuItem noBg={noBg ? noBg : false}>
           <StyledIconButton variant="vertoGhost" scale="newXs" id={`${idPrefix}CardView`} onClick={handleToggleCard}>
             <CardViewIcon color={viewMode === ViewMode.CARD ? "icon" : "disabledTextDark"} />
           </StyledIconButton>
         </ButtonMenuItem>
-        <ButtonMenuItem>
+        <ButtonMenuItem noBg={noBg ? noBg : false}>
           <StyledIconButton variant="vertoGhost" scale="newXs" id={`${idPrefix}TableView`} onClick={handleToggleTable}>
             <ListViewIcon color={viewMode === ViewMode.TABLE ? "icon" : "disabledTextDark"} />
           </StyledIconButton>

@@ -1,37 +1,20 @@
-import styled from 'styled-components'
 import { useMemo } from 'react'
-import {
-  Container,
-  Button,
-  LinkExternal,
-  PageHeader,
-  NextLinkFromReactRouter,
-  PageSection,
-  VertoHeading,
-  Text,
-} from '@verto/uikit'
-import { useAccount } from 'wagmi'
+import { Container, PageHeader, PageSection } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
-import SectionsWithFoldableText from 'components/FoldableSection/SectionsWithFoldableText'
 import { PageMeta } from 'components/Layout/Page'
 import { useGetCollections } from 'state/nftMarket/hooks'
 import { FetchStatus } from 'config/constants/types'
 import PageLoader from 'components/Loader/PageLoader'
 import orderBy from 'lodash/orderBy'
-import SearchBar from '../components/SearchBar'
+import FAQs from '../components/FAQs/FAQs'
+import ApplyToMarketplace from '../components/ApplyToMarketplace'
 import Collections from './Collections'
 import config from './config'
-
-const StyledSearchBar = styled(SearchBar)`
-  width: 100%;
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 0 24px;
-`
+import { HeroSection } from '../components/HeroSection/HeroSection'
 
 const Home = () => {
   const { t } = useTranslation()
-  const { address: account } = useAccount()
+  // const { address: account } = useAccount()
   const { data: collections, status } = useGetCollections()
 
   const newestCollections = useMemo(
@@ -43,17 +26,8 @@ const Home = () => {
     <>
       <PageMeta />
       <PageHeader>
-        <VertoHeading scale="xxl" mb="4px">
-          {t('NFT Marketplace')}
-        </VertoHeading>
-        <Text fontSize="16px">{t('Buy and Sell NFTs on Rebuschain')}</Text>
-        {account && (
-          <Button as={NextLinkFromReactRouter} to={`/profile/${account.toLowerCase()}`} mt="32px">
-            {t('Manage/Sell')}
-          </Button>
-        )}
+        <HeroSection />
       </PageHeader>
-      <StyledSearchBar />
       {status !== FetchStatus.Fetched ? (
         <PageLoader />
       ) : (
@@ -71,11 +45,9 @@ const Home = () => {
         </PageSection>
       )}
       <Container p="64px 0">
-        <SectionsWithFoldableText header={t('FAQs')} config={config(t)} m="auto" />
-        <LinkExternal href="https://docs.pancakeswap.finance/contact-us/nft-market-applications" mx="auto" mt="32px">
-          {t('Apply to NFT Marketplace!')}
-        </LinkExternal>
+        <FAQs config={config(t)} m="auto" />
       </Container>
+      <ApplyToMarketplace config={config(t)} m="auto" />
     </>
   )
 }

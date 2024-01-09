@@ -5,6 +5,7 @@ import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction, isDark: boolean): SalesSectionProps => ({
   headingText: t('Trade smarter, not harder.'),
+  headingStyle: { fontSize: '64px', lineHeight: '72px' },
   bodyText: t('Trade any token on Rebuschain in seconds, just by connecting your wallet.'),
   reverse: false,
   primaryButton: {
@@ -16,6 +17,7 @@ export const swapSectionData = (t: TranslateFunction, isDark: boolean): SalesSec
     to: 'https://docs.vertotrade.com/',
     text: t('Learn more'),
     external: true,
+    isIcon: false,
   },
   images: {
     path: '/images/home/trade/',
@@ -43,6 +45,7 @@ export const earnSectionData = (t: TranslateFunction, isDark: boolean): SalesSec
     to: 'https://docs.vertotrade.com/products/yield-farming',
     text: t('Learn more'),
     external: true,
+    isIcon: false,
   },
   images: {
     path: '/images/home/earn/',
@@ -72,6 +75,7 @@ export const vertoSectionData = (t: TranslateFunction, isDark: boolean, theme: a
     to: 'https://docs.vertotrade.com/tokenomics/verto/#verto',
     text: t('Learn more'),
     external: true,
+    isIcon: false,
   },
 
   images: {
@@ -88,7 +92,7 @@ export const vertoSectionData = (t: TranslateFunction, isDark: boolean, theme: a
       background="transparent"
       textColor={isDark ? theme.colors.text : theme.colors.black}
       divBackground={theme.colors.backgroundAlt}
-      Clip={() => <Clip url="images/animations/token.webm" />}
+      Clip={() => <Clip url="images/animations/token.webm" width="256px" height="256px" />}
       reverse
     />
   ),

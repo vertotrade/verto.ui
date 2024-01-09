@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import styled, { keyframes, css } from 'styled-components'
-import { Grid, Text, Card, Box, ChevronUpIcon, ChevronDownIcon, IconButton } from '@verto/uikit'
-import useTheme from 'hooks/useTheme'
+import { Flex, Text, Card, Box, ChevronUpIcon, ChevronDownIcon, IconButton } from '@verto/uikit'
 
 const expandAnimation = keyframes`
   from {
@@ -34,27 +33,24 @@ const ExpandableCardBody = styled(Box)<{ expanded: boolean }>`
 
 const FullWidthCard = styled(Card)`
   width: 100%;
+  background: ${({ theme }) => `${theme.colors.vertoBg1}`};
+  border: 1px solid ${({ theme }) => `${theme.colors.hr}`};
 `
 
 interface ExpandableCardProps {
-  icon: React.ReactNode
   title: string
   content: React.ReactNode
 }
 
-const ExpandableCard: React.FC<React.PropsWithChildren<ExpandableCardProps>> = ({ icon, title, content }) => {
+const ExpandableCard: React.FC<React.PropsWithChildren<ExpandableCardProps>> = ({ title, content }) => {
   const [expanded, setExpanded] = useState(true)
-  const { theme } = useTheme()
+
   return (
-    <FullWidthCard>
-      <Grid
-        gridTemplateColumns="1fr 8fr 1fr"
-        alignItems="center"
-        height="72px"
-        px="24px"
-        borderBottom={`1px solid ${theme.colors.cardBorder}`}>
-        {icon}
-        <Text bold>{title}</Text>
+    <FullWidthCard background="transparent">
+      <Flex justifyContent="space-between" alignItems="center">
+        <Text fontWeight="600" fontFamily="Poppins,sans-serif">
+          {title}
+        </Text>
         <IconButton
           onClick={() => {
             setExpanded(prev => !prev)
@@ -67,7 +63,7 @@ const ExpandableCard: React.FC<React.PropsWithChildren<ExpandableCardProps>> = (
             <ChevronDownIcon width="24px" height="24px" color="textSubtle" />
           )}
         </IconButton>
-      </Grid>
+      </Flex>
       <ExpandableCardBody expanded={expanded}>{content}</ExpandableCardBody>
     </FullWidthCard>
   )

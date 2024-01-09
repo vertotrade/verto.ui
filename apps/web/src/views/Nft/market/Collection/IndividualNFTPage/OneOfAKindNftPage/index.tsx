@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import styled from 'styled-components'
 import { Flex } from '@verto/uikit'
 import sum from 'lodash/sum'
 import noop from 'lodash/noop'
@@ -7,8 +6,8 @@ import Page from 'components/Layout/Page'
 import { useGetCollection } from 'state/nftMarket/hooks'
 import PageLoader from 'components/Loader/PageLoader'
 import fromPairs from 'lodash/fromPairs'
-import MainNFTCard from './MainNFTCard'
-import { TwoColumnsContainer } from '../shared/styles'
+import NFTMedia from 'views/Nft/market/components/NFTMedia'
+import NFTHeaderDetails from './NFTHeaderDetails'
 import PropertiesCard from '../shared/PropertiesCard'
 import DetailsCard from '../shared/DetailsCard'
 import useGetCollectionDistribution from '../../../hooks/useGetCollectionDistribution'
@@ -22,10 +21,6 @@ interface IndividualNFTPageProps {
   collectionAddress: string
   tokenId: string
 }
-
-const OwnerActivityContainer = styled(Flex)`
-  gap: 22px;
-`
 
 const IndividualNFTPage: React.FC<React.PropsWithChildren<IndividualNFTPageProps>> = ({
   collectionAddress,
@@ -67,14 +62,18 @@ const IndividualNFTPage: React.FC<React.PropsWithChildren<IndividualNFTPageProps
 
   return (
     <Page>
-      <MainNFTCard nft={nft} isOwnNft={isOwnNft} nftIsProfilePic={isProfilePic} onSuccess={refetch} />
-      <TwoColumnsContainer flexDirection={['column', 'column', 'column', 'column', 'row']}>
-        <Flex flexDirection="column" width="100%">
+      <Flex
+        flexDirection={['column', 'column', 'row-reverse']}
+        alignItems="top"
+        width="100%"
+        style={{ gap: '16px' }}
+        paddingTop={[null, null, '88px']}>
+        <NFTHeaderDetails nft={nft} isOwnNft={isOwnNft} nftIsProfilePic={isProfilePic} onSuccess={refetch} />
+        <Flex flexDirection="column" alignItems="center" maxWidth="656px" width="100%" style={{ gap: '16px' }}>
+          <NFTMedia key={nft.tokenId} nft={nft} width={464} height={464} />
           <ManageNFTsCard collection={collection} tokenId={tokenId} onSuccess={isOwnNft ? refetch : noop} />
           <PropertiesCard properties={properties} rarity={attributesRarity} />
           <DetailsCard contractAddress={collectionAddress} ipfsJson={nft?.marketData?.metadataUrl} />
-        </Flex>
-        <OwnerActivityContainer flexDirection="column" width="100%">
           <OwnerCard
             contractCollection={contractCollection}
             nft={nft}
@@ -83,8 +82,8 @@ const IndividualNFTPage: React.FC<React.PropsWithChildren<IndividualNFTPageProps
             onSuccess={refetch}
           />
           {/* <ActivityCard nft={nft} /> */}
-        </OwnerActivityContainer>
-      </TwoColumnsContainer>
+        </Flex>
+      </Flex>
       <MoreFromThisCollection collectionAddress={collectionAddress} currentTokenName={nft.name} />
     </Page>
   )

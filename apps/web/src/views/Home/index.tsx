@@ -7,7 +7,7 @@ import IconDivider from 'components/IconDivider'
 import { useAccount } from 'wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { swapSectionData, earnSectionData, vertoSectionData } from './components/SalesSection/data'
-import SalesSection, { ButtonsWrapper } from './components/SalesSection'
+import SalesSection from './components/SalesSection'
 import VertoDataRow from './components/VertoDataRow'
 
 const FlexItem = styled(Flex)`
@@ -45,10 +45,6 @@ const VertoRowWrapper = styled(Flex)`
 
 const StyledText = styled(Text)`
   text-align: left;
-
-  @media screen and (max-width: 900px) {
-    text-align: center;
-  }
 `
 
 const FooterWrapper = styled(Flex)`
@@ -160,7 +156,11 @@ const Home: React.FC<React.PropsWithChildren> = () => {
               <StyledText color="black">
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
               </StyledText>
-              <ButtonsWrapper justifyContent="center" align-items="center">
+              <Flex
+                justifyContent="flex-start"
+                align-items="center"
+                flexDirection={['column', null, 'row']}
+                mr={['auto', null, 'unset']}>
                 {!account && (
                   <ConnectWalletButton
                     mt="24px"
@@ -169,15 +169,17 @@ const Home: React.FC<React.PropsWithChildren> = () => {
                   />
                 )}
                 <LinkExternal
-                  style={{ marginTop: '20px' }}
+                  style={{ marginTop: '24px', height: '48px' }}
                   color="black"
                   padding="0 20px"
+                  textDecoration="none"
                   hoverBackgroundColor={theme.isDark ? 'white' : theme.colors.secondaryButtonHoverBg}
+                  isIcon={false}
                   external
                   href="https://docs.vertotrade.com/">
                   {t('Learn how to start')}
                 </LinkExternal>
-              </ButtonsWrapper>
+              </Flex>
             </FooterWrapper>
           </FlexItem>
         </ContentWrapper>

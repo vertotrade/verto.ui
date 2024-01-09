@@ -1,18 +1,6 @@
 import styled from 'styled-components'
 import { Box, Flex, Grid, Image, NextLinkFromReactRouter } from '@verto/uikit'
 
-export const TwoColumnsContainer = styled(Flex)`
-  gap: 22px;
-  align-items: flex-start;
-  & > div:first-child {
-    flex: 1;
-    gap: 20px;
-  }
-  & > div:last-child {
-    flex: 2;
-  }
-`
-
 export const RoundedImage = styled(Image)`
   height: max-content;
   border-radius: ${({ theme }) => theme.radii.default};
@@ -36,10 +24,22 @@ export const CollectionLink = styled(NextLinkFromReactRouter)`
   color: ${({ theme }) => theme.colors.primary};
   display: block;
   font-weight: 600;
-  margin-top: 16px;
+  line-height: 22px;
+  font-family: 'Poppins', sans-serif;
+`
 
-  ${({ theme }) => theme.mediaQueries.lg} {
-    margin-top: 50px;
+export const PriceBox = styled(Flex)`
+  margin-top: 32px;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid ${({ theme }) => theme.colors.hr};
+  border-radius: 16px;
+  padding: 24px;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    flex-direction: row;
+    width: 464px;
+    justify-content: space-between;
   }
 `
 

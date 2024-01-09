@@ -2,16 +2,14 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Box, ButtonMenu, ButtonMenuItem, Flex, Grid, Text } from '@verto/uikit'
 import capitalize from 'lodash/capitalize'
-import isEmpty from 'lodash/isEmpty'
-import { useGetNftFilters, useGetNftShowOnlyOnSale } from 'state/nftMarket/hooks'
+import { useGetNftShowOnlyOnSale } from 'state/nftMarket/hooks'
 import { NftAttribute } from 'state/nftMarket/types'
 import { useTranslation } from '@verto/localization'
 import { Item, ListTraitFilter } from 'views/Nft/market/components/Filters'
 import { useNftStorage } from 'state/nftMarket/storage'
 import groupBy from 'lodash/groupBy'
 import useGetCollectionDistribution from '../../hooks/useGetCollectionDistribution'
-import ClearAllButton from './ClearAllButton'
-// import SortSelect from './SortSelect'
+import SortSelect from './SortSelect'
 
 interface FiltersProps {
   address: string
@@ -24,52 +22,40 @@ const GridContainer = styled(Grid)`
   grid-gap: 8px 16px;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'filterByTitle .'
     'attributeFilters attributeFilters'
-    '. sortByTitle'
     'filterByControls sortByControls';
   ${({ theme }) => theme.mediaQueries.sm} {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-      'filterByTitle . .'
       'attributeFilters attributeFilters attributeFilters'
-      '. . sortByTitle'
       'filterByControls . sortByControls';
   }
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: 2fr 5fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-      'filterByTitle . .'
-      'filterByControls attributeFilters attributeFilters'
-      '. . sortByTitle'
-      '. . sortByControls';
+      'attributeFilters attributeFilters attributeFilters'
+      'filterByControls sortByControls';
   }
   ${({ theme }) => theme.mediaQueries.lg} {
     grid-template-columns: 1.3fr 5fr 1fr;
-    grid-template-areas:
-      'filterByTitle . sortByTitle'
-      'filterByControls attributeFilters sortByControls';
+    grid-template-areas: 'filterByControls attributeFilters sortByControls';
   }
   ${({ theme }) => theme.mediaQueries.xxl} {
     grid-template-columns: 1fr 5fr 1fr;
   }
 `
 
-const FilterByTitle = styled(Text)`
-  grid-area: filterByTitle;
-`
-
 const FilterByControls = styled(Box)`
   grid-area: filterByControls;
 `
 
-// const SortByTitle = styled(Text)`
-//   grid-area: sortByTitle;
-// `
-
-// const SortByControls = styled(Box)`
-//   grid-area: sortByControls;
-// `
+const SortByControls = styled(Box)`
+  grid-area: sortByControls;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-wrap: nowrap;
+`
 
 const ScrollableFlexContainer = styled(Flex)`
   grid-area: attributeFilters;
@@ -100,28 +86,23 @@ const Filters: React.FC<React.PropsWithChildren<FiltersProps>> = ({ address, att
     setShowOnlyOnSale({ collection: address, showOnlyOnSale: newIndex === 1 })
   }
 
-  const nftFilters = useGetNftFilters(address)
-
   const attrsByType: Record<string, NftAttribute[]> = attributes ? groupBy(attributes, attr => attr.traitType) : null
   const uniqueTraitTypes = attrsByType ? Object.keys(attrsByType) : []
 
   return (
     <GridContainer>
-      <FilterByTitle textTransform="uppercase" color="textSubtle" fontSize="12px" bold>
-        {t('Filter by')}
-      </FilterByTitle>
       <FilterByControls>
-        <ButtonMenu scale="sm" activeIndex={activeButtonIndex} onItemClick={onActiveButtonChange} variant="subtle">
+        <ButtonMenu scale="sm" activeIndex={activeButtonIndex} onItemClick={onActiveButtonChange} variant="light">
           <ButtonMenuItem>{t('All')}</ButtonMenuItem>
           <ButtonMenuItem>{t('On Sale')}</ButtonMenuItem>
         </ButtonMenu>
       </FilterByControls>
-      {/* <SortByTitle fontSize="12px" textTransform="uppercase" color="textSubtle" fontWeight={600} mb="4px">
-        {t('Sort By')}
-      </SortByTitle>
       <SortByControls>
+        <Text fontSize="14px" color="textSecondary">
+          {t('Sort By')}
+        </Text>
         <SortSelect collectionAddress={address} />
-      </SortByControls> */}
+      </SortByControls>
       <ScrollableFlexContainer>
         {uniqueTraitTypes.map(traitType => {
           const attrs = attrsByType[traitType]
@@ -141,7 +122,7 @@ const Filters: React.FC<React.PropsWithChildren<FiltersProps>> = ({ address, att
             />
           )
         })}
-        {!isEmpty(nftFilters) && <ClearAllButton collectionAddress={address} mb="4px" />}
+        {/* {!isEmpty(nftFilters) && <ClearAllButton collectionAddress={address} />} */}
       </ScrollableFlexContainer>
     </GridContainer>
   )

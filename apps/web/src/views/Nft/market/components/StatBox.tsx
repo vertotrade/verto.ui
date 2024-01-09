@@ -8,13 +8,13 @@ export interface StatBoxItemProps extends BoxProps {
 
 export const StatBoxItem: React.FC<React.PropsWithChildren<StatBoxItemProps>> = ({ title, stat, ...props }) => (
   <Box {...props}>
-    <Text fontSize="12px" color="textSubtle" textAlign="center">
+    <Text fontSize="14px" color="placeholder">
       {title}
     </Text>
     {stat === null ? (
       <Skeleton height="24px" width="50%" mx="auto" />
     ) : (
-      <Text fontWeight="600" textAlign="center">
+      <Text fontSize="16px" bold>
         {stat}
       </Text>
     )}
@@ -22,14 +22,9 @@ export const StatBoxItem: React.FC<React.PropsWithChildren<StatBoxItemProps>> = 
 )
 
 const StatBox = styled(Flex)`
-  align-items: center;
-  background: ${({ theme }) => theme.colors.invertedContrast};
-  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  border-radius: ${({ theme }) => theme.radii.card};
-  justify-content: space-around;
+  align-items: start;
+  gap: 40px;
   margin-left: auto;
-  padding: 8px 24px;
-  width: 100%;
 `
 
 export default StatBox
