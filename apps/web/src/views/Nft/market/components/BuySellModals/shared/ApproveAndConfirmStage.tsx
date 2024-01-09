@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { Flex, Text, Button, Spinner } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { ERC20Token } from '@verto/sdk'
@@ -17,14 +16,6 @@ interface ApproveAndConfirmStageProps {
   vertoIsApproving: boolean
   vertoHandleApprove: () => void
 }
-
-const SpinnerWrapper = styled(Flex)`
-  padding-left: 10px;
-
-  & > div {
-    margin: 0;
-  }
-`
 
 // Buy Flow:
 // Shown if user wants to pay and contract isn't approved yet
@@ -68,9 +59,7 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
             </Text>
           )}
         </Flex>
-        <SpinnerWrapper flex="0 0 64px" width="64px">
-          {isApproving && <Spinner size={64} />}
-        </SpinnerWrapper>
+        {isApproving && <Spinner size={64} />}
       </Flex>
       {!isApproved && (
         <Button variant="secondary" disabled={isApproving} onClick={handleApprove}>
@@ -101,9 +90,7 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
                 </Text>
               )}
             </Flex>
-            <SpinnerWrapper flex="0 0 64px" width="64px">
-              {vertoIsApproving && <Spinner size={64} />}
-            </SpinnerWrapper>
+            {vertoIsApproving && <Spinner size={64} />}
           </Flex>
           {!vertoIsApproved && (
             <Button
@@ -136,9 +123,7 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
             {t('Please confirm the transaction in your wallet')}
           </Text>
         </Flex>
-        <SpinnerWrapper flex="0 0 64px" width="64px">
-          {isConfirming && <Spinner size={64} />}
-        </SpinnerWrapper>
+        {isConfirming && <Spinner size={64} />}
       </Flex>
       <Button
         mt="16px"
