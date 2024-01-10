@@ -7,7 +7,6 @@ interface CollectionNftsGridProps {
 }
 
 const CollectionNftsGrid: React.FC<React.PropsWithChildren<CollectionNftsGridProps>> = ({ nfts }) => {
-
   return (
     <Grid
       gridGap="16px"
