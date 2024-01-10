@@ -7,7 +7,7 @@ import { useTranslation } from '@verto/localization'
 import GridPlaceholder from '../../components/GridPlaceholder'
 import { useCollectionNfts } from '../../hooks/useCollectionNfts'
 import { useCollectionsNftsForAddress } from '../../hooks/useNftsForAddress'
-import CollectionNftsGrid from './CollectionNFTsGrid';
+import CollectionNftsGrid from './CollectionNFTsGrid'
 
 interface CollectionNftsProps {
   collection: Collection
@@ -21,10 +21,9 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
   const { address: account } = useAccount()
   const { isLoading: isProfileLoading, profile } = useProfile()
 
-  const {
-    nfts: userNfts,
-    isLoading
-  } = useCollectionsNftsForAddress(account, profile, isProfileLoading, { [collectionAddress]: collection })
+  const { nfts: userNfts, isLoading } = useCollectionsNftsForAddress(account, profile, isProfileLoading, {
+    [collectionAddress]: collection
+  })
 
   const handleLoadMore = useCallback(() => {
     setPage(page + 1)
@@ -38,7 +37,9 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
     <>
       {!isLoading && userNfts.length > 0 ? (
         <>
-          <Text bold p="16px">{t('My "%symbol%" NFTs', { symbol: collectionName })}</Text>
+          <Text bold p="16px">
+            {t('My "%symbol%" NFTs', { symbol: collectionName })}
+          </Text>
           <CollectionNftsGrid nfts={userNfts} />
         </>
       ) : null}
