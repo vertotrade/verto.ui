@@ -22,7 +22,7 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
   const { isLoading: isProfileLoading, profile } = useProfile()
 
   const { nfts: userNfts, isLoading } = useCollectionsNftsForAddress(account, profile, isProfileLoading, {
-    [collectionAddress]: collection
+    [collectionAddress]: collection,
   })
 
   const handleLoadMore = useCallback(() => {
