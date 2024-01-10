@@ -1,19 +1,30 @@
 import { useCallback } from 'react'
-import { SadSmilePlaceholder, AutoRenewIcon, Button, Flex, Grid, Text } from '@verto/uikit'
+import { useAccount } from 'wagmi'
+import { SadSmilePlaceholder, AutoRenewIcon, Button, Flex, Text } from '@verto/uikit'
+import { useProfile } from 'state/profile/hooks'
 import { Collection } from 'state/nftMarket/types'
 import { useTranslation } from '@verto/localization'
 import GridPlaceholder from '../../components/GridPlaceholder'
-import { CollectibleLinkCard } from '../../components/CollectibleCard'
 import { useCollectionNfts } from '../../hooks/useCollectionNfts'
+import { useCollectionsNftsForAddress } from '../../hooks/useNftsForAddress'
+import CollectionNftsGrid from './CollectionNFTsGrid';
 
 interface CollectionNftsProps {
   collection: Collection
 }
 
 const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = ({ collection }) => {
-  const { address: collectionAddress } = collection || {}
+  const { address: collectionAddress, name: collectionName } = collection || {}
   const { t } = useTranslation()
   const { nfts, isFetchingNfts, page, setPage, resultSize, isLastPage } = useCollectionNfts(collectionAddress)
+
+  const { address: account } = useAccount()
+  const { isLoading: isProfileLoading, profile } = useProfile()
+
+  const {
+    nfts: userNfts,
+    isLoading
+  } = useCollectionsNftsForAddress(account, profile, isProfileLoading, { [collectionAddress]: collection })
 
   const handleLoadMore = useCallback(() => {
     setPage(page + 1)
@@ -25,6 +36,12 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
 
   return (
     <>
+      {!isLoading && userNfts.length > 0 ? (
+        <>
+          <Text bold p="16px">{t('My "%symbol%" NFTs', { symbol: collectionName })}</Text>
+          <CollectionNftsGrid nfts={userNfts} />
+        </>
+      ) : null}
       {resultSize ? (
         <Flex p="16px">
           <Text bold>
@@ -34,23 +51,7 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
       ) : null}
       {nfts.length > 0 ? (
         <>
-          <Grid
-            gridGap="16px"
-            gridTemplateColumns={['1fr', null, 'repeat(3, 1fr)', null, 'repeat(4, 1fr)']}
-            alignItems="start">
-            {nfts.map(nft => {
-              const currentAskPriceAsNumber = nft.marketData && parseFloat(nft?.marketData?.currentAskPrice)
-
-              return (
-                <CollectibleLinkCard
-                  key={nft.tokenId}
-                  nft={nft}
-                  currentAskPrice={currentAskPriceAsNumber > 0 ? currentAskPriceAsNumber : undefined}
-                  data-test="collection-detail-page-card"
-                />
-              )
-            })}
-          </Grid>
+          <CollectionNftsGrid nfts={nfts} />
           <Flex mt="60px" mb="12px" justifyContent="center">
             {!isLastPage && (
               <Button
