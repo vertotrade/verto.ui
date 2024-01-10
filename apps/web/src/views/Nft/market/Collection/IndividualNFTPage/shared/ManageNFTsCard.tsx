@@ -145,7 +145,6 @@ const getNftFilter = (location: NftLocation) => {
   return (nft: NftToken, collectionAddress: string, tokenId: string | number): boolean => {
     return (
       isAddress(nft.collectionAddress) === isAddress(collectionAddress) &&
-      (tokenId ? nft.attributes[0].value === tokenId : true) &&
       nft.location === location
     )
   }
@@ -177,6 +176,7 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
   const profileNft = userNfts.filter(nft => profileFilter(nft, collection.address, tokenId))
 
   const userHasNoNfts = !isLoading && nftsInWallet.length === 0 && nftsForSale.length === 0 && profileNft.length === 0
+  const userOwnsThisNFT = userNfts.filter(({tokenId: userTokenId}) => userTokenId === tokenId).length > 0
   const totalNfts = nftsInWallet.length + nftsForSale.length + profileNft.length
   const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
 
@@ -187,7 +187,7 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
           <ConnectWalletButton />
         </Flex>
       )}
-      {account && userHasNoNfts && (
+      {account && !userOwnsThisNFT && (
         <Text px="16px" pb="16px" color="textSubtle">
           {t('You don’t have any of this item.')}
         </Text>
