@@ -39,6 +39,22 @@
       "chainId": 1111,
       "decimals": 6,
       "logoURI": "/images/tokens/0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75.svg"
+    },
+    {
+      "name": "Axelar Wrapped WBTC",
+      "symbol": "axlWBTC",
+      "address": "0x5FD55A1B9FC24967C4dB09C513C3BA0DFa7FF687",
+      "chainId": 1111,
+      "decimals": 8,
+      "logoURI": "/images/tokens/0x5FD55A1B9FC24967C4dB09C513C3BA0DFa7FF687.svg"
+    },
+    {
+      "name": "Axelar Wrapped WETH",
+      "symbol": "axlWETH",
+      "address": "0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265",
+      "chainId": 1111,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265.svg"
     }
   ]
 }

@@ -32,6 +32,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     vertoTokens.aureus,
     vertoTokens.verto,
     vertoTokens.axlusdc,
+    vertoTokens.axlwbtc,
+    vertoTokens.axlweth,
   ].filter(Boolean),
   [ChainId.REBUS_TESTNET]: [
     vertoTokensTestnet.wrebus,
@@ -73,6 +75,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
     vertoTokens.aureus,
     vertoTokens.verto,
     vertoTokens.axlusdc,
+    vertoTokens.axlwbtc,
+    vertoTokens.axlweth,
   ].filter(Boolean),
   [ChainId.REBUS_TESTNET]: [
     vertoTokensTestnet.wrebus,
@@ -94,6 +98,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     vertoTokens.aureus,
     vertoTokens.verto,
     vertoTokens.axlusdc,
+    vertoTokens.axlwbtc,
+    vertoTokens.axlweth,
   ].filter(Boolean),
   [ChainId.REBUS_TESTNET]: [
     vertoTokensTestnet.wrebus,
