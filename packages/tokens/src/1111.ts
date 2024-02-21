@@ -49,22 +49,6 @@ export const vertoTokens = {
     'Axelar Wrapped USDC',
     'https://axelar.network/',
   ),
-  axlwbtc: new ERC20Token(
-    ChainId.REBUS,
-    '0x5FD55A1B9FC24967C4dB09C513C3BA0DFa7FF687',
-    8,
-    'axlWBTC',
-    'Axelar Wrapped WBTC',
-    'https://axelar.network/',
-  ),
-  axlweth: new ERC20Token(
-    ChainId.REBUS,
-    '0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265',
-    18,
-    'axlWETH',
-    'Axelar Wrapped WETH',
-    'https://axelar.network/',
-  ),
   techne: new ERC20Token(
     ChainId.REBUS,
     '0x16B4975206628BCd6Fa0F1Abc87c4594439C58Cb',

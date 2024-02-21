@@ -39,9 +39,6 @@ const Text = styled.div<TextProps>`
 
   ${({ xSmall }) => xSmall && `font-size: 12px;`}
   ${({ small }) => small && `font-size: 14px;`}
-  & .textSpan {
-    ${typography}
-  }
 `;
 
 Text.defaultProps = {
