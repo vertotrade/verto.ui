@@ -3,6 +3,7 @@ import styled from "styled-components";
 import throttle from "lodash/throttle";
 import { Button } from "../Button";
 import { ArrowUpIcon } from "../Svg";
+import { useMatchBreakpoints } from "../../contexts";
 
 const FixedContainer = styled.div`
   position: fixed;
@@ -12,6 +13,7 @@ const FixedContainer = styled.div`
 
 const ScrollToTopButtonV2 = () => {
   const [visible, setVisible] = useState(false);
+  const { isMobile } = useMatchBreakpoints();
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({
@@ -38,7 +40,7 @@ const ScrollToTopButtonV2 = () => {
   }, []);
 
   return (
-    <FixedContainer style={{ display: visible ? "inline" : "none" }}>
+    <FixedContainer style={{ display: visible && !isMobile ? "inline" : "none" }}>
       <Button
         width={48}
         height={48}

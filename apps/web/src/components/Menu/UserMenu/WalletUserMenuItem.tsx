@@ -19,10 +19,10 @@ const WalletUserMenuItem: React.FC<React.PropsWithChildren<WalletUserMenuItemPro
 
   return (
     <UserMenuItem as="button" onClick={onPresentWalletModal}>
-      <Flex alignItems="center" justifyContent="space-between" width="100%">
+      <Flex alignItems="center" width="100%">
+        {hasLowNativeBalance && !isWrongNetwork && <WarningIcon mr="8px" color="warning" width="24px" />}
+        {isWrongNetwork && <WarningIcon mr="8px" color="failure" width="24px" />}
         {t('Wallet')}
-        {hasLowNativeBalance && !isWrongNetwork && <WarningIcon color="warning" width="24px" />}
-        {isWrongNetwork && <WarningIcon color="failure" width="24px" />}
       </Flex>
     </UserMenuItem>
   )
