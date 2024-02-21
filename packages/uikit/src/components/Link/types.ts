@@ -7,5 +7,4 @@ export interface LinkProps extends TextProps, AnchorHTMLAttributes<HTMLAnchorEle
   isBscScan?: boolean;
   hoverBackgroundColor?: string;
   padding?: string;
-  textDecoration?: string;
 }

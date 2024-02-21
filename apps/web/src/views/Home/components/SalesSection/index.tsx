@@ -67,7 +67,6 @@ export interface SalesSectionProps {
   colorOverride?: boolean
   ClipComponent?: React.ComponentType
   addContainerStyles?: boolean
-  headingStyle?: React.CSSProperties
 }
 
 const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props => {
@@ -97,12 +96,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
             ml={[null, null, null, reverse && '64px']}
             mr={[null, null, null, !reverse && '64px']}
             alignSelf={['flex-start', null, null, 'flex-start']}>
-            <ColoredWordHeading
-              text={headingText}
-              style={props.headingStyle}
-              firstColor="text"
-              color={theme.colors.text}
-            />
+            <ColoredWordHeading text={headingText} firstColor="text" color={theme.colors.text} />
             <Text color={theme.colors.text} mb="24px">
               {bodyText}
             </Text>
@@ -123,11 +117,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
                 )}
               </Button>
               {secondaryButton.external ? (
-                <LinkExternal
-                  color={theme.colors.text}
-                  textDecoration="none"
-                  href={secondaryButton.to}
-                  padding="0 20px">
+                <LinkExternal color={theme.colors.text} href={secondaryButton.to} padding="0 20px">
                   {secondaryButton.text}
                 </LinkExternal>
               ) : (

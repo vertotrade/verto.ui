@@ -28,8 +28,7 @@ export const UserMenuItem = styled.button<UserMenuItemProps>`
   }
 
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.colors.vertoBg1};
-    border-radius: 5px;
+    background-color: ${({ theme }) => theme.colors.tertiary};
   }
 
   &:active:not(:disabled) {

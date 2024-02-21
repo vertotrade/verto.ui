@@ -26,8 +26,6 @@ export const StyledUserMenu = styled(Flex)<ThemedUserMenuProps>`
   padding-left: 32px;
   padding-right: 8px;
   position: relative;
-  margin: 8px 12px;
-  border-radius: 5px;
 `;
 
 export const LabelText = styled.div`
@@ -48,8 +46,6 @@ const Menu = styled.div<{ isOpen: boolean }>`
   border-radius: 16px;
   padding-bottom: 4px;
   padding-top: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
   pointer-events: auto;
   width: 280px;
   visibility: visible;
@@ -61,6 +57,14 @@ const Menu = styled.div<{ isOpen: boolean }>`
     pointer-events: none;
     visibility: hidden;
   `}
+
+  ${UserMenuItem}:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  ${UserMenuItem}:last-child {
+    border-radius: 0 0 8px 8px;
+  }
 `;
 
 const UserMenu: React.FC<UserMenuProps> = ({

@@ -11,10 +11,8 @@ const StyledLink = styled(Text)<LinkProps>`
   width: fit-content;
   padding: ${(props) => props.padding || `0`};
   border-radius: 25px;
-  -webkit-transition: background-color 0.2s, opacity 0.2s;
-  transition: background-color 0.2s, opacity 0.2s;
   &:hover {
-    text-decoration: ${(props) => props.textDecoration};
+    text-decoration: underline;
     background-color: ${(props) => props.hoverBackgroundColor || props.theme.colors.secondaryButtonHoverBg};
   }
   &:active {
@@ -30,7 +28,6 @@ const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({ external, internal
 /* eslint-disable react/default-props-match-prop-types */
 Link.defaultProps = {
   color: "primary",
-  textDecoration: "underline",
 };
 
 export default Link;

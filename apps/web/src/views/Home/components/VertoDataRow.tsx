@@ -51,11 +51,10 @@ const Grid = styled.div`
 
   ${({ theme }) => theme.mediaQueries.md} {
     grid-template-areas:
-      'a b'
-      'c d'
-      'e f';
+      'a b c'
+      'd e f';
     grid-gap: 32px;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
   }
 `
 
@@ -78,79 +77,47 @@ const VertoDataRow = () => {
         <Flex flexDirection="column" style={{ gridArea: 'a' }}>
           <Text color="textSubtle">{t('Circulating Supply')}</Text>
           {typeof circulatingSupply === 'number' ? (
-            <Balance
-              color="text"
-              decimals={0}
-              lineHeight="1.1"
-              fontFamily={`'Poppins',sans-serif`}
-              fontSize="24px"
-              bold
-              value={circulatingSupply}
-            />
+            <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={circulatingSupply} />
           ) : (
             <Skeleton height={24} width={126} my="4px" />
           )}
         </Flex>
-        <StyledColumn noMobileBorder noDesktopBorder style={{ gridArea: 'b' }}>
+        <StyledColumn noMobileBorder style={{ gridArea: 'b' }}>
           <Text color="textSubtle">{t('Total supply')}</Text>
           {typeof vertoSupply === 'number' ? (
-            <Balance
-              color="text"
-              decimals={0}
-              lineHeight="1.1"
-              fontFamily={`'Poppins',sans-serif`}
-              fontSize="24px"
-              bold
-              value={vertoSupply}
-            />
+            <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={vertoSupply} />
           ) : (
             <Skeleton height={24} width={126} my="4px" />
           )}
         </StyledColumn>
-        <StyledColumn noMobileBorder noDesktopBorder style={{ gridArea: 'c' }}>
+        <StyledColumn noMobileBorder style={{ gridArea: 'c' }}>
           <Text color="textSubtle">{t('Max Supply')}</Text>
 
-          <Balance
-            color="text"
-            decimals={0}
-            lineHeight="1.1"
-            fontFamily={`'Poppins',sans-serif`}
-            fontSize="24px"
-            bold
-            value={600000000}
-          />
+          <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={600000000} />
         </StyledColumn>
-        <StyledColumn noMobileBorder noDesktopBorder style={{ gridArea: 'd' }}>
+        <StyledColumn noDesktopBorder style={{ gridArea: 'd' }}>
           <Text color="textSubtle">{t('Market cap')}</Text>
           {typeof marketCap === 'number' ? (
-            <Heading fontFamily={`'Poppins',sans-serif`} scale="lg" color="text">
+            <Heading scale="lg" color="textHome">
               {t('$%marketCap%', { marketCap: formatNumber(marketCap, 2) })}
             </Heading>
           ) : (
             <Skeleton height={24} width={126} my="4px" />
           )}
         </StyledColumn>
-        <StyledColumn noMobileBorder noDesktopBorder style={{ gridArea: 'e' }}>
+        <StyledColumn style={{ gridArea: 'e' }}>
           <Text color="textSubtle">{t('Burned to date')}</Text>
           {typeof burnedBalance === 'number' ? (
-            <Balance
-              color="text"
-              decimals={0}
-              lineHeight="1.1"
-              fontFamily={`'Poppins',sans-serif`}
-              fontSize="24px"
-              bold
-              value={burnedBalance}
-            />
+            <Balance color="textHome" decimals={0} lineHeight="1.1" fontSize="24px" bold value={burnedBalance} />
           ) : (
             <Skeleton height={24} width={126} my="4px" />
           )}
         </StyledColumn>
-        <StyledColumn noMobileBorder noDesktopBorder style={{ gridArea: 'f' }}>
+        <StyledColumn style={{ gridArea: 'f' }}>
           <Text color="textSubtle">{t('Current emissions')}</Text>
 
           {typeof emissionsPerBlock === 'number' ? (
-            <Heading fontFamily={`'Poppins',sans-serif`} color="text" scale="lg">
+            <Heading color="textHome" scale="lg">
               {t('%emissionsPerBlock%/block', { emissionsPerBlock })}
             </Heading>
           ) : (
