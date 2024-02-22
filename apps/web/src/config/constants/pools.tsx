@@ -184,6 +184,46 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     isFinished: false,
     hasBoostBlockStart: true,
   },
+
+  {
+    sousId: 319,
+    stakingToken: vertoTokens.axlweth,
+    earningToken: vertoTokens.axlusdc,
+    contractAddress: {
+      [ChainId.REBUS]: '0xA1b50B70422A14084678344254828BF74dC5e152',
+      [ChainId.REBUS_TESTNET]: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    hasBoostBlockStart: true,
+  },
+  {
+    sousId: 320,
+    stakingToken: vertoTokens.axlwbtc,
+    earningToken: vertoTokens.axlusdc,
+    contractAddress: {
+      [ChainId.REBUS]: '0x3A481384caf20030efb9FF92275602344Df7b235',
+      [ChainId.REBUS_TESTNET]: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    hasBoostBlockStart: true,
+  },
+  {
+    sousId: 321,
+    stakingToken: tokens.verto,
+    earningToken: tokens.wrebus,
+    contractAddress: {
+      [ChainId.REBUS]: '0xeDF4d57Ceb9983E5C08bD437A72B35b6217C4624',
+      [ChainId.REBUS_TESTNET]: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    hasBoostBlockStart: true,
+  },
 ]
   .filter(p => p.contractAddress[DEFAULT_CHAIN_ID] && p.stakingToken && p.earningToken)
   .map(p => ({
