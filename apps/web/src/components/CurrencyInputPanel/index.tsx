@@ -6,9 +6,9 @@ import { isAddress } from 'utils'
 import { useTranslation } from '@verto/localization'
 import { WrappedTokenInfo } from '@verto/token-lists'
 
-import { useBUSDCurrencyAmount } from 'hooks/useBUSDPrice'
 import { formatNumber } from '@verto/utils/formatBalance'
 import { StablePair } from 'views/AddLiquidity/AddStableLiquidity/hooks/useStableLPDerivedMintInfo'
+import { useTokenPrices } from 'utils/prices'
 
 import { useAccount } from 'wagmi'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
@@ -138,10 +138,7 @@ export default function CurrencyInputPanel({
   const token = pair ? pair.liquidityToken : currency?.isToken ? currency : null
   const tokenAddress = token ? isAddress(token.address) : null
 
-  const amountInDollar = useBUSDCurrencyAmount(
-    showBUSD ? currency : undefined,
-    Number.isFinite(+value) ? +value : undefined,
-  )
+  const amountInDollar = useTokenPrices(currency?.symbol) * Number(value)
 
   const [onPresentCurrencyModal] = useModal(
     <CurrencySearchModal
