@@ -8,9 +8,13 @@ If you want to contribute, please refer to the [contributing guidelines](./CONTR
 
 To create new transactions ES transforms used in the chart view for new pairs, you can use the script `scripts/create-es-transform-transactions.ts`
 It is necessary to have an API KEY with the right privilages.
-Example: `ALL_TIME=false ES_NODE_URL=https://testnet.rebus.money:9200 ES_API_KEY=MlZxU3JZa0J3ODh5TmlPYlJ5N1Y6TUZJZmhtQ1RSZGVjZXhGNTJpeDNSUQ== TOKEN_0=WREBUS TOKEN_1=VERTO yarn create-es-transform-transactions`
+Example: `ALL_TIME=true ES_NODE_URL=https://api.vertotrade.com:9200 ES_API_KEY="ME9xWklvb0J3eDZMVjZOazV4bWw6aV9VeEpGN25SZzJCUmQxZ3E2RVppUQ==" yarn create-es-transform-transactions`
+
+The credentials above are for TESTNET, if creating transforms on MAINNET, then use MAINNET credentials.
 
 If you set `ALL_TIME` to `true`, the transform will be created without a range in the query and the index will be deleted first, meaning it will fetch data from all time and aggregate it. You want to do this usually on the first time if there is old data, then re-run with `ALL_TIME` set to `false`.
+
+The script will create transforms for all the pairs defined in the file `scripts/create-es-transform-transactions` with the variable `CURRENCIES`.
 
 ## Documentation
 

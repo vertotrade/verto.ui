@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 import { Client } from '@elastic/elasticsearch'
 
@@ -9,7 +10,8 @@ if (!process.env.ES_API_KEY) {
   throw new Error('ES_API_KEY must be set')
 }
 
-const allTime = process.env.ALL_TIME === 'true'
+const CURRENCIES = [`WREBUS`, `VERTO`, `LUDUS`, `axlUSDC`, `axlWBTC`, `axlWETH`]
+const TIME_WINDOWS = ['hourly', 'daily', 'weekly']
 
 const client = new Client({
   node: process.env.ES_NODE_URL,
@@ -18,14 +20,34 @@ const client = new Client({
   },
 })
 
-async function execute(timeWindow) {
-  const token0 = process.env.TOKEN_0
-  const token1 = process.env.TOKEN_1
+async function sleep(delay) {
+  await new Promise(resolve => setTimeout(resolve, delay))
+}
+
+async function retry(callback) {
+  let retries = 0
+  let lastError
+
+  while (retries < 2) {
+    try {
+      return await callback()
+    } catch (err) {
+      lastError = err
+      retries++
+      await sleep(2000)
+    }
+  }
+
+  throw lastError
+}
+
+async function execute(token0, token1, timeWindow, allTime) {
   if (!token0 || !token1) {
     throw new Error('TIME_WINDOW, TOKEN_0 and TOKEN_1 must be set')
   }
 
   const pair = `${token0}-${token1}`
+  const inversedPair = `${token1}-${token0}`
   const lowercasePair = `${token0.toLowerCase()}-${token1.toLowerCase()}`
   const destIndex = `liquidity_${lowercasePair}_${timeWindow}`
   const alias = `liquidity_${token1.toLowerCase()}-${token0.toLowerCase()}_${timeWindow}`
@@ -44,101 +66,127 @@ async function execute(timeWindow) {
 
   if (allTime) {
     console.log(`Deleting index ${destIndex}...`)
-    await client.indices.delete({
-      index: destIndex,
-    })
+    try {
+      await retry(() =>
+        client.indices.delete({
+          index: destIndex,
+        }),
+      )
+    } catch (err: any) {
+      // Skip if index does not exist
+      if (err.meta.statusCode !== 404) {
+        throw err
+      }
+    }
   }
 
-  if (!(await client.indices.exists({ index: destIndex }))) {
+  if (!(await retry(() => client.indices.exists({ index: destIndex })))) {
     console.log(`Creating index ${destIndex}...`)
-    await client.indices.create({
-      index: destIndex,
-    })
+    await retry(() =>
+      client.indices.create({
+        index: destIndex,
+      }),
+    )
   }
 
   console.log(`Setting index ${destIndex} alias as ${alias}...`)
 
-  await client.indices.putAlias({
-    index: destIndex,
-    name: alias,
-  })
+  await retry(() =>
+    client.indices.putAlias({
+      index: destIndex,
+      name: alias,
+    }),
+  )
 
   console.log(`Creating transform ${transformId}...`)
 
   try {
     console.log(`Stopping transform ${transformId}`)
-    await client.transform.stopTransform({ transform_id: transformId, force: true, wait_for_completion: true })
+    await retry(() =>
+      client.transform.stopTransform({ transform_id: transformId, force: true, wait_for_completion: true }),
+    )
     // eslint-disable-next-line no-empty
   } catch (e) {}
 
   try {
     console.log(`Deleting transform ${transformId}`)
-    await client.transform.deleteTransform({ transform_id: transformId })
+    await retry(() => client.transform.deleteTransform({ transform_id: transformId }))
     // eslint-disable-next-line no-empty
   } catch (e) {}
 
   console.log(`Creating transform ${transformId}`)
-  await client.transform.putTransform({
-    transform_id: transformId,
-    body: {
-      description: `${timeWindow} aggregate of liquidity for ${pair}`,
-      dest: {
-        index: destIndex,
-        pipeline: `add_ingest_timestamp_pipeline`,
-      },
-      source: {
-        index: `transactions_*`,
-        query: {
-          bool: {
-            should: [],
-            must: [
-              {
-                term: {
-                  pair: {
-                    value: pair,
+  await sleep(1000)
+  await retry(() =>
+    client.transform.putTransform({
+      transform_id: transformId,
+      body: {
+        description: `${timeWindow} aggregate of liquidity for ${pair}`,
+        dest: {
+          index: destIndex,
+          pipeline: `add_ingest_timestamp_pipeline`,
+        },
+        source: {
+          index: `transactions_*`,
+          query: {
+            bool: {
+              minimum_should_match: 1,
+              should: [
+                {
+                  term: {
+                    pair: {
+                      value: pair,
+                    },
                   },
                 },
+                {
+                  term: {
+                    pair: {
+                      value: inversedPair,
+                    },
+                  },
+                },
+              ],
+              must: [
+                (!allTime && {
+                  range: {
+                    timestamp: {
+                      gte: range,
+                    },
+                  },
+                }) as any,
+              ].filter(Boolean),
+            },
+          },
+        },
+        pivot: {
+          group_by: {
+            timestamp: {
+              date_histogram: {
+                field: 'timestamp',
+                calendar_interval: calendarInterval as any,
               },
-              (!allTime && {
-                range: {
-                  timestamp: {
-                    gte: range,
-                  },
-                },
-              }) as any,
-            ].filter(Boolean),
-          },
-        },
-      },
-      pivot: {
-        group_by: {
-          timestamp: {
-            date_histogram: {
-              field: 'timestamp',
-              calendar_interval: calendarInterval as any,
+            },
+            pair: {
+              terms: {
+                field: 'pair',
+              },
             },
           },
-          pair: {
-            terms: {
-              field: 'pair',
+          aggregations: {
+            total_transactions: {
+              cardinality: {
+                field: 'hash',
+              },
             },
-          },
-        },
-        aggregations: {
-          total_transactions: {
-            cardinality: {
-              field: 'hash',
+            total_value: {
+              sum: {
+                field: 'total_value',
+              },
             },
-          },
-          total_value: {
-            sum: {
-              field: 'total_value',
-            },
-          },
-          token_0: {
-            scripted_metric: {
-              init_script: 'state.values = []',
-              map_script: `
+            token_0: {
+              scripted_metric: {
+                init_script: 'state.values = []',
+                map_script: `
                 HashMap info = new HashMap();
                 if (params._source.token_in.symbol == '${token0}') {
                   info.token = params._source.token_in;
@@ -149,8 +197,8 @@ async function execute(timeWindow) {
                 }
                 state.values.add(info);
                 `,
-              combine_script: 'return state.values',
-              reduce_script: `
+                combine_script: 'return state.values',
+                reduce_script: `
                 HashMap token = null;
                 ArrayList infos = new ArrayList();
                 for (a in states) {
@@ -194,12 +242,12 @@ async function execute(timeWindow) {
                 }
                 return token;
               `,
+              },
             },
-          },
-          token_1: {
-            scripted_metric: {
-              init_script: 'state.values = []',
-              map_script: `
+            token_1: {
+              scripted_metric: {
+                init_script: 'state.values = []',
+                map_script: `
                 HashMap info = new HashMap();
                 if (params._source.token_in.symbol == '${token1}') {
                   info.token = params._source.token_in;
@@ -210,8 +258,8 @@ async function execute(timeWindow) {
                 }
                 state.values.add(info);
                 `,
-              combine_script: 'return state.values',
-              reduce_script: `
+                combine_script: 'return state.values',
+                reduce_script: `
                 HashMap token = null;
                 ArrayList infos = new ArrayList();
                 for (a in states) {
@@ -255,33 +303,54 @@ async function execute(timeWindow) {
                 }
                 return token;
               `,
+              },
             },
           },
         },
-      },
-      frequency: '60s',
-      sync: {
-        time: {
-          field: 'ingest_timestamp',
-          delay: '60s',
+        frequency: '60s',
+        sync: {
+          time: {
+            field: 'ingest_timestamp',
+            delay: '60s',
+          },
+        },
+        settings: {
+          align_checkpoints: false,
         },
       },
-      settings: {
-        align_checkpoints: false,
-      },
-    },
-  })
+    }),
+  )
 
   console.log(`Starting transform ${transformId}`)
-  await client.transform.startTransform({ transform_id: transformId })
+  await retry(() => client.transform.startTransform({ transform_id: transformId }))
+}
+
+async function runForAll(allTime) {
+  for (let i = 0, len = CURRENCIES.length; i < len; ++i) {
+    const currency0 = CURRENCIES[i]
+    const otherCurrencies = CURRENCIES.slice(i + 1)
+
+    for (const currency1 of otherCurrencies) {
+      for (const timeWindow of TIME_WINDOWS) {
+        await execute(currency0, currency1, timeWindow, allTime)
+        await sleep(1000)
+      }
+    }
+  }
 }
 
 // eslint-disable-next-line prettier/prettier
 (async () => {
-  const timeWindows = ['hourly', 'daily', 'weekly']
+  const allTime = process.env.ALL_TIME === 'true'
 
-  for (const timeWindow of timeWindows) {
-    // eslint-disable-next-line no-await-in-loop
-    await execute(timeWindow)
+  if (allTime) {
+    console.log(`Running for all time...`)
+    await runForAll(true)
+    console.log(`Finished running for all time...`)
+    await sleep(5000)
+    console.log(`Updating transforms to query only recent...`)
+    await runForAll(false)
+  } else {
+    await runForAll(false)
   }
 })()
