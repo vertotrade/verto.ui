@@ -17,6 +17,7 @@ import { wrappedCurrency } from '../utils/wrappedCurrency'
 
 import { useUnsupportedTokens, useWarningTokens } from './Tokens'
 import { useActiveChainId } from './useActiveChainId'
+import useWrapCallback, { WrapType } from './useWrapCallback'
 
 export function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): Pair[] {
   const { chainId } = useActiveChainId()
@@ -103,11 +104,13 @@ export function useTradeExactIn(
 ): Trade<Currency, Currency, TradeType> | null {
   const allowedPairs = useAllCommonPairs(currencyAmountIn?.currency, currencyOut)
 
+  const { wrapType } = useWrapCallback(currencyAmountIn?.currency, currencyOut, currencyAmountIn?.toExact())
+  const isWrap = wrapType === WrapType.WRAP
   const [singleHopOnly] = useUserSingleHopOnly()
 
   return useMemo(() => {
     if (currencyAmountIn && currencyOut && allowedPairs.length > 0) {
-      if (singleHopOnly) {
+      if (singleHopOnly || isWrap) {
         return (
           Trade.bestTradeExactIn(allowedPairs, currencyAmountIn, currencyOut, { maxHops: 1, maxNumResults: 1 })[0] ??
           null
@@ -128,7 +131,7 @@ export function useTradeExactIn(
     }
 
     return null
-  }, [allowedPairs, currencyAmountIn, currencyOut, singleHopOnly])
+  }, [allowedPairs, currencyAmountIn, currencyOut, singleHopOnly, isWrap])
 }
 
 /**
