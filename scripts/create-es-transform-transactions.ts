@@ -1,3 +1,4 @@
+/* eslint-disable no-continue */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-console */
 import { Client } from '@elastic/elasticsearch'
@@ -10,8 +11,11 @@ if (!process.env.ES_API_KEY) {
   throw new Error('ES_API_KEY must be set')
 }
 
-const CURRENCIES = [`WREBUS`, `VERTO`, `LUDUS`, `axlUSDC`, `axlWBTC`, `axlWETH`]
+const CURRENCIES = [`WREBUS`, `VERTO`, `LUDUS`, `axlUSDC`, `axlWBTC`, `axlWETH`, `COM`]
 const TIME_WINDOWS = ['hourly', 'daily', 'weekly']
+
+// Only set this value to one of the currencies above if adding one currency only instead of redoing all of them
+const NEW_CURRENCY = ``
 
 const client = new Client({
   node: process.env.ES_NODE_URL,
@@ -330,10 +334,21 @@ async function runForAll(allTime) {
     const currency0 = CURRENCIES[i]
     const otherCurrencies = CURRENCIES.slice(i + 1)
 
-    for (const currency1 of otherCurrencies) {
+    if (currency0 === NEW_CURRENCY) {
+      continue
+    }
+
+    if (NEW_CURRENCY) {
       for (const timeWindow of TIME_WINDOWS) {
-        await execute(currency0, currency1, timeWindow, allTime)
+        await execute(currency0, NEW_CURRENCY, timeWindow, allTime)
         await sleep(1000)
+      }
+    } else {
+      for (const currency1 of otherCurrencies) {
+        for (const timeWindow of TIME_WINDOWS) {
+          await execute(currency0, currency1, timeWindow, allTime)
+          await sleep(1000)
+        }
       }
     }
   }
