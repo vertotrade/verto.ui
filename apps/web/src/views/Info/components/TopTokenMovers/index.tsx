@@ -1,7 +1,7 @@
 import { useTranslation } from '@verto/localization'
 import { Box, Card, Flex, Text, NextLinkFromReactRouter } from '@verto/uikit'
 import { useEffect, useMemo, useRef } from 'react'
-import { useAllTokenDataSWR, useGetChainName, useMultiChainPath } from 'state/info/hooks'
+import { useAllTokenDataSWR, useMultiChainPath } from 'state/info/hooks'
 import { TokenData } from 'state/info/types'
 import styled from 'styled-components'
 import { formatAmount } from 'utils/formatInfoNumbers'
@@ -35,7 +35,6 @@ export const ScrollableRow = styled.div`
 `
 
 const DataCard = ({ tokenData }: { tokenData: TokenData }) => {
-  const chainName = useGetChainName()
   const chainPath = useMultiChainPath()
   return (
     <CardWrapper to={`/info${chainPath}/tokens/${tokenData.address}`}>
@@ -43,7 +42,7 @@ const DataCard = ({ tokenData }: { tokenData: TokenData }) => {
         <Flex>
           <Box width="32px" height="32px">
             {/* wrapped in a box because of alignment issues between img and svg */}
-            <CurrencyLogo address={tokenData.address} size="32px" chainName={chainName} />
+            <CurrencyLogo address={tokenData.address} size="32px" />
           </Box>
           <Box ml="16px">
             <Text>{tokenData.symbol}</Text>
@@ -65,13 +64,13 @@ const TopTokenMovers: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
 
   const topPriceIncrease = useMemo(() => {
-    return Object.values(allTokens)
-      .sort(({ data: a }, { data: b }) => {
+    return allTokens
+      .sort((a, b) => {
         // eslint-disable-next-line no-nested-ternary
         return a && b ? (Math.abs(a?.priceUSDChange) > Math.abs(b?.priceUSDChange) ? -1 : 1) : -1
       })
-      .slice(0, Math.min(20, Object.values(allTokens).length))
-      .filter(d => d?.data?.exists)
+      .slice(0, Math.min(20, allTokens.length))
+      .filter(d => d?.exists)
   }, [allTokens])
 
   const increaseRef = useRef<HTMLDivElement>(null)
@@ -97,7 +96,7 @@ const TopTokenMovers: React.FC<React.PropsWithChildren> = () => {
     }
   }, [])
 
-  if (topPriceIncrease.length === 0 || !topPriceIncrease.some(entry => entry.data)) {
+  if (topPriceIncrease.length === 0 || !topPriceIncrease.some(entry => entry)) {
     return null
   }
 
@@ -108,7 +107,7 @@ const TopTokenMovers: React.FC<React.PropsWithChildren> = () => {
       </Text>
       <ScrollableRow ref={increaseRef}>
         {topPriceIncrease.map(entry =>
-          entry.data ? <DataCard key={`top-card-token-${entry.data?.address}`} tokenData={entry.data} /> : null,
+          entry ? <DataCard key={`top-card-token-${entry?.address}`} tokenData={entry} /> : null,
         )}
       </ScrollableRow>
     </Card>
