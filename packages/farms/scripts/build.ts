@@ -3,14 +3,14 @@
 import path from 'path'
 import fs from 'fs'
 import farm1111 from '../constants/1111'
-import farm3333 from '../constants/3333'
+import farm3033 from '../constants/3033'
 
 import lpHelpers1111 from '../constants/priceHelperLps/1111'
-import lpHelpers3333 from '../constants/priceHelperLps/3333'
+import lpHelpers3033 from '../constants/priceHelperLps/3033'
 
 const chains = [
   [1111, farm1111, lpHelpers1111],
-  [3333, farm3333, lpHelpers3333],
+  [3033, farm3033, lpHelpers3033],
 ]
 
 export const saveList = async () => {

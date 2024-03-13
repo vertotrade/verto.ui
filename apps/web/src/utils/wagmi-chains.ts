@@ -17,7 +17,7 @@ export const rebus = {
 }
 
 export const rebusTestnet = {
-  id: 3333,
+  id: 3033,
   name: 'Rebus Testnet',
   network: 'Rebus',
   nativeCurrency: {

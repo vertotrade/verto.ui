@@ -7,7 +7,7 @@ export enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   REBUS = 1111,
-  REBUS_TESTNET = 3333,
+  REBUS_TESTNET = 3033,
 }
 
 export const ZERO_PERCENT = new Percent('0')

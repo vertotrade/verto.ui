@@ -22,9 +22,9 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import DEFAULT_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/1111/vertotrade-default.tokenlist.json'
 import UNSUPPORTED_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/1111/vertotrade-unsupported.tokenlist.json'
 import WARNING_TOKEN_LIST_MAINNET from '../../config/constants/tokenLists/1111/vertotrade-warning.tokenlist.json'
-import DEFAULT_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3333/vertotrade-default.tokenlist.json'
-import UNSUPPORTED_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3333/vertotrade-unsupported.tokenlist.json'
-import WARNING_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3333/vertotrade-warning.tokenlist.json'
+import DEFAULT_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3033/vertotrade-default.tokenlist.json'
+import UNSUPPORTED_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3033/vertotrade-unsupported.tokenlist.json'
+import WARNING_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3033/vertotrade-warning.tokenlist.json'
 import { listsAtom } from './lists'
 
 const DEFAULT_TOKEN_LIST = env('IS_MAINNET') === 'true' ? DEFAULT_TOKEN_LIST_MAINNET : DEFAULT_TOKEN_LIST_TESTNET
