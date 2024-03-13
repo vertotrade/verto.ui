@@ -7,7 +7,12 @@ import { getDeltaTimestamps } from 'utils/getDeltaTimestamps'
 import { getLpFeesAndApr } from 'utils/getLpFeesAndApr'
 import { useBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
 import { getPercentChange, getAmountChange } from 'views/Info/utils/infoDataHelpers'
-
+import { SearchRequest, SearchResponse } from '@elastic/elasticsearch/lib/api/types'
+import { LiquidityAggregate, search } from 'utils/elastic-search'
+import { DEFAULT_TOKEN_LIST } from 'state/lists/hooks'
+import { BigNumber } from '@ethersproject/bignumber'
+import { fetchAllTokenPrices } from 'utils/prices'
+import { ERC20Token, Pair } from '@verto/sdk'
 import {
   getMultiChainQueryEndPointWithStableSwap,
   MultiChainName,
@@ -15,7 +20,6 @@ import {
   checkIsStableSwap,
 } from '../../constant'
 import { useGetChainName } from '../../hooks'
-import { fetchTopPoolAddresses } from './topPools'
 
 interface PoolFields {
   id: string
@@ -352,9 +356,156 @@ export const fetchAllPoolDataWithAddress = async (
   return formatted
 }
 
-export const fetchAllPoolData = async (blocks: Block[], chainName: MultiChainName) => {
-  const poolAddresses = await fetchTopPoolAddresses(chainName)
-  return fetchAllPoolDataWithAddress(blocks, chainName, poolAddresses)
+export const fetchAllPoolData = async () => {
+  const poolDataMap: Record<string, PoolData> = {}
+
+  try {
+    const allPairsRequest: SearchRequest = {
+      index: `transactions`,
+      size: 0,
+      aggregations: {
+        pairs: {
+          terms: {
+            field: 'pair',
+            size: 100,
+          },
+        },
+      },
+    }
+    const hourlyRequest: SearchRequest = {
+      index: `liquidity_*_hourly`,
+      size: 24,
+      query: {
+        bool: {
+          must: [
+            {
+              range: {
+                timestamp: {
+                  gte: 'now-1d/h',
+                },
+              },
+            },
+          ],
+          should: [],
+        },
+      },
+      sort: [
+        {
+          timestamp: {
+            order: 'desc',
+          },
+        },
+      ],
+    }
+    const dailyRequest: SearchRequest = {
+      index: `liquidity_*_daily`,
+      size: 7,
+      query: {
+        bool: {
+          must: [
+            {
+              range: {
+                timestamp: {
+                  gte: 'now-7d/d',
+                },
+              },
+            },
+          ],
+          should: [],
+        },
+      },
+      sort: [
+        {
+          timestamp: {
+            order: 'desc',
+          },
+        },
+      ],
+    }
+
+    const [allTokenPrices, { data: allPairsRes }, { data: hourlyRes }, { data: dailyRes }] = await Promise.all([
+      fetchAllTokenPrices(),
+      search<SearchResponse>(allPairsRequest),
+      search<SearchResponse<LiquidityAggregate>>(hourlyRequest),
+      search<SearchResponse<LiquidityAggregate>>(dailyRequest),
+    ])
+    const pairs = allPairsRes.aggregations?.pairs as any
+
+    const volume24BySymbol = {} as Record<string, BigNumber>
+    hourlyRes.hits.hits.forEach(hit => {
+      const source = hit._source
+
+      if (!volume24BySymbol[source.pair]) {
+        volume24BySymbol[source.pair] = BigNumber.from(0)
+      }
+
+      volume24BySymbol[source.pair] = volume24BySymbol[source.pair].add(BigNumber.from(source.total_value))
+    })
+
+    const volumeWeekBySymbol = {} as Record<string, BigNumber>
+    dailyRes.hits.hits.forEach(hit => {
+      const source = hit._source
+
+      if (!volumeWeekBySymbol[source.pair]) {
+        volumeWeekBySymbol[source.pair] = BigNumber.from(0)
+      }
+
+      volumeWeekBySymbol[source.pair] = volumeWeekBySymbol[source.pair].add(BigNumber.from(source.total_value))
+    })
+
+    const mappedData: PoolData[] | undefined = pairs?.buckets?.map(hit => {
+      const [token0Symbol, token1Symbol] = hit.key.split('-')
+      const token0Info = DEFAULT_TOKEN_LIST.tokens.find(token => token.symbol === token0Symbol)
+      const token1Info = DEFAULT_TOKEN_LIST.tokens.find(token => token.symbol === token1Symbol)
+
+      return {
+        address: Pair.getAddress(
+          new ERC20Token(
+            token0Info.chainId,
+            token0Info.address,
+            token0Info.decimals,
+            token0Info.symbol,
+            token0Info.name,
+          ),
+          new ERC20Token(
+            token1Info.chainId,
+            token1Info.address,
+            token1Info.decimals,
+            token1Info.symbol,
+            token1Info.name,
+          ),
+        ),
+        token0: token0Info,
+        token1: token1Info,
+
+        volumeUSD: volume24BySymbol[hit.key]?.toNumber() ?? 0,
+        volumeOutUSD: null,
+        volumeUSDChange: 0,
+        volumeUSDWeek: volumeWeekBySymbol[hit.key]?.toNumber() ?? 0,
+        volumeOutUSDWeek: null,
+        volumeUSDChangeWeek: 0,
+
+        totalFees24h: 0,
+        totalFees7d: 0,
+        lpFees24h: 0,
+        lpFees7d: 0,
+        lpApr7d: 0,
+
+        liquidityUSD: 0,
+        liquidityUSDChange: 0,
+
+        token0Price: allTokenPrices[token0Symbol],
+        token1Price: allTokenPrices[token1Symbol],
+
+        liquidityToken0: 0,
+        liquidityToken1: 0,
+      } as PoolData
+    })
+
+    return mappedData
+  } catch {
+    return poolDataMap
+  }
 }
 
 export default usePoolDatas

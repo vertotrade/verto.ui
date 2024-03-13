@@ -3,7 +3,7 @@
 import { useTranslation } from '@verto/localization'
 import { ChainId } from '@verto/sdk'
 import truncateHash from '@verto/utils/truncateHash'
-import { ArrowBackIcon, ArrowForwardIcon, Box, Flex, LinkExternal, Radio, Skeleton, Text } from '@verto/uikit'
+import { ArrowBackIcon, ArrowForwardIcon, Box, Flex, LinkExternal, Skeleton, Text } from '@verto/uikit'
 import { ITEMS_PER_INFO_TABLE_PAGE } from 'config/constants/info'
 import { formatDistanceToNowStrict } from 'date-fns'
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
@@ -60,12 +60,12 @@ const ResponsiveGrid = styled.div`
   }
 `
 
-const RadioGroup = styled(Flex)`
-  align-items: center;
-  margin-right: 16px;
-  margin-top: 8px;
-  cursor: pointer;
-`
+// const RadioGroup = styled(Flex)`
+//   align-items: center;
+//   margin-right: 16px;
+//   margin-top: 8px;
+//   cursor: pointer;
+// `
 
 const SORT_FIELD = {
   amountUSD: 'amountUSD',
@@ -145,6 +145,7 @@ const TransactionTable: React.FC<
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [txFilter, setTxFilter] = useState<TransactionType | undefined>(undefined)
 
   const sortedTransactions = useMemo(() => {
@@ -184,15 +185,15 @@ const TransactionTable: React.FC<
     }
   }, [transactions, txFilter])
 
-  const handleFilter = useCallback(
-    (newFilter: TransactionType) => {
-      if (newFilter !== txFilter) {
-        setTxFilter(newFilter)
-        setPage(1)
-      }
-    },
-    [txFilter],
-  )
+  // const handleFilter = useCallback(
+  //   (newFilter: TransactionType) => {
+  //     if (newFilter !== txFilter) {
+  //       setTxFilter(newFilter)
+  //       setPage(1)
+  //     }
+  //   },
+  //   [txFilter],
+  // )
 
   const handleSort = useCallback(
     (newField: string) => {
@@ -212,7 +213,7 @@ const TransactionTable: React.FC<
 
   return (
     <Wrapper>
-      <Flex mb="16px">
+      {/* <Flex mb="16px">
         <Flex flexDirection={['column', 'row']}>
           <RadioGroup onClick={() => handleFilter(undefined)}>
             <Radio onChange={() => null} scale="sm" checked={txFilter === undefined} />
@@ -236,7 +237,7 @@ const TransactionTable: React.FC<
             <Text ml="8px">{t('Removes')}</Text>
           </RadioGroup>
         </Flex>
-      </Flex>
+      </Flex> */}
       <TableWrapper>
         <ResponsiveGrid>
           <Text color="secondary" fontSize="12px" bold textTransform="uppercase">

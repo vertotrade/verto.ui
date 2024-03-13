@@ -6,8 +6,17 @@ import { getDeltaTimestamps } from 'utils/getDeltaTimestamps'
 import { getChangeForPeriod } from 'utils/getChangeForPeriod'
 import { useBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
 import { getAmountChange, getPercentChange } from 'views/Info/utils/infoDataHelpers'
+import { SearchRequest, SearchResponse } from '@elastic/elasticsearch/lib/api/types'
+import { AggregatedToken, LiquidityAggregate, search } from 'utils/elastic-search'
+import { fetchAllTokenPrices } from 'utils/prices'
+import { isWithinInterval, sub } from 'date-fns'
+import { DEFAULT_TOKEN_LIST } from 'state/lists/hooks'
 import { getMultiChainQueryEndPointWithStableSwap, MultiChainName, multiChainQueryMainToken } from '../../constant'
-import { fetchTokenAddresses } from './topTokens'
+
+function isWithinLast24Hours(date: Date) {
+  const twentyFourHoursAgo = sub(new Date(), { days: 1 })
+  return isWithinInterval(date, { start: twentyFourHoursAgo, end: new Date() })
+}
 
 interface TokenFields {
   id: string
@@ -281,10 +290,94 @@ export const fetchAllTokenDataByAddresses = async (
   return formatted
 }
 
-export const fetchAllTokenData = async (chainName: MultiChainName, blocks: Block[]) => {
-  const tokenAddresses = await fetchTokenAddresses(chainName)
-  const data = await fetchAllTokenDataByAddresses(chainName, blocks, tokenAddresses)
-  return data
+export const fetchAllTokenData = async () => {
+  const body: SearchRequest = {
+    index: `liquidity_*_hourly`,
+    size: 0,
+    aggs: {
+      pairs: {
+        terms: {
+          field: `pair`,
+        },
+        aggs: {
+          top: {
+            top_hits: {
+              size: 25,
+              sort: [
+                {
+                  timestamp: {
+                    order: `desc`,
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+  }
+
+  const [{ data: res }, allTokenPrices] = await Promise.all([
+    search<SearchResponse<LiquidityAggregate>>(body),
+    fetchAllTokenPrices(),
+  ])
+  const pairs = res.aggregations?.pairs as any
+  const tokenMap = {} as Record<string, TokenData>
+  const tokensProcessedLastTimestampMap = {}
+
+  const getTokenPriceChange = (token: AggregatedToken) => {
+    const currentPrice = allTokenPrices[token.symbol] || 0
+    const previousPrice = token.price || 0
+
+    return getPercentChange(currentPrice, previousPrice)
+  }
+
+  const processToken = (timestamp: Date, token: AggregatedToken) => {
+    const tokenInfo = DEFAULT_TOKEN_LIST.tokens.find(t => t.symbol === token.symbol)
+    if (!tokenInfo) {
+      return
+    }
+
+    if (!tokenMap[token.symbol]) {
+      tokenMap[token.symbol] = {
+        exists: true,
+        name: token.name,
+        symbol: token.symbol,
+        address: tokenInfo.address || '',
+        priceUSD: allTokenPrices[token.symbol],
+        priceUSDChange: 0,
+        priceUSDChangeWeek: 0,
+        volumeUSD: 0,
+        volumeUSDChange: 0,
+        volumeUSDWeek: 0,
+        txCount: 0,
+        liquidityToken: 0,
+        liquidityUSD: 0,
+        liquidityUSDChange: 0,
+      }
+    }
+
+    if (isWithinLast24Hours(timestamp)) {
+      tokenMap[token.symbol].volumeUSD +=
+        (Number(token.volume_in) + Number(token.volume_out)) / 10 ** Number(tokenInfo.decimals)
+    } else if (
+      !tokensProcessedLastTimestampMap[token.symbol] ||
+      tokensProcessedLastTimestampMap[token.symbol].getTime() < timestamp.getTime()
+    ) {
+      tokenMap[token.symbol].priceUSDChange = getTokenPriceChange(token)
+      tokensProcessedLastTimestampMap[token.symbol] = timestamp
+    }
+  }
+
+  pairs.buckets.forEach(pair => {
+    pair.top?.hits?.hits?.forEach(hit => {
+      const date = new Date(hit._source.timestamp)
+      processToken(date, hit._source.token_0)
+      processToken(date, hit._source.token_1)
+    })
+  })
+
+  return Object.values(tokenMap)
 }
 
 export default useFetchedTokenDatas

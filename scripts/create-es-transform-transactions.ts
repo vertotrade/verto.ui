@@ -239,7 +239,7 @@ async function execute(token0, token1, timeWindow, allTime) {
                   }
                 }
                 if (token != null) {
-                  token.price /= states.length;
+                  token.price /= infos.length;
                   token.volume_in = token.volume_in.toString();
                   token.volume_out = token.volume_out.toString();
                   token.amount = token.amount.toString();
@@ -300,7 +300,7 @@ async function execute(token0, token1, timeWindow, allTime) {
                   }
                 }
                 if (token != null) {
-                  token.price /= states.length;
+                  token.price /= infos.length;
                   token.volume_in = token.volume_in.toString();
                   token.volume_out = token.volume_out.toString();
                   token.amount = token.amount.toString();
@@ -311,7 +311,7 @@ async function execute(token0, token1, timeWindow, allTime) {
             },
           },
         },
-        frequency: '60s',
+        frequency: '30m',
         sync: {
           time: {
             field: 'ingest_timestamp',

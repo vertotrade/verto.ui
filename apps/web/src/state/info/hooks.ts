@@ -62,26 +62,18 @@ export const useProtocolChartDataSWR = (): ChartEntry[] | undefined => {
 }
 
 export const useProtocolTransactionsSWR = (): Transaction[] | undefined => {
-  const chainName = useGetChainName()
   const type = checkIsStableSwap() ? 'stableSwap' : 'swap'
   const { data: transactions } = useSWRImmutable(
-    [`info/protocol/updateProtocolTransactionsData/${type}`, chainName],
-    () => fetchTopTransactions(chainName),
+    [`info/protocol/updateProtocolTransactionsData/${type}`],
+    () => fetchTopTransactions(),
     SWR_SETTINGS, // update latest Transactions per 15s
   )
   return transactions ?? undefined
 }
 
 export const useAllPoolDataSWR = () => {
-  const chainName = useGetChainName()
-  const [t24h, t48h, t7d, t14d] = getDeltaTimestamps()
-  const { blocks } = useBlockFromTimeStampSWR([t24h, t48h, t7d, t14d])
   const type = checkIsStableSwap() ? 'stableSwap' : 'swap'
-  const { data } = useSWRImmutable(
-    blocks && chainName && [`info/pools/data/${type}`, chainName],
-    () => fetchAllPoolData(blocks, chainName),
-    SWR_SETTINGS_WITHOUT_REFETCH,
-  )
+  const { data } = useSWRImmutable([`info/pools/data/${type}`], () => fetchAllPoolData(), SWR_SETTINGS_WITHOUT_REFETCH)
   return data ?? {}
 }
 
@@ -130,19 +122,18 @@ export const usePoolTransactionsSWR = (address: string): Transaction[] | undefin
 
 // Tokens hooks
 
-export const useAllTokenDataSWR = (): {
-  [address: string]: { data?: TokenData }
-} => {
+export const useAllTokenDataSWR = (): TokenData[] => {
   const chainName = useGetChainName()
   const [t24h, t48h, t7d, t14d] = getDeltaTimestamps()
   const { blocks } = useBlockFromTimeStampSWR([t24h, t48h, t7d, t14d])
   const type = checkIsStableSwap() ? 'stableSwap' : 'swap'
   const { data } = useSWRImmutable(
     blocks && chainName && [`info/token/data/${type}`, chainName],
-    () => fetchAllTokenData(chainName, blocks),
+    () => fetchAllTokenData(),
     SWR_SETTINGS_WITHOUT_REFETCH,
   )
-  return data ?? {}
+
+  return data ?? []
 }
 
 const graphPerPage = 50

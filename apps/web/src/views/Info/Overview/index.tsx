@@ -2,15 +2,9 @@ import { useTranslation } from '@verto/localization'
 import { Card, Flex, Heading } from '@verto/uikit'
 import Page from 'components/Layout/Page'
 import { useMemo } from 'react'
-import {
-  useAllTokenDataSWR,
-  useProtocolChartDataSWR,
-  useProtocolDataSWR,
-  useProtocolTransactionsSWR,
-} from 'state/info/hooks'
+import { useAllTokenDataSWR, useProtocolChartDataSWR, useProtocolTransactionsSWR } from 'state/info/hooks'
 import styled from 'styled-components'
 import BarChart from 'views/Info/components/InfoCharts/BarChart'
-import LineChart from 'views/Info/components/InfoCharts/LineChart'
 import PoolTable from 'views/Info/components/InfoTables/PoolsTable'
 import TokenTable from 'views/Info/components/InfoTables/TokensTable'
 import TransactionTable from 'views/Info/components/InfoTables/TransactionsTable'
@@ -39,9 +33,20 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
     currentLanguage: { locale },
   } = useTranslation()
 
-  const protocolData = useProtocolDataSWR()
   const chartData = useProtocolChartDataSWR()
   const transactions = useProtocolTransactionsSWR()
+
+  const protocolData = useMemo(() => {
+    return {
+      volumeUSD: chartData ? chartData[chartData.length - 1].volumeUSD : null,
+      // TODO: Get other properties
+      volumeUSDChange: 0,
+      liquidityUSD: 0,
+      liquidityUSDChange: 0,
+      txCount: 0,
+      txCountChange: 0,
+    }
+  }, [chartData])
 
   const currentDate = useMemo(
     () => new Date().toLocaleString(locale, { month: 'short', year: 'numeric', day: 'numeric' }),
@@ -49,12 +54,6 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
   )
 
   const allTokens = useAllTokenDataSWR()
-
-  const formattedTokens = useMemo(() => {
-    return Object.values(allTokens)
-      .map(token => token.data)
-      .filter(token => token.name !== 'unknown')
-  }, [allTokens])
 
   const { poolsData } = usePoolsData()
 
@@ -68,7 +67,7 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
         {t('VertoTrade Info & Analytics')}
       </Heading>
       <ChartCardsContainer>
-        <Card>
+        {/* <Card>
           <HoverableChart
             chartData={chartData}
             protocolData={protocolData}
@@ -77,7 +76,7 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
             title={t('Liquidity')}
             ChartComponent={LineChart}
           />
-        </Card>
+        </Card> */}
         <Card>
           <HoverableChart
             chartData={chartData}
@@ -92,7 +91,7 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
       <Heading scale="lg" mt="40px" mb="16px">
         {t('Top Tokens')}
       </Heading>
-      <TokenTable tokenDatas={formattedTokens} />
+      <TokenTable tokenDatas={allTokens} />
       <Heading scale="lg" mt="40px" mb="16px">
         {t('Top Pairs')}
       </Heading>

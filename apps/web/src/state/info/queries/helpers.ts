@@ -9,9 +9,10 @@ import bep20Abi from 'config/abi/erc20.json'
 import { multicallv2 } from 'utils/multicall'
 import { getUnixTime } from 'date-fns'
 import { TransactionType } from 'state/info/types'
+import { TvlEntry } from 'utils/elastic-search'
 import { ChartEntry } from '../types'
 import { MultiChainName, multiChainStartTime } from '../constant'
-import { MintResponse, SwapResponse, BurnResponse, TokenDayData, PairDayData, PancakeDayData } from './types'
+import { MintResponse, SwapResponse, BurnResponse, PairDayData } from './types'
 
 export const mapMints = (mint: MintResponse) => {
   return {
@@ -61,10 +62,10 @@ export const mapSwaps = (swap: SwapResponse) => {
   }
 }
 
-export const mapDayData = (tokenDayData: TokenDayData | PancakeDayData): ChartEntry => ({
-  date: tokenDayData.date,
-  volumeUSD: parseFloat(tokenDayData.dailyVolumeUSD),
-  liquidityUSD: parseFloat(tokenDayData.totalLiquidityUSD),
+export const mapDayData = (tokenDayData: TvlEntry): ChartEntry => ({
+  date: new Date(tokenDayData.timestamp).getTime() / 1000,
+  volumeUSD: tokenDayData.total_volume,
+  liquidityUSD: 0,
 })
 
 export const mapPairDayData = (pairDayData: PairDayData): ChartEntry => ({
@@ -95,8 +96,8 @@ export const fetchChartData = async (
   while (!allFound && !error) {
     // eslint-disable-next-line no-await-in-loop
     const { data, error: fetchError } = await getEntityDayDatas(chainName, skip)
-    skip += 1000
-    allFound = data?.length < 1000 || skip > 2000
+    skip += 10000
+    allFound = data?.length < 10000
     error = fetchError
     if (data) {
       chartEntries = chartEntries.concat(data)
@@ -116,8 +117,6 @@ export const fetchChartData = async (
       return [dayOrdinal, dayData]
     }),
   )
-
-  console.warn(formattedDayDatas)
 
   const availableDays = Object.keys(formattedDayDatas).map(dayOrdinal => parseInt(dayOrdinal, 10))
 
@@ -180,7 +179,6 @@ export const fetchChartDataWithAddress = async (
       return [dayOrdinal, dayData]
     }),
   )
-  console.warn(formattedDayDatas)
 
   const availableDays = Object.keys(formattedDayDatas).map(dayOrdinal => parseInt(dayOrdinal, 10))
 

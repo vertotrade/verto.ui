@@ -27,7 +27,7 @@ import UNSUPPORTED_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/33
 import WARNING_TOKEN_LIST_TESTNET from '../../config/constants/tokenLists/3333/vertotrade-warning.tokenlist.json'
 import { listsAtom } from './lists'
 
-const DEFAULT_TOKEN_LIST = env('IS_MAINNET') === 'true' ? DEFAULT_TOKEN_LIST_MAINNET : DEFAULT_TOKEN_LIST_TESTNET
+export const DEFAULT_TOKEN_LIST = env('IS_MAINNET') === 'true' ? DEFAULT_TOKEN_LIST_MAINNET : DEFAULT_TOKEN_LIST_TESTNET
 const UNSUPPORTED_TOKEN_LIST =
   env('IS_MAINNET') === 'true' ? UNSUPPORTED_TOKEN_LIST_MAINNET : UNSUPPORTED_TOKEN_LIST_TESTNET
 const WARNING_TOKEN_LIST = env('IS_MAINNET') === 'true' ? WARNING_TOKEN_LIST_MAINNET : WARNING_TOKEN_LIST_TESTNET

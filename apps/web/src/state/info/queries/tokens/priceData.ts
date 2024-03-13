@@ -102,8 +102,6 @@ const fetchTokenPriceData = async (
       }
     })
 
-    console.warn('pricesPart1', tokenPrices)
-
     // Go through BNB USD prices and calculate Token price based on it
     Object.keys(prices).forEach(priceKey => {
       const timestamp = priceKey.split('b')[1]

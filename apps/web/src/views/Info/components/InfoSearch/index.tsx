@@ -315,7 +315,7 @@ const Search = () => {
                   key={`searchTokenResult${token.address}`}>
                   <ResponsiveGrid>
                     <Flex>
-                      <CurrencyLogo address={token.address} chainName={chainName} />
+                      <CurrencyLogo address={token.address} />
                       <Text ml="10px">
                         <Text>{`${token.name} (${token.symbol})`}</Text>
                       </Text>

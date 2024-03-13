@@ -19,7 +19,7 @@ import { computeSlippageAdjustedAmounts } from 'utils/exchange'
 import getLpAddress from 'utils/getLpAddress'
 import { getTokenAddress } from 'views/Swap/components/Chart/utils'
 import { useAccount } from 'wagmi'
-import { LiquidityAggregate, Transaction, search } from 'utils/elastic-search'
+import { LiquidityAggregate, ESTransaction, search } from 'utils/elastic-search'
 import { AppState, useAppDispatch } from '../index'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { useCurrencyBalances } from '../wallet/hooks'
@@ -441,7 +441,7 @@ export const useFetchPairPrices = ({ inputCurrency, outputCurrency, timeWindow }
       try {
         const [{ data }, { data: lastPriceData }] = await Promise.all([
           search<SearchResponse<LiquidityAggregate>>(body),
-          search<SearchResponse<Transaction>>(lastPriceBody),
+          search<SearchResponse<ESTransaction>>(lastPriceBody),
         ])
 
         // Make sure we only set the data of the latest fetch if multiple fetches are running

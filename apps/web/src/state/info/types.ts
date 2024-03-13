@@ -26,6 +26,19 @@ export enum TransactionType {
   BURN,
 }
 
+export const getTransactionType = (type: string): TransactionType => {
+  switch (type) {
+    case 'SWAP':
+      return TransactionType.SWAP
+    case 'MINT':
+      return TransactionType.MINT
+    case 'BURN':
+      return TransactionType.BURN
+    default:
+      throw new Error(`Unknown transaction type: ${type}`)
+  }
+}
+
 export type Transaction = {
   type: TransactionType
   hash: string
