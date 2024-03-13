@@ -37,5 +37,5 @@ export const rebusTestnetProvider = new StaticJsonRpcProvider(
     url: 'https://testnet.rebus.money/rpc',
     skipFetchSetup: true,
   },
-  3333,
+  3033,
 )

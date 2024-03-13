@@ -14,7 +14,7 @@ export const getProvider = ({ chainId }: { chainId?: number }): any => {
       return goerliProvider
     case 1111:
       return rebusProvider
-    case 3333:
+    case 3033:
       return rebusTestnetProvider
     default:
       return null
