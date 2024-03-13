@@ -33,6 +33,14 @@
       "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png"
     },
     {
+      "name": "COM Token",
+      "symbol": "COM",
+      "address": "0x1D54EcB8583Ca25895c512A8308389fFD581F9c9",
+      "chainId": 1111,
+      "decimals": 6,
+      "logoURI": "/images/tokens/0x1D54EcB8583Ca25895c512A8308389fFD581F9c9.svg"
+    },
+    {
       "name": "Axelar Wrapped USDC",
       "symbol": "axlUSDC",
       "address": "0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75",
