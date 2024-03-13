@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDelayedUnmount } from "@verto/hooks";
 import { ExpandActionCell } from "../Cells/ExpandActionCell";
 
-const StyledRow = styled.div<{ hasAction?: boolean }>`
+const StyledRow = styled.div<{ hasAction?: boolean; disableExpandActionCell?: boolean }>`
   background-color: transparent;
   display: flex;
   cursor: ${(props) => (props.hasAction ? "pointer" : "initial")};
@@ -11,7 +11,7 @@ const StyledRow = styled.div<{ hasAction?: boolean }>`
   border-top: 1px solid ${({ theme }) => theme.colors.hr};
 
   &:nth-child(2) {
-    border-top: 0;
+    border-top: ${(props) => (props.disableExpandActionCell ? "" : "0")};
   }
 `;
 
@@ -40,7 +40,12 @@ export const ExpandRow: React.FC<
 
   return (
     <>
-      <StyledRow role="row" onClick={toggleExpanded} hasAction={!!panel}>
+      <StyledRow
+        disableExpandActionCell={disableExpandActionCell}
+        role="row"
+        onClick={toggleExpanded}
+        hasAction={!!panel}
+      >
         {children}
         {!disableExpandActionCell && <ExpandActionCell expanded={expanded} />}
       </StyledRow>
