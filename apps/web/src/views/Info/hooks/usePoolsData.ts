@@ -18,8 +18,8 @@ export const usePoolsData = () => {
     return Object.values(allPoolData)
       .map(pool => {
         return {
-          ...pool.data,
-          ...(isStableSwap && stableSwapsAprs && { lpApr7d: stableSwapsAprs[pool.data.address] }),
+          ...pool,
+          ...(isStableSwap && stableSwapsAprs && { lpApr7d: stableSwapsAprs[pool.address] }),
         }
       })
       .filter(pool => pool.token1.name !== 'unknown' && pool.token0.name !== 'unknown')

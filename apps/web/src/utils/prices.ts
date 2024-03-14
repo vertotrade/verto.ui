@@ -1,5 +1,5 @@
 import { Currency, Price } from '@verto/sdk'
-import { useFetchWithCache } from './fetchWithCache'
+import { fetchWithCache, useFetchWithCache } from './fetchWithCache'
 
 /**
  * Helper to multiply a Price object by an arbitrary amount
@@ -18,4 +18,8 @@ export const multiplyPriceByAmount = (price: Price<Currency, Currency>, amount: 
 
 export const useTokenPrices = (symbol: string) => {
   return useFetchWithCache('prices', symbol) as number
+}
+
+export const fetchAllTokenPrices = () => {
+  return fetchWithCache('prices')
 }

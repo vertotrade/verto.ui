@@ -14,7 +14,7 @@ const TokensOverview: React.FC<React.PropsWithChildren> = () => {
 
   const formattedTokens = useMemo(() => {
     return Object.values(allTokens)
-      .map(token => token.data)
+      .map(token => token)
       .filter(token => token)
   }, [allTokens])
 

@@ -1,8 +1,8 @@
 import { useTranslation } from '@verto/localization'
-import { ArrowBackIcon, ArrowForwardIcon, Box, Flex, NextLinkFromReactRouter, Skeleton, Text } from '@verto/uikit'
+import { ArrowBackIcon, ArrowForwardIcon, Box, Flex, Skeleton, Text } from '@verto/uikit'
 import { ITEMS_PER_INFO_TABLE_PAGE } from 'config/constants/info'
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
-import { useGetChainName, useMultiChainPath, useStableSwapPath } from 'state/info/hooks'
+import { useGetChainName } from 'state/info/hooks'
 import { PoolData } from 'state/info/types'
 import styled from 'styled-components'
 import { formatAmount } from 'utils/formatInfoNumbers'
@@ -20,7 +20,8 @@ const ResponsiveGrid = styled.div`
   display: grid;
   grid-gap: 1em;
   align-items: center;
-  grid-template-columns: 20px 3.5fr repeat(5, 1fr);
+  grid-template-columns: 20px 1.35fr repeat(2, 1fr);
+  // grid-template-columns: 20px 3.5fr repeat(5, 1fr);
 
   padding: 0 24px;
   @media screen and (max-width: 900px) {
@@ -47,13 +48,13 @@ const ResponsiveGrid = styled.div`
   }
 `
 
-const LinkWrapper = styled(NextLinkFromReactRouter)`
-  text-decoration: none;
-  :hover {
-    cursor: pointer;
-    opacity: 0.7;
-  }
-`
+// const LinkWrapper = styled(NextLinkFromReactRouter)`
+//   text-decoration: none;
+//   :hover {
+//     cursor: pointer;
+//     opacity: 0.7;
+//   }
+// `
 
 const SORT_FIELD = {
   volumeUSD: 'volumeUSD',
@@ -69,9 +70,9 @@ const LoadingRow: React.FC<React.PropsWithChildren> = () => (
     <Skeleton />
     <Skeleton />
     <Skeleton />
+    {/* <Skeleton />
     <Skeleton />
-    <Skeleton />
-    <Skeleton />
+    <Skeleton /> */}
   </ResponsiveGrid>
 )
 
@@ -85,29 +86,29 @@ const TableLoader: React.FC<React.PropsWithChildren> = () => (
 
 const DataRow = ({ poolData, index }: { poolData: PoolData; index: number }) => {
   const chainName = useGetChainName()
-  const chainPath = useMultiChainPath()
-  const stableSwapPath = useStableSwapPath()
+  // const chainPath = useMultiChainPath()
+  // const stableSwapPath = useStableSwapPath()
   return (
-    <LinkWrapper to={`/info${chainPath}/pairs/${poolData.address}${stableSwapPath}`}>
-      <ResponsiveGrid>
-        <Text>{index + 1}</Text>
-        <Flex>
-          <DoubleCurrencyLogo
-            address0={poolData.token0.address}
-            address1={poolData.token1.address}
-            chainName={chainName}
-          />
-          <Text ml="8px">
-            {poolData.token0.symbol}/{poolData.token1.symbol}
-          </Text>
-        </Flex>
-        <Text>${formatAmount(poolData.volumeUSD)}</Text>
-        <Text>${formatAmount(poolData.volumeUSDWeek)}</Text>
-        <Text>${formatAmount(poolData.lpFees24h)}</Text>
-        <Text>{formatAmount(poolData.lpApr7d)}%</Text>
-        <Text>${formatAmount(poolData.liquidityUSD)}</Text>
-      </ResponsiveGrid>
-    </LinkWrapper>
+    // <LinkWrapper to={`/info${chainPath}/pairs/${poolData.address}${stableSwapPath}`}>
+    <ResponsiveGrid>
+      <Text>{index + 1}</Text>
+      <Flex>
+        <DoubleCurrencyLogo
+          address0={poolData.token0.address}
+          address1={poolData.token1.address}
+          chainName={chainName}
+        />
+        <Text ml="8px">
+          {poolData.token0.symbol}/{poolData.token1.symbol}
+        </Text>
+      </Flex>
+      <Text>${formatAmount(poolData.volumeUSD)}</Text>
+      <Text>${formatAmount(poolData.volumeUSDWeek)}</Text>
+      {/* <Text>${formatAmount(poolData.lpFees24h)}</Text>
+      <Text>{formatAmount(poolData.lpApr7d)}%</Text>
+      <Text>${formatAmount(poolData.liquidityUSD)}</Text> */}
+    </ResponsiveGrid>
+    // </LinkWrapper>
   )
 }
 
@@ -188,7 +189,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
           textTransform="uppercase">
           {t('Volume 7D')} {arrow(SORT_FIELD.volumeUSDWeek)}
         </ClickableColumnHeader>
-        <ClickableColumnHeader
+        {/* <ClickableColumnHeader
           color="secondary"
           fontSize="12px"
           bold
@@ -211,7 +212,7 @@ const PoolTable: React.FC<React.PropsWithChildren<PoolTableProps>> = ({ poolData
           onClick={() => handleSort(SORT_FIELD.liquidityUSD)}
           textTransform="uppercase">
           {t('Liquidity')} {arrow(SORT_FIELD.liquidityUSD)}
-        </ClickableColumnHeader>
+        </ClickableColumnHeader> */}
       </ResponsiveGrid>
       <Break />
       {sortedPools.length > 0 ? (

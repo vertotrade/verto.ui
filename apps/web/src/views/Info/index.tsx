@@ -1,19 +1,16 @@
-import { useTranslation } from '@verto/localization'
 import { ChainId } from '@verto/sdk'
-import { SubMenuItems } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { useEffect } from 'react'
 import { useGetChainName } from 'state/info/hooks'
 import { useRouter } from 'next/router'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import InfoNav from './components/InfoNav'
+// import InfoNav from './components/InfoNav'
 
 export const InfoPageLayout = ({ children }) => {
   const { address: account } = useAccount()
   const { chainId } = useActiveChainId()
   const router = useRouter()
   const chainName = useGetChainName()
-  const { t } = useTranslation()
   const isStableSwap = router.query.type === 'stableSwap'
 
   useEffect(() => {
@@ -32,23 +29,7 @@ export const InfoPageLayout = ({ children }) => {
 
   return (
     <>
-      {chainName === 'BSC' && (
-        <SubMenuItems
-          items={[
-            {
-              label: t('Swap'),
-              href: '/info',
-            },
-            {
-              label: t('StableSwap'),
-              href: '/info?type=stableSwap',
-            },
-          ]}
-          activeItem={isStableSwap ? '/info?type=stableSwap' : '/info'}
-        />
-      )}
-
-      <InfoNav isStableSwap={isStableSwap} />
+      {/* <InfoNav isStableSwap={isStableSwap} /> */}
       {children}
     </>
   )

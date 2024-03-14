@@ -1,30 +1,21 @@
-import { getAddress } from '@ethersproject/address'
 import memoize from 'lodash/memoize'
-import { ChainId, Token } from '@verto/sdk'
-
-const mapping = {
-  [ChainId.BSC]: 'smartchain',
-  [ChainId.ETHEREUM]: 'ethereum',
-}
+import { Token } from '@verto/sdk'
+import { DEFAULT_TOKEN_LIST } from 'state/lists/hooks'
 
 const getTokenLogoURL = memoize(
   (token?: Token) => {
-    if (token && mapping[token.chainId]) {
-      return `https://assets-cdn.trustwallet.com/blockchains/${mapping[token.chainId]}/assets/${getAddress(
-        token.address,
-      )}/logo.png`
-    }
-    return (token as any)?.logoURI || null
+    return (
+      DEFAULT_TOKEN_LIST.tokens.find(t => t.address === token.address && t.chainId === token.chainId)?.logoURI ||
+      (token as any)?.logoURI ||
+      null
+    )
   },
   t => `${t.chainId}#${t.address}`,
 )
 
 export const getTokenLogoURLByAddress = memoize(
   (address?: string, chainId?: number) => {
-    if (address && chainId && mapping[chainId]) {
-      return `https://assets-cdn.trustwallet.com/blockchains/${mapping[chainId]}/assets/${getAddress(address)}/logo.png`
-    }
-    return null
+    return DEFAULT_TOKEN_LIST.tokens.find(t => t.address === address && t.chainId === chainId)?.logoURI || null
   },
   (address, chainId) => `${chainId}#${address}`,
 )

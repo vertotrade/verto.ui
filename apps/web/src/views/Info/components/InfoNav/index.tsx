@@ -1,21 +1,11 @@
-import {
-  Box,
-  ButtonMenu,
-  ButtonMenuItem,
-  Flex,
-  UserMenu,
-  UserMenuDivider,
-  UserMenuItem,
-  Text,
-  NextLinkFromReactRouter,
-} from '@verto/uikit'
+import { Box, Flex, UserMenu, UserMenuDivider, UserMenuItem, Text } from '@verto/uikit'
 import { useCallback } from 'react'
 import { ChainId } from '@verto/sdk'
 import { useTranslation } from '@verto/localization'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import Search from 'views/Info/components/InfoSearch'
-import { useMultiChainPath, useGetChainName } from 'state/info/hooks'
+import { useGetChainName } from 'state/info/hooks'
 import { multiChainId, multiChainPaths } from 'state/info/constant'
 import { chains } from 'utils/wagmi'
 import { ChainLogo } from 'components/Logo/ChainLogo'
@@ -34,26 +24,26 @@ const NavWrapper = styled(Flex)<{ isDark: boolean }>`
   }
 `
 
-const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
-  const { t } = useTranslation()
-  const router = useRouter()
-  const chainPath = useMultiChainPath()
+const InfoNav: React.FC<{ isStableSwap: boolean }> = () => {
+  // const { t } = useTranslation()
+  // const router = useRouter()
+  // const chainPath = useMultiChainPath()
   const { theme } = useTheme()
 
-  const isPairs = router.pathname === `/info${chainPath && `/[chainName]`}/pairs`
-  const isTokens = router.pathname === `/info${chainPath && `/[chainName]`}/tokens`
-  const stableSwapQuery = isStableSwap ? '?type=stableSwap' : ''
-  let activeIndex = 0
-  if (isPairs) {
-    activeIndex = 1
-  }
-  if (isTokens) {
-    activeIndex = 2
-  }
+  // const isPairs = router.pathname === `/info${chainPath && `/[chainName]`}/pairs`
+  // const isTokens = router.pathname === `/info${chainPath && `/[chainName]`}/tokens`
+  // const stableSwapQuery = isStableSwap ? '?type=stableSwap' : ''
+  // let activeIndex = 0
+  // if (isPairs) {
+  //   activeIndex = 1
+  // }
+  // if (isTokens) {
+  //   activeIndex = 2
+  // }
   return (
     <NavWrapper isDark={theme.isDark}>
       <Flex>
-        <Box>
+        {/* <Box>
           <ButtonMenu activeIndex={activeIndex} scale="sm" variant="primary">
             <ButtonMenuItem as={NextLinkFromReactRouter} to={`/info${chainPath}${stableSwapQuery}`}>
               {t('Overview')}
@@ -65,9 +55,9 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
               {t('Tokens')}
             </ButtonMenuItem>
           </ButtonMenu>
-        </Box>
+        </Box> */}
       </Flex>
-      <Box width={['100%', '100%', '250px']}>
+      <Box width={['100%', '100%', '270px']}>
         <Search />
       </Box>
     </NavWrapper>

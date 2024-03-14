@@ -14,7 +14,7 @@ export type TransactionToken = {
   name: string
 }
 
-export type Transaction = {
+export type ESTransaction = {
   total_value: number
   fees: string
   block_number: number
@@ -48,5 +48,10 @@ export type LiquidityAggregate = {
   token_1: AggregatedToken
   ingest_timestamp: string
   pair: string
+  timestamp: string
+}
+
+export type TvlEntry = {
+  total_volume: number
   timestamp: string
 }

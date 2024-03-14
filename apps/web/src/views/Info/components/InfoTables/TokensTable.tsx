@@ -1,16 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, Fragment } from 'react'
 import styled from 'styled-components'
-import {
-  Text,
-  Flex,
-  Box,
-  Skeleton,
-  ArrowBackIcon,
-  ArrowForwardIcon,
-  useMatchBreakpoints,
-  NextLinkFromReactRouter,
-} from '@verto/uikit'
-import { useGetChainName, useMultiChainPath, useStableSwapPath } from 'state/info/hooks'
+import { Text, Flex, Box, Skeleton, ArrowBackIcon, ArrowForwardIcon, useMatchBreakpoints } from '@verto/uikit'
 import { TokenData } from 'state/info/types'
 import { CurrencyLogo } from 'views/Info/components/CurrencyLogo'
 import Percent from 'views/Info/components/Percent'
@@ -61,13 +51,13 @@ const ResponsiveGrid = styled.div`
   }
 `
 
-const LinkWrapper = styled(NextLinkFromReactRouter)`
-  text-decoration: none;
-  :hover {
-    cursor: pointer;
-    opacity: 0.7;
-  }
-`
+// const LinkWrapper = styled(NextLinkFromReactRouter)`
+//   text-decoration: none;
+//   :hover {
+//     cursor: pointer;
+//     opacity: 0.7;
+//   }
+// `
 
 const ResponsiveLogo = styled(CurrencyLogo)`
   @media screen and (max-width: 670px) {
@@ -98,33 +88,32 @@ const TableLoader: React.FC<React.PropsWithChildren> = () => {
 
 const DataRow: React.FC<React.PropsWithChildren<{ tokenData: TokenData; index: number }>> = ({ tokenData, index }) => {
   const { isXs, isSm } = useMatchBreakpoints()
-  const chainName = useGetChainName()
-  const chianPath = useMultiChainPath()
-  const stableSwapPath = useStableSwapPath()
+  // const chianPath = useMultiChainPath()
+  // const stableSwapPath = useStableSwapPath()
   return (
-    <LinkWrapper to={`/info${chianPath}/tokens/${tokenData.address}${stableSwapPath}`}>
-      <ResponsiveGrid>
-        <Flex>
-          <Text>{index + 1}</Text>
-        </Flex>
-        <Flex alignItems="center">
-          <ResponsiveLogo address={tokenData.address} chainName={chainName} />
-          {(isXs || isSm) && <Text ml="8px">{tokenData.symbol}</Text>}
-          {!isXs && !isSm && (
-            <Flex marginLeft="10px">
-              <Text>{tokenData.name}</Text>
-              <Text ml="8px">({tokenData.symbol})</Text>
-            </Flex>
-          )}
-        </Flex>
-        <Text fontWeight={400}>${formatAmount(tokenData.priceUSD, { notation: 'standard' })}</Text>
-        <Text fontWeight={400}>
-          <Percent value={tokenData.priceUSDChange} fontWeight={400} />
-        </Text>
-        <Text fontWeight={400}>${formatAmount(tokenData.volumeUSD)}</Text>
-        <Text fontWeight={400}>${formatAmount(tokenData.liquidityUSD)}</Text>
-      </ResponsiveGrid>
-    </LinkWrapper>
+    // <LinkWrapper to={`/info${chianPath}/tokens/${tokenData.address}${stableSwapPath}`}>
+    <ResponsiveGrid>
+      <Flex>
+        <Text>{index + 1}</Text>
+      </Flex>
+      <Flex alignItems="center">
+        <ResponsiveLogo address={tokenData.address} />
+        {(isXs || isSm) && <Text ml="8px">{tokenData.symbol}</Text>}
+        {!isXs && !isSm && (
+          <Flex marginLeft="10px">
+            <Text>{tokenData.name}</Text>
+            <Text ml="8px">({tokenData.symbol})</Text>
+          </Flex>
+        )}
+      </Flex>
+      <Text fontWeight={400}>${formatAmount(tokenData.priceUSD, { notation: 'standard' })}</Text>
+      <Text fontWeight={400}>
+        <Percent value={tokenData.priceUSDChange} fontWeight={400} />
+      </Text>
+      <Text fontWeight={400}>${formatAmount(tokenData.volumeUSD)}</Text>
+      {/* <Text fontWeight={400}>${formatAmount(tokenData.liquidityUSD)}</Text> */}
+    </ResponsiveGrid>
+    // </LinkWrapper>
   )
 }
 
@@ -227,14 +216,14 @@ const TokenTable: React.FC<
           textTransform="uppercase">
           {t('Volume 24H')} {arrow(SORT_FIELD.volumeUSD)}
         </ClickableColumnHeader>
-        <ClickableColumnHeader
+        {/* <ClickableColumnHeader
           color="secondary"
           fontSize="12px"
           bold
           onClick={() => handleSort(SORT_FIELD.liquidityUSD)}
           textTransform="uppercase">
           {t('Liquidity')} {arrow(SORT_FIELD.liquidityUSD)}
-        </ClickableColumnHeader>
+        </ClickableColumnHeader> */}
       </ResponsiveGrid>
 
       <Break />

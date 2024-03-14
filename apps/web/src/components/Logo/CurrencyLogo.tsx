@@ -1,5 +1,5 @@
 import { ChainId, Currency } from '@verto/sdk'
-import { BinanceIcon, TokenLogo } from '@verto/uikit'
+import { TokenLogo } from '@verto/uikit'
 import { useMemo } from 'react'
 import { WrappedTokenInfo } from '@verto/token-lists'
 import styled from 'styled-components'
@@ -53,10 +53,6 @@ export default function CurrencyLogo({
   }, [currency, uriLocations])
 
   if (currency?.isNative) {
-    if (currency.chainId === ChainId.BSC) {
-      return <BinanceIcon width={size} style={style} />
-    }
-
     return (
       <StyledLogo
         badSrcs={BAD_SRCS}
