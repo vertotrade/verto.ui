@@ -156,15 +156,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
               <StyledText color="black">
                 {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
               </StyledText>
-<<<<<<< HEAD
-              <Flex
-                justifyContent="flex-start"
-                align-items="center"
-                flexDirection={['column', null, 'row']}
-                mr={['auto', null, 'unset']}>
-=======
               <ButtonsWrapper justifyContent="center" align-items="center">
->>>>>>> c8f488b90 (DEV-743 Fix "start in seconds" section)
                 {!account && (
                   <ConnectWalletButton
                     mt="24px"
