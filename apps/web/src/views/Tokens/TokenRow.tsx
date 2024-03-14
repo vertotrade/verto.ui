@@ -12,7 +12,7 @@ const TokenRow: React.FC<React.PropsWithChildren<{ currencyAmount: CurrencyAmoun
 }) => {
   return (
     <Pool.ExpandRow disableExpandActionCell>
-      <NameCell currency={currencyAmount.currency} />
+      <NameCell alignAtStart currency={currencyAmount.currency} />
       <BalanceCell currencyAmount={currencyAmount} />
       <AddressCell currency={currencyAmount.currency} />
       <ActionCell currency={currencyAmount.currency} />

@@ -10,7 +10,7 @@ interface AddressCellProps {
 const StyledCell = styled(Pool.BaseCell)<{ isSmall?: boolean }>`
   flex: 5;
   flex-direction: row;
-  min-width: ${props => (props.isSmall ? 'auto' : '390px')};
+  min-width: ${props => (props.isSmall ? 'auto' : '420px')};
   word-break: break-all;
   ${({ theme }) => theme.mediaQueries.sm} {
     flex: 1 0 150px;

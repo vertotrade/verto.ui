@@ -46,8 +46,8 @@ export const vertoTokens = {
     '0x1D54EcB8583Ca25895c512A8308389fFD581F9c9',
     6,
     'COM',
-    'Community Token',
-    'https://communitytoken.network/',
+    'Commercio Token',
+    'https://commercio.network/project/',
   ),
   axlusdc: new ERC20Token(
     ChainId.REBUS,
