@@ -1,7 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { splitSignature } from '@ethersproject/bytes'
-import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useRouter } from 'next/router'
 import { Currency, Percent, WNATIVE, ChainId } from '@verto/sdk'
@@ -43,7 +41,7 @@ import { LightGreyCard } from '../../components/Card'
 
 import { CurrencyLogo } from '../../components/Logo'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
-import { usePairContract, useZapContract } from '../../hooks/useContract'
+import { useZapContract } from '../../hooks/useContract'
 import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 
 import { useTransactionAdder } from '../../state/transactions/hooks'
@@ -146,81 +144,12 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
       independentField === Field.CURRENCY_B ? typedValue : parsedAmounts[Field.CURRENCY_B]?.toSignificant(6) ?? '',
   }
 
-  // pair contract
-  const pairContractRead: Contract | null = usePairContract(pair?.liquidityToken?.address, false)
-
   // allowance handling
   const [signatureData, setSignatureData] = useState<{ v: number; r: string; s: string; deadline: number } | null>(null)
   const [approval, approveCallback] = useApproveCallback(
     parsedAmounts[Field.LIQUIDITY],
     isZap ? getZapAddress(chainId) : ROUTER_ADDRESS[chainId],
   )
-
-  async function onAttemptToApprove() {
-    if (!pairContractRead || !pair || !library || !deadline) throw new Error('missing dependencies')
-    const liquidityAmount = parsedAmounts[Field.LIQUIDITY]
-    if (!liquidityAmount) {
-      toastError(t('Error'), t('Missing liquidity amount'))
-      throw new Error('missing liquidity amount')
-    }
-
-    // try to gather a signature for permission
-    const nonce = await pairContractRead.nonces(account)
-
-    const EIP712Domain = [
-      { name: 'name', type: 'string' },
-      { name: 'version', type: 'string' },
-      { name: 'chainId', type: 'uint256' },
-      { name: 'verifyingContract', type: 'address' },
-    ]
-    const domain = {
-      name: 'Verto LPs',
-      version: '1',
-      chainId,
-      verifyingContract: pair.liquidityToken.address,
-    }
-    const Permit = [
-      { name: 'owner', type: 'address' },
-      { name: 'spender', type: 'address' },
-      { name: 'value', type: 'uint256' },
-      { name: 'nonce', type: 'uint256' },
-      { name: 'deadline', type: 'uint256' },
-    ]
-    const message = {
-      owner: account,
-      spender: ROUTER_ADDRESS[chainId],
-      value: liquidityAmount.quotient.toString(),
-      nonce: nonce.toHexString(),
-      deadline: deadline.toNumber(),
-    }
-    const data = JSON.stringify({
-      types: {
-        EIP712Domain,
-        Permit,
-      },
-      domain,
-      primaryType: 'Permit',
-      message,
-    })
-
-    library
-      .send('eth_signTypedData_v4', [account, data])
-      .then(splitSignature)
-      .then(signature => {
-        setSignatureData({
-          v: signature.v,
-          r: signature.r,
-          s: signature.s,
-          deadline: deadline.toNumber(),
-        })
-      })
-      .catch(err => {
-        // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
-        if (err?.code !== 4001) {
-          approveCallback()
-        }
-      })
-  }
 
   // wrapped onUserInput to clear signatures
   const onUserInput = useCallback(
@@ -833,16 +762,14 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
             ) : (
               <RowBetween>
                 <Button
-                  variant={
-                    approval === ApprovalState.APPROVED || (!isZap && signatureData !== null) ? 'success' : 'primary'
-                  }
-                  onClick={isZap ? approveCallback : onAttemptToApprove}
-                  disabled={approval !== ApprovalState.NOT_APPROVED || (!isZap && signatureData !== null)}
+                  variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
+                  onClick={approveCallback}
+                  disabled={approval !== ApprovalState.NOT_APPROVED}
                   width="100%"
                   mr="0.5rem">
                   {approval === ApprovalState.PENDING ? (
                     <Dots>{t('Enabling')}</Dots>
-                  ) : approval === ApprovalState.APPROVED || (!isZap && signatureData !== null) ? (
+                  ) : approval === ApprovalState.APPROVED ? (
                     t('Enabled')
                   ) : (
                     t('Enable')
