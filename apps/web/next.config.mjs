@@ -64,6 +64,10 @@ const config = {
         protocol: 'https',
         hostname: 'nftvertodata.s3.amazonaws.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'd22btkczn46ld4.cloudfront.net',
+      },
     ],
   },
   async rewrites() {
