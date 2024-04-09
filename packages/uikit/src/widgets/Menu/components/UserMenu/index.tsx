@@ -122,7 +122,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
       >
         <MenuIcon className={avatarClassName} avatarSrc={avatarSrc} variant={variant} />
         <LabelText title={typeof text === "string" ? text || account : account}>{text || accountEllipsis}</LabelText>
-        {!disabled && <ChevronDownIcon color="primary" width="24px" />}
+        {!disabled && <ChevronDownIcon color="white" width="24px" />}
       </StyledUserMenu>
       {!disabled && (
         <Menu style={styles.popper} ref={setTooltipRef} {...attributes.popper} isOpen={isOpen}>

@@ -152,6 +152,11 @@ const config: (
     //   showItemsOnMobile: false,
     // },
     {
+      label: t('Info'),
+      href: '/info',
+      showItemsOnMobile: false,
+    },
+    {
       label: t('Docs'),
       href: 'https://docs.vertotrade.com',
       target: '_blank',
