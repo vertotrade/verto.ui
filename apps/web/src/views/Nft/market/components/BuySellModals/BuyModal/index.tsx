@@ -1,4 +1,4 @@
-import { parseUnits } from '@ethersproject/units'
+import { parseUnits, formatEther } from '@ethersproject/units'
 import { TranslateFunction, useTranslation } from '@verto/localization'
 import { InjectedModalProps, useToast } from '@verto/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -79,10 +79,13 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
     handleApprove: vertoHandleApprove,
   } = useApproveConfirmTransaction({
     onRequiresApproval: async () => {
+      if (vertoToken.address === token?.address) {
+        return requiresApproval(vertoContractReader, account, nftMarketContract.address, nftPriceWei.add(burnVerto))
+      }          
       return requiresApproval(vertoContractReader, account, nftMarketContract.address, burnVerto)
     },
     onApprove: () => {
-      return callWithGasPrice(vertoContractApprover, 'approve', [nftMarketContract.address, burnVerto])
+      return callWithGasPrice(vertoContractApprover, 'increaseAllowance', [nftMarketContract.address, burnVerto])
     },
     onApproveSuccess: async ({ receipt }) => {
       toastSuccess(
@@ -161,7 +164,7 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
         <ApproveAndConfirmStage
           token={token}
           variant="buy"
-          gasPrice={gasPrice}
+          gasPrice={formatEther(burnVerto)}
           handleApprove={handleApprove}
           isApproved={isApproved}
           isApproving={isApproving}

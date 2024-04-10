@@ -86,7 +86,7 @@ const ApproveAndConfirmStage: React.FC<React.PropsWithChildren<ApproveAndConfirm
               </Flex>
               {!vertoIsApproved && (
                 <Text small color={isApproved ? 'textSubtle' : 'textDisabled'}>
-                  {t('Please approve %symbol% VERTO spending for transaction gas', { symbol: gasPrice })}
+                  {t('Please approve %symbol% VERTO spending for burning fee', { symbol: gasPrice })}
                 </Text>
               )}
             </Flex>
