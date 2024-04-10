@@ -71,8 +71,6 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
 
   const notEnoughForPurchase = balance.lt(ethersToBigNumber(nftPriceWei))
 
-  const gasPrice = useGasPrice()
-
   const {
     isApproving: vertoIsApproving,
     isApproved: vertoIsApproved,
@@ -81,7 +79,7 @@ const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, 
     onRequiresApproval: async () => {
       if (vertoToken.address === token?.address) {
         return requiresApproval(vertoContractReader, account, nftMarketContract.address, nftPriceWei.add(burnVerto))
-      }          
+      }
       return requiresApproval(vertoContractReader, account, nftMarketContract.address, burnVerto)
     },
     onApprove: () => {
