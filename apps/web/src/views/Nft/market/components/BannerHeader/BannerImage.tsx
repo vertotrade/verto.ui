@@ -1,21 +1,19 @@
 import styled from 'styled-components'
 
-const StyledBannerImageWrapper = styled.div`
+export const StyledBannerImageWrapper = styled.div`
   ${({ theme }) => `background-color: ${theme.colors.cardBorder}`};
   flex: none;
   position: relative;
   width: 100%;
   border-radius: 8px;
-  height: 123px;
   overflow: hidden;
+  aspect-ratio: 394 / 100;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    height: 192px;
+    aspect-ratio: 394 / 100;
   }
 
   ${({ theme }) => theme.mediaQueries.md} {
-    height: 300px;
+    aspect-ratio: 394 / 100;
   }
 `
-
-export default StyledBannerImageWrapper

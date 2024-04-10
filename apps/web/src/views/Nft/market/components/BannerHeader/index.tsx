@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Flex, Box, FlexProps } from '@verto/uikit'
 import Image from 'next/image'
-import StyledBannerImageWrapper from './BannerImage'
+import { StyledBannerImageWrapper } from './BannerImage'
 
 interface BannerHeaderProps extends FlexProps {
   bannerImage: string
