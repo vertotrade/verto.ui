@@ -8,12 +8,4 @@ export const StyledBannerImageWrapper = styled.div`
   border-radius: 8px;
   overflow: hidden;
   aspect-ratio: 394 / 100;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    aspect-ratio: 394 / 100;
-  }
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    aspect-ratio: 394 / 100;
-  }
 `
