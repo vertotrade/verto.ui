@@ -15,7 +15,7 @@ import { ApiCollections, NftToken, Collection, NftAttribute, MarketEvent } from 
 import { getCollection, getCollections } from './helpers'
 import { nftMarketActivityFiltersAtom, tryVideoNftMediaAtom, nftMarketFiltersAtom } from './atoms'
 
-const DEFAULT_NFT_ORDERING = { field: 'currentAskPrice', direction: 'asc' as 'asc' | 'desc' }
+const DEFAULT_NFT_ORDERING = { field: 'updated_at', direction: 'desc' as 'asc' | 'desc' }
 const DEFAULT_NFT_ACTIVITY_FILTER = { typeFilters: [], collectionFilters: [] }
 const EMPTY_OBJECT = {}
 
@@ -84,7 +84,7 @@ export const useGetNftOrdering = (collectionAddress: string) => {
 
 export const useGetNftShowOnlyOnSale = (collectionAddress: string) => {
   const [nftMarketFilters] = useAtom(nftMarketFiltersAtom)
-  return nftMarketFilters[collectionAddress]?.showOnlyOnSale ?? true
+  return nftMarketFilters[collectionAddress]?.showOnlyOnSale ?? false
 }
 
 export const useTryVideoNftMedia = () => {

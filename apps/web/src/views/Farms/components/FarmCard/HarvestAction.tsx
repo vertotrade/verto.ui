@@ -1,16 +1,16 @@
 import { useTranslation } from '@verto/localization'
-import { Flex, Heading, TooltipText, useToast, useTooltip, useModal, Balance } from '@verto/uikit'
+import { Flex, Heading, TooltipText, useTooltip, Balance } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
-import { ToastDescriptionWithTx } from 'components/Toast'
-import useCatchTxError from 'hooks/useCatchTxError'
+// import { ToastDescriptionWithTx } from 'components/Toast'
+// import useCatchTxError from 'hooks/useCatchTxError'
 
 import { TransactionResponse } from '@ethersproject/providers'
 import { usePriceCakeBusd } from 'state/farms/hooks'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { getBalanceAmount } from '@verto/utils/formatBalance'
 import { Token } from '@verto/sdk'
-import MultiChainHarvestModal from 'views/Farms/components/MultiChainHarvestModal'
+// import MultiChainHarvestModal from 'views/Farms/components/MultiChainHarvestModal'
 
 interface FarmCardActionsProps {
   pid?: number
@@ -25,19 +25,18 @@ interface FarmCardActionsProps {
 }
 
 const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
-  pid,
-  token,
-  quoteToken,
-  vaultPid,
+  // pid,
+  // token,
+  // quoteToken,
   earnings,
   proxyCakeBalance,
-  lpSymbol,
-  onReward,
-  onDone,
+  // lpSymbol,
+  // onReward,
+  // onDone,
 }) => {
   const { address: account } = useAccount()
-  const { toastSuccess } = useToast()
-  const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
+  // const { toastSuccess } = useToast()
+  // const { fetchWithCatchTxError } = useCatchTxError()
   const { t } = useTranslation()
   const cakePrice = usePriceCakeBusd()
   const rawEarningsBalance = account ? getBalanceAmount(earnings) : BIG_ZERO
@@ -53,39 +52,39 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
     },
   )
 
-  const onClickHarvestButton = () => {
-    if (vaultPid) {
-      onPresentNonBscHarvestModal()
-    } else {
-      handleHarvest()
-    }
-  }
+  // const onClickHarvestButton = () => {
+  //   if (vaultPid) {
+  //     onPresentNonBscHarvestModal()
+  //   } else {
+  //     handleHarvest()
+  //   }
+  // }
 
-  const handleHarvest = async () => {
-    const receipt = await fetchWithCatchTxError(() => {
-      return onReward()
-    })
-    if (receipt?.status) {
-      toastSuccess(
-        `${t('Harvested')}!`,
-        <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'VERTO' })}
-        </ToastDescriptionWithTx>,
-      )
-      onDone?.()
-    }
-  }
+  // const handleHarvest = async () => {
+  //   const receipt = await fetchWithCatchTxError(() => {
+  //     return onReward()
+  //   })
+  //   if (receipt?.status) {
+  //     toastSuccess(
+  //       `${t('Harvested')}!`,
+  //       <ToastDescriptionWithTx txHash={receipt.transactionHash}>
+  //         {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'VERTO' })}
+  //       </ToastDescriptionWithTx>,
+  //     )
+  //     onDone?.()
+  //   }
+  // }
 
-  const [onPresentNonBscHarvestModal] = useModal(
-    <MultiChainHarvestModal
-      pid={pid}
-      token={token}
-      lpSymbol={lpSymbol}
-      quoteToken={quoteToken}
-      earningsBigNumber={earnings}
-      earningsBusd={earningsBusd}
-    />,
-  )
+  // const [onPresentNonBscHarvestModal] = useModal(
+  //   <MultiChainHarvestModal
+  //     pid={pid}
+  //     token={token}
+  //     lpSymbol={lpSymbol}
+  //     quoteToken={quoteToken}
+  //     earningsBigNumber={earnings}
+  //     earningsBusd={earningsBusd}
+  //   />,
+  // )
 
   return (
     <Flex mb="24px" justifyContent="center" alignItems="center">

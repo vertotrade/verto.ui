@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { Box, BoxProps } from "../Box";
+import { Box, BoxProps, Flex } from "../Box";
 import { ArrowDropDownIcon } from "../Svg";
 import { Text } from "../Text";
 
@@ -13,7 +13,6 @@ const DropDownHeader = styled.div`
   padding: 0px 16px;
   border: 1px solid ${({ theme }) => theme.colors.inputBorder};
   border-radius: 7.5px;
-  background: ${({ theme }) => theme.colors.inputBg};
   transition: border-radius 0.15s;
 
   &:hover {
@@ -26,7 +25,6 @@ const DropDownListContainer = styled.div`
   height: 0;
   position: absolute;
   overflow: hidden;
-  background: ${({ theme }) => theme.colors.inputBg};
   z-index: ${({ theme }) => theme.zIndices.dropdown};
   transition: transform 0.15s, opacity 0.15s;
   transform: scaleY(0);
@@ -44,7 +42,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
   width: 100%;
   max-width: 200px;
   position: relative;
-  background: ${({ theme }) => theme.colors.inputBg};
+  background: ${({ theme, isOpen }) => (isOpen ? theme.colors.inputBg : "transparent")};
   border-radius: 7.5px;
   height: 40px;
   min-width: 136px;
@@ -67,6 +65,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
         height: auto;
         transform: scaleY(1);
         opacity: 1;
+        background: ${({ theme }) => (props.isOpen ? theme.colors.inputBg : "transparent")};
         border: 1px solid ${({ theme }) => theme.colors.newPrimary};
         border-top-width: 0;
         border-radius: 0 0 7.5px 7.5px;
@@ -78,6 +77,7 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
+    pointer-events: none;
   }
 `;
 
@@ -102,11 +102,13 @@ export interface SelectProps extends BoxProps {
   placeHolderText?: string;
   defaultOptionIndex?: number;
   color?: string;
+  hasPrimaryBorderColor?: boolean;
 }
 
 export interface OptionProps {
   label: string;
   value: any;
+  prefix?: React.ReactElement;
 }
 
 const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
@@ -118,7 +120,7 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [optionSelected, setOptionSelected] = useState(false);
+  const [optionSelected, setOptionSelected] = useState(typeof defaultOptionIndex === "number");
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(defaultOptionIndex);
 
   const toggling = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -149,7 +151,7 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
 
   useEffect(() => {
     if (defaultOptionIndex) {
-      setSelectedOptionIndex(defaultOptionIndex - 1);
+      setSelectedOptionIndex(defaultOptionIndex);
       setOptionSelected(true);
     }
   }, [defaultOptionIndex]);
@@ -157,9 +159,12 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
   return (
     <DropDownContainer isOpen={isOpen} {...props}>
       <DropDownHeader onClick={toggling}>
-        <Text color={color} small>
-          {!optionSelected && placeHolderText ? placeHolderText : options[selectedOptionIndex].label}
-        </Text>
+        <Flex alignItems="center">
+          {!optionSelected ? null : options[selectedOptionIndex].prefix}
+          <Text color={color} small>
+            {!optionSelected && placeHolderText ? placeHolderText : options[selectedOptionIndex].label}
+          </Text>
+        </Flex>
       </DropDownHeader>
       <ArrowDropDownIcon color={color} onClick={toggling} width="24px" height="24px" />
       <DropDownListContainer>
@@ -167,9 +172,12 @@ const Select: React.FunctionComponent<React.PropsWithChildren<SelectProps>> = ({
           {options.map((option, index) =>
             placeHolderText || index !== selectedOptionIndex ? (
               <ListItem onClick={onOptionClicked(index)} key={option.label}>
-                <Text small color={color}>
-                  {option.label}
-                </Text>
+                <Flex alignItems="center">
+                  {option.prefix}
+                  <Text small color={color}>
+                    {option.label}
+                  </Text>
+                </Flex>
               </ListItem>
             ) : null
           )}

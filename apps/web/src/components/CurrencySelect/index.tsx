@@ -57,6 +57,7 @@ export const CurrencySelect = ({
   showCommonBases,
   commonBasesType,
   hideBalance,
+  tokensToShow,
   ...props
 }: CurrencySelectProps) => {
   const { address: account } = useAccount()
@@ -75,6 +76,7 @@ export const CurrencySelect = ({
       otherSelectedCurrency={otherSelectedCurrency}
       showCommonBases={showCommonBases}
       commonBasesType={commonBasesType}
+      tokensToShow={tokensToShow}
     />,
   )
 

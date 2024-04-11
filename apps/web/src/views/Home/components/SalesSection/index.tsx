@@ -4,11 +4,23 @@ import { useTheme } from '@verto/hooks'
 import { CompositeImageProps } from '../CompositeImage'
 import ColoredWordHeading from '../ColoredWordHeading'
 
-interface SalesSectionButton {
+interface SalesSectionButtonPrimary {
   to: string
   text: string
   external: boolean
 }
+
+interface SalesSectionButtonSecondary {
+  to: string
+  text: string
+  external: boolean
+  isIcon: boolean
+}
+
+export const ButtonsWrapper = styled(Flex)`
+  flex-wrap: wrap;
+  gap: 30px;
+`
 
 const ContentWrapper = styled(Flex)<{ addStyles?: boolean }>`
   ${props =>
@@ -61,8 +73,8 @@ export interface SalesSectionProps {
   headingText: string
   bodyText: string
   reverse: boolean
-  primaryButton: SalesSectionButton
-  secondaryButton: SalesSectionButton
+  primaryButton: SalesSectionButtonPrimary
+  secondaryButton: SalesSectionButtonSecondary
   images: CompositeImageProps
   colorOverride?: boolean
   ClipComponent?: React.ComponentType
@@ -106,7 +118,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
             <Text color={theme.colors.text} mb="24px">
               {bodyText}
             </Text>
-            <Flex>
+            <ButtonsWrapper>
               <Button mr="16px" variant="secondary">
                 {primaryButton.external ? (
                   <Link external href={primaryButton.to}>
@@ -124,6 +136,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
               </Button>
               {secondaryButton.external ? (
                 <LinkExternal
+                  isIcon={secondaryButton.isIcon}
                   color={theme.colors.text}
                   textDecoration="none"
                   href={secondaryButton.to}
@@ -135,7 +148,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = props
                   {secondaryButton.text}
                 </RouterLink>
               )}
-            </Flex>
+            </ButtonsWrapper>
           </Flex>
         </ContentInnerWrapper>
         <Flex

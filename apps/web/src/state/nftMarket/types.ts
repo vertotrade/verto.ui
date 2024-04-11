@@ -51,6 +51,7 @@ export interface TokenMarketData {
   collection: {
     id: string
   }
+  currency: string
   currentAskPrice: string
   currentSeller: string
   isTradable: boolean
@@ -115,8 +116,8 @@ export interface Collection {
   description?: string
   symbol: string
   active: boolean
-  totalVolumeBNB: string
-  numberTokensListed: string
+  volume: string
+  listedItems: string
   tradingFee: string
   creatorFee: string
   owner: string
@@ -136,7 +137,7 @@ export interface ApiCollections {
 
 export interface User {
   address: string
-  numberTokensListed: BigNumberish
+  listedItems: BigNumberish
   numberTokensPurchased: BigNumberish
   numberTokensSold: BigNumberish
   nfts: Record<string, BigNumberish> // String is an address, BigNumberish is a tokenID
@@ -261,7 +262,7 @@ export interface CollectionMarketDataBaseFields {
   active: boolean
   totalTrades: string
   totalVolumeBNB: string
-  numberTokensListed: string
+  listedItems: string
   creatorAddress: string
   tradingFee: string
   creatorFee: string

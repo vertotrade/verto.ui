@@ -6,11 +6,13 @@ import { ButtonMenuProps } from "./types";
 
 interface StyledButtonMenuProps extends ButtonMenuProps {
   theme: DefaultTheme;
+  isLight?: boolean;
+  noBg: boolean;
 }
 
 const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
   height: 40px;
-  background-color: ${({ theme }) => theme.colors.inputBg};
+  background-color: ${({ theme, noBg }) => (!noBg ? theme.colors.inputBg : "transparent")};
   border-radius: 8px;
   display: ${({ fullWidth }) => (fullWidth ? "flex" : "inline-flex")};
   gap: 4px;
@@ -51,6 +53,15 @@ const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
     return "";
   }}
   ${space}
+
+  ${({ isLight, theme }) => {
+    if (isLight) {
+      return `
+        background-color: ${theme.colors.buttonMenuBg};
+    `;
+    }
+    return "";
+  }}
 `;
 
 const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
@@ -60,11 +71,14 @@ const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
   onItemClick,
   disabled,
   children,
+  noBg,
   fullWidth = false,
   ...props
 }) => {
+  const isLight = variant == variants.LIGHT;
+
   return (
-    <StyledButtonMenu disabled={disabled} fullWidth={fullWidth} {...props}>
+    <StyledButtonMenu disabled={disabled} fullWidth={fullWidth} isLight={isLight} noBg={noBg ? noBg : false} {...props}>
       {Children.map(children, (child: ReactElement, index) => {
         return cloneElement(child, {
           isActive: activeIndex === index,

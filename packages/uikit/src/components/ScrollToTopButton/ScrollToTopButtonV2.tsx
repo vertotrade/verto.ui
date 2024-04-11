@@ -9,6 +9,14 @@ const FixedContainer = styled.div`
   position: fixed;
   right: 5%;
   bottom: calc(110px + env(safe-area-inset-bottom));
+
+  button {
+    background-color: ${({ theme }) => theme.colors.newPrimary};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.newPrimaryDark};
+      opacity: 1 !important;
+    }
+  }
 `;
 
 const ScrollToTopButtonV2 = () => {
@@ -41,12 +49,7 @@ const ScrollToTopButtonV2 = () => {
 
   return (
     <FixedContainer style={{ display: visible && !isMobile ? "inline" : "none" }}>
-      <Button
-        width={48}
-        height={48}
-        endIcon={<ArrowUpIcon color="invertedContrast" style={{ marginLeft: 0 }} />}
-        onClick={scrollToTop}
-      />
+      <Button width={48} height={48} endIcon={<ArrowUpIcon style={{ marginLeft: 0 }} />} onClick={scrollToTop} />
     </FixedContainer>
   );
 };

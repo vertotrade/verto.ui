@@ -11,6 +11,7 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
   activeItem,
   activeSubItem,
   isDark,
+  isSecondaryMenu,
   ...props
 }) => {
   return (
@@ -29,6 +30,7 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
               statusColor={statusColor}
               isDisabled={disabled}
               target={target}
+              isSecondaryMenu={isSecondaryMenu}
             >
               {label || (icon && createElement(Icon as any, { color: isActive ? "secondary" : "textSubtle" }))}
             </MenuItem>

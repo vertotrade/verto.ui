@@ -6,10 +6,10 @@ import { useCallback } from 'react'
 
 const initialNftFilterState: NftFilter = {
   activeFilters: {},
-  showOnlyOnSale: true,
+  showOnlyOnSale: false,
   ordering: {
-    field: 'currentAskPrice',
-    direction: 'asc',
+    field: 'updated_at',
+    direction: 'desc',
   },
 }
 

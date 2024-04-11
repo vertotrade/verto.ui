@@ -14,7 +14,7 @@ export function Clip({ url }) {
   }, [url])
 
   return (
-    <video width="100%" height="100%" autoPlay muted loop ref={videoRef}>
+    <video width="100%" height="100%" autoPlay muted loop ref={videoRef} playsInline>
       <source src={url} />
     </video>
   )
