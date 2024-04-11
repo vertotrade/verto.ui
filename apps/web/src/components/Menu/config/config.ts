@@ -146,16 +146,6 @@ const config: (
       href: '/info',
       showItemsOnMobile: false,
     },
-    // {
-    //   label: t('Info'),
-    //   href: '/info',
-    //   showItemsOnMobile: false,
-    // },
-    {
-      label: t('Info'),
-      href: '/info',
-      showItemsOnMobile: false,
-    },
     {
       label: t('Docs'),
       href: 'https://docs.vertotrade.com',
