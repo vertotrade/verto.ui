@@ -7,5 +7,5 @@ export const StyledBannerImageWrapper = styled.div`
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 394 / 100;
+  aspect-ratio: 2.7/1;
 `
