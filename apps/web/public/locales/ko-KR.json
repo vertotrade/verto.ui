@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% 거래 수수료는 VERTO 구매 및 소각에 사용됩니다",
   "Sell": "판매",
   "Set as Profile Pic": "프로필 사진으로 설정",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "허용되는 가격 범위는 %minPrice% ~ %maxPrice% WBNB 사이입니다.",
+  "The minimum price should be %minPrice% WREBUS": "최소 가격은 %minPrice% WBNB 이어야합니다.",
   "Seller pays %percentage%% platform fee on sale": "판매자는 판매 시 %percentage%% 플랫폼 수수료를 지불합니다.",
   "Platform fee if sold": "판매 시 플랫폼 수수료",
   "Click to view NFT": "NFT를 보려면 클릭하세요",

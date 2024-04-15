@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "Handelsavgiften på %percentage%% används för att köpa och bränna VERTO-tokens",
   "Sell": "Sälj",
   "Set as Profile Pic": "Ange som profilbild",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Tillåtet prisintervall ligger mellan %minPrice% och %maxPrice% WBNB",
+  "The minimum price should be %minPrice% WREBUS": "Det lägsta priset ska vara %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "Säljaren betalar en plattformsavgift på %percentage% % vid försäljning",
   "Platform fee if sold": "Plattformsavgift vid försäljning",
   "Click to view NFT": "Klicka för att visa NFT",

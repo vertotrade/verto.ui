@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% 用作购买和焚毁 VERTO 的交易费",
   "Sell": "销售",
   "Set as Profile Pic": "设为个人资料照片",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "允许的价格范围介于 %minPrice% 和 %maxPrice% WBNB 之间",
+  "The minimum price should be %minPrice% WREBUS": "最低价格应为 %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "卖家支付 %percentage%% 的平台销售费用",
   "Platform fee if sold": "售出时的平台费用",
   "Click to view NFT": "点击查看 NFT",

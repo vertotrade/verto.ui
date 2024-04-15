@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% ट्रेडिंग फीस का उपयोग VERTO खरीदने और बर्न करने में किया जाएगा",
   "Sell": "बेचें",
   "Set as Profile Pic": "प्रोफ़ाइल पिक के रूप में सेट करें",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "स्वीकृत कीमत रेंज %minPrice% और %maxPrice% WBNB के बीच है",
+  "The minimum price should be %minPrice% WREBUS": "न्यूनतम मूल्य होना चाहिए %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "सेल पर विक्रेता %percentage%% प्लेटफॉर्म फीस भुगतान करता है",
   "Platform fee if sold": "बिकने पर प्लेटफॉर्म फीस",
   "Click to view NFT": "NFT देखने के लिए क्लिक करें",

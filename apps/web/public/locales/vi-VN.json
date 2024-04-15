@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% phí giao dịch sẽ được sử dụng để mua & đốt VERTO",
   "Sell": "Bán",
   "Set as Profile Pic": "Đặt làm ảnh hồ sơ",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Khoảng giá cho phép là từ %minPrice% đến %maxPrice% WBNB",
+  "The minimum price should be %minPrice% WREBUS": "Giá tối thiểu phải là %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "Người bán thanh toán %percentage%% phí nền tảng khi bán",
   "Platform fee if sold": "Phí nền tảng nếu bán được",
   "Click to view NFT": "Nhấn để xem NFT",

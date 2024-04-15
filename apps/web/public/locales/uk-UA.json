@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% комісії за транзакцію буде використано на придбання та спалення VERTO",
   "Sell": "Продати",
   "Set as Profile Pic": "Зробити аватаром",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Припустимий діапазон цін – від %minPrice% до %maxPrice% WBNB",
+  "The minimum price should be %minPrice% WREBUS": "Мінімальна ціна повинна бути %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "Продавець під час продажу сплачує платформі комісію в розмірі %percentage%%",
   "Platform fee if sold": "Комісія платформи у випадку продажу",
   "Click to view NFT": "Клацніть, щоб переглянути невзаємозамінний токен",

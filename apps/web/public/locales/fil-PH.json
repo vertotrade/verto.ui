@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% ng trading fee ay gagamitin sa pagbili at pag-burn ng VERTO",
   "Sell": "Binibenta",
   "Set as Profile Pic": "Itakda bilang Profile Pic",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Ang pinapayagang hanay ng presyo ay nasa pagitan ng %minPrice% at %maxPrice% ng WBNB",
+  "The minimum price should be %minPrice% WREBUS": "Ang minimum na presyo ay dapat maging %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "Nagbabayad ang nagbebenta ng %percentage%% sa platform fee na naka-sale",
   "Platform fee if sold": "Singil sa platform kung naibenta",
   "Click to view NFT": "I-click upang i-view ang NFT",

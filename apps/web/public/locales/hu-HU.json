@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "A %percentage%% kereskedési díjat a VERTO vásárlására és elégetésére használjuk fel",
   "Sell": "Eladás",
   "Set as Profile Pic": "Beállítás profilképként",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "A megengedett ártartomány %minPrice% és %maxPrice% WBNB között van",
+  "The minimum price should be %minPrice% WREBUS": "A minimális árnak %minPrice% WBNB kell lennie",
   "Seller pays %percentage%% platform fee on sale": "Az eladó %percentage%% platformdíjat fizet eladáskor",
   "Platform fee if sold": "Platformdíj eladáskor",
   "Click to view NFT": "Kattintson az NFT megtekintéséhez",

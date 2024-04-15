@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% biaya perdagangan akan digunakan untuk membeli & menghanguskan VERTO",
   "Sell": "Jual",
   "Set as Profile Pic": "Tetapkan sebagai Gambar Profil",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Rentang harga yang diizinkan dari %minPrice% hingga %maxPrice% WBNB",
+  "The minimum price should be %minPrice% WREBUS": "Harga minimum harus %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "Penjual membayar %percentage%% biaya platform untuk penjualan",
   "Platform fee if sold": "Biaya platform jika dijual",
   "Click to view NFT": "Klik untuk melihat NFT",

@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% da taxa de negociação será usado para comprar e queimar VERTO",
   "Sell": "Vender",
   "Set as Profile Pic": "Definir como foto de perfil",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "O intervalo de preço permitido é entre %minPrice% e %maxPrice% WBNB",
+  "The minimum price should be %minPrice% WREBUS": "O preço mínimo deve ser %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "O vendedor paga %percentage%% como taxa de venda à plataforma",
   "Platform fee if sold": "Comissão da plataforma se vendido",
   "Click to view NFT": "Clique para ver NFT",
