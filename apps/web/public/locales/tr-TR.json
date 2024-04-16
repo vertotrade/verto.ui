@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "İşlem ücretinin %%percentage% kadarı VERTO satın almak ve yakmak için kullanılır",
   "Sell": "Sat",
   "Set as Profile Pic": "Profil Resmi olarak ayarla",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "İzin verilen fiyat aralığı %minPrice% ile %maxPrice% WBNB arasındadır",
+  "The minimum price should be %minPrice% WREBUS": "Minimum fiyat %minPrice% WBNB olmalı",
   "Seller pays %percentage%% platform fee on sale": "Alıcı, satışta %%percentage% platform ücreti öder",
   "Platform fee if sold": "Satıldığında alınan platform ücreti",
   "Click to view NFT": "NFT'yi görüntülemek için tıklayın",

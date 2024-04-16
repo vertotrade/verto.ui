@@ -22,8 +22,7 @@ interface SetPriceStageProps {
   tokensToShow: OptionProps[]
 }
 
-const MIN_PRICE = 0.005
-const MAX_PRICE = 10000
+const MIN_PRICE = 1
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`) // match escaped "." characters via in a non-capturing group
 
@@ -56,7 +55,7 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
   const priceAsFloat = parseFloat(price)
   const priceInUsd = tokenPrice * priceAsFloat || 0
 
-  const priceIsOutOfRange = priceAsFloat > MAX_PRICE || priceAsFloat < MIN_PRICE
+  const priceIsOutOfRange = priceAsFloat < MIN_PRICE
 
   const enforcer = (nextUserInput: string) => {
     if (nextUserInput === '' || inputRegex.test(escapeRegExp(nextUserInput))) {
@@ -139,9 +138,8 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
         </Flex>
         {priceIsOutOfRange && (
           <Text fontSize="12px" color="failure">
-            {t('Allowed price range is between %minPrice% and %maxPrice% %symbol%', {
+            {t('The minimum price should be %minPrice% %symbol%', {
               minPrice: MIN_PRICE,
-              maxPrice: MAX_PRICE,
               symbol: token?.symbol,
             })}
           </Text>

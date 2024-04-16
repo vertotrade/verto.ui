@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage% % kaupankäyntimaksusta käytetään VERTO-polettien ostamiseen ja polttoon",
   "Sell": "Myy",
   "Set as Profile Pic": "Aseta profiilikuvaksi",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Sallittu hintaväli on %minPrice%–%maxPrice% WBNB:tä",
+  "The minimum price should be %minPrice% WREBUS": "Vähimmäishinnan pitäisi olla %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "Myyjä maksaa %percentage% prosentin alustamaksun myynnissä",
   "Platform fee if sold": "Alustamaksu myytäessä",
   "Click to view NFT": "Näytä NFT napsauttamalla",

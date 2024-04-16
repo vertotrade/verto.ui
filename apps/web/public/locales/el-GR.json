@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% τέλος συναλλαγής θα χρησιμοποιηθεί για την αγορά και το κάψιμο VERTO",
   "Sell": "Πώληση",
   "Set as Profile Pic": "Ορισμός ως εικόνα προφίλ",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Το επιτρεπόμενο εύρος τιμών είναι μεταξύ %minPrice% και %maxPrice% WBNB",
+  "The minimum price should be %minPrice% WREBUS": "Ο ελάχιστος τιμή πρέπει να είναι %minPrice% WBNB",
   "Seller pays %percentage%% platform fee on sale": "Ο πωλητής πληρώνει %percentage%% τέλος πλατφόρμας κατά την πώληση",
   "Platform fee if sold": "Τέλος πλατφόρμας εάν πουληθεί",
   "Click to view NFT": "Κάντε κλικ για να δείτε το NFT",

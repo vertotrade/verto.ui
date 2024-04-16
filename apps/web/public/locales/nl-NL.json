@@ -1215,7 +1215,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% transactievergoeding wordt gebruikt om VERTO te kopen en te verbranden",
   "Sell": "Verkopen",
   "Set as Profile Pic": "Als profielfoto instellen",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Toegestaan prijsbereik is tussen %minPrice% en %maxPrice% vsn WBNB",
+  "The minimum price should be %minPrice% WREBUS": "De minimumprijs moet %minPrice% WBNB zijn",
   "Seller pays %percentage%% platform fee on sale": "Verkoper betaald %percentage%% platformvergoeding bij verkoop",
   "Platform fee if sold": "Platformvergoeding indien verkocht",
   "Click to view NFT": "Klik om NFT weer te geven",

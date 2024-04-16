@@ -1224,7 +1224,7 @@
   "%percentage%% trading fee will be used to buy & burn VERTO": "%percentage%% trading fee will be used to buy & burn VERTO",
   "Sell": "Sell",
   "Set as Profile Pic": "Set as Profile Pic",
-  "Allowed price range is between %minPrice% and %maxPrice% WREBUS": "Allowed price range is between %minPrice% and %maxPrice% WREBUS",
+  "The minimum price should be %minPrice% WREBUS": "The minimum price should be %minPrice% WREBUS",
   "Seller pays %percentage%% platform fee on sale": "Seller pays %percentage%% platform fee on sale",
   "Platform fee if sold": "Platform fee if sold",
   "Click to view NFT": "Click to view NFT",
