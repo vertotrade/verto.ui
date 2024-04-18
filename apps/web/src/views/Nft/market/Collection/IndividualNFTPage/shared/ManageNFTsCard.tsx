@@ -9,6 +9,7 @@ import { useTranslation } from '@verto/localization'
 import { isAddress } from 'utils'
 import { CurrencyLogo } from 'components/Logo'
 import { useTokenAndPriceByAddress } from 'utils/prices'
+import React, { useState } from 'react'
 import { CollectibleRowContainer, SmallRoundedImage } from './styles'
 import ProfileNftModal from '../../../components/ProfileNftModal'
 import SellModal from '../../../components/BuySellModals/SellModal'
@@ -157,92 +158,95 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
   const { address: account } = useAccount()
 
   const { isLoading: isProfileLoading, profile } = useProfile()
+  const [content, setContent] = useState<React.ReactNode | null>(null)
+  const [title, setTitle] = useState<string>(tokenId ? t('Manage Yours') : t('Manage Yours in Collection'))
 
+  // API Call
   const {
     nfts: userNfts,
     isLoading,
     refresh,
   } = useCollectionsNftsForAddress(account, profile, isProfileLoading, { [collection.address]: collection })
 
-  const walletFilter = getNftFilter(NftLocation.WALLET)
-  const forSaleFilter = getNftFilter(NftLocation.FORSALE)
-  const profileFilter = getNftFilter(NftLocation.PROFILE)
+  const handleButtonClick = () => {
+    const walletFilter = getNftFilter(NftLocation.WALLET)
+    const forSaleFilter = getNftFilter(NftLocation.FORSALE)
+    const profileFilter = getNftFilter(NftLocation.PROFILE)
 
-  const nftsInWallet = userNfts.filter(nft => walletFilter(nft, collection.address))
-  const nftsForSale = userNfts.filter(nft => forSaleFilter(nft, collection.address))
-  const profileNft = userNfts.filter(nft => profileFilter(nft, collection.address))
+    const nftsInWallet = userNfts.filter(nft => walletFilter(nft, collection.address))
+    const nftsForSale = userNfts.filter(nft => forSaleFilter(nft, collection.address))
+    const profileNft = userNfts.filter(nft => profileFilter(nft, collection.address))
 
-  const userHasNoNfts = !isLoading && nftsInWallet.length === 0 && nftsForSale.length === 0 && profileNft.length === 0
-  const userOwnsThisNFT = userNfts.filter(({ tokenId: userTokenId }) => userTokenId === tokenId).length > 0
-  const totalNfts = nftsInWallet.length + nftsForSale.length + profileNft.length
-  const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
+    const userHasNoNfts = !isLoading && nftsInWallet.length === 0 && nftsForSale.length === 0 && profileNft.length === 0
+    const userOwnsThisNFT = userNfts.filter(({ tokenId: userTokenId }) => userTokenId === tokenId).length > 0
+    const totalNfts = nftsInWallet.length + nftsForSale.length + profileNft.length
+    const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
 
-  const content = (
-    <Box pt="24px">
-      {!account && (
-        <Flex mb="16px" justifyContent="center">
-          <ConnectWalletButton />
-        </Flex>
-      )}
-      {account && !userOwnsThisNFT && (
-        <Text px="16px" pb="16px" color="textSubtle">
-          {t('You don’t have any of this item.')}
-        </Text>
-      )}
-      {account && isLoading && (
-        <Box px="16px" pb="8px">
-          <Skeleton mb="8px" />
-          <Skeleton mb="8px" />
-          <Skeleton mb="8px" />
-        </Box>
-      )}
-      {nftsForSale.length > 0 && (
-        <CollectiblesByLocation
-          location={NftLocation.FORSALE}
-          nfts={nftsForSale}
-          lowestPrice={lowestPrice}
-          onSuccessSale={() => {
-            refresh()
-            onSuccess?.()
-          }}
-        />
-      )}
-      {nftsInWallet.length > 0 && (
-        <>
-          {nftsForSale.length > 0 && <Divider />}
+    setTitle(`${tokenId ? t('Manage Yours') : t('Manage Yours in Collection')}${totalNftsText}`)
+
+    setContent(
+      <Box pt="24px">
+        {!account && (
+          <Flex mb="16px" justifyContent="center">
+            <ConnectWalletButton />
+          </Flex>
+        )}
+        {account && !userOwnsThisNFT && (
+          <Text px="16px" pb="16px" color="textSubtle">
+            {t('You don’t have any of this item.')}
+          </Text>
+        )}
+        {account && isLoading && (
+          <Box px="16px" pb="8px">
+            <Skeleton mb="8px" />
+            <Skeleton mb="8px" />
+            <Skeleton mb="8px" />
+          </Box>
+        )}
+        {nftsForSale.length > 0 && (
           <CollectiblesByLocation
-            location={NftLocation.WALLET}
-            nfts={nftsInWallet}
+            location={NftLocation.FORSALE}
+            nfts={nftsForSale}
             lowestPrice={lowestPrice}
             onSuccessSale={() => {
               refresh()
               onSuccess?.()
             }}
           />
-        </>
-      )}
-      {profileNft.length > 0 && (
-        <>
-          {(nftsForSale.length > 0 || nftsInWallet.length > 0) && <Divider />}
-          <CollectiblesByLocation
-            location={NftLocation.PROFILE}
-            nfts={profileNft}
-            lowestPrice={lowestPrice}
-            onSuccessSale={() => {
-              refresh()
-              onSuccess?.()
-            }}
-          />
-        </>
-      )}
-    </Box>
-  )
-  return (
-    <ExpandableCard
-      title={`${tokenId ? t('Manage Yours') : t('Manage Yours in Collection')}${totalNftsText}`}
-      content={content}
-    />
-  )
+        )}
+        {nftsInWallet.length > 0 && (
+          <>
+            {nftsForSale.length > 0 && <Divider />}
+            <CollectiblesByLocation
+              location={NftLocation.WALLET}
+              nfts={nftsInWallet}
+              lowestPrice={lowestPrice}
+              onSuccessSale={() => {
+                refresh()
+                onSuccess?.()
+              }}
+            />
+          </>
+        )}
+        {profileNft.length > 0 && (
+          <>
+            {(nftsForSale.length > 0 || nftsInWallet.length > 0) && <Divider />}
+            <CollectiblesByLocation
+              location={NftLocation.PROFILE}
+              nfts={profileNft}
+              lowestPrice={lowestPrice}
+              onSuccessSale={() => {
+                refresh()
+                onSuccess?.()
+              }}
+            />
+          </>
+        )}
+      </Box>,
+    )
+  }
+
+  return <ExpandableCard title={title} content={content} handleButtonClick={handleButtonClick} />
 }
 
 export default ManageNFTsCard

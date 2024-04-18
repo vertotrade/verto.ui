@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import { Flex, Text, Card, Box, ChevronUpIcon, ChevronDownIcon, IconButton } from '@verto/uikit'
 
@@ -40,10 +40,24 @@ const FullWidthCard = styled(Card)`
 interface ExpandableCardProps {
   title: string
   content: React.ReactNode
+  handleButtonClick?: () => void
 }
 
-const ExpandableCard: React.FC<React.PropsWithChildren<ExpandableCardProps>> = ({ title, content }) => {
-  const [expanded, setExpanded] = useState(true)
+const ExpandableCard: React.FC<React.PropsWithChildren<ExpandableCardProps>> = ({
+  title,
+  content,
+  handleButtonClick = null,
+}) => {
+  const [expanded, setExpanded] = useState(handleButtonClick == null)
+  const buttonClicked = useRef(false)
+
+  const handleButtonClickWrapper = () => {
+    setExpanded(prev => !prev)
+    if (!buttonClicked.current && handleButtonClick) {
+      handleButtonClick()
+      buttonClicked.current = true
+    }
+  }
 
   return (
     <FullWidthCard background="transparent">
@@ -51,12 +65,7 @@ const ExpandableCard: React.FC<React.PropsWithChildren<ExpandableCardProps>> = (
         <Text fontWeight="600" fontFamily="Poppins,sans-serif">
           {title}
         </Text>
-        <IconButton
-          onClick={() => {
-            setExpanded(prev => !prev)
-          }}
-          variant="text"
-          maxWidth="32px">
+        <IconButton onClick={handleButtonClickWrapper} variant="text" maxWidth="32px">
           {expanded ? (
             <ChevronUpIcon width="24px" height="24px" color="textSubtle" />
           ) : (
