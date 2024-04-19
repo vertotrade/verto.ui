@@ -173,15 +173,7 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
   const walletFilter = useMemo(() => getNftFilter(NftLocation.WALLET), [])
   const forSaleFilter = useMemo(() => getNftFilter(NftLocation.FORSALE), [])
   const profileFilter = useMemo(() => getNftFilter(NftLocation.PROFILE), [])
-  // const nftsInWallet = userNfts?.filter(nft => walletFilter(nft, collection.address))
-  // const nftsForSale = userNfts?.filter(nft => forSaleFilter(nft, collection.address))
-  // const profileNft = userNfts?.filter(nft => profileFilter(nft, collection.address))
-  // const userOwnsThisNFT = userNfts?.filter(({ tokenId: userTokenId }) => userTokenId === tokenId).length > 0
-  // const userHasNoNfts = !isLoading && nftsInWallet.length === 0 && nftsForSale.length === 0 && profileNft.length === 0
-  // const totalNfts = nftsInWallet.length + nftsForSale.length + profileNft.length
-  // const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
 
-  console.log('userNfts from ManageNFTsCard', userNfts)
   useEffect(() => {
     setNftData({
       nftsInWallet: userNfts?.filter(nft => walletFilter(nft, collection.address)) || [],
