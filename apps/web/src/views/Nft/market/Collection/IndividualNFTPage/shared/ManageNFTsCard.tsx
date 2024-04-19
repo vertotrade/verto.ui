@@ -138,7 +138,7 @@ interface ManageNftsCardProps {
   tokenId?: string | number
   lowestPrice?: string
   onSuccess?: () => void
-  userNfts: NftToken | null
+  userNfts: NftToken[] | null
   account: string
   isLoading?: boolean
   refresh?: () => void
