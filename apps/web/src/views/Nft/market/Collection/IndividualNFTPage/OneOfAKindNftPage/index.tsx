@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useMemo } from 'react'
 import { Flex } from '@verto/uikit'
 import sum from 'lodash/sum'
@@ -7,6 +8,9 @@ import { useGetCollection } from 'state/nftMarket/hooks'
 import PageLoader from 'components/Loader/PageLoader'
 import fromPairs from 'lodash/fromPairs'
 import NFTMedia from 'views/Nft/market/components/NFTMedia'
+import { useAccount } from 'wagmi'
+import { useProfile } from 'state/profile/hooks'
+import { useCollectionsNftsForAddress } from 'views/Nft/market/hooks/useNftsForAddress'
 import NFTHeaderDetails from './NFTHeaderDetails'
 import PropertiesCard from '../shared/PropertiesCard'
 import DetailsCard from '../shared/DetailsCard'
@@ -16,9 +20,6 @@ import MoreFromThisCollection from '../shared/MoreFromThisCollection'
 // import ActivityCard from './ActivityCard'
 import { useCompleteNft } from '../../../hooks/useCompleteNft'
 import ManageNFTsCard from '../shared/ManageNFTsCard'
-import { useAccount } from 'wagmi'
-import { useProfile } from 'state/profile/hooks'
-import { useCollectionsNftsForAddress } from 'views/Nft/market/hooks/useNftsForAddress'
 
 interface IndividualNFTPageProps {
   collectionAddress: string
