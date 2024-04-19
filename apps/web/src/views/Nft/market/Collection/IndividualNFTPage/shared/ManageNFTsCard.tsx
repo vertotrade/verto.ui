@@ -1,7 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components'
 import { Box, Flex, Grid, Text, SellIcon, WalletFilledIcon, CameraIcon, Skeleton, useModal } from '@verto/uikit'
-import { useAccount } from 'wagmi'
-import { useProfile } from 'state/profile/hooks'
 import { NftLocation, NftToken, Collection } from 'state/nftMarket/types'
 import { formatNumber } from '@verto/utils/formatBalance'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -9,11 +8,10 @@ import { useTranslation } from '@verto/localization'
 import { isAddress } from 'utils'
 import { CurrencyLogo } from 'components/Logo'
 import { useTokenAndPriceByAddress } from 'utils/prices'
-import React, { useState } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { CollectibleRowContainer, SmallRoundedImage } from './styles'
 import ProfileNftModal from '../../../components/ProfileNftModal'
 import SellModal from '../../../components/BuySellModals/SellModal'
-import { useCollectionsNftsForAddress } from '../../../hooks/useNftsForAddress'
 import ExpandableCard from './ExpandableCard'
 
 const ScrollableContainer = styled(Box)`
@@ -140,6 +138,10 @@ interface ManageNftsCardProps {
   tokenId?: string | number
   lowestPrice?: string
   onSuccess?: () => void
+  userNfts: NftToken | null
+  account: string
+  isLoading?: boolean
+  refresh?: () => void
 }
 
 const getNftFilter = (location: NftLocation) => {
@@ -153,37 +155,55 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
   tokenId,
   lowestPrice,
   onSuccess,
+  userNfts,
+  account,
+  isLoading,
+  refresh,
 }) => {
   const { t } = useTranslation()
-  const { address: account } = useAccount()
-
-  const { isLoading: isProfileLoading, profile } = useProfile()
   const [content, setContent] = useState<React.ReactNode | null>(null)
   const [title, setTitle] = useState<string>(tokenId ? t('Manage Yours') : t('Manage Yours in Collection'))
+  const [nftData, setNftData] = useState({
+    nftsInWallet: [],
+    nftsForSale: [],
+    profileNft: [],
+    userOwnsThisNFT: false,
+  })
 
-  // API Call
-  const {
-    nfts: userNfts,
-    isLoading,
-    refresh,
-  } = useCollectionsNftsForAddress(account, profile, isProfileLoading, { [collection.address]: collection })
+  const walletFilter = useMemo(() => getNftFilter(NftLocation.WALLET), [])
+  const forSaleFilter = useMemo(() => getNftFilter(NftLocation.FORSALE), [])
+  const profileFilter = useMemo(() => getNftFilter(NftLocation.PROFILE), [])
+  // const nftsInWallet = userNfts?.filter(nft => walletFilter(nft, collection.address))
+  // const nftsForSale = userNfts?.filter(nft => forSaleFilter(nft, collection.address))
+  // const profileNft = userNfts?.filter(nft => profileFilter(nft, collection.address))
+  // const userOwnsThisNFT = userNfts?.filter(({ tokenId: userTokenId }) => userTokenId === tokenId).length > 0
+  // const userHasNoNfts = !isLoading && nftsInWallet.length === 0 && nftsForSale.length === 0 && profileNft.length === 0
+  // const totalNfts = nftsInWallet.length + nftsForSale.length + profileNft.length
+  // const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
+
+  console.log('userNfts from ManageNFTsCard', userNfts)
+  useEffect(() => {
+    setNftData({
+      nftsInWallet: userNfts?.filter(nft => walletFilter(nft, collection.address)) || [],
+      nftsForSale: userNfts?.filter(nft => forSaleFilter(nft, collection.address)) || [],
+      profileNft: userNfts?.filter(nft => profileFilter(nft, collection.address)) || [],
+      userOwnsThisNFT: userNfts?.filter(({ tokenId: userTokenId }) => userTokenId === tokenId).length > 0,
+    })
+  }, [])
+
+  const userHasNoNfts =
+    !isLoading &&
+    nftData.nftsInWallet.length === 0 &&
+    nftData.nftsForSale.length === 0 &&
+    nftData.profileNft.length === 0
+  const totalNfts = nftData.nftsInWallet.length + nftData.nftsForSale.length + nftData.profileNft.length
+  const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
+
+  useEffect(() => {
+    setTitle(`${tokenId ? t('Manage Yours') : t('Manage Yours in Collection')}${totalNftsText}`)
+  }, [totalNfts])
 
   const handleButtonClick = () => {
-    const walletFilter = getNftFilter(NftLocation.WALLET)
-    const forSaleFilter = getNftFilter(NftLocation.FORSALE)
-    const profileFilter = getNftFilter(NftLocation.PROFILE)
-
-    const nftsInWallet = userNfts.filter(nft => walletFilter(nft, collection.address))
-    const nftsForSale = userNfts.filter(nft => forSaleFilter(nft, collection.address))
-    const profileNft = userNfts.filter(nft => profileFilter(nft, collection.address))
-
-    const userHasNoNfts = !isLoading && nftsInWallet.length === 0 && nftsForSale.length === 0 && profileNft.length === 0
-    const userOwnsThisNFT = userNfts.filter(({ tokenId: userTokenId }) => userTokenId === tokenId).length > 0
-    const totalNfts = nftsInWallet.length + nftsForSale.length + profileNft.length
-    const totalNftsText = account && !userHasNoNfts ? ` (${totalNfts})` : ''
-
-    setTitle(`${tokenId ? t('Manage Yours') : t('Manage Yours in Collection')}${totalNftsText}`)
-
     setContent(
       <Box pt="24px">
         {!account && (
@@ -191,7 +211,7 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
             <ConnectWalletButton />
           </Flex>
         )}
-        {account && !userOwnsThisNFT && (
+        {account && !nftData.userOwnsThisNFT && (
           <Text px="16px" pb="16px" color="textSubtle">
             {t('You don’t have any of this item.')}
           </Text>
@@ -203,10 +223,10 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
             <Skeleton mb="8px" />
           </Box>
         )}
-        {nftsForSale.length > 0 && (
+        {nftData.nftsForSale.length > 0 && (
           <CollectiblesByLocation
             location={NftLocation.FORSALE}
-            nfts={nftsForSale}
+            nfts={nftData.nftsForSale}
             lowestPrice={lowestPrice}
             onSuccessSale={() => {
               refresh()
@@ -214,12 +234,12 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
             }}
           />
         )}
-        {nftsInWallet.length > 0 && (
+        {nftData.nftsInWallet.length > 0 && (
           <>
-            {nftsForSale.length > 0 && <Divider />}
+            {nftData.nftsForSale.length > 0 && <Divider />}
             <CollectiblesByLocation
               location={NftLocation.WALLET}
-              nfts={nftsInWallet}
+              nfts={nftData.nftsInWallet}
               lowestPrice={lowestPrice}
               onSuccessSale={() => {
                 refresh()
@@ -228,12 +248,12 @@ const ManageNFTsCard: React.FC<React.PropsWithChildren<ManageNftsCardProps>> = (
             />
           </>
         )}
-        {profileNft.length > 0 && (
+        {nftData.profileNft.length > 0 && (
           <>
-            {(nftsForSale.length > 0 || nftsInWallet.length > 0) && <Divider />}
+            {(nftData.nftsForSale.length > 0 || nftData.nftsInWallet.length > 0) && <Divider />}
             <CollectiblesByLocation
               location={NftLocation.PROFILE}
-              nfts={profileNft}
+              nfts={nftData.profileNft}
               lowestPrice={lowestPrice}
               onSuccessSale={() => {
                 refresh()

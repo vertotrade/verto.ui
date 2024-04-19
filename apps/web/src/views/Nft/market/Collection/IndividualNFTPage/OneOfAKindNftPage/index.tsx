@@ -16,6 +16,9 @@ import MoreFromThisCollection from '../shared/MoreFromThisCollection'
 // import ActivityCard from './ActivityCard'
 import { useCompleteNft } from '../../../hooks/useCompleteNft'
 import ManageNFTsCard from '../shared/ManageNFTsCard'
+import { useAccount } from 'wagmi'
+import { useProfile } from 'state/profile/hooks'
+import { useCollectionsNftsForAddress } from 'views/Nft/market/hooks/useNftsForAddress'
 
 interface IndividualNFTPageProps {
   collectionAddress: string
@@ -35,7 +38,10 @@ const IndividualNFTPage: React.FC<React.PropsWithChildren<IndividualNFTPageProps
     isProfilePic,
     refetch,
   } = useCompleteNft(collectionAddress, tokenId)
-
+  const { address: account } = useAccount()
+  // Todo : need to update useProfile hooks
+  const { isLoading: isProfileLoading, profile } = useProfile()
+  // console.log(isProfileLoading, profile, 'isProfileLoading, profile')
   const properties = nft?.attributes
 
   const attributesRarity = useMemo(() => {
@@ -54,9 +60,15 @@ const IndividualNFTPage: React.FC<React.PropsWithChildren<IndividualNFTPageProps
   }, [properties, isFetchingDistribution, distributionData])
 
   if (!nft || !collection) {
-    // Normally we already show a 404 page here if no nft, just put this checking here for safety.
+    return <PageLoader />
+  }
+  const {
+    nfts: userNfts,
+    isLoading,
+    refresh,
+  } = useCollectionsNftsForAddress(account, profile, isProfileLoading, { [collection.address]: collection })
 
-    // For now this if is used to show loading spinner while we're getting the data
+  if (userNfts.length === 0) {
     return <PageLoader />
   }
 
@@ -71,7 +83,15 @@ const IndividualNFTPage: React.FC<React.PropsWithChildren<IndividualNFTPageProps
         <NFTHeaderDetails nft={nft} isOwnNft={isOwnNft} nftIsProfilePic={isProfilePic} onSuccess={refetch} />
         <Flex flexDirection="column" alignItems="center" maxWidth="656px" width="100%" style={{ gap: '16px' }}>
           <NFTMedia key={nft.tokenId} nft={nft} width={464} height={464} />
-          <ManageNFTsCard collection={collection} tokenId={tokenId} onSuccess={isOwnNft ? refetch : noop} />
+          <ManageNFTsCard
+            collection={collection}
+            tokenId={tokenId}
+            onSuccess={isOwnNft ? refetch : noop}
+            userNfts={userNfts}
+            account={account}
+            isLoading={isLoading || false}
+            refresh={refresh || noop}
+          />
           <PropertiesCard properties={properties} rarity={attributesRarity} />
           <DetailsCard contractAddress={collectionAddress} ipfsJson={nft?.marketData?.metadataUrl} />
           <OwnerCard
