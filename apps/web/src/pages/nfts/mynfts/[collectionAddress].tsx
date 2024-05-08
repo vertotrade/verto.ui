@@ -10,7 +10,7 @@ import { useGetCollection } from 'state/nftMarket/hooks'
 import { Box, Flex, Grid, Text, Skeleton } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { useProfile } from 'state/profile/hooks'
-import { NftLocation, NftToken } from 'state/nftMarket/types'
+import { ApiCollections, NftLocation, NftToken, Collection } from 'state/nftMarket/types'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@verto/localization'
 import { isAddress } from 'utils'
@@ -32,17 +32,16 @@ const MyNFTsPage = () => {
   const { t } = useTranslation() 
   const { collectionAddress, tokenId } = router.query
   const collection = useGetCollection(String(collectionAddress))
-  const [collectionData, setCollectionData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const { address: account } = useAccount()
   const { isLoading: isProfileLoading, profile } = useProfile()
-  const [collectionsArg, setCollectionArg] = useState({});
-
+  const [collectionData, setCollectionData] = useState<Collection | undefined>(undefined);
+  const [collectionsArg, setCollectionArg] = useState<ApiCollections | undefined>(undefined);
   const { nfts: userNfts, isLoading: nftsLoading } = useCollectionsNftsForAddress(
     account,
     profile,
     isProfileLoading,
-    collectionsArg,
+    collectionsArg as ApiCollections,
   )
 
   useEffect(() => {
@@ -53,10 +52,10 @@ const MyNFTsPage = () => {
     }
   }, [collection])
 
+
   if (router.isFallback || isLoading || nftsLoading) {
     return <PageLoader />
   }
-
   const walletFilter = getNftFilter(NftLocation.WALLET)
   const nftsInWallet = userNfts.filter(nft => walletFilter(nft, collectionData.address))
 
