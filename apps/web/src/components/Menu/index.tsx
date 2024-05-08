@@ -19,6 +19,8 @@ const Menu = props => {
   const { isDark, setTheme } = useTheme()
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
+  const router = useRouter()
+  const { collectionAddress } = router.query
 
   const menuItems = useMenuItems()
 
@@ -27,7 +29,19 @@ const Menu = props => {
 
   useEffect(() => {
     const result = getActiveMenuItem({ menuConfig: menuItems, pathname })
-    setActiveMenuItem(result)
+    if (result && collectionAddress) {
+      const myNFTsItem = result.items.find(item => item.label === 'My NFTs')
+      myNFTsItem.href = `/nfts/mynfts/${collectionAddress}`
+      setActiveMenuItem(result)
+    } else {
+      const indexToRemove = result?.items.findIndex(item => item.label === 'My NFTs')
+      const newItems = result?.items.filter((_, index) => index !== indexToRemove)
+      const newData = {
+        ...result,
+        items: newItems,
+      }
+      setActiveMenuItem(newData)
+    }
     setActiveSubMenuItem(getActiveSubMenuItem({ menuItem: result, pathname }))
   }, [menuItems, pathname])
 

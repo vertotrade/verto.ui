@@ -1,30 +1,49 @@
-import { Text, Flex, Grid, SadSmilePlaceholder } from '@verto/uikit'
-import { useGetCollections } from 'state/nftMarket/hooks'
-import { useTranslation } from '@verto/localization'
-import MyNFT from './MyNFT'
+import PageLoader from 'components/Loader/PageLoader'
+import { PageMeta } from 'components/Layout/Page'
+import dynamic from 'next/dynamic'
+import { NextRouter, useRouter } from 'next/router'
+import { useMemo } from 'react'
+import { useGetCollection } from 'state/nftMarket/hooks'
+import Header from '../Header'
+import Items from '../Items'
 
-const MyNFTs = () => {
-  const { data: collections } = useGetCollections()
-  const { t } = useTranslation()
+const Traits = dynamic(() => import('../Traits'), {
+  loading: () => <PageLoader />,
+})
+// const Activity = dynamic(() => import('./Activity'), {
+//   loading: () => <PageLoader />,
+// })
+
+const getHashFromRouter = (router: NextRouter) => router.asPath.match(/#([a-z0-9]+)/gi)
+
+const Collection = () => {
+  const router = useRouter()
+  const collectionAddress = router.query.collectionAddress as string
+  const collection = useGetCollection(collectionAddress)
+
+  const hash = useMemo(() => getHashFromRouter(router)?.[0], [router])
+
+  if (!collection) {
+    return <PageLoader />
+  }
+
+  let content = <Items />
+
+  if (hash === '#traits') {
+    content = <Traits />
+  }
+
+  // if (hash === '#activity') {
+  //   content = <Activity />
+  // }
 
   return (
     <>
-      {collections ? (
-        <Grid gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']} mb="64px">
-          {Object.values(collections).map(collection => {
-            return <MyNFT key={collection.address} collection={collection} />
-          })}
-        </Grid>
-      ) : (
-        <Flex alignItems="center" py="120px" flexDirection="column">
-          <SadSmilePlaceholder width="120px" mb="24px" />
-          <Text fontSize="22px" fontWeight={600} fontFamily="Poppins">
-            {t('No NFTs found')}
-          </Text>
-        </Flex>
-      )}
+      <PageMeta />
+      <Header collection={collection} />
+      {content}
     </>
   )
 }
 
-export default MyNFTs
+export default Collection
