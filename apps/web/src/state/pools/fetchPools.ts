@@ -210,6 +210,22 @@ export const fetchPoolsIsBoosted = async () => {
   }))
 }
 
+const liquidPools = poolsConfig.filter(poolConfig => poolConfig.isLiquid)
+
+export const fetchLiquidPendingRewards = async walletAddress => {
+  const liquidPendingRewardCalls = liquidPools.map(poolConfig => {
+    return {
+      address: getAddress(poolConfig.contractAddress),
+      name: 'liquidPendingReward',
+      params: [walletAddress],
+    }
+  })
+
+  const liquidPendingRewards = await multicall(erc20ABI, liquidPendingRewardCalls)
+
+  return fromPairs(liquidPools.map((p, index) => [p.sousId, liquidPendingRewards[index]]))
+}
+
 export const fetchPoolsBoostBlockStart = async poolIdsToFetch => {
   const filteredPoolsConfig = poolsConfig.filter(
     poolConfig => poolIdsToFetch.includes(poolConfig.sousId) && poolConfig.hasBoostBlockStart,

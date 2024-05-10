@@ -29,6 +29,7 @@ export interface TokenPairImageProps extends BoxProps {
   primarySrc: string;
   secondarySrc: string;
   tertiarySrc?: string;
+  inbetweenSrc?: string;
   variant?: Variant;
   height: number;
   width: number;

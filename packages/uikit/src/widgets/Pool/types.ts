@@ -22,6 +22,7 @@ export interface PoolConfigBaseProps {
   hasBoostBlockStart?: boolean;
   hasMinPerUser?: boolean;
   canShowAfterBlock?: number;
+  isLiquid?: boolean;
 }
 
 interface GenericToken {
@@ -33,11 +34,13 @@ interface GenericToken {
 export interface SerializedPoolConfig<T> extends PoolConfigBaseProps {
   earningToken: T & GenericToken;
   stakingToken: T & GenericToken;
+  liquidToken?: T & GenericToken;
 }
 
 export interface DeserializedPoolConfig<T> extends PoolConfigBaseProps {
   earningToken: T & GenericToken;
   stakingToken: T & GenericToken;
+  liquidToken?: T & GenericToken;
 }
 
 export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePoolProps {
@@ -54,6 +57,8 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
     stakingTokenBalance: BigNumber;
     stakedBalance: BigNumber;
     pendingReward: BigNumber;
+    liquidPendingReward?: BigNumber;
+    amountAvailable?: BigNumber;
   };
   userInfo?: {
     amount: BigNumber;
@@ -138,16 +143,21 @@ interface CorePoolProps {
   liquidity?: number;
   stakingTokenPrice?: number;
   earningTokenPrice?: number;
+  liquidTokenPrice?: number;
   vaultKey?: VaultKey;
 }
 
 export interface HarvestActionsProps {
   earnings: BigNumber;
+  liquid?: BigNumber;
+  isLiquid?: boolean;
   isLoading?: boolean;
   onPresentCollect: any;
   earningTokenPrice: number;
   earningTokenBalance: number;
   earningTokenDollarBalance: number;
+  liquidTokenBalance?: number;
+  liquidTokenDollarBalance?: number;
 }
 
 export type ColumnsDefTypes = {

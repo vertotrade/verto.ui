@@ -17,6 +17,14 @@
       "logoURI": "/images/tokens/rebus.png"
     },
     {
+      "name": "lqWRebus Token",
+      "symbol": "lqWREBUS",
+      "address": "0x00ead699Afc6da26B1e51c57E56f113aA4e229CD",
+      "chainId": 1111,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0x00ead699Afc6da26B1e51c57E56f113aA4e229CD.png"
+    },
+    {
       "name": "Ludus Token",
       "symbol": "LUDUS",
       "address": "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
@@ -31,6 +39,14 @@
       "chainId": 1111,
       "decimals": 18,
       "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png"
+    },
+    {
+      "name": "lqVerto Token",
+      "symbol": "lqVERTO",
+      "address": "0xa3d6E8aE944B53C3305f88F8b843Dfa5fdd20a9b",
+      "chainId": 1111,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0xa3d6E8aE944B53C3305f88F8b843Dfa5fdd20a9b.png"
     },
     {
       "name": "COM Token",

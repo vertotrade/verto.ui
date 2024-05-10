@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { TokenPairImageProps, variants } from "./types";
-import { StyledPrimaryImage, StyledSecondaryImage } from "./styles";
+import { StyledInbetweenImage, StyledPrimaryImage, StyledSecondaryImage } from "./styles";
 import Wrapper from "./Wrapper";
 
 const StyledWrapper = styled(Wrapper)<{ hasThirdImage?: boolean }>`
@@ -24,6 +24,7 @@ const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = (
   primarySrc,
   secondarySrc,
   tertiarySrc,
+  inbetweenSrc,
   width,
   height,
   variant = variants.DEFAULT,
@@ -33,6 +34,7 @@ const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = (
   ...props
 }) => {
   const secondaryImageSize = Math.floor(width / 2);
+  const inbetweenImageSize = Math.floor(width / 1.5);
 
   return (
     <StyledWrapper position="relative" width={width} height={height} hasThirdImage={!!tertiarySrc} {...props}>
@@ -53,6 +55,14 @@ const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = (
         height={height}
         {...secondaryImageProps}
       />
+      {inbetweenSrc && (
+        <StyledInbetweenImage
+          variant={variant}
+          src={inbetweenSrc}
+          width={inbetweenImageSize}
+          height={inbetweenImageSize}
+        />
+      )}
       {tertiarySrc && (
         <>
           <TokenPairDivider bold={bold} />

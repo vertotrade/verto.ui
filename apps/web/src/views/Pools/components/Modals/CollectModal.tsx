@@ -11,7 +11,6 @@ import useHarvestPool from '../../hooks/useHarvestPool'
 export const CollectModalContainer = ({
   earningTokenSymbol,
   sousId,
-  isBnbPool,
   onDismiss,
   ...rest
 }: React.PropsWithChildren<Pool.CollectModalProps>) => {
@@ -20,7 +19,7 @@ export const CollectModalContainer = ({
   const { address: account } = useAccount()
   const dispatch = useAppDispatch()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const { onReward } = useHarvestPool(sousId, isBnbPool)
+  const { onReward } = useHarvestPool(sousId)
 
   const handleHarvestConfirm = useCallback(async () => {
     const receipt = await fetchWithCatchTxError(() => {
@@ -30,7 +29,9 @@ export const CollectModalContainer = ({
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: earningTokenSymbol })}
+          {t('Your %symbol% earnings have been sent to your wallet!', {
+            symbol: earningTokenSymbol,
+          })}
         </ToastDescriptionWithTx>,
       )
       dispatch(updateUserStakedBalance({ sousId, account }))

@@ -63,3 +63,32 @@ export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
     },
   })}
 `;
+
+export const StyledInbetweenImage = styled(TokenImage)<StyledImageProps>`
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 10px 0;
+  left: 44px !important;
+  top: -16px !important;
+  position: absolute;
+
+  ${StyledSystemVariant({
+    variants: {
+      [variants.DEFAULT]: {
+        bottom: 0,
+        left: "auto",
+        right: 0,
+        top: "auto",
+        zIndex: 6,
+      },
+      [variants.INVERTED]: {
+        bottom: "auto",
+        left: 0,
+        right: "auto",
+        top: 0,
+        zIndex: 5,
+      },
+    },
+  })}
+`;

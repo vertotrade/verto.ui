@@ -37,6 +37,7 @@ import {
   fetchPoolsBoostBlockStart,
   fetchPoolsMinPerUser,
   fetchPoolAprLiquidityInfo,
+  fetchLiquidPendingRewards,
 } from './fetchPools'
 import {
   fetchPoolsAllowance,
@@ -258,6 +259,9 @@ export const fetchPoolsPublicDataAsync =
         const earningTokenAddress = isAddress(pool.earningToken.address)
         const earningTokenPrice = earningTokenAddress ? prices[earningTokenAddress] : 0
 
+        const liquidTokenAddress = isAddress(pool.liquidToken?.address)
+        const liquidTokenPrice = liquidTokenAddress ? prices[liquidTokenAddress] : 0
+
         const profileRequirement = profileRequirements[pool.sousId] ? profileRequirements[pool.sousId] : undefined
 
         return {
@@ -266,6 +270,7 @@ export const fetchPoolsPublicDataAsync =
           profileRequirement,
           stakingTokenPrice,
           earningTokenPrice,
+          liquidTokenPrice,
           apr: isPoolFinished ? 0 : aprLiquidityInfo?.info?.apr || 0,
           liquidity: aprLiquidityInfo?.info?.liquidity || 0,
           isFinished: isPoolFinished,
@@ -316,24 +321,42 @@ export const fetchPoolsStakingLimitsAsync = () => async (dispatch, getState) => 
 }
 
 export const fetchPoolsUserDataAsync = createAsyncThunk<
-  { sousId: number; allowance: any; stakingTokenBalance: any; stakedBalance: any; pendingReward: any }[],
+  {
+    sousId: number
+    allowance: any
+    stakingTokenBalance: any
+    stakedBalance: any
+    pendingReward: any
+    liquidPendingReward: any
+    amountAvailable: any
+  }[],
   string
 >('pool/fetchPoolsUserData', async (account, { rejectWithValue }) => {
   try {
-    const [allowances, stakingTokenBalances, stakedBalances, pendingRewards] = await Promise.all([
+    const [allowances, stakingTokenBalances, stakedBalances, pendingRewards, liquidPendingRewards] = await Promise.all([
       fetchPoolsAllowance(account),
       fetchUserBalances(account),
       fetchUserStakeBalances(account),
       fetchUserPendingRewards(account),
+      fetchLiquidPendingRewards(account),
     ])
 
-    const userData = poolsConfig.map(pool => ({
-      sousId: pool.sousId,
-      allowance: allowances[pool.sousId],
-      stakingTokenBalance: stakingTokenBalances[pool.sousId],
-      stakedBalance: stakedBalances[pool.sousId],
-      pendingReward: pendingRewards[pool.sousId],
-    }))
+    const userData = poolsConfig.map(pool => {
+      const liquidPendingRewardsInfo = liquidPendingRewards[pool.sousId]
+
+      return {
+        sousId: pool.sousId,
+        allowance: allowances[pool.sousId],
+        stakingTokenBalance: stakingTokenBalances[pool.sousId],
+        stakedBalance: stakedBalances[pool.sousId],
+        pendingReward: pool.isLiquid
+          ? liquidPendingRewardsInfo?.pendingReward?.toString()
+          : pendingRewards[pool.sousId],
+        amountAvailable: liquidPendingRewardsInfo?.amountAvailable?.toString(),
+        liquidPendingReward: liquidPendingRewardsInfo?.liquidPendingReward?.toString(),
+      }
+    })
+
     return userData
   } catch (e) {
     return rejectWithValue(e)
@@ -480,7 +503,15 @@ export const PoolsSlice = createSlice({
       (
         state,
         action: PayloadAction<
-          { sousId: number; allowance: any; stakingTokenBalance: any; stakedBalance: any; pendingReward: any }[]
+          {
+            sousId: number
+            allowance: any
+            stakingTokenBalance: any
+            stakedBalance: any
+            pendingReward: any
+            liquidPendingReward: any
+            amountAvailable: any
+          }[]
         >,
       ) => {
         const userData = action.payload

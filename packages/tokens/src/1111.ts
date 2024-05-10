@@ -9,6 +9,14 @@ export const vertoTokens = {
     'WRebus',
     'https://www.rebuschain.com/',
   ),
+  lqwrebus: new ERC20Token(
+    ChainId.REBUS,
+    '0x00ead699Afc6da26B1e51c57E56f113aA4e229CD',
+    18,
+    'lqWREBUS',
+    'lqWRebus',
+    'https://www.rebuschain.com/',
+  ),
   ludus: new ERC20Token(
     ChainId.REBUS,
     '0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd',
@@ -31,6 +39,14 @@ export const vertoTokens = {
     18,
     'VERTO',
     'Verto',
+    'https://vertotrade.com/',
+  ),
+  lqverto: new ERC20Token(
+    ChainId.REBUS,
+    '0xa3d6E8aE944B53C3305f88F8b843Dfa5fdd20a9b',
+    18,
+    'lqVERTO',
+    'lqVerto',
     'https://vertotrade.com/',
   ),
   xverto: new ERC20Token(

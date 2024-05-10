@@ -9,8 +9,8 @@ export interface CollectModalProps {
   fullBalance: string;
   earningTokenSymbol: string;
   earningsDollarValue: number;
+  burnFormattedBalance?: string;
   sousId: number;
-  isBnbPool: boolean;
   onDismiss?: () => void;
   poolAddress?: {
     [index: number]: string;
@@ -27,6 +27,7 @@ export function CollectModal({
   formattedBalance,
   earningTokenSymbol,
   earningsDollarValue,
+  burnFormattedBalance,
   onDismiss,
   handleHarvestConfirm,
   pendingTx,
@@ -51,6 +52,22 @@ export function CollectModal({
           <Text fontSize="12px" color="textSubtle">{`~${formatNumber(earningsDollarValue)} USD`}</Text>
         )}
       </Flex>
+
+      {burnFormattedBalance && (
+        <>
+          <Flex justifyContent="space-between" alignItems="center" mb="8px">
+            <Text>{t("Burning")}:</Text>
+          </Flex>
+          <Flex flexDirection="column" mb="24px">
+            <Heading>
+              {burnFormattedBalance} {earningTokenSymbol}
+            </Heading>
+            {earningsDollarValue > 0 && (
+              <Text fontSize="12px" color="textSubtle">{`~${formatNumber(earningsDollarValue)} USD`}</Text>
+            )}
+          </Flex>
+        </>
+      )}
 
       <Button
         mt="8px"

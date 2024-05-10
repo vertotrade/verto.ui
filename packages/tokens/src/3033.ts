@@ -9,6 +9,14 @@ export const vertoTokensTestnet = {
     'WRebus',
     'https://www.rebuschain.com/',
   ),
+  lqwrebus: new ERC20Token(
+    ChainId.REBUS_TESTNET,
+    '0xa883DEa1b9641b4D3eB2400D83cEfB0333fAD419',
+    18,
+    'lqWREBUS',
+    'lqWRebus',
+    'https://www.rebuschain.com/',
+  ),
   ludus: new ERC20Token(
     ChainId.REBUS_TESTNET,
     '0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd',

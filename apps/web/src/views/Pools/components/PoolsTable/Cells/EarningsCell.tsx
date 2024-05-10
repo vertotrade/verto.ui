@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Skeleton, Text, Flex, Box, useModal, useMatchBreakpoints, Balance, Pool } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
-import { PoolCategory } from 'config/constants/types'
 import { BIG_ZERO } from '@verto/utils/bigNumber'
 import { formatNumber, getBalanceNumber, getFullDisplayBalance } from '@verto/utils/formatBalance'
 import { Token } from '@verto/sdk'
@@ -21,15 +20,17 @@ const StyledCell = styled(Pool.BaseCell)`
 
 const EarningsCell: React.FC<React.PropsWithChildren<EarningsCellProps>> = ({ pool, account }) => {
   const { isMobile } = useMatchBreakpoints()
-  const { sousId, earningToken, poolCategory, userData, earningTokenPrice } = pool
+  const { sousId, earningToken, userData, earningTokenPrice, liquidToken, isLiquid } = pool
 
   const earnings = userData?.pendingReward ? new BigNumber(userData.pendingReward) : BIG_ZERO
   const earningTokenBalance = getBalanceNumber(earnings, earningToken.decimals)
   const earningTokenDollarBalance = getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningToken.decimals)
   const hasEarnings = account && earnings.gt(0)
-  const fullBalance = getFullDisplayBalance(earnings, earningToken.decimals)
-  const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
-  const isBnbPool = poolCategory === PoolCategory.BINANCE
+  const liquid = userData?.liquidPendingReward ? new BigNumber(userData.liquidPendingReward) : null
+  const liquidTokenBalance = getBalanceNumber(liquid, liquidToken?.decimals)
+  const fullBalance = getFullDisplayBalance(isLiquid && liquid ? liquid : earnings, earningToken.decimals)
+  const formattedBalance = formatNumber(isLiquid && liquid ? liquidTokenBalance : earningTokenBalance, 3, 3)
+  const burnFormattedBalance = isLiquid ? formatNumber(earningTokenBalance - liquidTokenBalance, 3, 3) : null
 
   const [onPresentCollect] = useModal(
     <CollectModal
@@ -37,8 +38,8 @@ const EarningsCell: React.FC<React.PropsWithChildren<EarningsCellProps>> = ({ po
       fullBalance={fullBalance}
       earningTokenSymbol={earningToken.symbol}
       earningsDollarValue={earningTokenDollarBalance}
+      burnFormattedBalance={burnFormattedBalance}
       sousId={sousId}
-      isBnbPool={isBnbPool}
     />,
   )
 

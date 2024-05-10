@@ -17,6 +17,14 @@
       "logoURI": "/images/tokens/rebus.png"
     },
     {
+      "name": "lqWRebus Token",
+      "symbol": "lqWREBUS",
+      "address": "0xa883DEa1b9641b4D3eB2400D83cEfB0333fAD419",
+      "chainId": 3033,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0xa883DEa1b9641b4D3eB2400D83cEfB0333fAD419.png"
+    },
+    {
       "name": "Ludus Token",
       "symbol": "LUDUS",
       "address": "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",

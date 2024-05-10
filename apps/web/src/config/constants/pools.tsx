@@ -184,12 +184,58 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     isFinished: false,
     hasBoostBlockStart: true,
   },
+
+  {
+    sousId: 319,
+    stakingToken: tokens.wrebus,
+    earningToken: tokens.verto,
+    liquidToken: vertoTokens.lqwrebus,
+    contractAddress: {
+      [ChainId.REBUS]: '0x3B41cCa347A27FCC507B15a4Ca031EA8e760a0e9',
+      [ChainId.REBUS_TESTNET]: '0x3FC9325B3cB81d3e71bb52bBa2d7BF906f904287',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    isLiquid: true,
+  },
+
+  {
+    sousId: 320,
+    stakingToken: tokens.verto,
+    earningToken: tokens.aureus,
+    liquidToken: vertoTokens.lqverto,
+    contractAddress: {
+      [ChainId.REBUS]: '0x66fDddd3780a8001905e51Ac1B13C1E4e9f8b50e',
+      [ChainId.REBUS_TESTNET]: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    isLiquid: true,
+  },
+
+  {
+    sousId: 321,
+    stakingToken: tokens.verto,
+    earningToken: tokens.ludus,
+    liquidToken: vertoTokens.lqverto,
+    contractAddress: {
+      [ChainId.REBUS]: '0xaaD8a0810adA077ED84CD539fA28f0eAFF059851',
+      [ChainId.REBUS_TESTNET]: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    isLiquid: true,
+  },
 ]
   .filter(p => p.contractAddress[DEFAULT_CHAIN_ID] && p.stakingToken && p.earningToken)
   .map(p => ({
     ...p,
     stakingToken: p.stakingToken.serialize,
     earningToken: p.earningToken.serialize,
+    liquidToken: p.liquidToken?.serialize,
   }))
 
 // known finished pools
@@ -198,6 +244,7 @@ const finishedPools = [].map(p => ({
   isFinished: true,
   stakingToken: p.stakingToken.serialize,
   earningToken: p.earningToken.serialize,
+  liquidToken: p.liquidToken?.serialize,
 }))
 
 export default [...livePools, ...finishedPools] as Pool.SerializedPoolConfig<SerializedWrappedToken>[]
