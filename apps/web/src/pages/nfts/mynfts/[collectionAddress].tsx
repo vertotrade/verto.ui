@@ -7,7 +7,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useGetCollection } from 'state/nftMarket/hooks'
-import { Box, Flex, Grid, Text, Skeleton } from '@verto/uikit'
+import { Box, Flex, Grid, Text, Skeleton, Heading } from '@verto/uikit'
 import { useAccount } from 'wagmi'
 import { useProfile } from 'state/profile/hooks'
 import { ApiCollections, NftLocation, NftToken, Collection } from 'state/nftMarket/types'
@@ -100,6 +100,15 @@ const MyNFTsPage = () => {
 
   return (
     <Box pt="24px">
+      <PageMeta />
+      <Header collection={collectionData} />
+      {userHasNoNfts && (
+        <Flex mt="32px" mb="16px" justifyContent="center">
+          <Heading scale="md">
+            {t('No NFTs found')}
+          </Heading>
+        </Flex>
+      )}
       {!account && (
         <Flex mb="16px" justifyContent="center">
           <ConnectWalletButton />
