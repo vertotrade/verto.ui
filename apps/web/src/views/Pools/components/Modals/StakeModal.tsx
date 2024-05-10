@@ -17,7 +17,6 @@ import useStakePool from '../../hooks/useStakePool'
 import useUnstakePool from '../../hooks/useUnstakePool'
 
 const StakeModalContainer = ({
-  isBnbPool,
   pool,
   isRemovingStake,
   onDismiss,
@@ -36,6 +35,7 @@ const StakeModalContainer = ({
     stakingLimit,
     enableEmergencyWithdraw,
     minPerUser,
+    isLiquid,
   } = pool
   const { address: account } = useAccount()
   const { toastSuccess } = useToast()
@@ -44,7 +44,7 @@ const StakeModalContainer = ({
   const [amount, setAmount] = useState('')
 
   const { onUnstake } = useUnstakePool(sousId, enableEmergencyWithdraw)
-  const { onStake } = useStakePool(sousId, isBnbPool)
+  const { onStake } = useStakePool(sousId)
   const dispatch = useAppDispatch()
 
   const stakingTokenContract = useERC20(stakingToken.address || '')
@@ -134,7 +134,7 @@ const StakeModalContainer = ({
       stakingTokenAddress={stakingToken.address}
       stakingTokenBalance={stakingTokenBalance}
       apr={apr}
-      userDataStakedBalance={userData.stakedBalance}
+      userDataStakedBalance={isLiquid ? userData.amountAvailable : userData.stakedBalance}
       userDataStakingTokenBalance={userData.stakingTokenBalance}
       onDismiss={onDismiss}
       pendingTx={pendingTx}

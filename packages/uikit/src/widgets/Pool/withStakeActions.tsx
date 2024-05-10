@@ -21,14 +21,12 @@ interface StakeActionsPropsType<T> {
   pool: DeserializedPool<T>;
   stakingTokenBalance: BigNumber;
   stakedBalance: BigNumber;
-  isBnbPool: boolean;
   isStaked: ConstrainBoolean;
   isLoading?: boolean;
   hideLocateAddress?: boolean;
 }
 
 export interface StakeModalPropsType<T> {
-  isBnbPool: boolean;
   pool: DeserializedPool<T>;
   stakingTokenBalance: BigNumber;
   stakingTokenPrice: number;
@@ -41,7 +39,6 @@ export function withStakeActions<T>(StakeModal: (props: StakeModalPropsType<T>) 
     pool,
     stakingTokenBalance,
     stakedBalance,
-    isBnbPool,
     isStaked,
     isLoading = false,
     hideLocateAddress = false,
@@ -62,18 +59,12 @@ export function withStakeActions<T>(StakeModal: (props: StakeModalPropsType<T>) 
     );
 
     const [onPresentStake] = useModal(
-      <StakeModal
-        isBnbPool={isBnbPool}
-        pool={pool}
-        stakingTokenBalance={stakingTokenBalance}
-        stakingTokenPrice={stakingTokenPrice || 0}
-      />
+      <StakeModal pool={pool} stakingTokenBalance={stakingTokenBalance} stakingTokenPrice={stakingTokenPrice || 0} />
     );
 
     const [onPresentUnstake] = useModal(
       <StakeModal
         stakingTokenBalance={stakingTokenBalance}
-        isBnbPool={isBnbPool}
         pool={pool}
         stakingTokenPrice={stakingTokenPrice || 0}
         isRemovingStake

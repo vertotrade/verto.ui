@@ -21,6 +21,8 @@ type UserData =
       stakingTokenBalance: number | string
       stakedBalance: number | string
       pendingReward: number | string
+      liquidPendingReward?: number | string
+      amountAvailable?: number | string
     }
 
 export const transformUserData = (userData: UserData) => {
@@ -29,6 +31,8 @@ export const transformUserData = (userData: UserData) => {
     stakingTokenBalance: userData ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO,
     stakedBalance: userData ? new BigNumber(userData.stakedBalance) : BIG_ZERO,
     pendingReward: userData ? new BigNumber(userData.pendingReward) : BIG_ZERO,
+    liquidPendingReward: userData?.liquidPendingReward ? new BigNumber(userData.liquidPendingReward) : BIG_ZERO,
+    amountAvailable: userData?.amountAvailable ? new BigNumber(userData.amountAvailable) : BIG_ZERO,
   }
 }
 
@@ -51,6 +55,7 @@ export const transformPool = (pool: SerializedPool): Pool.DeserializedPool<Token
     userData,
     stakingToken,
     earningToken,
+    liquidToken,
     profileRequirement,
     startBlock,
     ...rest
@@ -62,6 +67,7 @@ export const transformPool = (pool: SerializedPool): Pool.DeserializedPool<Token
     profileRequirement: transformProfileRequirement(profileRequirement),
     stakingToken: deserializeToken(stakingToken),
     earningToken: deserializeToken(earningToken),
+    liquidToken: deserializeToken(liquidToken),
     userData: transformUserData(userData),
     totalStaked: new BigNumber(totalStaked),
     stakingLimit: new BigNumber(stakingLimit),

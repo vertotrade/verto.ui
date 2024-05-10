@@ -1,4 +1,4 @@
-import { Flex, Text, Button, Heading, Skeleton, Balance, useModal } from "@verto/uikit";
+import { Flex, Text, Button, Heading, Skeleton, Balance, useModal, Box } from "@verto/uikit";
 import BigNumber from "bignumber.js";
 import { ReactElement } from "react";
 import { useTranslation } from "@verto/localization";
@@ -14,42 +14,66 @@ const HarvestActions: React.FC<React.PropsWithChildren<HarvestActionsProps>> = (
   earningTokenPrice,
   earningTokenBalance,
   earningTokenDollarBalance,
+  isLiquid,
+  liquidTokenBalance,
+  liquidTokenDollarBalance,
 }) => {
   const { t } = useTranslation();
   const hasEarnings = earnings.toNumber() > 0;
 
   return (
     <Flex justifyContent="space-between" alignItems="center" mb="16px">
-      <Flex flexDirection="column">
-        {isLoading ? (
-          <Skeleton width="80px" height="48px" />
-        ) : (
+      <Flex flexDirection="row" alignItems="center">
+        {isLiquid && liquidTokenBalance && (
           <>
-            {hasEarnings ? (
-              <>
-                <Balance bold fontSize="20px" decimals={5} value={earningTokenBalance} />
-                {earningTokenPrice > 0 && (
-                  <Balance
-                    display="inline"
-                    fontSize="12px"
-                    color="textSubtle"
-                    decimals={2}
-                    prefix="~"
-                    value={earningTokenDollarBalance}
-                    unit=" USD"
-                  />
-                )}
-              </>
-            ) : (
-              <>
-                <Heading color="textDisabled">0</Heading>
-                <Text fontSize="12px" color="textDisabled">
-                  0 USD
-                </Text>
-              </>
-            )}
+            <Flex flexDirection="column">
+              <Balance lineHeight="1" bold fontSize="20px" decimals={5} value={liquidTokenBalance} />
+              {!Number.isNaN(liquidTokenDollarBalance) && liquidTokenDollarBalance && liquidTokenDollarBalance > 0 && (
+                <Balance
+                  display="inline"
+                  fontSize="12px"
+                  color="text"
+                  decimals={2}
+                  prefix="~"
+                  value={liquidTokenDollarBalance}
+                  unit=" USD"
+                />
+              )}
+            </Flex>
+            <Box mx={1}>/</Box>
           </>
         )}
+        <Flex flexDirection="column">
+          {isLoading ? (
+            <Skeleton width="80px" height="48px" />
+          ) : (
+            <>
+              {hasEarnings ? (
+                <>
+                  <Balance bold fontSize="20px" decimals={5} value={earningTokenBalance} />
+                  {earningTokenPrice > 0 && (
+                    <Balance
+                      display="inline"
+                      fontSize="12px"
+                      color="textSubtle"
+                      decimals={2}
+                      prefix="~"
+                      value={earningTokenDollarBalance}
+                      unit=" USD"
+                    />
+                  )}
+                </>
+              ) : (
+                <>
+                  <Heading color="textDisabled">0</Heading>
+                  <Text fontSize="12px" color="textDisabled">
+                    0 USD
+                  </Text>
+                </>
+              )}
+            </>
+          )}
+        </Flex>
       </Flex>
       <Button disabled={!hasEarnings} onClick={onPresentCollect}>
         {t("Harvest")}
@@ -60,9 +84,10 @@ const HarvestActions: React.FC<React.PropsWithChildren<HarvestActionsProps>> = (
 
 interface WithHarvestActionsProps {
   earnings: BigNumber;
+  liquid?: BigNumber;
+  isLiquid?: boolean;
   earningTokenSymbol: string;
   sousId: number;
-  isBnbPool: boolean;
   earningTokenPrice: number;
   isLoading?: boolean;
   earningTokenDecimals: number;
@@ -77,25 +102,33 @@ const withCollectModalFactory =
   (CollectModalComponent: (props: CollectModalProps) => ReactElement) =>
   ({
     earnings,
+    liquid,
     earningTokenSymbol,
     earningTokenAddress,
     earningTokenDecimals,
     sousId,
-    isBnbPool,
     earningTokenPrice,
     isLoading,
     poolAddress,
+    isLiquid,
     ...props
   }: WithHarvestActionsProps) => {
     const earningTokenBalance: number = getBalanceNumber(earnings, earningTokenDecimals);
+    const liquidTokenBalance = isLiquid && liquid ? getBalanceNumber(liquid, earningTokenDecimals) : undefined;
 
-    const formattedBalance = formatNumber(earningTokenBalance, 5, 5);
+    const formattedBalance = formatNumber(liquidTokenBalance || earningTokenBalance, 5, 5);
+    const burnFormattedBalance = liquidTokenBalance
+      ? formatNumber(earningTokenBalance - liquidTokenBalance, 3, 3)
+      : undefined;
 
-    const fullBalance = getFullDisplayBalance(earnings, earningTokenDecimals);
+    const fullBalance = getFullDisplayBalance(isLiquid && liquid ? liquid : earnings, earningTokenDecimals);
 
     const earningTokenDollarBalance = earnings
       ? getBalanceNumber(earnings.multipliedBy(earningTokenPrice), earningTokenDecimals)
       : 0;
+
+    const liquidTokenDollarBalance =
+      isLiquid && liquid ? getBalanceNumber(liquid.multipliedBy(earningTokenPrice), earningTokenDecimals) : 0;
 
     const [onPresentCollect] = useModal(
       <CollectModalComponent
@@ -103,8 +136,8 @@ const withCollectModalFactory =
         fullBalance={fullBalance}
         earningTokenSymbol={earningTokenSymbol}
         earningsDollarValue={earningTokenDollarBalance}
+        burnFormattedBalance={burnFormattedBalance}
         sousId={sousId}
-        isBnbPool={isBnbPool}
         earningTokenAddress={earningTokenAddress}
         poolAddress={poolAddress}
       />
@@ -114,9 +147,13 @@ const withCollectModalFactory =
       <ActionComp
         onPresentCollect={onPresentCollect}
         earnings={earnings}
+        liquid={liquid}
+        isLiquid={isLiquid}
         earningTokenPrice={earningTokenPrice}
         earningTokenDollarBalance={earningTokenDollarBalance}
         earningTokenBalance={earningTokenBalance}
+        liquidTokenBalance={liquidTokenBalance}
+        liquidTokenDollarBalance={liquidTokenDollarBalance}
         isLoading={isLoading}
         earningTokenSymbol={earningTokenSymbol}
         {...props}

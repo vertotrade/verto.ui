@@ -38,6 +38,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
   const {
     stakingToken,
     earningToken,
+    liquidToken,
     totalStaked,
     startBlock,
     endBlock,
@@ -57,6 +58,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
   } = useVaultPoolByKey(vaultKey)
 
   const tokenAddress = earningToken.address || ''
+  const liquidTokenAddress = liquidToken?.address || ''
   const poolContractAddress = getAddress(contractAddress)
   const rebusVaultContractAddress = getVaultPoolAddress(vaultKey)
 
@@ -193,11 +195,27 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             height="auto"
             style={{ fontSize: '14px', fontWeight: '400', lineHeight: '21px' }}
             marginTextBetweenLogo="4px"
-            textOptions={AddToWalletTextOptions.TEXT}
+            textOptions={AddToWalletTextOptions.TEXT_WITH_ASSET}
             tokenAddress={tokenAddress}
             tokenSymbol={earningToken.symbol}
             tokenDecimals={earningToken.decimals}
             tokenLogo={`${window.origin}/images/tokens/${tokenAddress}.png`}
+          />
+        </Flex>
+      )}
+      {account && liquidTokenAddress && (
+        <Flex justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
+          <AddToWalletButton
+            variant="vertoLink"
+            p="0"
+            height="auto"
+            style={{ fontSize: '14px', fontWeight: '400', lineHeight: '21px' }}
+            marginTextBetweenLogo="4px"
+            textOptions={AddToWalletTextOptions.TEXT_WITH_ASSET}
+            tokenAddress={liquidTokenAddress}
+            tokenSymbol={liquidToken.symbol}
+            tokenDecimals={liquidToken?.decimals}
+            tokenLogo={`${window.origin}/images/tokens/${liquidTokenAddress}.png`}
           />
         </Flex>
       )}

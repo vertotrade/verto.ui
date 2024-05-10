@@ -11,7 +11,7 @@ if (!process.env.ES_API_KEY) {
   throw new Error('ES_API_KEY must be set')
 }
 
-const CURRENCIES = [`WREBUS`, `VERTO`, `LUDUS`, `axlUSDC`, `axlWBTC`, `axlWETH`, `COM`]
+const CURRENCIES = [`WREBUS`, `VERTO`, `LUDUS`, `axlUSDC`, `axlWBTC`, `axlWETH`, `COM`, `lqWREBUS`, `lqVERTO`]
 const TIME_WINDOWS = ['hourly', 'daily', 'weekly']
 
 // Only set this value to one of the currencies above if adding one currency only instead of redoing all of them

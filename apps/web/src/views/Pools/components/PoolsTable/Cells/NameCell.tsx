@@ -31,7 +31,7 @@ const StyledCell = styled(Pool.BaseCell)`
 const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) => {
   const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
-  const { sousId, stakingToken, earningToken, userData, isFinished, vaultKey, totalStaked } = pool
+  const { sousId, stakingToken, earningToken, liquidToken, userData, isFinished, vaultKey, totalStaked } = pool
   const vaultData = useVaultPoolByKey(pool.vaultKey)
   const {
     userData: { userShares },
@@ -70,7 +70,14 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) =>
           {vaultKey ? (
             <UITokenPairImage {...vaultPoolConfig[vaultKey].tokenImage} mr="8px" width={40} height={40} />
           ) : (
-            <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} mr="8px" width={40} height={40} />
+            <TokenPairImage
+              primaryToken={earningToken}
+              secondaryToken={stakingToken}
+              inbetweenToken={liquidToken}
+              mr="8px"
+              width={40}
+              height={40}
+            />
           )}
           <Pool.CellContent>
             {showStakedTag &&

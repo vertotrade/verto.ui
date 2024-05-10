@@ -233,6 +233,35 @@
     "type": "event"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "liquidPendingReward",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "pendingReward",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "liquidPendingReward",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amountAvailable",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "isBoosted",
     "outputs": [

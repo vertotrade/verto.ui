@@ -65,7 +65,11 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                         isStaked={Boolean(pool?.userData?.stakedBalance?.gt(0))}
                         cardContent={
                           account ? (
-                            <CardActions pool={pool} stakedBalance={pool?.userData?.stakedBalance} />
+                            <CardActions
+                              pool={pool}
+                              stakedBalance={pool?.userData?.stakedBalance}
+                              liquidBalance={pool?.userData?.amountAvailable}
+                            />
                           ) : (
                             <>
                               <Text mb="10px" textTransform="uppercase" fontSize="12px" color="text" bold>
@@ -80,6 +84,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                             bold
                             primaryToken={pool.earningToken}
                             secondaryToken={pool.stakingToken}
+                            inbetweenToken={pool.liquidToken}
                             width={64}
                             height={64}
                           />

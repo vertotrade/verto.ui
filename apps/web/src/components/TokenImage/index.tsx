@@ -9,6 +9,7 @@ import { Token, ChainId } from '@verto/sdk'
 interface TokenPairImageProps extends Omit<UIKitTokenPairImageProps, 'primarySrc' | 'secondarySrc'> {
   primaryToken: Token
   secondaryToken: Token
+  inbetweenToken?: Token
   tertiaryToken?: Token
 }
 
@@ -27,6 +28,7 @@ const getImageUrlFromToken = (token: Token) => {
 export const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProps>> = ({
   primaryToken,
   secondaryToken,
+  inbetweenToken,
   tertiaryToken,
   ...props
 }) => {
@@ -34,6 +36,7 @@ export const TokenPairImage: React.FC<React.PropsWithChildren<TokenPairImageProp
     <UIKitTokenPairImage
       primarySrc={getImageUrlFromToken(primaryToken)}
       secondarySrc={getImageUrlFromToken(secondaryToken)}
+      inbetweenSrc={getImageUrlFromToken(inbetweenToken)}
       tertiarySrc={getImageUrlFromToken(tertiaryToken)}
       {...props}
     />

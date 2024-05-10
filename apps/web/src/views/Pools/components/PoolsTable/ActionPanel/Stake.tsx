@@ -72,11 +72,13 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     sousId,
     stakingToken,
     earningToken,
+    liquidToken,
     stakingLimit,
     isFinished,
     poolCategory,
     userData,
     stakingTokenPrice,
+    liquidTokenPrice,
     vaultKey,
     profileRequirement,
     userDataLoaded,
@@ -84,6 +86,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     startBlock,
     endBlock,
     boostBlockStart,
+    isLiquid,
   } = pool
   const depositEndBlock = startBlock - boostBlockStart
   const { t } = useTranslation()
@@ -113,6 +116,11 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
   const stakedTokenDollarBalance =
     getBalanceNumber(stakedBalance.multipliedBy(stakingTokenPrice), stakingToken.decimals) || 0
+
+  const liquidAmountAvailable = userData?.amountAvailable ? new BigNumber(userData.amountAvailable) : BIG_ZERO
+  const liquidTokenBalance = getBalanceNumber(liquidAmountAvailable, liquidToken?.decimals)
+  const liquidTokenDollarBalance =
+    getBalanceNumber(liquidAmountAvailable.multipliedBy(liquidTokenPrice), liquidToken?.decimals) || 0
 
   const vaultData = useVaultPoolByKey(pool.vaultKey)
   const {
@@ -144,20 +152,14 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   const [onPresentTokenRequired] = useModal(<NotEnoughTokensModal tokenSymbol={stakingToken.symbol} />)
 
   const [onPresentStake] = useModal(
-    <StakeModal
-      isBnbPool={isBnbPool}
-      pool={pool}
-      stakingTokenBalance={stakingTokenBalance}
-      stakingTokenPrice={stakingTokenPrice}
-    />,
+    <StakeModal pool={pool} stakingTokenBalance={stakingTokenBalance} stakingTokenPrice={stakingTokenPrice} />,
   )
 
   const [onPresentVaultStake] = useModal(<VaultStakeModal stakingMax={stakingTokenBalance} pool={pool} />)
 
   const [onPresentUnstake] = useModal(
     <StakeModal
-      stakingTokenBalance={stakingTokenBalance}
-      isBnbPool={isBnbPool}
+      stakingTokenBalance={isLiquid ? liquidAmountAvailable : stakingTokenBalance}
       pool={pool}
       stakingTokenPrice={stakingTokenPrice}
       isRemovingStake
@@ -295,53 +297,81 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
         <ActionContainer flex={vaultPosition > 1 ? 1.5 : 1}>
           <ActionContent mt={0}>
             <Flex flex="1" flexDirection="column" alignSelf="flex-start">
-              <ActionTitles>
-                <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
-                  {stakingToken.symbol}{' '}
-                </Text>
-                <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
-                  {vaultKey === VaultKey.RebusVault && (vaultData as DeserializedLockedRebusVault).userData.locked
-                    ? t('Locked')
-                    : t('Staked')}
-                </Text>
-              </ActionTitles>
-              <ActionContent>
-                <Box position="relative">
-                  <Balance
-                    lineHeight="1"
-                    bold
-                    fontSize="20px"
-                    decimals={5}
-                    value={vaultKey ? cakeAsNumberBalance : stakedTokenBalance}
-                  />
-                  <SkeletonV2
-                    isDataReady={Number.isFinite(vaultKey ? stakedAutoDollarValue : stakedTokenDollarBalance)}
-                    width={120}
-                    wrapperProps={{ height: '20px' }}
-                    skeletonTop="2px">
+              <Flex flex="1" flexDirection="column" alignSelf="flex-start">
+                <ActionTitles>
+                  <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
+                    {stakingToken.symbol}{' '}
+                  </Text>
+                  <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
+                    {vaultKey === VaultKey.RebusVault && (vaultData as DeserializedLockedRebusVault).userData.locked
+                      ? t('Locked')
+                      : t('Staked')}
+                  </Text>
+                </ActionTitles>
+                <ActionContent>
+                  <Box position="relative">
                     <Balance
-                      fontSize="12px"
-                      display="inline"
-                      color="textSubtle"
-                      decimals={2}
-                      value={vaultKey ? stakedAutoDollarValue : stakedTokenDollarBalance}
-                      unit=" USD"
-                      prefix="~"
+                      lineHeight="1"
+                      bold
+                      fontSize="20px"
+                      decimals={5}
+                      value={vaultKey ? cakeAsNumberBalance : stakedTokenBalance}
                     />
-                  </SkeletonV2>
-                </Box>
-              </ActionContent>
-              {vaultPosition === VaultPosition.Locked && (
-                <Box mt="16px">
-                  <AddCakeButton
-                    lockEndTime={(vaultData as DeserializedLockedRebusVault).userData.lockEndTime}
-                    lockStartTime={(vaultData as DeserializedLockedRebusVault).userData.lockStartTime}
-                    currentLockedAmount={cakeAsBigNumber}
-                    stakingToken={stakingToken}
-                    currentBalance={stakingTokenBalance}
-                    stakingTokenBalance={stakingTokenBalance}
-                  />
-                </Box>
+                    <SkeletonV2
+                      isDataReady={Number.isFinite(vaultKey ? stakedAutoDollarValue : stakedTokenDollarBalance)}
+                      width={120}
+                      wrapperProps={{ height: '20px' }}
+                      skeletonTop="2px">
+                      <Balance
+                        fontSize="12px"
+                        display="inline"
+                        color="textSubtle"
+                        decimals={2}
+                        value={vaultKey ? stakedAutoDollarValue : stakedTokenDollarBalance}
+                        unit=" USD"
+                        prefix="~"
+                      />
+                    </SkeletonV2>
+                  </Box>
+                </ActionContent>
+                {vaultPosition === VaultPosition.Locked && (
+                  <Box mt="16px">
+                    <AddCakeButton
+                      lockEndTime={(vaultData as DeserializedLockedRebusVault).userData.lockEndTime}
+                      lockStartTime={(vaultData as DeserializedLockedRebusVault).userData.lockStartTime}
+                      currentLockedAmount={cakeAsBigNumber}
+                      stakingToken={stakingToken}
+                      currentBalance={stakingTokenBalance}
+                      stakingTokenBalance={stakingTokenBalance}
+                    />
+                  </Box>
+                )}
+              </Flex>
+              {isLiquid && (
+                <Flex flex="1" flexDirection="column" alignSelf="flex-start">
+                  <ActionTitles>
+                    <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
+                      {liquidToken.symbol}{' '}
+                    </Text>
+                    <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
+                      {t('Available')}
+                    </Text>
+                  </ActionTitles>
+                  <ActionContent>
+                    <Box position="relative">
+                      <Balance lineHeight="1" bold fontSize="20px" decimals={5} value={liquidTokenBalance} />
+                      <Balance
+                        fontSize="12px"
+                        display="inline"
+                        color="textSubtle"
+                        decimals={2}
+                        value={liquidTokenDollarBalance}
+                        unit=" USD"
+                        prefix="~"
+                      />
+                    </Box>
+                  </ActionContent>
+                </Flex>
               )}
             </Flex>
             {vaultPosition >= VaultPosition.Locked && (

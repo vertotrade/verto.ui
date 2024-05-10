@@ -28,9 +28,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.REBUS]: [
     vertoTokens.wrebus,
+    vertoTokens.lqwrebus,
     vertoTokens.ludus,
     vertoTokens.aureus,
     vertoTokens.verto,
+    vertoTokens.lqverto,
     vertoTokens.com,
     vertoTokens.axlusdc,
     vertoTokens.axlwbtc,
@@ -38,6 +40,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ].filter(Boolean),
   [ChainId.REBUS_TESTNET]: [
     vertoTokensTestnet.wrebus,
+    vertoTokensTestnet.lqwrebus,
     vertoTokensTestnet.ludus,
     vertoTokensTestnet.aureus,
     vertoTokensTestnet.verto,
@@ -72,9 +75,11 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.REBUS]: [
     vertoTokens.wrebus,
+    vertoTokens.lqwrebus,
     vertoTokens.ludus,
     vertoTokens.aureus,
     vertoTokens.verto,
+    vertoTokens.lqverto,
     vertoTokens.com,
     vertoTokens.axlusdc,
     vertoTokens.axlwbtc,
@@ -82,6 +87,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   ].filter(Boolean),
   [ChainId.REBUS_TESTNET]: [
     vertoTokensTestnet.wrebus,
+    vertoTokensTestnet.lqwrebus,
     vertoTokensTestnet.ludus,
     vertoTokensTestnet.aureus,
     vertoTokensTestnet.verto,
@@ -96,9 +102,11 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.REBUS]: [
     vertoTokens.wrebus,
+    vertoTokens.lqwrebus,
     vertoTokens.ludus,
     vertoTokens.aureus,
     vertoTokens.verto,
+    vertoTokens.lqverto,
     vertoTokens.com,
     vertoTokens.axlusdc,
     vertoTokens.axlwbtc,
@@ -106,6 +114,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ].filter(Boolean),
   [ChainId.REBUS_TESTNET]: [
     vertoTokensTestnet.wrebus,
+    vertoTokensTestnet.lqwrebus,
     vertoTokensTestnet.ludus,
     vertoTokensTestnet.aureus,
     vertoTokensTestnet.verto,
