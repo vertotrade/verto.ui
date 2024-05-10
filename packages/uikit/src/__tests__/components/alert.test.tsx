@@ -19,8 +19,12 @@ it("renders correctly", () => {
 
     .c5 {
       color: var(--colors-text);
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .c5 .textSpan {
       font-size: 16px;
     }
 
@@ -28,6 +32,10 @@ it("renders correctly", () => {
       color: var(--colors-text);
       font-weight: 400;
       line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .c6 .textSpan {
       font-size: 16px;
     }
 

@@ -12,39 +12,17 @@ exports[`renders correctly 1`] = `
   flex-shrink: 0;
 }
 
-.c19 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  fill: var(--colors-textSubtle);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c27 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  fill: var(--colors-text);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin-right: 8px;
-}
-
-.c32 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  fill: var(--colors-textSubtle);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin-right: 0.5rem;
-}
-
 .c16 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  fill: var(--colors-textSubtle);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c14 {
   color: var(--colors-failure);
   font-weight: 400;
   line-height: 1.5;
@@ -52,7 +30,11 @@ exports[`renders correctly 1`] = `
   font-size: 14px;
 }
 
-.c20 {
+.c14 .textSpan {
+  font-size: 14px;
+}
+
+.c17 {
   color: var(--colors-warning);
   font-weight: 400;
   line-height: 1.5;
@@ -60,178 +42,41 @@ exports[`renders correctly 1`] = `
   font-size: 14px;
 }
 
-.c28 {
-  color: var(--colors-textSubtle);
-  font-weight: 600;
-  line-height: 1.5;
-  font-size: 16px;
-}
-
-.c31 {
-  position: relative;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 0;
-  border-radius: 16px;
-  box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-letter-spacing: 0.03em;
-  -moz-letter-spacing: 0.03em;
-  -ms-letter-spacing: 0.03em;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  opacity: 1;
-  outline: 0;
-  -webkit-transition: background-color 0.2s,opacity 0.2s;
-  transition: background-color 0.2s,opacity 0.2s;
-  height: 20px;
-  font-size: 12px;
-  padding: 0 8px;
-  background-color: transparent;
-  color: var(--colors-primary);
-  box-shadow: none;
-}
-
-.c31:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
-  opacity: 0.65;
-}
-
-.c31:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
-  opacity: 0.85;
-  -webkit-transform: translateY(1px);
-  -ms-transform: translateY(1px);
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-.c31:disabled,
-.c31.pancake-button--disabled {
-  background-color: var(--colors-backgroundDisabled);
-  border-color: var(--colors-backgroundDisabled);
-  box-shadow: none;
-  color: var(--colors-textDisabled);
-  cursor: not-allowed;
-}
-
-.c35 {
-  position: relative;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 0;
-  border-radius: 16px;
-  box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-letter-spacing: 0.03em;
-  -moz-letter-spacing: 0.03em;
-  -ms-letter-spacing: 0.03em;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  opacity: 1;
-  outline: 0;
-  -webkit-transition: background-color 0.2s,opacity 0.2s;
-  transition: background-color 0.2s,opacity 0.2s;
-  height: 48px;
-  padding: 0 24px;
-  background-color: transparent;
-  color: var(--colors-primary);
-  box-shadow: none;
-  width: sm;
-  height: sm;
-}
-
-.c35:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
-  opacity: 0.65;
-}
-
-.c35:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
-  opacity: 0.85;
-  -webkit-transform: translateY(1px);
-  -ms-transform: translateY(1px);
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-.c35:disabled,
-.c35.pancake-button--disabled {
-  background-color: var(--colors-backgroundDisabled);
-  border-color: var(--colors-backgroundDisabled);
-  box-shadow: none;
-  color: var(--colors-textDisabled);
-  cursor: not-allowed;
-}
-
-.c7 {
-  margin-left: 24px;
-}
-
-.c8 {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-.c23 {
-  width: 100%;
-}
-
-.c25 {
-  height: 100%;
-}
-
-.c29 {
-  margin-top: 4px;
-}
-
-.c37 {
-  overflow: hidden;
-}
-
-.c39 {
-  margin-top: 57px;
-}
-
-.c43 {
-  padding-left: 12px;
-}
-
-.c46 {
-  margin-right: 20px;
-}
-
-.c51 {
-  margin-top: 0;
+.c17 .textSpan {
+  font-size: 14px;
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  height: 100%;
+}
+
+.c7 {
+  height: 100%;
+  margin-left: 24px;
+}
+
+.c20 {
+  width: 100%;
+}
+
+.c22 {
+  overflow: hidden;
+}
+
+.c24 {
+  margin-top: 87px;
+}
+
+.c28 {
+  padding-left: 12px;
+}
+
+.c31 {
+  margin-right: 20px;
+}
+
+.c36 {
+  margin-top: 0;
 }
 
 .c4 {
@@ -245,7 +90,14 @@ exports[`renders correctly 1`] = `
   align-items: center;
 }
 
-.c24 {
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -260,7 +112,7 @@ exports[`renders correctly 1`] = `
   justify-content: space-between;
 }
 
-.c38 {
+.c23 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -271,7 +123,7 @@ exports[`renders correctly 1`] = `
   justify-content: space-around;
 }
 
-.c44 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -282,7 +134,7 @@ exports[`renders correctly 1`] = `
   justify-content: start;
 }
 
-.c50 {
+.c35 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -293,14 +145,14 @@ exports[`renders correctly 1`] = `
   justify-content: flex-end;
 }
 
-.c14 {
+.c13 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   border: 0;
   background: transparent;
-  color: var(--colors-textSubtle);
+  color: var(--colors-text);
   cursor: pointer;
   font-weight: 400;
   display: -webkit-box;
@@ -320,32 +172,28 @@ exports[`renders correctly 1`] = `
   pointer-events: inherit;
 }
 
-.c14:is(button) {
+.c13:is(button) {
   cursor: pointer;
 }
 
-.c14:hover:not(:disabled) {
-  background-color: var(--colors-tertiary);
+.c13:hover:not(:disabled) {
+  background-color: var(--colors-vertoBg1);
+  border-radius: 5px;
 }
 
-.c14:active:not(:disabled) {
+.c13:active:not(:disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
   transform: translateY(1px);
 }
 
-.c12:first-child .c13 {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+.c12 {
+  margin: 8px 12px;
+  border-radius: 5px;
 }
 
-.c12:last-child .c13 {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.c22 {
+.c19 {
   border-color: var(--colors-cardBorder);
   border-style: solid;
   border-width: 1px 0 0;
@@ -367,7 +215,7 @@ exports[`renders correctly 1`] = `
   visibility: hidden;
 }
 
-.c17 {
+.c15 {
   border-radius: var(--radii-default);
   padding: 0 8px;
   border: 2px solid;
@@ -377,7 +225,7 @@ exports[`renders correctly 1`] = `
   margin-left: 8px;
 }
 
-.c21 {
+.c18 {
   border-radius: var(--radii-default);
   padding: 0 8px;
   border: 2px solid;
@@ -387,215 +235,152 @@ exports[`renders correctly 1`] = `
   margin-left: 8px;
 }
 
-.c26 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.c9 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c26 svg {
-  -webkit-transition: -webkit-transform 0.3s;
-  -webkit-transition: transform 0.3s;
-  transition: transform 0.3s;
-}
-
-.c26:hover svg {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
-.c34 {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: absolute;
-  -webkit-transform: translate(-50%,0);
-  -ms-transform: translate(-50%,0);
-  transform: translate(-50%,0);
-  left: 50%;
-  bottom: auto;
-  background-color: var(--colors-backgroundAlt);
-  box-shadow: var(--shadows-level1);
-  padding: 16px;
-  max-height: 0px;
-  overflow: hidden;
-  z-index: 10;
-  border-radius: var(--radii-small);
-  opacity: 0;
-  -webkit-transition: max-height 0s 0.3s,opacity 0.3s ease-in-out;
-  transition: max-height 0s 0.3s,opacity 0.3s ease-in-out;
-  will-change: opacity;
-  pointer-events: none;
-}
-
-.c30 {
-  position: relative;
-}
-
-.c30:hover .c33,
-.c30:focus-within .c33 {
-  opacity: 1;
-  max-height: 400px;
-  overflow-y: auto;
-  -webkit-transition: max-height 0s 0s,opacity 0.3s ease-in-out;
-  transition: max-height 0s 0s,opacity 0.3s ease-in-out;
-  pointer-events: auto;
-}
-
-.c36 {
-  color: var(--colors-text);
-  padding: 0 8px;
-  border-radius: 8px;
-}
-
-.c9 {
+  height: 100%;
   position: relative;
 }
 
 .c10 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: var(--colors-textSubtle);
-  font-size: 16px;
-  font-weight: 400;
-  opacity: 1;
-  pointer-events: inherit;
-  padding: 0 16px;
-  height: 48px;
-}
-
-.c10:hover {
-  background: var(--colors-tertiary);
-  border-radius: 16px;
-}
-
-.c15 {
-  position: relative;
+  border-radius: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  outline: none;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: relative;
+  font-size: 1rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 500;
+  padding: 8px 12px;
+  height: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: var(--colors-textSubtle);
-  font-size: 16px;
-  font-weight: 400;
+  background: var(--colors-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   opacity: 1;
-  pointer-events: inherit;
-  padding: 0 16px;
-  height: 48px;
+  margin-bottom: -1px;
 }
 
-.c15:after {
-  content: "";
-  border-radius: 100%;
-  background: var(--colors-failure);
-  height: 8px;
-  width: 8px;
-  margin-left: 12px;
+.c10:hover,
+.c10:focus {
+  color: var(--colors-gradientGreenOrange);
+  opacity: 1;
+  background: var(--colors-gradientGreenOrange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--colors-text);
 }
 
-.c15:hover {
-  background: var(--colors-tertiary);
-  border-radius: 16px;
-}
-
-.c18 {
-  position: relative;
+.c33 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: var(--colors-textSubtle);
-  font-size: 16px;
-  font-weight: 400;
-  opacity: 1;
-  pointer-events: inherit;
-  padding: 0 16px;
-  height: 48px;
-}
-
-.c18:after {
-  content: "";
-  border-radius: 100%;
-  background: var(--colors-warning);
-  height: 8px;
-  width: 8px;
-  margin-left: 12px;
-}
-
-.c18:hover {
-  background: var(--colors-tertiary);
-  border-radius: 16px;
-}
-
-.c48 {
+  outline: none;
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  font-size: 1rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 500;
+  padding: 8px 12px;
+  height: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: var(--colors-textSubtle);
-  font-size: 16px;
-  font-weight: 400;
   opacity: 1;
-  pointer-events: inherit;
-  padding: 4px 4px 0px 4px;
-  height: 42px;
+  margin-bottom: -1px;
+  border-radius: 0px;
+  border-bottom: none;
+  border-width: 0px;
+  top: 0px;
+  opacity: 1;
+  padding: 14px 18px;
+  border-image-source: none;
+  color: var(--colors-text);
+  border-radius: 46px;
+  -webkit-transition: 0.2s background-color;
+  transition: 0.2s background-color;
 }
 
-.c48:hover {
-  background: var(--colors-tertiary);
+.c33:hover,
+.c33:focus {
+  color: var(--colors-gradientGreenOrange);
+  opacity: 1;
+  background: var(--colors-gradientGreenOrange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--colors-text);
 }
 
-.c40 {
-  width: 100%;
+.c33:hover,
+.c33:focus {
+  background: var(--colors-headerMenuHover);
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+
+.c25 {
+  width: 98%;
   overflow: hidden;
   position: relative;
+  border-radius: 50px;
 }
 
-.c49 {
-  width: 100%;
+.c34 {
+  width: 98%;
   overflow: hidden;
   position: relative;
+  border-radius: 50px;
 }
 
-.c45 {
+.c30 {
   position: relative;
   z-index: 1;
   width: 100%;
-  display: block;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   white-space: nowrap;
+  padding: 8px 0px;
   -webkit-scroll-behavior: smooth;
   -moz-scroll-behavior: smooth;
   -ms-scroll-behavior: smooth;
@@ -604,7 +389,7 @@ exports[`renders correctly 1`] = `
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  background-color: var(--colors-backgroundAlt2);
+  background-color: var(--colors-backgroundAlt);
   box-shadow: inset 0px -2px 0px -8px rgba(133,133,133,0.1);
   overflow-x: scroll;
   -webkit-scrollbar-width: none;
@@ -614,11 +399,11 @@ exports[`renders correctly 1`] = `
   -ms-overflow-style: none;
 }
 
-.c45::-webkit-scrollbar {
+.c30::-webkit-scrollbar {
   display: none;
 }
 
-.c41 {
+.c26 {
   position: absolute;
   z-index: 2;
   width: 48px;
@@ -641,14 +426,14 @@ exports[`renders correctly 1`] = `
   background: linear-gradient(90deg,#ffffff 29.76%,rgba(255,255,255,0) 100%);
 }
 
-.c41.show {
+.c26.show {
   pointer-events: auto;
   opacity: 1;
   -webkit-transition: 0.25s ease-in opacity;
   transition: 0.25s ease-in opacity;
 }
 
-.c42 {
+.c27 {
   position: absolute;
   z-index: 2;
   width: 48px;
@@ -671,14 +456,14 @@ exports[`renders correctly 1`] = `
   background: linear-gradient(270deg,#ffffff 0%,rgba(255,255,255,0) 87.5%);
 }
 
-.c42.show {
+.c27.show {
   pointer-events: auto;
   opacity: 1;
   -webkit-transition: 0.25s ease-in opacity;
   transition: 0.25s ease-in opacity;
 }
 
-.c47 {
+.c32 {
   display: inline-block;
   vertical-align: top;
   -webkit-scroll-snap-align: start;
@@ -695,12 +480,11 @@ exports[`renders correctly 1`] = `
 }
 
 .c5 .mobile-icon {
-  width: 32px;
+  width: 120px;
 }
 
 .c5 .desktop-icon {
-  width: 160px;
-  display: none;
+  width: 90px;
 }
 
 .c5 .eye {
@@ -741,9 +525,8 @@ exports[`renders correctly 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  height: 56px;
-  background-color: var(--colors-backgroundAlt);
-  border-bottom: 1px solid var(--colors-cardBorder);
+  height: 86px;
+  background-color: var(--colors-background);
   -webkit-transform: translate3d(0,0,0);
   -ms-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
@@ -757,12 +540,12 @@ exports[`renders correctly 1`] = `
   left: 0;
   -webkit-transition: top 0.2s;
   transition: top 0.2s;
-  height: 56px;
+  height: 86px;
   width: 100%;
   z-index: 20;
 }
 
-.c52 {
+.c37 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -771,7 +554,7 @@ exports[`renders correctly 1`] = `
   max-width: 100vw;
 }
 
-.c53 {
+.c38 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -792,32 +575,10 @@ exports[`renders correctly 1`] = `
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c19 {
+  .c16 {
     -webkit-filter: none !important;
     filter: none !important;
   }
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c27 {
-    -webkit-filter: none !important;
-    filter: none !important;
-  }
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c32 {
-    -webkit-filter: none !important;
-    filter: none !important;
-  }
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
@@ -837,7 +598,15 @@ exports[`renders correctly 1`] = `
 }
 
 @media screen and (min-width:576px) {
-  .c43 {
+
+}
+
+@media screen and (min-width:370px) {
+
+}
+
+@media screen and (min-width:576px) {
+  .c28 {
     padding-left: 0px;
   }
 }
@@ -879,31 +648,7 @@ exports[`renders correctly 1`] = `
 }
 
 @media screen and (min-width:576px) {
-
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-  .c44 {
+  .c29 {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -916,20 +661,12 @@ exports[`renders correctly 1`] = `
 }
 
 @media screen and (min-width:576px) {
-  .c50 {
+  .c35 {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
   }
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-
 }
 
 @media screen and (min-width:370px) {
@@ -969,13 +706,17 @@ exports[`renders correctly 1`] = `
 }
 
 @media screen and (min-width:576px) {
-  .c49 {
+
+}
+
+@media screen and (min-width:576px) {
+  .c34 {
     display: none;
   }
 }
 
 @media screen and (min-width:852px) {
-  .c45 {
+  .c30 {
     width: auto;
     display: -webkit-box;
     display: -webkit-flex;
@@ -993,21 +734,23 @@ exports[`renders correctly 1`] = `
 @media screen and (min-width:968px) {
   .c5 .desktop-icon {
     display: block;
+    width: 120px;
   }
 }
 
 <div
-    class="c0 reset__1c7dnup0 sprinkles_minHeight_auto_xs__pkzlfc1yo sprinkles_minHeight_100vh_md__pkzlfc1zq"
+    class="c0 reset__f1gqa60 sprinkles_minHeight_auto_xs__14v8jp61yo sprinkles_minHeight_100vh_md__14v8jp61zq"
   >
     <div
       class="c1"
-      height="56"
+      height="86"
     >
       <nav
         class="c2"
       >
         <div
-          class="c3"
+          class="c3 c4"
+          height="100%"
         >
           <div
             class="c4"
@@ -1018,76 +761,82 @@ exports[`renders correctly 1`] = `
               href="/"
             >
               <svg
-                class="c6 mobile-icon"
+                class="c6"
                 color="text"
-                viewBox="0 0 198 199"
-                width="20px"
+                fill="none"
+                height="24"
+                viewBox="0 0 162 24"
+                width="162"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   clip-rule="evenodd"
-                  d="M98.552 198.607c-29.49-.022-53.246-7.027-69.844-19.609C11.91 166.265 3 148.195 3 127.748c0-19.701 8.891-33.907 18.952-43.51 7.884-7.525 16.584-12.344 22.642-15.117-1.37-4.162-3.079-9.61-4.608-15.238-2.046-7.53-4.053-16.366-4.053-22.84 0-7.663 1.687-15.36 6.238-21.34C46.98 3.385 54.218 0 62.926 0c6.806 0 12.584 2.499 17.108 6.81 4.324 4.12 7.202 9.593 9.189 15.298 3.491 10.024 4.85 22.618 5.232 35.187h8.341c.382-12.569 1.741-25.163 5.233-35.187 1.987-5.705 4.865-11.177 9.189-15.298C121.741 2.5 127.519 0 134.325 0c8.708 0 15.947 3.385 20.755 9.703 4.551 5.98 6.239 13.677 6.239 21.34 0 6.474-2.007 15.31-4.054 22.84-1.529 5.628-3.238 11.076-4.608 15.238 6.058 2.773 14.759 7.592 22.643 15.118 10.06 9.602 18.952 23.808 18.952 43.509 0 20.447-8.911 38.517-25.708 51.25-16.598 12.582-40.354 19.587-69.844 19.609h-.148z"
-                  fill="#633001"
+                  d="M5.9988 0.00238564L0 6.0012L17.9988 24C21.3116 20.6872 21.3116 15.3152 17.9988 12L5.9988 0V0.00238564Z"
+                  fill="#30E8BF"
                   fill-rule="evenodd"
-                />
-                <path
-                  d="M62.926 7.288c-12.754 0-18.626 9.516-18.626 22.675 0 10.46 6.822 31.408 9.621 39.563.63 1.835-.36 3.844-2.164 4.555-10.222 4.031-40.39 18.789-40.39 52.588 0 35.603 30.658 62.448 87.191 62.49h.135c56.534-.042 87.19-26.887 87.19-62.49 0-33.799-30.167-48.557-40.389-52.588-1.804-.71-2.794-2.72-2.164-4.555 2.799-8.154 9.621-29.103 9.621-39.563 0-13.16-5.871-22.675-18.626-22.675-18.36 0-22.936 26.007-23.263 53.92-.022 1.863-1.528 3.375-3.392 3.375H89.58c-1.863 0-3.37-1.512-3.391-3.375-.326-27.913-4.903-53.92-23.263-53.92z"
-                  fill="#D1884F"
-                />
-                <path
-                  d="M98.693 177.755c-41.538 0-87.253-22.235-87.325-51.018v.134c0 35.632 30.705 62.491 87.325 62.491 56.62 0 87.325-26.859 87.325-62.491v-.134c-.072 28.783-45.787 51.018-87.325 51.018z"
-                  fill="#FEDC90"
-                />
-                <path
-                  class="eye"
-                  d="M75.614 117.896c0 9.718-4.593 14.779-10.258 14.779-5.665 0-10.258-5.061-10.258-14.779s4.593-14.779 10.258-14.779c5.665 0 10.258 5.061 10.258 14.779zM142.288 117.896c0 9.718-4.592 14.779-10.257 14.779-5.666 0-10.258-5.061-10.258-14.779s4.592-14.779 10.258-14.779c5.665 0 10.257 5.061 10.257 14.779z"
-                  fill="#633001"
-                />
-              </svg>
-              <svg
-                class="c6 desktop-icon"
-                color="text"
-                viewBox="0 0 1281 199"
-                width="20px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M247.013 153.096c-2.979 0-5.085-.617-6.318-1.849-1.13-1.233-1.695-3.185-1.695-5.856v-89.22c0-2.672.616-4.624 1.849-5.856 1.233-1.336 3.287-2.004 6.164-2.004h37.753c14.382 0 24.963 3.031 31.744 9.092 6.78 6.061 10.17 15.101 10.17 27.12 0 11.917-3.39 20.906-10.17 26.967-6.678 5.959-17.259 8.938-31.744 8.938h-14.639v24.963c0 2.671-.616 4.623-1.849 5.856-1.233 1.232-3.339 1.849-6.318 1.849h-14.947zm35.288-55.012c4.212 0 7.448-1.13 9.708-3.39 2.362-2.26 3.544-5.65 3.544-10.17 0-4.623-1.182-8.065-3.544-10.325-2.26-2.26-5.496-3.39-9.708-3.39h-12.174v27.275h12.174zM363.071 155.407c-9.656 0-17.412-3.082-23.268-9.245-5.753-6.267-8.629-15.05-8.629-26.351 0-8.629 1.952-16.18 5.855-22.652 4.007-6.472 9.606-11.454 16.797-14.947 7.294-3.595 15.666-5.393 25.117-5.393 7.808 0 14.691.873 20.649 2.62 6.061 1.643 11.608 4.057 16.642 7.242v61.638c0 1.952-.359 3.236-1.079 3.852-.719.617-2.157.925-4.314.925h-15.718c-1.13 0-2.003-.154-2.619-.463-.617-.41-1.13-1.027-1.541-1.849l-2.004-4.622c-2.979 3.184-6.574 5.496-10.786 6.934-4.109 1.541-9.143 2.311-15.102 2.311zm11.558-20.957c4.006 0 7.139-.976 9.399-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.951-.925-4.417-1.387-7.396-1.387-5.445 0-9.811 1.9-13.098 5.701-3.185 3.801-4.777 9.143-4.777 16.026 0 9.965 4.16 14.947 12.482 14.947zM437.679 153.096c-2.98 0-5.086-.617-6.318-1.849-1.233-1.233-1.849-3.185-1.849-5.856V83.907c0-1.849.308-3.082.924-3.698.719-.72 2.157-1.079 4.315-1.079h15.872c1.232 0 2.157.206 2.773.617.719.308 1.13.924 1.233 1.849l.77 4.623c2.877-2.877 6.627-5.137 11.249-6.78 4.726-1.747 9.965-2.62 15.718-2.62 8.321 0 15.05 2.363 20.186 7.088 5.137 4.623 7.705 11.506 7.705 20.649v40.835c0 2.671-.616 4.623-1.849 5.856-1.13 1.232-3.185 1.849-6.164 1.849h-14.947c-2.979 0-5.136-.617-6.472-1.849-1.233-1.233-1.849-3.185-1.849-5.856v-38.832c0-3.082-.668-5.29-2.003-6.626-1.336-1.335-3.442-2.003-6.318-2.003-3.082 0-5.548.822-7.397 2.465-1.746 1.644-2.619 3.904-2.619 6.781v38.215c0 2.671-.617 4.623-1.849 5.856-1.13 1.232-3.185 1.849-6.164 1.849h-14.947zM564.725 155.407c-14.382 0-25.477-3.339-33.285-10.016-7.807-6.677-11.711-16.385-11.711-29.124 0-7.807 1.798-14.69 5.393-20.648 3.596-5.959 8.784-10.582 15.564-13.869 6.883-3.287 14.999-4.931 24.347-4.931 7.088 0 13.047.668 17.875 2.003 4.931 1.336 9.297 3.39 13.098 6.164 1.13.72 1.695 1.644 1.695 2.774 0 .822-.411 1.9-1.233 3.236l-6.318 10.94c-.719 1.439-1.592 2.158-2.619 2.158-.617 0-1.593-.411-2.928-1.233-2.774-1.746-5.393-3.03-7.859-3.852-2.363-.822-5.342-1.233-8.937-1.233-5.137 0-9.297 1.644-12.482 4.931-3.082 3.287-4.623 7.807-4.623 13.56 0 5.856 1.592 10.376 4.777 13.56 3.185 3.082 7.551 4.623 13.098 4.623 3.287 0 6.267-.462 8.938-1.387 2.671-.924 5.393-2.208 8.167-3.852 1.438-.822 2.465-1.233 3.082-1.233.924 0 1.746.719 2.465 2.158l6.934 11.865c.514 1.027.771 1.849.771 2.465 0 .925-.617 1.798-1.849 2.62-4.315 2.774-9.041 4.828-14.177 6.164-5.034 1.438-11.095 2.157-18.183 2.157zM638.004 155.407c-9.657 0-17.413-3.082-23.268-9.245-5.753-6.267-8.63-15.05-8.63-26.351 0-8.629 1.952-16.18 5.856-22.652 4.006-6.472 9.605-11.454 16.796-14.947 7.294-3.595 15.667-5.393 25.118-5.393 7.807 0 14.69.873 20.648 2.62 6.061 1.643 11.609 4.057 16.643 7.242v61.638c0 1.952-.36 3.236-1.079 3.852-.719.617-2.157.925-4.315.925h-15.717c-1.13 0-2.004-.154-2.62-.463-.616-.41-1.13-1.027-1.541-1.849l-2.003-4.622c-2.979 3.184-6.575 5.496-10.787 6.934-4.109 1.541-9.143 2.311-15.101 2.311zm11.557-20.957c4.007 0 7.14-.976 9.4-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.952-.925-4.417-1.387-7.397-1.387-5.444 0-9.81 1.9-13.098 5.701-3.184 3.801-4.777 9.143-4.777 16.026 0 9.965 4.161 14.947 12.482 14.947zM787.963 147.24c.719.822 1.079 1.747 1.079 2.774 0 .924-.308 1.695-.925 2.311-.616.514-1.438.771-2.465.771h-23.885c-1.438 0-2.517-.103-3.236-.308-.616-.309-1.284-.874-2.003-1.695l-20.957-28.508v22.806c0 2.671-.616 4.623-1.849 5.856-1.233 1.232-3.339 1.849-6.318 1.849h-14.947c-2.979 0-5.085-.617-6.318-1.849-1.13-1.233-1.695-3.185-1.695-5.856v-89.22c0-2.672.616-4.624 1.849-5.856 1.233-1.336 3.288-2.004 6.164-2.004h14.947c2.979 0 5.085.668 6.318 2.004 1.233 1.232 1.849 3.184 1.849 5.855v51.622l20.341-26.504c.616-.822 1.284-1.387 2.003-1.695.719-.309 1.798-.463 3.236-.463h23.885c1.027 0 1.797.309 2.311.925.616.514.925 1.233.925 2.157 0 1.028-.36 1.952-1.079 2.774l-26.35 30.203 27.12 32.051zM837.998 155.407c-8.629 0-16.334-1.438-23.114-4.314-6.677-2.877-11.968-7.192-15.872-12.944-3.903-5.753-5.855-12.79-5.855-21.111 0-13.047 3.698-23.012 11.095-29.895 7.396-6.883 18.029-10.324 31.897-10.324 13.561 0 23.834 3.39 30.819 10.17 7.089 6.678 10.633 15.975 10.633 27.891 0 5.137-2.26 7.705-6.78 7.705h-48.386c0 4.417 1.643 7.808 4.931 10.17 3.39 2.363 8.475 3.544 15.255 3.544 4.212 0 7.705-.359 10.479-1.078 2.876-.822 5.753-2.003 8.629-3.544 1.233-.514 2.055-.771 2.465-.771.925 0 1.695.617 2.312 1.849l5.239 9.862c.514 1.028.771 1.798.771 2.312 0 .924-.617 1.798-1.85 2.619-4.211 2.774-8.988 4.777-14.33 6.01-5.342 1.233-11.455 1.849-18.338 1.849zm11.866-48.077c0-3.904-1.13-6.935-3.39-9.092-2.26-2.157-5.651-3.236-10.171-3.236s-7.961 1.13-10.324 3.39c-2.363 2.158-3.544 5.137-3.544 8.938h27.429zM930.417 155.407c-8.63 0-16.797-.873-24.501-2.619-7.705-1.85-13.92-4.418-18.646-7.705-1.746-1.13-2.619-2.312-2.619-3.544 0-.822.308-1.695.924-2.62l7.551-12.019c.822-1.233 1.643-1.849 2.465-1.849.514 0 1.387.359 2.62 1.078 3.801 2.158 8.115 3.904 12.944 5.239 4.828 1.336 9.605 2.004 14.331 2.004 4.828 0 8.372-.719 10.632-2.158 2.363-1.438 3.544-3.749 3.544-6.934 0-3.082-1.284-5.496-3.852-7.242-2.466-1.747-7.14-3.955-14.023-6.626-10.375-3.904-18.491-8.27-24.347-13.099-5.753-4.93-8.629-11.608-8.629-20.032 0-10.17 3.647-17.926 10.941-23.268C907.046 48.67 916.753 46 928.876 46c8.423 0 15.615.77 21.573 2.311 6.061 1.439 11.197 3.699 15.409 6.78 1.747 1.336 2.62 2.569 2.62 3.699 0 .719-.308 1.54-.925 2.465l-7.55 12.02c-.925 1.232-1.747 1.849-2.466 1.849-.513 0-1.387-.36-2.619-1.079-5.959-3.904-13.047-5.855-21.265-5.855-4.418 0-7.808.719-10.171 2.157-2.362 1.438-3.544 3.801-3.544 7.088 0 2.26.617 4.11 1.849 5.548 1.233 1.438 2.877 2.722 4.931 3.852 2.158 1.027 5.445 2.363 9.862 4.007l2.928 1.078c7.602 2.98 13.561 5.856 17.875 8.63 4.418 2.67 7.756 6.009 10.016 10.016 2.26 3.903 3.39 8.834 3.39 14.793 0 9.143-3.441 16.437-10.324 21.881-6.78 5.445-16.796 8.167-30.048 8.167zM1003.53 153.096c-1.54 0-2.72-.257-3.544-.771-.822-.513-1.439-1.541-1.85-3.082l-19.878-66.569c-.205-.616-.308-1.078-.308-1.386 0-1.438 1.027-2.158 3.082-2.158h20.338c1.34 0 2.31.257 2.93.77.62.412 1.03 1.13 1.23 2.158l8.32 34.98 10.48-28.2c.52-1.232 1.03-2.054 1.54-2.465.62-.514 1.65-.77 3.09-.77h9.7c1.44 0 2.42.256 2.93.77.62.41 1.18 1.233 1.7 2.465l10.32 28.2 8.48-34.98c.3-1.027.71-1.746 1.23-2.157.51-.514 1.44-.77 2.77-.77h20.5c2.05 0 3.08.719 3.08 2.157 0 .308-.1.77-.31 1.386l-20.03 66.569c-.41 1.541-1.03 2.569-1.85 3.082-.72.514-1.85.771-3.39.771h-15.1c-1.44 0-2.52-.257-3.24-.771-.72-.616-1.33-1.643-1.85-3.082l-10.17-27.891-10.17 27.891c-.41 1.439-1.03 2.466-1.85 3.082-.72.514-1.79.771-3.23.771h-14.95zM1128.73 155.407c-9.66 0-17.41-3.082-23.27-9.245-5.75-6.267-8.63-15.05-8.63-26.351 0-8.629 1.95-16.18 5.86-22.652 4-6.472 9.6-11.454 16.79-14.947 7.3-3.595 15.67-5.393 25.12-5.393 7.81 0 14.69.873 20.65 2.62 6.06 1.643 11.61 4.057 16.64 7.242v61.638c0 1.952-.36 3.236-1.08 3.852-.72.617-2.15.925-4.31.925h-15.72c-1.13 0-2-.154-2.62-.463-.62-.41-1.13-1.027-1.54-1.849l-2-4.622c-2.98 3.184-6.58 5.496-10.79 6.934-4.11 1.541-9.14 2.311-15.1 2.311zm11.56-20.957c4 0 7.14-.976 9.4-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.96-.925-4.42-1.387-7.4-1.387-5.45 0-9.81 1.9-13.1 5.701-3.18 3.801-4.78 9.143-4.78 16.026 0 9.965 4.17 14.947 12.49 14.947zM1203.18 184.223c-2.98 0-5.08-.616-6.32-1.849-1.13-1.233-1.69-3.185-1.69-5.856V88.222c4.62-3.287 10.43-6.01 17.41-8.167 6.99-2.157 14.28-3.236 21.88-3.236 31.03 0 46.54 13.15 46.54 39.448 0 11.917-3.29 21.419-9.86 28.508-6.58 7.088-15.87 10.632-27.89 10.632-3.39 0-6.68-.411-9.87-1.233-3.08-.821-5.65-1.951-7.7-3.39v25.734c0 2.671-.62 4.623-1.85 5.856-1.23 1.233-3.34 1.849-6.32 1.849h-14.33zm33.44-49.619c4.42 0 7.71-1.643 9.86-4.931 2.26-3.39 3.39-7.91 3.39-13.56 0-6.677-1.33-11.352-4-14.023-2.57-2.773-6.58-4.16-12.02-4.16-3.5 0-6.27.462-8.32 1.387v24.501c0 3.493.97 6.164 2.92 8.013 1.96 1.849 4.68 2.773 8.17 2.773z"
-                  fill="var(--colors-contrast)"
                 />
                 <path
                   clip-rule="evenodd"
-                  d="M97.556 198.607c-29.192-.022-52.708-7.027-69.138-19.609-16.627-12.733-25.448-30.803-25.448-51.25 0-19.701 8.801-33.907 18.76-43.51 7.805-7.525 16.417-12.344 22.414-15.117-1.356-4.162-3.048-9.61-4.562-15.238-2.025-7.53-4.012-16.366-4.012-22.84 0-7.663 1.67-15.36 6.175-21.34C46.505 3.385 53.671 0 62.291 0c6.737 0 12.457 2.499 16.934 6.81 4.28 4.12 7.13 9.593 9.097 15.298 3.456 10.024 4.802 22.618 5.179 35.187h8.257c.378-12.569 1.723-25.163 5.18-35.187 1.967-5.705 4.815-11.177 9.096-15.298C120.512 2.5 126.231 0 132.968 0c8.621 0 15.786 3.385 20.546 9.703 4.505 5.98 6.176 13.677 6.176 21.34 0 6.474-1.988 15.31-4.013 22.84-1.514 5.628-3.206 11.076-4.562 15.238 5.997 2.773 14.61 7.592 22.414 15.118 9.959 9.602 18.76 23.808 18.76 43.509 0 20.447-8.82 38.517-25.448 51.25-16.43 12.582-39.946 19.587-69.138 19.609h-.147z"
-                  fill="#633001"
+                  d="M35.9976 6.00126L29.9988 0.00244141L19.8745 10.1268C22.2769 12.5291 23.347 15.7633 23.092 18.9093L35.9976 6.00364V6.00126Z"
+                  fill="#30E8BF"
                   fill-rule="evenodd"
                 />
                 <path
-                  d="M62.29 7.288c-12.625 0-18.437 9.516-18.437 22.675 0 10.46 6.753 31.408 9.523 39.563.624 1.835-.356 3.844-2.142 4.555-10.119 4.031-39.981 18.789-39.981 52.588 0 35.603 30.347 62.448 86.31 62.491l.066-.001.067.001c55.962-.043 86.309-26.888 86.309-62.491 0-33.799-29.862-48.557-39.981-52.588-1.786-.71-2.765-2.72-2.142-4.555 2.771-8.154 9.524-29.103 9.524-39.563 0-13.16-5.812-22.675-18.438-22.675-18.174 0-22.705 26.007-23.028 53.92-.021 1.863-1.513 3.375-3.357 3.375H88.676c-1.845 0-3.336-1.512-3.358-3.375-.323-27.913-4.853-53.92-23.028-53.92z"
-                  fill="#D1884F"
+                  d="M48.2809 19.1852L42.1582 2.94531H45.0086L49.7991 16.4277L54.6349 2.94531H57.4615L51.3626 19.1852H48.2786H48.2809Z"
+                  fill="currentColor"
                 />
                 <path
-                  d="M97.696 177.755c-41.118 0-86.372-22.235-86.443-51.018v.134c0 35.632 30.395 62.491 86.443 62.491s86.443-26.859 86.443-62.491v-.134c-.071 28.783-45.325 51.018-86.443 51.018z"
-                  fill="#FEDC90"
+                  d="M63.9346 19.3951C62.0661 19.3951 60.5455 18.7873 59.3777 17.5718C58.2099 16.3564 57.626 14.7453 57.626 12.7361C57.626 10.727 58.217 9.11825 59.4015 7.91229C60.5861 6.70634 62.1161 6.10095 63.9918 6.10095C65.8675 6.10095 67.3904 6.68249 68.5606 7.84078C69.7285 9.00146 70.3124 10.5173 70.3124 12.3858C70.3124 12.8386 70.2814 13.2581 70.2194 13.6465H60.3596C60.4216 14.7214 60.7839 15.5746 61.4464 16.2062C62.109 16.8378 62.9384 17.1524 63.9346 17.1524C65.3837 17.1524 66.4037 16.5518 66.9948 15.353H69.8691C69.4806 16.5375 68.7704 17.5075 67.7432 18.263C66.7159 19.0185 65.4456 19.3951 63.9346 19.3951ZM66.4824 9.28983C65.796 8.65825 64.9642 8.34366 63.9823 8.34366C63.0004 8.34366 62.1781 8.65825 61.5179 9.28983C60.8554 9.92141 60.4788 10.7651 60.3859 11.8257H67.5358C67.5191 10.7675 67.1688 9.92141 66.4848 9.28983H66.4824Z"
+                  fill="currentColor"
                 />
                 <path
-                  class="eye"
-                  d="M74.85 117.896c0 9.718-4.546 14.779-10.154 14.779s-10.154-5.061-10.154-14.779 4.546-14.779 10.154-14.779 10.154 5.061 10.154 14.779zM140.851 117.896c0 9.718-4.546 14.779-10.154 14.779s-10.154-5.061-10.154-14.779 4.546-14.779 10.154-14.779 10.154 5.061 10.154 14.779z"
-                  fill="#633001"
+                  d="M74.4263 6.31069V8.55339C75.2509 6.91844 76.5379 6.10095 78.2825 6.10095V8.85846H77.6057C76.5618 8.85846 75.7705 9.123 75.2343 9.6521C74.698 10.1812 74.4287 11.1012 74.4287 12.4096V19.1854H71.7642V6.31069H74.4287H74.4263Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M85.8064 8.48188H82.6747V15.608C82.6747 16.0918 82.7867 16.4374 83.0131 16.6471C83.2395 16.8568 83.6233 16.9617 84.169 16.9617H85.804V19.1806H83.7019C81.2256 19.1806 79.9863 17.9889 79.9863 15.6056V3.1051H82.6723V6.30591H85.804V8.47949L85.8064 8.48188Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M92.6872 19.3951C90.8092 19.3951 89.2648 18.785 88.0493 17.5599C86.8338 16.3373 86.2261 14.7333 86.2261 12.7456C86.2261 10.7579 86.8529 9.15636 88.1065 7.93133C89.3601 6.70869 90.9212 6.09619 92.7921 6.09619C94.663 6.09619 96.2217 6.70869 97.4777 7.93133C98.7313 9.15397 99.3581 10.7556 99.3581 12.7337C99.3581 14.7119 98.7146 16.3158 97.43 17.548C96.1454 18.7778 94.5629 19.3951 92.6872 19.3951ZM95.4566 15.9846C96.236 15.2052 96.6245 14.1232 96.6245 12.7361C96.6245 11.349 96.2455 10.2717 95.4924 9.49954C94.7369 8.72735 93.8217 8.34364 92.7468 8.34364C91.6719 8.34364 90.7687 8.72973 90.037 9.49954C89.3053 10.2717 88.9383 11.3538 88.9383 12.748C88.9383 14.1422 89.2958 15.2243 90.0132 15.9965C90.7305 16.7687 91.6219 17.1524 92.6896 17.1524C93.7573 17.1524 94.6797 16.7639 95.459 15.9846H95.4566Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M99.9873 5.02365V2.94299H111.32V5.02365H106.997V19.1829H104.332V5.02365H99.9873Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M115.502 6.31069V8.55339C116.327 6.91844 117.614 6.10095 119.359 6.10095V8.85846H118.682C117.638 8.85846 116.847 9.123 116.31 9.6521C115.774 10.1812 115.505 11.1012 115.505 12.4096V19.1854H112.84V6.31069H115.505H115.502Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M121.506 17.5146C120.338 16.2609 119.754 14.657 119.754 12.7003C119.754 10.7436 120.334 9.15629 121.494 7.93365C122.655 6.71101 124.099 6.09851 125.829 6.09851C126.842 6.09851 127.734 6.32967 128.506 6.78726C129.278 7.24724 129.874 7.85024 130.293 8.59861V6.30824H132.979V19.1829H130.293V16.7757C129.857 17.5694 129.257 18.2057 128.494 18.68C127.731 19.1543 126.842 19.3926 125.829 19.3926C124.116 19.3926 122.676 18.7658 121.506 17.5122V17.5146ZM129.135 15.9034C129.907 15.1169 130.291 14.0612 130.291 12.7384C130.291 11.4157 129.905 10.3623 129.135 9.5853C128.363 8.80596 127.448 8.41747 126.39 8.41747C125.331 8.41747 124.416 8.79878 123.644 9.56145C122.872 10.3241 122.488 11.368 122.488 12.6931C122.488 14.0182 122.874 15.0812 123.644 15.882C124.416 16.6852 125.329 17.0856 126.39 17.0856C127.45 17.0856 128.363 16.6923 129.135 15.9058V15.9034Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M136.18 17.5146C135.013 16.261 134.429 14.657 134.429 12.7003C134.429 10.7436 135.008 9.15631 136.169 7.93367C137.329 6.71102 138.773 6.09852 140.504 6.09852C141.517 6.09852 142.408 6.32968 143.18 6.78728C143.952 7.24726 144.548 7.85026 144.968 8.59862V1.89197H147.654V19.1829H144.968V16.7758C144.532 17.5694 143.931 18.2057 143.168 18.68C142.406 19.1543 141.517 19.3926 140.504 19.3926C138.79 19.3926 137.351 18.7658 136.18 17.5122V17.5146ZM143.809 15.9035C144.582 15.117 144.965 14.0612 144.965 12.7384C144.965 11.4157 144.579 10.3623 143.809 9.58532C143.037 8.80597 142.122 8.41749 141.064 8.41749C140.006 8.41749 139.09 8.7988 138.318 9.56146C137.546 10.3241 137.162 11.368 137.162 12.6931C137.162 14.0183 137.548 15.0812 138.318 15.882C139.09 16.6852 140.003 17.0856 141.064 17.0856C142.124 17.0856 143.037 16.6923 143.809 15.9058V15.9035Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M155.411 19.3951C153.543 19.3951 152.022 18.7873 150.854 17.5718C149.686 16.3564 149.103 14.7453 149.103 12.7361C149.103 10.727 149.694 9.11825 150.878 7.91229C152.063 6.70634 153.593 6.10095 155.468 6.10095C157.344 6.10095 158.867 6.68249 160.037 7.84078C161.205 9.00146 161.789 10.5173 161.789 12.3858C161.789 12.8386 161.758 13.2581 161.696 13.6465H151.836C151.898 14.7214 152.26 15.5746 152.923 16.2062C153.586 16.8378 154.415 17.1524 155.411 17.1524C156.86 17.1524 157.88 16.5518 158.471 15.353H161.346C160.957 16.5375 160.247 17.5075 159.22 18.263C158.192 19.0185 156.922 19.3951 155.411 19.3951ZM157.959 9.28983C157.273 8.65825 156.441 8.34366 155.459 8.34366C154.477 8.34366 153.655 8.65825 152.994 9.28983C152.332 9.92141 151.955 10.7651 151.86 11.8257H159.01C158.993 10.7675 158.643 9.92141 157.959 9.28983Z"
+                  fill="currentColor"
                 />
               </svg>
             </a>
           </div>
           <div
-            class="reset__1c7dnup0 sprinkles_display_none_xs__pkzlfc10 sprinkles_display_block_md__pkzlfc2"
+            class="reset__f1gqa60 sprinkles_display_none_xs__14v8jp610 sprinkles_display_block_md__14v8jp62 sprinkles_height_100%_xs__14v8jp6iu"
           >
             <div
-              class="c7 c3"
+              class="c7 c8"
+              height="100%"
             >
               <div
-                class="c8"
+                class=""
               >
                 <div
-                  class=""
+                  class="c3"
+                  height="100%"
                 >
                   <div
                     class="c9"
@@ -1095,6 +844,7 @@ exports[`renders correctly 1`] = `
                     <a
                       class="c10"
                       href="/swap"
+                      target="_self"
                     >
                       Trade
                     </a>
@@ -1108,7 +858,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/swap"
                     >
                       Exchange
@@ -1118,7 +868,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/liquidity"
                     >
                       Liquidity
@@ -1127,10 +877,11 @@ exports[`renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="c8"
+                class=""
               >
                 <div
-                  class=""
+                  class="c3"
+                  height="100%"
                 >
                   <div
                     class="c9"
@@ -1138,6 +889,7 @@ exports[`renders correctly 1`] = `
                     <a
                       class="c10"
                       href="/earn"
+                      target="_self"
                     >
                       Earn
                     </a>
@@ -1151,7 +903,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/earn"
                     >
                       Earn
@@ -1161,7 +913,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/farms"
                     >
                       Yield Farms
@@ -1171,7 +923,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/pools"
                     >
                       Minting Pools
@@ -1180,17 +932,19 @@ exports[`renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="c8"
+                class=""
               >
                 <div
-                  class=""
+                  class="c3"
+                  height="100%"
                 >
                   <div
                     class="c9"
                   >
                     <a
-                      class="c15"
+                      class="c10"
                       href="/"
+                      target="_self"
                     >
                       Win
                     </a>
@@ -1204,7 +958,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       Win
@@ -1214,12 +968,12 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       Predictions
                       <div
-                        class="c16 c17"
+                        class="c14 c15"
                         color="failure"
                         font-size="14px"
                       >
@@ -1231,7 +985,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       Lottery
@@ -1240,27 +994,45 @@ exports[`renders correctly 1`] = `
                 </div>
               </div>
               <div
-                class="c8"
+                class=""
               >
                 <div
-                  class=""
+                  class="c3"
+                  height="100%"
                 >
                   <div
                     class="c9"
                   >
                     <a
-                      class="c18"
+                      class="c10"
                       href="/"
+                      target="_self"
                     >
                       <svg
-                        class="c19"
+                        class="c16"
                         color="textSubtle"
                         viewBox="0 0 24 24"
                         width="20px"
                         xmlns="http://www.w3.org/2000/svg"
                       >
+                        <defs>
+                          <lineargradient
+                            gradientTransform="rotate(0)"
+                            id="gradient"
+                          >
+                            <stop
+                              offset="0%"
+                              stop-color="#30e8bf"
+                            />
+                            <stop
+                              offset="100%"
+                              stop-color="#ff8235"
+                            />
+                          </lineargradient>
+                        </defs>
                         <path
                           d="M6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM18 10C16.9 10 16 10.9 16 12C16 13.1 16.9 14 18 14C19.1 14 20 13.1 20 12C20 10.9 19.1 10 18 10ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z"
+                          fill="url('#gradient')"
                         />
                       </svg>
                     </a>
@@ -1274,7 +1046,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       Info & Analytics
@@ -1284,12 +1056,12 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       IFO Token Sales
                       <div
-                        class="c20 c21"
+                        class="c17 c18"
                         color="warning"
                         font-size="14px"
                       >
@@ -1301,14 +1073,14 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <hr
-                      class="c22"
+                      class="c19"
                     />
                   </div>
                   <div
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       NFT Collectibles
@@ -1318,7 +1090,7 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       Team Leaderboard
@@ -1328,14 +1100,14 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <hr
-                      class="c22"
+                      class="c19"
                     />
                   </div>
                   <div
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                     >
                       Blog
@@ -1345,17 +1117,17 @@ exports[`renders correctly 1`] = `
                     class="c12"
                   >
                     <a
-                      class="c13 c14"
+                      class="c13"
                       href="/"
                       target="_blank"
                     >
                       <div
-                        class="c23 c24"
+                        class="c20 c21"
                         width="100%"
                       >
                         Docs & Guides
                         <svg
-                          class="c19"
+                          class="c16"
                           color="textSubtle"
                           viewBox="0 0 24 24"
                           width="20px"
@@ -1374,256 +1146,20 @@ exports[`renders correctly 1`] = `
           </div>
         </div>
         <div
-          class="c25 c4"
+          class="c3 c4"
           height="100%"
-        >
-          <div
-            class="reset__1c7dnup0 sprinkles_marginRight_12px_xs__pkzlfc12i sprinkles_display_none_xs__pkzlfc10 sprinkles_display_block_lg__pkzlfc3"
-          >
-            <a
-              class="c26"
-              href="https://dev.vertotrade.com/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
-              target="_blank"
-            >
-              <svg
-                class="c27"
-                color="text"
-                viewBox="0 0 96 96"
-                width="24px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="48"
-                  cy="48"
-                  fill="url(#paint0_linear_10493)"
-                  r="48"
-                />
-                <path
-                  clip-rule="evenodd"
-                  d="M47.858 79.875c-9.342-.007-16.866-2.249-22.124-6.275-5.321-4.075-8.144-9.857-8.144-16.4 0-6.304 2.817-10.85 6.004-13.923 2.497-2.408 5.253-3.95 7.172-4.838a99.818 99.818 0 01-1.46-4.876c-.648-2.41-1.284-5.237-1.284-7.309 0-2.452.535-4.915 1.977-6.829 1.523-2.021 3.816-3.104 6.574-3.104 2.156 0 3.986.8 5.42 2.179 1.369 1.318 2.28 3.07 2.91 4.895 1.106 3.208 1.537 7.238 1.657 11.26h2.643c.12-4.022.551-8.052 1.657-11.26.63-1.825 1.541-3.577 2.91-4.895 1.434-1.38 3.264-2.18 5.42-2.18 2.758 0 5.051 1.084 6.574 3.105 1.442 1.914 1.977 4.377 1.977 6.83 0 2.071-.636 4.898-1.284 7.308a99.707 99.707 0 01-1.46 4.876c1.919.888 4.675 2.43 7.172 4.838 3.187 3.073 6.004 7.619 6.004 13.923 0 6.543-2.823 12.325-8.144 16.4-5.257 4.026-12.782 6.268-22.124 6.275h-.047z"
-                  fill="#633001"
-                  fill-rule="evenodd"
-                />
-                <path
-                  d="M36.573 18.653c-4.04 0-5.9 3.045-5.9 7.256 0 3.347 2.16 10.05 3.048 12.66.199.587-.114 1.23-.686 1.458-3.238 1.29-12.794 6.012-12.794 16.828 0 11.393 9.711 19.983 27.619 19.997h.043c17.908-.014 27.619-8.604 27.619-19.997 0-10.816-9.556-15.539-12.794-16.828a1.176 1.176 0 01-.686-1.458c.887-2.61 3.048-9.313 3.048-12.66 0-4.211-1.86-7.256-5.9-7.256-5.816 0-7.266 8.322-7.37 17.254a1.084 1.084 0 01-1.074 1.08h-5.73c-.59 0-1.067-.484-1.074-1.08-.103-8.932-1.553-17.254-7.369-17.254z"
-                  fill="#D1884F"
-                />
-                <path
-                  d="M47.903 73.202c-13.158 0-27.64-7.115-27.662-16.326v.043c0 11.403 9.727 19.997 27.662 19.997s27.661-8.594 27.661-19.997v-.043c-.022 9.21-14.503 16.326-27.661 16.326z"
-                  fill="#FEDC90"
-                />
-                <path
-                  d="M40.592 54.047c0 3.11-1.455 4.73-3.25 4.73-1.794 0-3.249-1.62-3.249-4.73 0-3.11 1.455-4.73 3.25-4.73 1.794 0 3.249 1.62 3.249 4.73zM61.712 54.047c0 3.11-1.455 4.73-3.25 4.73-1.794 0-3.248-1.62-3.248-4.73 0-3.11 1.454-4.73 3.249-4.73 1.794 0 3.25 1.62 3.25 4.73z"
-                  fill="#633001"
-                />
-                <defs>
-                  <lineargradient
-                    gradientUnits="userSpaceOnUse"
-                    id="paint0_linear_10493"
-                    x1="48"
-                    x2="48"
-                    y1="0"
-                    y2="96"
-                  >
-                    <stop
-                      stop-color="#53DEE9"
-                    />
-                    <stop
-                      offset="1"
-                      stop-color="#1FC7D4"
-                    />
-                  </lineargradient>
-                </defs>
-              </svg>
-              <div
-                class="c28"
-                color="textSubtle"
-                font-size="16px"
-              >
-                $0.232
-              </div>
-            </a>
-          </div>
-          <div
-            class="c29"
-          >
-            <div
-              class="c30"
-            >
-              <button
-                class="c31"
-                scale="xs"
-              >
-                <svg
-                  class="c32"
-                  color="textSubtle"
-                  viewBox="0 0 24 24"
-                  width="24px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM18.92 8H15.97C15.65 6.75 15.19 5.55 14.59 4.44C16.43 5.07 17.96 6.35 18.92 8ZM12 4.04C12.83 5.24 13.48 6.57 13.91 8H10.09C10.52 6.57 11.17 5.24 12 4.04ZM4.26 14C4.1 13.36 4 12.69 4 12C4 11.31 4.1 10.64 4.26 10H7.64C7.56 10.66 7.5 11.32 7.5 12C7.5 12.68 7.56 13.34 7.64 14H4.26ZM5.08 16H8.03C8.35 17.25 8.81 18.45 9.41 19.56C7.57 18.93 6.04 17.66 5.08 16ZM8.03 8H5.08C6.04 6.34 7.57 5.07 9.41 4.44C8.81 5.55 8.35 6.75 8.03 8ZM12 19.96C11.17 18.76 10.52 17.43 10.09 16H13.91C13.48 17.43 12.83 18.76 12 19.96ZM14.34 14H9.66C9.57 13.34 9.5 12.68 9.5 12C9.5 11.32 9.57 10.65 9.66 10H14.34C14.43 10.65 14.5 11.32 14.5 12C14.5 12.68 14.43 13.34 14.34 14ZM14.59 19.56C15.19 18.45 15.65 17.25 15.97 16H18.92C17.96 17.65 16.43 18.93 14.59 19.56ZM16.36 14C16.44 13.34 16.5 12.68 16.5 12C16.5 11.32 16.44 10.66 16.36 10H19.74C19.9 10.64 20 11.31 20 12C20 12.69 19.9 13.36 19.74 14H16.36Z"
-                  />
-                </svg>
-              </button>
-              <div
-                class="c33 c34"
-              >
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English0
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English1
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English2
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English3
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English4
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English5
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English6
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English7
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English8
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English9
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English10
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English11
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English12
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English13
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English14
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English15
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English16
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English17
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English18
-                </button>
-                <button
-                  class="c35 c36"
-                  scale="md"
-                  style="min-height: 32px; height: auto;"
-                >
-                  English19
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        />
       </nav>
     </div>
     <div
-      class="c37 c38"
+      class="c22 c23"
       overflow="hidden"
     >
       <div
-        class="c39 c3 c40 reset__1c7dnup0 sprinkles_display_none_xs__pkzlfc10 sprinkles_display_block_sm__pkzlfc1"
+        class="c24 c8 c25 reset__f1gqa60 sprinkles_display_none_xs__14v8jp610 sprinkles_display_block_sm__14v8jp61"
       >
         <div
-          class="c41 reset__1c7dnup0 sprinkles_display_block_xs__pkzlfc0 sprinkles_display_none_md__pkzlfc12"
+          class="c26 reset__f1gqa60 sprinkles_display_block_xs__14v8jp60 sprinkles_display_none_md__14v8jp612"
         >
           <svg
             class="c6"
@@ -1638,7 +1174,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <div
-          class="c42 reset__1c7dnup0 sprinkles_display_block_xs__pkzlfc0 sprinkles_display_none_md__pkzlfc12"
+          class="c27 reset__f1gqa60 sprinkles_display_block_xs__14v8jp60 sprinkles_display_none_md__14v8jp612"
         >
           <svg
             class="c6"
@@ -1653,31 +1189,33 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <div
-          class="c43 c44 c45"
+          class="c28 c29 c30"
         >
           <div
-            class="c46 c47"
+            class="c31 c32"
           >
             <div
               class="c9"
             >
               <a
-                class="c48"
+                class="c33"
                 href="/swap"
+                target="_self"
               >
                 Exchange
               </a>
             </div>
           </div>
           <div
-            class="c46 c47"
+            class="c31 c32"
           >
             <div
               class="c9"
             >
               <a
-                class="c48"
+                class="c33"
                 href="/liquidity"
+                target="_self"
               >
                 Liquidity
               </a>
@@ -1686,10 +1224,10 @@ exports[`renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="c39 c3 c49 reset__1c7dnup0 sprinkles_display_none_xs__pkzlfc10 sprinkles_display_block_sm__pkzlfc1"
+        class="c24 c8 c34 reset__f1gqa60 sprinkles_display_none_xs__14v8jp610 sprinkles_display_block_sm__14v8jp61"
       >
         <div
-          class="c41 reset__1c7dnup0 sprinkles_display_block_xs__pkzlfc0 sprinkles_display_none_md__pkzlfc12"
+          class="c26 reset__f1gqa60 sprinkles_display_block_xs__14v8jp60 sprinkles_display_none_md__14v8jp612"
         >
           <svg
             class="c6"
@@ -1704,7 +1242,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <div
-          class="c42 reset__1c7dnup0 sprinkles_display_block_xs__pkzlfc0 sprinkles_display_none_md__pkzlfc12"
+          class="c27 reset__f1gqa60 sprinkles_display_block_xs__14v8jp60 sprinkles_display_none_md__14v8jp612"
         >
           <svg
             class="c6"
@@ -1719,17 +1257,18 @@ exports[`renders correctly 1`] = `
           </svg>
         </div>
         <div
-          class="c43 c50 c45"
+          class="c28 c35 c30"
         >
           <div
-            class="c46 c47"
+            class="c31 c32"
           >
             <div
               class="c9"
             >
               <a
-                class="c48"
+                class="c33"
                 href="/charts"
+                target="_self"
               >
                 Charts
               </a>
@@ -1739,10 +1278,10 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="c51 c52"
+      class="c36 c37"
     >
       <div
-        class="c53"
+        class="c38"
       >
         body
       </div>
@@ -1758,7 +1297,7 @@ exports[`renders correctly 1`] = `
   flex-shrink: 0;
 }
 
-.c21 {
+.c20 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -1768,7 +1307,7 @@ exports[`renders correctly 1`] = `
   flex-shrink: 0;
 }
 
-.c55 {
+.c34 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -1776,131 +1315,143 @@ exports[`renders correctly 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-right: 8px;
-}
-
-.c46 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  fill: var(--colors-textSubtle);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
   margin-right: 0.5rem;
 }
 
-.c23 {
+.c34:hover path,
+.c34:active path {
+  fill: url(#gradient);
+}
+
+.c30 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  fill: var(--colors-textSubtle);
+  fill: var(--colors-text);
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-right: 24px;
+  margin-top: 2px;
 }
 
-.c57 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  fill: var(--colors-backgroundAlt);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin-left: 0.5rem;
-}
-
-.c41 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  fill: var(--colors-warning);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c44 {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  fill: var(--colors-backgroundAlt);
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c26 {
-  color: var(--colors-textSubtle);
-  font-weight: 600;
-  line-height: 1.5;
-  font-size: 16px;
-}
-
-.c12 {
+.c13 {
   color: var(--colors-text);
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
 }
 
-.c15 {
-  color: var(--colors-warning);
-  font-weight: 400;
-  line-height: 1.5;
+.c13 .textSpan {
   font-size: 16px;
 }
 
-.c20 {
+.c18 {
   color: var(--colors-primary);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   margin-right: 24px;
   font-size: 16px;
 }
 
-.c27 {
+.c18 .textSpan {
+  font-size: 16px;
+}
+
+.c21 {
   color: var(--colors-primary);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   margin-right: 0;
   font-size: 16px;
 }
 
-.c47 {
-  color: var(--colors-textSubtle);
-  font-weight: 400;
-  line-height: 1.5;
+.c21 .textSpan {
   font-size: 16px;
 }
 
-.c49 {
+.c31 {
+  color: var(--colors-text);
+  font-weight: 400;
+  line-height: 1.5;
+  margin-left: 4px;
+  margin-right: 4px;
+  font-size: 16px;
+}
+
+.c31 .textSpan {
+  font-size: 16px;
+}
+
+.c33 {
   position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   border: 0;
-  border-radius: 16px;
-  box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
+  border-radius: 1000px;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-letter-spacing: 0.03em;
-  -moz-letter-spacing: 0.03em;
-  -ms-letter-spacing: 0.03em;
-  letter-spacing: 0.03em;
+  line-height: 1;
+  opacity: 1;
+  outline: 0;
+  -webkit-transition: background-color 0.2s,opacity 0.2s;
+  transition: background-color 0.2s,opacity 0.2s;
+  height: 48px;
+  padding: 0 24px;
+  background-color: transparent;
+  color: var(--colors-primary);
+  box-shadow: none;
+  padding-left: 0;
+}
+
+.c33:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+  opacity: 0.65;
+}
+
+.c33:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+  opacity: 0.85;
+  -webkit-transform: translateY(1px);
+  -ms-transform: translateY(1px);
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.c33:disabled,
+.c33.pancake-button--disabled {
+  background-color: var(--colors-backgroundDisabled);
+  border-color: var(--colors-backgroundDisabled);
+  box-shadow: none;
+  color: var(--colors-textDisabled);
+  cursor: not-allowed;
+}
+
+.c37 {
+  position: relative;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  border-radius: 1000px;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: inherit;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   line-height: 1;
   opacity: 1;
   outline: 0;
@@ -1915,11 +1466,11 @@ exports[`renders correctly 1`] = `
   height: sm;
 }
 
-.c49:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+.c37:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
   opacity: 0.65;
 }
 
-.c49:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+.c37:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
@@ -1927,136 +1478,13 @@ exports[`renders correctly 1`] = `
   box-shadow: none;
 }
 
-.c49:disabled,
-.c49.pancake-button--disabled {
+.c37:disabled,
+.c37.pancake-button--disabled {
   background-color: var(--colors-backgroundDisabled);
   border-color: var(--colors-backgroundDisabled);
   box-shadow: none;
   color: var(--colors-textDisabled);
   cursor: not-allowed;
-}
-
-.c45 {
-  position: relative;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 0;
-  border-radius: 16px;
-  box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-letter-spacing: 0.03em;
-  -moz-letter-spacing: 0.03em;
-  -ms-letter-spacing: 0.03em;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  opacity: 1;
-  outline: 0;
-  -webkit-transition: background-color 0.2s,opacity 0.2s;
-  transition: background-color 0.2s,opacity 0.2s;
-  height: 48px;
-  padding: 0 24px;
-  background-color: transparent;
-  color: var(--colors-primary);
-  box-shadow: none;
-}
-
-.c45:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
-  opacity: 0.65;
-}
-
-.c45:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
-  opacity: 0.85;
-  -webkit-transform: translateY(1px);
-  -ms-transform: translateY(1px);
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-.c45:disabled,
-.c45.pancake-button--disabled {
-  background-color: var(--colors-backgroundDisabled);
-  border-color: var(--colors-backgroundDisabled);
-  box-shadow: none;
-  color: var(--colors-textDisabled);
-  cursor: not-allowed;
-}
-
-.c56 {
-  position: relative;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: 0;
-  border-radius: 16px;
-  box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-letter-spacing: 0.03em;
-  -moz-letter-spacing: 0.03em;
-  -ms-letter-spacing: 0.03em;
-  letter-spacing: 0.03em;
-  line-height: 1;
-  opacity: 1;
-  outline: 0;
-  -webkit-transition: background-color 0.2s,opacity 0.2s;
-  transition: background-color 0.2s,opacity 0.2s;
-  height: 32px;
-  padding: 0 16px;
-  background-color: var(--colors-primary);
-  color: var(--colors-invertedContrast);
-}
-
-.c56:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
-  opacity: 0.65;
-}
-
-.c56:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
-  opacity: 0.85;
-  -webkit-transform: translateY(1px);
-  -ms-transform: translateY(1px);
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-.c56:disabled,
-.c56.pancake-button--disabled {
-  background-color: var(--colors-backgroundDisabled);
-  border-color: var(--colors-backgroundDisabled);
-  box-shadow: none;
-  color: var(--colors-textDisabled);
-  cursor: not-allowed;
-}
-
-.c39 {
-  height: 100%;
-}
-
-.c53 {
-  margin-right: 20px;
 }
 
 .c0 {
@@ -2074,25 +1502,26 @@ exports[`renders correctly 1`] = `
 }
 
 .c8 {
+  width: 100%;
   margin-bottom: 42px;
 }
 
-.c16 {
+.c10 {
   display: none;
 }
 
-.c17 {
-  padding-bottom: 42px;
-  margin-bottom: 0;
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.c51 {
-  margin-bottom: 24px;
-}
-
-.c42 {
-  width: 100%;
-  height: 100%;
+.c29 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 {
@@ -2111,9 +1540,16 @@ exports[`renders correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .c9 {
@@ -2121,9 +1557,9 @@ exports[`renders correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -2131,165 +1567,65 @@ exports[`renders correctly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-align-items: flex-center;
+  -webkit-box-align: flex-center;
+  -ms-flex-align: flex-center;
+  align-items: flex-center;
+}
+
+.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
-}
-
-.c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-}
-
-.c28 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-order: 1;
-  -ms-flex-order: 1;
-  order: 1;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.c30 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c52 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-order: 1;
-  -ms-flex-order: 1;
-  order: 1;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c43 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
-  justify-content: space-around;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c32 {
-  position: relative;
-  will-change: opacity;
-  opacity: 0;
-}
-
-.c32.appear {
-  -webkit-animation: fGxCd 0.3s ease-in-out forwards;
-  animation: fGxCd 0.3s ease-in-out forwards;
-}
-
-.c32.disappear {
-  -webkit-animation: jmLHfV 0.3s ease-in-out forwards;
-  animation: jmLHfV 0.3s ease-in-out forwards;
-}
-
-.c31 {
-  position: relative;
-  width: 56px;
-  height: 32px;
-  overflow: hidden;
-}
-
-.c33 {
-  min-height: 20px;
-  display: block;
-  background-color: var(--colors-backgroundDisabled);
-  border-radius: var(--radii-default);
-  width: 56px;
-  height: 32px;
-}
-
-.c34 {
-  -webkit-animation: wAFEO 2s infinite ease-out;
-  animation: wAFEO 2s infinite ease-out;
-  -webkit-transform: translate3d(0,0,0);
-  -ms-transform: translate3d(0,0,0);
-  transform: translate3d(0,0,0);
-}
-
-.c54 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c54 svg {
-  -webkit-transition: -webkit-transform 0.3s;
-  -webkit-transition: transform 0.3s;
-  transition: transform 0.3s;
-}
-
-.c54:hover svg {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2301,14 +1637,38 @@ exports[`renders correctly 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  padding: 0;
+  border-radius: 25px;
+  -webkit-transition: background-color 0.2s,opacity 0.2s;
+  -webkit-transition: background-color 0.2s,opacity 0.2s;
+  transition: background-color 0.2s,opacity 0.2s;
 }
 
-.c13:hover {
+.c14:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
+  background-color: inherit;
 }
 
-.c25 {
+.c14:active {
+  -webkit-transform: translateY(1px);
+  -ms-transform: translateY(1px);
+  transform: translateY(1px);
+}
+
+.c19:hover > *:first-child path {
+  fill: url(#gradient);
+}
+
+.c19:hover .hover-gradient {
+  background: var(--colors-gradientGreenOrange);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.75;
+}
+
+.c36 {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -2323,9 +1683,9 @@ exports[`renders correctly 1`] = `
   -webkit-transform: translate(-50%,0);
   -ms-transform: translate(-50%,0);
   transform: translate(-50%,0);
-  left: 50%;
+  left: unset;
   bottom: 100%;
-  background-color: var(--colors-backgroundAlt);
+  background-color: var(--colors-background);
   box-shadow: var(--shadows-level1);
   padding: 16px;
   max-height: 0px;
@@ -2339,43 +1699,24 @@ exports[`renders correctly 1`] = `
   pointer-events: none;
 }
 
-.c48 {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  position: absolute;
-  -webkit-transform: translate(-50%,0);
-  -ms-transform: translate(-50%,0);
-  transform: translate(-50%,0);
-  left: 100%;
-  bottom: 100%;
-  background-color: var(--colors-backgroundAlt);
-  box-shadow: var(--shadows-level1);
-  padding: 16px;
-  max-height: 0px;
-  overflow: hidden;
-  z-index: 10;
-  border-radius: var(--radii-small);
-  opacity: 0;
-  -webkit-transition: max-height 0s 0.3s,opacity 0.3s ease-in-out;
-  transition: max-height 0s 0.3s,opacity 0.3s ease-in-out;
-  will-change: opacity;
-  pointer-events: none;
-}
-
-.c22 {
+.c32 {
   position: relative;
 }
 
-.c22:hover .c24,
-.c22:focus-within .c24 {
+.c32:hover > *:first-child path {
+  fill: url(#gradient);
+}
+
+.c32:hover .hover-gradient {
+  background: var(--colors-gradientGreenOrange);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.75;
+}
+
+.c32:hover .c35,
+.c32:focus-within .c35 {
   opacity: 1;
   max-height: 400px;
   overflow-y: auto;
@@ -2384,107 +1725,84 @@ exports[`renders correctly 1`] = `
   pointer-events: auto;
 }
 
-.c2 {
-  background: var(--colors-backgroundAlt);
+.c38 {
+  color: var(--colors-textSubtle);
+  padding: 0 8px;
+  border-radius: 8px;
 }
 
-.c10 {
+.c2 {
+  background: var(--colors-footerBg);
+}
+
+.c11 {
   list-style: none;
   margin-bottom: 40px;
 }
 
-.c11 {
+.c12 {
   font-size: 16px;
   margin-bottom: 8px;
   text-transform: capitalize;
+  color: var(--colors-text);
 }
 
-.c11:first-child {
-  color: var(--colors-secondary);
+.c12:first-child {
+  color: var(--colors-naturalGray);
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .c6 {
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 
-.c29 {
-  border-color: var(--colors-cardBorder);
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-style: solid;
-  padding: 24px 0;
-  margin-bottom: 24px;
+.c23 {
+  padding-top: 24px;
 }
 
-.c19 {
-  border-bottom: 1px solid var(--colors-cardBorder);
-}
-
-.c14 {
+.c15 {
   color: var(--colors-text);
 }
 
-.c50 {
-  color: var(--colors-text);
-  padding: 0 8px;
-  border-radius: 8px;
-}
-
-.c38 {
-  background-color: var(--colors-backgroundAlt);
-  border-radius: 50%;
-  cursor: pointer;
-  height: 26px;
-  left: 3px;
-  position: absolute;
-  top: 3px;
-  -webkit-transition: left 200ms ease-in;
-  transition: left 200ms ease-in;
-  width: 26px;
-  z-index: 1;
-}
-
-.c36 {
-  cursor: pointer;
-  opacity: 0;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  z-index: 3;
-}
-
-.c36:checked + .c37 {
-  left: calc(100% - 30px);
-}
-
-.c36:focus + .c37 {
-  box-shadow: var(--shadows-focus);
-}
-
-.c36:hover + .c37:not(:disabled):not(:checked) {
-  box-shadow: var(--shadows-focus);
-}
-
-.c35 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: var(--colors-textDisabled);
-  border-radius: 24px;
-  box-shadow: var(--shadows-inset);
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 32px;
+.c26 {
   position: relative;
-  -webkit-transition: background-color 200ms;
-  transition: background-color 200ms;
-  width: 56px;
+  will-change: opacity;
+  opacity: 0;
+}
+
+.c26.appear {
+  -webkit-animation: fGxCd 0.3s ease-in-out forwards;
+  animation: fGxCd 0.3s ease-in-out forwards;
+}
+
+.c26.disappear {
+  -webkit-animation: jmLHfV 0.3s ease-in-out forwards;
+  animation: jmLHfV 0.3s ease-in-out forwards;
+}
+
+.c25 {
+  position: relative;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.c27 {
+  min-height: 20px;
+  display: block;
+  background-color: var(--colors-backgroundDisabled);
+  border-radius: var(--radii-default);
+  width: auto;
+  height: auto;
+}
+
+.c28 {
+  -webkit-animation: wAFEO 2s infinite ease-out;
+  animation: wAFEO 2s infinite ease-out;
+  -webkit-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
@@ -2495,35 +1813,14 @@ exports[`renders correctly 1`] = `
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c21 {
+  .c20 {
     -webkit-filter: none !important;
     filter: none !important;
   }
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c55 {
-    -webkit-filter: none !important;
-    filter: none !important;
-  }
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c46 {
-    -webkit-filter: none !important;
-    filter: none !important;
-  }
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c23 {
-    -webkit-filter: none !important;
-    filter: none !important;
-  }
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c57 {
+  .c34 {
     -webkit-filter: none !important;
     filter: none !important;
   }
@@ -2534,16 +1831,19 @@ exports[`renders correctly 1`] = `
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c41 {
+  .c30 {
     -webkit-filter: none !important;
     filter: none !important;
   }
 }
 
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-  .c44 {
-    -webkit-filter: none !important;
-    filter: none !important;
+@media screen and (min-width:370px) {
+
+}
+
+@media screen and (min-width:576px) {
+  .c33 {
+    padding-left: 24px;
   }
 }
 
@@ -2561,7 +1861,7 @@ exports[`renders correctly 1`] = `
 
 @media screen and (min-width:576px) {
   .c0 {
-    padding: 56px 40px 32px 40px;
+    padding: 56px 40px 62px 40px;
     margin-bottom: 0px;
   }
 }
@@ -2572,7 +1872,7 @@ exports[`renders correctly 1`] = `
 
 @media screen and (min-width:576px) {
   .c3 {
-    width: 1200px;
+    width: 968px;
   }
 }
 
@@ -2591,39 +1891,8 @@ exports[`renders correctly 1`] = `
 }
 
 @media screen and (min-width:576px) {
-  .c8 {
-    margin-bottom: 36px;
-  }
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-  .c16 {
+  .c10 {
     display: block;
-  }
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-  .c17 {
-    padding-bottom: 32px;
-    margin-bottom: 32px;
-  }
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-  .c51 {
-    margin-bottom: 0;
   }
 }
 
@@ -2649,9 +1918,6 @@ exports[`renders correctly 1`] = `
 
 @media screen and (min-width:576px) {
   .c9 {
-    -webkit-order: 1;
-    -ms-flex-order: 1;
-    order: 1;
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -2663,10 +1929,7 @@ exports[`renders correctly 1`] = `
 }
 
 @media screen and (min-width:576px) {
-  .c28 {
-    -webkit-order: 3;
-    -ms-flex-order: 3;
-    order: 3;
+  .c22 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -2678,35 +1941,34 @@ exports[`renders correctly 1`] = `
 }
 
 @media screen and (min-width:576px) {
-  .c30 {
+  .c24 {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
-  }
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-  .c52 {
-    -webkit-order: 2;
-    -ms-flex-order: 2;
-    order: 2;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
   }
 }
 
 @media screen and (min-width:852px) {
-  .c10 {
+  .c11 {
     margin-bottom: 0px;
   }
 }
 
 @media screen and (min-width:576px) {
-  .c29 {
-    border-top-width: 0;
-    border-bottom-width: 0;
+  .c6 {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width:576px) {
+  .c23 {
     padding: 0 0;
     margin-bottom: 0;
   }
@@ -2734,11 +1996,10 @@ exports[`renders correctly 1`] = `
 
 <div
     class="c0 c1 c2"
-    data-theme="dark"
   >
     <div
       class="c3 c4"
-      width="100%,,1200px;"
+      width="100%,,968px;"
     >
       <div
         class="c5 c6"
@@ -2747,323 +2008,357 @@ exports[`renders correctly 1`] = `
         <svg
           class="c7"
           color="text"
-          viewBox="0 0 1281 199"
-          width="130px"
+          fill="none"
+          height="24"
+          viewBox="0 0 162 24"
+          width="162"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M247.013 153.096c-2.979 0-5.085-.617-6.318-1.849-1.13-1.233-1.695-3.185-1.695-5.856v-89.22c0-2.672.616-4.624 1.849-5.856 1.233-1.336 3.287-2.004 6.164-2.004h37.753c14.382 0 24.963 3.031 31.744 9.092 6.78 6.061 10.17 15.101 10.17 27.12 0 11.917-3.39 20.906-10.17 26.967-6.678 5.959-17.259 8.938-31.744 8.938h-14.639v24.963c0 2.671-.616 4.623-1.849 5.856-1.233 1.232-3.339 1.849-6.318 1.849h-14.947zm35.288-55.012c4.212 0 7.448-1.13 9.708-3.39 2.362-2.26 3.544-5.65 3.544-10.17 0-4.623-1.182-8.065-3.544-10.325-2.26-2.26-5.496-3.39-9.708-3.39h-12.174v27.275h12.174zM363.071 155.407c-9.656 0-17.412-3.082-23.268-9.245-5.753-6.267-8.629-15.05-8.629-26.351 0-8.629 1.952-16.18 5.855-22.652 4.007-6.472 9.606-11.454 16.797-14.947 7.294-3.595 15.666-5.393 25.117-5.393 7.808 0 14.691.873 20.649 2.62 6.061 1.643 11.608 4.057 16.642 7.242v61.638c0 1.952-.359 3.236-1.079 3.852-.719.617-2.157.925-4.314.925h-15.718c-1.13 0-2.003-.154-2.619-.463-.617-.41-1.13-1.027-1.541-1.849l-2.004-4.622c-2.979 3.184-6.574 5.496-10.786 6.934-4.109 1.541-9.143 2.311-15.102 2.311zm11.558-20.957c4.006 0 7.139-.976 9.399-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.951-.925-4.417-1.387-7.396-1.387-5.445 0-9.811 1.9-13.098 5.701-3.185 3.801-4.777 9.143-4.777 16.026 0 9.965 4.16 14.947 12.482 14.947zM437.679 153.096c-2.98 0-5.086-.617-6.318-1.849-1.233-1.233-1.849-3.185-1.849-5.856V83.907c0-1.849.308-3.082.924-3.698.719-.72 2.157-1.079 4.315-1.079h15.872c1.232 0 2.157.206 2.773.617.719.308 1.13.924 1.233 1.849l.77 4.623c2.877-2.877 6.627-5.137 11.249-6.78 4.726-1.747 9.965-2.62 15.718-2.62 8.321 0 15.05 2.363 20.186 7.088 5.137 4.623 7.705 11.506 7.705 20.649v40.835c0 2.671-.616 4.623-1.849 5.856-1.13 1.232-3.185 1.849-6.164 1.849h-14.947c-2.979 0-5.136-.617-6.472-1.849-1.233-1.233-1.849-3.185-1.849-5.856v-38.832c0-3.082-.668-5.29-2.003-6.626-1.336-1.335-3.442-2.003-6.318-2.003-3.082 0-5.548.822-7.397 2.465-1.746 1.644-2.619 3.904-2.619 6.781v38.215c0 2.671-.617 4.623-1.849 5.856-1.13 1.232-3.185 1.849-6.164 1.849h-14.947zM564.725 155.407c-14.382 0-25.477-3.339-33.285-10.016-7.807-6.677-11.711-16.385-11.711-29.124 0-7.807 1.798-14.69 5.393-20.648 3.596-5.959 8.784-10.582 15.564-13.869 6.883-3.287 14.999-4.931 24.347-4.931 7.088 0 13.047.668 17.875 2.003 4.931 1.336 9.297 3.39 13.098 6.164 1.13.72 1.695 1.644 1.695 2.774 0 .822-.411 1.9-1.233 3.236l-6.318 10.94c-.719 1.439-1.592 2.158-2.619 2.158-.617 0-1.593-.411-2.928-1.233-2.774-1.746-5.393-3.03-7.859-3.852-2.363-.822-5.342-1.233-8.937-1.233-5.137 0-9.297 1.644-12.482 4.931-3.082 3.287-4.623 7.807-4.623 13.56 0 5.856 1.592 10.376 4.777 13.56 3.185 3.082 7.551 4.623 13.098 4.623 3.287 0 6.267-.462 8.938-1.387 2.671-.924 5.393-2.208 8.167-3.852 1.438-.822 2.465-1.233 3.082-1.233.924 0 1.746.719 2.465 2.158l6.934 11.865c.514 1.027.771 1.849.771 2.465 0 .925-.617 1.798-1.849 2.62-4.315 2.774-9.041 4.828-14.177 6.164-5.034 1.438-11.095 2.157-18.183 2.157zM638.004 155.407c-9.657 0-17.413-3.082-23.268-9.245-5.753-6.267-8.63-15.05-8.63-26.351 0-8.629 1.952-16.18 5.856-22.652 4.006-6.472 9.605-11.454 16.796-14.947 7.294-3.595 15.667-5.393 25.118-5.393 7.807 0 14.69.873 20.648 2.62 6.061 1.643 11.609 4.057 16.643 7.242v61.638c0 1.952-.36 3.236-1.079 3.852-.719.617-2.157.925-4.315.925h-15.717c-1.13 0-2.004-.154-2.62-.463-.616-.41-1.13-1.027-1.541-1.849l-2.003-4.622c-2.979 3.184-6.575 5.496-10.787 6.934-4.109 1.541-9.143 2.311-15.101 2.311zm11.557-20.957c4.007 0 7.14-.976 9.4-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.952-.925-4.417-1.387-7.397-1.387-5.444 0-9.81 1.9-13.098 5.701-3.184 3.801-4.777 9.143-4.777 16.026 0 9.965 4.161 14.947 12.482 14.947zM787.963 147.24c.719.822 1.079 1.747 1.079 2.774 0 .924-.308 1.695-.925 2.311-.616.514-1.438.771-2.465.771h-23.885c-1.438 0-2.517-.103-3.236-.308-.616-.309-1.284-.874-2.003-1.695l-20.957-28.508v22.806c0 2.671-.616 4.623-1.849 5.856-1.233 1.232-3.339 1.849-6.318 1.849h-14.947c-2.979 0-5.085-.617-6.318-1.849-1.13-1.233-1.695-3.185-1.695-5.856v-89.22c0-2.672.616-4.624 1.849-5.856 1.233-1.336 3.288-2.004 6.164-2.004h14.947c2.979 0 5.085.668 6.318 2.004 1.233 1.232 1.849 3.184 1.849 5.855v51.622l20.341-26.504c.616-.822 1.284-1.387 2.003-1.695.719-.309 1.798-.463 3.236-.463h23.885c1.027 0 1.797.309 2.311.925.616.514.925 1.233.925 2.157 0 1.028-.36 1.952-1.079 2.774l-26.35 30.203 27.12 32.051zM837.998 155.407c-8.629 0-16.334-1.438-23.114-4.314-6.677-2.877-11.968-7.192-15.872-12.944-3.903-5.753-5.855-12.79-5.855-21.111 0-13.047 3.698-23.012 11.095-29.895 7.396-6.883 18.029-10.324 31.897-10.324 13.561 0 23.834 3.39 30.819 10.17 7.089 6.678 10.633 15.975 10.633 27.891 0 5.137-2.26 7.705-6.78 7.705h-48.386c0 4.417 1.643 7.808 4.931 10.17 3.39 2.363 8.475 3.544 15.255 3.544 4.212 0 7.705-.359 10.479-1.078 2.876-.822 5.753-2.003 8.629-3.544 1.233-.514 2.055-.771 2.465-.771.925 0 1.695.617 2.312 1.849l5.239 9.862c.514 1.028.771 1.798.771 2.312 0 .924-.617 1.798-1.85 2.619-4.211 2.774-8.988 4.777-14.33 6.01-5.342 1.233-11.455 1.849-18.338 1.849zm11.866-48.077c0-3.904-1.13-6.935-3.39-9.092-2.26-2.157-5.651-3.236-10.171-3.236s-7.961 1.13-10.324 3.39c-2.363 2.158-3.544 5.137-3.544 8.938h27.429zM930.417 155.407c-8.63 0-16.797-.873-24.501-2.619-7.705-1.85-13.92-4.418-18.646-7.705-1.746-1.13-2.619-2.312-2.619-3.544 0-.822.308-1.695.924-2.62l7.551-12.019c.822-1.233 1.643-1.849 2.465-1.849.514 0 1.387.359 2.62 1.078 3.801 2.158 8.115 3.904 12.944 5.239 4.828 1.336 9.605 2.004 14.331 2.004 4.828 0 8.372-.719 10.632-2.158 2.363-1.438 3.544-3.749 3.544-6.934 0-3.082-1.284-5.496-3.852-7.242-2.466-1.747-7.14-3.955-14.023-6.626-10.375-3.904-18.491-8.27-24.347-13.099-5.753-4.93-8.629-11.608-8.629-20.032 0-10.17 3.647-17.926 10.941-23.268C907.046 48.67 916.753 46 928.876 46c8.423 0 15.615.77 21.573 2.311 6.061 1.439 11.197 3.699 15.409 6.78 1.747 1.336 2.62 2.569 2.62 3.699 0 .719-.308 1.54-.925 2.465l-7.55 12.02c-.925 1.232-1.747 1.849-2.466 1.849-.513 0-1.387-.36-2.619-1.079-5.959-3.904-13.047-5.855-21.265-5.855-4.418 0-7.808.719-10.171 2.157-2.362 1.438-3.544 3.801-3.544 7.088 0 2.26.617 4.11 1.849 5.548 1.233 1.438 2.877 2.722 4.931 3.852 2.158 1.027 5.445 2.363 9.862 4.007l2.928 1.078c7.602 2.98 13.561 5.856 17.875 8.63 4.418 2.67 7.756 6.009 10.016 10.016 2.26 3.903 3.39 8.834 3.39 14.793 0 9.143-3.441 16.437-10.324 21.881-6.78 5.445-16.796 8.167-30.048 8.167zM1003.53 153.096c-1.54 0-2.72-.257-3.544-.771-.822-.513-1.439-1.541-1.85-3.082l-19.878-66.569c-.205-.616-.308-1.078-.308-1.386 0-1.438 1.027-2.158 3.082-2.158h20.338c1.34 0 2.31.257 2.93.77.62.412 1.03 1.13 1.23 2.158l8.32 34.98 10.48-28.2c.52-1.232 1.03-2.054 1.54-2.465.62-.514 1.65-.77 3.09-.77h9.7c1.44 0 2.42.256 2.93.77.62.41 1.18 1.233 1.7 2.465l10.32 28.2 8.48-34.98c.3-1.027.71-1.746 1.23-2.157.51-.514 1.44-.77 2.77-.77h20.5c2.05 0 3.08.719 3.08 2.157 0 .308-.1.77-.31 1.386l-20.03 66.569c-.41 1.541-1.03 2.569-1.85 3.082-.72.514-1.85.771-3.39.771h-15.1c-1.44 0-2.52-.257-3.24-.771-.72-.616-1.33-1.643-1.85-3.082l-10.17-27.891-10.17 27.891c-.41 1.439-1.03 2.466-1.85 3.082-.72.514-1.79.771-3.23.771h-14.95zM1128.73 155.407c-9.66 0-17.41-3.082-23.27-9.245-5.75-6.267-8.63-15.05-8.63-26.351 0-8.629 1.95-16.18 5.86-22.652 4-6.472 9.6-11.454 16.79-14.947 7.3-3.595 15.67-5.393 25.12-5.393 7.81 0 14.69.873 20.65 2.62 6.06 1.643 11.61 4.057 16.64 7.242v61.638c0 1.952-.36 3.236-1.08 3.852-.72.617-2.15.925-4.31.925h-15.72c-1.13 0-2-.154-2.62-.463-.62-.41-1.13-1.027-1.54-1.849l-2-4.622c-2.98 3.184-6.58 5.496-10.79 6.934-4.11 1.541-9.14 2.311-15.1 2.311zm11.56-20.957c4 0 7.14-.976 9.4-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.96-.925-4.42-1.387-7.4-1.387-5.45 0-9.81 1.9-13.1 5.701-3.18 3.801-4.78 9.143-4.78 16.026 0 9.965 4.17 14.947 12.49 14.947zM1203.18 184.223c-2.98 0-5.08-.616-6.32-1.849-1.13-1.233-1.69-3.185-1.69-5.856V88.222c4.62-3.287 10.43-6.01 17.41-8.167 6.99-2.157 14.28-3.236 21.88-3.236 31.03 0 46.54 13.15 46.54 39.448 0 11.917-3.29 21.419-9.86 28.508-6.58 7.088-15.87 10.632-27.89 10.632-3.39 0-6.68-.411-9.87-1.233-3.08-.821-5.65-1.951-7.7-3.39v25.734c0 2.671-.62 4.623-1.85 5.856-1.23 1.233-3.34 1.849-6.32 1.849h-14.33zm33.44-49.619c4.42 0 7.71-1.643 9.86-4.931 2.26-3.39 3.39-7.91 3.39-13.56 0-6.677-1.33-11.352-4-14.023-2.57-2.773-6.58-4.16-12.02-4.16-3.5 0-6.27.462-8.32 1.387v24.501c0 3.493.97 6.164 2.92 8.013 1.96 1.849 4.68 2.773 8.17 2.773z"
-            fill="var(--colors-contrast)"
-          />
-          <path
             clip-rule="evenodd"
-            d="M97.556 198.607c-29.192-.022-52.708-7.027-69.138-19.609-16.627-12.733-25.448-30.803-25.448-51.25 0-19.701 8.801-33.907 18.76-43.51 7.805-7.525 16.417-12.344 22.414-15.117-1.356-4.162-3.048-9.61-4.562-15.238-2.025-7.53-4.012-16.366-4.012-22.84 0-7.663 1.67-15.36 6.175-21.34C46.505 3.385 53.671 0 62.291 0c6.737 0 12.457 2.499 16.934 6.81 4.28 4.12 7.13 9.593 9.097 15.298 3.456 10.024 4.802 22.618 5.179 35.187h8.257c.378-12.569 1.723-25.163 5.18-35.187 1.967-5.705 4.815-11.177 9.096-15.298C120.512 2.5 126.231 0 132.968 0c8.621 0 15.786 3.385 20.546 9.703 4.505 5.98 6.176 13.677 6.176 21.34 0 6.474-1.988 15.31-4.013 22.84-1.514 5.628-3.206 11.076-4.562 15.238 5.997 2.773 14.61 7.592 22.414 15.118 9.959 9.602 18.76 23.808 18.76 43.509 0 20.447-8.82 38.517-25.448 51.25-16.43 12.582-39.946 19.587-69.138 19.609h-.147z"
-            fill="#633001"
+            d="M5.9988 0.00238564L0 6.0012L17.9988 24C21.3116 20.6872 21.3116 15.3152 17.9988 12L5.9988 0V0.00238564Z"
+            fill="currentColor"
             fill-rule="evenodd"
           />
           <path
-            d="M62.29 7.288c-12.625 0-18.437 9.516-18.437 22.675 0 10.46 6.753 31.408 9.523 39.563.624 1.835-.356 3.844-2.142 4.555-10.119 4.031-39.981 18.789-39.981 52.588 0 35.603 30.347 62.448 86.31 62.491l.066-.001.067.001c55.962-.043 86.309-26.888 86.309-62.491 0-33.799-29.862-48.557-39.981-52.588-1.786-.71-2.765-2.72-2.142-4.555 2.771-8.154 9.524-29.103 9.524-39.563 0-13.16-5.812-22.675-18.438-22.675-18.174 0-22.705 26.007-23.028 53.92-.021 1.863-1.513 3.375-3.357 3.375H88.676c-1.845 0-3.336-1.512-3.358-3.375-.323-27.913-4.853-53.92-23.028-53.92z"
-            fill="#D1884F"
+            clip-rule="evenodd"
+            d="M35.9971 6.00126L29.9983 0.00244141L19.874 10.1268C22.2764 12.5291 23.3465 15.7633 23.0915 18.9093L35.9971 6.00364V6.00126Z"
+            fill="currentColor"
+            fill-rule="evenodd"
           />
           <path
-            d="M97.696 177.755c-41.118 0-86.372-22.235-86.443-51.018v.134c0 35.632 30.395 62.491 86.443 62.491s86.443-26.859 86.443-62.491v-.134c-.071 28.783-45.325 51.018-86.443 51.018z"
-            fill="#FEDC90"
+            d="M48.2809 21.1852L42.1582 4.94531H45.0086L49.7991 18.4277L54.6349 4.94531H57.4615L51.3626 21.1852H48.2786H48.2809Z"
+            fill="currentColor"
           />
           <path
-            class="eye"
-            d="M74.85 117.896c0 9.718-4.546 14.779-10.154 14.779s-10.154-5.061-10.154-14.779 4.546-14.779 10.154-14.779 10.154 5.061 10.154 14.779zM140.851 117.896c0 9.718-4.546 14.779-10.154 14.779s-10.154-5.061-10.154-14.779 4.546-14.779 10.154-14.779 10.154 5.061 10.154 14.779z"
-            fill="#633001"
+            d="M63.9346 21.3952C62.0661 21.3952 60.5455 20.7875 59.3777 19.572C58.2099 18.3565 57.626 16.7454 57.626 14.7362C57.626 12.7271 58.217 11.1184 59.4015 9.91242C60.5861 8.70646 62.1161 8.10107 63.9918 8.10107C65.8675 8.10107 67.3904 8.68261 68.5606 9.84091C69.7285 11.0016 70.3124 12.5174 70.3124 14.3859C70.3124 14.8387 70.2814 15.2582 70.2194 15.6467H60.3596C60.4216 16.7215 60.7839 17.5748 61.4464 18.2063C62.109 18.8379 62.9384 19.1525 63.9346 19.1525C65.3837 19.1525 66.4037 18.5519 66.9948 17.3531H69.8691C69.4806 18.5376 68.7704 19.5076 67.7432 20.2631C66.7159 21.0186 65.4456 21.3952 63.9346 21.3952ZM66.4824 11.29C65.796 10.6584 64.9642 10.3438 63.9823 10.3438C63.0004 10.3438 62.1781 10.6584 61.5179 11.29C60.8554 11.9215 60.4788 12.7652 60.3859 13.8258H67.5358C67.5191 12.7676 67.1688 11.9215 66.4848 11.29H66.4824Z"
+            fill="currentColor"
+          />
+          <path
+            d="M74.4263 8.31081V10.5535C75.2509 8.91856 76.5379 8.10107 78.2825 8.10107V10.8586H77.6057C76.5618 10.8586 75.7705 11.1231 75.2343 11.6522C74.698 12.1813 74.4287 13.1013 74.4287 14.4097V21.1855H71.7642V8.31081H74.4287H74.4263Z"
+            fill="currentColor"
+          />
+          <path
+            d="M85.8064 10.482H82.6747V17.6081C82.6747 18.0919 82.7867 18.4375 83.0131 18.6472C83.2395 18.8569 83.6233 18.9618 84.169 18.9618H85.804V21.1807H83.7019C81.2256 21.1807 79.9863 19.989 79.9863 17.6057V5.10522H82.6723V8.30603H85.804V10.4796L85.8064 10.482Z"
+            fill="currentColor"
+          />
+          <path
+            d="M92.6867 21.3951C90.8087 21.3951 89.2643 20.785 88.0488 19.5599C86.8333 18.3373 86.2256 16.7333 86.2256 14.7456C86.2256 12.7579 86.8524 11.1564 88.106 9.93133C89.3596 8.70869 90.9207 8.09619 92.7916 8.09619C94.6625 8.09619 96.2212 8.70869 97.4772 9.93133C98.7308 11.154 99.3576 12.7556 99.3576 14.7337C99.3576 16.7119 98.7142 18.3158 97.4296 19.548C96.1449 20.7778 94.5624 21.3951 92.6867 21.3951ZM95.4562 17.9846C96.2355 17.2052 96.624 16.1232 96.624 14.7361C96.624 13.349 96.245 12.2717 95.4919 11.4995C94.7364 10.7273 93.8212 10.3436 92.7463 10.3436C91.6715 10.3436 90.7682 10.7297 90.0365 11.4995C89.3048 12.2717 88.9378 13.3538 88.9378 14.748C88.9378 16.1422 89.2953 17.2243 90.0127 17.9965C90.73 18.7687 91.6214 19.1524 92.6891 19.1524C93.7569 19.1524 94.6792 18.7639 95.4585 17.9846H95.4562Z"
+            fill="currentColor"
+          />
+          <path
+            d="M99.9873 7.02353V4.94287H111.32V7.02353H106.997V21.1828H104.332V7.02353H99.9873Z"
+            fill="currentColor"
+          />
+          <path
+            d="M115.503 8.31081V10.5535C116.328 8.91856 117.615 8.10107 119.359 8.10107V10.8586H118.682C117.638 10.8586 116.847 11.1231 116.311 11.6522C115.775 12.1813 115.505 13.1013 115.505 14.4097V21.1855H112.841V8.31081H115.505H115.503Z"
+            fill="currentColor"
+          />
+          <path
+            d="M121.507 19.5147C120.339 18.2611 119.755 16.6571 119.755 14.7004C119.755 12.7437 120.334 11.1564 121.495 9.93377C122.655 8.71113 124.1 8.09863 125.83 8.09863C126.843 8.09863 127.734 8.32979 128.506 8.78739C129.279 9.24737 129.874 9.85037 130.294 10.5987V8.30837H132.98V21.183H130.294V18.7759C129.858 19.5695 129.257 20.2059 128.494 20.6801C127.732 21.1544 126.843 21.3927 125.83 21.3927C124.116 21.3927 122.677 20.7659 121.507 19.5123V19.5147ZM129.136 17.9036C129.908 17.1171 130.292 16.0613 130.292 14.7385C130.292 13.4158 129.905 12.3624 129.136 11.5854C128.363 10.8061 127.448 10.4176 126.39 10.4176C125.332 10.4176 124.417 10.7989 123.644 11.5616C122.872 12.3242 122.489 13.3681 122.489 14.6932C122.489 16.0184 122.875 17.0813 123.644 17.8821C124.417 18.6853 125.329 19.0857 126.39 19.0857C127.451 19.0857 128.363 18.6924 129.136 17.906V17.9036Z"
+            fill="currentColor"
+          />
+          <path
+            d="M136.18 19.5145C135.013 18.2608 134.429 16.6569 134.429 14.7002C134.429 12.7435 135.008 11.1562 136.169 9.93354C137.329 8.7109 138.773 8.0984 140.504 8.0984C141.517 8.0984 142.408 8.32956 143.18 8.78715C143.952 9.24713 144.548 9.85014 144.968 10.5985V3.89185H147.654V21.1828H144.968V18.7756C144.532 19.5693 143.931 20.2056 143.168 20.6799C142.406 21.1542 141.517 21.3925 140.504 21.3925C138.79 21.3925 137.351 20.7657 136.18 19.5121V19.5145ZM143.809 17.9033C144.582 17.1168 144.965 16.0611 144.965 14.7383C144.965 13.4156 144.579 12.3622 143.809 11.5852C143.037 10.8058 142.122 10.4174 141.064 10.4174C140.006 10.4174 139.09 10.7987 138.318 11.5613C137.546 12.324 137.162 13.3679 137.162 14.693C137.162 16.0181 137.548 17.0811 138.318 17.8819C139.09 18.6851 140.003 19.0855 141.064 19.0855C142.124 19.0855 143.037 18.6922 143.809 17.9057V17.9033Z"
+            fill="currentColor"
+          />
+          <path
+            d="M155.411 21.3952C153.543 21.3952 152.022 20.7875 150.854 19.572C149.686 18.3565 149.103 16.7454 149.103 14.7362C149.103 12.7271 149.694 11.1184 150.878 9.91242C152.063 8.70646 153.593 8.10107 155.468 8.10107C157.344 8.10107 158.867 8.68261 160.037 9.84091C161.205 11.0016 161.789 12.5174 161.789 14.3859C161.789 14.8387 161.758 15.2582 161.696 15.6467H151.836C151.898 16.7215 152.26 17.5748 152.923 18.2063C153.586 18.8379 154.415 19.1525 155.411 19.1525C156.86 19.1525 157.88 18.5519 158.471 17.3531H161.346C160.957 18.5376 160.247 19.5076 159.22 20.2631C158.192 21.0186 156.922 21.3952 155.411 21.3952ZM157.959 11.29C157.273 10.6584 156.441 10.3438 155.459 10.3438C154.477 10.3438 153.655 10.6584 152.994 11.29C152.332 11.9215 151.955 12.7652 151.86 13.8258H159.01C158.993 12.7676 158.643 11.9215 157.959 11.29Z"
+            fill="currentColor"
           />
         </svg>
       </div>
       <div
         class="c8 c9"
-        order="2,,1"
+        order="1"
+        width="100%"
       >
-        <ul
+        <div
           class="c10"
+          display="none,,block"
+        >
+          <svg
+            class="c7"
+            color="text"
+            fill="none"
+            height="24"
+            viewBox="0 0 162 24"
+            width="162"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M5.9988 0.00238564L0 6.0012L17.9988 24C21.3116 20.6872 21.3116 15.3152 17.9988 12L5.9988 0V0.00238564Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M35.9971 6.00126L29.9983 0.00244141L19.874 10.1268C22.2764 12.5291 23.3465 15.7633 23.0915 18.9093L35.9971 6.00364V6.00126Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              d="M48.2809 21.1852L42.1582 4.94531H45.0086L49.7991 18.4277L54.6349 4.94531H57.4615L51.3626 21.1852H48.2786H48.2809Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9346 21.3952C62.0661 21.3952 60.5455 20.7875 59.3777 19.572C58.2099 18.3565 57.626 16.7454 57.626 14.7362C57.626 12.7271 58.217 11.1184 59.4015 9.91242C60.5861 8.70646 62.1161 8.10107 63.9918 8.10107C65.8675 8.10107 67.3904 8.68261 68.5606 9.84091C69.7285 11.0016 70.3124 12.5174 70.3124 14.3859C70.3124 14.8387 70.2814 15.2582 70.2194 15.6467H60.3596C60.4216 16.7215 60.7839 17.5748 61.4464 18.2063C62.109 18.8379 62.9384 19.1525 63.9346 19.1525C65.3837 19.1525 66.4037 18.5519 66.9948 17.3531H69.8691C69.4806 18.5376 68.7704 19.5076 67.7432 20.2631C66.7159 21.0186 65.4456 21.3952 63.9346 21.3952ZM66.4824 11.29C65.796 10.6584 64.9642 10.3438 63.9823 10.3438C63.0004 10.3438 62.1781 10.6584 61.5179 11.29C60.8554 11.9215 60.4788 12.7652 60.3859 13.8258H67.5358C67.5191 12.7676 67.1688 11.9215 66.4848 11.29H66.4824Z"
+              fill="currentColor"
+            />
+            <path
+              d="M74.4263 8.31081V10.5535C75.2509 8.91856 76.5379 8.10107 78.2825 8.10107V10.8586H77.6057C76.5618 10.8586 75.7705 11.1231 75.2343 11.6522C74.698 12.1813 74.4287 13.1013 74.4287 14.4097V21.1855H71.7642V8.31081H74.4287H74.4263Z"
+              fill="currentColor"
+            />
+            <path
+              d="M85.8064 10.482H82.6747V17.6081C82.6747 18.0919 82.7867 18.4375 83.0131 18.6472C83.2395 18.8569 83.6233 18.9618 84.169 18.9618H85.804V21.1807H83.7019C81.2256 21.1807 79.9863 19.989 79.9863 17.6057V5.10522H82.6723V8.30603H85.804V10.4796L85.8064 10.482Z"
+              fill="currentColor"
+            />
+            <path
+              d="M92.6867 21.3951C90.8087 21.3951 89.2643 20.785 88.0488 19.5599C86.8333 18.3373 86.2256 16.7333 86.2256 14.7456C86.2256 12.7579 86.8524 11.1564 88.106 9.93133C89.3596 8.70869 90.9207 8.09619 92.7916 8.09619C94.6625 8.09619 96.2212 8.70869 97.4772 9.93133C98.7308 11.154 99.3576 12.7556 99.3576 14.7337C99.3576 16.7119 98.7142 18.3158 97.4296 19.548C96.1449 20.7778 94.5624 21.3951 92.6867 21.3951ZM95.4562 17.9846C96.2355 17.2052 96.624 16.1232 96.624 14.7361C96.624 13.349 96.245 12.2717 95.4919 11.4995C94.7364 10.7273 93.8212 10.3436 92.7463 10.3436C91.6715 10.3436 90.7682 10.7297 90.0365 11.4995C89.3048 12.2717 88.9378 13.3538 88.9378 14.748C88.9378 16.1422 89.2953 17.2243 90.0127 17.9965C90.73 18.7687 91.6214 19.1524 92.6891 19.1524C93.7569 19.1524 94.6792 18.7639 95.4585 17.9846H95.4562Z"
+              fill="currentColor"
+            />
+            <path
+              d="M99.9873 7.02353V4.94287H111.32V7.02353H106.997V21.1828H104.332V7.02353H99.9873Z"
+              fill="currentColor"
+            />
+            <path
+              d="M115.503 8.31081V10.5535C116.328 8.91856 117.615 8.10107 119.359 8.10107V10.8586H118.682C117.638 10.8586 116.847 11.1231 116.311 11.6522C115.775 12.1813 115.505 13.1013 115.505 14.4097V21.1855H112.841V8.31081H115.505H115.503Z"
+              fill="currentColor"
+            />
+            <path
+              d="M121.507 19.5147C120.339 18.2611 119.755 16.6571 119.755 14.7004C119.755 12.7437 120.334 11.1564 121.495 9.93377C122.655 8.71113 124.1 8.09863 125.83 8.09863C126.843 8.09863 127.734 8.32979 128.506 8.78739C129.279 9.24737 129.874 9.85037 130.294 10.5987V8.30837H132.98V21.183H130.294V18.7759C129.858 19.5695 129.257 20.2059 128.494 20.6801C127.732 21.1544 126.843 21.3927 125.83 21.3927C124.116 21.3927 122.677 20.7659 121.507 19.5123V19.5147ZM129.136 17.9036C129.908 17.1171 130.292 16.0613 130.292 14.7385C130.292 13.4158 129.905 12.3624 129.136 11.5854C128.363 10.8061 127.448 10.4176 126.39 10.4176C125.332 10.4176 124.417 10.7989 123.644 11.5616C122.872 12.3242 122.489 13.3681 122.489 14.6932C122.489 16.0184 122.875 17.0813 123.644 17.8821C124.417 18.6853 125.329 19.0857 126.39 19.0857C127.451 19.0857 128.363 18.6924 129.136 17.906V17.9036Z"
+              fill="currentColor"
+            />
+            <path
+              d="M136.18 19.5145C135.013 18.2608 134.429 16.6569 134.429 14.7002C134.429 12.7435 135.008 11.1562 136.169 9.93354C137.329 8.7109 138.773 8.0984 140.504 8.0984C141.517 8.0984 142.408 8.32956 143.18 8.78715C143.952 9.24713 144.548 9.85014 144.968 10.5985V3.89185H147.654V21.1828H144.968V18.7756C144.532 19.5693 143.931 20.2056 143.168 20.6799C142.406 21.1542 141.517 21.3925 140.504 21.3925C138.79 21.3925 137.351 20.7657 136.18 19.5121V19.5145ZM143.809 17.9033C144.582 17.1168 144.965 16.0611 144.965 14.7383C144.965 13.4156 144.579 12.3622 143.809 11.5852C143.037 10.8058 142.122 10.4174 141.064 10.4174C140.006 10.4174 139.09 10.7987 138.318 11.5613C137.546 12.324 137.162 13.3679 137.162 14.693C137.162 16.0181 137.548 17.0811 138.318 17.8819C139.09 18.6851 140.003 19.0855 141.064 19.0855C142.124 19.0855 143.037 18.6922 143.809 17.9057V17.9033Z"
+              fill="currentColor"
+            />
+            <path
+              d="M155.411 21.3952C153.543 21.3952 152.022 20.7875 150.854 19.572C149.686 18.3565 149.103 16.7454 149.103 14.7362C149.103 12.7271 149.694 11.1184 150.878 9.91242C152.063 8.70646 153.593 8.10107 155.468 8.10107C157.344 8.10107 158.867 8.68261 160.037 9.84091C161.205 11.0016 161.789 12.5174 161.789 14.3859C161.789 14.8387 161.758 15.2582 161.696 15.6467H151.836C151.898 16.7215 152.26 17.5748 152.923 18.2063C153.586 18.8379 154.415 19.1525 155.411 19.1525C156.86 19.1525 157.88 18.5519 158.471 17.3531H161.346C160.957 18.5376 160.247 19.5076 159.22 20.2631C158.192 21.0186 156.922 21.3952 155.411 21.3952ZM157.959 11.29C157.273 10.6584 156.441 10.3438 155.459 10.3438C154.477 10.3438 153.655 10.6584 152.994 11.29C152.332 11.9215 151.955 12.7652 151.86 13.8258H159.01C158.993 12.7676 158.643 11.9215 157.959 11.29Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        <ul
+          class="c11"
         >
           <li
-            class="c11"
+            class="c12"
           >
             About
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
-              href="https://docs.dev.vertotrade.com/contact-us"
-              rel="noreferrer noopener"
+              href="https://docs.vertotrade.com/contact-us"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Contact
             </a>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
               href="https://medium.com/vertotrade"
-              rel="noreferrer noopener"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Blog
             </a>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
-              href="https://docs.dev.vertotrade.com/contact-us/telegram"
-              rel="noreferrer noopener"
+              href="https://docs.vertotrade.com/contact-us/telegram"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Community
             </a>
           </li>
           <li
-            class="c11"
-          >
-            <a
-              class="c12 c13"
-              color="text"
-              data-theme="dark"
-              font-size="16px"
-              href="https://docs.dev.vertotrade.com/tokenomics/cake"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              CAKE
-            </a>
-          </li>
-          <li
-            class="c11"
+            class="c12"
           >
             <span
-              class="c14"
+              class="c15"
             >
               —
             </span>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c15 c13"
-              color="var(--colors-warning)"
-              data-theme="dark"
+              class="c13 c14"
+              color="text"
               font-size="16px"
               href="https://vertotrade.creator-spring.com/"
-              rel="noreferrer noopener"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Online Store
             </a>
           </li>
         </ul>
         <ul
-          class="c10"
+          class="c11"
         >
           <li
-            class="c11"
+            class="c12"
           >
             Help
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
-              href="Support https://docs.dev.vertotrade.com/contact-us/customer-support"
-              rel="noreferrer noopener"
+              href="Support https://docs.vertotrade.com/contact-us/customer-support"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Customer
             </a>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
-              href="https://docs.dev.vertotrade.com/help/troubleshooting"
-              rel="noreferrer noopener"
+              href="https://docs.vertotrade.com/help/troubleshooting"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Troubleshooting
             </a>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
-              href="https://docs.dev.vertotrade.com/get-started"
-              rel="noreferrer noopener"
+              href="https://docs.vertotrade.com/get-started"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Guides
             </a>
           </li>
         </ul>
         <ul
-          class="c10"
+          class="c11"
         >
           <li
-            class="c11"
+            class="c12"
           >
             Developers
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
               href="https://github.com/vertotrade"
-              rel="noreferrer noopener"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Github
             </a>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
-              href="https://docs.dev.vertotrade.com"
-              rel="noreferrer noopener"
+              href="https://docs.vertotrade.com"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Documentation
             </a>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
               href="https://app.gitbook.com/@vertotrade-1/s/pancakeswap/code/bug-bounty"
-              rel="noreferrer noopener"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Bug Bounty
             </a>
           </li>
           <li
-            class="c11"
+            class="c12"
           >
             <a
-              class="c12 c13"
+              class="c13 c14"
               color="text"
-              data-theme="dark"
               font-size="16px"
-              href="https://docs.dev.vertotrade.com/help/faq#is-vertotrade-safe-has-vertotrade-been-audited"
-              rel="noreferrer noopener"
+              href="https://docs.vertotrade.com/help/faq#is-vertotrade-safe-has-vertotrade-been-audited"
+              rel="noopener noreferrer"
               target="_blank"
+              text-decoration="underline"
             >
               Audits
             </a>
           </li>
-          <li
-            class="c11"
-          >
-            <a
-              class="c12 c13"
-              color="text"
-              data-theme="dark"
-              font-size="16px"
-              href="https://docs.dev.vertotrade.com/hiring/become-a-chef"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Careers
-            </a>
-          </li>
         </ul>
-        <div
-          class="c16"
-          display="none,,block"
-        >
-          <svg
-            class="c7"
-            color="text"
-            viewBox="0 0 1281 199"
-            width="160px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M247.013 153.096c-2.979 0-5.085-.617-6.318-1.849-1.13-1.233-1.695-3.185-1.695-5.856v-89.22c0-2.672.616-4.624 1.849-5.856 1.233-1.336 3.287-2.004 6.164-2.004h37.753c14.382 0 24.963 3.031 31.744 9.092 6.78 6.061 10.17 15.101 10.17 27.12 0 11.917-3.39 20.906-10.17 26.967-6.678 5.959-17.259 8.938-31.744 8.938h-14.639v24.963c0 2.671-.616 4.623-1.849 5.856-1.233 1.232-3.339 1.849-6.318 1.849h-14.947zm35.288-55.012c4.212 0 7.448-1.13 9.708-3.39 2.362-2.26 3.544-5.65 3.544-10.17 0-4.623-1.182-8.065-3.544-10.325-2.26-2.26-5.496-3.39-9.708-3.39h-12.174v27.275h12.174zM363.071 155.407c-9.656 0-17.412-3.082-23.268-9.245-5.753-6.267-8.629-15.05-8.629-26.351 0-8.629 1.952-16.18 5.855-22.652 4.007-6.472 9.606-11.454 16.797-14.947 7.294-3.595 15.666-5.393 25.117-5.393 7.808 0 14.691.873 20.649 2.62 6.061 1.643 11.608 4.057 16.642 7.242v61.638c0 1.952-.359 3.236-1.079 3.852-.719.617-2.157.925-4.314.925h-15.718c-1.13 0-2.003-.154-2.619-.463-.617-.41-1.13-1.027-1.541-1.849l-2.004-4.622c-2.979 3.184-6.574 5.496-10.786 6.934-4.109 1.541-9.143 2.311-15.102 2.311zm11.558-20.957c4.006 0 7.139-.976 9.399-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.951-.925-4.417-1.387-7.396-1.387-5.445 0-9.811 1.9-13.098 5.701-3.185 3.801-4.777 9.143-4.777 16.026 0 9.965 4.16 14.947 12.482 14.947zM437.679 153.096c-2.98 0-5.086-.617-6.318-1.849-1.233-1.233-1.849-3.185-1.849-5.856V83.907c0-1.849.308-3.082.924-3.698.719-.72 2.157-1.079 4.315-1.079h15.872c1.232 0 2.157.206 2.773.617.719.308 1.13.924 1.233 1.849l.77 4.623c2.877-2.877 6.627-5.137 11.249-6.78 4.726-1.747 9.965-2.62 15.718-2.62 8.321 0 15.05 2.363 20.186 7.088 5.137 4.623 7.705 11.506 7.705 20.649v40.835c0 2.671-.616 4.623-1.849 5.856-1.13 1.232-3.185 1.849-6.164 1.849h-14.947c-2.979 0-5.136-.617-6.472-1.849-1.233-1.233-1.849-3.185-1.849-5.856v-38.832c0-3.082-.668-5.29-2.003-6.626-1.336-1.335-3.442-2.003-6.318-2.003-3.082 0-5.548.822-7.397 2.465-1.746 1.644-2.619 3.904-2.619 6.781v38.215c0 2.671-.617 4.623-1.849 5.856-1.13 1.232-3.185 1.849-6.164 1.849h-14.947zM564.725 155.407c-14.382 0-25.477-3.339-33.285-10.016-7.807-6.677-11.711-16.385-11.711-29.124 0-7.807 1.798-14.69 5.393-20.648 3.596-5.959 8.784-10.582 15.564-13.869 6.883-3.287 14.999-4.931 24.347-4.931 7.088 0 13.047.668 17.875 2.003 4.931 1.336 9.297 3.39 13.098 6.164 1.13.72 1.695 1.644 1.695 2.774 0 .822-.411 1.9-1.233 3.236l-6.318 10.94c-.719 1.439-1.592 2.158-2.619 2.158-.617 0-1.593-.411-2.928-1.233-2.774-1.746-5.393-3.03-7.859-3.852-2.363-.822-5.342-1.233-8.937-1.233-5.137 0-9.297 1.644-12.482 4.931-3.082 3.287-4.623 7.807-4.623 13.56 0 5.856 1.592 10.376 4.777 13.56 3.185 3.082 7.551 4.623 13.098 4.623 3.287 0 6.267-.462 8.938-1.387 2.671-.924 5.393-2.208 8.167-3.852 1.438-.822 2.465-1.233 3.082-1.233.924 0 1.746.719 2.465 2.158l6.934 11.865c.514 1.027.771 1.849.771 2.465 0 .925-.617 1.798-1.849 2.62-4.315 2.774-9.041 4.828-14.177 6.164-5.034 1.438-11.095 2.157-18.183 2.157zM638.004 155.407c-9.657 0-17.413-3.082-23.268-9.245-5.753-6.267-8.63-15.05-8.63-26.351 0-8.629 1.952-16.18 5.856-22.652 4.006-6.472 9.605-11.454 16.796-14.947 7.294-3.595 15.667-5.393 25.118-5.393 7.807 0 14.69.873 20.648 2.62 6.061 1.643 11.609 4.057 16.643 7.242v61.638c0 1.952-.36 3.236-1.079 3.852-.719.617-2.157.925-4.315.925h-15.717c-1.13 0-2.004-.154-2.62-.463-.616-.41-1.13-1.027-1.541-1.849l-2.003-4.622c-2.979 3.184-6.575 5.496-10.787 6.934-4.109 1.541-9.143 2.311-15.101 2.311zm11.557-20.957c4.007 0 7.14-.976 9.4-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.952-.925-4.417-1.387-7.397-1.387-5.444 0-9.81 1.9-13.098 5.701-3.184 3.801-4.777 9.143-4.777 16.026 0 9.965 4.161 14.947 12.482 14.947zM787.963 147.24c.719.822 1.079 1.747 1.079 2.774 0 .924-.308 1.695-.925 2.311-.616.514-1.438.771-2.465.771h-23.885c-1.438 0-2.517-.103-3.236-.308-.616-.309-1.284-.874-2.003-1.695l-20.957-28.508v22.806c0 2.671-.616 4.623-1.849 5.856-1.233 1.232-3.339 1.849-6.318 1.849h-14.947c-2.979 0-5.085-.617-6.318-1.849-1.13-1.233-1.695-3.185-1.695-5.856v-89.22c0-2.672.616-4.624 1.849-5.856 1.233-1.336 3.288-2.004 6.164-2.004h14.947c2.979 0 5.085.668 6.318 2.004 1.233 1.232 1.849 3.184 1.849 5.855v51.622l20.341-26.504c.616-.822 1.284-1.387 2.003-1.695.719-.309 1.798-.463 3.236-.463h23.885c1.027 0 1.797.309 2.311.925.616.514.925 1.233.925 2.157 0 1.028-.36 1.952-1.079 2.774l-26.35 30.203 27.12 32.051zM837.998 155.407c-8.629 0-16.334-1.438-23.114-4.314-6.677-2.877-11.968-7.192-15.872-12.944-3.903-5.753-5.855-12.79-5.855-21.111 0-13.047 3.698-23.012 11.095-29.895 7.396-6.883 18.029-10.324 31.897-10.324 13.561 0 23.834 3.39 30.819 10.17 7.089 6.678 10.633 15.975 10.633 27.891 0 5.137-2.26 7.705-6.78 7.705h-48.386c0 4.417 1.643 7.808 4.931 10.17 3.39 2.363 8.475 3.544 15.255 3.544 4.212 0 7.705-.359 10.479-1.078 2.876-.822 5.753-2.003 8.629-3.544 1.233-.514 2.055-.771 2.465-.771.925 0 1.695.617 2.312 1.849l5.239 9.862c.514 1.028.771 1.798.771 2.312 0 .924-.617 1.798-1.85 2.619-4.211 2.774-8.988 4.777-14.33 6.01-5.342 1.233-11.455 1.849-18.338 1.849zm11.866-48.077c0-3.904-1.13-6.935-3.39-9.092-2.26-2.157-5.651-3.236-10.171-3.236s-7.961 1.13-10.324 3.39c-2.363 2.158-3.544 5.137-3.544 8.938h27.429zM930.417 155.407c-8.63 0-16.797-.873-24.501-2.619-7.705-1.85-13.92-4.418-18.646-7.705-1.746-1.13-2.619-2.312-2.619-3.544 0-.822.308-1.695.924-2.62l7.551-12.019c.822-1.233 1.643-1.849 2.465-1.849.514 0 1.387.359 2.62 1.078 3.801 2.158 8.115 3.904 12.944 5.239 4.828 1.336 9.605 2.004 14.331 2.004 4.828 0 8.372-.719 10.632-2.158 2.363-1.438 3.544-3.749 3.544-6.934 0-3.082-1.284-5.496-3.852-7.242-2.466-1.747-7.14-3.955-14.023-6.626-10.375-3.904-18.491-8.27-24.347-13.099-5.753-4.93-8.629-11.608-8.629-20.032 0-10.17 3.647-17.926 10.941-23.268C907.046 48.67 916.753 46 928.876 46c8.423 0 15.615.77 21.573 2.311 6.061 1.439 11.197 3.699 15.409 6.78 1.747 1.336 2.62 2.569 2.62 3.699 0 .719-.308 1.54-.925 2.465l-7.55 12.02c-.925 1.232-1.747 1.849-2.466 1.849-.513 0-1.387-.36-2.619-1.079-5.959-3.904-13.047-5.855-21.265-5.855-4.418 0-7.808.719-10.171 2.157-2.362 1.438-3.544 3.801-3.544 7.088 0 2.26.617 4.11 1.849 5.548 1.233 1.438 2.877 2.722 4.931 3.852 2.158 1.027 5.445 2.363 9.862 4.007l2.928 1.078c7.602 2.98 13.561 5.856 17.875 8.63 4.418 2.67 7.756 6.009 10.016 10.016 2.26 3.903 3.39 8.834 3.39 14.793 0 9.143-3.441 16.437-10.324 21.881-6.78 5.445-16.796 8.167-30.048 8.167zM1003.53 153.096c-1.54 0-2.72-.257-3.544-.771-.822-.513-1.439-1.541-1.85-3.082l-19.878-66.569c-.205-.616-.308-1.078-.308-1.386 0-1.438 1.027-2.158 3.082-2.158h20.338c1.34 0 2.31.257 2.93.77.62.412 1.03 1.13 1.23 2.158l8.32 34.98 10.48-28.2c.52-1.232 1.03-2.054 1.54-2.465.62-.514 1.65-.77 3.09-.77h9.7c1.44 0 2.42.256 2.93.77.62.41 1.18 1.233 1.7 2.465l10.32 28.2 8.48-34.98c.3-1.027.71-1.746 1.23-2.157.51-.514 1.44-.77 2.77-.77h20.5c2.05 0 3.08.719 3.08 2.157 0 .308-.1.77-.31 1.386l-20.03 66.569c-.41 1.541-1.03 2.569-1.85 3.082-.72.514-1.85.771-3.39.771h-15.1c-1.44 0-2.52-.257-3.24-.771-.72-.616-1.33-1.643-1.85-3.082l-10.17-27.891-10.17 27.891c-.41 1.439-1.03 2.466-1.85 3.082-.72.514-1.79.771-3.23.771h-14.95zM1128.73 155.407c-9.66 0-17.41-3.082-23.27-9.245-5.75-6.267-8.63-15.05-8.63-26.351 0-8.629 1.95-16.18 5.86-22.652 4-6.472 9.6-11.454 16.79-14.947 7.3-3.595 15.67-5.393 25.12-5.393 7.81 0 14.69.873 20.65 2.62 6.06 1.643 11.61 4.057 16.64 7.242v61.638c0 1.952-.36 3.236-1.08 3.852-.72.617-2.15.925-4.31.925h-15.72c-1.13 0-2-.154-2.62-.463-.62-.41-1.13-1.027-1.54-1.849l-2-4.622c-2.98 3.184-6.58 5.496-10.79 6.934-4.11 1.541-9.14 2.311-15.1 2.311zm11.56-20.957c4 0 7.14-.976 9.4-2.927 2.26-1.952 3.39-4.726 3.39-8.322V99.163c-1.96-.925-4.42-1.387-7.4-1.387-5.45 0-9.81 1.9-13.1 5.701-3.18 3.801-4.78 9.143-4.78 16.026 0 9.965 4.17 14.947 12.49 14.947zM1203.18 184.223c-2.98 0-5.08-.616-6.32-1.849-1.13-1.233-1.69-3.185-1.69-5.856V88.222c4.62-3.287 10.43-6.01 17.41-8.167 6.99-2.157 14.28-3.236 21.88-3.236 31.03 0 46.54 13.15 46.54 39.448 0 11.917-3.29 21.419-9.86 28.508-6.58 7.088-15.87 10.632-27.89 10.632-3.39 0-6.68-.411-9.87-1.233-3.08-.821-5.65-1.951-7.7-3.39v25.734c0 2.671-.62 4.623-1.85 5.856-1.23 1.233-3.34 1.849-6.32 1.849h-14.33zm33.44-49.619c4.42 0 7.71-1.643 9.86-4.931 2.26-3.39 3.39-7.91 3.39-13.56 0-6.677-1.33-11.352-4-14.023-2.57-2.773-6.58-4.16-12.02-4.16-3.5 0-6.27.462-8.32 1.387v24.501c0 3.493.97 6.164 2.92 8.013 1.96 1.849 4.68 2.773 8.17 2.773z"
-              fill="var(--colors-contrast)"
-            />
-            <path
-              clip-rule="evenodd"
-              d="M97.556 198.607c-29.192-.022-52.708-7.027-69.138-19.609-16.627-12.733-25.448-30.803-25.448-51.25 0-19.701 8.801-33.907 18.76-43.51 7.805-7.525 16.417-12.344 22.414-15.117-1.356-4.162-3.048-9.61-4.562-15.238-2.025-7.53-4.012-16.366-4.012-22.84 0-7.663 1.67-15.36 6.175-21.34C46.505 3.385 53.671 0 62.291 0c6.737 0 12.457 2.499 16.934 6.81 4.28 4.12 7.13 9.593 9.097 15.298 3.456 10.024 4.802 22.618 5.179 35.187h8.257c.378-12.569 1.723-25.163 5.18-35.187 1.967-5.705 4.815-11.177 9.096-15.298C120.512 2.5 126.231 0 132.968 0c8.621 0 15.786 3.385 20.546 9.703 4.505 5.98 6.176 13.677 6.176 21.34 0 6.474-1.988 15.31-4.013 22.84-1.514 5.628-3.206 11.076-4.562 15.238 5.997 2.773 14.61 7.592 22.414 15.118 9.959 9.602 18.76 23.808 18.76 43.509 0 20.447-8.82 38.517-25.448 51.25-16.43 12.582-39.946 19.587-69.138 19.609h-.147z"
-              fill="#633001"
-              fill-rule="evenodd"
-            />
-            <path
-              d="M62.29 7.288c-12.625 0-18.437 9.516-18.437 22.675 0 10.46 6.753 31.408 9.523 39.563.624 1.835-.356 3.844-2.142 4.555-10.119 4.031-39.981 18.789-39.981 52.588 0 35.603 30.347 62.448 86.31 62.491l.066-.001.067.001c55.962-.043 86.309-26.888 86.309-62.491 0-33.799-29.862-48.557-39.981-52.588-1.786-.71-2.765-2.72-2.142-4.555 2.771-8.154 9.524-29.103 9.524-39.563 0-13.16-5.812-22.675-18.438-22.675-18.174 0-22.705 26.007-23.028 53.92-.021 1.863-1.513 3.375-3.357 3.375H88.676c-1.845 0-3.336-1.512-3.358-3.375-.323-27.913-4.853-53.92-23.028-53.92z"
-              fill="#D1884F"
-            />
-            <path
-              d="M97.696 177.755c-41.118 0-86.372-22.235-86.443-51.018v.134c0 35.632 30.395 62.491 86.443 62.491s86.443-26.859 86.443-62.491v-.134c-.071 28.783-45.325 51.018-86.443 51.018z"
-              fill="#FEDC90"
-            />
-            <path
-              class="eye"
-              d="M74.85 117.896c0 9.718-4.546 14.779-10.154 14.779s-10.154-5.061-10.154-14.779 4.546-14.779 10.154-14.779 10.154 5.061 10.154 14.779zM140.851 117.896c0 9.718-4.546 14.779-10.154 14.779s-10.154-5.061-10.154-14.779 4.546-14.779 10.154-14.779 10.154 5.061 10.154 14.779z"
-              fill="#633001"
-            />
-          </svg>
-        </div>
       </div>
       <div
-        class="c17 c18 c19"
-        data-theme="dark"
+        class="c16 c17"
+        display="flex"
         order="2"
       >
         <a
           aria-label="Twitter"
-          class="c20 c13"
+          class="c18 c14 c19"
           color="primary"
           font-size="16px"
           href="https://twitter.com/vertotrade"
           rel="noreferrer noopener"
           target="_blank"
+          text-decoration="underline"
         >
           <svg
-            class="c21"
+            class="c20"
             color="textSubtle"
             style="cursor: pointer;"
             viewBox="0 0 18 15"
@@ -3075,11 +2370,18 @@ exports[`renders correctly 1`] = `
             />
           </svg>
         </a>
-        <div
-          class="c22"
+        <a
+          aria-label="Telegram"
+          class="c18 c14 c19"
+          color="primary"
+          font-size="16px"
+          href="https://t.me/vertotrade"
+          rel="noreferrer noopener"
+          target="_blank"
+          text-decoration="underline"
         >
           <svg
-            class="c23"
+            class="c20"
             color="textSubtle"
             style="cursor: pointer;"
             viewBox="0 0 20 20"
@@ -3090,251 +2392,19 @@ exports[`renders correctly 1`] = `
               d="M10 0C4.478 0 0 4.478 0 9.99 0 15.511 4.478 20 10 20s10-4.488 10-10.01C20 4.477 15.522 0 10 0zm4.925 6.28c-.064.927-1.78 7.856-1.78 7.856s-.107.406-.48.416a.644.644 0 01-.49-.192c-.395-.33-1.29-.97-2.132-1.556a.953.953 0 01-.107.096c-.192.17-.48.416-.789.714a10.7 10.7 0 00-.373.352l-.01.01a2.214 2.214 0 01-.193.171c-.415.341-.458.053-.458-.096l.224-2.441v-.021l.01-.022c.011-.032.033-.043.033-.043s4.36-3.88 4.477-4.296c.01-.021-.021-.042-.074-.021-.288.096-5.31 3.273-5.864 3.625-.032.02-.128.01-.128.01l-2.441-.8s-.288-.117-.192-.383c.021-.053.053-.107.17-.181.544-.384 10-3.785 10-3.785s.267-.085.427-.032c.074.032.117.064.16.17.01.043.021.128.021.224 0 .054-.01.118-.01.224z"
             />
           </svg>
-          <div
-            class="c24 c25"
-          >
-            <a
-              aria-label="English"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/vertotrade"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              English
-            </a>
-            <a
-              aria-label="Bahasa Indonesia"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTradeIndonesia"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Bahasa Indonesia
-            </a>
-            <a
-              aria-label="中文"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTrade_CN"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              中文
-            </a>
-            <a
-              aria-label="Tiếng Việt"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTradeVN"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Tiếng Việt
-            </a>
-            <a
-              aria-label="Italiano"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/vertotrade_ita"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Italiano
-            </a>
-            <a
-              aria-label="русский"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/vertotrade_ru"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              русский
-            </a>
-            <a
-              aria-label="Türkiye"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/vertotradeturkiye"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Türkiye
-            </a>
-            <a
-              aria-label="Português"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTradePortuguese"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Português
-            </a>
-            <a
-              aria-label="Español"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/PancakeswapEs"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Español
-            </a>
-            <a
-              aria-label="日本語"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/vertotradejp"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              日本語
-            </a>
-            <a
-              aria-label="Français"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/vertotradefr"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Français
-            </a>
-            <a
-              aria-label="Deutsch"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTrade_DE"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Deutsch
-            </a>
-            <a
-              aria-label="Filipino"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/Pancakeswap_Ph"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Filipino
-            </a>
-            <a
-              aria-label="ქართული ენა"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTradeGeorgia"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              ქართული ენა
-            </a>
-            <a
-              aria-label="हिन्दी"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTradeINDIA"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              हिन्दी
-            </a>
-            <a
-              aria-label="Announcements"
-              class="c26 c13"
-              color="textSubtle"
-              font-size="16px"
-              href="https://t.me/VertoTradeAnn"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Announcements
-            </a>
-          </div>
-        </div>
-        <a
-          aria-label="Reddit"
-          class="c20 c13"
-          color="primary"
-          font-size="16px"
-          href="https://reddit.com/r/vertotrade"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          <svg
-            class="c21"
-            color="textSubtle"
-            style="cursor: pointer;"
-            viewBox="0 0 20 20"
-            width="20px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12.09 13.412c-.448.447-1.408.607-2.09.607-.682 0-1.642-.16-2.09-.607a.27.27 0 00-.383 0 .27.27 0 000 .383c.714.704 2.068.757 2.473.757.405 0 1.76-.053 2.473-.767a.27.27 0 000-.384.28.28 0 00-.383.01zM8.753 11.034c0-.576-.47-1.045-1.045-1.045-.576 0-1.045.47-1.045 1.045 0 .576.47 1.045 1.045 1.045.576 0 1.045-.47 1.045-1.045z"
-            />
-            <path
-              d="M10 0C4.478 0 0 4.478 0 10s4.478 10 10 10 10-4.467 10-10c-.01-5.522-4.478-10-10-10zm5.8 11.333c.02.138.032.287.032.437 0 2.25-2.612 4.062-5.832 4.062-3.22 0-5.832-1.813-5.832-4.062 0-.15.011-.299.032-.437A1.447 1.447 0 013.337 10 1.463 1.463 0 015.81 8.945c1.013-.736 2.41-1.194 3.966-1.237 0-.021.736-3.486.736-3.486 0-.064.042-.128.096-.16a.263.263 0 01.202-.043l2.42.523c.17-.342.523-.587.928-.587A1.04 1.04 0 0115.203 5a1.04 1.04 0 01-1.045 1.045 1.034 1.034 0 01-1.034-.992l-2.175-.469-.661 3.124c1.535.053 2.91.522 3.902 1.237a1.454 1.454 0 012.473 1.044 1.48 1.48 0 01-.863 1.344z"
-            />
-            <path
-              d="M12.292 10c-.576 0-1.045.47-1.045 1.045s.47 1.045 1.045 1.045c.576 0 1.045-.47 1.045-1.045A1.06 1.06 0 0012.292 10z"
-            />
-          </svg>
-        </a>
-        <a
-          aria-label="Instagram"
-          class="c20 c13"
-          color="primary"
-          font-size="16px"
-          href="https://instagram.com/vertotrade_official"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          <svg
-            class="c21"
-            color="textSubtle"
-            style="cursor: pointer;"
-            viewBox="0 0 18 18"
-            width="20px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9 1.625c2.407 0 2.685.01 3.641.052.874.04 1.358.185 1.666.308.422.165.72.36 1.04.669.318.319.514.617.668 1.039.123.318.267.792.308 1.666.042.946.052 1.234.052 3.641s-.01 2.685-.052 3.641c-.04.874-.185 1.358-.308 1.666-.165.422-.36.72-.669 1.04a2.66 2.66 0 01-1.039.668c-.318.123-.792.267-1.666.308-.946.042-1.234.052-3.641.052s-2.685-.01-3.641-.052c-.874-.04-1.358-.185-1.666-.308a2.911 2.911 0 01-1.04-.669 2.659 2.659 0 01-.668-1.039c-.123-.318-.267-.792-.308-1.666-.042-.946-.052-1.234-.052-3.641s.01-2.685.052-3.641c.04-.874.185-1.358.308-1.666.165-.422.36-.72.669-1.04a2.658 2.658 0 011.039-.668c.318-.123.792-.267 1.666-.308.956-.042 1.234-.052 3.641-.052zM9 0C6.552 0 6.254.01 5.287.051c-.957.052-1.615.196-2.18.422a4.311 4.311 0 00-1.595 1.039A4.311 4.311 0 00.473 3.106c-.226.566-.37 1.224-.422 2.18C.011 6.255 0 6.553 0 9s.01 2.746.051 3.713c.042.957.196 1.615.422 2.18.226.597.535 1.091 1.039 1.595.504.504.998.813 1.594 1.039.576.226 1.224.37 2.18.422.957.04 1.266.051 3.714.051s2.746-.01 3.713-.051c.957-.042 1.615-.196 2.18-.422a4.311 4.311 0 001.595-1.039 4.311 4.311 0 001.039-1.594c.226-.576.37-1.224.422-2.18.04-.957.051-1.266.051-3.714s-.01-2.746-.051-3.713c-.042-.957-.196-1.615-.422-2.18a4.312 4.312 0 00-1.039-1.595A4.311 4.311 0 0014.894.473c-.576-.226-1.224-.37-2.18-.422C11.745.011 11.447 0 9 0z"
-            />
-            <path
-              d="M9 4.382a4.618 4.618 0 100 9.236 4.618 4.618 0 000-9.236zm0 7.621A3.007 3.007 0 015.997 9 3.007 3.007 0 019 5.997 3.007 3.007 0 0112.003 9 3.007 3.007 0 019 12.003zM13.803 5.277a1.08 1.08 0 100-2.16 1.08 1.08 0 000 2.16z"
-            />
-          </svg>
         </a>
         <a
           aria-label="Github"
-          class="c20 c13"
+          class="c21 c14 c19"
           color="primary"
           font-size="16px"
-          href="https://github.com/pancakeswap/"
+          href="https://github.com/vertotrade/"
           rel="noreferrer noopener"
           target="_blank"
+          text-decoration="underline"
         >
           <svg
-            class="c21"
+            class="c20"
             color="textSubtle"
             style="cursor: pointer;"
             viewBox="0 0 20 20"
@@ -3348,381 +2418,262 @@ exports[`renders correctly 1`] = `
             />
           </svg>
         </a>
-        <a
-          aria-label="Discord"
-          class="c20 c13"
-          color="primary"
-          font-size="16px"
-          href="https://discord.gg/vertotrade"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          <svg
-            class="c21"
-            color="textSubtle"
-            style="cursor: pointer;"
-            viewBox="0 0 20 16"
-            width="20px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M16.93 1.644A16.491 16.491 0 0012.86.38a.062.062 0 00-.066.031c-.175.313-.37.72-.506 1.041a15.226 15.226 0 00-4.573 0A10.54 10.54 0 007.2.412a.064.064 0 00-.065-.031 16.447 16.447 0 00-4.07 1.263.058.058 0 00-.028.023C.444 5.54-.266 9.319.083 13.05a.069.069 0 00.026.047 16.584 16.584 0 004.994 2.525.064.064 0 00.07-.023c.385-.526.728-1.08 1.022-1.662a.063.063 0 00-.035-.088 10.917 10.917 0 01-1.56-.744.064.064 0 01-.007-.106c.105-.079.21-.16.31-.243a.062.062 0 01.065-.009c3.273 1.495 6.817 1.495 10.051 0a.062.062 0 01.066.008c.1.083.204.165.31.244a.064.064 0 01-.005.106c-.499.291-1.017.537-1.561.743a.064.064 0 00-.034.089c.3.582.643 1.135 1.02 1.66a.063.063 0 00.07.025 16.53 16.53 0 005.003-2.525.064.064 0 00.026-.046c.417-4.314-.699-8.061-2.957-11.384a.05.05 0 00-.026-.023zM6.684 10.778c-.985 0-1.797-.905-1.797-2.016 0-1.11.796-2.015 1.797-2.015 1.01 0 1.814.912 1.798 2.015 0 1.111-.796 2.016-1.798 2.016zm6.646 0c-.986 0-1.797-.905-1.797-2.016 0-1.11.796-2.015 1.797-2.015 1.009 0 1.813.912 1.797 2.015 0 1.111-.788 2.016-1.797 2.016z"
-            />
-          </svg>
-        </a>
-        <a
-          aria-label="Medium"
-          class="c20 c13"
-          color="primary"
-          font-size="16px"
-          href="https://medium.com/vertotrade"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          <svg
-            class="c21"
-            color="textSubtle"
-            style="cursor: pointer;"
-            viewBox="0 0 24 24"
-            width="20px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7.64 6.32c3.116 0 5.641 2.544 5.641 5.68 0 3.137-2.525 5.68-5.64 5.68C4.526 17.68 2 15.136 2 12c0-3.136 2.525-5.68 5.64-5.68zm9.008.333c1.558 0 2.82 2.394 2.82 5.347h.001c0 2.953-1.263 5.347-2.82 5.347-1.558 0-2.82-2.395-2.82-5.347 0-2.952 1.262-5.347 2.82-5.347zm4.36.557c.548 0 .992 2.145.992 4.79s-.444 4.79-.992 4.79-.992-2.145-.992-4.79.444-4.79.992-4.79z"
-            />
-          </svg>
-        </a>
-        <a
-          aria-label="Youtube"
-          class="c27 c13"
-          color="primary"
-          font-size="16px"
-          href="https://www.youtube.com/@vertotrade_official"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          <svg
-            class="c21"
-            color="textSubtle"
-            fill="none"
-            style="cursor: pointer;"
-            viewBox="0 0 30 30"
-            width="20px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M 15 4 C 10.814 4 5.3808594 5.0488281 5.3808594 5.0488281 L 5.3671875 5.0644531 C 3.4606632 5.3693645 2 7.0076245 2 9 L 2 15 L 2 15.001953 L 2 21 L 2 21.001953 A 4 4 0 0 0 5.3769531 24.945312 L 5.3808594 24.951172 C 5.3808594 24.951172 10.814 26.001953 15 26.001953 C 19.186 26.001953 24.619141 24.951172 24.619141 24.951172 L 24.621094 24.949219 A 4 4 0 0 0 28 21.001953 L 28 21 L 28 15.001953 L 28 15 L 28 9 A 4 4 0 0 0 24.623047 5.0546875 L 24.619141 5.0488281 C 24.619141 5.0488281 19.186 4 15 4 z M 12 10.398438 L 20 15 L 12 19.601562 L 12 10.398438 z"
-            />
-          </svg>
-        </a>
       </div>
       <div
-        class="c28 c29"
-        data-theme="dark"
-        order="1,,3"
+        class="c22 c23"
+        order="3"
       >
         <div
-          class="c30"
+          class="c24"
           order="2,,1"
         >
           <div
-            class="c31"
-            height="32px"
-            width="56px"
+            class="c25"
+            height="auto"
+            width="auto"
           >
             <div
-              class="c32 disappear"
+              class="c26 disappear"
               style="position: absolute; top: 0px; left: 0px; transform: translateX(0px);"
             >
               <div
-                class="c33 c34"
-                height="32px"
-                width="56px"
+                class="c27 c28"
+                height="auto"
+                width="auto"
               />
             </div>
             <div
-              class="c32 appear"
+              class="c26 appear"
               style="transform: translateX(0px);"
             >
               <div
-                class="c35"
-                scale="md"
+                class="c29"
               >
-                <input
-                  class="c36"
-                  scale="md"
-                  type="checkbox"
-                />
-                <div
-                  class="c37 c38"
-                  scale="md"
+                <svg
+                  class="c30"
+                  color="text"
+                  viewBox="0 0 24 24"
+                  width="20px"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <div
-                    class="c39 c40"
-                    height="100%"
-                  >
-                    <svg
-                      class="c41"
-                      color="warning"
-                      viewBox="0 0 24 24"
-                      width="20px"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.66 4.2L6.05 4.59C6.44 4.97 6.44 5.61 6.05 5.99L6.04 6C5.65 6.39 5.03 6.39 4.64 6L4.25 5.61C3.86 5.23 3.86 4.6 4.25 4.21L4.26 4.2C4.64 3.82 5.27 3.81 5.66 4.2Z"
-                      />
-                      <path
-                        d="M1.99 10.95H3.01C3.56 10.95 4 11.39 4 11.95V11.96C4 12.51 3.56 12.95 3 12.94H1.99C1.44 12.94 1 12.5 1 11.95V11.94C1 11.39 1.44 10.95 1.99 10.95Z"
-                      />
-                      <path
-                        d="M12 1H12.01C12.56 1 13 1.44 13 1.99V2.96C13 3.51 12.56 3.95 12 3.94H11.99C11.44 3.94 11 3.5 11 2.95V1.99C11 1.44 11.44 1 12 1Z"
-                      />
-                      <path
-                        d="M18.34 4.2C18.73 3.82 19.36 3.82 19.75 4.21C20.14 4.6 20.14 5.22 19.75 5.61L19.36 6C18.98 6.39 18.35 6.39 17.96 6L17.95 5.99C17.56 5.61 17.56 4.98 17.95 4.59L18.34 4.2Z"
-                      />
-                      <path
-                        d="M18.33 19.7L17.94 19.31C17.55 18.92 17.55 18.3 17.95 17.9C18.33 17.52 18.96 17.51 19.35 17.9L19.74 18.29C20.13 18.68 20.13 19.31 19.74 19.7C19.35 20.09 18.72 20.09 18.33 19.7Z"
-                      />
-                      <path
-                        d="M20 11.95V11.94C20 11.39 20.44 10.95 20.99 10.95H22C22.55 10.95 22.99 11.39 22.99 11.94V11.95C22.99 12.5 22.55 12.94 22 12.94H20.99C20.44 12.94 20 12.5 20 11.95Z"
-                      />
-                      <path
-                        clip-rule="evenodd"
-                        d="M6 11.95C6 8.64 8.69 5.95 12 5.95C15.31 5.95 18 8.64 18 11.95C18 15.26 15.31 17.95 12 17.95C8.69 17.95 6 15.26 6 11.95ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                        fill-rule="evenodd"
-                      />
-                      <path
-                        d="M12 22.9H11.99C11.44 22.9 11 22.46 11 21.91V20.95C11 20.4 11.44 19.96 11.99 19.96H12C12.55 19.96 12.99 20.4 12.99 20.95V21.91C12.99 22.46 12.55 22.9 12 22.9Z"
-                      />
-                      <path
-                        d="M5.66 19.69C5.27 20.08 4.64 20.08 4.25 19.69C3.86 19.3 3.86 18.68 4.24 18.28L4.63 17.89C5.02 17.5 5.65 17.5 6.04 17.89L6.05 17.9C6.43 18.28 6.44 18.91 6.05 19.3L5.66 19.69Z"
-                      />
-                    </svg>
-                  </div>
-                </div>
+                  <path
+                    d="M5.66 4.2L6.05 4.59C6.44 4.97 6.44 5.61 6.05 5.99L6.04 6C5.65 6.39 5.03 6.39 4.64 6L4.25 5.61C3.86 5.23 3.86 4.6 4.25 4.21L4.26 4.2C4.64 3.82 5.27 3.81 5.66 4.2Z"
+                  />
+                  <path
+                    d="M1.99 10.95H3.01C3.56 10.95 4 11.39 4 11.95V11.96C4 12.51 3.56 12.95 3 12.94H1.99C1.44 12.94 1 12.5 1 11.95V11.94C1 11.39 1.44 10.95 1.99 10.95Z"
+                  />
+                  <path
+                    d="M12 1H12.01C12.56 1 13 1.44 13 1.99V2.96C13 3.51 12.56 3.95 12 3.94H11.99C11.44 3.94 11 3.5 11 2.95V1.99C11 1.44 11.44 1 12 1Z"
+                  />
+                  <path
+                    d="M18.34 4.2C18.73 3.82 19.36 3.82 19.75 4.21C20.14 4.6 20.14 5.22 19.75 5.61L19.36 6C18.98 6.39 18.35 6.39 17.96 6L17.95 5.99C17.56 5.61 17.56 4.98 17.95 4.59L18.34 4.2Z"
+                  />
+                  <path
+                    d="M18.33 19.7L17.94 19.31C17.55 18.92 17.55 18.3 17.95 17.9C18.33 17.52 18.96 17.51 19.35 17.9L19.74 18.29C20.13 18.68 20.13 19.31 19.74 19.7C19.35 20.09 18.72 20.09 18.33 19.7Z"
+                  />
+                  <path
+                    d="M20 11.95V11.94C20 11.39 20.44 10.95 20.99 10.95H22C22.55 10.95 22.99 11.39 22.99 11.94V11.95C22.99 12.5 22.55 12.94 22 12.94H20.99C20.44 12.94 20 12.5 20 11.95Z"
+                  />
+                  <path
+                    clip-rule="evenodd"
+                    d="M6 11.95C6 8.64 8.69 5.95 12 5.95C15.31 5.95 18 8.64 18 11.95C18 15.26 15.31 17.95 12 17.95C8.69 17.95 6 15.26 6 11.95ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                    fill-rule="evenodd"
+                  />
+                  <path
+                    d="M12 22.9H11.99C11.44 22.9 11 22.46 11 21.91V20.95C11 20.4 11.44 19.96 11.99 19.96H12C12.55 19.96 12.99 20.4 12.99 20.95V21.91C12.99 22.46 12.55 22.9 12 22.9Z"
+                  />
+                  <path
+                    d="M5.66 19.69C5.27 20.08 4.64 20.08 4.25 19.69C3.86 19.3 3.86 18.68 4.24 18.28L4.63 17.89C5.02 17.5 5.65 17.5 6.04 17.89L6.05 17.9C6.43 18.28 6.44 18.91 6.05 19.3L5.66 19.69Z"
+                  />
+                </svg>
                 <div
-                  class="c42 c43"
-                  height="100%"
-                  width="100%"
+                  class="c31"
+                  color="text"
+                  font-size="16px"
                 >
-                  <svg
-                    class="c44"
-                    color="backgroundAlt"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5.66 4.2L6.05 4.59C6.44 4.97 6.44 5.61 6.05 5.99L6.04 6C5.65 6.39 5.03 6.39 4.64 6L4.25 5.61C3.86 5.23 3.86 4.6 4.25 4.21L4.26 4.2C4.64 3.82 5.27 3.81 5.66 4.2Z"
-                    />
-                    <path
-                      d="M1.99 10.95H3.01C3.56 10.95 4 11.39 4 11.95V11.96C4 12.51 3.56 12.95 3 12.94H1.99C1.44 12.94 1 12.5 1 11.95V11.94C1 11.39 1.44 10.95 1.99 10.95Z"
-                    />
-                    <path
-                      d="M12 1H12.01C12.56 1 13 1.44 13 1.99V2.96C13 3.51 12.56 3.95 12 3.94H11.99C11.44 3.94 11 3.5 11 2.95V1.99C11 1.44 11.44 1 12 1Z"
-                    />
-                    <path
-                      d="M18.34 4.2C18.73 3.82 19.36 3.82 19.75 4.21C20.14 4.6 20.14 5.22 19.75 5.61L19.36 6C18.98 6.39 18.35 6.39 17.96 6L17.95 5.99C17.56 5.61 17.56 4.98 17.95 4.59L18.34 4.2Z"
-                    />
-                    <path
-                      d="M18.33 19.7L17.94 19.31C17.55 18.92 17.55 18.3 17.95 17.9C18.33 17.52 18.96 17.51 19.35 17.9L19.74 18.29C20.13 18.68 20.13 19.31 19.74 19.7C19.35 20.09 18.72 20.09 18.33 19.7Z"
-                    />
-                    <path
-                      d="M20 11.95V11.94C20 11.39 20.44 10.95 20.99 10.95H22C22.55 10.95 22.99 11.39 22.99 11.94V11.95C22.99 12.5 22.55 12.94 22 12.94H20.99C20.44 12.94 20 12.5 20 11.95Z"
-                    />
-                    <path
-                      clip-rule="evenodd"
-                      d="M6 11.95C6 8.64 8.69 5.95 12 5.95C15.31 5.95 18 8.64 18 11.95C18 15.26 15.31 17.95 12 17.95C8.69 17.95 6 15.26 6 11.95ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                      fill-rule="evenodd"
-                    />
-                    <path
-                      d="M12 22.9H11.99C11.44 22.9 11 22.46 11 21.91V20.95C11 20.4 11.44 19.96 11.99 19.96H12C12.55 19.96 12.99 20.4 12.99 20.95V21.91C12.99 22.46 12.55 22.9 12 22.9Z"
-                    />
-                    <path
-                      d="M5.66 19.69C5.27 20.08 4.64 20.08 4.25 19.69C3.86 19.3 3.86 18.68 4.24 18.28L4.63 17.89C5.02 17.5 5.65 17.5 6.04 17.89L6.05 17.9C6.43 18.28 6.44 18.91 6.05 19.3L5.66 19.69Z"
-                    />
-                  </svg>
-                  <svg
-                    class="c44"
-                    color="backgroundAlt"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M4.1534 13.6089L4.15362 13.61C4.77322 16.8113 7.42207 19.3677 10.647 19.8853L10.6502 19.8858C13.0412 20.2736 15.2625 19.6103 16.9422 18.2833C11.3549 16.2878 7.9748 10.3524 9.26266 4.48816C5.69846 5.77194 3.35817 9.51245 4.1534 13.6089ZM10.0083 2.21054C4.76622 3.2533 1.09895 8.36947 2.19006 13.9901C2.97006 18.0201 6.28006 21.2101 10.3301 21.8601C13.8512 22.4311 17.0955 21.1608 19.2662 18.8587C19.2765 18.8478 19.2866 18.837 19.2968 18.8261C19.4385 18.6745 19.5757 18.5184 19.7079 18.3581C19.7105 18.355 19.713 18.3519 19.7156 18.3487C19.8853 18.1426 20.0469 17.9295 20.2001 17.7101C20.4101 17.4001 20.2401 16.9601 19.8701 16.9201C19.5114 16.8796 19.1602 16.8209 18.817 16.7452C18.7964 16.7406 18.7758 16.736 18.7552 16.7313C18.6676 16.7114 18.5804 16.6903 18.4938 16.6681C18.4919 16.6676 18.4901 16.6672 18.4882 16.6667C13.0234 15.2647 9.72516 9.48006 11.4542 4.03417C11.4549 4.03214 11.4555 4.03012 11.4562 4.0281C11.4875 3.92954 11.5205 3.83109 11.5552 3.73278C11.5565 3.72911 11.5578 3.72543 11.5591 3.72175C11.6768 3.38921 11.8136 3.05829 11.9701 2.73005C12.1301 2.39005 11.8501 2.01005 11.4701 2.03005C11.1954 2.04379 10.924 2.06848 10.6561 2.10368C10.6517 2.10427 10.6472 2.10486 10.6428 2.10545C10.4413 2.13221 10.2418 2.16492 10.0446 2.2034C10.0325 2.20576 10.0204 2.20814 10.0083 2.21054Z"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
+                  Light Mode
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="c22"
+            class="c32"
           >
             <button
-              class="c45"
+              class="c33"
               scale="md"
             >
               <svg
-                class="c46"
-                color="textSubtle"
+                class="c34"
+                color="var(--colors-text)"
                 viewBox="0 0 24 24"
                 width="24px"
                 xmlns="http://www.w3.org/2000/svg"
               >
+                <defs>
+                  <lineargradient
+                    gradientTransform="rotate(0)"
+                    id="gradient"
+                  >
+                    <stop
+                      offset="0%"
+                      stop-color="#30e8bf"
+                    />
+                    <stop
+                      offset="100%"
+                      stop-color="#ff8235"
+                    />
+                  </lineargradient>
+                </defs>
                 <path
                   d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM18.92 8H15.97C15.65 6.75 15.19 5.55 14.59 4.44C16.43 5.07 17.96 6.35 18.92 8ZM12 4.04C12.83 5.24 13.48 6.57 13.91 8H10.09C10.52 6.57 11.17 5.24 12 4.04ZM4.26 14C4.1 13.36 4 12.69 4 12C4 11.31 4.1 10.64 4.26 10H7.64C7.56 10.66 7.5 11.32 7.5 12C7.5 12.68 7.56 13.34 7.64 14H4.26ZM5.08 16H8.03C8.35 17.25 8.81 18.45 9.41 19.56C7.57 18.93 6.04 17.66 5.08 16ZM8.03 8H5.08C6.04 6.34 7.57 5.07 9.41 4.44C8.81 5.55 8.35 6.75 8.03 8ZM12 19.96C11.17 18.76 10.52 17.43 10.09 16H13.91C13.48 17.43 12.83 18.76 12 19.96ZM14.34 14H9.66C9.57 13.34 9.5 12.68 9.5 12C9.5 11.32 9.57 10.65 9.66 10H14.34C14.43 10.65 14.5 11.32 14.5 12C14.5 12.68 14.43 13.34 14.34 14ZM14.59 19.56C15.19 18.45 15.65 17.25 15.97 16H18.92C17.96 17.65 16.43 18.93 14.59 19.56ZM16.36 14C16.44 13.34 16.5 12.68 16.5 12C16.5 11.32 16.44 10.66 16.36 10H19.74C19.9 10.64 20 11.31 20 12C20 12.69 19.9 13.36 19.74 14H16.36Z"
+                  fill="currentColor"
                 />
               </svg>
               <div
-                class="c47"
-                color="textSubtle"
+                class="c13 hover-gradient"
+                color="text"
                 font-size="16px"
-              >
-                EN-US
-              </div>
+              />
             </button>
             <div
-              class="c24 c48"
+              class="c35 c36"
             >
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English0
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English1
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English2
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English3
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English4
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English5
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English6
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English7
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English8
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English9
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English10
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English11
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English12
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English13
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English14
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English15
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English16
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English17
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
                 English18
               </button>
               <button
-                class="c49 c50"
+                class="c37 c38"
                 scale="md"
                 style="min-height: 32px; height: auto;"
               >
@@ -3730,98 +2681,6 @@ exports[`renders correctly 1`] = `
               </button>
             </div>
           </div>
-        </div>
-        <div
-          class="c51 c52"
-          order="1,,2"
-        >
-          <div
-            class="c53"
-          >
-            <a
-              class="c54"
-              href="https://dev.vertotrade.com/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
-              target="_blank"
-            >
-              <svg
-                class="c55"
-                color="text"
-                viewBox="0 0 96 96"
-                width="24px"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="48"
-                  cy="48"
-                  fill="url(#paint0_linear_10493)"
-                  r="48"
-                />
-                <path
-                  clip-rule="evenodd"
-                  d="M47.858 79.875c-9.342-.007-16.866-2.249-22.124-6.275-5.321-4.075-8.144-9.857-8.144-16.4 0-6.304 2.817-10.85 6.004-13.923 2.497-2.408 5.253-3.95 7.172-4.838a99.818 99.818 0 01-1.46-4.876c-.648-2.41-1.284-5.237-1.284-7.309 0-2.452.535-4.915 1.977-6.829 1.523-2.021 3.816-3.104 6.574-3.104 2.156 0 3.986.8 5.42 2.179 1.369 1.318 2.28 3.07 2.91 4.895 1.106 3.208 1.537 7.238 1.657 11.26h2.643c.12-4.022.551-8.052 1.657-11.26.63-1.825 1.541-3.577 2.91-4.895 1.434-1.38 3.264-2.18 5.42-2.18 2.758 0 5.051 1.084 6.574 3.105 1.442 1.914 1.977 4.377 1.977 6.83 0 2.071-.636 4.898-1.284 7.308a99.707 99.707 0 01-1.46 4.876c1.919.888 4.675 2.43 7.172 4.838 3.187 3.073 6.004 7.619 6.004 13.923 0 6.543-2.823 12.325-8.144 16.4-5.257 4.026-12.782 6.268-22.124 6.275h-.047z"
-                  fill="#633001"
-                  fill-rule="evenodd"
-                />
-                <path
-                  d="M36.573 18.653c-4.04 0-5.9 3.045-5.9 7.256 0 3.347 2.16 10.05 3.048 12.66.199.587-.114 1.23-.686 1.458-3.238 1.29-12.794 6.012-12.794 16.828 0 11.393 9.711 19.983 27.619 19.997h.043c17.908-.014 27.619-8.604 27.619-19.997 0-10.816-9.556-15.539-12.794-16.828a1.176 1.176 0 01-.686-1.458c.887-2.61 3.048-9.313 3.048-12.66 0-4.211-1.86-7.256-5.9-7.256-5.816 0-7.266 8.322-7.37 17.254a1.084 1.084 0 01-1.074 1.08h-5.73c-.59 0-1.067-.484-1.074-1.08-.103-8.932-1.553-17.254-7.369-17.254z"
-                  fill="#D1884F"
-                />
-                <path
-                  d="M47.903 73.202c-13.158 0-27.64-7.115-27.662-16.326v.043c0 11.403 9.727 19.997 27.662 19.997s27.661-8.594 27.661-19.997v-.043c-.022 9.21-14.503 16.326-27.661 16.326z"
-                  fill="#FEDC90"
-                />
-                <path
-                  d="M40.592 54.047c0 3.11-1.455 4.73-3.25 4.73-1.794 0-3.249-1.62-3.249-4.73 0-3.11 1.455-4.73 3.25-4.73 1.794 0 3.249 1.62 3.249 4.73zM61.712 54.047c0 3.11-1.455 4.73-3.25 4.73-1.794 0-3.248-1.62-3.248-4.73 0-3.11 1.454-4.73 3.249-4.73 1.794 0 3.25 1.62 3.25 4.73z"
-                  fill="#633001"
-                />
-                <defs>
-                  <lineargradient
-                    gradientUnits="userSpaceOnUse"
-                    id="paint0_linear_10493"
-                    x1="48"
-                    x2="48"
-                    y1="0"
-                    y2="96"
-                  >
-                    <stop
-                      stop-color="#53DEE9"
-                    />
-                    <stop
-                      offset="1"
-                      stop-color="#1FC7D4"
-                    />
-                  </lineargradient>
-                </defs>
-              </svg>
-              <div
-                class="c26"
-                color="textSubtle"
-                font-size="16px"
-              >
-                $0.232
-              </div>
-            </a>
-          </div>
-          <a
-            class="c56"
-            data-theme="light"
-            href="https://dev.vertotrade.com/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
-            scale="sm"
-            target="_blank"
-          >
-            Buy VERTO
-            <svg
-              class="c57"
-              color="backgroundAlt"
-              viewBox="0 0 24 24"
-              width="20px"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 13H16.17L11.29 17.88C10.9 18.27 10.9 18.91 11.29 19.3C11.68 19.69 12.31 19.69 12.7 19.3L19.29 12.71C19.68 12.32 19.68 11.69 19.29 11.3L12.71 4.7C12.32 4.31 11.69 4.31 11.3 4.7C10.91 5.09 10.91 5.72 11.3 6.11L16.17 11H5C4.45 11 4 11.45 4 12C4 12.55 4.45 13 5 13Z"
-              />
-            </svg>
-          </a>
         </div>
       </div>
     </div>
@@ -3846,7 +2705,7 @@ exports[`renders correctly 1`] = `
   flex-shrink: 0;
 }
 
-.c19 {
+.c18 {
   color: var(--colors-failure);
   font-weight: 400;
   line-height: 1.5;
@@ -3854,11 +2713,19 @@ exports[`renders correctly 1`] = `
   font-size: 14px;
 }
 
-.c23 {
+.c18 .textSpan {
+  font-size: 14px;
+}
+
+.c22 {
   color: var(--colors-warning);
   font-weight: 400;
   line-height: 1.5;
   text-transform: uppercase;
+  font-size: 14px;
+}
+
+.c22 .textSpan {
   font-size: 14px;
 }
 
@@ -3867,18 +2734,23 @@ exports[`renders correctly 1`] = `
   font-weight: 400;
   line-height: 1.5;
   font-weight: 400;
-  font-size: 10px;
+  font-size: 16px;
 }
 
-.c26 {
-  width: 100%;
+.c11 .textSpan {
+  font-weight: 400;
+  font-size: 16px;
 }
 
-.c5 {
+.c3 {
   height: 100%;
 }
 
-.c27 {
+.c25 {
+  width: 100%;
+}
+
+.c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3953,19 +2825,19 @@ exports[`renders correctly 1`] = `
   transition: height 0.25s ease;
 }
 
-.c21 {
+.c20 {
   position: relative;
   height: 22px;
   width: 21px;
 }
 
-.c21 div:first-child {
+.c20 div:first-child {
   height: 22px;
   width: 21px;
   z-index: 0;
 }
 
-.c4 {
+.c5 {
   display: block;
   border: 0;
   background: transparent;
@@ -3974,12 +2846,12 @@ exports[`renders correctly 1`] = `
   padding: 4px 12px;
 }
 
-.c4:hover {
+.c5:hover {
   border-radius: 16px;
 }
 
-.c4:hover,
-.c4:hover div {
+.c5:hover,
+.c5:hover div {
   background: var(--colors-tertiary);
 }
 
@@ -4011,14 +2883,14 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
   padding-bottom: 45px;
 }
 
-.c17 {
+.c16 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   border: 0;
   background: transparent;
-  color: var(--colors-textSubtle);
+  color: var(--colors-text);
   cursor: pointer;
   font-weight: 400;
   display: -webkit-box;
@@ -4038,32 +2910,28 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
   pointer-events: inherit;
 }
 
-.c17:is(button) {
+.c16:is(button) {
   cursor: pointer;
 }
 
-.c17:hover:not(:disabled) {
-  background-color: var(--colors-tertiary);
+.c16:hover:not(:disabled) {
+  background-color: var(--colors-vertoBg1);
+  border-radius: 5px;
 }
 
-.c17:active:not(:disabled) {
+.c16:active:not(:disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
   transform: translateY(1px);
 }
 
-.c15:first-child .c16 {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+.c15 {
+  margin: 8px 12px;
+  border-radius: 5px;
 }
 
-.c15:last-child .c16 {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-
-.c25 {
+.c24 {
   border-color: var(--colors-cardBorder);
   border-style: solid;
   border-width: 1px 0 0;
@@ -4085,7 +2953,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
   visibility: hidden;
 }
 
-.c20 {
+.c19 {
   border-radius: var(--radii-default);
   padding: 0 8px;
   border: 2px solid;
@@ -4095,7 +2963,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
   margin-left: 8px;
 }
 
-.c24 {
+.c23 {
   border-radius: var(--radii-default);
   padding: 0 8px;
   border: 2px solid;
@@ -4105,7 +2973,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
   margin-left: 8px;
 }
 
-.c3 {
+.c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4126,7 +2994,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
   background-color: var(--colors-failure);
 }
 
-.c18 {
+.c17 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4142,7 +3010,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
   background-color: var(--colors-failure);
 }
 
-.c22 {
+.c21 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4174,18 +3042,6 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
   .c10 {
     -webkit-filter: none !important;
     filter: none !important;
@@ -4193,34 +3049,6 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
 }
 
 @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-
-}
-
-@supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
-
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
-
-}
-
-@media screen and (min-width:370px) {
-
-}
-
-@media screen and (min-width:576px) {
 
 }
 
@@ -4313,6 +3141,10 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
 }
 
 @media screen and (min-width:852px) {
+
+}
+
+@media screen and (min-width:576px) {
 
 }
 
@@ -4341,7 +3173,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
 }
 
 <div
-    class="reset__1c7dnup0 sprinkles_display_block_xs__pkzlfc0 sprinkles_display_none_md__pkzlfc12"
+    class="reset__f1gqa60 sprinkles_display_block_xs__14v8jp60 sprinkles_display_none_md__14v8jp612"
   >
     <div
       class="c0 c1 c2"
@@ -4350,21 +3182,22 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
         class=""
       >
         <div
-          class=""
+          class="c3"
+          height="100%"
         >
           <div
             class=""
           >
             <span
-              class="c3"
+              class="c4"
             >
               <button
-                class="c4"
+                class="c5"
                 style="opacity: 1;"
                 type="button"
               >
                 <div
-                  class="c5 c6"
+                  class="c3 c6"
                   height="100%"
                 >
                   <div
@@ -4419,7 +3252,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
                   <div
                     class="c11 c12"
                     color="textSubtle"
-                    font-size="10px"
+                    font-size="16px"
                     font-weight="400"
                   >
                     Trade
@@ -4441,7 +3274,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/swap"
             >
               Exchange
@@ -4451,7 +3284,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/liquidity"
             >
               Liquidity
@@ -4463,21 +3296,22 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
         class=""
       >
         <div
-          class=""
+          class="c3"
+          height="100%"
         >
           <div
             class=""
           >
             <span
-              class="c3"
+              class="c4"
             >
               <button
-                class="c4"
+                class="c5"
                 style="opacity: 1;"
                 type="button"
               >
                 <div
-                  class="c5 c6"
+                  class="c3 c6"
                   height="100%"
                 >
                   <div
@@ -4540,7 +3374,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
                   <div
                     class="c11 c12"
                     color="textSubtle"
-                    font-size="10px"
+                    font-size="16px"
                     font-weight="400"
                   >
                     Earn
@@ -4562,7 +3396,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/earn"
             >
               Earn
@@ -4572,7 +3406,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/farms"
             >
               Yield Farms
@@ -4582,7 +3416,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/pools"
             >
               Minting Pools
@@ -4594,21 +3428,22 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
         class=""
       >
         <div
-          class=""
+          class="c3"
+          height="100%"
         >
           <div
             class=""
           >
             <span
-              class="c3"
+              class="c4"
             >
               <button
-                class="c4"
+                class="c5"
                 style="opacity: 1;"
                 type="button"
               >
                 <div
-                  class="c5 c6"
+                  class="c3 c6"
                   height="100%"
                 >
                   <div
@@ -4654,7 +3489,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
                   <div
                     class="c11 c12"
                     color="textSubtle"
-                    font-size="10px"
+                    font-size="16px"
                     font-weight="400"
                   >
                     Win
@@ -4662,7 +3497,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
                 </div>
               </button>
               <span
-                class="c18"
+                class="c17"
                 color="failure"
               />
             </span>
@@ -4676,7 +3511,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               Win
@@ -4686,12 +3521,12 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               Predictions
               <div
-                class="c19 c20"
+                class="c18 c19"
                 color="failure"
                 font-size="14px"
               >
@@ -4703,7 +3538,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               Lottery
@@ -4715,25 +3550,26 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
         class=""
       >
         <div
-          class=""
+          class="c3"
+          height="100%"
         >
           <div
             class=""
           >
             <span
-              class="c3"
+              class="c4"
             >
               <button
-                class="c4"
+                class="c5"
                 style="opacity: 1;"
                 type="button"
               >
                 <div
-                  class="c5 c6"
+                  class="c3 c6"
                   height="100%"
                 >
                   <div
-                    class="c21"
+                    class="c20"
                     height="22px"
                     width="21px"
                   >
@@ -4747,8 +3583,24 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
                         width="20px"
                         xmlns="http://www.w3.org/2000/svg"
                       >
+                        <defs>
+                          <lineargradient
+                            gradientTransform="rotate(0)"
+                            id="gradient"
+                          >
+                            <stop
+                              offset="0%"
+                              stop-color="#30e8bf"
+                            />
+                            <stop
+                              offset="100%"
+                              stop-color="#ff8235"
+                            />
+                          </lineargradient>
+                        </defs>
                         <path
                           d="M6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM18 10C16.9 10 16 10.9 16 12C16 13.1 16.9 14 18 14C19.1 14 20 13.1 20 12C20 10.9 19.1 10 18 10ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z"
+                          fill="url('#gradient')"
                         />
                       </svg>
                     </div>
@@ -4756,13 +3608,13 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
                   <div
                     class="c11 c12"
                     color="textSubtle"
-                    font-size="10px"
+                    font-size="16px"
                     font-weight="400"
                   />
                 </div>
               </button>
               <span
-                class="c22"
+                class="c21"
                 color="warning"
               />
             </span>
@@ -4776,7 +3628,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               Info & Analytics
@@ -4786,12 +3638,12 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               IFO Token Sales
               <div
-                class="c23 c24"
+                class="c22 c23"
                 color="warning"
                 font-size="14px"
               >
@@ -4803,14 +3655,14 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <hr
-              class="c25"
+              class="c24"
             />
           </div>
           <div
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               NFT Collectibles
@@ -4820,7 +3672,7 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               Team Leaderboard
@@ -4830,14 +3682,14 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <hr
-              class="c25"
+              class="c24"
             />
           </div>
           <div
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
             >
               Blog
@@ -4847,12 +3699,12 @@ html[data-useragent*="TokenPocket_iOS"] .c0 {
             class="c15"
           >
             <a
-              class="c16 c17"
+              class="c16"
               href="/"
               target="_blank"
             >
               <div
-                class="c26 c27"
+                class="c25 c26"
                 width="100%"
               >
                 Docs & Guides

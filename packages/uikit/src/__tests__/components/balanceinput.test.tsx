@@ -18,6 +18,11 @@ it("renders correctly", () => {
       text-align: right;
     }
 
+    .c5 .textSpan {
+      font-size: 12px;
+      text-align: right;
+    }
+
     .c1 {
       display: -webkit-box;
       display: -webkit-flex;
@@ -41,44 +46,47 @@ it("renders correctly", () => {
     }
 
     .c3 {
-      background-color: var(--colors-input);
-      border-radius: 16px;
-      box-shadow: var(--shadows-inset);
+      background-color: var(--colors-inputBg);
+      border-radius: 8px;
       color: var(--colors-text);
       display: block;
       font-size: 16px;
-      height: 40px;
+      height: 48px;
       outline: 0;
       padding: 0 16px;
       width: 100%;
-      border: 1px solid var(--colors-inputSecondary);
+      border: 1px solid var(--colors-inputBorder);
     }
 
     .c3::-webkit-input-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3::-moz-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3:-ms-input-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3::placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
+    }
+
+    .c3:hover {
+      border: 1px solid var(--colors-inputBorderHover);
     }
 
     .c3:disabled {
       background-color: var(--colors-backgroundDisabled);
-      box-shadow: none;
       color: var(--colors-textDisabled);
       cursor: not-allowed;
+      border: 1px solid var(--colors-disabledBg);
     }
 
     .c3:focus:not(:disabled) {
-      box-shadow: var(--shadows-focus);
+      border: 1px solid var(--colors-newPrimary);
     }
 
     .c0 {
@@ -137,7 +145,7 @@ it("renders correctly", () => {
                 min="0"
                 pattern="^[0-9]*[.,]?[0-9]{0,18}$"
                 placeholder="0.0"
-                scale="md"
+                scale="lg"
                 value="14"
               />
             </div>
@@ -168,10 +176,19 @@ it("renders correctly with unit prop", () => {
       font-size: 16px;
     }
 
+    .c5 .textSpan {
+      font-size: 16px;
+    }
+
     .c7 {
       color: var(--colors-textSubtle);
       font-weight: 400;
       line-height: 1.5;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .c7 .textSpan {
       font-size: 12px;
       text-align: right;
     }
@@ -199,44 +216,47 @@ it("renders correctly with unit prop", () => {
     }
 
     .c3 {
-      background-color: var(--colors-input);
-      border-radius: 16px;
-      box-shadow: var(--shadows-inset);
+      background-color: var(--colors-inputBg);
+      border-radius: 8px;
       color: var(--colors-text);
       display: block;
       font-size: 16px;
-      height: 40px;
+      height: 48px;
       outline: 0;
       padding: 0 16px;
       width: 100%;
-      border: 1px solid var(--colors-inputSecondary);
+      border: 1px solid var(--colors-inputBorder);
     }
 
     .c3::-webkit-input-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3::-moz-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3:-ms-input-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3::placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
+    }
+
+    .c3:hover {
+      border: 1px solid var(--colors-inputBorderHover);
     }
 
     .c3:disabled {
       background-color: var(--colors-backgroundDisabled);
-      box-shadow: none;
       color: var(--colors-textDisabled);
       cursor: not-allowed;
+      border: 1px solid var(--colors-disabledBg);
     }
 
     .c3:focus:not(:disabled) {
-      box-shadow: var(--shadows-focus);
+      border: 1px solid var(--colors-newPrimary);
     }
 
     .c6 {
@@ -302,7 +322,7 @@ it("renders correctly with unit prop", () => {
                 min="0"
                 pattern="^[0-9]*[.,]?[0-9]{0,18}$"
                 placeholder="0.0"
-                scale="md"
+                scale="lg"
                 value="14"
               />
               <div
@@ -356,10 +376,19 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
       font-size: 16px;
     }
 
+    .c5 .textSpan {
+      font-size: 16px;
+    }
+
     .c7 {
       color: var(--colors-textSubtle);
       font-weight: 400;
       line-height: 1.5;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .c7 .textSpan {
       font-size: 12px;
       text-align: right;
     }
@@ -371,24 +400,17 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
       -ms-flex-align: center;
       align-items: center;
       border: 0;
-      border-radius: 16px;
-      box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
+      border-radius: 1000px;
       cursor: pointer;
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
       display: -ms-inline-flexbox;
       display: inline-flex;
       font-family: inherit;
-      font-size: 16px;
-      font-weight: 600;
       -webkit-box-pack: center;
       -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
-      -webkit-letter-spacing: 0.03em;
-      -moz-letter-spacing: 0.03em;
-      -ms-letter-spacing: 0.03em;
-      letter-spacing: 0.03em;
       line-height: 1;
       opacity: 1;
       outline: 0;
@@ -423,8 +445,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
     }
 
     .c10 {
-      padding: 0;
-      width: 32px;
+      padding: 8px;
     }
 
     .c8 {
@@ -454,44 +475,47 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
     }
 
     .c3 {
-      background-color: var(--colors-input);
-      border-radius: 16px;
-      box-shadow: var(--shadows-inset);
+      background-color: var(--colors-inputBg);
+      border-radius: 8px;
       color: var(--colors-text);
       display: block;
       font-size: 16px;
-      height: 40px;
+      height: 48px;
       outline: 0;
       padding: 0 16px;
       width: 100%;
-      border: 1px solid var(--colors-inputSecondary);
+      border: 1px solid var(--colors-inputBorder);
     }
 
     .c3::-webkit-input-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3::-moz-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3:-ms-input-placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
     }
 
     .c3::placeholder {
-      color: var(--colors-textSubtle);
+      color: var(--colors-placeholder);
+    }
+
+    .c3:hover {
+      border: 1px solid var(--colors-inputBorderHover);
     }
 
     .c3:disabled {
       background-color: var(--colors-backgroundDisabled);
-      box-shadow: none;
       color: var(--colors-textDisabled);
       cursor: not-allowed;
+      border: 1px solid var(--colors-disabledBg);
     }
 
     .c3:focus:not(:disabled) {
-      box-shadow: var(--shadows-focus);
+      border: 1px solid var(--colors-newPrimary);
     }
 
     .c11 {
@@ -568,7 +592,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
                 min="0"
                 pattern="^[0-9]*[.,]?[0-9]{0,18}$"
                 placeholder="0.0"
-                scale="md"
+                scale="lg"
                 value="14"
               />
               <div

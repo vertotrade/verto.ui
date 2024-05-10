@@ -12,11 +12,11 @@ it("renders correctly", () => {
       left: 0px;
       width: 100%;
       height: 100%;
-      background-color: var(--colors-text99);
+      background-color: var(--colors-modalBackgroundOverlay);
       z-index: 20;
       will-change: opacity;
-      -webkit-animation: dHqLl 350ms ease forwards;
-      animation: dHqLl 350ms ease forwards;
+      -webkit-animation: jBEjwp 350ms ease forwards;
+      animation: jBEjwp 350ms ease forwards;
     }
 
     <div

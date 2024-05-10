@@ -8,8 +8,12 @@ it("renders link correctly", () => {
     <DocumentFragment>
       .c0 {
       color: var(--colors-primary);
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .c0 .textSpan {
       font-size: 16px;
     }
 
@@ -25,11 +29,23 @@ it("renders link correctly", () => {
       width: -webkit-fit-content;
       width: -moz-fit-content;
       width: fit-content;
+      padding: 0;
+      border-radius: 25px;
+      -webkit-transition: background-color 0.2s,opacity 0.2s;
+      -webkit-transition: background-color 0.2s,opacity 0.2s;
+      transition: background-color 0.2s,opacity 0.2s;
     }
 
     .c1:hover {
       -webkit-text-decoration: underline;
       text-decoration: underline;
+      background-color: var(--colors-secondaryButtonHoverBg);
+    }
+
+    .c1:active {
+      -webkit-transform: translateY(1px);
+      -ms-transform: translateY(1px);
+      transform: translateY(1px);
     }
 
     <a
@@ -37,6 +53,7 @@ it("renders link correctly", () => {
         color="primary"
         font-size="16px"
         href="https://dev.vertotrade.com"
+        text-decoration="underline"
       >
         Link
       </a>
@@ -52,7 +69,7 @@ it("renders link external link correctly", () => {
       -webkit-align-self: center;
       -ms-flex-item-align: center;
       align-self: center;
-      fill: var(--colors-primary);
+      fill: var(--colors-link);
       -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -60,9 +77,13 @@ it("renders link external link correctly", () => {
     }
 
     .c0 {
-      color: var(--colors-primary);
-      font-weight: 600;
+      color: var(--colors-link);
+      font-weight: 500;
       line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .c0 .textSpan {
       font-size: 16px;
     }
 
@@ -78,11 +99,23 @@ it("renders link external link correctly", () => {
       width: -webkit-fit-content;
       width: -moz-fit-content;
       width: fit-content;
+      padding: 0;
+      border-radius: 25px;
+      -webkit-transition: background-color 0.2s,opacity 0.2s;
+      -webkit-transition: background-color 0.2s,opacity 0.2s;
+      transition: background-color 0.2s,opacity 0.2s;
     }
 
     .c1:hover {
       -webkit-text-decoration: underline;
       text-decoration: underline;
+      background-color: var(--colors-secondaryButtonHoverBg);
+    }
+
+    .c1:active {
+      -webkit-transform: translateY(1px);
+      -ms-transform: translateY(1px);
+      transform: translateY(1px);
     }
 
     @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
@@ -94,16 +127,17 @@ it("renders link external link correctly", () => {
 
     <a
         class="c0 c1"
-        color="primary"
+        color="link"
         font-size="16px"
         href="https://dev.vertotrade.com"
         rel="noreferrer noopener"
         target="_blank"
+        text-decoration="underline"
       >
         Link
         <svg
           class="c2"
-          color="primary"
+          color="link"
           viewBox="0 0 24 24"
           width="20px"
           xmlns="http://www.w3.org/2000/svg"

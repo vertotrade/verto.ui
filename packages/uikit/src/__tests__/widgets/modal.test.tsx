@@ -14,7 +14,7 @@ it("renders correctly", () => {
       -webkit-align-self: center;
       -ms-flex-item-align: center;
       align-self: center;
-      fill: var(--colors-primary);
+      fill: var(--colors-icon);
       -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -22,8 +22,12 @@ it("renders correctly", () => {
 
     .c4 {
       color: var(--colors-text);
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .c4 .textSpan {
       font-size: 16px;
     }
 
@@ -34,33 +38,26 @@ it("renders correctly", () => {
       -ms-flex-align: center;
       align-items: center;
       border: 0;
-      border-radius: 16px;
-      box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
+      border-radius: 1000px;
       cursor: pointer;
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
       display: -ms-inline-flexbox;
       display: inline-flex;
       font-family: inherit;
-      font-size: 16px;
-      font-weight: 600;
       -webkit-box-pack: center;
       -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
-      -webkit-letter-spacing: 0.03em;
-      -moz-letter-spacing: 0.03em;
-      -ms-letter-spacing: 0.03em;
-      letter-spacing: 0.03em;
       line-height: 1;
       opacity: 1;
       outline: 0;
       -webkit-transition: background-color 0.2s,opacity 0.2s;
       transition: background-color 0.2s,opacity 0.2s;
-      height: 48px;
-      padding: 0 24px;
+      height: 32px;
+      padding: 0 16px;
       background-color: transparent;
-      color: var(--colors-primary);
+      color: var(--colors-icon);
       box-shadow: none;
     }
 
@@ -86,12 +83,7 @@ it("renders correctly", () => {
     }
 
     .c7 {
-      padding: 0;
-      width: 48px;
-    }
-
-    .c9 {
-      padding: 24px;
+      padding: 8px;
     }
 
     .c2 {
@@ -102,7 +94,7 @@ it("renders correctly", () => {
     }
 
     .c5 {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 600;
       line-height: 1.1;
     }
@@ -113,12 +105,11 @@ it("renders correctly", () => {
       -ms-flex-align: center;
       align-items: center;
       background: transparent;
-      border-bottom: 1px solid var(--colors-cardBorder);
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      padding: 12px 24px;
+      margin-bottom: 14px;
     }
 
     .c3 {
@@ -131,7 +122,7 @@ it("renders correctly", () => {
       flex: 1;
     }
 
-    .c10 {
+    .c9 {
       -webkit-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column;
@@ -142,18 +133,16 @@ it("renders correctly", () => {
 
     .c0 {
       overflow: hidden;
-      background: var(--colors-backgroundAlt);
+      background: var(--colors-white);
       box-shadow: 0px 20px 36px -8px rgba(14,14,44,0.1),0px 1px 1px rgba(0,0,0,0.05);
-      border: 1px solid var(--colors-cardBorder);
-      border-radius: 32px 32px 0px 0px;
-      width: 100%;
+      border-radius: 16px 16px 0px 0px;
+      width: auto;
       max-height: calc(var(--vh,1vh) * 100);
       z-index: 100;
       position: absolute;
       min-width: 320px;
       bottom: 0;
-      max-width: none !important;
-      min-height: 300px;
+      padding: 30px 24px 24px;
     }
 
     @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {
@@ -163,20 +152,8 @@ it("renders correctly", () => {
       }
     }
 
-    @media screen and (min-width:968px) {
-      .c5 {
-        font-size: 20px;
-      }
-    }
-
     @media screen and (min-width:852px) {
-      .c1 {
-        background: transparent;
-      }
-    }
-
-    @media screen and (min-width:852px) {
-      .c10 {
+      .c9 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -187,16 +164,15 @@ it("renders correctly", () => {
 
     @media screen and (min-width:852px) {
       .c0 {
-        width: auto;
         position: auto;
         bottom: auto;
-        border-radius: 32px;
+        border-radius: 16px;
         max-height: 100vh;
       }
     }
 
     <div
-        class="c0"
+        class="c0 modal"
       >
         <div
           class="c1"
@@ -215,13 +191,13 @@ it("renders correctly", () => {
           <button
             aria-label="Close the dialog"
             class="c6 c7"
-            scale="md"
+            scale="sm"
           >
             <svg
               class="c8"
-              color="primary"
+              color="icon"
               viewBox="0 0 24 24"
-              width="20px"
+              width="24px"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -232,7 +208,7 @@ it("renders correctly", () => {
           </button>
         </div>
         <div
-          class="c9 c2 c10"
+          class="c2 c9"
         >
           body
         </div>

@@ -23,7 +23,7 @@ it("renders correctly", () => {
       transform: translate(-50%,0);
       left: 50%;
       bottom: auto;
-      background-color: var(--colors-backgroundAlt);
+      background-color: var(--colors-background);
       box-shadow: var(--shadows-level1);
       padding: 16px;
       max-height: 0px;
@@ -39,6 +39,18 @@ it("renders correctly", () => {
 
     .c0 {
       position: relative;
+    }
+
+    .c0:hover > *:first-child path {
+      fill: url(#gradient);
+    }
+
+    .c0:hover .hover-gradient {
+      background: var(--colors-gradientGreenOrange);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.75;
     }
 
     .c0:hover .c1,

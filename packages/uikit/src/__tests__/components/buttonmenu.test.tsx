@@ -21,33 +21,43 @@ it("renders correctly", () => {
       -ms-flex-align: center;
       align-items: center;
       border: 0;
-      border-radius: 16px;
-      box-shadow: 0px -1px 0px 0px rgba(14,14,44,0.4) inset;
+      border-radius: 1000px;
       cursor: pointer;
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
       display: -ms-inline-flexbox;
       display: inline-flex;
       font-family: inherit;
-      font-size: 16px;
-      font-weight: 600;
       -webkit-box-pack: center;
       -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
-      -webkit-letter-spacing: 0.03em;
-      -moz-letter-spacing: 0.03em;
-      -ms-letter-spacing: 0.03em;
-      letter-spacing: 0.03em;
       line-height: 1;
       opacity: 1;
       outline: 0;
       -webkit-transition: background-color 0.2s,opacity 0.2s;
       transition: background-color 0.2s,opacity 0.2s;
-      height: 48px;
-      padding: 0 24px;
-      background-color: var(--colors-primary);
-      color: var(--colors-invertedContrast);
+      height: 30px;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 6px 8px;
+      background: transparent;
+      color: var(--colors--secondaryButtonText);
+      font-family: Inter,sans-serif;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-transition: background-position 0.3s;
+      transition: background-position 0.3s;
     }
 
     .c1:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
@@ -71,15 +81,32 @@ it("renders correctly", () => {
       cursor: not-allowed;
     }
 
+    .c1:hover {
+      background: var(--colors-ghostButtonHoverBg);
+      opacity: 1 !important;
+    }
+
+    .c1:disabled {
+      background: var(--colors-disabledBg);
+      color: var(--colors-disabledText);
+    }
+
     .c0 {
-      background-color: var(--colors-tertiary);
-      border-radius: 16px;
+      height: 40px;
+      background-color: var(--colors-inputBg);
+      border-radius: 8px;
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
       display: -ms-inline-flexbox;
       display: inline-flex;
-      border: 1px solid var(--colors-disabled);
+      gap: 4px;
+      border: 1px solid var(--colors-inputBorder);
       width: auto;
+      padding: 4px;
+    }
+
+    .c0:hover {
+      border: 1px solid var(--colors-inputBorderHover);
     }
 
     .c0 > button,
@@ -100,26 +127,47 @@ it("renders correctly", () => {
     }
 
     .c2 {
-      background-color: transparent;
-      color: var(--colors-primary);
+      background-color: var(--colors-backgroundAlt);
+      color: var(--colors-text);
+      border-radius: 4px;
     }
 
     .c2:hover:not(:disabled):not(:active) {
+      background-color: var(--colors-backgroundAlt);
+      color: var(--colors-text);
+    }
+
+    .c2:hover:not(:disabled):not(:active) svg {
+      fill: var(--colors-text);
+    }
+
+    .c3 {
+      background-color: var(--colors-inputBg);
+      color: var(--colors-disabledTextDark);
+      border-radius: 4px;
+    }
+
+    .c3:hover:not(:disabled):not(:active) {
       background-color: transparent;
+      color: var(--colors-text);
+    }
+
+    .c3:hover:not(:disabled):not(:active) svg {
+      fill: var(--colors-text);
     }
 
     <div
         class="c0"
       >
         <button
-          class="c1"
-          scale="md"
+          class="c1 c2"
+          scale="newXs"
         >
           Item 1
         </button>
         <button
-          class="c1 c2"
-          scale="md"
+          class="c1 c3"
+          scale="newXs"
         >
           Item 2
         </button>

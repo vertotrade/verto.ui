@@ -24,11 +24,19 @@ it("renders correctly with statusCode", () => {
       font-size: 16px;
     }
 
+    .c1 .textSpan {
+      font-size: 16px;
+    }
+
     .c4 {
       color: var(--colors-text);
       font-weight: 500;
       line-height: 1.5;
       margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .c4 .textSpan {
       font-size: 16px;
     }
 
@@ -40,10 +48,19 @@ it("renders correctly with statusCode", () => {
       font-size: 16px;
     }
 
+    .c6 .textSpan {
+      font-size: 16px;
+    }
+
     .c8 {
       color: var(--colors-text);
       font-weight: 400;
       line-height: 1.5;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .c8 .textSpan {
       font-weight: 600;
       font-size: 16px;
     }

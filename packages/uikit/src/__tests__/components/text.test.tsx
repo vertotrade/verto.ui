@@ -13,6 +13,10 @@ it("renders correctly", () => {
       font-size: 16px;
     }
 
+    .c0 .textSpan {
+      font-size: 16px;
+    }
+
     <div
         class="c0"
         color="text"

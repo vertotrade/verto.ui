@@ -9,13 +9,13 @@ it("renders correctly", () => {
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c3 {
-      background-color: var(--colors-backgroundAlt);
+      background-color: var(--colors-white);
       border-radius: 50%;
       cursor: pointer;
       height: 26px;
       left: 3px;
       position: absolute;
-      top: 3px;
+      top: 1px;
       -webkit-transition: left 200ms ease-in;
       transition: left 200ms ease-in;
       width: 26px;
@@ -27,8 +27,10 @@ it("renders correctly", () => {
       opacity: 0;
       height: 100%;
       position: absolute;
+      inset: 0;
       width: 100%;
       z-index: 3;
+      margin: 0;
     }
 
     .c1:checked + .c2 {
@@ -48,9 +50,9 @@ it("renders correctly", () => {
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
-      background-color: var(--colors-success);
-      border-radius: 24px;
-      box-shadow: var(--shadows-inset);
+      background-color: var(--colors-newPrimary);
+      border-radius: 10px;
+      border: 1px solid var(--colors-newPrimary);
       cursor: pointer;
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
@@ -87,16 +89,16 @@ it("renders correctly scale sm", () => {
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c3 {
-      background-color: var(--colors-backgroundAlt);
+      background-color: var(--colors-white);
       border-radius: 50%;
       cursor: pointer;
-      height: 16px;
-      left: 2px;
+      height: 12px;
+      left: 4px;
       position: absolute;
-      top: 2px;
+      top: 3px;
       -webkit-transition: left 200ms ease-in;
       transition: left 200ms ease-in;
-      width: 16px;
+      width: 12px;
       z-index: 1;
     }
 
@@ -105,12 +107,14 @@ it("renders correctly scale sm", () => {
       opacity: 0;
       height: 100%;
       position: absolute;
+      inset: 0;
       width: 100%;
       z-index: 3;
+      margin: 0;
     }
 
     .c1:checked + .c2 {
-      left: calc(100% - 18px);
+      left: calc(100% - 16px);
     }
 
     .c1:focus + .c2 {
@@ -126,9 +130,9 @@ it("renders correctly scale sm", () => {
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
-      background-color: var(--colors-success);
-      border-radius: 24px;
-      box-shadow: var(--shadows-inset);
+      background-color: var(--colors-newPrimary);
+      border-radius: 10px;
+      border: 1px solid var(--colors-newPrimary);
       cursor: pointer;
       display: -webkit-inline-box;
       display: -webkit-inline-flex;
@@ -138,7 +142,7 @@ it("renders correctly scale sm", () => {
       position: relative;
       -webkit-transition: background-color 200ms;
       transition: background-color 200ms;
-      width: 36px;
+      width: 40px;
     }
 
     <div

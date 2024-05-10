@@ -8,21 +8,19 @@ it("renders correctly", () => {
     <DocumentFragment>
       .c0 {
       color: var(--colors-text);
-      font-weight: 600;
+      font-weight: 500;
       line-height: 1.5;
       font-size: 16px;
     }
 
-    .c1 {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 1.1;
+    .c0 .textSpan {
+      font-size: 16px;
     }
 
-    @media screen and (min-width:968px) {
-      .c1 {
-        font-size: 20px;
-      }
+    .c1 {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.1;
     }
 
     <h2
