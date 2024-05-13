@@ -109,6 +109,10 @@
     "wagmi": "^0.9.5"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/preset-typescript": "^7.24.1",
     "@next/eslint-plugin-next": "13.0.7",
     "@stylelint/postcss-css-in-js": "^0.37.2",
     "@testing-library/jest-dom": "^5.16.2",
@@ -129,6 +133,7 @@
     "@types/simplemde": "^1.11.7",
     "@types/styled-components": "^5.1.26",
     "@vanilla-extract/babel-plugin": "^1.2.0",
+    "babel-jest": "^29.7.0",
     "eslint": "^7.26.0",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-lodash": "^7.4.0",

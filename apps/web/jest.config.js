@@ -8,6 +8,7 @@ const createJestConfig = nextJest({ dir: './' })
 const customJestConfig = {
   transform: {
     '^.+\\.(js|jsx|ts|tsx|mjs)$': ['babel-jest', { configFile: './babel-test.config.json' }],
+    // '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
   },
   testPathIgnorePatterns: ['<rootDir>/src/config/__tests__/'],
   moduleNameMapper: {
@@ -16,7 +17,7 @@ const customJestConfig = {
     '^@verto/ui/(.*)$': '<rootDir>../../packages/ui/$1',
     '^@verto/ui': '<rootDir>../../packages/ui',
     '^@verto/swap-sdk-core': '<rootDir>../../packages/swap-sdk-core/src',
-    '^@verto/sdk': '<rootDir>../..//packages/swap-sdk/src',
+    '^@verto/sdk': '<rootDir>../../packages/swap-sdk/src',
     '^@verto/localization': ['<rootDir>../../packages/localization/src'],
     '^@verto/hooks': ['<rootDir>../../packages/hooks/src'],
     '^@verto/wagmi/connectors/blocto': ['<rootDir>../../packages/wagmi/connectors/blocto'],
