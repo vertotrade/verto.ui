@@ -95,10 +95,10 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 9,
     v1pid: 9,
-    lpSymbol: 'lqWREBUS-VERTO LP',
+    lpSymbol: 'lqVERTO-VERTO LP',
     lpAddress: '0x8cD18d5c91035AB5490d4859Ce278d46011f8797',
     poolAddress: '0x3502b3c7f73220d6748830badc5d97ad78c0f97b',
-    token: vertoTokens.lqwrebus,
+    token: vertoTokens.lqverto,
     quoteToken: vertoTokens.verto,
     rewardToken: vertoTokens.verto,
   },
