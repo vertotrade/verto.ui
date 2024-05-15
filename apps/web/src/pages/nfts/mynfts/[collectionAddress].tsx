@@ -72,7 +72,7 @@ const MyNFTsPage = () => {
         <Container>
             {totalNftsText && (
               <Text fontSize="16px" color="textSubtle" ml="auto" mt="16px">
-                Your NFTs {totalNftsText}
+                {t(`Your NFTs ${totalNftsText}`)}
               </Text>
             )}
           <Grid
