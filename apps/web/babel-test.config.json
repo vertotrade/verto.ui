@@ -1,4 +1,21 @@
 {
-  "presets": ["next/babel"],
-  "plugins": ["@vanilla-extract/babel-plugin"]
+  "presets": ["next/babel",  "@babel/preset-env",
+  [
+    "@babel/preset-react",
+    {
+      "runtime": "automatic",
+      "typescript": true
+    }
+  ],
+  [
+    "@babel/preset-typescript",
+    {
+      "isTSX": true,
+      "allExtensions": true
+    }
+  ]],
+  "plugins": ["@vanilla-extract/babel-plugin", [
+    "@babel/plugin-transform-modules-commonjs",
+    { "allowTopLevelThis": true }
+  ]]
 }
