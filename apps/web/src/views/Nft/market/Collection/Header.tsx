@@ -61,12 +61,7 @@ const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ collection }) 
           description={collection.description ? <Text color="textSubtle">{t(collection.description)}</Text> : null}>
           <StatBox>
             {totalSupply && <StatBoxItem title={t('Items')} stat={formatNumber(Number(totalSupply), 0, 0)} />}
-            {listedItems && (
-              <StatBoxItem
-                title={t('Items listed')}
-                stat={listedItems ? formatNumber(Number(listedItems), 0, 0) : '0'}
-              />
-            )}
+            {listedItems && <StatBoxItem title={t('Items listed')} stat={formatNumber(Number(listedItems), 0, 0)} />}
             {lowestPrice && <StatBoxItem title="Lowest" stat={`$${formatNumber(lowestPrice, 0, 0)}`} />}
             {volume && <StatBoxItem title="Volume" stat={`$${volume}`} />}
           </StatBox>
