@@ -48,6 +48,10 @@ const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ collection }) 
           label: t('Activity'),
           href: `${nftsBaseUrl}/collections/${collectionAddress}#activity`,
         },
+        {
+          label: t('MyNfts'),
+          href: `${nftsBaseUrl}/mynfts/${collectionAddress}`,
+        },
       ]
     : []
 

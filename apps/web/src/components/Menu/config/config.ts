@@ -136,6 +136,10 @@ const config: (
           href: `${nftsBaseUrl}/collections`,
         },
         // {
+        //   label: t('My NFTs'),
+        //   href: `${nftsBaseUrl}/mynfts`,
+        // },
+        // {
         //   label: t('Activity'),
         //   href: `${nftsBaseUrl}/activity`,
         // },

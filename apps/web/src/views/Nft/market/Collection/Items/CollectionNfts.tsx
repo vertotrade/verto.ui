@@ -35,14 +35,6 @@ const CollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = (
 
   return (
     <>
-      {!isLoading && userNfts.length > 0 ? (
-        <>
-          <Text bold p="16px">
-            {t('My "%symbol%" NFTs', { symbol: collectionName })}
-          </Text>
-          <CollectionNftsGrid nfts={userNfts} />
-        </>
-      ) : null}
       {resultSize ? (
         <Flex p="16px">
           <Text bold>

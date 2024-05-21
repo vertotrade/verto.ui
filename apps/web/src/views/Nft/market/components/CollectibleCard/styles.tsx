@@ -118,7 +118,7 @@ export const StyledCollectibleCard = styled(Card)`
   border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.greyO};
   transition: opacity 200ms;
-
+  margin-top: 10px;
   & > div {
     min-height: 377px;
     border-radius: 16px;

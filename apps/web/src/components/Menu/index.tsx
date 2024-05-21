@@ -19,6 +19,8 @@ const Menu = props => {
   const { isDark, setTheme } = useTheme()
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
+  const router = useRouter()
+  const { collectionAddress } = router.query
 
   const menuItems = useMenuItems()
 
