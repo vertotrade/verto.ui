@@ -2,14 +2,14 @@
 /* eslint-disable no-restricted-syntax */
 import path from 'path'
 import fs from 'fs'
-import farm1111 from '../constants/1111'
+import farm1011 from '../constants/1011'
 import farm3033 from '../constants/3033'
 
-import lpHelpers1111 from '../constants/priceHelperLps/1111'
+import lpHelpers1011 from '../constants/priceHelperLps/1011'
 import lpHelpers3033 from '../constants/priceHelperLps/3033'
 
 const chains = [
-  [1111, farm1111, lpHelpers1111],
+  [1011, farm1011, lpHelpers1011],
   [3033, farm3033, lpHelpers3033],
 ]
 

@@ -4,7 +4,7 @@ import PoolsEthereumPriceHelper from './pools/1'
 import PoolsGoerliPriceHelper from './pools/5'
 import PoolsBscPriceHelper from './pools/56'
 import PoolsBscTestnetPriceHelper from './pools/97'
-import PoolsRebusPriceHelper from './pools/1111'
+import PoolsRebusPriceHelper from './pools/1011'
 import PoolsRebusTestnetPriceHelper from './pools/3033'
 
 export { getFarmsPriceHelperLpFiles }

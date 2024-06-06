@@ -1,5 +1,5 @@
 export const rebus = {
-  id: 1111,
+  id: 1011,
   name: 'Rebus',
   network: 'Rebus',
   nativeCurrency: {

@@ -6,7 +6,7 @@ export enum ChainId {
   GOERLI = 5,
   BSC = 56,
   BSC_TESTNET = 97,
-  REBUS = 1111,
+  REBUS = 1011,
   REBUS_TESTNET = 3033,
 }
 
