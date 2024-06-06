@@ -1,17 +1,17 @@
 export const rebus = {
   id: 1011,
-  name: 'Rebus',
-  network: 'Rebus',
+  name: 'Rebus Mainnet',
+  network: 'Rebus Mainnet',
   nativeCurrency: {
     decimals: 18,
     name: 'REBUS',
     symbol: 'REBUS',
   },
   rpcUrls: {
-    default: { http: ['https://api.rebuschain.com/rpc'] },
+    default: { http: ['https://apievm.rebuschain.com/rpc'] },
   },
   blockExplorers: {
-    default: { name: 'Rebus', url: 'https://evm.rebuschain.com' },
+    default: { name: 'Rebus Mainnet', url: 'https://evm.rebuschain.com' },
   },
   testnet: false,
 }
