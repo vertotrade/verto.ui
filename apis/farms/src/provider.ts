@@ -29,7 +29,7 @@ export const rebusProvider = new StaticJsonRpcProvider(
     url: 'https://api.vertotrade.com/rpc',
     skipFetchSetup: true,
   },
-  1111,
+  1011,
 )
 
 export const rebusTestnetProvider = new StaticJsonRpcProvider(

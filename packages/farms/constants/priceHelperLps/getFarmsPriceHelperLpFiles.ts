@@ -1,5 +1,5 @@
 import { ChainId } from '@verto/sdk'
-import FarmsRebusPriceHelper from './1111'
+import FarmsRebusPriceHelper from './1011'
 import FarmsRebusTestnetPriceHelper from './3033'
 
 export const getFarmsPriceHelperLpFiles = (chainId: ChainId) => {

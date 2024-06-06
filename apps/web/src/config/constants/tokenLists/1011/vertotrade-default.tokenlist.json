@@ -12,7 +12,7 @@
       "name": "WRebus Token",
       "symbol": "WREBUS",
       "address": "0xD9d1b3814d3c5741C9939Ce232ac8075031D959C",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 18,
       "logoURI": "/images/tokens/rebus.png"
     },
@@ -20,7 +20,7 @@
       "name": "lqWRebus Token",
       "symbol": "lqWREBUS",
       "address": "0x00ead699Afc6da26B1e51c57E56f113aA4e229CD",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 18,
       "logoURI": "/images/tokens/0x00ead699Afc6da26B1e51c57E56f113aA4e229CD.png"
     },
@@ -28,7 +28,7 @@
       "name": "Ludus Token",
       "symbol": "LUDUS",
       "address": "0x80b5a32E4F032B2a058b4F29EC95EEfEEB87aDcd",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 6,
       "logoURI": "/images/tokens/ludus.png"
     },
@@ -36,7 +36,7 @@
       "name": "Verto Token",
       "symbol": "VERTO",
       "address": "0x088D38759c2D67eD0DA54d52AEf8d5Fb748Ef70E",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 18,
       "logoURI": "/images/tokens/0x376Ffa8AA69593A4E4932b5A22C46a24F37383c5.png"
     },
@@ -44,7 +44,7 @@
       "name": "lqVerto Token",
       "symbol": "lqVERTO",
       "address": "0xa3d6E8aE944B53C3305f88F8b843Dfa5fdd20a9b",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 18,
       "logoURI": "/images/tokens/0xa3d6E8aE944B53C3305f88F8b843Dfa5fdd20a9b.png"
     },
@@ -52,7 +52,7 @@
       "name": "COM Token",
       "symbol": "COM",
       "address": "0x1D54EcB8583Ca25895c512A8308389fFD581F9c9",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 6,
       "logoURI": "/images/tokens/0x1D54EcB8583Ca25895c512A8308389fFD581F9c9.svg"
     },
@@ -60,7 +60,7 @@
       "name": "Axelar Wrapped USDC",
       "symbol": "axlUSDC",
       "address": "0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 6,
       "logoURI": "/images/tokens/0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75.svg"
     },
@@ -68,7 +68,7 @@
       "name": "Axelar Wrapped WBTC",
       "symbol": "axlWBTC",
       "address": "0x5FD55A1B9FC24967C4dB09C513C3BA0DFa7FF687",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 8,
       "logoURI": "/images/tokens/0x5FD55A1B9FC24967C4dB09C513C3BA0DFa7FF687.svg"
     },
@@ -76,7 +76,7 @@
       "name": "Axelar Wrapped WETH",
       "symbol": "axlWETH",
       "address": "0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265",
-      "chainId": 1111,
+      "chainId": 1011,
       "decimals": 18,
       "logoURI": "/images/tokens/0xecEEEfCEE421D8062EF8d6b4D814efe4dc898265.png"
     }

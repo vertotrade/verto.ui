@@ -12,7 +12,7 @@ export const getProvider = ({ chainId }: { chainId?: number }): any => {
       return bscTestnetProvider
     case 5:
       return goerliProvider
-    case 1111:
+    case 1011:
       return rebusProvider
     case 3033:
       return rebusTestnetProvider
