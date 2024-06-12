@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useContext, useEffect } from "react";
 import get from "lodash/get";
 import { Context } from "./ModalContext";
@@ -5,7 +6,7 @@ import { Handler } from "./types";
 
 declare global {
   interface Window {
-    SwipeluxWidgetInstance: any;
+    SwipeluxWidgetInstance?: any;
   }
 }
 
