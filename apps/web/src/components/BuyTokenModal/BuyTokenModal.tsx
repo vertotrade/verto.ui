@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { ModalContainer, ModalHeader, ModalTitle, IconButton, CloseIcon } from '@verto/uikit'
+import React, { useEffect } from 'react'
+import { ModalContainer } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import styled from 'styled-components'
 
@@ -13,7 +13,7 @@ const StyledModalBody = styled.div`
   }
 `
 
-const BuyTokenModal: React.FC<React.PropsWithChildren> = ({ onDismiss }) => {
+const BuyTokenModal: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -39,11 +39,6 @@ const BuyTokenModal: React.FC<React.PropsWithChildren> = ({ onDismiss }) => {
 
   return (
     <ModalContainer style={{ padding: '0px' }} title={t('Welcome!')} $minWidth="360px" top="200px">
-      {/* <ModalHeader style={{ backgroundColor: 'white', margin: '0px' }}>
-        <IconButton variant="text" onClick={}>
-          <CloseIcon width="24px" color="text" />
-        </IconButton>
-      </ModalHeader> */}
       <StyledModalBody id="swipelux-payment-container" />
     </ModalContainer>
   )

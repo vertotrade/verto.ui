@@ -3,6 +3,12 @@ import get from "lodash/get";
 import { Context } from "./ModalContext";
 import { Handler } from "./types";
 
+declare global {
+  interface Window {
+    SwipeluxWidgetInstance: any;
+  }
+}
+
 const useModal = (
   modal: React.ReactNode,
   closeOnOverlayClick = true,
