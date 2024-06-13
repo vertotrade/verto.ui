@@ -1,10 +1,12 @@
 import { useTranslation } from '@verto/localization'
 import { Currency } from '@verto/sdk'
-import { BottomDrawer, Flex, Modal, ModalV2, useMatchBreakpoints } from '@verto/uikit'
+import { BottomDrawer, Flex, Modal, ModalV2, useMatchBreakpoints, Button, useModal } from '@verto/uikit'
 import { AppBody } from 'components/App'
-import { useContext } from 'react'
+import { useContext, useCallback } from 'react'
 
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
+import { useAccount } from 'wagmi'
+import { AtomBox } from '@verto/ui/components/AtomBox'
 import { useCurrency } from '../../hooks/Tokens'
 import { Field } from '../../state/swap/actions'
 import { useSingleTokenSwapInfo, useSwapState } from '../../state/swap/hooks'
@@ -14,6 +16,7 @@ import HotTokenList from './components/HotTokenList'
 import { SmartSwapForm } from './SmartSwap'
 import { StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
 import { SwapFeaturesContext } from './SwapFeaturesContext'
+import BuyTokenModal from '../../components/BuyTokenModal/BuyTokenModal'
 
 export default function Swap() {
   const { isMobile } = useMatchBreakpoints()
@@ -21,7 +24,7 @@ export default function Swap() {
     useContext(SwapFeaturesContext)
   const [isSwapHotTokenDisplay, setIsSwapHotTokenDisplay] = useSwapHotTokenDisplay()
   const { t } = useTranslation()
-
+  const { address: account } = useAccount()
   // swap state & price data
   const {
     [Field.INPUT]: { currencyId: inputCurrencyId },
@@ -37,6 +40,10 @@ export default function Swap() {
   const isWrappingSwap = [inputCurrency?.symbol, outputCurrency?.symbol].includes('REBUS')
 
   const singleTokenPrice = useSingleTokenSwapInfo(inputCurrencyId, inputCurrency, outputCurrencyId, outputCurrency)
+  const [onPresentBuyToken] = useModal(<BuyTokenModal />)
+  const handleBuyToken = useCallback((): void => {
+    onPresentBuyToken()
+  }, [onPresentBuyToken])
 
   return (
     <Page removePadding={isChartExpanded} hideFooterOnDesktop={isChartExpanded}>
@@ -92,6 +99,13 @@ export default function Swap() {
             <StyledInputCurrencyWrapper mt="0">
               <AppBody>
                 <SmartSwapForm />
+                {account && (
+                  <AtomBox display={{ xs: 'none', md: 'flex' }} height="100%" alignItems="center">
+                    <Button variant="secondary" width="100%" minHeight={48} mt="2" onClick={handleBuyToken}>
+                      {t('Buy Tokens')}
+                    </Button>
+                  </AtomBox>
+                )}
               </AppBody>
             </StyledInputCurrencyWrapper>
           </StyledSwapContainer>
