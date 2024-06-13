@@ -34,6 +34,9 @@ const config = {
   compiler: {
     styledComponents: true,
   },
+  env: {
+    NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY,
+  },
   output: 'standalone',
   assetPrefix: process.env.NEXT_ASSETS_URL,
   experimental: {

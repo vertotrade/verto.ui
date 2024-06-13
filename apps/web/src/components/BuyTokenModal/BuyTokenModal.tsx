@@ -20,7 +20,7 @@ const BuyTokenModal: React.FC<React.PropsWithChildren> = () => {
     const swipeluxContainer = document.getElementById('swipelux-payment-container')
     if (swipeluxContainer) {
       const settings = {
-        apiKey: '5fa9d5b3-4ccd-4e25-b5dd-735df3a8d8da',
+        apiKey: process.env.NEXT_PUBLIC_API_KEY || '',
       }
 
       try {
