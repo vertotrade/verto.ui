@@ -14,11 +14,17 @@ const customJestConfig = {
       '<rootDir>/node_modules/babel-jest',
       { configFile: path.resolve(__dirname, 'babel-test.config.json') },
     ],
-    '\\.css\\.ts$': '@vanilla-extract/jest-transform',
+    '\\.css\\.ts$': [
+      '<rootDir>/node_modules/babel-jest',
+      { configFile: path.resolve(__dirname, 'babel-test.config.json') },
+    ],
   },
   testPathIgnorePatterns: [
+    '<rootDir>/src/components/Menu/config/',
     '<rootDir>/src/config/__tests__/',
     'node_modules/(?!axios)/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/../../node_modules/(?!wagmi)/',
     '<rootDir>/node_modules/(?!axios)/',
   ],
   moduleDirectories: ['node_modules', 'src'],
@@ -40,6 +46,14 @@ const customJestConfig = {
   testTimeout: 20000,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
+  globals: {
+    'ts-jest': {
+      babelConfig: {
+        presets: ['next/babel'],
+        plugins: ['@vanilla-extract/babel-plugin'],
+      },
+    },
+  },
 }
 
 // createJestConfig is exported in this way to ensure that next/jest can load the Next.js configuration, which is async

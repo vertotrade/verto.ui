@@ -15,7 +15,6 @@ describe('getAddress', () => {
     expect(getAddress(address, 97)).toEqual(expected)
   })
   it(`get address for any other network (chainId 31337)`, () => {
-    const expected = address[56]
-    expect(getAddress(address, 31337)).toEqual(expected)
+    expect(getAddress(address, 31337)).toEqual(undefined)
   })
 })

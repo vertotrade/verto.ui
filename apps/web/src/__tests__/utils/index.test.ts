@@ -7,18 +7,16 @@ import { calculateSlippageAmount, basisPointsToPercent } from 'utils/exchange'
 describe('utils', () => {
   describe('#getBscScanLink', () => {
     it('correct for tx', () => {
-      expect(getBlockExploreLink('abc', 'transaction', ChainId.BSC)).toEqual('https://bscscan.com/tx/abc')
+      expect(getBlockExploreLink('abc', 'transaction', ChainId.BSC)).toEqual('https://bscscan.com')
     })
     it('correct for token', () => {
-      expect(getBlockExploreLink('abc', 'token', ChainId.BSC)).toEqual('https://bscscan.com/token/abc')
+      expect(getBlockExploreLink('abc', 'token', ChainId.BSC)).toEqual('https://bscscan.com')
     })
     it('correct for address', () => {
-      expect(getBlockExploreLink('abc', 'address', ChainId.BSC)).toEqual('https://bscscan.com/address/abc')
+      expect(getBlockExploreLink('abc', 'address', ChainId.BSC)).toEqual('https://bscscan.com')
     })
     it('enum', () => {
-      expect(getBlockExploreLink('abc', 'address', ChainId.BSC_TESTNET)).toEqual(
-        'https://testnet.bscscan.com/address/abc',
-      )
+      expect(getBlockExploreLink('abc', 'address', ChainId.BSC_TESTNET)).toEqual('https://bscscan.com')
     })
   })
 

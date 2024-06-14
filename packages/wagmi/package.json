@@ -5,6 +5,7 @@
   "description": "wagmi adaptor for vertotrade",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
+  "type": "module",
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",

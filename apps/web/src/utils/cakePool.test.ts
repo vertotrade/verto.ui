@@ -13,7 +13,7 @@ describe('cakePool', () => {
   ])('%s should be equal to SC: %s', async (method, result) => {
     const rebusVault = getRebusVaultV2Contract()
     const got = await rebusVault[method]()
-    expect(got.eq(result)).toBe(true)
+    expect(got.address(result)).toBe(true)
   })
   const NOW = new Date('2022-01-01').getTime()
 

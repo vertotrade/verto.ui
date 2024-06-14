@@ -9,8 +9,6 @@ const withBundleAnalyzer = BundleAnalyzer({
 
 // const withTM = NextTranspileModules([])
 
-const withVanillaExtract = createVanillaExtractPlugin()
-
 const sentryWebpackPluginOptions =
   process.env.VERCEL_ENV === 'production'
     ? {
@@ -179,4 +177,4 @@ const config = {
   },
 }
 
-export default withBundleAnalyzer(withVanillaExtract(withSentryConfig(config, sentryWebpackPluginOptions)))
+export default withBundleAnalyzer(createVanillaExtractPlugin(withSentryConfig(config, sentryWebpackPluginOptions)))
