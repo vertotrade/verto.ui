@@ -1,7 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useContext, useEffect } from "react";
 import get from "lodash/get";
 import { Context } from "./ModalContext";
 import { Handler } from "./types";
+
+declare global {
+  interface Window {
+    SwipeluxWidgetInstance?: any;
+  }
+}
 
 const useModal = (
   modal: React.ReactNode,
@@ -9,11 +16,13 @@ const useModal = (
   updateOnPropsChange = false,
   modalId = "defaultNodeId"
 ): [Handler, Handler] => {
+  if (closeOnOverlayClick === true) {
+    window.SwipeluxWidgetInstance = undefined;
+  }
   const { isOpen, nodeId, modalNode, setModalNode, onPresent, onDismiss } = useContext(Context);
   const onPresentCallback = useCallback(() => {
     onPresent(modal, modalId, closeOnOverlayClick);
   }, [modal, modalId, onPresent, closeOnOverlayClick]);
-
   // Updates the "modal" component if props are changed
   // Use carefully since it might result in unnecessary rerenders
   // Typically if modal is static there is no need for updates, use when you expect props to change

@@ -1,8 +1,12 @@
+/* eslint-disable import/extensions */
 import { useIsMounted } from "@verto/hooks";
 import { AtomBox } from "@verto/ui/components/AtomBox";
 import throttle from "lodash/throttle";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import styled from "styled-components";
+import { Button, useModal } from "@verto/uikit";
+import { useTranslation } from "@verto/localization";
+import { useAccount } from "wagmi";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
 import Flex from "../../components/Box/Flex";
@@ -16,6 +20,7 @@ import Logo from "./components/Logo";
 import { MENU_HEIGHT, MOBILE_MENU_HEIGHT, TOP_BANNER_HEIGHT, TOP_BANNER_HEIGHT_MOBILE } from "./config";
 import { MenuContext } from "./context";
 import { NavProps } from "./types";
+import BuyTokenModal from "../../../../../apps/web/src/components/BuyTokenModal/BuyTokenModal";
 
 const Wrapper = styled.div`
   position: relative;
@@ -91,11 +96,11 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   const isMounted = useIsMounted();
   const [showMenu, setShowMenu] = useState(true);
   const refPrevOffset = useRef(typeof window === "undefined" ? 0 : window.pageYOffset);
-
+  const { address: account } = useAccount();
   const topBannerHeight = isMobile ? TOP_BANNER_HEIGHT_MOBILE : TOP_BANNER_HEIGHT;
 
   const totalTopMenuHeight = isMounted && banner ? MENU_HEIGHT + topBannerHeight : MENU_HEIGHT;
-
+  const { t } = useTranslation();
   useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.pageYOffset;
@@ -131,7 +136,13 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   const subLinksWithoutMobile = subLinks?.filter((subLink) => !subLink.isMobileOnly);
   const subLinksMobileOnly = subLinks?.filter((subLink) => subLink.isMobileOnly);
 
+  const [onPresentBuyToken] = useModal(<BuyTokenModal />);
+
   const providerValue = useMemo(() => ({ linkComponent }), [linkComponent]);
+
+  const handleBuyToken = useCallback((): void => {
+    onPresentBuyToken();
+  }, [onPresentBuyToken]);
 
   return (
     <MenuContext.Provider value={providerValue}>
@@ -157,6 +168,13 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                     ml="24px"
                   />
                 </AtomBox>
+                {account && (
+                  <AtomBox display={{ xs: "none", md: "flex" }} height="100%" alignItems="center">
+                    <Button variant="secondary" width="100%" minHeight={48} ml="2" onClick={handleBuyToken}>
+                      {t("Buy Tokens")}
+                    </Button>
+                  </AtomBox>
+                )}
               </Flex>
               <Flex alignItems="center" height="100%">
                 {/* <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>

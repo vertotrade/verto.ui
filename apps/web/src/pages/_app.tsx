@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import '@verto/ui/css/reset.css'
 import { ResetCSS, ScrollToTopButtonV2, ToastListener } from '@verto/uikit'
 import BigNumber from 'bignumber.js'
@@ -94,9 +95,9 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
           <script src="https://public.bnbstatic.com/static/js/mp-webview-sdk/webview-v1.0.0.min.js" id="mp-webview" />
         )
         */}
-
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src={`/__ENV.js?timestamp=${Date.now()}`} />
+        <script src="https://app.swipelux.com/sdk.js" />
+        <script src="https://app.demo.swipelux.com/sdk.js" />
       </Head>
 
       <Providers store={store}>
