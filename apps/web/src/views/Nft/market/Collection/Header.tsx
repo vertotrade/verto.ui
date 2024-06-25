@@ -64,10 +64,10 @@ const Header: React.FC<React.PropsWithChildren<HeaderProps>> = ({ collection }) 
           title={collection.name}
           description={collection.description ? <Text color="textSubtle">{t(collection.description)}</Text> : null}>
           <StatBox>
-            <StatBoxItem title={t('Items')} stat={formatNumber(Number(totalSupply), 0, 0)} />
-            <StatBoxItem title={t('Items listed')} stat={listedItems ? formatNumber(Number(listedItems), 0, 0) : '0'} />
-            <StatBoxItem title="Lowest" stat={`$${formatNumber(lowestPrice, 0, 0)}`} />
-            <StatBoxItem title="Volume" stat={`$${volume}`} />
+            {totalSupply && <StatBoxItem title={t('Items')} stat={formatNumber(Number(totalSupply), 0, 0)} />}
+            {listedItems && <StatBoxItem title={t('Items listed')} stat={formatNumber(Number(listedItems), 0, 0)} />}
+            {lowestPrice && <StatBoxItem title="Lowest" stat={`$${formatNumber(lowestPrice, 0, 0)}`} />}
+            {volume && <StatBoxItem title="Volume" stat={`$${volume}`} />}
           </StatBox>
         </MarketPageTitle>
       </PageHeader>
