@@ -16,7 +16,6 @@ const config = {
     styledComponents: true,
   },
   output: 'standalone',
-  assetPrefix: process.env.NEXT_ASSETS_URL,
   experimental: {
     scrollRestoration: true,
     transpilePackages: [
