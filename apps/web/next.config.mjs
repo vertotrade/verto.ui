@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { withSentryConfig } from '@sentry/nextjs'
 import BundleAnalyzer from '@next/bundle-analyzer'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 
@@ -10,24 +9,6 @@ const withBundleAnalyzer = BundleAnalyzer({
 // const withTM = NextTranspileModules([])
 
 const withVanillaExtract = createVanillaExtractPlugin()
-
-const sentryWebpackPluginOptions =
-  process.env.VERCEL_ENV === 'production'
-    ? {
-        // Additional config options for the Sentry Webpack plugin. Keep in mind that
-        // the following options are set automatically, and overriding them is not
-        // recommended:
-        //   release, url, org, project, authToken, configFile, stripPrefix,
-        //   urlPrefix, include, ignore
-        silent: false, // Logging when deploying to check if there is any problem
-        validate: true,
-        // For all available options, see:
-        // https://github.com/getsentry/sentry-webpack-plugin#options.
-      }
-    : {
-        silent: true, // Suppresses all logs
-        dryRun: !process.env.SENTRY_AUTH_TOKEN,
-      }
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -167,16 +148,9 @@ const config = {
       },
     ]
   },
-  webpack: (webpackConfig, { webpack }) => {
-    // tree shake sentry tracing
-    webpackConfig.plugins.push(
-      new webpack.DefinePlugin({
-        __SENTRY_DEBUG__: false,
-        __SENTRY_TRACING__: false,
-      }),
-    )
+  webpack: webpackConfig => {
     return webpackConfig
   },
 }
 
-export default withBundleAnalyzer(withVanillaExtract(withSentryConfig(config, sentryWebpackPluginOptions)))
+export default withBundleAnalyzer(withVanillaExtract(config))

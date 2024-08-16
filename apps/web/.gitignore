@@ -31,10 +31,6 @@ debug.log*
 
 **/config/abi/types
 
-
-# Sentry
-.sentryclirc
-
 # turbo
 .turbo
 .vercel

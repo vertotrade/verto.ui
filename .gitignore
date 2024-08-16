@@ -37,9 +37,6 @@ debug.log*
 
 **/apps/web/config/abi/types
 
-# Sentry
-.sentryclirc
-
 # turbo
 .turbo
 .vercel
