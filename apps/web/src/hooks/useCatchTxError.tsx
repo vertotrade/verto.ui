@@ -4,7 +4,6 @@ import { useToast } from '@verto/uikit'
 import { TransactionReceipt, TransactionResponse } from '@ethersproject/providers'
 import { ToastDescriptionWithTx } from 'components/Toast'
 
-import { logError, isUserRejected } from 'utils/sentry'
 import useActiveWeb3React from './useActiveWeb3React'
 
 export type TxResponse = TransactionResponse | null
@@ -38,8 +37,6 @@ export default function useCatchTxError(): CatchTxErrorReturn {
 
   const handleNormalError = useCallback(
     (error, tx?: TxResponse) => {
-      logError(error)
-
       if (tx) {
         toastError(
           t('Error'),
@@ -74,55 +71,51 @@ export default function useCatchTxError(): CatchTxErrorReturn {
 
         return receipt
       } catch (error: any) {
-        if (!isUserRejected(error)) {
-          if (!tx) {
-            handleNormalError(error)
-          } else {
-            provider
-              .call(tx, tx.blockNumber)
-              .then(() => {
+        if (!tx) {
+          handleNormalError(error)
+        } else {
+          provider
+            .call(tx, tx.blockNumber)
+            .then(() => {
+              handleNormalError(error, tx)
+            })
+            .catch((err: any) => {
+              if (isGasEstimationError(err)) {
                 handleNormalError(error, tx)
-              })
-              .catch((err: any) => {
-                if (isGasEstimationError(err)) {
-                  handleNormalError(error, tx)
+              } else {
+                let recursiveErr = err
+
+                let reason: string | undefined
+
+                // for MetaMask
+                if (recursiveErr?.data?.message) {
+                  reason = recursiveErr?.data?.message
                 } else {
-                  logError(err)
-
-                  let recursiveErr = err
-
-                  let reason: string | undefined
-
-                  // for MetaMask
-                  if (recursiveErr?.data?.message) {
-                    reason = recursiveErr?.data?.message
-                  } else {
-                    // for other wallets
-                    // Reference
-                    // https://github.com/Uniswap/interface/blob/ac962fb00d457bc2c4f59432d7d6d7741443dfea/src/hooks/useSwapCallback.tsx#L216-L222
-                    while (recursiveErr) {
-                      reason = recursiveErr.reason ?? recursiveErr.message ?? reason
-                      recursiveErr = recursiveErr.error ?? recursiveErr.data?.originalError
-                    }
+                  // for other wallets
+                  // Reference
+                  // https://github.com/Uniswap/interface/blob/ac962fb00d457bc2c4f59432d7d6d7741443dfea/src/hooks/useSwapCallback.tsx#L216-L222
+                  while (recursiveErr) {
+                    reason = recursiveErr.reason ?? recursiveErr.message ?? reason
+                    recursiveErr = recursiveErr.error ?? recursiveErr.data?.originalError
                   }
-
-                  const REVERT_STR = 'execution reverted: '
-                  const indexInfo = reason?.indexOf(REVERT_STR)
-                  const isRevertedError = indexInfo >= 0
-
-                  if (isRevertedError) reason = reason.substring(indexInfo + REVERT_STR.length)
-
-                  toastError(
-                    t('Failed'),
-                    <ToastDescriptionWithTx txHash={tx.hash}>
-                      {isRevertedError
-                        ? t('Transaction failed with error: %reason%', { reason })
-                        : t('Transaction failed. For detailed error message:')}
-                    </ToastDescriptionWithTx>,
-                  )
                 }
-              })
-          }
+
+                const REVERT_STR = 'execution reverted: '
+                const indexInfo = reason?.indexOf(REVERT_STR)
+                const isRevertedError = indexInfo >= 0
+
+                if (isRevertedError) reason = reason.substring(indexInfo + REVERT_STR.length)
+
+                toastError(
+                  t('Failed'),
+                  <ToastDescriptionWithTx txHash={tx.hash}>
+                    {isRevertedError
+                      ? t('Transaction failed with error: %reason%', { reason })
+                      : t('Transaction failed. For detailed error message:')}
+                  </ToastDescriptionWithTx>,
+                )
+              }
+            })
         }
       } finally {
         setLoading(false)
@@ -151,55 +144,51 @@ export default function useCatchTxError(): CatchTxErrorReturn {
 
         return tx
       } catch (error: any) {
-        if (!isUserRejected(error)) {
-          if (!tx) {
-            handleNormalError(error)
-          } else {
-            provider
-              .call(tx, tx.blockNumber)
-              .then(() => {
+        if (!tx) {
+          handleNormalError(error)
+        } else {
+          provider
+            .call(tx, tx.blockNumber)
+            .then(() => {
+              handleNormalError(error, tx)
+            })
+            .catch((err: any) => {
+              if (isGasEstimationError(err)) {
                 handleNormalError(error, tx)
-              })
-              .catch((err: any) => {
-                if (isGasEstimationError(err)) {
-                  handleNormalError(error, tx)
+              } else {
+                let recursiveErr = err
+
+                let reason: string | undefined
+
+                // for MetaMask
+                if (recursiveErr?.data?.message) {
+                  reason = recursiveErr?.data?.message
                 } else {
-                  logError(err)
-
-                  let recursiveErr = err
-
-                  let reason: string | undefined
-
-                  // for MetaMask
-                  if (recursiveErr?.data?.message) {
-                    reason = recursiveErr?.data?.message
-                  } else {
-                    // for other wallets
-                    // Reference
-                    // https://github.com/Uniswap/interface/blob/ac962fb00d457bc2c4f59432d7d6d7741443dfea/src/hooks/useSwapCallback.tsx#L216-L222
-                    while (recursiveErr) {
-                      reason = recursiveErr.reason ?? recursiveErr.message ?? reason
-                      recursiveErr = recursiveErr.error ?? recursiveErr.data?.originalError
-                    }
+                  // for other wallets
+                  // Reference
+                  // https://github.com/Uniswap/interface/blob/ac962fb00d457bc2c4f59432d7d6d7741443dfea/src/hooks/useSwapCallback.tsx#L216-L222
+                  while (recursiveErr) {
+                    reason = recursiveErr.reason ?? recursiveErr.message ?? reason
+                    recursiveErr = recursiveErr.error ?? recursiveErr.data?.originalError
                   }
-
-                  const REVERT_STR = 'execution reverted: '
-                  const indexInfo = reason?.indexOf(REVERT_STR)
-                  const isRevertedError = indexInfo >= 0
-
-                  if (isRevertedError) reason = reason.substring(indexInfo + REVERT_STR.length)
-
-                  toastError(
-                    t('Failed'),
-                    <ToastDescriptionWithTx txHash={tx.hash}>
-                      {isRevertedError
-                        ? t('Transaction failed with error: %reason%', { reason })
-                        : t('Transaction failed. For detailed error message:')}
-                    </ToastDescriptionWithTx>,
-                  )
                 }
-              })
-          }
+
+                const REVERT_STR = 'execution reverted: '
+                const indexInfo = reason?.indexOf(REVERT_STR)
+                const isRevertedError = indexInfo >= 0
+
+                if (isRevertedError) reason = reason.substring(indexInfo + REVERT_STR.length)
+
+                toastError(
+                  t('Failed'),
+                  <ToastDescriptionWithTx txHash={tx.hash}>
+                    {isRevertedError
+                      ? t('Transaction failed with error: %reason%', { reason })
+                      : t('Transaction failed. For detailed error message:')}
+                  </ToastDescriptionWithTx>,
+                )
+              }
+            })
         }
       } finally {
         setTxResponseLoading(false)

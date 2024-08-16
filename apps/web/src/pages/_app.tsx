@@ -8,7 +8,6 @@ import { useAccountEventListener } from 'hooks/useAccountEventListener'
 import useEagerConnect from 'hooks/useEagerConnect'
 import useEagerConnectMP from 'hooks/useEagerConnect.bmp'
 import useLockedEndNotification from 'hooks/useLockedEndNotification'
-import useSentryUser from 'hooks/useSentryUser'
 import useThemeCookie from 'hooks/useThemeCookie'
 import useUserAgent from 'hooks/useUserAgent'
 import { NextPage } from 'next'
@@ -20,7 +19,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistor, useStore } from 'state'
 import { usePollBlockNumber } from 'state/block/hooks'
 import { Blocklist, Updaters } from '..'
-import { SentryErrorBoundary } from '../components/ErrorBoundary'
+import { ErrorBoundary } from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
@@ -36,7 +35,6 @@ function GlobalHooks() {
   useEagerConnect()
   useUserAgent()
   useAccountEventListener()
-  useSentryUser()
   useThemeCookie()
   useLockedEndNotification()
   return null
@@ -47,7 +45,6 @@ function MPGlobalHooks() {
   useEagerConnectMP()
   useUserAgent()
   useAccountEventListener()
-  useSentryUser()
   useLockedEndNotification()
   return null
 }
@@ -146,7 +143,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-const ProductionErrorBoundary = process.env.NODE_ENV === 'production' ? SentryErrorBoundary : Fragment
+const ProductionErrorBoundary = process.env.NODE_ENV === 'production' ? ErrorBoundary : Fragment
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   if (Component.pure) {

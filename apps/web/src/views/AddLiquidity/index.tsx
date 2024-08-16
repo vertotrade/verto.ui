@@ -3,7 +3,6 @@ import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
 import { JSBI, CurrencyAmount, Token, WNATIVE, MINIMUM_LIQUIDITY, Percent } from '@verto/sdk'
 import { Button, Text, AddIcon, CardBody, Message, useModal, TooltipText, useTooltip, MessageText } from '@verto/uikit'
-import { logError } from 'utils/sentry'
 import { useIsTransactionUnsupported, useIsTransactionWarning } from 'hooks/Trades'
 import { useTranslation } from '@verto/localization'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
@@ -287,7 +286,6 @@ export default function AddLiquidity({ currencyA, currencyB }) {
       )
       .catch(err => {
         if (err && err.code !== 4001) {
-          logError(err)
           console.error(`Add Liquidity failed`, err, args, value)
         }
         setLiquidityState({
@@ -444,7 +442,6 @@ export default function AddLiquidity({ currencyA, currencyB }) {
       })
       .catch(err => {
         if (err && err.code !== 4001) {
-          logError(err)
           console.error(`Add Liquidity failed`, err, args, value)
         }
         setLiquidityState({
