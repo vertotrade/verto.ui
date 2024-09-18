@@ -51,6 +51,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "@snapshot-labs/snapshot.js": "^0.4.40",
     "@vanilla-extract/next-plugin": "^2.1.1",
+    "@vercel/speed-insights": "^1.0.12",
     "@verto/farms": "*",
     "@verto/hooks": "*",
     "@verto/localization": "*",

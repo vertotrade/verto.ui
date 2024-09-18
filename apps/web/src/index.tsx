@@ -1,5 +1,6 @@
 import { ReactNode, useMemo } from 'react'
 import { useAccount } from 'wagmi'
+import { Insights } from './components/SpeedInsights'
 import { BLOCKED_ADDRESSES } from './config/constants'
 import ListsUpdater from './state/lists/updater'
 import MulticallUpdater from './state/multicall/updater'
@@ -24,5 +25,10 @@ export function Blocklist({ children }: { children: ReactNode }) {
   if (blocked) {
     return <div>Blocked address</div>
   }
-  return <>{children}</>
+  return (
+    <>
+      {children}
+      <Insights />
+    </>
+  )
 }
