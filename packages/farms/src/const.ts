@@ -2,7 +2,7 @@ import { FixedNumber } from '@ethersproject/bignumber'
 import env from '@beam-australia/react-env'
 import { ChainId } from '@verto/sdk'
 
-export const DEFAULT_CHAIN_ID = env('IS_MAINNET') === 'true' ? ChainId.REBUS : ChainId.REBUS_TESTNET
+export const DEFAULT_CHAIN_ID = env('IS_MAINNET') === 'true' ? ChainId.REBUS : env('IS_TESTNET_L2') === 'true' ? ChainId.REBUS_TESTNET_L2 : ChainId.REBUS_TESTNET
 
 export const FIXED_ZERO = FixedNumber.from(0)
 export const FIXED_ONE = FixedNumber.from(1)

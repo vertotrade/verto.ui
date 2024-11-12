@@ -11,6 +11,7 @@ export const EMPTY_LIST: TokenAddressMap<ChainId> = {
   [ChainId.BSC_TESTNET]: {},
   [ChainId.REBUS]: {},
   [ChainId.REBUS_TESTNET]: {},
+  [ChainId.REBUS_TESTNET_L2]: {},
 }
 
 export function serializeTokens(unserializedTokens) {

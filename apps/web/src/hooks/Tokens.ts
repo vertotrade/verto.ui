@@ -209,7 +209,7 @@ export function useToken(tokenAddress?: string): ERC20Token | undefined | null {
 }
 
 export function useCurrency(currencyId: string | undefined): Currency | ERC20Token | null | undefined {
-  const native = useNativeCurrency()
+  const native = useNativeCurrency()  
   const isNative =
     currencyId?.toUpperCase() === native.symbol?.toUpperCase() || currencyId?.toLowerCase() === GELATO_NATIVE
   const token = useToken(isNative ? undefined : currencyId)

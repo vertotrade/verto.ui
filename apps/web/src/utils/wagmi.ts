@@ -12,9 +12,9 @@ import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { SafeConnector } from './safeConnector'
-import { rebus, rebusTestnet } from './wagmi-chains'
+import { rebus, rebusTestnet, rebusTestnetL2 } from './wagmi-chains'
 
-const CHAINS = [mainnet, rebus, rebusTestnet]
+const CHAINS = [mainnet, rebus, rebusTestnet, rebusTestnetL2]
 
 const getNodeRealUrl = (networkName: string) => {
   switch (networkName) {
@@ -24,7 +24,12 @@ const getNodeRealUrl = (networkName: string) => {
           http: 'https://testnet.rebus.money/rpc',
         }
       }
-
+      if (DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2) {
+        return {
+          http: 'https://testnet.rebus.money/l2rpc',
+          webSocket: 'wss://testnet.rebus.money/l2ws',
+        }
+      }
       return {
         http: 'https://api.vertotrade.com/rpc',
         webSocket: 'wss://api.vertotrade.com/ws',
@@ -118,7 +123,7 @@ export const client = createClient({
 })
 
 // export const CHAIN_IDS = chains.map(c => c.id)
-export const CHAIN_IDS = [rebus.id, rebusTestnet.id]
+export const CHAIN_IDS = [rebus.id, rebusTestnet.id, rebusTestnetL2.id]
 
 export const isChainSupported = memoize((chainId: number) => CHAIN_IDS.includes(chainId))
 export const isChainTestnet = memoize((chainId: number) => chains.find(c => c.id === chainId)?.testnet)

@@ -8,14 +8,14 @@ import { ChainId, Currency } from '@verto/sdk'
 import { bsc } from 'wagmi/chains'
 import memoize from 'lodash/memoize'
 import { TokenAddressMap } from '@verto/token-lists'
-import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { chains } from './wagmi'
-import { rebus, rebusTestnet } from './wagmi-chains'
+import { rebus, rebusTestnet, rebusTestnetL2 } from './wagmi-chains'
 
-export const defaultVertoTokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : vertoTokens
+export const defaultVertoTokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? vertoTokensTestnetL2 : vertoTokens
 
-export const defaultChain = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? rebusTestnet : rebus
+export const defaultChain = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? rebusTestnet : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? rebusTestnetL2 : rebus
 
 // returns the checksummed address if the address is valid, otherwise returns false
 export const isAddress = memoize((value: any): string | false => {

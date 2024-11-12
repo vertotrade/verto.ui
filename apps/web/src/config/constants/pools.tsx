@@ -3,7 +3,7 @@ import { Pool } from '@verto/uikit'
 import { SerializedWrappedToken } from '@verto/token-lists'
 // import Trans from 'components/Trans'
 // import { VaultKey } from 'state/types'
-import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { ChainId } from '@verto/sdk'
 import { PoolCategory } from './types'
@@ -14,7 +14,7 @@ export const ONE_WEEK_DEFAULT = 604800
 export const BOOST_WEIGHT = BigNumber.from('20000000000000')
 export const DURATION_FACTOR = BigNumber.from('31536000')
 
-const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : vertoTokens
+const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? vertoTokensTestnetL2 : vertoTokens
 
 export const vaultPoolConfig = {
   // [VaultKey.RebusVault]: {
