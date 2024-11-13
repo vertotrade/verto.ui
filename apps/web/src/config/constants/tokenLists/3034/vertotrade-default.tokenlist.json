@@ -30,7 +30,15 @@
       "address": "0x4200000000000000000000000000000000000006",
       "chainId": 3034,
       "decimals": 18,
-      "logoURI": "/images/tokens/rebus.png"
+      "logoURI": "/images/tokens/0x4200000000000000000000000000000000000006.png"
+    },
+    {
+      "name": "lqWRebus Token",
+      "symbol": "lqWREBUS",
+      "address": "0xB5A68680f188917003D0e8ff9Bd46B2c5b0a6721",
+      "chainId": 3034,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0xB5A68680f188917003D0e8ff9Bd46B2c5b0a6721.png"
     }
   ]
 }
