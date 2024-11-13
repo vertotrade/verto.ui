@@ -6,7 +6,12 @@ import env from '@beam-australia/react-env'
 
 import multicallAbi from './Multicall.json'
 
-const DEFAULT_CHAIN_ID = env('IS_MAINNET') === 'true' ? ChainId.REBUS : env('IS_TESTNET_L2') === 'true' ? ChainId.REBUS_TESTNET_L2 : ChainId.REBUS_TESTNET
+const DEFAULT_CHAIN_ID =
+  env('IS_MAINNET') === 'true'
+    ? ChainId.REBUS
+    : env('IS_TESTNET_L2') === 'true'
+    ? ChainId.REBUS_TESTNET_L2
+    : ChainId.REBUS_TESTNET
 
 export const multicallAddresses = {
   1: '0xcA11bde05977b3631167028862bE2a173976CA11',

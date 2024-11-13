@@ -21,7 +21,12 @@ interface ReviewStageProps {
   continueToNextStage: () => void
 }
 
-const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? vertoTokensTestnetL2 : vertoTokens
+const tokens =
+  DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
+    ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
+    ? vertoTokensTestnetL2
+    : vertoTokens
 
 const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
   nftToBuy,

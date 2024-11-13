@@ -1,6 +1,16 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE } from '@verto/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2, USDC, USDT, BUSD, WBTC_ETH } from '@verto/tokens'
+import {
+  bscTokens,
+  bscTestnetTokens,
+  vertoTokens,
+  vertoTokensTestnet,
+  vertoTokensTestnetL2,
+  USDC,
+  USDT,
+  BUSD,
+  WBTC_ETH,
+} from '@verto/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {

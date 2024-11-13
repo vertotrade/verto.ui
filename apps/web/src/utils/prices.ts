@@ -3,7 +3,12 @@ import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/to
 import { DEFAULT_CHAIN_ID } from '@verto/farms/src/const'
 import { fetchWithCache, useFetchWithCache } from './fetchWithCache'
 
-const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? vertoTokensTestnetL2 : vertoTokens
+const tokens =
+  DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
+    ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
+    ? vertoTokensTestnetL2
+    : vertoTokens
 
 /**
  * Helper to multiply a Price object by an arbitrary amount

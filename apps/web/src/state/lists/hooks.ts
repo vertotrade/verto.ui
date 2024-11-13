@@ -31,13 +31,28 @@ import DEFAULT_TOKEN_LIST_TESTNET_L2 from '../../config/constants/tokenLists/303
 import UNSUPPORTED_TOKEN_LIST_TESTNET_L2 from '../../config/constants/tokenLists/3034/vertotrade-unsupported.tokenlist.json'
 import WARNING_TOKEN_LIST_TESTNET_L2 from '../../config/constants/tokenLists/3034/vertotrade-warning.tokenlist.json'
 
-
 import { listsAtom } from './lists'
 
-export const DEFAULT_TOKEN_LIST = env('IS_MAINNET') === 'true' ? DEFAULT_TOKEN_LIST_MAINNET :  env('IS_TESTNET_L2') === 'true'? DEFAULT_TOKEN_LIST_TESTNET_L2 : DEFAULT_TOKEN_LIST_TESTNET
+export const DEFAULT_TOKEN_LIST =
+  env('IS_MAINNET') === 'true'
+    ? DEFAULT_TOKEN_LIST_MAINNET
+    : env('IS_TESTNET_L2') === 'true'
+    ? DEFAULT_TOKEN_LIST_TESTNET_L2
+    : DEFAULT_TOKEN_LIST_TESTNET
+
 const UNSUPPORTED_TOKEN_LIST =
-  env('IS_MAINNET') === 'true' ? UNSUPPORTED_TOKEN_LIST_MAINNET : env('IS_TESTNET_L2') === 'true'? UNSUPPORTED_TOKEN_LIST_TESTNET_L2 : UNSUPPORTED_TOKEN_LIST_TESTNET
-const WARNING_TOKEN_LIST = env('IS_MAINNET') === 'true' ? WARNING_TOKEN_LIST_MAINNET : env('IS_TESTNET_L2') === 'true'? WARNING_TOKEN_LIST_TESTNET_L2 : WARNING_TOKEN_LIST_TESTNET
+  env('IS_MAINNET') === 'true'
+    ? UNSUPPORTED_TOKEN_LIST_MAINNET
+    : env('IS_TESTNET_L2') === 'true'
+    ? UNSUPPORTED_TOKEN_LIST_TESTNET_L2
+    : UNSUPPORTED_TOKEN_LIST_TESTNET
+
+const WARNING_TOKEN_LIST =
+  env('IS_MAINNET') === 'true'
+    ? WARNING_TOKEN_LIST_MAINNET
+    : env('IS_TESTNET_L2') === 'true'
+    ? WARNING_TOKEN_LIST_TESTNET_L2
+    : WARNING_TOKEN_LIST_TESTNET
 
 type TokenAddressMap = TTokenAddressMap<ChainId>
 

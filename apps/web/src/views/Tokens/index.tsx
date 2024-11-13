@@ -6,23 +6,26 @@ import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/to
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import Page from 'components/Layout/Page'
 import { ChainId, CurrencyAmount } from '@verto/sdk'
-import { useCurrency } from 'hooks/Tokens'
-import useNativeCurrency  from 'hooks/useNativeCurrency'
+// import { useCurrency } from 'hooks/Tokens'
+import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useCurrencyBalances } from 'state/wallet/hooks'
 import TokenRow from './TokenRow'
 
-const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? vertoTokensTestnetL2 : vertoTokens
+const tokens =
+  DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
+    ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
+    ? vertoTokensTestnetL2
+    : vertoTokens
 
 const allTokens = Object.values(tokens)
 
 const Tokens: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
-
   // const rebusCurrency = useCurrency('rebus')
-  const rebusCurrency = useNativeCurrency();  
+  const rebusCurrency = useNativeCurrency()
   const allCurrencies = [rebusCurrency].concat(allTokens)
-  console.log(allCurrencies);
   const relevantTokenBalances = useCurrencyBalances(account ?? undefined, allCurrencies)
   const currencyAmounts = useMemo(
     () =>

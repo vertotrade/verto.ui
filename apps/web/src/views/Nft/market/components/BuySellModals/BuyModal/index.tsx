@@ -37,7 +37,12 @@ interface BuyModalProps extends InjectedModalProps {
   nftToBuy: NftToken
 }
 
-const vertoToken = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet.verto : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? vertoTokensTestnetL2.verto : vertoTokens.verto
+const vertoToken =
+  DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
+    ? vertoTokensTestnet.verto
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
+    ? vertoTokensTestnetL2.verto
+    : vertoTokens.verto
 
 const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, onDismiss }) => {
   const collectionContract = useNftMarketContract()
