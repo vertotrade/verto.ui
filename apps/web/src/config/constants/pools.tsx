@@ -14,7 +14,7 @@ export const ONE_WEEK_DEFAULT = 604800
 export const BOOST_WEIGHT = BigNumber.from('20000000000000')
 export const DURATION_FACTOR = BigNumber.from('31536000')
 
-const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2 ? vertoTokensTestnetL2 : vertoTokens
+const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : vertoTokens
 
 export const vaultPoolConfig = {
   // [VaultKey.RebusVault]: {
@@ -223,6 +223,20 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     contractAddress: {
       [ChainId.REBUS]: '0xaaD8a0810adA077ED84CD539fA28f0eAFF059851',
       [ChainId.REBUS_TESTNET]: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    isLiquid: true,
+  },
+
+  {
+    sousId: 322,
+    stakingToken: vertoTokensTestnetL2.rebus,
+    earningToken: vertoTokensTestnetL2.verto,
+    liquidToken: vertoTokensTestnetL2.lqwrebus,
+    contractAddress: {
+      [ChainId.REBUS_TESTNET_L2]: '0xA24160fB9cba04198aE4F66DFf3fFDaC9E45E809',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
