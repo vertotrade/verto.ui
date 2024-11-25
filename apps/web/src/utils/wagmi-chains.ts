@@ -33,3 +33,21 @@ export const rebusTestnet = {
   },
   testnet: true,
 }
+
+export const rebusTestnetL2 = {
+  id: 3034,
+  name: 'Rebus Testnet L2',
+  network: 'RebusL2',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Ether',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    default: { http: ['https://testnet.rebus.money/l2rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'Rebus', url: 'https://evm-v2.rebuschain.com' },
+  },
+  testnet: true,
+}

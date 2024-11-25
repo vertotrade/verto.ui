@@ -1,9 +1,14 @@
 import { ChainId, Currency, ERC20Token, Price } from '@verto/sdk'
-import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from '@verto/farms/src/const'
 import { fetchWithCache, useFetchWithCache } from './fetchWithCache'
 
-const tokens = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet : vertoTokens
+const tokens =
+  DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
+    ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
+    ? vertoTokensTestnetL2
+    : vertoTokens
 
 /**
  * Helper to multiply a Price object by an arbitrary amount

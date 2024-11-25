@@ -1,6 +1,16 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE } from '@verto/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, vertoTokens, vertoTokensTestnet, USDC, USDT, BUSD, WBTC_ETH } from '@verto/tokens'
+import {
+  bscTokens,
+  bscTestnetTokens,
+  vertoTokens,
+  vertoTokensTestnet,
+  vertoTokensTestnetL2,
+  USDC,
+  USDT,
+  BUSD,
+  WBTC_ETH,
+} from '@verto/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
@@ -10,6 +20,7 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.REBUS]: '0xAa1D16A14832538b13Cd20DD848ec1E27cF1e02B',
   [ChainId.REBUS_TESTNET]: '0xd48B044c1c24D6dDc8ffEE15b0036952FDF00D2a',
+  [ChainId.REBUS_TESTNET_L2]: '0x96df773857013AF68459AB3bf019f099089C3a4A',
 }
 
 // used to construct intermediary pairs for trading
@@ -44,6 +55,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     vertoTokensTestnet.ludus,
     vertoTokensTestnet.aureus,
     vertoTokensTestnet.verto,
+  ],
+  [ChainId.REBUS_TESTNET_L2]: [
+    vertoTokensTestnetL2.rebus,
+    vertoTokensTestnetL2.lqwrebus,
+    vertoTokensTestnetL2.verto,
+    vertoTokensTestnetL2.weth,
+    WNATIVE[ChainId.REBUS_TESTNET_L2],
   ],
 }
 
@@ -92,6 +110,13 @@ export const SUGGESTED_BASES: ChainTokenList = {
     vertoTokensTestnet.aureus,
     vertoTokensTestnet.verto,
   ],
+  [ChainId.REBUS_TESTNET_L2]: [
+    vertoTokensTestnetL2.rebus,
+    vertoTokensTestnetL2.lqwrebus,
+    vertoTokensTestnetL2.verto,
+    vertoTokensTestnetL2.weth,
+    WNATIVE[ChainId.REBUS_TESTNET_L2],
+  ],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -118,6 +143,13 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     vertoTokensTestnet.ludus,
     vertoTokensTestnet.aureus,
     vertoTokensTestnet.verto,
+  ],
+  [ChainId.REBUS_TESTNET_L2]: [
+    vertoTokensTestnetL2.rebus,
+    vertoTokensTestnetL2.lqwrebus,
+    vertoTokensTestnetL2.verto,
+    vertoTokensTestnetL2.weth,
+    WNATIVE[ChainId.REBUS_TESTNET_L2],
   ],
 }
 

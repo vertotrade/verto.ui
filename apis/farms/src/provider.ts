@@ -39,3 +39,11 @@ export const rebusTestnetProvider = new StaticJsonRpcProvider(
   },
   3033,
 )
+
+export const rebusTestnetL2Provider = new StaticJsonRpcProvider(
+  {
+    url: 'https://testnet.rebus.money/l2rpc',
+    skipFetchSetup: true,
+  },
+  3034,
+)

@@ -18,7 +18,7 @@ import { getBalanceNumber } from '@verto/utils/formatBalance'
 import { requiresApproval } from 'utils/requiresApproval'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { ChainId } from '@verto/sdk'
-import { vertoTokens, vertoTokensTestnet } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
 import ApproveAndConfirmStage from '../shared/ApproveAndConfirmStage'
 import ConfirmStage from '../shared/ConfirmStage'
 import TransactionConfirmed from '../shared/TransactionConfirmed'
@@ -37,7 +37,12 @@ interface BuyModalProps extends InjectedModalProps {
   nftToBuy: NftToken
 }
 
-const vertoToken = DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET ? vertoTokensTestnet.verto : vertoTokens.verto
+const vertoToken =
+  DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
+    ? vertoTokensTestnet.verto
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
+    ? vertoTokensTestnetL2.verto
+    : vertoTokens.verto
 
 const BuyModal: React.FC<React.PropsWithChildren<BuyModalProps>> = ({ nftToBuy, onDismiss }) => {
   const collectionContract = useNftMarketContract()
