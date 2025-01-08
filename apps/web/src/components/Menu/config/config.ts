@@ -90,6 +90,7 @@ const config: (
         },
       ].map(item => addMenuItemSupported(item, chainId)),
     },
+    /*
     {
       label: t('Win'),
       href: '/lottery',
@@ -119,6 +120,7 @@ const config: (
       // },
       // ],
     },
+    */
     {
       label: t('NFT'),
       href: `${nftsBaseUrl}`,
