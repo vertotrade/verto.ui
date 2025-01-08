@@ -25,7 +25,7 @@ const Tokens: React.FC<React.PropsWithChildren> = () => {
   const { address: account } = useAccount()
   const rebusCurrency = useCurrency('ETH')
   // const rebusCurrency = useNativeCurrency()
-  const allCurrencies = [rebusCurrency].concat(allTokens)
+  const allCurrencies = [rebusCurrency, ...allTokens].filter(Boolean)
   const relevantTokenBalances = useCurrencyBalances(account ?? undefined, allCurrencies)
   const currencyAmounts = useMemo(
     () =>
