@@ -57,14 +57,6 @@ export const vertoTokens = {
     'xVerto',
     'https://vertotrade.com/',
   ),
-  com: new ERC20Token(
-    ChainId.REBUS,
-    '0x1D54EcB8583Ca25895c512A8308389fFD581F9c9',
-    6,
-    'COM',
-    'Commercio Token',
-    'https://commercio.network/project/',
-  ),
   axlusdc: new ERC20Token(
     ChainId.REBUS,
     '0xd567B3d7B8FE3C79a1AD8dA978812cfC4Fa05e75',

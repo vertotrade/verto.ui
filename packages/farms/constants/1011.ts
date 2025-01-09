@@ -73,16 +73,6 @@ const farms: SerializedFarmConfig[] = [
     rewardToken: vertoTokens.verto,
   },
   {
-    pid: 7,
-    v1pid: 7,
-    lpSymbol: 'COM-VERTO LP',
-    lpAddress: '0xA3533cB52554bc9191Ef53dEeB23b987542F4fDC',
-    poolAddress: '0x30b8df0aa9a142962b475a655de24665ffa96324',
-    token: vertoTokens.verto,
-    quoteToken: vertoTokens.com,
-    rewardToken: vertoTokens.com,
-  },
-  {
     pid: 8,
     v1pid: 8,
     lpSymbol: 'lqWREBUS-WREBUS LP',
