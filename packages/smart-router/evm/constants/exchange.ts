@@ -46,7 +46,6 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.REBUS]: [
     vertoTokens.wrebus,
     vertoTokens.ludus,
-    vertoTokens.com,
     vertoTokens.axlusdc,
     vertoTokens.axlwbtc,
     vertoTokens.axlweth,
@@ -94,7 +93,6 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.REBUS]: [
     vertoTokens.wrebus,
     vertoTokens.ludus,
-    vertoTokens.com,
     vertoTokens.axlusdc,
     vertoTokens.axlwbtc,
     vertoTokens.axlweth,
@@ -124,7 +122,6 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.REBUS]: [
     vertoTokens.wrebus,
     vertoTokens.ludus,
-    vertoTokens.com,
     vertoTokens.axlusdc,
     vertoTokens.axlwbtc,
     vertoTokens.axlweth,
