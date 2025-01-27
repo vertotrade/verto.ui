@@ -332,5 +332,6 @@
   "Performance Fee": "Performance Fee",
   "Compound: collect and reStake VERTO into pool.": "Compound: collect and reStake VERTO into pool.",
   "Harvest: collect VERTO and send to wallet": "Harvest: collect VERTO and send to wallet",
-  "%position% Entered": "%position% Entered"
+  "%position% Entered": "%position% Entered",
+  "Buy with Fiat": "Buy with Fiat"
 }

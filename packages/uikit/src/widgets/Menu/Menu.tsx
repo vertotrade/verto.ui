@@ -1,4 +1,5 @@
 import { Button, useModal } from "@verto/uikit";
+import { useTranslation } from "@verto/localization";
 import { useIsMounted } from "@verto/hooks";
 import { AtomBox } from "@verto/ui/components/AtomBox";
 import throttle from "lodash/throttle";
@@ -142,6 +143,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   }, [onPresentBuyToken]);
 
   const { isConnected } = useAccount();
+  const { t } = useTranslation();
 
   return (
     <MenuContext.Provider value={providerValue}>
@@ -169,7 +171,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                 </AtomBox>
                 {isConnected && !isMobile && (
                   <Button variant="secondary" width="125px" minHeight={48} mb="2" mt="3" onClick={handleBuyToken}>
-                    Buy with Fiat
+                    {t("Buy with Fiat")}
                   </Button>
                 )}
               </Flex>
