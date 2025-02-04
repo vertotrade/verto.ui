@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Не вдалося виконати транзакцію, помилка: %reason%",
   "Transaction failed. For detailed error message:": "Не вдалося виконати транзакцію. Перегляньте докладний опис помилки:",
   "Failed to claim": "Не вдалось отримати",
-  "VERTO locked": "Заблоковано VERTO",
   "Boost Multiplier": "Множник бусту",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Оцінюваний множник бусту обчислюється на основі даних у реальному часі. Його фактичне значення може змінюватися після активування.",
   "locked for": "заблоковано на",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Торгуйте будь-яким токеном на Rebuschain за лічені секунди, просто підключивши свій гаманець.",
+  "Gain passive income with crypto.": "Отримуйте пасивний дохід за допомогою криптовалюти.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade дозволяє легко використовувати вашу криптовалюту.", 
+  "VERTO the future of DeFi is here.": "VERTO майбутнє DeFi вже тут.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "Токен VERTO знаходиться в центрі екосистеми VertoTrade. Купуйте його, торгуйте ним, вирощуйте його, витрачайте його, ставте його... і багато іншого вже скоро!", 
+  "Token Details": "Деталі токена", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Підключіть свій криптогаманець, щоб почати використовувати програму за лічені секунди. Реєстрація не потрібна.", 
+  "Gain": "Отримати"
 }

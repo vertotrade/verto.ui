@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Transaktion fehlgeschlagen mit Fehler: %reason%",
   "Transaction failed. For detailed error message:": "Transaktion fehlgeschlagen. Für eine detaillierte Fehlermeldung:",
   "Failed to claim": "Beanspruchen fehlgeschlagen",
-  "VERTO locked": "Cake gesperrt",
   "Boost Multiplier": "Erhöhungsmultiplikator",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Der geschätzte Erhöhungsmultiplikator wird anhand von Live-Daten berechnet. Der tatsächliche Erhöhungsmultiplikator kann sich bei der Aktivierung ändern.",
   "locked for": "gesperrt für",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Handeln Sie jeden Token auf Rebuschain in Sekunden, indem Sie einfach Ihre Wallet verbinden.",
+  "Gain passive income with crypto.": "Erziele passives Einkommen mit Krypto.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade macht es einfach, Ihre Kryptowährung für Sie arbeiten zu lassen.", 
+  "VERTO the future of DeFi is here.": "VERTO die Zukunft von DeFi ist da.", 
+  "Token Details": "Token-Details", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Verbinden Sie Ihre Krypto-Wallet, um die App in Sekunden zu nutzen. Keine Registrierung erforderlich.", 
+  "Gain": "Gewinnen",
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "Der VERTO-Token ist das Herzstück des VertoTrade-Ökosystems. Kaufen Sie ihn, handeln Sie ihn, bauen Sie ihn an, geben Sie ihn aus, setzen Sie ihn ein... und vieles mehr folgt in Kürze!"
 }

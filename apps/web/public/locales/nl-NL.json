@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Transactie mislukt met fout: %reason%",
   "Transaction failed. For detailed error message:": "Transactie mislukt. Voor een gedetailleerd foutbericht:",
   "Failed to claim": "Claimen mislukt",
-  "VERTO locked": "Cake vergrendelen",
   "Boost Multiplier": "Boostvermenigvuldiger",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "De geschatte boostvermenigvuldiger wordt berekend aan de hand van live gegevens. De daadwerkelijke boostvermenigvuldiger kan verschillen bij activering.",
   "locked for": "vergrendeld voor",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+   "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Handel elke token op Rebuschain binnen enkele seconden, door simpelweg je wallet te verbinden.",
+   "Gain passive income with crypto.": "Genereer passief inkomen met crypto.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade maakt het gemakkelijk om je crypto voor je te laten werken.", 
+  "VERTO the future of DeFi is here.": "VERTO de toekomst van DeFi is hier.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "De VERTO-token vormt de kern van het VertoTrade-ecosysteem. Koop hem, verhandel hem, kweek hem, geef hem uit, zet hem in... en er komt nog veel meer aan!", 
+  "Token Details": "Tokengegevens", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Verbind je cryptowallet om binnen enkele seconden de app te gaan gebruiken. Geen registratie nodig.", 
+  "Gain": "Winst"
 }

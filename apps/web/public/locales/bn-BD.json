@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "ত্রুটিসহ লেনদেন ব্যর্থ হয়েছে: %reason%",
   "Transaction failed. For detailed error message:": "লেনদেন করা যায় নাই। বিস্তারিত ত্রুটি বার্তার জন্য:",
   "Failed to claim": "দাবি করা যায় নাই",
-  "VERTO locked": "VERTO লক করা হয়েছে",
   "Boost Multiplier": "বুস্ট গুণক",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "লাইভ ডেটা ব্যবহার করে আনুমানিক বুস্ট গুণক গণনা করা হয়। সক্রিয় করার সময় প্রকৃত বুস্ট গুণক পরিবর্তিত হতে পারে।",
   "locked for": "লক করার মেয়াদ",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "আপনার ওয়ালেট সংযোগ করে কয়েক সেকেন্ডের মধ্যে রেবুসচেইনে যেকোনো টোকেন ট্রেড করুন।",
+  "Gain passive income with crypto.": "ক্রিপ্টো দিয়ে প্যাসিভ ইনকাম করুন।", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade আপনার ক্রিপ্টো আপনার জন্য কাজ করা সহজ করে তোলে।", 
+  "VERTO the future of DeFi is here.": "ডিফাই এর ভবিষ্যত ভার্টো এখানেই।", 
+  "Token Details": "টোকেনের বিবরণ", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "সেকেন্ডের মধ্যে অ্যাপ ব্যবহার শুরু করতে আপনার ক্রিপ্টো ওয়ালেট সংযোগ করুন। কোন রেজিস্ট্রেশন প্রয়োজন নেই।", 
+  "Gain": "লাভ",
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "ভার্টো টোকেন ভার্টো ট্রেড ইকোসিস্টেমের কেন্দ্রবিন্দুতে। এটি কিনুন, এটি ব্যবসা করুন, এটি চাষ করুন, এটি ব্যয় করুন, এটি স্টেক করুন... এবং আরও অনেক কিছু শীঘ্রই আসছে!"
 }

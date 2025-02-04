@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Échec de la transaction avec erreur : %reason%",
   "Transaction failed. For detailed error message:": "Échec de la transaction. Pour obtenir un message d'erreur détaillé :",
   "Failed to claim": "Récupération impossible",
-  "VERTO locked": "VERTO verrouillés",
   "Boost Multiplier": "Multiplicateur de boost",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Le multiplicateur de boost estimé est calculé à l'aide des données actuelles et peut changer lors de l'activation.",
   "locked for": "verrouillés pour",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Échangez n'importe quel jeton sur Rebuschain en quelques secondes, simplement en connectant votre portefeuille.",
+  "Gain passive income with crypto.": "Gagnez un revenu passif avec la crypto.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade facilite la mise au travail de votre crypto pour vous.", 
+  "VERTO the future of DeFi is here.": "VERTO le futur de la DeFi est là.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "Le jeton VERTO est au cœur de l'écosystème VertoTrade. Achetez-le, échangez-le, cultivez-le, dépensez-le, misez-le... et bien plus encore à venir bientôt!",
+  "Token Details": "Détails du jeton", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Connectez votre portefeuille de crypto pour commencer à utiliser l'application en quelques secondes. Aucune inscription n'est nécessaire.", 
+  "Gain": "Gagner"
 }

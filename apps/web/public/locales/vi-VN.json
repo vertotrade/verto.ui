@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Giao dịch không thành công với lỗi: %reason%",
   "Transaction failed. For detailed error message:": "Giao dịch không thành công. Thông báo lỗi chi tiết:",
   "Failed to claim": "Không thể nhận",
-  "VERTO locked": "Cake đã khóa",
   "Boost Multiplier": "Hệ số nhân tăng cường",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Hệ số nhân tăng cường được ước tính bằng dữ liệu trực tiếp. Hệ số nhân tăng cường thực tế có thể thay đổi khi kích hoạt.",
   "locked for": "khóa trong",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Giao dịch bất kỳ token nào trên Rebuschain trong vài giây, chỉ bằng cách kết nối ví của bạn.",
+  "Gain passive income with crypto.": "Kiếm thu nhập thụ động bằng tiền điện tử.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade giúp bạn dễ dàng sử dụng tiền điện tử của mình.", 
+  "VERTO the future of DeFi is here.": "VERTO tương lai của DeFi là đây.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "Token VERTO là trung tâm của hệ sinh thái VertoTrade. Mua nó, giao dịch nó, canh tác nó, chi tiêu nó, đặt cược nó... và nhiều hơn nữa sẽ sớm ra mắt!", 
+  "Token Details": "Chi tiết mã thông báo", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Kết nối ví tiền điện tử của bạn để bắt đầu sử dụng ứng dụng sau vài giây. Không cần đăng ký.", 
+  "Gain": "Thu được"
 }
