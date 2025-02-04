@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "交易失敗。發生錯誤：%reason%",
   "Transaction failed. For detailed error message:": "交易失敗。如需詳細的錯誤訊息，請見：",
   "Failed to claim": "無法領取",
-  "VERTO locked": "已鎖定 VERTO",
   "Boost Multiplier": "助推倍數",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "估計的助推倍數是透過即時資料計算出來的。實際的助推倍數可能會在啟動時發生變化。",
   "locked for": "鎖定持續時間",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "只需連接您的錢包，即可在幾秒鐘內在 Rebuschain 上交易任何代幣。",
+  "Gain passive income with crypto.": "透過加密貨幣獲得被動收入。", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade 讓您可以輕鬆地使用您的加密貨幣。", 
+  "VERTO the future of DeFi is here.": "VERTO DeFi 的未來就在這裡。", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "VERTO 代幣是 VertoTrade 生態系統的核心。購買它，交易它，耕種它，花費它，抵押它......以及更多即將推出的功能！",
+  "Token Details": "代幣詳情", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "連接您的加密錢包即可在幾秒鐘內開始使用該應用程式。無需註冊。", 
+  "Gain": "獲得"
 }

@@ -2061,5 +2061,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "உங்கள் பணப்பையை இணைப்பதன் மூலம், ரெபுஸ் செயினில் எந்த டோக்கனையும் நொடிகளில் வர்த்தகம் செய்யுங்கள்.",
+  "Gain passive income with crypto.": "கிரிப்டோ மூலம் செயலற்ற வருமானம் பெறுங்கள்.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade உங்கள் கிரிப்டோவை உங்களுக்காக வேலை செய்ய எளிதாக்குகிறது.", 
+  "VERTO the future of DeFi is here.": "VERTO DeFi இன் எதிர்காலம் இங்கே உள்ளது.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "VERTO டோக்கன் VertoTrade சுற்றுச்சூழல் அமைப்பின் மையத்தில் உள்ளது. அதை வாங்கவும், அதை வர்த்தகம் செய்யவும், அதை விவசாயம் செய்யவும், அதை செலவழிக்கவும், அதை ஸ்டேக் செய்யவும்... இன்னும் பல விரைவில் வரவுள்ளன!", 
+  "Token Details": "டோக்கன் விவரங்கள்", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "வினாடிகளில் பயன்பாட்டைப் பயன்படுத்தத் தொடங்க உங்கள் கிரிப்டோ வாலட்டை இணைக்கவும். பதிவு தேவையில்லை.", 
+  "Gain": "பெறுதல்"
 }

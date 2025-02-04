@@ -1611,7 +1611,6 @@
   "Unlock on": "Kilit açılma tarihi:",
   "Expected ROI": "Beklenen Yatırım Getirisi",
   "Add VERTO to lock": "Kilitlenecek VERTO ekle",
-  "VERTO locked": "VERTO kilitlendi",
   "Unlocks In": "Kilidinin açılmasına:",
   "Lock Duration": "Kilitleme Süresi",
   "After burning": "Yakıldıktan sonra",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Sadece cüzdanınızı bağlayarak saniyeler içinde Rebuschain'de herhangi bir token ticareti yapın.",
+  "Gain passive income with crypto.": "Kripto ile pasif gelir elde edin.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade, kriptonuzun sizin için çalışmasını kolaylaştırır.", 
+  "VERTO the future of DeFi is here.": "VERTO DeFi'nin geleceği burada.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "VERTO tokenı, VertoTrade ekosisteminin kalbinde yer alır. Satın alın, takas edin, çiftliğinizi yapın, harcayın, stake edin... ve çok daha fazlası çok yakında!", 
+  "Token Details": "Token Ayrıntıları", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Saniyeler içinde uygulamayı kullanmaya başlamak için kripto cüzdanınızı bağlayın. Kayıt gerekli değildir.", 
+  "Gain": "Kazan"
 }

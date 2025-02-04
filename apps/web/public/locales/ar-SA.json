@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "فشلت المعاملة بسبب الخطأ: %reason%",
   "Transaction failed. For detailed error message:": "فشلت المعاملة. للتعرف على رسالة الخطأ التفصيلية:",
   "Failed to claim": "فشلت المطالبة",
-  "VERTO locked": "Cake مجمّد",
   "Boost Multiplier": "مضاعف التعزيز",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "يتم حساب مضاعف التعزيز المقدر باستخدام بيانات حية. وقد يتغير مضاعف التعزيز الفعلي عند التنشيط.",
   "locked for": "مجمّد لـ",
@@ -2061,5 +2060,14 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "تداول أي رمز على Rebuschain في ثوانٍ، بمجرد توصيل محفظتك.", 
+  "Gain passive income with crypto.": "احصل على دخل سلبي من العملات المشفرة.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade يجعل من السهل جعل العملات المشفرة الخاصة بك تعمل من أجلك.", 
+  "VERTO the future of DeFi is here.": "VERTO مستقبل DeFi هنا.", 
+  "Token Details": "تفاصيل الرمز", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "رمز VERTO هو في قلب نظام VertoTrade. اشتره ، تداوله ، ازرعه ، أنفقه ، قم بتخزينه... والمزيد قريبًا!",
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "قم بتوصيل محفظة العملات المشفرة الخاصة بك لبدء استخدام التطبيق في ثوانٍ. لا يلزم التسجيل.", 
+  "Gain": "اكسب"
+  
 }

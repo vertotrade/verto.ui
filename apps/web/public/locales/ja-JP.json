@@ -1611,7 +1611,6 @@
   "Unlock on": "ロック解除:",
   "Expected ROI": "期待される投資効率",
   "Add VERTO to lock": "ロックするVERTOを追加",
-  "VERTO locked": "ロック中のVERTO",
   "Unlocks In": "ロック解除:",
   "Lock Duration": "ロック期間",
   "After burning": "バーン後",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Rebuschainで任意のトークンを数秒で取引できます。ウォレットを接続するだけです。",
+  "Gain passive income with crypto.": "暗号で受動的な収入を得る。", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTradeを使用すると、暗号を簡単に活用できます。", 
+  "VERTO the future of DeFi is here.": "VERTO DeFiの未来はここにあります。", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "VERTOトークンはVertoTradeエコシステムの中心にあります。購入、取引、育成、消費、ステーキングなど、近日中にさらに多くの機能が登場予定です！",
+  "Token Details": "トークンの詳細", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "暗号ウォレットを接続すると、数秒でアプリの使用を開始できます。登録は不要です。", 
+  "Gain": "獲得"
 }

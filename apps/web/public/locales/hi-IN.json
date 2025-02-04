@@ -1611,7 +1611,6 @@
   "Unlock on": "यहां अनलॉक करें",
   "Expected ROI": "अपेक्षित ROI",
   "Add VERTO to lock": "लॉक करने के लिए VERTO जोड़ें",
-  "VERTO locked": "VERTO लॉक किया गया",
   "Unlocks In": "अनलॉक इन",
   "Lock Duration": "लॉक अवधि",
   "After burning": "बर्न होने के बाद",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "अपने वॉलेट को कनेक्ट करके सेकंड में रेबुस्चैन पर किसी भी टोकन का व्यापार करें।",
+  "Gain passive income with crypto.": "क्रिप्टो के साथ निष्क्रिय आय प्राप्त करें।", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade आपके क्रिप्टो को आपके लिए काम करना आसान बनाता है।", 
+  "VERTO the future of DeFi is here.": "VERTO DeFi का भविष्य यहाँ है।", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "VERTO टोकन VertoTrade पारिस्थितिकी तंत्र के केंद्र में है। इसे खरीदें, इसे व्यापार करें, इसे खेती करें, इसे खर्च करें, इसे दांव पर लगाएं... और भी बहुत कुछ जल्द ही आ रहा है!",
+  "Token Details": "टोकन विवरण", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "सेकंड में ऐप का उपयोग शुरू करने के लिए अपने क्रिप्टो वॉलेट को कनेक्ट करें। किसी पंजीकरण की आवश्यकता नहीं है।", 
+  "Gain": "प्राप्त करें"
 }

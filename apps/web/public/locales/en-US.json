@@ -1848,7 +1848,6 @@
   "Fixed Term VERTO Staking": "Fixed Term VERTO Staking",
   "Flexible VERTO Staking": "Flexible VERTO Staking",
   "Voting power is calculated using the staking amount and remaining staking duration of the fixed-term VERTO staking position at the block.": "Voting power is calculated using the staking amount and remaining staking duration of the fixed-term VERTO staking position at the block.",
-  "VERTO locked:": "VERTO locked:",
   "Go to Pools": "Go to Pools",
   "Boosted by vVERTO": "Boosted by vVERTO",
   "Boosting Expired": "Boosting Expired",
@@ -1947,7 +1946,6 @@
   "Transaction failed with error: %reason%": "Transaction failed with error: %reason%",
   "Transaction failed. For detailed error message:": "Transaction failed. For detailed error message:",
   "Failed to claim": "Failed to claim",
-  "VERTO locked": "VERTO locked",
   "Boost Multiplier": "Boost Multiplier",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.",
   "locked for": "locked for",
@@ -2067,5 +2065,13 @@
   "Change": "Change",
   "Top Token": "Top Token",
   "Page Not Found": "Page Not Found",
-  "Sorry, but the page you were looking for could not be found.": "Sorry, but the page you were looking for could not be found."
+  "Sorry, but the page you were looking for could not be found.": "Sorry, but the page you were looking for could not be found.",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Trade any token on Rebuschain in seconds, just by connecting your wallet.",
+  "Gain passive income with crypto.": "Gain passive income with crypto.",
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade makes it easy to make your crypto work for you.",
+  "VERTO the future of DeFi is here.": "VERTO the future of DeFi is here.",
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!",
+  "Token Details": "Token Details",
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Connect your crypto wallet to start using the app in seconds. No registration needed.",
+  "Gain": "Gain"
 }

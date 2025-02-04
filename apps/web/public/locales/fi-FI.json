@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Transaktio epäonnistui, virhe: %reason%",
   "Transaction failed. For detailed error message:": "Transaktio epäonnistui. Katso yksityiskohtainen virheviesti:",
   "Failed to claim": "Lunastaminen epäonnistui",
-  "VERTO locked": "Cake lukittu",
   "Boost Multiplier": "Parannuskerroin",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Arvioitu parannuskerroin lasketaan käyttämällä reaaliaikaisia tietoja. Todellinen parannuskerroin voi muuttua aktivoinnin jälkeen.",
   "locked for": "lukittu",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Vaihda mitä tahansa tokenia Rebuschainissa sekunneissa yhdistämällä vain lompakkosi.",
+  "Gain passive income with crypto.": "Hanki passiivisia tuloja kryptovaluutalla.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade tekee kryptovaluuttasi käyttämisen helpoksi sinulle.", 
+  "VERTO the future of DeFi is here.": "VERTO DeFi:n tulevaisuus on täällä.", 
+  "Token Details": "Tokenin tiedot", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Yhdistä kryptolompakkosi aloittaaksesi sovelluksen käytön sekunneissa. Rekisteröintiä ei tarvita.", 
+  "Gain": "Saada",
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "VERTO-tokeni on VertoTrade-ekosysteemin sydämessä. Osta se, vaihda sitä, viljele sitä, käytä sitä, panosta se... ja paljon muuta tulossa pian!"
 }

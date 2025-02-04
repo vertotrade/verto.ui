@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Transaksi gagal dengan eror: %reason%",
   "Transaction failed. For detailed error message:": "Transaksi gagal. Untuk pesan eror terperinci:",
   "Failed to claim": "Gagal untuk mengeklaim",
-  "VERTO locked": "Cake terkunci",
   "Boost Multiplier": "Pengganda Peningkat",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Estimasi pengganda peningkat dihitung dengan menggunakan data aktif. Pengganda peningkat aktual dapat berubah setelah aktivasi.",
   "locked for": "dikunci selama",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Perdagangkan token apa pun di Rebuschain dalam hitungan detik, hanya dengan menghubungkan dompet Anda.",
+  "Gain passive income with crypto.": "Dapatkan penghasilan pasif dengan kripto.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "VertoTrade memudahkan untuk membuat kripto Anda bekerja untuk Anda.", 
+  "VERTO the future of DeFi is here.": "VERTO masa depan DeFi ada di sini.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "Token VERTO ada di jantung ekosistem VertoTrade. Beli, perdagangkan, tanam, belanjakan, taruhkan... dan masih banyak lagi yang akan segera hadir!",
+  "Token Details": "Detail Token", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Hubungkan dompet kripto Anda untuk mulai menggunakan aplikasi dalam hitungan detik. Tidak diperlukan pendaftaran.", 
+  "Gain": "Dapatkan"
 }

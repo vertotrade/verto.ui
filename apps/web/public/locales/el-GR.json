@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Η συναλλαγή απέτυχε με το ακόλουθο σφάλμα: %reason%",
   "Transaction failed. For detailed error message:": "Η συναλλαγή απέτυχε. Για το αναλυτικό μήνυμα σφάλματος:",
   "Failed to claim": "Η διεκδίκηση απέτυχε",
-  "VERTO locked": "Κλειδωμένο Cake",
   "Boost Multiplier": "Πολλαπλασιαστής ενίσχυσης",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Ο εκτιμώμενος πολλαπλασιαστής ενίσχυσης υπολογίζεται με τη χρήση ζωντανών δεδομένων. Ο πραγματικός πολλαπλασιαστής ενίσχυσης μπορεί να αλλάξει κατά την ενεργοποίηση.",
   "locked for": "κλειδωμένο για",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "Συναλλάξτε οποιοδήποτε διακριτικό στο Rebuschain σε δευτερόλεπτα, απλώς συνδέοντας το πορτοφόλι σας.",
+  "Gain passive income with crypto.": "Αποκτήστε παθητικό εισόδημα με κρυπτονομίσματα.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "Το VertoTrade σας διευκολύνει να κάνετε τα κρυπτονομίσματά σας να λειτουργούν για εσάς.", 
+  "VERTO the future of DeFi is here.": "Το VERTO το μέλλον του DeFi είναι εδώ.", 
+  "Token Details": "Λεπτομέρειες διακριτικού", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Συνδέστε το κρυπτογραφικό σας πορτοφόλι για να ξεκινήσετε να χρησιμοποιείτε την εφαρμογή σε δευτερόλεπτα. Δεν απαιτείται εγγραφή.", 
+  "Gain": "Κερδίζω",
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "Το διακριτικό VERTO βρίσκεται στην καρδιά του οικοσυστήματος VertoTrade. Αγοράστε το, ανταλλάξτε το, καλλιεργήστε το, ξοδέψτε το, ποντάρετε το... και πολλά άλλα σύντομα!"
 }

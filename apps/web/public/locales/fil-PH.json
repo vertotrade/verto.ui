@@ -840,7 +840,7 @@
   "Confirm this transaction in your wallet": "Kumpirmahin ang transaksyong ito sa iyong wallet",
   "Dismiss": "I-dismiss",
   "Latest": "Pinakahuli",
-  "Notice for trading %symbol%": "Paunawa para sa pag-trade ng %symbol%",
+  "Notice for trading %symbol%": "Paunawa para sa pag-trade ng %symbol% ",
   "Warning: The pGALA token pool is not a valid token trading pair - please stop buying.": "Babala: Hindi valid na pares ng token sa pag-trade ang pGALA token pool - huwag na itong bilhin.",
   "Warning: BONDLY has been compromised. Please remove liquidity until further notice.": "Babala: Ang BONDLY ay nakompromiso. Mangyaring alisin ang liquidity hanggang sa karagdagang abiso.",
   "Claimed": "Na-claim",
@@ -1943,7 +1943,6 @@
   "Transaction failed with error: %reason%": "Hindi nagawa ang transaksyon dahil sa error: %reason%",
   "Transaction failed. For detailed error message:": "Hindi nagawa ang transaksyon. Para sa detalyadong mensahe ng error:",
   "Failed to claim": "Hindi na-claim",
-  "VERTO locked": "Na-lock ang cake",
   "Boost Multiplier": "Multiplier ng Pag-boost",
   "The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.": "Kinakalkula ang tinantyang multiplier ng pag-boost gamit ang live na data. Puwedeng magbago ang aktwal na multiplier ng pag-boost pagkatapos ng pag-activate.",
   "locked for": "na-lock sa loob ng",
@@ -2061,5 +2060,13 @@
   "Volume (24H)": "Volume (24H)",
   "Token Name": "Token Name",
   "Change": "Change",
-  "Top Token": "Top Token"
+  "Top Token": "Top Token",
+  "Trade any token on Rebuschain in seconds, just by connecting your wallet.": "I-trade ang anumang token sa Rebuschain sa ilang segundo lamang sa pamamagitan ng pagkonekta ng iyong wallet.",
+  "Gain passive income with crypto.": "Kumita ng passive income gamit ang crypto.", 
+  "VertoTrade makes it easy to make your crypto work for you.": "Pinapadali ng VertoTrade na pagtrabahuhin ang iyong crypto para sa iyo.", 
+  "VERTO the future of DeFi is here.": "VERTO ang kinabukasan ng DeFi ay narito na.", 
+  "VERTO token is at the heart of the VertoTrade ecosystem. Buy it, trade it, farm it, spend it, stake it... and so much more coming soon!": "Ang VERTO token ay nasa puso ng VertoTrade ecosystem. Bilhin ito, ipagpalit ito, sakahin ito, gastusin ito, itaya ito... at marami pang iba na paparating na!",
+  "Token Details": "Mga Detalye ng Token", 
+  "Connect your crypto wallet to start using the app in seconds. No registration needed.": "Ikonekta ang iyong crypto wallet para simulan ang paggamit ng app sa ilang segundo. Hindi kailangan magparehistro.", 
+  "Gain": "Makakuha"
 }
