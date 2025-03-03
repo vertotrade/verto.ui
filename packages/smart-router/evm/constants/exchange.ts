@@ -1,5 +1,5 @@
 import { ChainId, Token, WBNB, WNATIVE } from '@verto/sdk'
-import { bscTokens, bscTestnetTokens, BUSD, USDC, USDT, vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
+import { bscTokens, bscTestnetTokens, BUSD, USDC, USDT, vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2, vertoTokensL2 } from '@verto/tokens'
 
 import { ChainMap, ChainTokenList } from '../types'
 
@@ -11,6 +11,7 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.REBUS]: '0xAa1D16A14832538b13Cd20DD848ec1E27cF1e02B',
   [ChainId.REBUS_TESTNET]: '0xd48B044c1c24D6dDc8ffEE15b0036952FDF00D2a',
   [ChainId.REBUS_TESTNET_L2]: '0x96df773857013AF68459AB3bf019f099089C3a4A',
+  [ChainId.REBUS_L2]: '0x9C2A43b674B01d8Be55004C7b01f4c88529CAF10',
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -21,6 +22,7 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.REBUS]: '',
   [ChainId.REBUS_TESTNET]: '',
   [ChainId.REBUS_TESTNET_L2]: '',
+  [ChainId.REBUS_L2]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -57,6 +59,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     vertoTokensTestnetL2.verto,
     vertoTokensTestnetL2.weth,
     WNATIVE[ChainId.REBUS_TESTNET_L2],
+  ],
+  [ChainId.REBUS_L2]: [
+    vertoTokensL2.rebus,
+    vertoTokensL2.lqwrebus,
+    vertoTokensL2.verto,
+    vertoTokensL2.weth,
+    WNATIVE[ChainId.REBUS_L2],
   ],
 }
 
@@ -105,6 +114,13 @@ export const SUGGESTED_BASES: ChainTokenList = {
     vertoTokensTestnetL2.weth,
     WNATIVE[ChainId.REBUS_TESTNET_L2],
   ],
+  [ChainId.REBUS_L2]: [
+    vertoTokensL2.rebus,
+    vertoTokensL2.lqwrebus,
+    vertoTokensL2.verto,
+    vertoTokensL2.weth,
+    WNATIVE[ChainId.REBUS_L2],
+  ],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -133,6 +149,13 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
     vertoTokensTestnetL2.verto,
     vertoTokensTestnetL2.weth,
     WNATIVE[ChainId.REBUS_TESTNET_L2],
+  ],
+  [ChainId.REBUS_L2]: [
+    vertoTokensL2.rebus,
+    vertoTokensL2.lqwrebus,
+    vertoTokensL2.verto,
+    vertoTokensL2.weth,
+    WNATIVE[ChainId.REBUS_L2],
   ],
 }
 

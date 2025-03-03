@@ -4,7 +4,7 @@ import { Flex, Text, Button, Message, Link } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
 import { ChainId, ERC20Token } from '@verto/sdk'
 import { DEFAULT_CHAIN_ID } from '@verto/farms/src/const'
-import { vertoTokensTestnet, vertoTokens, vertoTokensTestnetL2 } from '@verto/tokens'
+import { vertoTokensTestnet, vertoTokens, vertoTokensTestnetL2, vertoTokensL2 } from '@verto/tokens'
 import { NftToken } from 'state/nftMarket/types'
 import { getExplorerScanLinkForNft } from 'utils'
 import { FetchStatus } from 'config/constants/types'
@@ -24,6 +24,8 @@ interface ReviewStageProps {
 const tokens =
   DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
     ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_L2
+    ? vertoTokensL2
     : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
     ? vertoTokensTestnetL2
     : vertoTokens

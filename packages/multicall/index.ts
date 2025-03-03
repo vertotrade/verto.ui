@@ -9,6 +9,8 @@ import multicallAbi from './Multicall.json'
 const DEFAULT_CHAIN_ID =
   env('IS_MAINNET') === 'true'
     ? ChainId.REBUS
+    : env('IS_MAINNET_L2') === 'true'
+    ? ChainId.REBUS_L2
     : env('IS_TESTNET_L2') === 'true'
     ? ChainId.REBUS_TESTNET_L2
     : ChainId.REBUS_TESTNET
@@ -22,6 +24,7 @@ export const multicallAddresses = {
   [ChainId.REBUS_TESTNET]: '0xAcD2b4E62663C9AEA56524f050F92F27Cfaa91b2',
   [ChainId.REBUS]: '0x9C2A43b674B01d8Be55004C7b01f4c88529CAF10',
   [ChainId.REBUS_TESTNET_L2]: '0xcA11bde05977b3631167028862bE2a173976CA11',
+  [ChainId.REBUS_L2]: '0xcA11bde05977b3631167028862bE2a173976CA11',
 }
 
 export const getMulticallContract = (chainId: ChainId, provider: Provider) => {

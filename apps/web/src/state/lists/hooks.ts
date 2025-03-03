@@ -31,11 +31,17 @@ import DEFAULT_TOKEN_LIST_TESTNET_L2 from '../../config/constants/tokenLists/303
 import UNSUPPORTED_TOKEN_LIST_TESTNET_L2 from '../../config/constants/tokenLists/3034/vertotrade-unsupported.tokenlist.json'
 import WARNING_TOKEN_LIST_TESTNET_L2 from '../../config/constants/tokenLists/3034/vertotrade-warning.tokenlist.json'
 
+import DEFAULT_TOKEN_LIST_L2 from '../../config/constants/tokenLists/9696/vertotrade-default.tokenlist.json'
+import UNSUPPORTED_TOKEN_LIST_L2 from '../../config/constants/tokenLists/9696/vertotrade-unsupported.tokenlist.json'
+import WARNING_TOKEN_LIST_L2 from '../../config/constants/tokenLists/9696/vertotrade-warning.tokenlist.json'
+
 import { listsAtom } from './lists'
 
 export const DEFAULT_TOKEN_LIST =
   env('IS_MAINNET') === 'true'
     ? DEFAULT_TOKEN_LIST_MAINNET
+    : env('IS_MAINNET_L2') === 'true'
+    ? DEFAULT_TOKEN_LIST_L2
     : env('IS_TESTNET_L2') === 'true'
     ? DEFAULT_TOKEN_LIST_TESTNET_L2
     : DEFAULT_TOKEN_LIST_TESTNET
@@ -43,6 +49,8 @@ export const DEFAULT_TOKEN_LIST =
 const UNSUPPORTED_TOKEN_LIST =
   env('IS_MAINNET') === 'true'
     ? UNSUPPORTED_TOKEN_LIST_MAINNET
+    : env('IS_MAINNET_L2') === 'true'
+    ? UNSUPPORTED_TOKEN_LIST_L2
     : env('IS_TESTNET_L2') === 'true'
     ? UNSUPPORTED_TOKEN_LIST_TESTNET_L2
     : UNSUPPORTED_TOKEN_LIST_TESTNET
@@ -50,6 +58,8 @@ const UNSUPPORTED_TOKEN_LIST =
 const WARNING_TOKEN_LIST =
   env('IS_MAINNET') === 'true'
     ? WARNING_TOKEN_LIST_MAINNET
+    : env('IS_MAINNET_L2') === 'true'
+    ? WARNING_TOKEN_LIST_L2    
     : env('IS_TESTNET_L2') === 'true'
     ? WARNING_TOKEN_LIST_TESTNET_L2
     : WARNING_TOKEN_LIST_TESTNET
@@ -239,6 +249,7 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
     [ChainId.REBUS]: { ...map1[ChainId.REBUS], ...map2[ChainId.REBUS] },
     [ChainId.REBUS_TESTNET]: { ...map1[ChainId.REBUS_TESTNET], ...map2[ChainId.REBUS_TESTNET] },
     [ChainId.REBUS_TESTNET_L2]: { ...map1[ChainId.REBUS_TESTNET_L2], ...map2[ChainId.REBUS_TESTNET_L2] },
+    [ChainId.REBUS_L2]: { ...map1[ChainId.REBUS_L2], ...map2[ChainId.REBUS_L2] },
   }
 }
 

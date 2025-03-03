@@ -114,6 +114,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.REBUS]: null,
   [ChainId.REBUS_TESTNET]: null,
   [ChainId.REBUS_TESTNET_L2]: null,
+  [ChainId.REBUS_L2]: null,
 }
 
 export const CAKE = {

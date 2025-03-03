@@ -51,3 +51,21 @@ export const rebusTestnetL2 = {
   },
   testnet: true,
 }
+
+export const rebusL2 = {
+  id: 9696,
+  name: 'Rebus L2',
+  network: 'RebusL2',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Ether',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    default: { http: ['https://apievml2.rebuschain.com/l2rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'Rebus', url: 'https://evm.rebuschain.com' },
+  },
+  testnet: true,
+}
