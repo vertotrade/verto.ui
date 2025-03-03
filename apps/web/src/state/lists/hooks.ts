@@ -59,7 +59,7 @@ const WARNING_TOKEN_LIST =
   env('IS_MAINNET') === 'true'
     ? WARNING_TOKEN_LIST_MAINNET
     : env('IS_MAINNET_L2') === 'true'
-    ? WARNING_TOKEN_LIST_L2    
+    ? WARNING_TOKEN_LIST_L2
     : env('IS_TESTNET_L2') === 'true'
     ? WARNING_TOKEN_LIST_TESTNET_L2
     : WARNING_TOKEN_LIST_TESTNET

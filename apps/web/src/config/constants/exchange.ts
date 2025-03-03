@@ -70,7 +70,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     vertoTokensL2.verto,
     vertoTokensL2.weth,
     WNATIVE[ChainId.REBUS_L2],
-  ]
+  ],
 }
 
 /**
@@ -130,7 +130,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
     vertoTokensL2.verto,
     vertoTokensL2.weth,
     WNATIVE[ChainId.REBUS_L2],
-  ],  
+  ],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
