@@ -26,7 +26,6 @@ export const vertoTokensL2 = {
     'https://vertotrade.com/',
   ),
   weth: WETH9[ChainId.REBUS_L2],
-  /*
   wrebus: new ERC20Token(
     ChainId.REBUS_L2,
     '0x088D38759c2D67eD0DA54d52AEf8d5Fb748Ef70E',
@@ -34,7 +33,7 @@ export const vertoTokensL2 = {
     'REBUS',
     'Rebus',
     'https://www.rebuschain.com/',
-  ),*/
+  ),
   lqverto: new ERC20Token(
     ChainId.REBUS_L2,
     '0x52411A12bcb04E7483dC2C100DCaB997e2Cb4ABc',
