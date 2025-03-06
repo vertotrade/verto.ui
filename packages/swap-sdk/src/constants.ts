@@ -8,7 +8,8 @@ export enum ChainId {
   BSC_TESTNET = 97,
   REBUS = 1011,
   REBUS_TESTNET = 3033,
-  REBUS_TESTNET_L2 = 3034
+  REBUS_TESTNET_L2 = 3034,
+  REBUS_L2 = 9696
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -26,8 +27,9 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.REBUS]: '0xA63a3FCE232e51816A1b8Fc3BF5f3bCA06039489',
   [ChainId.REBUS_TESTNET]: '0xa5A785D77ECcc28ECcBDCc9Fc1E81B0d57618D12',
   [ChainId.REBUS_TESTNET_L2]: '0xb84CFCF253cf793C1f2A6A04b6ce29A97D9d3517',
+  [ChainId.REBUS_L2]: '0x27ceAcd3fC744b9c88AefEF14DEC4CDf85ca4844',
 }
-export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
+export const INIT_CODE_HASH = '0xf0d5095eb59234ac55a07dfd108a3d5b311b2142908eef90d2372aa753028d56'
 
 const INIT_CODE_HASH_ETH = '0x57224589c67f3f30a6b0d7a1b54cf3153ab84563bc609ef41dfb34f8b2974d2d'
 export const INIT_CODE_HASH_MAP: Record<number, string> = {
@@ -38,6 +40,7 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.REBUS]: '0xf0d5095eb59234ac55a07dfd108a3d5b311b2142908eef90d2372aa753028d56',
   [ChainId.REBUS_TESTNET]: '0x117bda4593deabbe392aebbdccfcaaf3f0f3e0d5f14d250a6e496d6a2e974ef4',
   [ChainId.REBUS_TESTNET_L2]: '0xf0d5095eb59234ac55a07dfd108a3d5b311b2142908eef90d2372aa753028d56',
+  [ChainId.REBUS_L2]: '0xf0d5095eb59234ac55a07dfd108a3d5b311b2142908eef90d2372aa753028d56',
 }
 
 export const WETH9 = {
@@ -59,6 +62,14 @@ export const WETH9 = {
   ),
   [ChainId.REBUS_TESTNET_L2]: new ERC20Token(
     ChainId.REBUS_TESTNET_L2,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether',
+    'https://weth.io'
+  ),
+  [ChainId.REBUS_L2]: new ERC20Token(
+    ChainId.REBUS_L2,
     '0x4200000000000000000000000000000000000006',
     18,
     'WETH',
@@ -121,6 +132,7 @@ export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.REBUS]: REBUS[ChainId.REBUS],
   [ChainId.REBUS_TESTNET]: REBUS[ChainId.REBUS_TESTNET],
   [ChainId.REBUS_TESTNET_L2]: WETH9[ChainId.REBUS_TESTNET_L2],
+  [ChainId.REBUS_L2]: WETH9[ChainId.REBUS_L2],
 }
 
 export const NATIVE: Record<
@@ -154,6 +166,11 @@ export const NATIVE: Record<
     decimals: 18,
   },
   [ChainId.REBUS_TESTNET_L2]: {
+    name: 'Ether',
+    symbol: 'ETH',
+    decimals: 18,
+  },
+  [ChainId.REBUS_L2]: {
     name: 'Ether',
     symbol: 'ETH',
     decimals: 18,

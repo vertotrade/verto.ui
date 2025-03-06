@@ -2,7 +2,7 @@ import { FixedNumber } from '@ethersproject/bignumber'
 import env from '@beam-australia/react-env'
 import { ChainId } from '@verto/sdk'
 
-export const DEFAULT_CHAIN_ID = env('IS_MAINNET') === 'true' ? ChainId.REBUS : env('IS_TESTNET_L2') === 'true' ? ChainId.REBUS_TESTNET_L2 : ChainId.REBUS_TESTNET
+export const DEFAULT_CHAIN_ID = env('IS_MAINNET') === 'true' ? ChainId.REBUS : env('IS_MAINNET_L2') === 'true' ? ChainId.REBUS_L2 : env('IS_TESTNET_L2') === 'true' ? ChainId.REBUS_TESTNET_L2 : ChainId.REBUS_TESTNET
 
 export const FIXED_ZERO = FixedNumber.from(0)
 export const FIXED_ONE = FixedNumber.from(1)
@@ -13,6 +13,7 @@ export const masterChefAddresses = {
   56: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
   1011: '0x2B9B68ada280356d16180d799E888E4734AB3b73',
   3033: '0xdfB5926eDFff1B13F11F65948adC3c2967CEd08d',
+  9696: '0x4E828b9DBAebc4091E4c4Ed8e3Ef0Ee7A1c2F0F3',
 }
 
 export const nonBSCVaultAddresses = {

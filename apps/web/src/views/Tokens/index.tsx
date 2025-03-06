@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import { Heading, Flex, PageHeader, Pool } from '@verto/uikit'
 import { useTranslation } from '@verto/localization'
-import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2, vertoTokensL2 } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import Page from 'components/Layout/Page'
 import { ChainId, CurrencyAmount } from '@verto/sdk'
@@ -14,6 +14,8 @@ import TokenRow from './TokenRow'
 const tokens =
   DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
     ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_L2
+    ? vertoTokensL2
     : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
     ? vertoTokensTestnetL2
     : vertoTokens

@@ -1,0 +1,52 @@
+{
+  "name": "VertoTrade",
+  "timestamp": "2023-02-17T20:47:02.923Z",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "keywords": ["vertotrade"],
+  "tokens": [
+    {
+      "name": "REBUS",
+      "symbol": "REBUS",
+      "address": "0x088D38759c2D67eD0DA54d52AEf8d5Fb748Ef70E",
+      "chainId": 9696,
+      "decimals": 18,
+      "logoURI": "/images/tokens/rebus.png"
+    },
+    {
+      "name": "Verto Token",
+      "symbol": "VERTO",
+      "address": "0x5B1B22949ae55101F35dCfCfc080985fCF3CB904",
+      "chainId": 9696,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0x5B1B22949ae55101F35dCfCfc080985fCF3CB904.png"
+    },
+    {
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "address": "0x4200000000000000000000000000000000000006",
+      "chainId": 9696,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0x4200000000000000000000000000000000000006.png"
+    },
+    {
+      "name": "lqWRebus Token",
+      "symbol": "lqWREBUS",
+      "address": "0xfd3423e599CB90C5D1E5cFdA6F0A4c570443af9E",
+      "chainId": 9696,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0xfd3423e599CB90C5D1E5cFdA6F0A4c570443af9E.png"
+    },
+    {
+      "name": "lqVerto Token",
+      "symbol": "lqVERTO",
+      "address": "0x52411A12bcb04E7483dC2C100DCaB997e2Cb4ABc",
+      "chainId": 9696,
+      "decimals": 18,
+      "logoURI": "/images/tokens/0x52411A12bcb04E7483dC2C100DCaB997e2Cb4ABc.png"
+    }
+  ]
+}

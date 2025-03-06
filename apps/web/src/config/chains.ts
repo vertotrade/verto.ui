@@ -11,6 +11,7 @@ export const CHAIN_QUERY_NAME = {
   [ChainId.REBUS]: 'rebus',
   [ChainId.REBUS_TESTNET]: 'rebusTestnet',
   [ChainId.REBUS_TESTNET_L2]: 'rebusTestnetL2',
+  [ChainId.REBUS_L2]: 'rebusL2',
 }
 
 // export const DEFAULT_CHAIN_ID = env('IS_MAINNET') === 'true' ? ChainId.REBUS : ChainId.REBUS_TESTNET
@@ -18,6 +19,8 @@ export const CHAIN_QUERY_NAME = {
 export const DEFAULT_CHAIN_ID =
   env('IS_MAINNET') === 'true'
     ? ChainId.REBUS
+    : env('IS_MAINNET_L2') === 'true'
+    ? ChainId.REBUS_L2
     : env('IS_TESTNET_L2') === 'true'
     ? ChainId.REBUS_TESTNET_L2
     : ChainId.REBUS_TESTNET

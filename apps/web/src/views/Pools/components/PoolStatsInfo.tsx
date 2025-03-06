@@ -3,7 +3,7 @@ import { DEFAULT_CHAIN_ID } from 'config/chains'
 import AddToWalletButton, { AddToWalletTextOptions } from 'components/AddToWallet/AddToWalletButton'
 import { formatDistance } from 'date-fns'
 import BigNumber from 'bignumber.js'
-import { rebus, rebusTestnet, rebusTestnetL2 } from 'utils/wagmi-chains'
+import { rebus, rebusTestnet, rebusTestnetL2, rebusL2 } from 'utils/wagmi-chains'
 import { useTranslation } from '@verto/localization'
 import { ChainId, Token } from '@verto/sdk'
 import { memo } from 'react'
@@ -19,6 +19,8 @@ import { DurationAvg, PerformanceFee, TotalLocked, TotalStaked } from './Stat'
 const blockExplorerUrl =
   DEFAULT_CHAIN_ID === ChainId.REBUS
     ? rebus.blockExplorers.default.url
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_L2
+    ? rebusL2.blockExplorers.default.url
     : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
     ? rebusTestnetL2.blockExplorers.default.url
     : rebusTestnet.blockExplorers.default.url

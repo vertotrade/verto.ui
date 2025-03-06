@@ -3,7 +3,7 @@ import { Pool } from '@verto/uikit'
 import { SerializedWrappedToken } from '@verto/token-lists'
 // import Trans from 'components/Trans'
 // import { VaultKey } from 'state/types'
-import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2, vertoTokensL2 } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { ChainId } from '@verto/sdk'
 import { PoolCategory } from './types'
@@ -237,6 +237,20 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     liquidToken: vertoTokensTestnetL2.lqwrebus,
     contractAddress: {
       [ChainId.REBUS_TESTNET_L2]: '0xA24160fB9cba04198aE4F66DFf3fFDaC9E45E809',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10',
+    isFinished: false,
+    isLiquid: true,
+  },
+
+  {
+    sousId: 323,
+    stakingToken: vertoTokensL2.rebus,
+    earningToken: vertoTokensL2.verto,
+    liquidToken: vertoTokensL2.lqwrebus,
+    contractAddress: {
+      [ChainId.REBUS_L2]: '0xda9598C26939Ec0D93c45Cc5FB2565C16303D1fd',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',

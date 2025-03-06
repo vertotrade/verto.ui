@@ -1,11 +1,13 @@
 import { ChainId, Currency, ERC20Token, Price } from '@verto/sdk'
-import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2, vertoTokensL2 } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from '@verto/farms/src/const'
 import { fetchWithCache, useFetchWithCache } from './fetchWithCache'
 
 const tokens =
   DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
     ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_L2
+    ? vertoTokensL2
     : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
     ? vertoTokensTestnetL2
     : vertoTokens

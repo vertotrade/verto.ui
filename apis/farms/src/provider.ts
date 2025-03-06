@@ -47,3 +47,11 @@ export const rebusTestnetL2Provider = new StaticJsonRpcProvider(
   },
   3034,
 )
+
+export const rebusL2Provider = new StaticJsonRpcProvider(
+  {
+    url: 'https://apievml2.rebuschain.com/l2rpc',
+    skipFetchSetup: true,
+  },
+  3034,
+)

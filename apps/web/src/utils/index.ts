@@ -8,14 +8,16 @@ import { ChainId, Currency } from '@verto/sdk'
 import { bsc } from 'wagmi/chains'
 import memoize from 'lodash/memoize'
 import { TokenAddressMap } from '@verto/token-lists'
-import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2 } from '@verto/tokens'
+import { vertoTokens, vertoTokensTestnet, vertoTokensTestnetL2, vertoTokensL2 } from '@verto/tokens'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
 import { chains } from './wagmi'
-import { rebus, rebusTestnet, rebusTestnetL2 } from './wagmi-chains'
+import { rebus, rebusTestnet, rebusTestnetL2, rebusL2 } from './wagmi-chains'
 
 export const defaultVertoTokens =
   DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
     ? vertoTokensTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_L2
+    ? vertoTokensL2
     : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
     ? vertoTokensTestnetL2
     : vertoTokens
@@ -23,6 +25,8 @@ export const defaultVertoTokens =
 export const defaultChain =
   DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET
     ? rebusTestnet
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_L2
+    ? rebusL2
     : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
     ? rebusTestnetL2
     : rebus

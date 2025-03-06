@@ -7,6 +7,7 @@ export default {
     1011: '0x2B9B68ada280356d16180d799E888E4734AB3b73',
     3033: '0xdfB5926eDFff1B13F11F65948adC3c2967CEd08d',
     3034: '0xdfB5926eDFff1B13F11F65948adC3c2967CEd08d',
+    9696: '0x4E828b9DBAebc4091E4c4Ed8e3Ef0Ee7A1c2F0F3',
   },
   masterChefV1: {
     97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
@@ -14,6 +15,7 @@ export default {
     1011: '0x2B9B68ada280356d16180d799E888E4734AB3b73',
     3033: '0xdfB5926eDFff1B13F11F65948adC3c2967CEd08d',
     3034: '0xdfB5926eDFff1B13F11F65948adC3c2967CEd08d',
+    9696: '0x4E828b9DBAebc4091E4c4Ed8e3Ef0Ee7A1c2F0F3',
   },
   sousChef: {
     97: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
@@ -27,6 +29,7 @@ export default {
     1011: '',
     3033: '0x1Ad6597e6eFD79e7F239AFeDdeB6c76e97b7aAee',
     3034: '',
+    9696: '',
   },
   multiCall: multicallAddresses,
   pancakeProfile: {
@@ -41,6 +44,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bunnyFactory: {
     56: '0xfa249Caa1D16f75fa159F7DFBAc0cC5EaB48CeFf',
@@ -48,6 +52,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   claimRefund: {
     56: '0xE7e53A7e9E3Cf6b840f167eF69519175c497e149',
@@ -55,6 +60,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   pointCenterIfo: {
     56: '0x3C6919b132462C1FEc572c6300E83191f4F0012a',
@@ -62,6 +68,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bunnySpecial: {
     56: '0xFee8A195570a18461146F401d6033f5ab3380849',
@@ -69,6 +76,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   tradingCompetitionEaster: {
     56: '0xd718baa0B1F4f70dcC8458154042120FFE0DEFFA',
@@ -76,6 +84,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   tradingCompetitionFanToken: {
     56: '0xA8FECf847e28aa1Df39E995a45b7FCfb91b676d4',
@@ -83,6 +92,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   tradingCompetitionMobox: {
     56: '0x1C5161CdB145dE35a8961F82b065fd1F75C3BaDf',
@@ -90,6 +100,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   tradingCompetitionMoD: {
     56: '0xbDd9a61c67ee16c10f5E37b1D0c907a9EC959f33',
@@ -97,6 +108,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   easterNft: {
     56: '0x23c41D28A239dDCAABd1bb1deF8d057189510066',
@@ -104,6 +116,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   rebusVault: {
     56: '0x45c54210128a065de780C4B0Df3d16664f7f859e',
@@ -111,6 +124,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   rebusFlexibleSideVault: {
     56: '0x615e896A8C2CA8470A2e9dc2E9552998f8658Ea0',
@@ -118,6 +132,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   predictionsBNB: {
     56: '0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA',
@@ -125,6 +140,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   predictionsCAKE: {
     56: '0x0E3A8078EDD2021dadcdE733C6b4a86E51EE8f07',
@@ -132,6 +148,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   chainlinkOracleBNB: {
     56: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
@@ -139,6 +156,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   chainlinkOracleCAKE: {
     56: '0xB6064eD41d4f67e353768aA239cA86f4F73665a1',
@@ -146,6 +164,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   predictionsV1: {
     56: '0x516ffd7d1e0ca40b1879935b2de87cb20fc1124b',
@@ -153,6 +172,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bunnySpecialRebusVault: {
     56: '0x5B4a770Abe7Eafb2601CA4dF9d73EA99363E60a4',
@@ -160,6 +180,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bunnySpecialPrediction: {
     56: '0x342c99e9aC24157657095eC69CB04b73257e7A9C',
@@ -167,6 +188,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bunnySpecialLottery: {
     56: '0x24ED31d31C5868e5a96aA77fdcB890f3511fa0b2',
@@ -174,6 +196,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bunnySpecialXmas: {
     56: '0x59EdDF3c21509dA3b0aCCd7c5ccc596d930f4783',
@@ -181,6 +204,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   farmAuction: {
     56: '0xb92Ab7c1edcb273AbA24b0656cEb3681654805D2',
@@ -188,6 +212,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   AnniversaryAchievement: {
     56: '0xF839286bD9D14b358496829F3BaB3145C16ad3C1',
@@ -195,6 +220,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   nftMarket: {
     56: '0x17539cCa21C7933Df5c980172d22659B8C345C5A',
@@ -202,6 +228,7 @@ export default {
     1011: '0xA255926c659c6833A67374AE008B5918772f1c9C',
     3033: '0x5B0f31f28e3C4792820412AFa1479627e6fC78cd',
     3034: '0x9fCab331c749E8BfE331279f7E596fC9fc2F55D2',
+    9696: '0xC4199Ed32c756C941219f032dA22B5708689eF13',
   },
   nftSale: {
     56: '0x29fE7148636b7Ae0b1E53777b28dfbaA9327af8E',
@@ -209,6 +236,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   pancakeSquad: {
     56: '0x0a8901b0E25DEb55A87524f0cC164E9644020EBA',
@@ -216,6 +244,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   potteryDraw: {
     56: '0x01871991587d5671f3A2d4E2BcDC22F4E026396e',
@@ -223,6 +252,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   // TODO: multi
   zap: {
@@ -231,6 +261,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   iCake: {
     56: '0x3C458828D1622F5f4d526eb0d24Da8C4Eb8F07b1',
@@ -238,6 +269,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bCakeFarmBooster: {
     56: '0xE4FAa3Ef5A9708C894435B0F39c2B440936A3A52',
@@ -245,6 +277,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   bCakeFarmBoosterProxyFactory: {
     56: '0x2C36221bF724c60E9FEE3dd44e2da8017a8EF3BA',
@@ -252,6 +285,7 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
   nonBscVault: {
     56: '0xE6c904424417D03451fADd6E3f5b6c26BcC43841', // Only for pass contracts test
@@ -260,6 +294,7 @@ export default {
     3033: '0xdfB5926eDFff1B13F11F65948adC3c2967CEd08d',
     5: '0xE6c904424417D03451fADd6E3f5b6c26BcC43841',
     3034: '',
+    9696: '',
   },
   crossFarmingSender: {
     56: '0x327d26dE30f92600620A99043034e0A5FD9402C8', // Only for pass contracts test
@@ -268,6 +303,7 @@ export default {
     3033: '',
     5: '0x327d26dE30f92600620A99043034e0A5FD9402C8',
     3034: '',
+    9696: '',
   },
   crossFarmingReceiver: {
     56: '0x0726a8C8206b9eC0AfB788df5adb36a8AEDB13c2',
@@ -275,5 +311,6 @@ export default {
     1011: '',
     3033: '',
     3034: '',
+    9696: '',
   },
 }

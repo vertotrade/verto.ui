@@ -7,6 +7,8 @@ import { DEFAULT_CHAIN_ID } from 'config/chains'
 const REBUS_URL =
   DEFAULT_CHAIN_ID === ChainId.REBUS
     ? 'https://api.vertotrade.com/rpc'
+    : DEFAULT_CHAIN_ID === ChainId.REBUS_L2
+    ? 'https://apievml2.rebuschain.com/l2rpc'
     : DEFAULT_CHAIN_ID === ChainId.REBUS_TESTNET_L2
     ? 'https://testnet.rebus.money/l2rpc'
     : 'https://testnet.rebus.money/rpc'

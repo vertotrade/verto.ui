@@ -23,7 +23,8 @@ const getImageUrlFromToken = (token: Token) => {
     token.chainId !== ChainId.BSC &&
     token.chainId !== ChainId.REBUS &&
     token.chainId !== ChainId.REBUS_TESTNET &&
-    token.chainId !== ChainId.REBUS_TESTNET_L2
+    token.chainId !== ChainId.REBUS_TESTNET_L2 &&
+    token.chainId !== ChainId.REBUS_L2
   ) {
     return `/images/${token.chainId}/tokens/${address}.png`
   }
