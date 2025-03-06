@@ -1,8 +1,12 @@
+import { Button, useModal } from "@verto/uikit";
+import { useTranslation } from "@verto/localization";
 import { useIsMounted } from "@verto/hooks";
 import { AtomBox } from "@verto/ui/components/AtomBox";
 import throttle from "lodash/throttle";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import styled from "styled-components";
+import BuyTokenModal from 'components/BuyTokenModal/BuyTokenModal'
+import { useAccount } from "wagmi";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
 import Flex from "../../components/Box/Flex";
@@ -133,6 +137,14 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
 
   const providerValue = useMemo(() => ({ linkComponent }), [linkComponent]);
 
+  const [onPresentBuyToken] = useModal(<BuyTokenModal />);
+  const handleBuyToken = useCallback((): void => {
+    onPresentBuyToken();
+  }, [onPresentBuyToken]);
+
+  const { isConnected } = useAccount();
+  const { t } = useTranslation();
+
   return (
     <MenuContext.Provider value={providerValue}>
       <AtomBox
@@ -157,6 +169,11 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                     ml="24px"
                   />
                 </AtomBox>
+                {isConnected && !isMobile && (
+                  <Button variant="secondary" width="125px" minHeight={48} mb="2" mt="3" onClick={handleBuyToken}>
+                    {t("Buy with Fiat")}
+                  </Button>
+                )}
               </Flex>
               <Flex alignItems="center" height="100%">
                 {/* <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>

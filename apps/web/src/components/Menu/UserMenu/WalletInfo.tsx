@@ -1,4 +1,15 @@
-import { Box, Button, Flex, InjectedModalProps, LinkExternal, Message, Skeleton, Text, CopyAddress } from '@verto/uikit'
+import {
+  Box,
+  Button,
+  Flex,
+  InjectedModalProps,
+  LinkExternal,
+  Message,
+  Skeleton,
+  Text,
+  CopyAddress,
+  useModal,
+} from '@verto/uikit'
 import { ChainId, WNATIVE } from '@verto/sdk'
 import { FetchStatus } from 'config/constants/types'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -7,11 +18,12 @@ import useAuth from 'hooks/useAuth'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { ChainLogo } from 'components/Logo/ChainLogo'
-
+import { useCallback } from 'react'
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
 import { formatBigNumber, getFullDisplayBalance } from '@verto/utils/formatBalance'
 import { useBalance } from 'wagmi'
 import { DEFAULT_CHAIN_ID } from 'config/chains'
+import BuyTokenModal from 'components/BuyTokenModal/BuyTokenModal'
 
 const COLORS = {
   ETH: '#627EEA',
@@ -41,6 +53,11 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
     onDismiss?.()
     logout()
   }
+  const [onPresentBuyToken] = useModal(<BuyTokenModal />)
+
+  const handleBuyToken = useCallback((): void => {
+    onPresentBuyToken()
+  }, [onPresentBuyToken])
 
   return (
     <>
@@ -134,6 +151,10 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
       </Box>
       <Button variant="secondary" width="100%" minHeight={48} onClick={handleLogout}>
         {t('Disconnect Wallet')}
+      </Button>
+
+      <Button variant="secondary" width="100%" minHeight={48} mb="2" mt="3" onClick={handleBuyToken}>
+        {t('Buy with Fiat')}
       </Button>
     </>
   )
