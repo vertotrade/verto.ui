@@ -54,8 +54,8 @@ export const rebusTestnetL2 = {
 
 export const rebusL2 = {
   id: 9696,
-  name: 'Rebus L2',
-  network: 'RebusL2',
+  name: 'Rebus Mainnet',
+  network: 'Rebus Mainnet',
   nativeCurrency: {
     decimals: 18,
     name: 'Ether',
