@@ -1,10 +1,12 @@
 import { useTranslation } from '@verto/localization'
 import { Currency } from '@verto/sdk'
-import { BottomDrawer, Flex, Modal, ModalV2, useMatchBreakpoints } from '@verto/uikit'
+import { BottomDrawer, Flex, Modal, ModalV2, useMatchBreakpoints, useModal, Button, Text } from '@verto/uikit'
 import { AppBody } from 'components/App'
-import { useContext } from 'react'
+import { useContext, useCallback } from 'react'
 
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
+import BuyTokenModal from 'components/BuyTokenModal/BuyTokenModal'
+import { useAccount } from 'wagmi'
 import { useCurrency } from '../../hooks/Tokens'
 import { Field } from '../../state/swap/actions'
 import { useSingleTokenSwapInfo, useSwapState } from '../../state/swap/hooks'
@@ -37,6 +39,14 @@ export default function Swap() {
   const isWrappingSwap = [inputCurrency?.symbol, outputCurrency?.symbol].includes('REBUS')
 
   const singleTokenPrice = useSingleTokenSwapInfo(inputCurrencyId, inputCurrency, outputCurrencyId, outputCurrency)
+
+  const [onPresentBuyToken] = useModal(<BuyTokenModal />)
+
+  const handleBuyToken = useCallback((): void => {
+    onPresentBuyToken()
+  }, [onPresentBuyToken])
+
+  const { isConnected } = useAccount()
 
   return (
     <Page removePadding={isChartExpanded} hideFooterOnDesktop={isChartExpanded}>
@@ -97,6 +107,16 @@ export default function Swap() {
           </StyledSwapContainer>
         </Flex>
       </Flex>
+      {isConnected && (
+        <>
+          <Text fontSize="12px" mt="50px">
+            {t('If you need to fund your wallet, click the Buy Tokens button below')}
+          </Text>
+          <Button variant="secondary" width="350px" minHeight={48} mb="2" mt="20px" onClick={handleBuyToken}>
+            {t('Buy with Fiat')}
+          </Button>
+        </>
+      )}
     </Page>
   )
 }
